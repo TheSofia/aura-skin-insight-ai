@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import DynamicLogo from "./DynamicLogo";
@@ -111,10 +112,10 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
         {/* Updated logo with enhanced animation */}
         <DynamicLogo colorScheme="gradient" animationStyle="combined" size="lg" className="mb-8 animate-subtle-float" ref={logoRef}/>
         
-        {/* Animated Title with Enhanced Sequential Reveal - Unified text color */}
+        {/* Animated Title with Enhanced Sequential Reveal - Unified neutral text color */}
         <div className="relative mb-6 h-20 md:h-24 flex items-center justify-center overflow-hidden">
           <div className="relative">
-            {/* Shadow text "Discover Your" with standardized color */}
+            {/* Shadow text "Discover Your" with standardized neutral color */}
             <div className="absolute top-1 left-1 opacity-40">
               <span className={`inline-block font-clash font-light text-aurascan-dark-grey transition-all duration-700 ease-out
                 ${animationState.discover ? 'translate-y-0 opacity-60' : 'translate-y-8 opacity-0'}`}>
@@ -127,7 +128,7 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
               </span>
             </div>
             
-            {/* Primary text with sequential reveal and standardized text color */}
+            {/* Primary text with sequential reveal and standardized neutral text color */}
             <div className="flex flex-wrap justify-center">
               <span className={`inline-block font-clash font-light text-4xl md:text-5xl lg:text-6xl text-aurascan-dark-grey transition-all duration-700 ease-out
                 ${animationState.discover ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
@@ -139,8 +140,8 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
                 Your{' '}
               </span>
               
-              {/* Only "Skin Vitality" keeps gradient to maintain visual interest in title */}
-              <span className={`inline-block font-clash font-bold text-4xl md:text-5xl lg:text-6xl bg-gradient-to-tr from-aurascan-accent to-aurascan-dark-orange bg-clip-text text-transparent transition-all duration-700 ease-out delay-[600ms]
+              {/* Modified: Changed from text-gradient to neutral text color with same animation */}
+              <span className={`inline-block font-clash font-bold text-4xl md:text-5xl lg:text-6xl text-aurascan-dark-grey transition-all duration-700 ease-out delay-[600ms]
                 ${animationState.vitality ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                 Skin Vitality
               </span>
@@ -155,9 +156,10 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
           Find your perfect skincare protocol with just one scan.
         </p>
         
-        {/* Enhanced primary call to action with refined pulse animation and vibrant gradient */}
+        {/* Enhanced primary call to action with refined pulse animation and vibrant gradient - UPDATED TO PILL SHAPE */}
         <Button 
           className="bg-gradient-to-r from-aurascan-accent via-aurascan-dark-orange to-aurascan-deep-green hover:from-aurascan-dark-orange hover:via-aurascan-deep-green hover:to-aurascan-accent text-white py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-500 shadow-subtle hover:shadow-accent transform hover:scale-[1.03]"
+          size="pill-lg" // Changed to pill-lg size to create fully rounded edges
           onClick={onGetStarted}
           style={{ 
             animationDelay: '1.8s', 
@@ -170,19 +172,19 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
           <ArrowRight className="h-4 w-4 ml-1 animate-pulse-subtle" />
         </Button>
         
-        {/* Alternative path with standardized text color */}
+        {/* Alternative path with standardized text color and updated to pill shape */}
         <button
           onClick={onManualInput}
           className="flex items-center gap-2 px-4 py-2 rounded-full border border-aurascan-medium-grey/30 text-aurascan-dark-grey bg-white/50 hover:bg-aurascan-deep-green/10 hover:border-aurascan-deep-green/40 transition-all duration-300 text-sm font-light opacity-0 animate-fade-in group"
           style={{ animationDelay: '2s', animationFillMode: 'forwards' }}
         >
-          <MessageSquare className="h-4 w-4 text-aurascan-deep-green opacity-70 group-hover:opacity-100 transition-opacity animate-subtle-pulse" />
+          <MessageSquare className="h-4 w-4 text-aurascan-dark-grey opacity-70 group-hover:text-aurascan-deep-green group-hover:opacity-100 transition-opacity animate-subtle-pulse" />
           <span>Prefer to describe your skin?</span>
         </button>
         
         {/* Standardized footer text color */}
         <p className="text-xs text-aurascan-dark-grey mt-6 max-w-md font-light opacity-0 animate-fade-in" style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}>
-          By continuing, you agree to our <a href="#" className="text-aurascan-accent hover:text-aurascan-dark-orange underline-offset-4 hover:underline transition-colors">Privacy Policy</a> and <a href="#" className="text-aurascan-accent hover:text-aurascan-dark-orange underline-offset-4 hover:underline transition-colors">Terms of Service</a>.
+          By continuing, you agree to our <a href="#" className="text-aurascan-dark-grey hover:text-aurascan-accent underline-offset-4 hover:underline transition-colors">Privacy Policy</a> and <a href="#" className="text-aurascan-dark-grey hover:text-aurascan-accent underline-offset-4 hover:underline transition-colors">Terms of Service</a>.
         </p>
       </div>
       
