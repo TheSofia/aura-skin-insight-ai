@@ -1,8 +1,9 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Bookmark, BookmarkCheck } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { Textarea } from "@/components/ui/textarea";
 import DynamicLogo from './DynamicLogo';
 
 type Product = {
@@ -14,8 +15,13 @@ type Product = {
   saved: boolean;
 };
 
-const ProductRecommendations = () => {
+type ProductRecommendationsProps = {
+  isManualPath?: boolean;
+};
+
+const ProductRecommendations = ({ isManualPath = false }: ProductRecommendationsProps) => {
   const { toast } = useToast();
+  const [skinDescription, setSkinDescription] = useState<string>("");
   
   // Exact product list as mandated
   const [products, setProducts] = useState<Product[]>([
@@ -77,6 +83,11 @@ const ProductRecommendations = () => {
     }
   ]);
 
+  // Function to handle skin description input
+  const handleSkinDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setSkinDescription(e.target.value);
+  };
+
   // Function to toggle saved status of product
   const toggleSaveProduct = (productId: string) => {
     setProducts(products.map(product => 
@@ -107,12 +118,24 @@ const ProductRecommendations = () => {
               <h2 className="text-2xl font-clash font-medium text-aurascan-dark-grey">Your Personalized Protocol</h2>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-clash font-bold tracking-tight text-aurascan-dark-grey mb-6 leading-tight">
-              Premium Recommendations <span className="font-light">For Your Skin</span>
+            <h1 className="text-4xl md:text-5xl font-clash tracking-tight text-aurascan-dark-grey mb-6 leading-tight">
+              <span className="font-bold">Premium Recommendations</span> <span className="font-light">For Your Skin</span>
             </h1>
             <p className="text-aurascan-medium-grey max-w-2xl leading-relaxed text-lg mb-8 font-light">
               Based on your skin analysis, we've curated these high-quality products specifically for your unique needs.
             </p>
+            
+            {/* Manual Input Text Area - only visible when coming via manual path */}
+            {isManualPath && (
+              <div className="w-full max-w-2xl mb-10 transition-all duration-300">
+                <Textarea
+                  placeholder="Tell us about your skin: type, concerns, goals..."
+                  value={skinDescription}
+                  onChange={handleSkinDescriptionChange}
+                  className="resize-none border-aurascan-light-grey/50 rounded-md p-4 h-32 font-light text-base placeholder:text-aurascan-medium-grey/70 focus-visible:ring-aurascan-dark-grey/30 focus-visible:ring-offset-0"
+                />
+              </div>
+            )}
           </div>
         </div>
 
