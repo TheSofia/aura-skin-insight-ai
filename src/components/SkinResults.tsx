@@ -76,7 +76,10 @@ const SkinResults = ({ onViewRecommendations }: SkinResultsProps) => {
                     {getLevelText(concern.level)}
                   </span>
                 </div>
-                <Progress value={concern.level} className="h-2 mb-3" indicatorClassName={getLevelColor(concern.level)} />
+                <Progress 
+                  value={concern.level} 
+                  className={`h-2 mb-3 ${getLevelColor(concern.level)}`} 
+                />
                 <p className="text-sm text-aurascan-gray">{concern.description}</p>
               </div>
             ))}
