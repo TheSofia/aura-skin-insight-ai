@@ -46,54 +46,56 @@ const SkinResults = ({ onViewRecommendations }: SkinResultsProps) => {
   };
 
   const getLevelColor = (level: number) => {
-    if (level < 30) return "bg-[#00FFFF]"; // Electric Blue for low
-    if (level < 60) return "bg-[#FF00FF]"; // Magenta for moderate
-    return "bg-[#FFD700]"; // Gold for high
+    if (level < 30) return "bg-[#2E8B57]"; // Forest Green for low
+    if (level < 60) return "bg-[#0A4F3D]"; // Deeper Jade Green for moderate
+    return "bg-[#CC5500]"; // Burnt Orange for high
   };
 
   return (
-    <div className="flex flex-col h-full animate-fade-in bg-black text-white">
-      <div className="flex-1 overflow-auto px-6 py-6">
+    <div className="flex flex-col h-full animate-fade-in bg-white text-gray-900">
+      <div className="flex-1 overflow-auto px-8 py-8">
         <div className="max-w-md mx-auto">
-          <div className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-md p-6 mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-2">Your Skin Analysis</h2>
-            <p className="text-white/70">
-              Based on our AI analysis, we've identified these key concerns to address in your skincare routine:
+          <div className="backdrop-blur-sm bg-gradient-to-r from-white to-gray-50 border border-gray-100 rounded-sm p-8 mb-10">
+            <h2 className="text-2xl font-medium text-gray-900 mb-3 tracking-tight">Your Skin Analysis</h2>
+            <p className="text-gray-600 leading-relaxed">
+              Based on our AI analysis, we've identified these key concerns to address in your personalized skincare protocol:
             </p>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-8">
             {results.map((concern, index) => (
-              <div key={index} className="bg-black/30 backdrop-blur-sm border border-white/10 rounded-md p-5">
-                <div className="flex justify-between mb-2">
-                  <h3 className="font-medium text-white">{concern.name}</h3>
+              <div key={index} className="bg-white border-l-2 border-gray-200 rounded-none p-6 shadow-sm">
+                <div className="flex justify-between mb-4">
+                  <h3 className="font-medium text-gray-900 tracking-tight">{concern.name}</h3>
                   <span className={`
-                    px-2 py-1 text-xs rounded-sm 
-                    ${concern.level < 30 ? 'bg-[#00FFFF]/20 text-[#00FFFF]' : 
-                      concern.level < 60 ? 'bg-[#FF00FF]/20 text-[#FF00FF]' : 
-                      'bg-[#FFD700]/20 text-[#FFD700]'}
+                    px-3 py-1 text-xs font-medium tracking-wide
+                    ${concern.level < 30 ? 'text-[#2E8B57] bg-[#2E8B57]/5 border border-[#2E8B57]/20' : 
+                      concern.level < 60 ? 'text-[#0A4F3D] bg-[#0A4F3D]/5 border border-[#0A4F3D]/20' : 
+                      'text-[#CC5500] bg-[#CC5500]/5 border border-[#CC5500]/20'}
                   `}>
                     {getLevelText(concern.level)}
                   </span>
                 </div>
-                <Progress 
-                  value={concern.level} 
-                  className={`h-1 mb-3 bg-white/10 ${getLevelColor(concern.level)}`} 
-                />
-                <p className="text-sm text-white/70">{concern.description}</p>
+                <div className="mb-4">
+                  <Progress 
+                    value={concern.level} 
+                    className={`h-[2px] ${getLevelColor(concern.level)}`} 
+                  />
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed">{concern.description}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
       
-      <div className="p-6 border-t border-white/10">
+      <div className="p-8 border-t border-gray-100">
         <div className="max-w-md mx-auto">
           <Button 
-            className="w-full bg-[#00FFFF] hover:bg-[#00FFFF]/90 text-black font-medium flex items-center justify-center gap-2"
+            className="w-full bg-[#0A4F3D] hover:bg-[#0A4F3D]/90 text-white font-normal tracking-wide flex items-center justify-center gap-2"
             onClick={onViewRecommendations}
           >
-            <span>View Recommendations</span>
+            <span>View Personalized Recommendations</span>
             <ArrowRight className="h-4 w-4" />
           </Button>
         </div>
