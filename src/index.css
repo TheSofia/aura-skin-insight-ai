@@ -10,24 +10,24 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 215 10% 25%;
+    --foreground: 260 10% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 10% 25%;
+    --card-foreground: 260 10% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 10% 25%;
+    --popover-foreground: 260 10% 20%;
 
-    --primary: 358 84% 57%;
+    --primary: 260 10% 20%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 96%;
-    --secondary-foreground: 215 10% 25%;
+    --secondary-foreground: 260 10% 20%;
 
     --muted: 220 14% 96%;
-    --muted-foreground: 215 10% 55%;
+    --muted-foreground: 260 10% 55%;
 
-    --accent: 358 84% 57%;
+    --accent: 24 94% 53%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -35,7 +35,7 @@
 
     --border: 220 14% 90%;
     --input: 220 14% 90%;
-    --ring: 358 84% 57%;
+    --ring: 24 94% 53%;
 
     --radius: 0.75rem;
   }
@@ -66,61 +66,29 @@
     @apply bg-gradient-light border border-aurascan-light-grey/50 shadow-light rounded-lg overflow-hidden;
   }
   
-  .coral-button {
-    @apply bg-gradient-coral hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-coral transition-all duration-300;
+  .accent-button {
+    @apply bg-gradient-accent hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-accent transition-all duration-300;
   }
   
   .light-button {
-    @apply bg-aurascan-white hover:bg-aurascan-light-grey text-aurascan-coral font-medium tracking-wider rounded-md border border-aurascan-coral transition-all duration-300;
+    @apply bg-aurascan-white hover:bg-aurascan-light-grey text-aurascan-dark-grey font-medium tracking-wider rounded-md border border-aurascan-light-grey transition-all duration-300;
   }
   
-  .coral-text {
-    @apply text-aurascan-coral;
-  }
-
-  .cyan-text {
-    @apply text-aurascan-cyan;
-  }
-
-  .teal-text {
-    @apply text-aurascan-teal;
-  }
-
-  .violet-text {
-    @apply text-aurascan-violet;
+  .accent-text {
+    @apply text-aurascan-accent;
   }
   
   .shimmer-effect {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-coral before:bg-[length:200%_100%] before:animate-shimmer;
-  }
-  
-  .shimmer-effect-cyan {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-cyan before:bg-[length:200%_100%] before:animate-shimmer;
-  }
-  
-  .shimmer-effect-teal {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-teal before:bg-[length:200%_100%] before:animate-shimmer;
-  }
-  
-  .shimmer-effect-violet {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-violet before:bg-[length:200%_100%] before:animate-shimmer;
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-accent before:bg-[length:200%_100%] before:animate-shimmer;
   }
 
   /* Dynamic Buttons */
-  .button-coral {
-    @apply bg-gradient-coral hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-coral transition-all duration-300;
+  .button-accent {
+    @apply bg-gradient-accent hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-accent transition-all duration-300;
   }
   
-  .button-cyan {
-    @apply bg-gradient-cyan hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-cyan transition-all duration-300;
-  }
-  
-  .button-teal {
-    @apply bg-gradient-teal hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-teal transition-all duration-300;
-  }
-  
-  .button-violet {
-    @apply bg-gradient-violet hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-violet transition-all duration-300;
+  .button-light {
+    @apply bg-aurascan-white hover:bg-aurascan-light-grey text-aurascan-dark-grey font-medium tracking-wider rounded-md border border-aurascan-light-grey transition-all duration-300;
   }
 }
 
@@ -131,27 +99,12 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F9F9FB 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F6F6F7 100%);
 }
 
 .scan-line {
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(234, 56, 76, 0.8), transparent);
-}
-
-.scan-line-cyan {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(61, 209, 231, 0.8), transparent);
-}
-
-.scan-line-teal {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(14, 212, 184, 0.8), transparent);
-}
-
-.scan-line-violet {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.8), transparent);
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.5), transparent);
 }
 
 /* Dynamic Dot Logo Animation */
@@ -167,41 +120,17 @@
 .dot-logo__core {
   width: 12px;
   height: 12px;
-  background-color: #ea384c;
+  background-color: #F97316;
   border-radius: 50%;
   animation: pulse-dot 2s infinite ease-in-out;
   position: absolute;
   z-index: 10;
 }
 
-.dot-logo__core--cyan {
-  background-color: #3DD1E7;
-}
-
-.dot-logo__core--teal {
-  background-color: #0ED4B8;
-}
-
-.dot-logo__core--violet {
-  background-color: #A78BFA;
-}
-
 .dot-logo__ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid #ea384c;
-}
-
-.dot-logo__ring--cyan {
-  border-color: #3DD1E7;
-}
-
-.dot-logo__ring--teal {
-  border-color: #0ED4B8;
-}
-
-.dot-logo__ring--violet {
-  border-color: #A78BFA;
+  border: 1px solid rgba(249, 115, 22, 0.7);
 }
 
 .dot-logo__ring--inner {
@@ -221,20 +150,8 @@
 /* Fluid Morphing Shape */
 .morphing-shape {
   position: relative;
-  background-image: linear-gradient(225deg, #ff6b81 0%, #ea384c 100%);
+  background-image: linear-gradient(225deg, rgba(249, 115, 22, 0.8) 0%, rgba(249, 115, 22, 0.9) 100%);
   animation: morph 12s ease-in-out infinite;
-}
-
-.morphing-shape--cyan {
-  background-image: linear-gradient(225deg, #5EE7F9 0%, #3DD1E7 100%);
-}
-
-.morphing-shape--teal {
-  background-image: linear-gradient(225deg, #3AEAD1 0%, #0ED4B8 100%);
-}
-
-.morphing-shape--violet {
-  background-image: linear-gradient(225deg, #C4B5FD 0%, #A78BFA 100%);
 }
 
 /* Custom Scrollbar */
@@ -247,12 +164,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(234, 56, 76, 0.4);
+  background: rgba(159, 158, 161, 0.4);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(234, 56, 76, 0.6);
+  background: rgba(159, 158, 161, 0.6);
 }
 
 /* Frosted Card Effects */

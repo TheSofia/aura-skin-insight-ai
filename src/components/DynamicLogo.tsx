@@ -2,12 +2,11 @@
 import React from 'react';
 
 type DynamicLogoProps = {
-  colorScheme?: 'coral' | 'cyan' | 'teal' | 'violet';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
 };
 
-const DynamicLogo = ({ colorScheme = 'coral', size = 'md', className = '' }: DynamicLogoProps) => {
+const DynamicLogo = ({ size = 'md', className = '' }: DynamicLogoProps) => {
   // Dynamic size configuration
   const sizeClasses = {
     sm: 'w-8 h-8',
@@ -40,20 +39,16 @@ const DynamicLogo = ({ colorScheme = 'coral', size = 'md', className = '' }: Dyn
     xl: 'w-24 h-24'
   };
 
-  // Color-specific classes
-  const coreColorClass = `dot-logo__core${colorScheme !== 'coral' ? ` dot-logo__core--${colorScheme}` : ''}`;
-  const ringColorClass = `${colorScheme !== 'coral' ? ` dot-logo__ring--${colorScheme}` : ''}`;
-
   return (
     <div className={`dot-logo relative ${sizeClasses[size]} ${className}`}>
       {/* Core dot */}
-      <div className={`absolute ${coreSizes[size]} bg-aurascan-${colorScheme} rounded-full animate-pulse-dot z-10`}></div>
+      <div className={`absolute ${coreSizes[size]} bg-aurascan-accent rounded-full animate-pulse-dot z-10`}></div>
       
       {/* Inner ring */}
-      <div className={`absolute ${innerRingSizes[size]} border border-aurascan-${colorScheme}/70 rounded-full animate-circular-motion`}></div>
+      <div className={`absolute ${innerRingSizes[size]} border border-aurascan-accent/70 rounded-full animate-circular-motion`}></div>
       
       {/* Outer ring */}
-      <div className={`absolute ${outerRingSizes[size]} border border-aurascan-${colorScheme}/40 rounded-full animate-circular-motion`} 
+      <div className={`absolute ${outerRingSizes[size]} border border-aurascan-accent/40 rounded-full animate-circular-motion`} 
            style={{ animationDirection: 'reverse', animationDuration: '6s' }}></div>
     </div>
   );
