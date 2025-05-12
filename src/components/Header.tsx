@@ -11,27 +11,19 @@ const Header = ({ currentStep }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="relative z-50 border-b border-aurascan-purple/20 py-4 px-6 flex justify-between items-center backdrop-blur-xl bg-aurascan-deep-space/70">
+    <header className="relative z-50 border-b border-aurascan-light-grey py-4 px-6 flex justify-between items-center backdrop-blur-xl bg-white/90 shadow-light">
       <div className="flex items-center">
-        {/* Logo */}
-        <div className="mr-3 relative w-8 h-8">
-          <div className="absolute inset-0 bg-aurascan-purple/30 rounded-full animate-pulse-slow"></div>
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute inset-0">
-            <path d="M16 0L32 16L16 32L0 16L16 0Z" stroke="url(#mini-logo-gradient)" strokeWidth="2"/>
-            <path d="M16 8L24 16L16 24L8 16L16 8Z" fill="url(#mini-logo-gradient)"/>
-            <defs>
-              <linearGradient id="mini-logo-gradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#9D00FF" />
-                <stop offset="1" stopColor="#39FF14" />
-              </linearGradient>
-            </defs>
-          </svg>
+        {/* Dynamic Dot Logo */}
+        <div className="mr-3 dot-logo">
+          <div className="dot-logo__core"></div>
+          <div className="dot-logo__ring dot-logo__ring--inner"></div>
+          <div className="dot-logo__ring dot-logo__ring--outer"></div>
         </div>
         
         <h1 className="text-xl font-clash font-medium">
-          <span className="text-white">Aura</span>
-          <span className="neon-text">Scan</span>
-          <span className="text-xs font-space ml-2 text-aurascan-gray">
+          <span className="text-aurascan-dark-grey">Aura</span>
+          <span className="coral-text">Scan</span>
+          <span className="text-xs font-space ml-2 text-aurascan-medium-grey">
             {currentStep === 0 && "/ Home"}
             {currentStep === 1 && "/ Face Scan"}
             {currentStep === 2 && "/ Processing"}
@@ -45,17 +37,17 @@ const Header = ({ currentStep }: HeaderProps) => {
         variant="ghost" 
         size="icon" 
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="text-white hover:bg-aurascan-purple/20"
+        className="text-aurascan-dark-grey hover:bg-aurascan-coral/10"
       >
         {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </Button>
 
       {isMenuOpen && (
-        <div className="absolute top-full right-0 mt-2 w-48 cosmic-card z-20 animate-fade-in">
+        <div className="absolute top-full right-0 mt-2 w-48 glass-light z-20 animate-fade-in">
           <nav className="py-2">
-            <a href="#" className="block px-4 py-2 text-sm text-white hover:bg-aurascan-purple/20 transition-colors">About</a>
-            <a href="#" className="block px-4 py-2 text-sm text-white hover:bg-aurascan-purple/20 transition-colors">Privacy Policy</a>
-            <a href="#" className="block px-4 py-2 text-sm text-white hover:bg-aurascan-purple/20 transition-colors">Terms of Service</a>
+            <a href="#" className="block px-4 py-2 text-sm text-aurascan-dark-grey hover:bg-aurascan-coral/10 transition-colors">About</a>
+            <a href="#" className="block px-4 py-2 text-sm text-aurascan-dark-grey hover:bg-aurascan-coral/10 transition-colors">Privacy Policy</a>
+            <a href="#" className="block px-4 py-2 text-sm text-aurascan-dark-grey hover:bg-aurascan-coral/10 transition-colors">Terms of Service</a>
           </nav>
         </div>
       )}

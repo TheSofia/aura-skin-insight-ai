@@ -54,24 +54,21 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				aurascan: {
-					purple: '#9D00FF',     // New cosmic purple
-					'deep-purple': '#1A1F2C', // Kept
-					'light-purple': '#D6BCFA', // Kept
-					'deep-space': '#050A10',  // New deep space black
-					'cosmic-blue': '#0C1E3E', // New deep blue
-					'auroral-green': '#39FF14', // New luminous green
-					'nebula-pink': '#FF2D92',   // New vibrant pink
-					'stellar-gold': '#FFD700',  // New gold accent
-					'soft-purple': '#E5DEFF', // Kept
-					'soft-pink': '#FFDEE2',   // Kept
-					'soft-blue': '#D3E4FD',   // Kept
-					'gray': '#8E9196',        // Kept
-					'light-gray': '#F5F5F7',  // Kept
+					'coral': '#ea384c',     // New refined orange-red
+					'light-coral': '#ff6b81', // Lighter variation
+					'deep-coral': '#c9303f',  // Deeper variation
+					'white': '#FFFFFF',     // Pure white
+					'off-white': '#F9F9FB', // Very pale cool grey
+					'light-grey': '#F5F5F7', // Light grey for subtle contrasts
+					'medium-grey': '#8E9196', // Medium grey for text
+					'dark-grey': '#444850',  // Dark grey for important text
+					'soft-blue': '#D3E4FD',  // Kept for subtle accents
+					'soft-pink': '#FFDEE2',  // Kept for subtle accents
 				},
 				glass: {
-					dark: 'rgba(10, 10, 20, 0.8)',
-					light: 'rgba(255, 255, 255, 0.1)',
-					purple: 'rgba(157, 0, 255, 0.15)',
+					light: 'rgba(255, 255, 255, 0.7)',
+					white: 'rgba(255, 255, 255, 0.9)',
+					coral: 'rgba(234, 56, 76, 0.1)',
 				}
 			},
 			borderRadius: {
@@ -109,8 +106,8 @@ export default {
 					'100%': { transform: 'translateY(100%)' }
 				},
 				'glow': {
-					'0%, 100%': { opacity: '1', boxShadow: '0 0 10px rgba(157, 0, 255, 0.7)' },
-					'50%': { opacity: '0.7', boxShadow: '0 0 25px rgba(157, 0, 255, 0.9)' }
+					'0%, 100%': { opacity: '1', boxShadow: '0 0 10px rgba(234, 56, 76, 0.7)' },
+					'50%': { opacity: '0.7', boxShadow: '0 0 25px rgba(234, 56, 76, 0.9)' }
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
@@ -123,6 +120,17 @@ export default {
 				'shimmer': {
 					'0%': { backgroundPosition: '-200% 0' },
 					'100%': { backgroundPosition: '200% 0' }
+				},
+				'pulse-dot': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '1' },
+					'50%': { transform: 'scale(1.2)', opacity: '0.8' }
+				},
+				'circular-motion': {
+					'0%': { transform: 'translateY(0) translateX(0)' },
+					'25%': { transform: 'translateY(-2px) translateX(2px)' },
+					'50%': { transform: 'translateY(0) translateX(3px)' },
+					'75%': { transform: 'translateY(2px) translateX(2px)' },
+					'100%': { transform: 'translateY(0) translateX(0)' }
 				}
 			},
 			animation: {
@@ -136,7 +144,9 @@ export default {
 				'glow': 'glow 2s ease-in-out infinite',
 				'float': 'float 6s ease-in-out infinite',
 				'rotate-slow': 'rotate-slow 15s linear infinite',
-				'shimmer': 'shimmer 2s infinite linear'
+				'shimmer': 'shimmer 2s infinite linear',
+				'pulse-dot': 'pulse-dot 2s infinite ease-in-out',
+				'circular-motion': 'circular-motion 6s infinite ease-in-out'
 			},
 			fontFamily: {
 				'space': ['"Space Grotesk"', 'sans-serif'],
@@ -148,15 +158,15 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-cosmic': 'linear-gradient(225deg, #9D00FF 0%, #0C1E3E 100%)',
-				'gradient-auroral': 'linear-gradient(135deg, #39FF14 0%, #0C1E3E 100%)',
-				'shimmer': 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-				'glass-effect': 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
+				'gradient-coral': 'linear-gradient(225deg, #ff6b81 0%, #ea384c 100%)',
+				'gradient-light': 'linear-gradient(135deg, #FFFFFF 0%, #F5F5F7 100%)',
+				'shimmer': 'linear-gradient(90deg, transparent, rgba(234,56,76,0.1), transparent)',
+				'glass-effect': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%)',
 			},
 			boxShadow: {
-				'neon': '0 0 10px rgba(157, 0, 255, 0.5), 0 0 20px rgba(157, 0, 255, 0.3)',
-				'neon-green': '0 0 10px rgba(57, 255, 20, 0.5), 0 0 20px rgba(57, 255, 20, 0.3)',
-				'inner-glow': 'inset 0 0 10px rgba(157, 0, 255, 0.2)',
+				'coral': '0 0 10px rgba(234, 56, 76, 0.5), 0 0 20px rgba(234, 56, 76, 0.3)',
+				'light': '0 5px 20px rgba(0, 0, 0, 0.05)',
+				'inner-glow': 'inset 0 0 10px rgba(234, 56, 76, 0.2)',
 			},
 			backdropFilter: {
 				'none': 'none',

@@ -1,7 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200;300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,33 +9,33 @@
 
 @layer base {
   :root {
-    --background: 225 70% 5%;
-    --foreground: 210 20% 98%;
+    --background: 0 0% 100%;
+    --foreground: 215 10% 25%;
 
-    --card: 225 70% 3%;
-    --card-foreground: 210 20% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 10% 25%;
 
-    --popover: 225 70% 3%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 10% 25%;
 
-    --primary: 272 100% 50%;
-    --primary-foreground: 210 20% 98%;
+    --primary: 358 84% 57%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 70% 15%;
-    --secondary-foreground: 210 20% 98%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 215 10% 25%;
 
-    --muted: 215 30% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 10% 55%;
 
-    --accent: 215 70% 15%;
-    --accent-foreground: 210 20% 98%;
+    --accent: 358 84% 57%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 215 30% 15%;
-    --input: 215 30% 15%;
-    --ring: 272 100% 50%;
+    --border: 220 14% 90%;
+    --input: 220 14% 90%;
+    --ring: 358 84% 57%;
 
     --radius: 0.75rem;
   }
@@ -46,7 +46,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-aurascan-deep-space text-foreground font-space;
+    @apply bg-aurascan-white text-foreground font-space;
   }
   h1, h2, h3 {
     @apply font-clash font-medium;
@@ -58,24 +58,24 @@
 
 /* Custom Utility Classes */
 @layer components {
-  .glassmorphism {
-    @apply bg-glass-light/10 backdrop-blur-lg border border-white/10 shadow-lg;
+  .glass-light {
+    @apply bg-glass-light backdrop-blur-md border border-aurascan-light-grey shadow-light rounded-lg;
   }
   
-  .cosmic-card {
-    @apply bg-gradient-to-br from-aurascan-cosmic-blue/80 to-aurascan-deep-space/90 border border-aurascan-purple/20 shadow-lg backdrop-blur-md rounded-lg;
+  .card-light {
+    @apply bg-gradient-light border border-aurascan-light-grey shadow-light rounded-lg;
   }
   
-  .cosmic-button {
-    @apply bg-gradient-cosmic hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-neon transition-all duration-300;
+  .coral-button {
+    @apply bg-gradient-coral hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-coral transition-all duration-300;
   }
   
-  .auroral-button {
-    @apply bg-gradient-auroral hover:opacity-90 text-aurascan-deep-space font-medium tracking-wider rounded-md shadow-neon-green transition-all duration-300;
+  .light-button {
+    @apply bg-aurascan-white hover:bg-aurascan-light-grey text-aurascan-coral font-medium tracking-wider rounded-md border border-aurascan-coral transition-all duration-300;
   }
   
-  .neon-text {
-    @apply text-aurascan-purple drop-shadow-[0_0_8px_rgba(157,0,255,0.8)];
+  .coral-text {
+    @apply text-aurascan-coral;
   }
   
   .shimmer-effect {
@@ -90,12 +90,52 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(circle at top right, rgba(12, 30, 62, 0.8) 0%, rgba(5, 10, 16, 1) 80%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F9F9FB 100%);
 }
 
 .scan-line {
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(157, 0, 255, 0.8), transparent);
+  background: linear-gradient(90deg, transparent, rgba(234, 56, 76, 0.8), transparent);
+}
+
+/* Dot Logo Animation */
+.dot-logo {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot-logo__core {
+  width: 12px;
+  height: 12px;
+  background-color: #ea384c;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite ease-in-out;
+  position: absolute;
+  z-index: 10;
+}
+
+.dot-logo__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #ea384c;
+}
+
+.dot-logo__ring--inner {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  animation: circular-motion 4s infinite ease-in-out;
+}
+
+.dot-logo__ring--outer {
+  width: 40px;
+  height: 40px;
+  opacity: 0.4;
+  animation: circular-motion 6s infinite ease-in-out reverse;
 }
 
 /* Custom Scrollbar */
@@ -104,14 +144,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(12, 30, 62, 0.3);
+  background: rgba(245, 245, 247, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(157, 0, 255, 0.5);
+  background: rgba(234, 56, 76, 0.4);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(157, 0, 255, 0.8);
+  background: rgba(234, 56, 76, 0.6);
 }
