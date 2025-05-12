@@ -46,51 +46,51 @@ const SkinResults = ({ onViewRecommendations }: SkinResultsProps) => {
   };
 
   const getLevelColor = (level: number) => {
-    if (level < 30) return "bg-aurascan-soft-blue";
-    if (level < 60) return "bg-aurascan-light-purple";
-    return "bg-aurascan-soft-pink";
+    if (level < 30) return "bg-[#00FFFF]"; // Electric Blue for low
+    if (level < 60) return "bg-[#FF00FF]"; // Magenta for moderate
+    return "bg-[#FFD700]"; // Gold for high
   };
 
   return (
-    <div className="flex flex-col h-full animate-fade-in">
+    <div className="flex flex-col h-full animate-fade-in bg-black text-white">
       <div className="flex-1 overflow-auto px-6 py-6">
         <div className="max-w-md mx-auto">
-          <div className="bg-gradient-to-br from-aurascan-purple/10 to-aurascan-soft-blue/10 rounded-2xl p-6 mb-8">
-            <h2 className="text-2xl font-semibold text-aurascan-deep-purple mb-2">Your Skin Analysis</h2>
-            <p className="text-aurascan-gray">
+          <div className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-md p-6 mb-8">
+            <h2 className="text-2xl font-semibold text-white mb-2">Your Skin Analysis</h2>
+            <p className="text-white/70">
               Based on our AI analysis, we've identified these key concerns to address in your skincare routine:
             </p>
           </div>
           
           <div className="space-y-6">
             {results.map((concern, index) => (
-              <div key={index} className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+              <div key={index} className="bg-black/30 backdrop-blur-sm border border-white/10 rounded-md p-5">
                 <div className="flex justify-between mb-2">
-                  <h3 className="font-medium">{concern.name}</h3>
+                  <h3 className="font-medium text-white">{concern.name}</h3>
                   <span className={`
-                    px-2 py-1 text-xs rounded-full 
-                    ${concern.level < 30 ? 'bg-aurascan-soft-blue/20 text-blue-700' : 
-                      concern.level < 60 ? 'bg-aurascan-light-purple/20 text-purple-700' : 
-                      'bg-aurascan-soft-pink/20 text-pink-700'}
+                    px-2 py-1 text-xs rounded-sm 
+                    ${concern.level < 30 ? 'bg-[#00FFFF]/20 text-[#00FFFF]' : 
+                      concern.level < 60 ? 'bg-[#FF00FF]/20 text-[#FF00FF]' : 
+                      'bg-[#FFD700]/20 text-[#FFD700]'}
                   `}>
                     {getLevelText(concern.level)}
                   </span>
                 </div>
                 <Progress 
                   value={concern.level} 
-                  className={`h-2 mb-3 ${getLevelColor(concern.level)}`} 
+                  className={`h-1 mb-3 bg-white/10 ${getLevelColor(concern.level)}`} 
                 />
-                <p className="text-sm text-aurascan-gray">{concern.description}</p>
+                <p className="text-sm text-white/70">{concern.description}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
       
-      <div className="p-6 border-t border-gray-100">
+      <div className="p-6 border-t border-white/10">
         <div className="max-w-md mx-auto">
           <Button 
-            className="w-full bg-aurascan-purple hover:bg-aurascan-purple/90 text-white flex items-center justify-center gap-2"
+            className="w-full bg-[#00FFFF] hover:bg-[#00FFFF]/90 text-black font-medium flex items-center justify-center gap-2"
             onClick={onViewRecommendations}
           >
             <span>View Recommendations</span>
