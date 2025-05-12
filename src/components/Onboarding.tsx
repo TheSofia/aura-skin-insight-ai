@@ -22,20 +22,42 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
     uiElements: false
   });
 
-  // Enhanced state for floating background elements with more vibrant properties
-  const [floatingElements, setFloatingElements] = useState(Array(12).fill(0).map(() => ({
-    x: Math.random() * 80 + 10,
-    y: Math.random() * 80 + 10,
-    size: Math.random() * 4 + 1,
-    speed: Math.random() * 4 + 3,
-    delay: Math.random() * 2,
-    opacity: Math.random() * 0.6 + 0.2, // Increased opacity range for more vibrancy
-    // Enhanced properties for more dynamic visual effects
-    color: Math.random() > 0.6 ? 'accent' : Math.random() > 0.5 ? 'green' : 'deepOrange',
-    rotation: Math.random() * 360,
-    rotationSpeed: (Math.random() * 3 - 1) * 0.8, // Increased rotation speed
-    scale: Math.random() * 0.3 + 0.9 // Added scale variation
-  })));
+  // Enhanced state for floating background elements with more subtle, muted properties
+  // Reduced count from 12 to 8 elements for a cleaner look and more whitespace
+  const [floatingElements, setFloatingElements] = useState(Array(8).fill(0).map(() => {
+    // Generate position with a bias toward the center (avoiding sides)
+    // This creates a more central focus with fewer elements on the edges
+    let x = Math.random() * 100;
+    let y = Math.random() * 100;
+    
+    // Shift a percentage of elements toward the center zone (30-70% of screen width)
+    if (Math.random() > 0.3) { // 70% of elements will be more central
+      x = Math.random() * 40 + 30; // 30-70% of screen width
+      y = Math.random() * 40 + 30; // 30-70% of screen height
+    }
+    
+    return {
+      x,
+      y,
+      size: Math.random() * 3 + 1, // Slightly reduced max size for subtlety
+      speed: Math.random() * 4 + 3,
+      delay: Math.random() * 2,
+      // More muted opacity range overall
+      opacity: Math.random() * 0.4 + 0.1, // 0.1-0.5 opacity range for subtlety
+      // Determine color with strong bias toward muted tones
+      // Use far fewer accent colors, and place any accent colors in the center
+      color: (x < 30 || x > 70) ? 
+        // For sides: only use muted tones (no accent colors)
+        (Math.random() > 0.5 ? 'translucent-white' : 'dark-white') :
+        // For center: allow some accent colors mixed with muted tones
+        (Math.random() > 0.7 ? 
+          (Math.random() > 0.5 ? 'accent' : Math.random() > 0.5 ? 'green' : 'deepOrange') : 
+          (Math.random() > 0.5 ? 'translucent-white' : 'dark-white')),
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() * 3 - 1) * 0.6, // Slightly reduced rotation speed
+      scale: Math.random() * 0.2 + 0.9 // Slightly reduced scale variation
+    };
+  }));
   
   // Trigger the animation sequence on component mount
   useEffect(() => {
@@ -67,21 +89,33 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
   
   return (
     <div className="flex flex-col items-center text-center px-6 py-10 space-y-12 animate-fade-in min-h-screen justify-center bg-gradient-light relative overflow-hidden">
-      {/* Enhanced color-varied floating background elements with more pronounced animations */}
+      {/* Refined floating background elements with muted colors and reduced side presence */}
       {animationState.uiElements && floatingElements.map((el, i) => {
-        // Determine background color class based on color property - more vibrant
-        const bgColorClass = el.color === 'accent' 
-          ? 'bg-aurascan-accent/25' 
-          : el.color === 'green' 
-            ? 'bg-aurascan-deep-green/20' 
-            : 'bg-aurascan-dark-orange/25';
-            
-        // Determine border color class based on color property - more vibrant
-        const borderColorClass = el.color === 'accent' 
-          ? 'border border-aurascan-accent/30' 
-          : el.color === 'green' 
-            ? 'border border-aurascan-deep-green/25' 
-            : 'border border-aurascan-dark-orange/30';
+        // Create more subtle background colors based on position and color property
+        let bgColorClass = '';
+        let borderColorClass = '';
+        
+        // Apply different styling based on color type - more muted overall
+        if (el.color === 'translucent-white') {
+          // Semi-transparent white with variable opacity
+          bgColorClass = `bg-white/${Math.floor(el.opacity * 100)}`;
+          borderColorClass = ''; // No border for translucent elements
+        } else if (el.color === 'dark-white') {
+          // "Dark White" (Very Light Grey / Off-White)
+          bgColorClass = 'bg-[#F5F5F5]';
+          borderColorClass = 'border border-[#ECECEC]/20'; // Very subtle border
+        } else if (el.color === 'accent') {
+          // Vibrant colors only for central elements, with reduced opacity
+          bgColorClass = 'bg-aurascan-accent/15';
+          borderColorClass = 'border border-aurascan-accent/20';
+        } else if (el.color === 'green') {
+          bgColorClass = 'bg-aurascan-deep-green/10'; 
+          borderColorClass = 'border border-aurascan-deep-green/15';
+        } else {
+          // dark-orange
+          bgColorClass = 'bg-aurascan-dark-orange/15';
+          borderColorClass = 'border border-aurascan-dark-orange/20';
+        }
             
         return (
           <div 
@@ -93,7 +127,7 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
               left: `${el.x}%`,
               top: `${el.y}%`,
               opacity: el.opacity,
-              animation: `float ${el.speed}s infinite ease-in-out, rotate-slow ${8 + el.rotationSpeed * 4}s linear infinite`, // Enhanced animation speed
+              animation: `float ${el.speed}s infinite ease-in-out, rotate-slow ${8 + el.rotationSpeed * 4}s linear infinite`,
               animationDelay: `${el.delay}s`,
               transform: 'scale(0) rotate(0deg)',
               transition: 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -183,7 +217,8 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
         </button>
         
         {/* Standardized footer text color */}
-        <p className="text-xs text-aurascan-dark-grey mt-6 max-w-md font-light opacity-0 animate-fade-in" style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}>
+        <p className="text-xs text-aurascan-dark-grey mt-6 max-w-md font-light opacity-0 animate-fade-in" 
+          style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}>
           By continuing, you agree to our <a href="#" className="text-aurascan-dark-grey hover:text-aurascan-accent underline-offset-4 hover:underline transition-colors">Privacy Policy</a> and <a href="#" className="text-aurascan-dark-grey hover:text-aurascan-accent underline-offset-4 hover:underline transition-colors">Terms of Service</a>.
         </p>
       </div>
