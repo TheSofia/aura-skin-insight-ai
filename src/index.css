@@ -90,8 +90,18 @@
   .button-light {
     @apply bg-aurascan-white hover:bg-aurascan-light-grey text-aurascan-dark-grey font-medium tracking-wider rounded-md border border-aurascan-light-grey transition-all duration-300;
   }
+
+  /* Interactive elements with enhanced animations */
+  .interactive-element {
+    @apply transition-all duration-300 hover:shadow-lg active:scale-95;
+  }
+  
+  .interactive-card {
+    @apply glass-card transition-all duration-300 hover:shadow-xl hover:translate-y-[-2px] active:translate-y-0 active:shadow-lg;
+  }
 }
 
+/* App container and layout */
 .app-container {
   max-width: 100%;
   margin: 0 auto;
@@ -107,7 +117,55 @@
   background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.5), transparent);
 }
 
-/* Dynamic Dot Logo Animation */
+/* Enhanced Dynamic Dot Logo Animation */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes throb {
+  0%, 100% { transform: scale(1); opacity: 0.9; filter: brightness(1); }
+  50% { transform: scale(1.2); opacity: 1; filter: brightness(1.2); }
+}
+
+@keyframes circular-motion {
+  0% { transform: rotate(0deg) translate(2px) rotate(0deg); }
+  100% { transform: rotate(360deg) translate(2px) rotate(-360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-5px) scale(1.1); opacity: 1; }
+}
+
+/* Adding new animations for dynamic visuals */
+@keyframes morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 40% 60% 30% 70% / 40% 40% 60% 50%;
+  }
+  75% {
+    border-radius: 60% 40% 50% 50% / 30% 60% 40% 70%;
+  }
+}
+
+@keyframes scanning {
+  0% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(100%); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Dynamic Dot Logo Setup */
 .dot-logo {
   position: relative;
   width: 40px;
@@ -117,34 +175,32 @@
   justify-content: center;
 }
 
-.dot-logo__core {
-  width: 12px;
-  height: 12px;
-  background-color: #F97316;
-  border-radius: 50%;
+.animate-pulse-dot {
   animation: pulse-dot 2s infinite ease-in-out;
-  position: absolute;
-  z-index: 10;
 }
 
-.dot-logo__ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(249, 115, 22, 0.7);
+.animate-throb {
+  animation: throb 1.5s infinite ease-in-out;
 }
 
-.dot-logo__ring--inner {
-  width: 24px;
-  height: 24px;
-  opacity: 0.7;
-  animation: circular-motion 4s infinite ease-in-out;
+.animate-circular-motion {
+  animation: circular-motion 4s infinite linear;
 }
 
-.dot-logo__ring--outer {
-  width: 40px;
-  height: 40px;
-  opacity: 0.4;
-  animation: circular-motion 6s infinite ease-in-out reverse;
+.animate-float {
+  animation: float 3s infinite ease-in-out;
+}
+
+.animate-scanning {
+  animation: scanning 2s infinite ease-in-out;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite ease-in-out;
+}
+
+.animate-morph {
+  animation: morph 8s ease-in-out infinite;
 }
 
 /* Fluid Morphing Shape */
@@ -172,12 +228,19 @@
   background: rgba(159, 158, 161, 0.6);
 }
 
-/* Frosted Card Effects */
+/* Enhanced Frosted Card Effects */
 .frosted-card {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.frosted-card:hover {
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 /* Dynamic Grid Lines */
@@ -186,4 +249,31 @@
     linear-gradient(to right, rgba(142, 145, 150, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(142, 145, 150, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+/* Enhanced data visualization styles */
+.data-point {
+  transition: all 0.3s ease;
+}
+
+.data-point:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  filter: brightness(1.2);
+}
+
+.data-bar {
+  transition: width 0.8s ease, height 0.8s ease, opacity 0.3s ease;
+}
+
+.data-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 1.5s ease-in-out forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
 }

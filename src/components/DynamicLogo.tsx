@@ -4,9 +4,10 @@ import React from 'react';
 type DynamicLogoProps = {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
+  colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal';
 };
 
-const DynamicLogo = ({ size = 'md', className = '' }: DynamicLogoProps) => {
+const DynamicLogo = ({ size = 'md', className = '', colorScheme = 'accent' }: DynamicLogoProps) => {
   // Dynamic size configuration
   const sizeClasses = {
     sm: 'w-8 h-8',
@@ -39,17 +40,75 @@ const DynamicLogo = ({ size = 'md', className = '' }: DynamicLogoProps) => {
     xl: 'w-24 h-24'
   };
 
+  // Get color classes based on the selected scheme
+  const getColorClasses = () => {
+    switch (colorScheme) {
+      case 'coral':
+        return {
+          core: 'bg-aurascan-accent',
+          innerRing: 'border-aurascan-accent/70',
+          outerRing: 'border-aurascan-accent/40'
+        };
+      case 'cyan':
+        return {
+          core: 'bg-aurascan-dark-grey',
+          innerRing: 'border-aurascan-dark-grey/70',
+          outerRing: 'border-aurascan-dark-grey/40'
+        };
+      case 'teal':
+        return {
+          core: 'bg-aurascan-medium-grey',
+          innerRing: 'border-aurascan-medium-grey/70',
+          outerRing: 'border-aurascan-medium-grey/40'
+        };
+      default:
+        return {
+          core: 'bg-aurascan-accent',
+          innerRing: 'border-aurascan-accent/70',
+          outerRing: 'border-aurascan-accent/40'
+        };
+    }
+  };
+
+  const colorClasses = getColorClasses();
+
   return (
-    <div className={`dot-logo relative ${sizeClasses[size]} ${className}`}>
-      {/* Core dot */}
-      <div className={`absolute ${coreSizes[size]} bg-aurascan-accent rounded-full animate-pulse-dot z-10`}></div>
+    <div 
+      className={`dot-logo relative ${sizeClasses[size]} ${className}`}
+      role="presentation"
+    >
+      {/* Core dot with enhanced pulse animation */}
+      <div 
+        className={`absolute ${coreSizes[size]} ${colorClasses.core} rounded-full animate-pulse-dot z-10 hover:animate-throb`}
+      ></div>
       
-      {/* Inner ring */}
-      <div className={`absolute ${innerRingSizes[size]} border border-aurascan-accent/70 rounded-full animate-circular-motion`}></div>
+      {/* Inner ring with enhanced circular animation */}
+      <div 
+        className={`absolute ${innerRingSizes[size]} border ${colorClasses.innerRing} rounded-full animate-circular-motion transition-transform duration-300 hover:scale-105`}
+      ></div>
       
-      {/* Outer ring */}
-      <div className={`absolute ${outerRingSizes[size]} border border-aurascan-accent/40 rounded-full animate-circular-motion`} 
-           style={{ animationDirection: 'reverse', animationDuration: '6s' }}></div>
+      {/* Outer ring with reverse animation */}
+      <div 
+        className={`absolute ${outerRingSizes[size]} border ${colorClasses.outerRing} rounded-full animate-circular-motion transition-transform duration-300 hover:scale-95`} 
+        style={{ animationDirection: 'reverse', animationDuration: '6s' }}
+      ></div>
+
+      {/* Floating particles that appear on hover */}
+      <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500">
+        {Array(3).fill(0).map((_, i) => (
+          <div 
+            key={i}
+            className={`absolute w-1 h-1 rounded-full ${colorClasses.core} animate-float`}
+            style={{
+              left: `${30 + (i * 15)}%`,
+              top: `${20 + (i * 20)}%`,
+              animationDuration: `${2 + i * 0.5}s`,
+              animationDelay: `${i * 0.25}s`,
+              opacity: 0.6
+            }}
+          ></div>
+        ))}
+      </div>
     </div>
   );
 };
