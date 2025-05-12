@@ -46,7 +46,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-aurascan-white text-foreground font-space;
+    @apply bg-aurascan-white text-foreground font-sans;
   }
   h1, h2, h3 {
     @apply font-clash font-medium;
@@ -58,12 +58,12 @@
 
 /* Custom Utility Classes */
 @layer components {
-  .glass-light {
+  .glass {
     @apply bg-glass-light backdrop-blur-md border border-aurascan-light-grey shadow-light rounded-lg;
   }
   
-  .card-light {
-    @apply bg-gradient-light border border-aurascan-light-grey shadow-light rounded-lg;
+  .glass-card {
+    @apply bg-gradient-light border border-aurascan-light-grey/50 shadow-light rounded-lg overflow-hidden;
   }
   
   .coral-button {
@@ -77,9 +77,50 @@
   .coral-text {
     @apply text-aurascan-coral;
   }
+
+  .cyan-text {
+    @apply text-aurascan-cyan;
+  }
+
+  .teal-text {
+    @apply text-aurascan-teal;
+  }
+
+  .violet-text {
+    @apply text-aurascan-violet;
+  }
   
   .shimmer-effect {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer before:bg-[length:200%_100%] before:animate-shimmer;
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-coral before:bg-[length:200%_100%] before:animate-shimmer;
+  }
+  
+  .shimmer-effect-cyan {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-cyan before:bg-[length:200%_100%] before:animate-shimmer;
+  }
+  
+  .shimmer-effect-teal {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-teal before:bg-[length:200%_100%] before:animate-shimmer;
+  }
+  
+  .shimmer-effect-violet {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-violet before:bg-[length:200%_100%] before:animate-shimmer;
+  }
+
+  /* Dynamic Buttons */
+  .button-coral {
+    @apply bg-gradient-coral hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-coral transition-all duration-300;
+  }
+  
+  .button-cyan {
+    @apply bg-gradient-cyan hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-cyan transition-all duration-300;
+  }
+  
+  .button-teal {
+    @apply bg-gradient-teal hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-teal transition-all duration-300;
+  }
+  
+  .button-violet {
+    @apply bg-gradient-violet hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-violet transition-all duration-300;
   }
 }
 
@@ -98,7 +139,22 @@
   background: linear-gradient(90deg, transparent, rgba(234, 56, 76, 0.8), transparent);
 }
 
-/* Dot Logo Animation */
+.scan-line-cyan {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(61, 209, 231, 0.8), transparent);
+}
+
+.scan-line-teal {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(14, 212, 184, 0.8), transparent);
+}
+
+.scan-line-violet {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.8), transparent);
+}
+
+/* Dynamic Dot Logo Animation */
 .dot-logo {
   position: relative;
   width: 40px;
@@ -118,10 +174,34 @@
   z-index: 10;
 }
 
+.dot-logo__core--cyan {
+  background-color: #3DD1E7;
+}
+
+.dot-logo__core--teal {
+  background-color: #0ED4B8;
+}
+
+.dot-logo__core--violet {
+  background-color: #A78BFA;
+}
+
 .dot-logo__ring {
   position: absolute;
   border-radius: 50%;
   border: 1px solid #ea384c;
+}
+
+.dot-logo__ring--cyan {
+  border-color: #3DD1E7;
+}
+
+.dot-logo__ring--teal {
+  border-color: #0ED4B8;
+}
+
+.dot-logo__ring--violet {
+  border-color: #A78BFA;
 }
 
 .dot-logo__ring--inner {
@@ -136,6 +216,25 @@
   height: 40px;
   opacity: 0.4;
   animation: circular-motion 6s infinite ease-in-out reverse;
+}
+
+/* Fluid Morphing Shape */
+.morphing-shape {
+  position: relative;
+  background-image: linear-gradient(225deg, #ff6b81 0%, #ea384c 100%);
+  animation: morph 12s ease-in-out infinite;
+}
+
+.morphing-shape--cyan {
+  background-image: linear-gradient(225deg, #5EE7F9 0%, #3DD1E7 100%);
+}
+
+.morphing-shape--teal {
+  background-image: linear-gradient(225deg, #3AEAD1 0%, #0ED4B8 100%);
+}
+
+.morphing-shape--violet {
+  background-image: linear-gradient(225deg, #C4B5FD 0%, #A78BFA 100%);
 }
 
 /* Custom Scrollbar */
@@ -154,4 +253,20 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(234, 56, 76, 0.6);
+}
+
+/* Frosted Card Effects */
+.frosted-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+/* Dynamic Grid Lines */
+.grid-lines {
+  background-image: 
+    linear-gradient(to right, rgba(142, 145, 150, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(142, 145, 150, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }

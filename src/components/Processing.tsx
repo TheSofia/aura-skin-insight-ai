@@ -1,5 +1,6 @@
 
 import { useEffect } from 'react';
+import DynamicLogo from './DynamicLogo';
 
 type ProcessingProps = {
   onProcessingComplete: () => void;
@@ -16,75 +17,75 @@ const Processing = ({ onProcessingComplete }: ProcessingProps) => {
   }, [onProcessingComplete]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-6 animate-fade-in">
+    <div className="flex flex-col items-center justify-center h-full p-6 animate-fade-in bg-gradient-light">
       <div className="w-full max-w-md">
         <div className="relative w-64 h-64 mx-auto mb-12">
           {/* Background light */}
           <div className="absolute inset-0 rounded-full bg-white shadow-light"></div>
           
-          {/* Rotating rings */}
-          <div className="absolute inset-0 border border-aurascan-coral/40 rounded-full animate-rotate-slow" style={{ animationDuration: '20s' }}></div>
-          <div className="absolute inset-[-10px] border border-aurascan-coral/20 rounded-full animate-rotate-slow" style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
-          <div className="absolute inset-[-20px] border border-aurascan-light-coral/10 rounded-full animate-rotate-slow" style={{ animationDuration: '30s' }}></div>
-          
-          {/* Central content */}
-          <div className="absolute inset-0 flex items-center justify-center flex-col">
-            <div className="dot-logo scale-150 mb-2">
-              <div className="dot-logo__core"></div>
-              <div className="dot-logo__ring dot-logo__ring--inner"></div>
-              <div className="dot-logo__ring dot-logo__ring--outer"></div>
+          {/* Morphing visualization */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="morphing-shape--teal w-40 h-40 opacity-90"></div>
+            
+            {/* Overlapping circular elements */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-aurascan-teal/20 animate-rotate-slow" style={{ animationDuration: '20s' }}></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border border-aurascan-teal/30 animate-rotate-slow" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+            
+            {/* Glowing center point */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-aurascan-teal shadow-teal animate-glow-teal z-10"></div>
+
+            {/* Scan line */}
+            <div className="absolute inset-x-0 top-0 h-full overflow-hidden">
+              <div className="scan-line-teal w-full animate-scanning"></div>
             </div>
-            <div className="text-aurascan-coral text-lg font-clash animate-pulse-slow mt-8">Analyzing</div>
-          </div>
-          
-          {/* Scan line */}
-          <div className="absolute inset-x-0 top-0 bottom-0 overflow-hidden">
-            <div className="scan-line w-full animate-scanning"></div>
-          </div>
-          
-          {/* Particles */}
-          <div className="absolute inset-[-30px] overflow-hidden">
-            {Array(15).fill(0).map((_, i) => (
+            
+            {/* Floating particles */}
+            {Array(8).fill(0).map((_, i) => (
               <div 
                 key={i}
-                className="absolute w-1 h-1 rounded-full bg-aurascan-coral/70 animate-float"
+                className="absolute w-1.5 h-1.5 rounded-full bg-aurascan-teal/70 animate-float"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDuration: `${2 + Math.random() * 4}s`,
-                  animationDelay: `${Math.random() * 2}s`
+                  left: `${30 + (i * 6)}%`,
+                  top: `${20 + (i * 8)}%`,
+                  animationDuration: `${2 + i * 0.5}s`,
+                  animationDelay: `${i * 0.25}s`
                 }}
               ></div>
             ))}
           </div>
+          
+          {/* Center logo */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+            <DynamicLogo colorScheme="teal" size="lg" />
+          </div>
         </div>
         
-        <h2 className="text-2xl font-clash font-medium text-center mb-2 text-aurascan-dark-grey">Analyzing Your Skin</h2>
+        <h2 className="text-3xl font-clash font-medium text-center mb-3 text-aurascan-dark-grey">Analyzing Your Skin</h2>
         <p className="text-aurascan-medium-grey text-center mb-10">
-          Our AI is examining your photo to identify skin concerns and create your personalized recommendations.
+          Our advanced AI is creating your unique profile and personalized recommendations.
         </p>
         
-        <div className="space-y-4">
+        <div className="space-y-8">
           <div className="h-1 rounded-full bg-aurascan-light-grey overflow-hidden border border-aurascan-light-grey">
-            <div className="h-full bg-gradient-coral w-3/4 rounded-full animate-pulse-slow"></div>
+            <div className="h-full bg-gradient-teal w-3/4 rounded-full animate-pulse-slow"></div>
           </div>
           
-          <div className="text-xs text-aurascan-medium-grey flex justify-between">
-            <span className="text-aurascan-coral">Analyzing texture...</span>
-            <span>75%</span>
+          <div className="text-xs font-medium flex justify-between">
+            <span className="text-aurascan-teal">Analyzing skin texture and structure</span>
+            <span className="text-aurascan-medium-grey">75%</span>
           </div>
           
           {/* Processing steps */}
-          <div className="mt-8 space-y-2">
+          <div className="space-y-4">
             {[
-              { text: "Skin texture analysis", done: true },
-              { text: "Identifying key concerns", done: true },
-              { text: "Calculating personalized recommendations", done: false },
-              { text: "Preparing results", done: false }
+              { text: "Mapping facial contours", done: true },
+              { text: "Identifying skin characteristics", done: true },
+              { text: "Analyzing skin concerns", done: true },
+              { text: "Generating personalized protocol", done: false }
             ].map((step, i) => (
-              <div key={i} className="flex items-center space-x-2">
-                <div className={`w-4 h-4 rounded-full ${
-                  step.done ? 'bg-aurascan-coral' : 'bg-aurascan-light-grey border border-aurascan-coral/30'
+              <div key={i} className="flex items-center space-x-3 py-2">
+                <div className={`w-5 h-5 rounded-full ${
+                  step.done ? 'bg-aurascan-teal' : 'bg-aurascan-light-grey border border-aurascan-teal/30'
                 } flex items-center justify-center text-xs text-white`}>
                   {step.done && "✓"}
                 </div>
