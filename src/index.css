@@ -14,8 +14,12 @@
   /* ... keep existing code (utility classes) */
   
   .bg-gradient-light {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(64, 62, 67, 0.1) 100%);
-    animation: gradient-shift 8s infinite alternate ease-in-out;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(246, 246, 247, 0.95) 100%);
+    animation: gradient-shift 12s infinite alternate ease-in-out;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-aurascan-accent to-aurascan-dark-orange;
   }
 }
 
@@ -78,7 +82,7 @@
 
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+  100% { background-position: 100% 50%; background-size: 200% 200%; }
 }
 
 /* Adding new animations for dynamic visuals */
@@ -165,6 +169,8 @@
 
 .animate-morph {
   animation: morph 8s ease-in-out infinite;
+  background-size: 200% 200%;
+  background-position: center;
 }
 
 .animate-rotate-slow {
@@ -182,10 +188,44 @@
   box-shadow: 0 0 15px 5px rgba(64, 62, 67, 0.2);
 }
 
-/* Glass Card Effect */
+/* Enhanced Glass Card Effect */
 .glass-card {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Animated Button Effects */
+.btn-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pulse::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.btn-pulse:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.3;
+}
+
+.morphing-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }

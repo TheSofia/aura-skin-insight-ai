@@ -60,6 +60,8 @@ export default {
 					'dark-grey': '#403E43',  // Dark grey for important text (replacing black)
 					'deeper-grey': '#221F26', // Deeper grey for highest contrast elements
 					'accent': '#F97316',    // A refined orange accent (used very sparingly)
+					'dark-orange': '#E84C12', // Darker orange-red accent for depth
+					'deep-green': '#16A34A', // Deep green accent for sophisticated contrast
 					'glass-white': 'rgba(255, 255, 255, 0.9)',
 					'glass-light': 'rgba(255, 255, 255, 0.7)',
 					'glass-accent': 'rgba(249, 115, 22, 0.08)', // Very subtle orange glass effect
@@ -154,6 +156,14 @@ export default {
 						borderRadius: '60% 40% 30% 70%/60% 30% 70% 40%',
 						transform: 'rotate(360deg)'
 					}
+				},
+				'pulse-subtle': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '0.9' },
+					'50%': { transform: 'scale(1.02)', opacity: '1' }
+				},
+				'float-subtle': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-2px)' }
 				}
 			},
 			animation: {
@@ -171,7 +181,9 @@ export default {
 				'pulse-dot': 'pulse-dot 2s infinite ease-in-out',
 				'circular-motion': 'circular-motion 6s infinite ease-in-out',
 				'fluid-motion': 'fluid-motion 8s ease-in-out infinite',
-				'morph': 'morph 12s ease-in-out infinite'
+				'morph': 'morph 12s ease-in-out infinite',
+				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
+				'float-subtle': 'float-subtle 4s ease-in-out infinite',
 			},
 			fontFamily: {
 				'sans': ['"Inter"', 'sans-serif'],
@@ -184,11 +196,15 @@ export default {
 				'gradient-accent': 'linear-gradient(225deg, rgba(249, 115, 22, 0.9) 0%, rgba(249, 115, 22, 1) 100%)',
 				'shimmer-accent': 'linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.08), transparent)',
 				'glass-effect': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%)',
+				'gradient-warm': 'linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(232, 76, 18, 0.1) 100%)',
+				'gradient-cool': 'linear-gradient(135deg, rgba(22, 163, 74, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%)',
 			},
 			boxShadow: {
 				'accent': '0 0 20px rgba(249, 115, 22, 0.2), 0 0 40px rgba(249, 115, 22, 0.1)',
 				'light': '0 10px 30px -5px rgba(0, 0, 0, 0.05)',
 				'inner-glow': 'inset 0 0 10px rgba(249, 115, 22, 0.1)',
+				'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+				'green-glow': '0 0 15px rgba(22, 163, 74, 0.2)',
 			},
 			backdropFilter: {
 				'none': 'none',
