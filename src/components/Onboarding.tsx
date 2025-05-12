@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import DynamicLogo from "./DynamicLogo";
@@ -22,40 +21,60 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
     uiElements: false
   });
 
-  // Enhanced state for floating background elements with more subtle, muted properties
-  // Reduced count from 12 to 8 elements for a cleaner look and more whitespace
-  const [floatingElements, setFloatingElements] = useState(Array(8).fill(0).map(() => {
+  // Enhanced floating background elements with increased visibility and dynamic properties
+  // Increased count from 8 to 12 elements for slightly more visible texture
+  const [floatingElements, setFloatingElements] = useState(Array(12).fill(0).map(() => {
     // Generate position with a bias toward the center (avoiding sides)
     // This creates a more central focus with fewer elements on the edges
     let x = Math.random() * 100;
     let y = Math.random() * 100;
     
-    // Shift a percentage of elements toward the center zone (30-70% of screen width)
+    // Shift most elements toward the center zone (25-75% of screen width)
     if (Math.random() > 0.3) { // 70% of elements will be more central
-      x = Math.random() * 40 + 30; // 30-70% of screen width
-      y = Math.random() * 40 + 30; // 30-70% of screen height
+      x = Math.random() * 50 + 25; // 25-75% of screen width
+      y = Math.random() * 50 + 25; // 25-75% of screen height
+    }
+    
+    // Dynamic color assignment with more subtle visibility
+    // For position-based color assignment with cellular aesthetic
+    let color;
+    let opacity;
+    
+    if (x < 25 || x > 75 || y < 25 || y > 75) {
+      // Edge zones: only very subtle, translucent whites and light grays
+      color = Math.random() > 0.5 ? 'translucent-white' : 'dark-white';
+      // Slightly increased opacity for better visibility (0.3-0.6 range)
+      opacity = Math.random() * 0.3 + 0.3;
+    } else {
+      // Central zone: allow some accent colors mixed with translucent whites
+      const colorRandom = Math.random();
+      if (colorRandom > 0.7) { // 30% chance for accent colors in central area
+        color = colorRandom > 0.85 ? 'accent' : (Math.random() > 0.5 ? 'green' : 'deepOrange');
+        // Slightly more visible but still subtle (0.25-0.45 range)
+        opacity = Math.random() * 0.2 + 0.25;
+      } else {
+        color = Math.random() > 0.5 ? 'translucent-white' : 'dark-white';
+        // Medium visibility (0.35-0.6 range)
+        opacity = Math.random() * 0.25 + 0.35;
+      }
     }
     
     return {
       x,
       y,
-      size: Math.random() * 3 + 1, // Slightly reduced max size for subtlety
-      speed: Math.random() * 4 + 3,
+      size: Math.random() * 3.5 + 1.5, // Slightly increased size for better visibility
+      speed: Math.random() * 4 + 3, // Base floating speed
       delay: Math.random() * 2,
-      // More muted opacity range overall
-      opacity: Math.random() * 0.4 + 0.1, // 0.1-0.5 opacity range for subtlety
-      // Determine color with strong bias toward muted tones
-      // Use far fewer accent colors, and place any accent colors in the center
-      color: (x < 30 || x > 70) ? 
-        // For sides: only use muted tones (no accent colors)
-        (Math.random() > 0.5 ? 'translucent-white' : 'dark-white') :
-        // For center: allow some accent colors mixed with muted tones
-        (Math.random() > 0.7 ? 
-          (Math.random() > 0.5 ? 'accent' : Math.random() > 0.5 ? 'green' : 'deepOrange') : 
-          (Math.random() > 0.5 ? 'translucent-white' : 'dark-white')),
+      opacity,
+      color,
       rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() * 3 - 1) * 0.6, // Slightly reduced rotation speed
-      scale: Math.random() * 0.2 + 0.9 // Slightly reduced scale variation
+      rotationSpeed: (Math.random() * 3 - 1) * 0.8, // Slightly increased rotation speed
+      scale: Math.random() * 0.2 + 0.9, // Scale variation for dynamic feel
+      // New dynamic properties
+      drift: Math.random() * 8 + 2, // How far it drifts horizontally
+      driftSpeed: Math.random() * 5 + 10, // How fast it drifts
+      pulseSpeed: Math.random() * 3 + 2, // Speed of pulsing animation
+      animationType: Math.random() > 0.5 ? 'cellular' : 'float' // Alternate between animation types
     };
   }));
   
@@ -87,55 +106,94 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
     };
   }, []);
   
+  // Effect for dynamic cellular movement
+  useEffect(() => {
+    if (!animationState.uiElements) return;
+    
+    // Update floating elements with subtle movements to simulate cellular drift
+    const intervalId = setInterval(() => {
+      setFloatingElements(prev => prev.map(el => {
+        // Only apply subtle drift to some elements to maintain balance
+        if (Math.random() > 0.7) {
+          return {
+            ...el,
+            // Apply very subtle position drift within a small range
+            x: el.x + (Math.random() * 0.4 - 0.2),
+            y: el.y + (Math.random() * 0.4 - 0.2),
+            // Apply subtle opacity fluctuations to mimic cellular activity
+            opacity: Math.max(0.2, Math.min(0.65, el.opacity + (Math.random() * 0.08 - 0.04)))
+          };
+        }
+        return el;
+      }));
+    }, 2000); // Update every 2 seconds for subtle movement
+    
+    return () => clearInterval(intervalId);
+  }, [animationState.uiElements]);
+  
   return (
     <div className="flex flex-col items-center text-center px-6 py-10 space-y-12 animate-fade-in min-h-screen justify-center bg-gradient-light relative overflow-hidden">
-      {/* Refined floating background elements with muted colors and reduced side presence */}
+      {/* Enhanced floating background elements with dynamic cellular movement */}
       {animationState.uiElements && floatingElements.map((el, i) => {
-        // Create more subtle background colors based on position and color property
+        // Create more refined background colors based on position and color property
         let bgColorClass = '';
         let borderColorClass = '';
         
-        // Apply different styling based on color type - more muted overall
+        // Apply different styling based on color type - more visible but still subtle
         if (el.color === 'translucent-white') {
-          // Semi-transparent white with variable opacity
+          // Semi-transparent white with enhanced opacity for better visibility
           bgColorClass = `bg-white/${Math.floor(el.opacity * 100)}`;
           borderColorClass = ''; // No border for translucent elements
         } else if (el.color === 'dark-white') {
-          // "Dark White" (Very Light Grey / Off-White)
-          bgColorClass = 'bg-[#F5F5F5]';
-          borderColorClass = 'border border-[#ECECEC]/20'; // Very subtle border
+          // "Dark White" (Light Grey / Off-White) with slightly increased contrast
+          bgColorClass = 'bg-[#ECECEC]'; // Slightly darker shade for better visibility
+          borderColorClass = 'border border-[#DADADA]/30'; // Slightly more visible border
         } else if (el.color === 'accent') {
-          // Vibrant colors only for central elements, with reduced opacity
-          bgColorClass = 'bg-aurascan-accent/15';
-          borderColorClass = 'border border-aurascan-accent/20';
+          // Vibrant colors only for central elements, with slightly increased opacity
+          bgColorClass = 'bg-aurascan-accent/20'; // Increased from 15% to 20%
+          borderColorClass = 'border border-aurascan-accent/25'; // Increased from 20% to 25%
         } else if (el.color === 'green') {
-          bgColorClass = 'bg-aurascan-deep-green/10'; 
-          borderColorClass = 'border border-aurascan-deep-green/15';
+          bgColorClass = 'bg-aurascan-deep-green/15'; // Increased from 10% to 15%
+          borderColorClass = 'border border-aurascan-deep-green/20'; // Increased from 15% to 20%
         } else {
           // dark-orange
-          bgColorClass = 'bg-aurascan-dark-orange/15';
-          borderColorClass = 'border border-aurascan-dark-orange/20';
+          bgColorClass = 'bg-aurascan-dark-orange/20'; // Increased from 15% to 20%
+          borderColorClass = 'border border-aurascan-dark-orange/25'; // Increased from 20% to 25%
+        }
+
+        // Determine animation type based on element property
+        let animationClass = '';
+        if (el.animationType === 'cellular') {
+          animationClass = 'animate-cellular-motion';
+        } else {
+          animationClass = 'animate-float-enhanced';
         }
             
         return (
           <div 
             key={i}
-            className={`absolute rounded-full transition-all duration-1000 ${bgColorClass} ${borderColorClass}`}
+            className={`absolute rounded-full transition-all duration-1000 ${bgColorClass} ${borderColorClass} ${animationClass}`}
             style={{
               width: `${el.size}rem`,
               height: `${el.size}rem`,
               left: `${el.x}%`,
               top: `${el.y}%`,
               opacity: el.opacity,
-              animation: `float ${el.speed}s infinite ease-in-out, rotate-slow ${8 + el.rotationSpeed * 4}s linear infinite`,
               animationDelay: `${el.delay}s`,
+              animationDuration: `${el.speed}s`,
               transform: 'scale(0) rotate(0deg)',
-              transition: 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transition: 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1.2s ease-in-out',
             }}
             onAnimationStart={(e) => {
               // Start scaling and rotating animation with enhanced dynamics
               setTimeout(() => {
                 e.currentTarget.style.transform = `scale(${el.scale}) rotate(${el.rotation}deg)`;
+                
+                // Add additional subtle animation based on element type
+                if (el.animationType === 'cellular') {
+                  e.currentTarget.classList.add('animate-pulse-cellular');
+                  e.currentTarget.style.animationDuration = `${el.pulseSpeed}s`;
+                }
               }, 80 * i);
             }}
           />

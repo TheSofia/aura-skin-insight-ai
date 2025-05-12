@@ -117,7 +117,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* New enhanced animations */
+/* New enhanced animations for cellular movement */
 @keyframes color-shift {
   0% { filter: hue-rotate(0deg); }
   50% { filter: hue-rotate(30deg); }
@@ -129,6 +129,27 @@
   33% { transform: rotate(120deg) translateX(3px) rotate(-120deg); }
   66% { transform: rotate(240deg) translateX(5px) rotate(-240deg); }
   100% { transform: rotate(360deg) translateX(0) rotate(-360deg); }
+}
+
+/* New cellular motion animation */
+@keyframes cellular-motion {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(3px, -2px) rotate(2deg) scale(1.03); }
+  50% { transform: translate(5px, 0) rotate(5deg) scale(1.05); }
+  75% { transform: translate(2px, 3px) rotate(2deg) scale(1.02); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+/* Enhanced float animation with more noticeable movement */
+@keyframes float-enhanced {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-8px) scale(1.18); opacity: 1; } /* Enhanced movement and scale */
+}
+
+/* Subtle cellular pulse animation */
+@keyframes pulse-cellular {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.12); opacity: 1; filter: brightness(1.1); }
 }
 
 /* Dynamic Dot Logo Setup */
@@ -195,13 +216,25 @@
   animation: pulse-dot 3.5s infinite ease-in-out; /* Faster animation */
 }
 
-/* New animation classes */
+/* New animation classes for cellular effects */
 .animate-color-shift {
   animation: color-shift 8s infinite ease-in-out;
 }
 
 .animate-orbital-shift {
   animation: orbital-shift 15s infinite ease-in-out;
+}
+
+.animate-cellular-motion {
+  animation: cellular-motion 12s infinite ease-in-out;
+}
+
+.animate-float-enhanced {
+  animation: float-enhanced 4s infinite ease-in-out;
+}
+
+.animate-pulse-cellular {
+  animation: pulse-cellular 5s infinite ease-in-out;
 }
 
 /* ... keep existing code (remaining CSS rules) */
@@ -252,4 +285,3 @@
 .morphing-shape {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 }
-

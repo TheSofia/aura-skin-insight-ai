@@ -137,7 +137,7 @@ const Index = () => {
     }, 3300);
   };
 
-  // Enhanced loading state with improved animations and visual effects
+  // Enhanced loading state with improved animations and cellular visual effects
   if (isLoading) {
     return (
       <div className="app-container flex items-center justify-center bg-gradient-light">
