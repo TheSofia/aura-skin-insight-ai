@@ -101,25 +101,50 @@ const LoadingAnimation = ({ message = "Processing", size = 'md' }: LoadingAnimat
           </div>
         </div>
         
-        {/* Enhanced data points floating around with increased vibrancy */}
-        {[...Array(16)].map((_, i) => { // Increased number of data points
-          // Create a pattern of different colors for the data points with enhanced vibrancy
-          const bgColorClass = i % 3 === 0 
-            ? "bg-aurascan-accent" 
-            : i % 3 === 1 
-              ? "bg-aurascan-deep-green" 
-              : "bg-aurascan-dark-orange";
+        {/* Enhanced data points floating around with "Dark White" and semi-transparent white mixed in */}
+        {[...Array(24)].map((_, i) => { // Increased number of data points for more visual texture
+          // Create a pattern with a mix of accent colors and the new "Dark White"/semi-transparent whites
+          let bgColorClass;
+          
+          // Determine dot color - now including "Dark White" options for specific indexes
+          if (i % 6 === 0) {
+            // Semi-transparent white (Option B)
+            bgColorClass = "bg-white/40"; // 40% opacity white
+          } else if (i % 6 === 1) {
+            // "Dark White" / Off-White (Option A)
+            bgColorClass = "bg-[#F1F1F1]"; // Light grey / off-white
+          } else if (i % 6 === 2) {
+            bgColorClass = "bg-aurascan-accent";
+          } else if (i % 6 === 3) {
+            bgColorClass = "bg-aurascan-deep-green"; 
+          } else if (i % 6 === 4) {
+            // Another semi-transparent white with different opacity
+            bgColorClass = "bg-white/60"; // 60% opacity white
+          } else {
+            bgColorClass = "bg-aurascan-dark-orange";
+          }
+          
+          // Determine subtle border styling based on dot type for added texture
+          const borderColorClass = i % 6 < 2 
+            ? "" // No border for white/off-white dots for cleaner look
+            : i % 6 === 2 
+              ? "border border-aurascan-accent/30"
+              : i % 6 === 3
+                ? "border border-aurascan-deep-green/25"
+                : "border border-aurascan-dark-orange/30";
 
           return (
             <div
               key={i}
-              className={`absolute w-2 h-2 rounded-full ${bgColorClass} animate-float data-point`}
+              className={`absolute rounded-full ${bgColorClass} ${borderColorClass} animate-float data-point`}
               style={{
+                width: `${(i % 3 === 0 ? 2 : i % 3 === 1 ? 2.5 : 1.8)}px`,
+                height: `${(i % 3 === 0 ? 2 : i % 3 === 1 ? 2.5 : 1.8)}px`,
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animationDuration: `${1.5 + Math.random() * 2}s`, // Faster animation
                 animationDelay: `${i * 0.15}s`,
-                opacity: 0.6 + Math.random() * 0.4 // Enhanced opacity
+                opacity: i % 6 < 2 ? (0.5 + Math.random() * 0.3) : (0.6 + Math.random() * 0.4) // Different opacity ranges for white vs colored dots
               }}
             ></div>
           );
