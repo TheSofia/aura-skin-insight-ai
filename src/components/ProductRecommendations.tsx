@@ -107,10 +107,10 @@ const ProductRecommendations = () => {
               <h2 className="text-2xl font-clash font-medium text-aurascan-dark-grey">Your Personalized Protocol</h2>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-clash font-medium tracking-tight text-aurascan-dark-grey mb-6 leading-tight">
-              Premium Recommendations <span className="text-aurascan-dark-grey">For Your Skin</span>
+            <h1 className="text-4xl md:text-5xl font-clash font-bold tracking-tight text-aurascan-dark-grey mb-6 leading-tight">
+              Premium Recommendations <span className="font-light">For Your Skin</span>
             </h1>
-            <p className="text-aurascan-medium-grey max-w-2xl leading-relaxed text-lg mb-8">
+            <p className="text-aurascan-medium-grey max-w-2xl leading-relaxed text-lg mb-8 font-light">
               Based on your skin analysis, we've curated these high-quality products specifically for your unique needs.
             </p>
           </div>
@@ -124,8 +124,8 @@ const ProductRecommendations = () => {
                   <div className="flex flex-col md:flex-row gap-6">
                     <div className="flex-1">
                       <div className="text-sm text-aurascan-dark-grey font-medium mb-1">{product.brand}</div>
-                      <h3 className="font-clash text-2xl font-medium mb-2 text-aurascan-dark-grey">{product.name}</h3>
-                      <p className="text-aurascan-medium-grey mb-4">{product.description}</p>
+                      <h3 className="font-clash text-2xl font-bold mb-2 text-aurascan-dark-grey">{product.name}</h3>
+                      <p className="text-aurascan-medium-grey mb-4 font-light">{product.description}</p>
                       
                       <div className="flex items-center gap-4">
                         <Button 
@@ -161,8 +161,8 @@ const ProductRecommendations = () => {
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div>
-              <h3 className="text-lg font-medium text-aurascan-dark-grey mb-1">Your Product Library</h3>
-              <p className="text-aurascan-medium-grey text-sm">
+              <h3 className="text-lg font-bold text-aurascan-dark-grey mb-1">Your Product Library</h3>
+              <p className="text-aurascan-medium-grey text-sm font-light">
                 {getSavedProducts().length === 0 
                   ? "You haven't saved any products yet" 
                   : `You have ${getSavedProducts().length} saved products`}
