@@ -14,14 +14,14 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
   colorScheme = 'accent',
   animationStyle = 'combined'
 }, ref) => {
-  // For gradient colorScheme, add a color cycling effect
+  // Enhanced gradient colorScheme effect with faster cycling
   const [gradientState, setGradientState] = useState(0);
   
   useEffect(() => {
     if (colorScheme === 'gradient') {
       const interval = setInterval(() => {
-        setGradientState(prev => (prev + 1) % 3);
-      }, 3000);
+        setGradientState(prev => (prev + 1) % 4); // Increased number of states
+      }, 2200); // Faster transitions
       return () => clearInterval(interval);
     }
   }, [colorScheme]);
@@ -58,91 +58,99 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
     xl: 'w-24 h-24'
   };
 
-  // Get color classes based on the selected scheme
+  // Get more vibrant color classes based on the selected scheme
   const getColorClasses = () => {
     switch (colorScheme) {
       case 'coral':
         return {
           core: 'bg-aurascan-accent',
-          innerRing: 'border-aurascan-accent/70',
-          outerRing: 'border-aurascan-accent/40',
-          glow: 'after:bg-aurascan-accent/30'
+          innerRing: 'border-aurascan-accent',
+          outerRing: 'border-aurascan-accent/70',
+          glow: 'after:bg-aurascan-accent/50'
         };
       case 'cyan':
         return {
           core: 'bg-aurascan-dark-grey',
-          innerRing: 'border-aurascan-dark-grey/70',
-          outerRing: 'border-aurascan-dark-grey/40',
-          glow: 'after:bg-aurascan-dark-grey/30'
+          innerRing: 'border-aurascan-dark-grey',
+          outerRing: 'border-aurascan-dark-grey/70',
+          glow: 'after:bg-aurascan-dark-grey/50'
         };
       case 'teal':
         return {
           core: 'bg-aurascan-deep-green',
-          innerRing: 'border-aurascan-deep-green/70',
-          outerRing: 'border-aurascan-deep-green/40',
-          glow: 'after:bg-aurascan-deep-green/30'
+          innerRing: 'border-aurascan-deep-green',
+          outerRing: 'border-aurascan-deep-green/70',
+          glow: 'after:bg-aurascan-deep-green/50'
         };
       case 'violet':
         return {
           core: 'bg-aurascan-dark-grey',
-          innerRing: 'border-aurascan-dark-grey/70',
-          outerRing: 'border-aurascan-dark-grey/40',
-          glow: 'after:bg-aurascan-dark-grey/30'
+          innerRing: 'border-aurascan-dark-grey',
+          outerRing: 'border-aurascan-dark-grey/70',
+          glow: 'after:bg-aurascan-dark-grey/50'
         };
       case 'gradient':
-        // Cycle through colors for gradient scheme
+        // Enhanced cycle through vibrant colors for gradient scheme
         if (gradientState === 0) {
           return {
             core: 'bg-gradient-to-r from-aurascan-accent to-aurascan-dark-orange',
-            innerRing: 'border-aurascan-accent/70',
-            outerRing: 'border-aurascan-deep-green/40',
-            glow: 'after:bg-aurascan-accent/30'
+            innerRing: 'border-aurascan-accent',
+            outerRing: 'border-aurascan-deep-green/70',
+            glow: 'after:bg-aurascan-accent/50'
           };
         } else if (gradientState === 1) {
           return {
             core: 'bg-gradient-to-r from-aurascan-dark-orange to-aurascan-deep-green',
-            innerRing: 'border-aurascan-dark-orange/70',
-            outerRing: 'border-aurascan-accent/40',
-            glow: 'after:bg-aurascan-dark-orange/30'
+            innerRing: 'border-aurascan-dark-orange',
+            outerRing: 'border-aurascan-accent/70',
+            glow: 'after:bg-aurascan-dark-orange/50'
           };
-        } else {
+        } else if (gradientState === 2) {
           return {
             core: 'bg-gradient-to-r from-aurascan-deep-green to-aurascan-accent',
-            innerRing: 'border-aurascan-deep-green/70',
-            outerRing: 'border-aurascan-dark-orange/40',
-            glow: 'after:bg-aurascan-deep-green/30'
+            innerRing: 'border-aurascan-deep-green',
+            outerRing: 'border-aurascan-dark-orange/70',
+            glow: 'after:bg-aurascan-deep-green/50'
+          };
+        } else {
+          // Added a fourth state with mixed colors
+          return {
+            core: 'bg-gradient-to-tr from-aurascan-accent via-aurascan-deep-green to-aurascan-dark-orange',
+            innerRing: 'border-aurascan-accent',
+            outerRing: 'border-aurascan-deep-green/70',
+            glow: 'after:bg-gradient-to-r from-aurascan-accent/40 to-aurascan-deep-green/40'
           };
         }
       default:
         return {
           core: 'bg-aurascan-accent',
-          innerRing: 'border-aurascan-accent/70',
-          outerRing: 'border-aurascan-accent/40',
-          glow: 'after:bg-aurascan-accent/30'
+          innerRing: 'border-aurascan-accent',
+          outerRing: 'border-aurascan-accent/70',
+          glow: 'after:bg-aurascan-accent/50'
         };
     }
   };
 
-  // Get animation classes based on the selected style
+  // Get enhanced animation classes based on the selected style
   const getAnimationClasses = () => {
     switch (animationStyle) {
       case 'float':
         return {
           core: 'animate-subtle-float',
-          innerRing: '',
-          outerRing: '',
+          innerRing: 'animate-float',
+          outerRing: 'animate-float',
           particles: 'animate-float'
         };
       case 'pulse':
         return {
-          core: 'animate-subtle-pulse',
-          innerRing: '',
-          outerRing: '',
+          core: 'animate-pulse-dot',
+          innerRing: 'animate-pulse-slow',
+          outerRing: 'animate-pulse-slow',
           particles: 'animate-pulse-dot'
         };
       case 'rotate':
         return {
-          core: '',
+          core: 'animate-subtle-pulse',
           innerRing: 'animate-rotate-slow',
           outerRing: 'animate-rotate-slow',
           particles: 'animate-circular-motion'
@@ -151,13 +159,13 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         return {
           core: 'animate-throb',
           innerRing: 'animate-morph',
-          outerRing: '',
+          outerRing: 'animate-rotate-slow',
           particles: 'animate-float'
         };
       case 'combined':
       default:
         return {
-          core: 'animate-subtle-pulse',
+          core: 'animate-pulse-dot', // More pronounced pulse
           innerRing: 'animate-circular-motion',
           outerRing: 'animate-circular-motion-reverse',
           particles: 'animate-float'
@@ -174,38 +182,38 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
       role="presentation"
       ref={ref}
     >
-      {/* Core dot with enhanced pulsing animation */}
+      {/* Core dot with enhanced pulsing animation and increased vibrancy */}
       <div 
         className={`absolute ${coreSizes[size]} ${colorClasses.core} rounded-full ${animationClasses.core} z-10 
           after:content-[''] after:absolute after:inset-0 after:rounded-full ${colorClasses.glow} 
           after:blur-md after:transform after:scale-150 after:opacity-0 after:animate-subtle-glow
-          transition-all duration-300 hover:transform hover:scale-110`}
+          transition-all duration-300 hover:transform hover:scale-125`}
       ></div>
       
-      {/* Inner ring with enhanced circular animation */}
+      {/* Inner ring with enhanced animation and increased vibrancy */}
       <div 
-        className={`absolute ${innerRingSizes[size]} border ${colorClasses.innerRing} rounded-full 
+        className={`absolute ${innerRingSizes[size]} border-2 ${colorClasses.innerRing} rounded-full 
           ${animationClasses.innerRing} transition-transform duration-300 hover:border-opacity-100`}
       ></div>
       
-      {/* Outer ring with reverse animation and enhanced interactivity */}
+      {/* Outer ring with enhanced animation and increased vibrancy */}
       <div 
-        className={`absolute ${outerRingSizes[size]} border ${colorClasses.outerRing} rounded-full 
-          ${animationClasses.outerRing} transition-transform duration-300 hover:border-opacity-70`}
+        className={`absolute ${outerRingSizes[size]} border-2 ${colorClasses.outerRing} rounded-full 
+          ${animationClasses.outerRing} transition-transform duration-300 hover:border-opacity-100`}
       ></div>
 
-      {/* Floating particles with enhanced animation */}
+      {/* Floating particles with enhanced animation and increased vibrancy */}
       <div className="absolute inset-0 overflow-visible">
-        {Array(4).fill(0).map((_, i) => (
+        {Array(6).fill(0).map((_, i) => ( // Increased number of particles
           <div 
             key={i}
-            className={`absolute w-1 h-1 rounded-full ${colorClasses.core} ${animationClasses.particles} opacity-60
+            className={`absolute w-1.5 h-1.5 rounded-full ${colorClasses.core} ${animationClasses.particles} opacity-80
               transition-all duration-300 hover:opacity-100 hover:transform hover:scale-150`}
             style={{
-              left: `${30 + (i * 15)}%`,
-              top: `${20 + (i * 20)}%`,
-              animationDuration: `${2 + i * 0.5}s`,
-              animationDelay: `${i * 0.25}s`
+              left: `${25 + (i * 10)}%`,
+              top: `${15 + (i * 15)}%`,
+              animationDuration: `${1.5 + i * 0.4}s`, // Faster animation
+              animationDelay: `${i * 0.2}s`
             }}
           ></div>
         ))}

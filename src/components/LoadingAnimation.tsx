@@ -8,24 +8,26 @@ interface LoadingAnimationProps {
 }
 
 const LoadingAnimation = ({ message = "Processing", size = 'md' }: LoadingAnimationProps) => {
-  // State for controlling gradient transition
+  // Enhanced state for controlling gradient transition
   const [gradientPosition, setGradientPosition] = useState(0);
   
-  // Cycle through gradient positions
+  // Cycle through gradient positions more frequently
   useEffect(() => {
     const interval = setInterval(() => {
-      setGradientPosition((prev) => (prev + 1) % 4);
-    }, 3000);
+      setGradientPosition((prev) => (prev + 1) % 6); // Increased variety of positions
+    }, 2000); // Faster transitions
     return () => clearInterval(interval);
   }, []);
 
-  // Get the current gradient class
+  // Get the current gradient class with more vibrant colors
   const getGradientClass = () => {
     const gradients = [
-      'bg-gradient-to-tr from-aurascan-accent/20 via-aurascan-medium-grey/10 to-aurascan-deep-green/20',
-      'bg-gradient-to-bl from-aurascan-deep-green/20 via-aurascan-dark-grey/10 to-aurascan-accent/20',
-      'bg-gradient-to-r from-aurascan-dark-orange/20 via-aurascan-light-grey/10 to-aurascan-deep-green/20',
-      'bg-gradient-to-l from-aurascan-deep-green/20 via-aurascan-light-grey/10 to-aurascan-dark-orange/20',
+      'bg-gradient-to-tr from-aurascan-accent/40 via-aurascan-medium-grey/10 to-aurascan-deep-green/30',
+      'bg-gradient-to-bl from-aurascan-deep-green/40 via-aurascan-dark-grey/5 to-aurascan-accent/30',
+      'bg-gradient-to-r from-aurascan-dark-orange/40 via-aurascan-light-grey/5 to-aurascan-deep-green/30',
+      'bg-gradient-to-l from-aurascan-deep-green/40 via-aurascan-light-grey/5 to-aurascan-dark-orange/30',
+      'bg-gradient-to-tl from-aurascan-accent/50 to-aurascan-deep-green/40',
+      'bg-gradient-to-br from-aurascan-dark-orange/50 to-aurascan-accent/40',
     ];
     return gradients[gradientPosition];
   };
@@ -43,13 +45,34 @@ const LoadingAnimation = ({ message = "Processing", size = 'md' }: LoadingAnimat
     lg: 'text-base',
   };
 
+  // New state for dynamic orbital rings animation
+  const [orbitalPhase, setOrbitalPhase] = useState(0);
+  
+  // Update orbital animation phase
+  useEffect(() => {
+    const phaseInterval = setInterval(() => {
+      setOrbitalPhase((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(phaseInterval);
+  }, []);
+
+  // Generate dynamic orbital speeds based on phase
+  const getOrbitalStyle = (baseTime: number, index: number) => {
+    const phaseMultiplier = orbitalPhase === 0 ? 1 : orbitalPhase === 1 ? 1.2 : 0.8;
+    return {
+      animationDuration: `${baseTime * phaseMultiplier}s`,
+      animationDirection: index % 2 === 0 ? 'normal' : 'reverse',
+      opacity: 0.6 + (orbitalPhase * 0.1)
+    };
+  };
+
   return (
     <div className="flex flex-col items-center justify-center animate-fade-in">
       <div className={`relative ${containerSizes[size]} mx-auto mb-6`}>
-        {/* Background light with dynamic gradient */}
-        <div className={`absolute inset-0 rounded-full opacity-80 transition-all duration-1000 ease-in-out ${getGradientClass()}`}></div>
+        {/* Background light with enhanced dynamic gradient */}
+        <div className={`absolute inset-0 rounded-full opacity-90 transition-all duration-700 ease-in-out ${getGradientClass()} animate-pulse-slow`}></div>
         
-        {/* Central dynamic logo with gradient coloring */}
+        {/* Central dynamic logo with enhanced gradient coloring */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           <DynamicLogo 
             colorScheme="gradient" 
@@ -58,58 +81,67 @@ const LoadingAnimation = ({ message = "Processing", size = 'md' }: LoadingAnimat
           />
         </div>
         
-        {/* Animated orbital rings with enhanced motion and colors */}
+        {/* Enhanced animated orbital rings with varied motion and vibrant colors */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
-          <div className="absolute inset-0 rounded-full border border-aurascan-accent/10 animate-rotate-slow" 
-               style={{ animationDuration: '20s' }}></div>
-          <div className="absolute inset-2 rounded-full border border-aurascan-deep-green/15 animate-rotate-slow" 
-               style={{ animationDirection: 'reverse', animationDuration: '15s' }}></div>
-          <div className="absolute inset-4 rounded-full border border-aurascan-dark-orange/20 animate-rotate-slow" 
-               style={{ animationDuration: '10s' }}></div>
+          <div className="absolute inset-0 rounded-full border-2 border-aurascan-accent/30 animate-rotate-slow" 
+               style={getOrbitalStyle(20, 0)}></div>
+          <div className="absolute inset-2 rounded-full border-2 border-aurascan-deep-green/40 animate-rotate-slow" 
+               style={getOrbitalStyle(15, 1)}></div>
+          <div className="absolute inset-4 rounded-full border-2 border-aurascan-dark-orange/50 animate-rotate-slow" 
+               style={getOrbitalStyle(10, 2)}></div>
+          <div className="absolute inset-6 rounded-full border border-aurascan-accent/20 animate-rotate-slow" 
+               style={getOrbitalStyle(12, 3)}></div>
           
-          {/* Additional decorative elements with varied colors */}
-          <div className="absolute w-full h-full animate-rotate-slow" style={{ animationDuration: '25s' }}>
-            <div className="absolute top-0 left-1/2 w-2 h-2 rounded-full bg-aurascan-accent/20"></div>
-            <div className="absolute bottom-0 left-1/2 w-2 h-2 rounded-full bg-aurascan-deep-green/20"></div>
+          {/* Additional enhanced decorative elements with vibrant colors */}
+          <div className="absolute w-full h-full animate-rotate-slow" style={getOrbitalStyle(25, 4)}>
+            <div className="absolute top-0 left-1/2 w-3 h-3 rounded-full bg-aurascan-accent/60 animate-pulse-dot"></div>
+            <div className="absolute bottom-0 left-1/2 w-3 h-3 rounded-full bg-aurascan-deep-green/60 animate-pulse-dot"></div>
+            <div className="absolute left-0 top-1/2 w-3 h-3 rounded-full bg-aurascan-dark-orange/60 animate-pulse-dot"></div>
+            <div className="absolute right-0 top-1/2 w-3 h-3 rounded-full bg-aurascan-accent/60 animate-pulse-dot"></div>
           </div>
         </div>
         
-        {/* Enhanced data points floating around with varied colors */}
-        {[...Array(12)].map((_, i) => {
-          // Create a pattern of different colors for the data points
+        {/* Enhanced data points floating around with increased vibrancy */}
+        {[...Array(16)].map((_, i) => { // Increased number of data points
+          // Create a pattern of different colors for the data points with enhanced vibrancy
           const bgColorClass = i % 3 === 0 
-            ? "bg-aurascan-accent/70" 
+            ? "bg-aurascan-accent" 
             : i % 3 === 1 
-              ? "bg-aurascan-deep-green/70" 
-              : "bg-aurascan-dark-orange/70";
+              ? "bg-aurascan-deep-green" 
+              : "bg-aurascan-dark-orange";
 
           return (
             <div
               key={i}
-              className={`absolute w-1.5 h-1.5 rounded-full ${bgColorClass} animate-float data-point`}
+              className={`absolute w-2 h-2 rounded-full ${bgColorClass} animate-float data-point`}
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDuration: `${2 + Math.random() * 3}s`,
-                animationDelay: `${i * 0.2}s`,
-                opacity: 0.3 + Math.random() * 0.5
+                animationDuration: `${1.5 + Math.random() * 2}s`, // Faster animation
+                animationDelay: `${i * 0.15}s`,
+                opacity: 0.6 + Math.random() * 0.4 // Enhanced opacity
               }}
             ></div>
           );
         })}
         
-        {/* Enhanced scanning line effect with gradient */}
+        {/* Enhanced scanning line effect with vibrant gradient */}
         <div className="absolute inset-x-0 top-0 h-full overflow-hidden rounded-full">
-          <div className="h-0.5 bg-gradient-to-r from-transparent via-aurascan-accent to-transparent w-full animate-scanning"></div>
+          <div className="h-1 bg-gradient-to-r from-transparent via-aurascan-accent to-transparent w-full animate-scanning"></div>
+          {/* Additional scanning line for more dynamic effect */}
+          <div className="h-1 bg-gradient-to-r from-transparent via-aurascan-deep-green to-transparent w-full animate-scanning" 
+               style={{ animationDelay: '0.75s', opacity: 0.8 }}></div>
         </div>
         
-        {/* Morphing shape behind everything with gradient */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 opacity-10 animate-morph"
+        {/* Enhanced morphing shape behind everything with vibrant gradient */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 opacity-20 animate-morph"
              style={{ 
-               background: 'linear-gradient(225deg, rgba(249, 115, 22, 0.8) 0%, rgba(64, 62, 67, 0.9) 50%, rgba(22, 163, 74, 0.8) 100%)',
+               background: 'linear-gradient(225deg, rgba(249, 115, 22, 1) 0%, rgba(64, 62, 67, 0.5) 50%, rgba(22, 163, 74, 1) 100%)',
+               animationDuration: '8s'
              }}></div>
       </div>
       
+      {/* Message with standardized text color */}
       {message && (
         <p className={`text-aurascan-dark-grey ${messageSizes[size]} font-light animate-pulse-slow`}>
           {message}
