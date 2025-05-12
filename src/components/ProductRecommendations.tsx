@@ -111,48 +111,60 @@ const ProductRecommendations = () => {
     <div className="flex flex-col h-full animate-fade-in">
       <div className="flex-1 overflow-auto pb-6">
         <Tabs defaultValue="products" className="w-full">
-          <div className="px-6 py-4 border-b border-gray-100 sticky top-0 bg-white/90 backdrop-blur-sm z-10">
-            <TabsList className="w-full">
-              <TabsTrigger value="products" className="flex-1">Products</TabsTrigger>
-              <TabsTrigger value="wellness" className="flex-1">Wellness Tips</TabsTrigger>
+          <div className="px-6 py-4 border-b border-aurascan-purple/20 sticky top-0 bg-aurascan-deep-space/80 backdrop-blur-xl z-10">
+            <TabsList className="w-full bg-aurascan-cosmic-blue/50 border border-aurascan-purple/20">
+              <TabsTrigger 
+                value="products" 
+                className="flex-1 data-[state=active]:bg-aurascan-purple data-[state=active]:text-white"
+              >
+                Products
+              </TabsTrigger>
+              <TabsTrigger 
+                value="wellness" 
+                className="flex-1 data-[state=active]:bg-aurascan-auroral-green data-[state=active]:text-aurascan-deep-space"
+              >
+                Wellness Tips
+              </TabsTrigger>
             </TabsList>
           </div>
           
           <TabsContent value="products" className="px-6 pt-6 focus-visible:outline-none focus-visible:ring-0">
-            <div className="space-y-6 max-w-md mx-auto">
-              <div className="bg-gradient-to-br from-aurascan-purple/10 to-aurascan-soft-blue/10 rounded-xl p-5">
-                <h2 className="text-lg font-medium mb-2">Your Personalized Recommendations</h2>
-                <p className="text-sm text-aurascan-gray">
+            <div className="space-y-8 max-w-md mx-auto">
+              <div className="cosmic-card p-6">
+                <h2 className="text-xl font-clash font-medium mb-2 text-white">Your Personalized Recommendations</h2>
+                <p className="text-sm text-gray-300">
                   Based on your skin analysis, we've selected these pharmaceutical-grade products to address your specific concerns.
                 </p>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {products.map((product) => (
-                  <div key={product.id} className="bg-white rounded-xl overflow-hidden border border-gray-100">
-                    <div className="flex">
-                      <div className="w-1/3 h-32">
+                  <div key={product.id} className="cosmic-card overflow-hidden">
+                    <div className="flex flex-col md:flex-row">
+                      <div className="w-full md:w-1/3 h-40 md:h-auto relative">
                         <img 
                           src={product.image} 
                           alt={product.name} 
                           className="w-full h-full object-cover"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-r from-aurascan-deep-space/80 via-transparent to-transparent md:bg-gradient-to-t"></div>
                       </div>
-                      <div className="w-2/3 p-4">
+                      <div className="w-full md:w-2/3 p-5">
                         <div className="text-xs text-aurascan-gray">{product.brand}</div>
-                        <h3 className="font-medium mb-1">{product.name}</h3>
-                        <div className="text-aurascan-purple font-medium mb-2">{product.price}</div>
-                        <div className="flex gap-1 mb-2">
+                        <h3 className="font-clash text-lg font-medium mb-1 text-white">{product.name}</h3>
+                        <div className="text-aurascan-purple font-medium mb-3">{product.price}</div>
+                        <div className="flex gap-2 mb-3 flex-wrap">
                           {product.concerns.map((concern, i) => (
-                            <span key={i} className="text-xs px-2 py-0.5 bg-aurascan-soft-purple/20 rounded-full text-aurascan-purple">
+                            <span key={i} className="text-xs px-2 py-1 bg-aurascan-purple/20 rounded-full text-aurascan-purple">
                               {concern}
                             </span>
                           ))}
                         </div>
+                        <p className="text-sm text-gray-300 mb-4">{product.description}</p>
                         <Button 
                           size="sm" 
                           variant="outline" 
-                          className="mt-1 w-full text-xs flex gap-1 items-center justify-center border-aurascan-purple text-aurascan-purple hover:bg-aurascan-soft-purple/10"
+                          className="w-full text-xs flex gap-1 items-center justify-center border-aurascan-purple text-aurascan-purple hover:bg-aurascan-purple/20"
                           onClick={() => handleProductClick(product.link)}
                         >
                           <span>View Product</span>
@@ -167,24 +179,24 @@ const ProductRecommendations = () => {
           </TabsContent>
           
           <TabsContent value="wellness" className="px-6 pt-6 focus-visible:outline-none focus-visible:ring-0">
-            <div className="space-y-6 max-w-md mx-auto">
-              <div className="bg-gradient-to-br from-aurascan-soft-pink/10 to-aurascan-soft-blue/10 rounded-xl p-5">
-                <h2 className="text-lg font-medium mb-2">Wellness Tips For Your Skin</h2>
-                <p className="text-sm text-aurascan-gray">
+            <div className="space-y-8 max-w-md mx-auto">
+              <div className="cosmic-card p-6">
+                <h2 className="text-xl font-clash font-medium mb-2 text-white">Wellness Tips For Your Skin</h2>
+                <p className="text-sm text-gray-300">
                   Complement your skincare routine with these lifestyle recommendations for healthier skin.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-5">
                 {wellnessTips.map((tip) => (
-                  <div key={tip.id} className="bg-white rounded-xl p-5 border border-gray-100">
+                  <div key={tip.id} className="cosmic-card p-5">
                     <div className="flex items-start">
-                      <div className="w-10 h-10 rounded-full bg-aurascan-soft-purple/20 flex items-center justify-center text-xl mr-4">
+                      <div className="w-12 h-12 rounded-full bg-aurascan-purple/20 flex items-center justify-center text-xl mr-4 border border-aurascan-purple/40">
                         {tip.icon}
                       </div>
                       <div>
-                        <h3 className="font-medium mb-1">{tip.title}</h3>
-                        <p className="text-sm text-aurascan-gray">{tip.description}</p>
+                        <h3 className="font-clash font-medium mb-1 text-white">{tip.title}</h3>
+                        <p className="text-sm text-gray-300">{tip.description}</p>
                       </div>
                     </div>
                   </div>
@@ -195,10 +207,10 @@ const ProductRecommendations = () => {
         </Tabs>
       </div>
       
-      <div className="p-6 border-t border-gray-100">
+      <div className="p-6 border-t border-aurascan-purple/20">
         <div className="max-w-md mx-auto">
           <Button 
-            className="w-full bg-aurascan-purple hover:bg-aurascan-purple/90 text-white"
+            className="w-full cosmic-button py-6"
             onClick={() => {
               // In a real app, this would navigate to a screen to save results or restart
               toast({

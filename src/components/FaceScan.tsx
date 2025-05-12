@@ -57,24 +57,48 @@ const FaceScan = ({ onScanComplete, onBack }: FaceScanProps) => {
   return (
     <div className="flex flex-col h-full animate-fade-in">
       <div className="px-6 py-4 flex items-center">
-        <Button variant="ghost" size="icon" onClick={onBack}>
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          onClick={onBack}
+          className="text-white hover:bg-aurascan-purple/20"
+        >
           <ArrowLeft className="h-5 w-5" />
         </Button>
-        <h2 className="ml-2 text-lg font-medium">Face Scan</h2>
+        <h2 className="ml-2 text-lg font-medium text-white">Face Scan</h2>
       </div>
       
-      <div className="flex-1 flex flex-col items-center justify-center px-6 space-y-6">
-        <div className="relative w-full max-w-md aspect-square rounded-xl overflow-hidden border-2 border-dashed border-aurascan-light-purple bg-aurascan-soft-purple/20 flex items-center justify-center">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 space-y-8">
+        <div className="relative w-full max-w-md aspect-square rounded-lg cosmic-card flex items-center justify-center overflow-hidden border-2 border-aurascan-purple/30">
           {imagePreview ? (
-            <img 
-              src={imagePreview} 
-              alt="Face preview" 
-              className="w-full h-full object-cover"
-            />
+            <>
+              <img 
+                src={imagePreview} 
+                alt="Face preview" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-aurascan-deep-space via-transparent to-transparent"></div>
+            </>
           ) : (
             <div className="text-center p-6">
               <div className="text-5xl mb-4">📷</div>
-              <p className="text-aurascan-gray">Take or upload a photo of your face</p>
+              <p className="text-gray-300">Take or upload a photo of your face</p>
+            </div>
+          )}
+          
+          {/* Scan effect overlay */}
+          {imagePreview && (
+            <div className="absolute inset-0 pointer-events-none">
+              {/* Scanning line effect */}
+              <div className="absolute inset-x-0 top-0 h-full overflow-hidden">
+                <div className="scan-line w-full animate-scanning"></div>
+              </div>
+              
+              {/* Frame corners for sci-fi effect */}
+              <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-aurascan-purple opacity-80"></div>
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-aurascan-purple opacity-80"></div>
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-aurascan-purple opacity-80"></div>
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-aurascan-purple opacity-80"></div>
             </div>
           )}
         </div>
@@ -82,14 +106,14 @@ const FaceScan = ({ onScanComplete, onBack }: FaceScanProps) => {
         <div className="w-full max-w-md space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <Button 
-              className="flex items-center justify-center gap-2 bg-white border border-aurascan-light-purple text-aurascan-deep-purple hover:bg-aurascan-soft-purple/20"
+              className="flex items-center justify-center gap-2 glassmorphism text-white hover:bg-aurascan-purple/20"
               onClick={handleUploadClick}
             >
               <Upload className="h-4 w-4" />
               <span>Upload Photo</span>
             </Button>
             <Button 
-              className="flex items-center justify-center gap-2 bg-white border border-aurascan-light-purple text-aurascan-deep-purple hover:bg-aurascan-soft-purple/20"
+              className="flex items-center justify-center gap-2 glassmorphism text-white hover:bg-aurascan-purple/20"
               onClick={() => {
                 // In a real app, this would open the camera
                 toast({
@@ -112,7 +136,7 @@ const FaceScan = ({ onScanComplete, onBack }: FaceScanProps) => {
           />
           
           <Button
-            className="w-full bg-aurascan-purple hover:bg-aurascan-purple/90 text-white"
+            className="w-full cosmic-button py-6"
             onClick={handleContinue}
             disabled={!imagePreview}
           >
@@ -122,7 +146,7 @@ const FaceScan = ({ onScanComplete, onBack }: FaceScanProps) => {
       </div>
       
       <div className="px-6 py-4">
-        <p className="text-xs text-aurascan-gray text-center">
+        <p className="text-xs text-gray-400 text-center">
           For best results, use good lighting and remove makeup. Your photo is used for analysis only and not permanently stored.
         </p>
       </div>

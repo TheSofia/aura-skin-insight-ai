@@ -1,5 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,65 +9,35 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 225 70% 5%;
+    --foreground: 210 20% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 225 70% 3%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 225 70% 3%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 255 67% 64%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 272 100% 50%;
+    --primary-foreground: 210 20% 98%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
+    --secondary: 215 70% 15%;
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --muted: 215 30% 15%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 6% 10%;
+    --accent: 215 70% 15%;
+    --accent-foreground: 210 20% 98%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 255 67% 64%;
+    --border: 215 30% 15%;
+    --input: 215 30% 15%;
+    --ring: 272 100% 50%;
 
     --radius: 0.75rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 255 67% 64%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%;
-
-    --accent: 240 4% 16%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 255 67% 64%;
   }
 }
 
@@ -74,10 +46,40 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-aurascan-deep-space text-foreground font-space;
   }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-poppins font-medium;
+  h1, h2, h3 {
+    @apply font-clash font-medium;
+  }
+  h4, h5, h6 {
+    @apply font-space font-medium;
+  }
+}
+
+/* Custom Utility Classes */
+@layer components {
+  .glassmorphism {
+    @apply bg-glass-light/10 backdrop-blur-lg border border-white/10 shadow-lg;
+  }
+  
+  .cosmic-card {
+    @apply bg-gradient-to-br from-aurascan-cosmic-blue/80 to-aurascan-deep-space/90 border border-aurascan-purple/20 shadow-lg backdrop-blur-md rounded-lg;
+  }
+  
+  .cosmic-button {
+    @apply bg-gradient-cosmic hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-neon transition-all duration-300;
+  }
+  
+  .auroral-button {
+    @apply bg-gradient-auroral hover:opacity-90 text-aurascan-deep-space font-medium tracking-wider rounded-md shadow-neon-green transition-all duration-300;
+  }
+  
+  .neon-text {
+    @apply text-aurascan-purple drop-shadow-[0_0_8px_rgba(157,0,255,0.8)];
+  }
+  
+  .shimmer-effect {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer before:bg-[length:200%_100%] before:animate-shimmer;
   }
 }
 
@@ -88,9 +90,28 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: radial-gradient(circle at top right, rgba(12, 30, 62, 0.8) 0%, rgba(5, 10, 16, 1) 80%);
 }
 
 .scan-line {
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(110, 68, 255, 0.8), transparent);
+  background: linear-gradient(90deg, transparent, rgba(157, 0, 255, 0.8), transparent);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(12, 30, 62, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(157, 0, 255, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(157, 0, 255, 0.8);
 }
