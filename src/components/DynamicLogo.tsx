@@ -1,10 +1,9 @@
-
 import React from 'react';
 
 type DynamicLogoProps = {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
-  colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal';
+  colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet';
 };
 
 const DynamicLogo = ({ size = 'md', className = '', colorScheme = 'accent' }: DynamicLogoProps) => {
@@ -60,6 +59,12 @@ const DynamicLogo = ({ size = 'md', className = '', colorScheme = 'accent' }: Dy
           core: 'bg-aurascan-medium-grey',
           innerRing: 'border-aurascan-medium-grey/70',
           outerRing: 'border-aurascan-medium-grey/40'
+        };
+      case 'violet':
+        return {
+          core: 'bg-aurascan-dark-grey',
+          innerRing: 'border-aurascan-dark-grey/70',
+          outerRing: 'border-aurascan-dark-grey/40'
         };
       default:
         return {

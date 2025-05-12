@@ -25,13 +25,18 @@ const Index = () => {
   };
 
   const handleViewRecommendations = () => {
-    setCurrentStep(4); // Move to Product Recommendations
+    setCurrentStep(4); // Move directly to Product Recommendations
   };
 
   const handleBack = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
     }
+  };
+
+  // Allow skipping to recommendations in some cases
+  const handleDirectToRecommendations = () => {
+    setCurrentStep(4); // Skip directly to recommendations
   };
 
   return (
