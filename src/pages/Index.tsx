@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
-import Onboarding from "@/components/Onboarding";
+import Onboarding from "@/components/onboarding/Onboarding";
 import FaceScan from "@/components/FaceScan";
 import Processing from "@/components/Processing";
 import ProductRecommendations from "@/components/ProductRecommendations";
