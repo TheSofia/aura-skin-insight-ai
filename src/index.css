@@ -9,9 +9,14 @@
 
 /* ... keep existing code (CSS variables and base styles) */
 
-/* Custom Utility Classes */
+/* Enhanced Custom Utility Classes */
 @layer components {
   /* ... keep existing code (utility classes) */
+  
+  .bg-gradient-light {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(64, 62, 67, 0.1) 100%);
+    animation: gradient-shift 8s infinite alternate ease-in-out;
+  }
 }
 
 /* App container and layout */
@@ -43,12 +48,12 @@
 
 @keyframes subtle-glow {
   0%, 100% { opacity: 0; transform: scale(1.5); }
-  50% { opacity: 0.2; transform: scale(1.6); }
+  50% { opacity: 0.3; transform: scale(1.7); }
 }
 
 @keyframes subtle-float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
+  50% { transform: translateY(-3px); }
 }
 
 @keyframes throb {
@@ -58,17 +63,22 @@
 
 @keyframes circular-motion {
   0% { transform: rotate(0deg) translate(2px) rotate(0deg); }
-  100% { transform: rotate(360deg) translate(2px) rotate(-360deg); }
+  100% { transform: rotate(360deg) translate(3px) rotate(-360deg); }
 }
 
 @keyframes circular-motion-reverse {
   0% { transform: rotate(360deg) translate(2px) rotate(-360deg); }
-  100% { transform: rotate(0deg) translate(2px) rotate(0deg); }
+  100% { transform: rotate(0deg) translate(3px) rotate(0deg); }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
   50% { transform: translateY(-5px) scale(1.1); opacity: 1; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 /* Adding new animations for dynamic visuals */
@@ -134,11 +144,11 @@
 }
 
 .animate-circular-motion {
-  animation: circular-motion 4s infinite linear;
+  animation: circular-motion 10s infinite linear;
 }
 
 .animate-circular-motion-reverse {
-  animation: circular-motion-reverse 4s infinite linear;
+  animation: circular-motion-reverse 12s infinite linear;
 }
 
 .animate-float {
@@ -162,75 +172,20 @@
 }
 
 .animate-pulse-slow {
-  animation: pulse-dot 3s infinite ease-in-out;
+  animation: pulse-dot 4s infinite ease-in-out;
 }
 
-/* Notebook styles for textarea */
-.notebook-container {
-  position: relative;
+/* ... keep existing code (remaining CSS rules) */
+
+/* Shadow Glow Effect */
+.shadow-glow {
+  box-shadow: 0 0 15px 5px rgba(64, 62, 67, 0.2);
 }
 
-/* Notebook background with ruled lines */
-.bg-notebook {
-  background-image: linear-gradient(transparent calc(1.5rem - 1px), #E5E7EB 1.5rem);
-  background-size: 100% 1.5rem;
-  line-height: 1.5rem;
-}
-
-/* Fluid Morphing Shape */
-.morphing-shape {
-  position: relative;
-  background-image: linear-gradient(225deg, rgba(249, 115, 22, 0.8) 0%, rgba(249, 115, 22, 0.9) 100%);
-  animation: morph 12s ease-in-out infinite;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(245, 245, 247, 0.8);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(159, 158, 161, 0.4);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(159, 158, 161, 0.6);
-}
-
-/* Enhanced Frosted Card Effects */
-.frosted-card {
+/* Glass Card Effect */
+.glass-card {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.frosted-card:hover {
-  backdrop-filter: blur(12px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
-}
-
-/* Data point styles */
-.data-point {
-  transition: all 0.3s ease;
-}
-
-.data-point:hover {
-  transform: scale(1.1);
-  z-index: 10;
-  filter: brightness(1.2);
-}
-
-/* Notebook textarea specific styles */
-.notebook-textarea-container {
-  position: relative;
-  border-radius: 0.5rem;
-  overflow: hidden;
 }

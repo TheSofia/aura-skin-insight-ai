@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import DynamicLogo from './DynamicLogo';
 
 type HeaderProps = {
   currentStep: number;
@@ -31,11 +30,6 @@ const Header = ({ currentStep }: HeaderProps) => {
       }`}
     >
       <div className="flex items-center gap-3 group">
-        {/* Interactive Logo with hover effect */}
-        <div className="transform transition-transform duration-300 group-hover:scale-110">
-          <DynamicLogo size="sm" />
-        </div>
-        
         <h1 className="text-xl font-clash font-medium">
           <span className="text-aurascan-dark-grey">Aura</span>
           <span className="text-aurascan-accent">Scan</span>
