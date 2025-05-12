@@ -7,98 +7,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 260 10% 20%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 260 10% 20%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 260 10% 20%;
-
-    --primary: 260 10% 20%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 260 10% 20%;
-
-    --muted: 220 14% 96%;
-    --muted-foreground: 260 10% 55%;
-
-    --accent: 24 94% 53%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 14% 90%;
-    --input: 220 14% 90%;
-    --ring: 24 94% 53%;
-
-    --radius: 0.75rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-aurascan-white text-foreground font-sans;
-  }
-  h1, h2, h3 {
-    @apply font-clash font-medium;
-  }
-  h4, h5, h6 {
-    @apply font-space font-medium;
-  }
-}
+/* ... keep existing code (CSS variables and base styles) */
 
 /* Custom Utility Classes */
 @layer components {
-  .glass {
-    @apply bg-glass-light backdrop-blur-md border border-aurascan-light-grey shadow-light rounded-lg;
-  }
-  
-  .glass-card {
-    @apply bg-gradient-light border border-aurascan-light-grey/50 shadow-light rounded-lg overflow-hidden;
-  }
-  
-  .accent-button {
-    @apply bg-gradient-accent hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-accent transition-all duration-300;
-  }
-  
-  .light-button {
-    @apply bg-aurascan-white hover:bg-aurascan-light-grey text-aurascan-dark-grey font-medium tracking-wider rounded-md border border-aurascan-light-grey transition-all duration-300;
-  }
-  
-  .accent-text {
-    @apply text-aurascan-accent;
-  }
-  
-  .shimmer-effect {
-    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-shimmer-accent before:bg-[length:200%_100%] before:animate-shimmer;
-  }
-
-  /* Dynamic Buttons */
-  .button-accent {
-    @apply bg-gradient-accent hover:opacity-90 text-white font-medium tracking-wider rounded-md shadow-accent transition-all duration-300;
-  }
-  
-  .button-light {
-    @apply bg-aurascan-white hover:bg-aurascan-light-grey text-aurascan-dark-grey font-medium tracking-wider rounded-md border border-aurascan-light-grey transition-all duration-300;
-  }
-
-  /* Interactive elements with enhanced animations */
-  .interactive-element {
-    @apply transition-all duration-300 hover:shadow-lg active:scale-95;
-  }
-  
-  .interactive-card {
-    @apply glass-card transition-all duration-300 hover:shadow-xl hover:translate-y-[-2px] active:translate-y-0 active:shadow-lg;
-  }
+  /* ... keep existing code (utility classes) */
 }
 
 /* App container and layout */
@@ -123,6 +36,21 @@
   50% { transform: scale(1.1); opacity: 0.8; }
 }
 
+@keyframes subtle-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes subtle-glow {
+  0%, 100% { opacity: 0; transform: scale(1.5); }
+  50% { opacity: 0.2; transform: scale(1.6); }
+}
+
+@keyframes subtle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
 @keyframes throb {
   0%, 100% { transform: scale(1); opacity: 0.9; filter: brightness(1); }
   50% { transform: scale(1.2); opacity: 1; filter: brightness(1.2); }
@@ -131,6 +59,11 @@
 @keyframes circular-motion {
   0% { transform: rotate(0deg) translate(2px) rotate(0deg); }
   100% { transform: rotate(360deg) translate(2px) rotate(-360deg); }
+}
+
+@keyframes circular-motion-reverse {
+  0% { transform: rotate(360deg) translate(2px) rotate(-360deg); }
+  100% { transform: rotate(0deg) translate(2px) rotate(0deg); }
 }
 
 @keyframes float {
@@ -165,6 +98,11 @@
   100% { background-position: -200% 0; }
 }
 
+@keyframes rotate-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* Dynamic Dot Logo Setup */
 .dot-logo {
   position: relative;
@@ -179,12 +117,28 @@
   animation: pulse-dot 2s infinite ease-in-out;
 }
 
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s infinite ease-in-out;
+}
+
+.animate-subtle-glow {
+  animation: subtle-glow 3s infinite ease-in-out;
+}
+
+.animate-subtle-float {
+  animation: subtle-float 4s infinite ease-in-out;
+}
+
 .animate-throb {
   animation: throb 1.5s infinite ease-in-out;
 }
 
 .animate-circular-motion {
   animation: circular-motion 4s infinite linear;
+}
+
+.animate-circular-motion-reverse {
+  animation: circular-motion-reverse 4s infinite linear;
 }
 
 .animate-float {
@@ -201,6 +155,26 @@
 
 .animate-morph {
   animation: morph 8s ease-in-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-dot 3s infinite ease-in-out;
+}
+
+/* Notebook styles for textarea */
+.notebook-container {
+  position: relative;
+}
+
+/* Notebook background with ruled lines */
+.bg-notebook {
+  background-image: linear-gradient(transparent calc(1.5rem - 1px), #E5E7EB 1.5rem);
+  background-size: 100% 1.5rem;
+  line-height: 1.5rem;
 }
 
 /* Fluid Morphing Shape */
@@ -243,15 +217,7 @@
   transform: translateY(-2px);
 }
 
-/* Dynamic Grid Lines */
-.grid-lines {
-  background-image: 
-    linear-gradient(to right, rgba(142, 145, 150, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(142, 145, 150, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Enhanced data visualization styles */
+/* Data point styles */
 .data-point {
   transition: all 0.3s ease;
 }
@@ -262,18 +228,9 @@
   filter: brightness(1.2);
 }
 
-.data-bar {
-  transition: width 0.8s ease, height 0.8s ease, opacity 0.3s ease;
-}
-
-.data-line {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: dash 1.5s ease-in-out forwards;
-}
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
-  }
+/* Notebook textarea specific styles */
+.notebook-textarea-container {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }

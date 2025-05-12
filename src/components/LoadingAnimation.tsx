@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DynamicLogo from './DynamicLogo';
 
 interface LoadingAnimationProps {
@@ -8,6 +8,28 @@ interface LoadingAnimationProps {
 }
 
 const LoadingAnimation = ({ message = "Processing", size = 'md' }: LoadingAnimationProps) => {
+  // State for controlling gradient transition
+  const [gradientPosition, setGradientPosition] = useState(0);
+  
+  // Cycle through gradient positions
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGradientPosition((prev) => (prev + 1) % 4);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Get the current gradient class
+  const getGradientClass = () => {
+    const gradients = [
+      'bg-gradient-to-tr from-aurascan-dark-grey/80 via-aurascan-medium-grey/60 to-aurascan-light-grey/80',
+      'bg-gradient-to-bl from-aurascan-medium-grey/70 via-aurascan-dark-grey/60 to-aurascan-light-grey/80',
+      'bg-gradient-to-r from-aurascan-dark-grey/80 via-aurascan-light-grey/60 to-aurascan-medium-grey/70',
+      'bg-gradient-to-l from-aurascan-medium-grey/70 via-aurascan-light-grey/60 to-aurascan-dark-grey/80',
+    ];
+    return gradients[gradientPosition];
+  };
+
   // Determine sizes based on the size prop
   const containerSizes = {
     sm: 'w-24 h-24',
@@ -24,29 +46,35 @@ const LoadingAnimation = ({ message = "Processing", size = 'md' }: LoadingAnimat
   return (
     <div className="flex flex-col items-center justify-center animate-fade-in">
       <div className={`relative ${containerSizes[size]} mx-auto mb-6`}>
-        {/* Background light */}
-        <div className="absolute inset-0 rounded-full bg-white shadow-light opacity-80"></div>
+        {/* Background light with dynamic gradient */}
+        <div className={`absolute inset-0 rounded-full opacity-80 transition-all duration-1000 ease-in-out ${getGradientClass()}`}></div>
         
         {/* Central dynamic logo */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           <DynamicLogo colorScheme="cyan" size={size === 'sm' ? 'md' : size === 'md' ? 'lg' : 'xl'} />
         </div>
         
-        {/* Animated orbital rings */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
+        {/* Animated orbital rings with enhanced motion */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
           <div className="absolute inset-0 rounded-full border border-aurascan-dark-grey/10 animate-rotate-slow" 
                style={{ animationDuration: '20s' }}></div>
           <div className="absolute inset-2 rounded-full border border-aurascan-dark-grey/15 animate-rotate-slow" 
-               style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
+               style={{ animationDirection: 'reverse', animationDuration: '15s' }}></div>
           <div className="absolute inset-4 rounded-full border border-aurascan-dark-grey/20 animate-rotate-slow" 
                style={{ animationDuration: '10s' }}></div>
+          
+          {/* Additional decorative elements */}
+          <div className="absolute w-full h-full animate-rotate-slow" style={{ animationDuration: '25s' }}>
+            <div className="absolute top-0 left-1/2 w-2 h-2 rounded-full bg-aurascan-dark-grey/20"></div>
+            <div className="absolute bottom-0 left-1/2 w-2 h-2 rounded-full bg-aurascan-dark-grey/20"></div>
+          </div>
         </div>
         
-        {/* Data points floating around */}
+        {/* Enhanced data points floating around */}
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1.5 h-1.5 rounded-full bg-aurascan-dark-grey/70 animate-float"
+            className="absolute w-1.5 h-1.5 rounded-full bg-aurascan-dark-grey/70 animate-float data-point"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -57,9 +85,9 @@ const LoadingAnimation = ({ message = "Processing", size = 'md' }: LoadingAnimat
           ></div>
         ))}
         
-        {/* Scanning line effect */}
+        {/* Enhanced scanning line effect */}
         <div className="absolute inset-x-0 top-0 h-full overflow-hidden rounded-full">
-          <div className="h-0.5 bg-gradient-to-r from-transparent via-aurascan-accent to-transparent w-full animate-scanning"></div>
+          <div className="h-0.5 bg-gradient-to-r from-transparent via-aurascan-dark-grey to-transparent w-full animate-scanning"></div>
         </div>
         
         {/* Morphing shape behind everything */}

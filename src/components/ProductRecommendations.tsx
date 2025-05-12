@@ -127,12 +127,13 @@ const ProductRecommendations = ({ isManualPath = false }: ProductRecommendations
             
             {/* Manual Input Text Area - only visible when coming via manual path */}
             {isManualPath && (
-              <div className="w-full max-w-2xl mb-10 transition-all duration-300">
+              <div className="w-full max-w-2xl mb-10 transition-all duration-300 notebook-textarea-container">
                 <Textarea
+                  variant="notebook"
                   placeholder="Tell us about your skin: type, concerns, goals..."
                   value={skinDescription}
                   onChange={handleSkinDescriptionChange}
-                  className="resize-none border-aurascan-light-grey/50 rounded-md p-4 h-32 font-light text-base placeholder:text-aurascan-medium-grey/70 focus-visible:ring-aurascan-dark-grey/30 focus-visible:ring-offset-0"
+                  className="resize-none rounded-md p-4 h-32 font-light text-base placeholder:text-aurascan-medium-grey/70"
                 />
               </div>
             )}

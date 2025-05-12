@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 type DynamicLogoProps = {
@@ -46,31 +47,36 @@ const DynamicLogo = ({ size = 'md', className = '', colorScheme = 'accent' }: Dy
         return {
           core: 'bg-aurascan-accent',
           innerRing: 'border-aurascan-accent/70',
-          outerRing: 'border-aurascan-accent/40'
+          outerRing: 'border-aurascan-accent/40',
+          glow: 'after:bg-aurascan-accent/10'
         };
       case 'cyan':
         return {
           core: 'bg-aurascan-dark-grey',
           innerRing: 'border-aurascan-dark-grey/70',
-          outerRing: 'border-aurascan-dark-grey/40'
+          outerRing: 'border-aurascan-dark-grey/40',
+          glow: 'after:bg-aurascan-dark-grey/10'
         };
       case 'teal':
         return {
           core: 'bg-aurascan-medium-grey',
           innerRing: 'border-aurascan-medium-grey/70',
-          outerRing: 'border-aurascan-medium-grey/40'
+          outerRing: 'border-aurascan-medium-grey/40',
+          glow: 'after:bg-aurascan-medium-grey/10'
         };
       case 'violet':
         return {
           core: 'bg-aurascan-dark-grey',
           innerRing: 'border-aurascan-dark-grey/70',
-          outerRing: 'border-aurascan-dark-grey/40'
+          outerRing: 'border-aurascan-dark-grey/40',
+          glow: 'after:bg-aurascan-dark-grey/10'
         };
       default:
         return {
           core: 'bg-aurascan-accent',
           innerRing: 'border-aurascan-accent/70',
-          outerRing: 'border-aurascan-accent/40'
+          outerRing: 'border-aurascan-accent/40',
+          glow: 'after:bg-aurascan-accent/10'
         };
     }
   };
@@ -79,37 +85,36 @@ const DynamicLogo = ({ size = 'md', className = '', colorScheme = 'accent' }: Dy
 
   return (
     <div 
-      className={`dot-logo relative ${sizeClasses[size]} ${className}`}
+      className={`dot-logo relative ${sizeClasses[size]} ${className} animate-subtle-float`}
       role="presentation"
     >
-      {/* Core dot with enhanced pulse animation */}
+      {/* Core dot with enhanced subtle floating animation */}
       <div 
-        className={`absolute ${coreSizes[size]} ${colorClasses.core} rounded-full animate-pulse-dot z-10 hover:animate-throb`}
+        className={`absolute ${coreSizes[size]} ${colorClasses.core} rounded-full animate-subtle-pulse z-10 
+        after:content-[''] after:absolute after:inset-0 after:rounded-full ${colorClasses.glow} after:blur-md after:transform after:scale-150 after:opacity-0 after:animate-subtle-glow`}
       ></div>
       
       {/* Inner ring with enhanced circular animation */}
       <div 
-        className={`absolute ${innerRingSizes[size]} border ${colorClasses.innerRing} rounded-full animate-circular-motion transition-transform duration-300 hover:scale-105`}
+        className={`absolute ${innerRingSizes[size]} border ${colorClasses.innerRing} rounded-full animate-circular-motion transition-transform duration-300`}
       ></div>
       
       {/* Outer ring with reverse animation */}
       <div 
-        className={`absolute ${outerRingSizes[size]} border ${colorClasses.outerRing} rounded-full animate-circular-motion transition-transform duration-300 hover:scale-95`} 
-        style={{ animationDirection: 'reverse', animationDuration: '6s' }}
+        className={`absolute ${outerRingSizes[size]} border ${colorClasses.outerRing} rounded-full animate-circular-motion-reverse transition-transform duration-300`} 
       ></div>
 
-      {/* Floating particles that appear on hover */}
-      <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500">
+      {/* Floating particles that appear continuously */}
+      <div className="absolute inset-0">
         {Array(3).fill(0).map((_, i) => (
           <div 
             key={i}
-            className={`absolute w-1 h-1 rounded-full ${colorClasses.core} animate-float`}
+            className={`absolute w-1 h-1 rounded-full ${colorClasses.core} animate-float opacity-60`}
             style={{
               left: `${30 + (i * 15)}%`,
               top: `${20 + (i * 20)}%`,
               animationDuration: `${2 + i * 0.5}s`,
-              animationDelay: `${i * 0.25}s`,
-              opacity: 0.6
+              animationDelay: `${i * 0.25}s`
             }}
           ></div>
         ))}
