@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -58,7 +57,7 @@ export default {
 					'off-white': '#F6F6F7', // Very pale cool grey - alternative background
 					'light-grey': '#F1F1F1', // Light grey for subtle contrasts
 					'medium-grey': '#9F9EA1', // Medium grey for secondary text
-					'dark-grey': '#403E43',  // Dark grey for important text
+					'dark-grey': '#403E43',  // Dark grey for important text (replacing black)
 					'deeper-grey': '#221F26', // Deeper grey for highest contrast elements
 					'accent': '#F97316',    // A refined orange accent (used very sparingly)
 					'glass-white': 'rgba(255, 255, 255, 0.9)',

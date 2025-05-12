@@ -120,7 +120,10 @@ const ProductRecommendations = () => {
           <div className="max-w-5xl mx-auto">
             <div className="space-y-6">
               {products.map(product => (
-                <div key={product.id} className="frosted-card overflow-hidden p-6 transition-all hover:shadow-lg">
+                <div 
+                  key={product.id} 
+                  className="frosted-card overflow-hidden p-6 transition-all hover:shadow-lg hover:translate-y-[-2px]"
+                >
                   <div className="flex flex-col md:flex-row gap-6">
                     <div className="flex-1">
                       <div className="text-sm text-aurascan-dark-grey font-medium mb-1">{product.brand}</div>
@@ -137,14 +140,14 @@ const ProductRecommendations = () => {
                         </Button>
                         
                         <button 
-                          className="flex items-center justify-center p-2 rounded-full hover:bg-aurascan-light-grey transition-colors"
+                          className="flex items-center justify-center p-2 rounded-full hover:bg-aurascan-light-grey transition-colors duration-300"
                           onClick={() => toggleSaveProduct(product.id)}
                           aria-label={product.saved ? "Remove from library" : "Save to library"}
                         >
                           {product.saved ? (
-                            <BookmarkCheck className="h-5 w-5 text-aurascan-dark-grey fill-aurascan-dark-grey" />
+                            <BookmarkCheck className="h-5 w-5 text-aurascan-dark-grey fill-aurascan-dark-grey transition-all duration-300" />
                           ) : (
-                            <Bookmark className="h-5 w-5 text-aurascan-dark-grey" />
+                            <Bookmark className="h-5 w-5 text-aurascan-dark-grey transition-all duration-300" />
                           )}
                         </button>
                       </div>
@@ -171,7 +174,7 @@ const ProductRecommendations = () => {
             
             {getSavedProducts().length > 0 && (
               <Button 
-                className="bg-aurascan-dark-grey text-white hover:bg-aurascan-dark-grey/90"
+                className="bg-aurascan-dark-grey text-white hover:bg-aurascan-dark-grey/90 transition-all duration-300"
                 onClick={() => {
                   toast({
                     title: "View saved products",

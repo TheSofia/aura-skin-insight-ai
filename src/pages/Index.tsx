@@ -5,35 +5,67 @@ import Onboarding from "@/components/Onboarding";
 import FaceScan from "@/components/FaceScan";
 import Processing from "@/components/Processing";
 import ProductRecommendations from "@/components/ProductRecommendations";
+import LoadingAnimation from "@/components/LoadingAnimation";
 import { Toaster } from "@/components/ui/sonner";
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Simplified step handlers
+  // Simplified step handlers with loading states
   const handleGetStarted = () => {
-    setCurrentStep(1); // Move to Face Scan
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setCurrentStep(1); // Move to Face Scan
+    }, 800);
   };
 
   const handleScanComplete = () => {
-    setCurrentStep(2); // Move to Processing
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setCurrentStep(2); // Move to Processing
+    }, 600);
   };
 
   const handleProcessingComplete = () => {
-    // Skip Skin Results page, go directly to Product Recommendations
-    setCurrentStep(3);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      // Skip Skin Results page, go directly to Product Recommendations
+      setCurrentStep(3);
+    }, 500);
   };
 
   const handleBack = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        setCurrentStep(currentStep - 1);
+      }, 400);
     }
   };
 
   // Skip directly to recommendations (for manual path)
   const handleDirectToRecommendations = () => {
-    setCurrentStep(3); // Go directly to recommendations
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setCurrentStep(3); // Go directly to recommendations
+    }, 1200);
   };
+
+  // Render loading state if needed
+  if (isLoading) {
+    return (
+      <div className="app-container flex items-center justify-center">
+        <LoadingAnimation size="md" message="Preparing your experience" />
+        <Toaster />
+      </div>
+    );
+  }
 
   return (
     <div className="app-container">
