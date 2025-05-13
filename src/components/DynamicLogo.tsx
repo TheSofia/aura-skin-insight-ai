@@ -1,10 +1,24 @@
-import React, { forwardRef, useEffect, useState } from 'react';
 
-type DynamicLogoProps = {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+import React, { forwardRef } from 'react';
+import LogoCore from './logo/LogoCore';
+import LogoRings from './logo/LogoRings';
+import LogoParticles from './logo/LogoParticles';
+import useGradientState from '../hooks/useGradientState';
+import { getColorClasses } from '../utils/logoColors';
+import { getAnimationClasses, AnimationStyle } from '../utils/logoAnimations';
+import { 
+  getLogoSizeClasses,
+  getCoreSizeClasses,
+  getInnerRingSizeClasses,
+  getOuterRingSizeClasses,
+  LogoSize
+} from '../utils/logoSizes';
+
+export type DynamicLogoProps = {
+  size?: LogoSize;
   className?: string;
   colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined';
-  animationStyle?: 'float' | 'pulse' | 'rotate' | 'morph' | 'combined' | 'subtle' | 'cellular';
+  animationStyle?: AnimationStyle;
 };
 
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
@@ -13,193 +27,22 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
   colorScheme = 'accent',
   animationStyle = 'combined'
 }, ref) => {
-  // Enhanced gradient colorScheme effect with faster cycling
-  const [gradientState, setGradientState] = useState(0);
+  // Use the gradient state hook for enhanced gradient colorScheme effect
+  const gradientState = useGradientState(colorScheme === 'gradient');
   
-  useEffect(() => {
-    if (colorScheme === 'gradient') {
-      const interval = setInterval(() => {
-        setGradientState(prev => (prev + 1) % 4); // Increased number of states
-      }, 2200); // Faster transitions
-      return () => clearInterval(interval);
-    }
-  }, [colorScheme]);
-
-  // Dynamic size configuration
-  const sizeClasses = {
-    sm: 'w-8 h-8',
-    md: 'w-12 h-12',
-    lg: 'w-16 h-16',
-    xl: 'w-24 h-24'
-  };
-
-  // Core dot size based on logo size
-  const coreSizes = {
-    sm: 'w-2 h-2',
-    md: 'w-3 h-3',
-    lg: 'w-4 h-4',
-    xl: 'w-6 h-6'
-  };
-
-  // Inner ring size based on logo size
-  const innerRingSizes = {
-    sm: 'w-4 h-4',
-    md: 'w-6 h-6',
-    lg: 'w-8 h-8',
-    xl: 'w-12 h-12'
-  };
-
-  // Outer ring size based on logo size
-  const outerRingSizes = {
-    sm: 'w-8 h-8',
-    md: 'w-12 h-12',
-    lg: 'w-16 h-16',
-    xl: 'w-24 h-24'
-  };
-
-  // Get more vibrant color classes based on the selected scheme
-  const getColorClasses = () => {
-    switch (colorScheme) {
-      case 'coral':
-        return {
-          core: 'bg-aurascan-accent',
-          innerRing: 'border-aurascan-accent',
-          outerRing: 'border-aurascan-accent/70',
-          glow: 'after:bg-aurascan-accent/50'
-        };
-      case 'cyan':
-        return {
-          core: 'bg-aurascan-dark-grey',
-          innerRing: 'border-aurascan-dark-grey',
-          outerRing: 'border-aurascan-dark-grey/70',
-          glow: 'after:bg-aurascan-dark-grey/50'
-        };
-      case 'teal':
-        return {
-          core: 'bg-aurascan-deep-blue',
-          innerRing: 'border-aurascan-deep-blue',
-          outerRing: 'border-aurascan-deep-blue/70',
-          glow: 'after:bg-aurascan-deep-blue/50'
-        };
-      case 'violet':
-        return {
-          core: 'bg-aurascan-dark-grey',
-          innerRing: 'border-aurascan-dark-grey',
-          outerRing: 'border-aurascan-dark-grey/70',
-          glow: 'after:bg-aurascan-dark-grey/50'
-        };
-      case 'refined':
-        return {
-          core: 'bg-aurascan-accent/90',
-          innerRing: 'border-aurascan-accent/80',
-          outerRing: 'border-aurascan-deep-blue/60',
-          glow: 'after:bg-aurascan-accent/30'
-        };
-      case 'gradient':
-        // Enhanced cycle through vibrant colors for gradient scheme
-        if (gradientState === 0) {
-          return {
-            core: 'bg-gradient-to-r from-aurascan-accent to-aurascan-dark-orange',
-            innerRing: 'border-aurascan-accent',
-            outerRing: 'border-aurascan-deep-blue/70',
-            glow: 'after:bg-aurascan-accent/50'
-          };
-        } else if (gradientState === 1) {
-          return {
-            core: 'bg-gradient-to-r from-aurascan-dark-orange to-aurascan-deep-blue',
-            innerRing: 'border-aurascan-dark-orange',
-            outerRing: 'border-aurascan-accent/70',
-            glow: 'after:bg-aurascan-dark-orange/50'
-          };
-        } else if (gradientState === 2) {
-          return {
-            core: 'bg-gradient-to-r from-aurascan-deep-blue to-aurascan-accent',
-            innerRing: 'border-aurascan-deep-blue',
-            outerRing: 'border-aurascan-dark-orange/70',
-            glow: 'after:bg-aurascan-deep-blue/50'
-          };
-        } else {
-          // Added a fourth state with mixed colors
-          return {
-            core: 'bg-gradient-to-tr from-aurascan-accent via-aurascan-deep-blue to-aurascan-dark-orange',
-            innerRing: 'border-aurascan-accent',
-            outerRing: 'border-aurascan-deep-blue/70',
-            glow: 'after:bg-gradient-to-r from-aurascan-accent/40 to-aurascan-deep-blue/40'
-          };
-        }
-      default:
-        return {
-          core: 'bg-aurascan-accent',
-          innerRing: 'border-aurascan-accent',
-          outerRing: 'border-aurascan-accent/70',
-          glow: 'after:bg-aurascan-accent/50'
-        };
-    }
-  };
-
-  // Enhanced animation classes with new cellular animation style
-  const getAnimationClasses = () => {
-    switch (animationStyle) {
-      case 'float':
-        return {
-          core: 'animate-subtle-float',
-          innerRing: 'animate-float',
-          outerRing: 'animate-float',
-          particles: 'animate-float'
-        };
-      case 'pulse':
-        return {
-          core: 'animate-pulse-dot',
-          innerRing: 'animate-pulse-slow',
-          outerRing: 'animate-pulse-slow',
-          particles: 'animate-pulse-dot'
-        };
-      case 'rotate':
-        return {
-          core: 'animate-subtle-pulse',
-          innerRing: 'animate-rotate-slow',
-          outerRing: 'animate-rotate-slow',
-          particles: 'animate-circular-motion'
-        };
-      case 'morph':
-        return {
-          core: 'animate-throb',
-          innerRing: 'animate-morph',
-          outerRing: 'animate-rotate-slow',
-          particles: 'animate-float'
-        };
-      case 'subtle':
-        return {
-          core: 'animate-subtle-pulse',
-          innerRing: 'animate-rotate-slow',
-          outerRing: 'animate-rotate-slow',
-          particles: 'animate-float-subtle'
-        };
-      case 'cellular':
-        // New cellular animation style with slower, organic movement
-        return {
-          core: 'animate-cellular-core-pulse',
-          innerRing: 'animate-cellular-ring-drift',
-          outerRing: 'animate-cellular-drift',
-          particles: 'animate-cellular-particle-float'
-        };
-      case 'combined':
-      default:
-        return {
-          core: 'animate-pulse-dot', // More pronounced pulse
-          innerRing: 'animate-circular-motion',
-          outerRing: 'animate-circular-motion-reverse',
-          particles: 'animate-float'
-        };
-    }
-  };
-
-  const colorClasses = getColorClasses();
-  const animationClasses = getAnimationClasses();
+  // Get size classes for different parts of the logo
+  const sizeClass = getLogoSizeClasses(size);
+  const coreSize = getCoreSizeClasses(size);
+  const innerRingSize = getInnerRingSizeClasses(size);
+  const outerRingSize = getOuterRingSizeClasses(size);
+  
+  // Get color and animation classes
+  const colorClasses = getColorClasses(colorScheme, gradientState);
+  const animationClasses = getAnimationClasses(animationStyle);
 
   return (
     <div 
-      className={`dot-logo relative ${sizeClasses[size]} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''}`}
+      className={`dot-logo relative ${sizeClass} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''}`}
       role="presentation"
       ref={ref}
       style={{
@@ -207,55 +50,29 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
       }}
     >
-      {/* Core dot with enhanced pulsing animation and increased vibrancy */}
-      <div 
-        className={`absolute ${coreSizes[size]} ${colorClasses.core} rounded-full ${animationClasses.core} z-10 
-          after:content-[''] after:absolute after:inset-0 after:rounded-full ${colorClasses.glow} 
-          after:blur-md after:transform after:scale-150 after:opacity-0 after:animate-subtle-glow
-          transition-all duration-300 hover:transform hover:scale-125`}
-        style={{
-          animationDuration: animationStyle === 'cellular' ? '7.5s' : undefined,
-          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.45, 0, 0.55, 1)' : undefined
-        }}
-      ></div>
+      {/* Core dot */}
+      <LogoCore 
+        coreSize={coreSize} 
+        colorClasses={colorClasses} 
+        animationClasses={animationClasses} 
+        animationStyle={animationStyle}
+      />
       
-      {/* Inner ring with enhanced animation and increased vibrancy */}
-      <div 
-        className={`absolute ${innerRingSizes[size]} border-2 ${colorClasses.innerRing} rounded-full 
-          ${animationClasses.innerRing} transition-transform duration-300 hover:border-opacity-100`}
-        style={{
-          animationDuration: animationStyle === 'cellular' ? '12s' : undefined,
-          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
-        }}
-      ></div>
+      {/* Inner and outer rings */}
+      <LogoRings 
+        innerRingSize={innerRingSize}
+        outerRingSize={outerRingSize}
+        colorClasses={colorClasses}
+        animationClasses={animationClasses}
+        animationStyle={animationStyle}
+      />
       
-      {/* Outer ring with enhanced animation and increased vibrancy */}
-      <div 
-        className={`absolute ${outerRingSizes[size]} border-2 ${colorClasses.outerRing} rounded-full 
-          ${animationClasses.outerRing} transition-transform duration-300 hover:border-opacity-100`}
-        style={{
-          animationDuration: animationStyle === 'cellular' ? '15s' : undefined,
-          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.37, 0, 0.63, 1)' : undefined
-        }}
-      ></div>
-
-      {/* Floating particles with enhanced cellular animation */}
-      <div className="absolute inset-0 overflow-visible">
-        {Array(6).fill(0).map((_, i) => ( 
-          <div 
-            key={i}
-            className={`absolute w-1.5 h-1.5 rounded-full ${colorClasses.core} ${animationClasses.particles} opacity-80
-              transition-all duration-300 hover:opacity-100 hover:transform hover:scale-150`}
-            style={{
-              left: `${25 + (i * 10)}%`,
-              top: `${15 + (i * 15)}%`,
-              animationDuration: animationStyle === 'cellular' ? `${8.5 + i * 1.2}s` : `${1.5 + i * 0.4}s`, // Slower for cellular
-              animationDelay: `${i * (animationStyle === 'cellular' ? 0.8 : 0.2)}s`,
-              animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
-            }}
-          ></div>
-        ))}
-      </div>
+      {/* Floating particles */}
+      <LogoParticles 
+        colorClasses={colorClasses}
+        animationClasses={animationClasses}
+        animationStyle={animationStyle}
+      />
     </div>
   );
 });
