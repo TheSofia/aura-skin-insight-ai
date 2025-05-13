@@ -6,4 +6,5 @@ export type Product = {
   description: string;
   url: string;
   saved: boolean;
+  keywords?: string[]; // Keywords for filtering products based on user input
 };
