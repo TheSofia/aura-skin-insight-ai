@@ -1,0 +1,111 @@
+
+/* Animated Gradients */
+.bg-gradient-shimmer {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(246, 246, 247, 0.95) 60%, rgba(255, 255, 255, 0.92) 100%);
+  background-size: 200% 200%;
+  animation: shimmer-gradient 18s ease-in-out infinite alternate;
+}
+
+.bg-gradient-dynamic {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.97) 0%, 
+    rgba(246, 246, 247, 0.95) 40%,
+    rgba(249, 115, 22, 0.08) 75%, 
+    rgba(42, 67, 101, 0.06) 100%);
+  background-size: 300% 300%;
+  animation: pan-gradient 25s ease-in-out infinite alternate;
+}
+
+.bg-accent-gradient {
+  background: linear-gradient(135deg, 
+    rgba(249, 115, 22, 0.95) 0%, 
+    rgba(232, 76, 18, 0.92) 50%, 
+    rgba(249, 115, 22, 0.9) 100%);
+  background-size: 200% 200%;
+  animation: shimmer-gradient 8s ease-in-out infinite;
+}
+
+.bg-button-gradient {
+  background: linear-gradient(135deg, 
+    rgba(46, 52, 64, 0.95) 0%, 
+    rgba(34, 31, 38, 0.98) 100%);
+  background-size: 200% 200%;
+  animation: subtle-shift 12s ease infinite;
+  transition: all 0.5s ease;
+}
+
+.bg-button-gradient:hover {
+  background: linear-gradient(135deg, 
+    rgba(34, 31, 38, 0.98) 0%, 
+    rgba(46, 52, 64, 0.95) 100%);
+  box-shadow: 0 8px 24px -8px rgba(34, 31, 38, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Animation keyframes for gradients */
+@keyframes shimmer-gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes pan-gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 25%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  75% {
+    background-position: 0% 75%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes subtle-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Enhanced glow effects */
+.glow-subtle {
+  box-shadow: 0 0 15px 2px rgba(249, 115, 22, 0.15);
+  animation: pulse-glow 4s infinite alternate ease-in-out;
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px 5px rgba(249, 115, 22, 0.2);
+  animation: pulse-glow 3s infinite alternate ease-in-out;
+}
+
+.glow-soft {
+  box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.2);
+  animation: pulse-glow 7s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px 1px rgba(249, 115, 22, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 20px 5px rgba(249, 115, 22, 0.2);
+  }
+}

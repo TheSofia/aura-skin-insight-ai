@@ -29,7 +29,9 @@
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-beautyagent-accent to-beautyagent-dark-orange;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, var(--beautyagent-accent), var(--beautyagent-dark-orange));
   }
   
   /* Enhanced hover interaction classes for consistent refinement */
@@ -51,7 +53,7 @@
     @apply transition-colors duration-300;
   }
   .hover-muted-violet:hover {
-    @apply text-[#7E69AB];
+    @apply text-beautyagent-muted-violet;
   }
   
   /* Hover text effect that applies to any text element */
@@ -77,5 +79,23 @@
   }
   .interactive-element:hover {
     @apply translate-y-[-2px] brightness-105;
+  }
+  
+  /* New enhanced text effects */
+  .text-shimmer {
+    background: linear-gradient(to right, 
+      var(--beautyagent-dark-grey),
+      var(--beautyagent-accent),
+      var(--beautyagent-dark-grey));
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 4s linear infinite;
+  }
+  
+  @keyframes text-shimmer {
+    to { background-position: 200% center; }
   }
 }

@@ -17,7 +17,7 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
   const animationState = useAnimationState();
   
   return (
-    <div className="flex flex-col items-center text-center px-6 py-10 space-y-12 animate-fade-in min-h-screen justify-center bg-gradient-light relative overflow-hidden">
+    <div className="flex flex-col items-center text-center px-6 py-10 space-y-12 animate-fade-in min-h-screen justify-center bg-gradient-dynamic relative overflow-hidden">
       {/* Enhanced floating background elements with dynamic cellular movement - increased cell count */}
       <FloatingBackground animationState={animationState} />
       
@@ -28,7 +28,7 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
             colorScheme="refined" 
             animationStyle="cellular" 
             size="lg" 
-            className="transition-transform duration-500 hover-enhance" 
+            className="transition-transform duration-500 hover-enhance glow-subtle" 
             ref={logoRef}
             showText={true}
           />

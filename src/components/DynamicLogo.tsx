@@ -44,7 +44,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
 
   // Define sophisticated hover animation for the logo
   const hoverAnimationClass = useMemo(() => {
-    return 'group transition-all duration-500 hover:scale-[1.02]';
+    return 'group transition-all duration-500 hover:scale-[1.02] hover:filter hover:brightness-[1.03]';
   }, []);
 
   return (
@@ -83,10 +83,13 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           animationClasses={animationClasses}
           animationStyle={animationStyle}
         />
+        
+        {/* Add a subtle outer glow effect */}
+        <div className="absolute inset-[-10%] rounded-full opacity-30 animate-pulse-slow bg-gradient-radial from-beautyagent-accent/10 to-transparent"></div>
       </div>
       
       {showText && (
-        <div className="font-clash font-light text-beautyagent-dark-grey text-xl md:text-2xl">
+        <div className="font-clash font-light text-beautyagent-dark-grey text-xl md:text-2xl animate-fade-in" style={{animationDelay: '0.5s', animationFillMode: 'forwards'}}>
           beautyAgent
         </div>
       )}

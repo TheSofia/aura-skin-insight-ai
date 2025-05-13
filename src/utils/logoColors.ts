@@ -16,77 +16,77 @@ export const getColorClasses = (colorScheme: ColorScheme, gradientState: number)
   switch (colorScheme) {
     case 'coral':
       return {
-        core: 'bg-aurascan-accent',
+        core: 'bg-beautyagent-accent',
         innerRing: 'bg-transparent',
         outerRing: 'bg-transparent',
-        glow: 'after:bg-aurascan-accent/40'
+        glow: 'after:bg-beautyagent-accent/45'
       };
     case 'cyan':
       return {
-        core: 'bg-aurascan-dark-grey',
+        core: 'bg-beautyagent-dark-grey',
         innerRing: 'bg-transparent',
         outerRing: 'bg-transparent',
-        glow: 'after:bg-aurascan-dark-grey/40'
+        glow: 'after:bg-beautyagent-dark-grey/45'
       };
     case 'teal':
       return {
-        core: 'bg-aurascan-deep-blue',
+        core: 'bg-beautyagent-deep-blue',
         innerRing: 'bg-transparent',
         outerRing: 'bg-transparent',
-        glow: 'after:bg-aurascan-deep-blue/40'
+        glow: 'after:bg-beautyagent-deep-blue/45'
       };
     case 'violet':
       return {
-        core: 'bg-aurascan-dark-grey',
+        core: 'bg-beautyagent-dark-grey',
         innerRing: 'bg-transparent',
         outerRing: 'bg-transparent',
-        glow: 'after:bg-aurascan-dark-grey/40'
+        glow: 'after:bg-beautyagent-dark-grey/45'
       };
     case 'refined':
       return {
-        core: 'bg-aurascan-accent/90',
+        core: 'bg-beautyagent-accent/90',
         innerRing: 'bg-transparent',
         outerRing: 'bg-transparent',
-        glow: 'after:bg-aurascan-accent/30'
+        glow: 'after:bg-beautyagent-accent/35'
       };
     case 'gradient':
       // Enhanced cycle through vibrant colors for gradient scheme
       if (gradientState === 0) {
         return {
-          core: 'bg-gradient-to-r from-aurascan-accent to-aurascan-dark-orange',
+          core: 'bg-gradient-to-r from-beautyagent-accent to-beautyagent-dark-orange',
           innerRing: 'bg-transparent',
           outerRing: 'bg-transparent',
-          glow: 'after:bg-aurascan-accent/40'
+          glow: 'after:bg-beautyagent-accent/45'
         };
       } else if (gradientState === 1) {
         return {
-          core: 'bg-gradient-to-r from-aurascan-dark-orange to-aurascan-deep-blue',
+          core: 'bg-gradient-to-r from-beautyagent-dark-orange to-beautyagent-deep-blue',
           innerRing: 'bg-transparent',
           outerRing: 'bg-transparent',
-          glow: 'after:bg-aurascan-dark-orange/40'
+          glow: 'after:bg-beautyagent-dark-orange/45'
         };
       } else if (gradientState === 2) {
         return {
-          core: 'bg-gradient-to-r from-aurascan-deep-blue to-aurascan-accent',
+          core: 'bg-gradient-to-r from-beautyagent-deep-blue to-beautyagent-accent',
           innerRing: 'bg-transparent',
           outerRing: 'bg-transparent',
-          glow: 'after:bg-aurascan-deep-blue/40'
+          glow: 'after:bg-beautyagent-deep-blue/45'
         };
       } else {
         // Added a fourth state with mixed colors
         return {
-          core: 'bg-gradient-to-tr from-aurascan-accent via-aurascan-deep-blue to-aurascan-dark-orange',
+          core: 'bg-gradient-to-tr from-beautyagent-accent via-beautyagent-deep-blue to-beautyagent-dark-orange',
           innerRing: 'bg-transparent',
           outerRing: 'bg-transparent',
-          glow: 'after:bg-gradient-to-r from-aurascan-accent/30 to-aurascan-deep-blue/30'
+          glow: 'after:bg-gradient-to-r from-beautyagent-accent/35 to-beautyagent-deep-blue/35'
         };
       }
     default:
       return {
-        core: 'bg-aurascan-accent',
+        core: 'bg-beautyagent-accent',
         innerRing: 'bg-transparent',
         outerRing: 'bg-transparent',
-        glow: 'after:bg-aurascan-accent/40'
+        glow: 'after:bg-beautyagent-accent/45'
       };
   }
 };

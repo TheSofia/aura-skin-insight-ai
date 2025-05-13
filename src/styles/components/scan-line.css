@@ -1,5 +1,26 @@
 
 .scan-line {
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.5), transparent);
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(249, 115, 22, 0.4), 
+    rgba(249, 115, 22, 0.7),  
+    rgba(249, 115, 22, 0.4),
+    transparent);
+  animation: scan-pulse 3s infinite ease-in-out;
+}
+
+@keyframes scan-pulse {
+  0% {
+    opacity: 0.7;
+    background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.4), rgba(249, 115, 22, 0.7), rgba(249, 115, 22, 0.4), transparent);
+  }
+  50% {
+    opacity: 1;
+    background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.6), rgba(249, 115, 22, 0.9), rgba(249, 115, 22, 0.6), transparent);
+  }
+  100% {
+    opacity: 0.7;
+    background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.4), rgba(249, 115, 22, 0.7), rgba(249, 115, 22, 0.4), transparent);
+  }
 }

@@ -8,6 +8,7 @@
 @import './styles/components/glass-card.css';
 @import './styles/components/buttons.css';
 @import './styles/components/shapes.css';
+@import './styles/components/animated-gradients.css';
 @import './styles/utilities.css';
 
 @tailwind base;
