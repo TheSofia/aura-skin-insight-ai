@@ -7,9 +7,10 @@ type ProductListProps = {
   products: Product[];
   onToggleSave: (productId: string) => void;
   isFiltered: boolean;
+  matchedKeywords?: string[];
 };
 
-const ProductList = ({ products, onToggleSave, isFiltered }: ProductListProps) => {
+const ProductList = ({ products, onToggleSave, isFiltered, matchedKeywords = [] }: ProductListProps) => {
   const listRef = useRef<HTMLDivElement>(null);
 
   // Add animation effect when products are filtered
@@ -33,13 +34,28 @@ const ProductList = ({ products, onToggleSave, isFiltered }: ProductListProps) =
           </p>
         </div>
       ) : (
-        products.map(product => (
-          <ProductCard 
-            key={product.id} 
-            product={product} 
-            onToggleSave={onToggleSave}
-          />
-        ))
+        <>
+          {isFiltered && matchedKeywords.length > 0 && (
+            <div className="mb-4 p-4 bg-gray-50 rounded-md">
+              <p className="text-sm text-beautyagent-dark-grey">
+                Showing products based on: {matchedKeywords.slice(0, 5).map((keyword, i) => (
+                  <span key={i} className="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded-full mr-1 mb-1">
+                    {keyword}
+                  </span>
+                ))}
+                {matchedKeywords.length > 5 && <span className="text-xs">and {matchedKeywords.length - 5} more terms</span>}
+              </p>
+            </div>
+          )}
+          {products.map(product => (
+            <ProductCard 
+              key={product.id} 
+              product={product} 
+              onToggleSave={onToggleSave}
+              matchedKeywords={matchedKeywords}
+            />
+          ))}
+        </>
       )}
     </div>
   );

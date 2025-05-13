@@ -20,6 +20,7 @@ const ProductRecommendations = ({ isManualPath = false }: ProductRecommendations
     isProcessing,
     hasFiltered,
     isTyping,
+    matchedKeywords,
     handleSkinDescriptionChange,
     handleProcessSkinDescription,
     toggleSaveProduct,
@@ -66,6 +67,7 @@ const ProductRecommendations = ({ isManualPath = false }: ProductRecommendations
                 products={filteredProducts}
                 onToggleSave={toggleSaveProduct}
                 isFiltered={hasFiltered}
+                matchedKeywords={matchedKeywords}
               />
             )}
           </div>

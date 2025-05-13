@@ -1,9 +1,8 @@
-
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Product } from '@/types/product';
 import { useToast } from "@/components/ui/use-toast";
 
-// Advanced keyword categories with additional synonyms and related terms
+// Enhanced keyword categorization with weighted terms and synonyms
 const keywordMap = {
   skinTypes: {
     dry: ['dry', 'dehydrated', 'flaky', 'tight', 'parched', 'rough', 'cracked', 'chapped'],
@@ -30,6 +29,33 @@ const keywordMap = {
   }
 };
 
+// Mapping of common ingredients to skin concerns they address
+const ingredientToConcernMap = {
+  'retinol': ['wrinkles', 'texture', 'aging', 'acne'],
+  'vitamin c': ['brightening', 'darkSpots', 'antiAging'],
+  'niacinamide': ['pores', 'texture', 'redness', 'acne'],
+  'hyaluronic acid': ['hydration', 'dry'],
+  'glycolic acid': ['texture', 'dullness', 'darkSpots'],
+  'salicylic acid': ['acne', 'oily', 'blackheads'],
+  'ceramides': ['hydration', 'barrier', 'sensitive'],
+  'peptides': ['firming', 'antiAging'],
+  'azelaic acid': ['redness', 'acne', 'darkSpots'],
+  'bakuchiol': ['antiAging', 'sensitive'],
+  'squalane': ['hydration', 'sensitive', 'dry'],
+  'zinc': ['oily', 'acne']
+};
+
+// Types for clarity and better autocomplete
+type KeywordCategory = 'skinTypes' | 'concerns' | 'goals';
+type MatchResult = {
+  [K in KeywordCategory]: string[];
+};
+type ScoredProduct = {
+  product: Product;
+  score: number;
+  matchedTerms: string[];
+};
+
 export const useProductFiltering = (initialProducts: Product[]) => {
   const { toast } = useToast();
   const [products] = useState<Product[]>(initialProducts);
@@ -38,8 +64,128 @@ export const useProductFiltering = (initialProducts: Product[]) => {
   const [hasFiltered, setHasFiltered] = useState<boolean>(false);
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [skinDescription, setSkinDescription] = useState<string>("");
+  const [matchedKeywords, setMatchedKeywords] = useState<string[]>([]);
 
-  // Function to handle skin description input with debounced typing indicator
+  // Memoize matching for better performance
+  const findMatchingCategories = useCallback((input: string): MatchResult => {
+    const results: MatchResult = {
+      skinTypes: [],
+      concerns: [],
+      goals: []
+    };
+    
+    // Normalize input for more accurate matching
+    const normalizedInput = input.toLowerCase();
+    const words = normalizedInput.split(/\s+/);
+    
+    // Process each category
+    Object.entries(keywordMap).forEach(([category, categoryData]) => {
+      Object.entries(categoryData).forEach(([key, keywords]) => {
+        // Check for exact phrase matches (weighted higher)
+        const hasExactMatch = keywords.some(keyword => 
+          normalizedInput.includes(keyword));
+          
+        // Check for partial word matches (weighted lower)
+        const hasPartialMatch = !hasExactMatch && keywords.some(keyword => 
+          words.some(word => keyword.includes(word) && word.length > 3));
+          
+        if (hasExactMatch || hasPartialMatch) {
+          // @ts-ignore - We know this is valid due to our structure
+          results[category as KeywordCategory].push(key);
+        }
+      });
+    });
+    
+    return results;
+  }, []);
+
+  // Calculate relevance scores with improved algorithm
+  const calculateProductRelevanceScores = useCallback((
+    productList: Product[], 
+    matches: MatchResult
+  ): ScoredProduct[] => {
+    // Extract all matched terms for highlighting
+    const allMatchedTerms: string[] = [];
+    Object.values(matches).forEach(categoryMatches => {
+      categoryMatches.forEach(match => {
+        allMatchedTerms.push(match);
+        // Also add the keywords that led to this match
+        Object.entries(keywordMap).forEach(([category, categoryData]) => {
+          // @ts-ignore - We know this is valid due to our structure
+          const keywords = categoryData[match];
+          if (keywords) {
+            allMatchedTerms.push(...keywords);
+          }
+        });
+      });
+    });
+    
+    // Unique matched terms
+    const uniqueMatchedTerms = [...new Set(allMatchedTerms)];
+    setMatchedKeywords(uniqueMatchedTerms);
+    
+    return productList.map(product => {
+      let score = 0;
+      const matchedTerms: string[] = [];
+      
+      // Check bestFor field (highest weight - direct match to user needs)
+      matches.skinTypes.forEach(skinType => {
+        product.bestFor.forEach(bf => {
+          if (bf.toLowerCase().includes(skinType.toLowerCase())) {
+            score += 10;
+            matchedTerms.push(bf);
+          }
+        });
+      });
+      
+      // Check solutionsOffered (high weight - directly solves user concerns)
+      [...matches.concerns, ...matches.goals].forEach(term => {
+        product.solutionsOffered.forEach(solution => {
+          if (solution.toLowerCase().includes(term.toLowerCase())) {
+            score += 8;
+            matchedTerms.push(solution);
+          }
+        });
+      });
+      
+      // Check useCase (medium weight - product description matches need)
+      [...matches.skinTypes, ...matches.concerns, ...matches.goals].forEach(term => {
+        if (product.useCase.toLowerCase().includes(term.toLowerCase())) {
+          score += 5;
+          matchedTerms.push(term);
+        }
+      });
+      
+      // Ingredient-based matching (medium-high weight - specific ingredients)
+      product.keyIngredients.forEach(ingredient => {
+        const ingredientLower = ingredient.toLowerCase();
+        Object.entries(ingredientToConcernMap).forEach(([key, concerns]) => {
+          if (ingredientLower.includes(key)) {
+            // Check if ingredient addresses any matched concerns
+            concerns.forEach(concern => {
+              if (
+                matches.skinTypes.includes(concern) || 
+                matches.concerns.includes(concern) || 
+                matches.goals.includes(concern)
+              ) {
+                score += 7;
+                matchedTerms.push(ingredient);
+              }
+            });
+          }
+        });
+      });
+      
+      // Give small boost to products with images as they'll display better
+      if (product.imageUrl) {
+        score += 1;
+      }
+      
+      return { product, score, matchedTerms: [...new Set(matchedTerms)] };
+    });
+  }, []);
+
+  // Better debounced filtering approach
   const handleSkinDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setSkinDescription(e.target.value);
     setIsTyping(true);
@@ -52,7 +198,7 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     return () => clearTimeout(typingTimer);
   };
 
-  // Enhanced function to process skin description with improved matching
+  // Process description with improved feedback
   const handleProcessSkinDescription = () => {
     if (!skinDescription.trim()) {
       toast({
@@ -64,142 +210,66 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     
     setIsProcessing(true);
     setHasFiltered(false);
+    setMatchedKeywords([]);
     
     // Process with a small delay to show the processing state
     setTimeout(() => {
-      filterProductsByDescription(skinDescription);
+      processFilteringLogic(skinDescription);
     }, 800);
   };
   
-  // Separated filtering logic for better readability and maintainability
-  const filterProductsByDescription = (description: string) => {
-    // Convert input to lowercase for case-insensitive matching
-    const input = description.toLowerCase();
+  // Core filtering logic extracted for better organization
+  const processFilteringLogic = (description: string) => {
+    // Find matching categories with enhanced algorithm
+    const matches = findMatchingCategories(description);
+    const hasMatches = Object.values(matches).some(array => array.length > 0);
     
-    // Find matching categories using the enhanced keyword detection
-    const matches = findMatchingCategories(input);
-    
-    // If no matches found, show all products and notify user
-    if (isEmptyMatches(matches)) {
+    // If no matches found, show all products
+    if (!hasMatches) {
       setFilteredProducts(products);
       setIsProcessing(false);
       setHasFiltered(true);
       toast({
         title: "No specific matches found",
-        description: "Showing all available products. Try using terms like 'dry skin' or 'anti-aging'.",
+        description: "Showing all products. Try terms like 'dry skin', 'acne' or 'anti-aging'.",
       });
       return;
     }
     
-    // Calculate relevance scores for each product based on matches
+    // Get scored and sorted products
     const scoredProducts = calculateProductRelevanceScores(products, matches);
     
-    // Filter and sort products by relevance score
+    // Sort by score (descending) and extract only products with a meaningful score
     const relevantProducts = scoredProducts
       .filter(item => item.score > 0)
       .sort((a, b) => b.score - a.score)
       .map(item => item.product);
     
-    // Set filtered products - if none match specifically, show all
+    // Update state with filtered products
     setFilteredProducts(relevantProducts.length > 0 ? relevantProducts : products);
     setIsProcessing(false);
     setHasFiltered(true);
     
-    // Notify user of results
-    toast({
-      title: "Analysis Complete",
-      description: relevantProducts.length > 0 
-        ? `Found ${relevantProducts.length} products that match your skin needs` 
-        : "Showing all products - try describing specific skin concerns for better matches",
-    });
+    // Give user feedback on what we found
+    if (relevantProducts.length > 0) {
+      const matchCategories = [];
+      if (matches.skinTypes.length > 0) matchCategories.push("skin types");
+      if (matches.concerns.length > 0) matchCategories.push("concerns");
+      if (matches.goals.length > 0) matchCategories.push("goals");
+      
+      toast({
+        title: `Found ${relevantProducts.length} matching products`,
+        description: `Products are matched to your ${matchCategories.join(", ")}.`,
+      });
+    } else {
+      toast({
+        title: "No exact matches",
+        description: "Showing all products. Try different keywords for better results.",
+      });
+    }
   };
   
-  // Find which categories in our keyword map match the input description
-  const findMatchingCategories = (input: string) => {
-    const results = {
-      skinTypes: [] as string[],
-      concerns: [] as string[],
-      goals: [] as string[]
-    };
-    
-    // Helper function to check if input contains keywords
-    const containsKeywords = (keywordArray: string[]) => {
-      return keywordArray.some(keyword => input.includes(keyword));
-    };
-    
-    // Enhanced matching that gives weight to multi-word matches and phrase context
-    Object.entries(keywordMap).forEach(([category, categoryData]) => {
-      Object.entries(categoryData).forEach(([key, keywords]) => {
-        if (containsKeywords(keywords)) {
-          // @ts-ignore - We know this is valid due to our structure
-          results[category].push(key);
-        }
-      });
-    });
-    
-    return results;
-  };
-  
-  // Check if no matches were found in any category
-  const isEmptyMatches = (matches: { skinTypes: string[], concerns: string[], goals: string[] }) => {
-    return matches.skinTypes.length === 0 && 
-           matches.concerns.length === 0 && 
-           matches.goals.length === 0;
-  };
-  
-  // Calculate relevance scores for products based on matched keywords
-  const calculateProductRelevanceScores = (
-    productList: Product[], 
-    matches: { skinTypes: string[], concerns: string[], goals: string[] }
-  ) => {
-    return productList.map(product => {
-      let score = 0;
-      
-      // Weight matches in bestFor field higher (most important match)
-      matches.skinTypes.forEach(skinType => {
-        if (product.bestFor.some(bf => bf.toLowerCase().includes(skinType.toLowerCase()))) {
-          score += 5;  // High priority match
-        }
-      });
-      
-      // Check if product explicitly solves the concerns or goals
-      [...matches.concerns, ...matches.goals].forEach(term => {
-        if (product.solutionsOffered.some(solution => 
-          solution.toLowerCase().includes(term.toLowerCase()))) {
-          score += 4;  // Medium-high priority match
-        }
-      });
-      
-      // Check general use case description
-      [...matches.skinTypes, ...matches.concerns, ...matches.goals].forEach(term => {
-        if (product.useCase.toLowerCase().includes(term.toLowerCase())) {
-          score += 3;  // Medium priority match
-        }
-      });
-      
-      // Check match against key ingredients for specialized product formulations
-      matches.concerns.forEach(concern => {
-        if (product.keyIngredients.some(ingredient => {
-          // Map concerns to ingredients that typically address them
-          switch (concern) {
-            case 'acne': return ['salicylic acid', 'benzoyl peroxide', 'tea tree', 'zinc'].some(i => 
-              ingredient.toLowerCase().includes(i));
-            case 'wrinkles': return ['retinol', 'peptide', 'collagen', 'vitamin c'].some(i => 
-              ingredient.toLowerCase().includes(i));
-            case 'darkSpots': return ['vitamin c', 'niacinamide', 'alpha arbutin', 'kojic'].some(i => 
-              ingredient.toLowerCase().includes(i));
-            default: return false;
-          }
-        })) {
-          score += 2;  // Ingredient match bonus
-        }
-      });
-      
-      return { product, score };
-    });
-  };
-  
-  // Function to toggle saved status of product
+  // Toggle saved status function (keeping existing functionality)
   const toggleSaveProduct = (productId: string) => {
     const updatedProducts = products.map(product => 
       product.id === productId 
@@ -240,6 +310,7 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     isProcessing,
     hasFiltered,
     isTyping,
+    matchedKeywords,
     handleSkinDescriptionChange,
     handleProcessSkinDescription,
     toggleSaveProduct,
