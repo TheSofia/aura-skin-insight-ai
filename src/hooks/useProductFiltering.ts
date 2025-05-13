@@ -4,16 +4,42 @@ import { useToast } from "@/components/ui/use-toast";
 import { findMatchingCategories, extractMatchedTerms } from '@/utils/productMatching';
 import { calculateProductRelevanceScores, getRelevantProducts } from '@/utils/productScoring';
 import { MatchResult } from '@/utils/productFilteringTypes';
+import { useProductProcessing } from './useProductProcessing';
+import { useProductState } from './useProductState';
+import { useProductToasts } from './useProductToasts';
 
 export const useProductFiltering = (initialProducts: Product[]) => {
   const { toast } = useToast();
-  const [products] = useState<Product[]>(initialProducts);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(initialProducts);
-  const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  const [hasFiltered, setHasFiltered] = useState<boolean>(false);
-  const [isTyping, setIsTyping] = useState<boolean>(false);
-  const [skinDescription, setSkinDescription] = useState<string>("");
-  const [matchedKeywords, setMatchedKeywords] = useState<string[]>([]);
+  
+  // Use extracted hooks for state management
+  const { 
+    products, 
+    filteredProducts, 
+    setFilteredProducts,
+    skinDescription, 
+    setSkinDescription,
+    isProcessing,
+    setIsProcessing,
+    hasFiltered,
+    setHasFiltered, 
+    isTyping,
+    setIsTyping,
+    matchedKeywords,
+    setMatchedKeywords
+  } = useProductState(initialProducts);
+  
+  // Use processing hook
+  const { processFilteringLogic } = useProductProcessing({
+    products,
+    setFilteredProducts,
+    setIsProcessing,
+    setHasFiltered,
+    setMatchedKeywords,
+    toast
+  });
+  
+  // Use toasts hook
+  const { provideUserFeedback } = useProductToasts(toast);
 
   // Better debounced filtering approach
   const handleSkinDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -44,63 +70,8 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     
     // Process with a small delay to show the processing state
     setTimeout(() => {
-      processFilteringLogic(skinDescription);
+      processFilteringLogic(skinDescription, provideUserFeedback);
     }, 800);
-  };
-  
-  // Core filtering logic extracted for better organization
-  const processFilteringLogic = (description: string) => {
-    // Find matching categories with enhanced algorithm
-    const matches = findMatchingCategories(description);
-    const hasMatches = Object.values(matches).some(array => array.length > 0);
-    
-    // If no matches found, show all products
-    if (!hasMatches) {
-      setFilteredProducts(products);
-      setIsProcessing(false);
-      setHasFiltered(true);
-      toast({
-        title: "No specific matches found",
-        description: "Showing all products. Try terms like 'dry skin', 'acne' or 'anti-aging'.",
-      });
-      return;
-    }
-    
-    // Extract matched terms for highlighting
-    const uniqueMatchedTerms = extractMatchedTerms(matches);
-    setMatchedKeywords(uniqueMatchedTerms);
-    
-    // Get scored and sorted products
-    const scoredProducts = calculateProductRelevanceScores(products, matches);
-    const relevantProducts = getRelevantProducts(scoredProducts);
-    
-    // Update state with filtered products
-    setFilteredProducts(relevantProducts.length > 0 ? relevantProducts : products);
-    setIsProcessing(false);
-    setHasFiltered(true);
-    
-    // Give user feedback on what we found
-    provideUserFeedback(matches, relevantProducts.length);
-  };
-  
-  // Separate function to provide toast feedback
-  const provideUserFeedback = (matches: MatchResult, resultCount: number) => {
-    if (resultCount > 0) {
-      const matchCategories = [];
-      if (matches.skinTypes.length > 0) matchCategories.push("skin types");
-      if (matches.concerns.length > 0) matchCategories.push("concerns");
-      if (matches.goals.length > 0) matchCategories.push("goals");
-      
-      toast({
-        title: `Found ${resultCount} matching products`,
-        description: `Products are matched to your ${matchCategories.join(", ")}.`,
-      });
-    } else {
-      toast({
-        title: "No exact matches",
-        description: "Showing all products. Try different keywords for better results.",
-      });
-    }
   };
   
   // Toggle saved status function (keeping existing functionality)
