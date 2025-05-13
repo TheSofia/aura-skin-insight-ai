@@ -9,6 +9,7 @@ type LogoRingsProps = {
   animationClasses: { innerRing: string; outerRing: string };
   animationStyle: AnimationStyle;
   intensity?: 'subtle' | 'medium' | 'vibrant';
+  isLandingPage?: boolean; // New prop to handle landing page context
 };
 
 const LogoRings: React.FC<LogoRingsProps> = ({ 
@@ -17,13 +18,25 @@ const LogoRings: React.FC<LogoRingsProps> = ({
   colorClasses, 
   animationClasses,
   animationStyle,
-  intensity = 'medium'
+  intensity = 'medium',
+  isLandingPage = false
 }) => {
   // Adjust ring characteristics based on intensity
   const getIntensityStyles = () => {
+    // Base styles determined by intensity
+    let baseStyles = {
+      innerOpacity: 0.06,
+      outerOpacity: 0.04,
+      innerBorderOpacity: 0.15,
+      outerBorderOpacity: 0.1,
+      blurFactor: 0.5,
+      innerDuration: '12s',
+      outerDuration: '15s'
+    };
+    
     switch (intensity) {
       case 'subtle':
-        return {
+        baseStyles = {
           innerOpacity: 0.04,
           outerOpacity: 0.03,
           innerBorderOpacity: 0.12,
@@ -32,8 +45,9 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           innerDuration: '14s',
           outerDuration: '18s'
         };
+        break;
       case 'vibrant':
-        return {
+        baseStyles = {
           innerOpacity: 0.08,
           outerOpacity: 0.05,
           innerBorderOpacity: 0.2,
@@ -42,17 +56,24 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           innerDuration: '10s',
           outerDuration: '12s'
         };
-      default: // medium
-        return {
-          innerOpacity: 0.06,
-          outerOpacity: 0.04,
-          innerBorderOpacity: 0.15,
-          outerBorderOpacity: 0.1,
-          blurFactor: 0.5,
-          innerDuration: '12s',
-          outerDuration: '15s'
-        };
+        break;
+      default: // medium - already set in baseStyles
+        break;
     }
+    
+    // Further reduce opacity for landing page context
+    if (isLandingPage) {
+      return {
+        ...baseStyles,
+        innerOpacity: baseStyles.innerOpacity * 0.5, // 50% more transparent for landing page
+        outerOpacity: baseStyles.outerOpacity * 0.4, // 60% more transparent for landing page
+        innerBorderOpacity: baseStyles.innerBorderOpacity * 0.6, // 40% more transparent for landing page
+        outerBorderOpacity: baseStyles.outerBorderOpacity * 0.5, // 50% more transparent for landing page
+        blurFactor: baseStyles.blurFactor * 0.7 // More subtle blur for landing page
+      };
+    }
+    
+    return baseStyles;
   };
 
   const intensityStyles = getIntensityStyles();

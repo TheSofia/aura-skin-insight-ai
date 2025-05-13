@@ -21,6 +21,7 @@ export type DynamicLogoProps = {
   animationStyle?: AnimationStyle;
   showText?: boolean;
   intensity?: 'subtle' | 'medium' | 'vibrant';
+  isLandingPage?: boolean; // New prop to specifically identify the landing page context
 };
 
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
@@ -29,7 +30,8 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
   colorScheme = 'accent',
   animationStyle = 'combined',
   showText = false,
-  intensity = 'medium'
+  intensity = 'medium',
+  isLandingPage = false
 }, ref) => {
   // Use the gradient state hook for enhanced gradient colorScheme effect
   const gradientState = useGradientState(colorScheme === 'gradient');
@@ -98,6 +100,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           animationClasses={animationClasses}
           animationStyle={animationStyle}
           intensity={intensity}
+          isLandingPage={isLandingPage} // Pass the landing page context to rings
         />
         
         {/* Core dot - refined with subtle gradient and inner highlight */}

@@ -153,29 +153,32 @@ const Index = () => {
     );
   }
 
-  // Determine appropriate logo settings based on current step
+  // Determine appropriate logo settings based on current step - updated to ensure consistency
   const getLogoSettings = () => {
     switch (currentStep) {
-      case 0: // Landing page
+      case 0: // Landing page - more subtle with concentric rings less visible
         return {
-          colorScheme: 'monochrome' as const,
-          animationStyle: 'cellular' as const,
+          colorScheme: 'gradient' as const, // Changed from monochrome to gradient for consistency
+          animationStyle: 'combined' as const, // Changed to match loading page style
           intensity: 'subtle' as const,
-          size: 'lg' as const
+          size: 'lg' as const,
+          isLandingPage: true // Specific flag for landing page context
         };
-      case 2: // Processing page
+      case 2: // Processing page - more vibrant with visible concentric rings
         return {
           colorScheme: 'gradient' as const,
           animationStyle: 'combined' as const,
           intensity: 'vibrant' as const,
-          size: 'lg' as const
+          size: 'lg' as const,
+          isLandingPage: false
         };
-      default: // Other pages
+      default: // Other pages - medium intensity, consistent style
         return {
-          colorScheme: 'accent' as const,
-          animationStyle: 'cellular' as const,
+          colorScheme: 'gradient' as const, // Changed from accent to gradient for consistency
+          animationStyle: 'combined' as const, // Changed to match loading page style
           intensity: 'medium' as const,
-          size: 'md' as const
+          size: 'md' as const,
+          isLandingPage: false
         };
     }
   };
