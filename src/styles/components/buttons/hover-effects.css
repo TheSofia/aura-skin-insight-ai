@@ -168,3 +168,32 @@
   width: 100%;
 }
 
+/* Premium deep dark purple button hover effect */
+.btn-premium-purple-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-premium-purple-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--beautyagent-dark-purple) 0%, #2A1539 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: inherit;
+}
+
+.btn-premium-purple-hover:hover::after,
+.btn-premium-purple-hover:active::after {
+  opacity: 1;
+}
+
+.btn-premium-purple-hover:active {
+  transform: scale(0.98);
+}
