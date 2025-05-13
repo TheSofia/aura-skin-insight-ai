@@ -362,8 +362,8 @@ const ProductRecommendations = ({ isManualPath = false }: ProductRecommendations
       
       <ProductLibrarySummary savedProducts={getSavedProducts()} />
       
-      {/* Add styling for typing indicator */}
-      <style jsx="true">{`
+      {/* Fix: Remove the jsx prop from style tag */}
+      <style>{`
         .typing-indicator {
           display: flex;
           align-items: center;
