@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@200;300;400;500;600;700&display=swap');
@@ -7,9 +6,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ... keep existing code (CSS variables and base styles) */
+/* Custom CSS variables for colors */
+:root {
+  --beautyagent-white: #FFFFFF;
+  --beautyagent-off-white: #F6F6F7;
+  --beautyagent-light-grey: #F1F1F1;
+  --beautyagent-medium-grey: #9F9EA1;
+  --beautyagent-dark-grey: #403E43;
+  --beautyagent-deeper-grey: #221F26;
+  --beautyagent-accent: #F97316;
+  --beautyagent-dark-orange: #E84C12;
+  --beautyagent-deep-blue: #2A4365;
+  --beautyagent-muted-violet: #7E69AB;
+  --beautyagent-glass-white: rgba(255, 255, 255, 0.9);
+  --beautyagent-glass-light: rgba(255, 255, 255, 0.7);
+  --beautyagent-glass-accent: rgba(249, 115, 22, 0.08);
+}
 
-/* ... keep existing code (utility classes) */
+/* Base styles for typography and general appearance */
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--beautyagent-dark-grey);
+  background-color: var(--beautyagent-off-white);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--beautyagent-deeper-grey);
+  margin-bottom: 0.75rem;
+}
+
+a {
+  color: var(--beautyagent-deep-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Utility classes for common styling patterns */
+.text-accent {
+  color: var(--beautyagent-accent);
+}
+
+.bg-off-white {
+  background-color: var(--beautyagent-off-white);
+}
+
+.border-light-grey {
+  border-color: var(--beautyagent-light-grey);
+}
 
 /* App container and layout */
 .app-container {
@@ -68,7 +116,12 @@
   50% { transform: translateY(-6px) scale(1.15); opacity: 1; } /* Enhanced movement and scale */
 }
 
-/* ... keep existing code (other keyframe animations) */
+/* Other keyframe animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 /* New enhanced cellular animation keyframes for logo */
 @keyframes cellular-drift {
@@ -98,11 +151,35 @@
   100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
 }
 
-/* ... keep existing code (other animation classes and styles) */
+/* Other animation classes and styles */
+.animate-gradient {
+  animation: gradient-shift 7s infinite alternate;
+}
 
 /* Enhanced Custom Utility Classes */
 @layer components {
-  /* ... keep existing code (utility classes) */
+  /* Glass card effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  /* Button styles */
+  .btn {
+    @apply font-semibold py-2 px-4 rounded;
+  }
+  
+  .btn-primary {
+    @apply bg-beautyagent-accent text-white hover:bg-beautyagent-dark-orange;
+  }
+  
+  .btn-secondary {
+    @apply bg-beautyagent-deep-blue text-white hover:bg-beautyagent-dark-grey;
+  }
   
   .bg-gradient-light {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(246, 246, 247, 0.95) 100%);
@@ -110,7 +187,7 @@
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-aurascan-accent to-aurascan-dark-orange;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-beautyagent-accent to-beautyagent-dark-orange;
   }
   
   /* Enhanced hover interaction classes for consistent refinement */
@@ -118,14 +195,14 @@
     @apply transition-colors duration-300;
   }
   .hover-accent:hover {
-    @apply text-aurascan-accent;
+    @apply text-beautyagent-accent;
   }
   
   .hover-deep-blue {
     @apply transition-colors duration-300;
   }
   .hover-deep-blue:hover {
-    @apply text-aurascan-deep-blue;
+    @apply text-beautyagent-deep-blue;
   }
   
   .hover-muted-violet {
@@ -140,7 +217,7 @@
     @apply transition-colors duration-300 cursor-default;
   }
   .hover-accent-text:hover {
-    @apply text-aurascan-accent/90;
+    @apply text-beautyagent-accent/90;
   }
   
   /* Enhanced button hover styles */
