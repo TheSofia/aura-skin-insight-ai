@@ -1,5 +1,5 @@
 
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import LogoCore from './logo/LogoCore';
 import LogoRings from './logo/LogoRings';
 import LogoParticles from './logo/LogoParticles';
@@ -40,9 +40,14 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
   const colorClasses = getColorClasses(colorScheme, gradientState);
   const animationClasses = getAnimationClasses(animationStyle);
 
+  // Define sophisticated hover animation for the logo
+  const hoverAnimationClass = useMemo(() => {
+    return 'group transition-all duration-500 hover:scale-[1.02]';
+  }, []);
+
   return (
     <div 
-      className={`dot-logo relative ${sizeClass} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''}`}
+      className={`dot-logo relative ${sizeClass} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''} ${hoverAnimationClass}`}
       role="presentation"
       ref={ref}
       style={{
@@ -50,7 +55,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
       }}
     >
-      {/* Core dot */}
+      {/* Core dot - enhanced with gradient and inner highlight */}
       <LogoCore 
         coreSize={coreSize} 
         colorClasses={colorClasses} 
@@ -58,7 +63,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         animationStyle={animationStyle}
       />
       
-      {/* Inner and outer rings */}
+      {/* Inner and outer rings - no border, subtle highlight instead */}
       <LogoRings 
         innerRingSize={innerRingSize}
         outerRingSize={outerRingSize}
@@ -67,7 +72,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         animationStyle={animationStyle}
       />
       
-      {/* Floating particles */}
+      {/* Floating particles - enhanced with more organic movement */}
       <LogoParticles 
         colorClasses={colorClasses}
         animationClasses={animationClasses}

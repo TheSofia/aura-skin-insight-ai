@@ -19,23 +19,27 @@ const LogoRings: React.FC<LogoRingsProps> = ({
 }) => {
   return (
     <>
-      {/* Inner ring */}
+      {/* Inner ring with refined border - thinner, more subtle */}
       <div 
-        className={`absolute ${innerRingSize} border-2 ${colorClasses.innerRing} rounded-full 
-          ${animationClasses.innerRing} transition-transform duration-300 hover:border-opacity-100`}
+        className={`absolute ${innerRingSize} ${colorClasses.innerRing} rounded-full 
+          ${animationClasses.innerRing} transition-transform duration-300 hover:opacity-90`}
         style={{
           animationDuration: animationStyle === 'cellular' ? '12s' : undefined,
-          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
+          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
+          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.3)', // Extremely subtle inner highlight instead of border
+          border: 'none' // Remove the border completely
         }}
       ></div>
       
-      {/* Outer ring */}
+      {/* Outer ring with refined border - thinner, more subtle */}
       <div 
-        className={`absolute ${outerRingSize} border-2 ${colorClasses.outerRing} rounded-full 
-          ${animationClasses.outerRing} transition-transform duration-300 hover:border-opacity-100`}
+        className={`absolute ${outerRingSize} ${colorClasses.outerRing} rounded-full 
+          ${animationClasses.outerRing} transition-transform duration-300 hover:opacity-90`}
         style={{
           animationDuration: animationStyle === 'cellular' ? '15s' : undefined,
-          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.37, 0, 0.63, 1)' : undefined
+          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.37, 0, 0.63, 1)' : undefined,
+          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.2)', // Extremely subtle inner highlight instead of border
+          border: 'none' // Remove the border completely
         }}
       ></div>
     </>

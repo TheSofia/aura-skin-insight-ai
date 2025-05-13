@@ -10,6 +10,7 @@ type AnimationClasses = {
 
 /**
  * Get animation classes based on the selected animation style
+ * Enhanced with refined cellular animation options
  */
 export const getAnimationClasses = (animationStyle: AnimationStyle): AnimationClasses => {
   switch (animationStyle) {
@@ -49,7 +50,7 @@ export const getAnimationClasses = (animationStyle: AnimationStyle): AnimationCl
         particles: 'animate-float-subtle'
       };
     case 'cellular':
-      // Cellular animation style with slower, organic movement
+      // Enhanced cellular animation style with slower, more organic movement
       return {
         core: 'animate-cellular-core-pulse',
         innerRing: 'animate-cellular-ring-drift',

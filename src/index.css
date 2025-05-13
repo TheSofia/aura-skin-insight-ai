@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@200;300;400;500;600;700&display=swap');
@@ -112,27 +113,62 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-aurascan-accent to-aurascan-dark-orange;
   }
   
-  /* New hover classes for consistent interaction */
+  /* Enhanced hover interaction classes for consistent refinement */
   .hover-accent {
-    @apply hover:text-aurascan-accent transition-colors duration-200;
+    @apply transition-colors duration-300;
+  }
+  .hover-accent:hover {
+    @apply text-aurascan-accent;
   }
   
   .hover-deep-blue {
-    @apply hover:text-aurascan-deep-blue transition-colors duration-200;
+    @apply transition-colors duration-300;
+  }
+  .hover-deep-blue:hover {
+    @apply text-aurascan-deep-blue;
   }
   
-  .hover-scale-subtle {
-    @apply hover:scale-[1.02] transition-transform duration-200;
+  .hover-muted-violet {
+    @apply transition-colors duration-300;
+  }
+  .hover-muted-violet:hover {
+    @apply text-[#7E69AB];
+  }
+  
+  /* Hover text effect that applies to any text element */
+  .hover-accent-text {
+    @apply transition-colors duration-300 cursor-default;
+  }
+  .hover-accent-text:hover {
+    @apply text-aurascan-accent/90;
+  }
+  
+  /* Enhanced button hover styles */
+  .hover-enhance {
+    @apply transition-all duration-500;
+  }
+  .hover-enhance:hover {
+    @apply scale-[1.02] brightness-105;
+    filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.2));
+  }
+  
+  /* Unified interactive element hover style */
+  .interactive-element {
+    @apply transition-all duration-300;
+  }
+  .interactive-element:hover {
+    @apply translate-y-[-2px] brightness-105;
   }
 }
 
-/* New enhanced animations for cellular movement */
+/* Refined color-shift animation */
 @keyframes color-shift {
-  0% { filter: hue-rotate(0deg); }
-  50% { filter: hue-rotate(30deg); }
-  100% { filter: hue-rotate(0deg); }
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  50% { filter: hue-rotate(25deg) brightness(1.05); }
+  100% { filter: hue-rotate(0deg) brightness(1); }
 }
 
+/* Enhanced orbital-shift animation */
 @keyframes orbital-shift {
   0% { transform: rotate(0deg) translateX(0) rotate(0deg); }
   33% { transform: rotate(120deg) translateX(3px) rotate(-120deg); }
@@ -140,40 +176,40 @@
   100% { transform: rotate(360deg) translateX(0) rotate(-360deg); }
 }
 
-/* New cellular motion animation */
+/* Enhanced cellular motion animation - more organic and fluid */
 @keyframes cellular-motion {
   0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  20% { transform: translate(3px, -3px) rotate(2deg) scale(1.02); }
-  40% { transform: translate(5px, 1px) rotate(4deg) scale(1.04); }
-  60% { transform: translate(2px, 4px) rotate(2deg) scale(1.03); }
+  20% { transform: translate(3px, -2px) rotate(1deg) scale(1.01); }
+  40% { transform: translate(4px, 1px) rotate(2deg) scale(1.02); }
+  60% { transform: translate(2px, 3px) rotate(1deg) scale(1.015); }
   80% { transform: translate(-1px, 2px) rotate(-1deg) scale(1.01); }
   100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
 /* Enhanced float animation with more refined, subtle movement */
 @keyframes float-enhanced {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
-  50% { transform: translateY(-7px) scale(1.15); opacity: 0.9; } /* Refined movement and scale */
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.75; }
+  50% { transform: translateY(-5px) scale(1.08); opacity: 0.85; } /* More subtle movement */
 }
 
 /* Refined cellular pulse animation */
 @keyframes pulse-cellular {
   0%, 100% { transform: scale(1); opacity: 0.85; }
-  50% { transform: scale(1.1); opacity: 1; filter: brightness(1.08); }
+  50% { transform: scale(1.08); opacity: 0.95; filter: brightness(1.04); }
 }
 
 /* New animation classes for refined hover states */
 .animate-hover-subtle {
-  transition: all 0.2s ease-out;
+  transition: all 0.3s ease-out;
 }
 .animate-hover-subtle:hover {
   transform: translateY(-1px);
-  filter: brightness(1.1);
+  filter: brightness(1.05);
 }
 
 /* Shadow Glow Effect - Enhanced */
 .shadow-glow {
-  box-shadow: 0 0 15px 6px rgba(64, 62, 67, 0.2); /* Refined glow */
+  box-shadow: 0 0 15px 6px rgba(64, 62, 67, 0.15); /* Refined glow */
 }
 
 /* Enhanced Glass Card Effect */
@@ -188,6 +224,7 @@
 .glass-card:hover {
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 /* Animated Button Effects - Enhanced */
@@ -217,4 +254,29 @@
 .morphing-shape {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   transition: all 0.5s ease-in-out;
+}
+
+/* New refined button styles with accent color transitions */
+.btn-accent-hover {
+  transition: all 0.3s ease;
+}
+.btn-accent-hover:hover {
+  color: #F97316;
+  transform: translateY(-1px);
+}
+
+.btn-deep-blue-hover {
+  transition: all 0.3s ease;
+}
+.btn-deep-blue-hover:hover {
+  color: #2A4365;
+  transform: translateY(-1px);
+}
+
+.btn-violet-hover {
+  transition: all 0.3s ease;
+}
+.btn-violet-hover:hover {
+  color: #7E69AB;
+  transform: translateY(-1px);
 }

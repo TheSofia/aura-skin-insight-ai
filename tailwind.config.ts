@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,6 +63,7 @@ export default {
 					'accent': '#F97316',    // A refined orange accent (used very sparingly)
 					'dark-orange': '#E84C12', // Darker orange-red accent for depth
 					'deep-blue': '#2A4365', // Deep blue to replace green accent - sophisticated, refined blue
+					'muted-violet': '#7E69AB', // New muted violet color added for hover states
 					'glass-white': 'rgba(255, 255, 255, 0.9)',
 					'glass-light': 'rgba(255, 255, 255, 0.7)',
 					'glass-accent': 'rgba(249, 115, 22, 0.08)', // Very subtle orange glass effect
