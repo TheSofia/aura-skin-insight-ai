@@ -90,14 +90,13 @@
   100% { transform: rotate(360deg) translateX(0) rotate(-360deg); }
 }
 
-/* Enhanced cellular motion animation - more organic and fluid */
+/* Enhanced cellular motion animation for irregular membrane shape - more organic and fluid */
 @keyframes cellular-motion {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  20% { transform: translate(3px, -2px) rotate(1deg) scale(1.01); }
-  40% { transform: translate(4px, 1px) rotate(2deg) scale(1.02); }
-  60% { transform: translate(2px, 3px) rotate(1deg) scale(1.015); }
-  80% { transform: translate(-1px, 2px) rotate(-1deg) scale(1.01); }
-  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  0% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 1; }
+  25% { transform: scale(1.02) translate(2px, -2px) rotate(0.5deg); opacity: 0.95; }
+  50% { transform: scale(0.98) translate(1px, 1px) rotate(1deg); opacity: 0.9; }
+  75% { transform: scale(1.01) translate(-1px, 1px) rotate(0.5deg); opacity: 0.95; }
+  100% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 1; }
 }
 
 /* Enhanced float animation with more refined, subtle movement */

@@ -112,7 +112,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
       // For landing page: more ethereal, gentler appearance
       return {
         ...baseStyle,
-        opacity: intensity === 'subtle' ? 'opacity-70' : 'opacity-75', // Even more translucent on landing page
+        opacity: intensity === 'subtle' ? 'opacity-70' : 'opacity-75', // More translucent on landing page
         particleOpacity: baseStyle.particleOpacity * 0.85, // More translucent particles
         glow: `opacity-${Math.max(10, parseInt(baseStyle.glow.split('-')[1]) * 0.7)}` // Subtler glow
       };
@@ -131,10 +131,11 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
 
   const intensityStyles = getIntensityStyles();
 
-  // New: Ethereal text effect styles for the wordmark
+  // Enhanced ethereal text effect styles for the wordmark with slight blur
   const wordmarkTextStyle = {
     textShadow: '0 0 0.5px rgba(64, 62, 67, 0.3), 0 0 1px rgba(64, 62, 67, 0.2), 0 0 2px rgba(64, 62, 67, 0.1)',
     letterSpacing: '0.02em',
+    filter: 'blur(0.2px)', // Very subtle blur for ethereal effect
   };
 
   return (

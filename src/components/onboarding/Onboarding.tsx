@@ -22,7 +22,7 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
       <FloatingBackground animationState={animationState} />
       
       <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center relative z-10">
-        {/* Updated logo to match loading screen animation - using the exact cellular animation with refined parameters for landing context */}
+        {/* Using standardized logo for landing page - with exact same structure as loading page but refined for context */}
         <div className="flex items-center gap-3 mb-8">
           <DynamicLogo 
             colorScheme="gradient" 
@@ -32,7 +32,7 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
             ref={logoRef}
             showText={true}
             intensity="subtle" // Gentler animation for landing page
-            isLandingPage={true} // Special flag to make rings nearly invisible
+            isLandingPage={true} // Special flag for landing page context
             isLoadingPage={false} // Not a loading page
           />
         </div>
