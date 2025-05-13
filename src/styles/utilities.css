@@ -42,6 +42,13 @@
     @apply text-beautyagent-accent;
   }
   
+  .hover-burnt-orange {
+    @apply transition-colors duration-300;
+  }
+  .hover-burnt-orange:hover {
+    @apply text-burnt-orange;
+  }
+  
   .hover-deep-blue {
     @apply transition-colors duration-300;
   }
@@ -86,6 +93,20 @@
     background: linear-gradient(to right, 
       var(--beautyagent-dark-grey),
       var(--beautyagent-accent),
+      var(--beautyagent-dark-grey));
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 4s linear infinite;
+  }
+  
+  /* New burnt orange text effect */
+  .text-burnt-shimmer {
+    background: linear-gradient(to right, 
+      var(--beautyagent-dark-grey),
+      var(--beautyagent-burnt-orange),
       var(--beautyagent-dark-grey));
     background-size: 200% auto;
     color: transparent;

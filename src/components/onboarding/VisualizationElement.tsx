@@ -6,39 +6,43 @@ const VisualizationElement = () => {
     <div className="w-full max-w-screen-lg mx-auto flex justify-center opacity-0 animate-fade-in" 
          style={{ animationDelay: '2.4s', animationFillMode: 'forwards' }}>
       <div className="relative w-64 h-64 md:w-80 md:h-80">
-        {/* Abstract, morphing visualization with softened colors but enhanced visibility */}
+        {/* Abstract, morphing visualization with more vibrant colors but still sophisticated */}
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* Enhanced central morphing shape with more defined presence */}
-          <div className="morphing-shape w-56 h-56 md:w-72 md:h-72 animate-morph bg-gradient-to-tr from-beautyagent-accent/35 via-beautyagent-dark-orange/30 to-beautyagent-deep-blue/32 border border-white/20 backdrop-blur-sm glow-soft"></div>
+          {/* Primary morphing shape with more vibrant gradient including burnt orange */}
+          <div className="morphing-shape w-56 h-56 md:w-72 md:h-72 animate-morph bg-gradient-to-tr from-beautyagent-accent/45 via-burnt-orange/40 to-beautyagent-deep-blue/42 border border-white/20 backdrop-blur-sm glow-soft"></div>
           
           {/* Overlapping circular elements with refined proportions and enhanced visibility */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 md:w-56 md:h-56 rounded-full border border-beautyagent-accent/40 animate-rotate-slow" style={{ animationDuration: '22s' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 rounded-full border border-beautyagent-deep-blue/45 animate-rotate-slow" style={{ animationDuration: '18s', animationDirection: 'reverse' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full border border-beautyagent-dark-orange/40 animate-rotate-slow" style={{ animationDuration: '15s' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 md:w-56 md:h-56 rounded-full border border-beautyagent-accent/45 animate-rotate-slow" style={{ animationDuration: '22s' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 rounded-full border border-beautyagent-deep-blue/50 animate-rotate-slow" style={{ animationDuration: '18s', animationDirection: 'reverse' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full border border-burnt-orange/45 animate-rotate-slow" style={{ animationDuration: '15s' }}></div>
           
-          {/* Expanded set of floating particles with improved visibility */}
+          {/* Expanded set of floating particles with improved visibility and burnt orange accents */}
           {Array(24).fill(0).map((_, i) => {  
-            // More sophisticated color assignment with improved visibility
-            const particleColor = i % 5 === 0 
-              ? "bg-beautyagent-accent/35"  // Increased from /28 to /35
-              : i % 5 === 1 
-                ? "bg-beautyagent-deep-blue/32"  // Increased from /25 to /32
-                : i % 5 === 2
-                  ? "bg-beautyagent-dark-orange/34"  // Increased from /27 to /34
-                  : i % 5 === 3
-                    ? "bg-white/35"  // Increased from /30 to /35
-                    : "bg-beautyagent-light-grey/30";  // Increased from /25 to /30
+            // More sophisticated color assignment with improved visibility and burnt orange accents
+            const particleColor = i % 6 === 0 
+              ? "bg-beautyagent-accent/40"
+              : i % 6 === 1 
+                ? "bg-beautyagent-deep-blue/38"
+                : i % 6 === 2
+                  ? "bg-burnt-orange/42"
+                  : i % 6 === 3
+                    ? "bg-white/40"
+                    : i % 6 === 4
+                      ? "bg-beautyagent-light-grey/35"
+                      : "bg-beautyagent-muted-violet/32";
             
             // Enhanced hover effect with layered translucency
-            const hoverColor = i % 5 === 0 
-              ? "hover:bg-beautyagent-accent/50" 
-              : i % 5 === 1 
-                ? "hover:bg-beautyagent-deep-blue/45" 
-                : i % 5 === 2
-                  ? "hover:bg-beautyagent-dark-orange/45"
-                  : i % 5 === 3
-                    ? "hover:bg-white/50"
-                    : "hover:bg-beautyagent-light-grey/45";
+            const hoverColor = i % 6 === 0 
+              ? "hover:bg-beautyagent-accent/60" 
+              : i % 6 === 1 
+                ? "hover:bg-beautyagent-deep-blue/55" 
+                : i % 6 === 2
+                  ? "hover:bg-burnt-orange/60"
+                  : i % 6 === 3
+                    ? "hover:bg-white/55"
+                    : i % 6 === 4
+                      ? "hover:bg-beautyagent-light-grey/50"
+                      : "hover:bg-beautyagent-muted-violet/50";
                   
             // Create varying particle sizes to enhance layered effect
             const sizeVariant = i % 4 === 0 
@@ -57,7 +61,7 @@ const VisualizationElement = () => {
             const posY = 10 + (i * 3) + (i % 4 === 0 ? 8 : i % 4 === 1 ? -5 : i % 4 === 2 ? 15 : 0);
             
             // Vary opacity based on size for layered depth effect - increased for better visibility
-            const opacityValue = i % 4 === 2 ? 0.85 : (0.55 + (i % 5) * 0.08);
+            const opacityValue = i % 4 === 2 ? 0.88 : (0.60 + (i % 5) * 0.08);
                 
             return (
               <div 
@@ -70,14 +74,15 @@ const VisualizationElement = () => {
                   animationDelay: `${i * 0.3}s`,
                   opacity: opacityValue,
                   zIndex: i % 4 === 2 ? 5 : 1,
-                  boxShadow: i % 5 === 0 ? '0 0 8px rgba(249, 115, 22, 0.2)' : 'none'
+                  boxShadow: i % 6 === 2 ? '0 0 8px rgba(194, 65, 12, 0.25)' : 
+                             i % 6 === 0 ? '0 0 8px rgba(249, 115, 22, 0.25)' : 'none'
                 }}
               ></div>
             );
           })}
 
-          {/* More visible central glowing element */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 md:w-9 md:h-9 rounded-full bg-gradient-to-r from-beautyagent-accent/60 via-beautyagent-dark-orange/55 to-beautyagent-deep-blue/55 shadow-sm z-10 animate-throb glow-accent"></div>
+          {/* More vibrant central glowing element */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 md:w-9 md:h-9 rounded-full bg-gradient-to-r from-beautyagent-accent/70 via-burnt-orange/65 to-beautyagent-deep-blue/60 shadow-md z-10 animate-throb glow-accent"></div>
         </div>
       </div>
     </div>

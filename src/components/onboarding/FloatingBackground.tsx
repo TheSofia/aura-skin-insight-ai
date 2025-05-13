@@ -9,7 +9,7 @@ type FloatingElementProps = {
 
 const FloatingBackground = ({ animationState }: FloatingElementProps) => {
   // State for dynamic floating background elements with refined visibility and more sophisticated properties
-  const [floatingElements, setFloatingElements] = useState(Array(32).fill(0).map(() => {  // Increased from 25 to 32 elements for more visual depth
+  const [floatingElements, setFloatingElements] = useState(Array(32).fill(0).map(() => {
     // Generate position with a broader distribution across the entire screen
     let x = Math.random() * 100;
     let y = Math.random() * 100;
@@ -43,18 +43,23 @@ const FloatingBackground = ({ animationState }: FloatingElementProps) => {
       // Edge zones: refined whites and light grays
       color = Math.random() > 0.75 ? 'translucent-white' : 'dark-white';
       // Improved opacity range for edges - more visible
-      opacity = opacityRandom * 0.25 + 0.40; // 0.40-0.65 range (increased)
+      opacity = opacityRandom * 0.25 + 0.45; // 0.45-0.70 range (increased further)
     } else {
       // Central zone: primarily whites/grays with rare accent colors
       const colorRandom = Math.random();
       if (colorRandom > 0.85) { // 15% chance for accent colors in central area
-        color = colorRandom > 0.92 ? 'accent' : (Math.random() > 0.5 ? 'deep-blue' : 'muted-violet');
-        // Improved opacity for accent colors
-        opacity = opacityRandom * 0.15 + 0.25; // 0.25-0.40 range (increased)
+        // Adding burnt-orange as a possible accent color
+        if (colorRandom > 0.93) {
+          color = 'burnt-orange';
+          opacity = opacityRandom * 0.15 + 0.28; // 0.28-0.43 range
+        } else {
+          color = colorRandom > 0.89 ? 'accent' : (Math.random() > 0.5 ? 'deep-blue' : 'muted-violet');
+          opacity = opacityRandom * 0.15 + 0.28; // 0.28-0.43 range
+        }
       } else {
         color = Math.random() > 0.6 ? 'translucent-white' : 'dark-white';
         // Improved opacity for whites/grays
-        opacity = opacityRandom * 0.20 + 0.40; // 0.40-0.60 range (increased)
+        opacity = opacityRandom * 0.20 + 0.45; // 0.45-0.65 range (increased further)
       }
     }
     
@@ -129,6 +134,10 @@ const FloatingBackground = ({ animationState }: FloatingElementProps) => {
           // Improved color intensity for accent elements
           bgColorClass = 'bg-beautyagent-accent/20'; // Increased from /15 to /20
           borderColorClass = 'border border-beautyagent-accent/25'; // Increased from /20 to /25
+        } else if (el.color === 'burnt-orange') {
+          // New burnt orange accent
+          bgColorClass = 'bg-burnt-orange/18'; 
+          borderColorClass = 'border border-burnt-orange/22';
         } else if (el.color === 'deep-blue') {
           bgColorClass = 'bg-beautyagent-deep-blue/15'; // Increased from /12 to /15
           borderColorClass = 'border border-beautyagent-deep-blue/22'; // Increased from /18 to /22

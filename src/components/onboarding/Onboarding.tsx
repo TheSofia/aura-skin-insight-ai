@@ -22,13 +22,13 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
       <FloatingBackground animationState={animationState} />
       
       <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center relative z-10">
-        {/* Refined logo with enhanced cellular animation and visual quality with BeautyAgent brand name */}
+        {/* Simplified logo with monochromatic scheme to reduce competition with bottom animations */}
         <div className="flex items-center gap-3 mb-8">
           <DynamicLogo 
-            colorScheme="refined" 
-            animationStyle="cellular" 
+            colorScheme="monochrome" 
+            animationStyle="subtle" 
             size="lg" 
-            className="transition-transform duration-500 hover-enhance glow-subtle" 
+            className="transition-transform duration-500 hover-enhance glow-minimal" 
             ref={logoRef}
             showText={true}
           />

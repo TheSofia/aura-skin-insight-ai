@@ -1,5 +1,5 @@
 
-type ColorScheme = 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined';
+type ColorScheme = 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined' | 'monochrome';
 
 type ColorClasses = {
   core: string;
@@ -48,6 +48,14 @@ export const getColorClasses = (colorScheme: ColorScheme, gradientState: number)
         innerRing: 'bg-transparent',
         outerRing: 'bg-transparent',
         glow: 'after:bg-beautyagent-accent/35'
+      };
+    case 'monochrome':
+      // New monochromatic scheme for the top logo to reduce visual competition
+      return {
+        core: 'bg-beautyagent-light-grey/90',
+        innerRing: 'bg-transparent',
+        outerRing: 'bg-transparent',
+        glow: 'after:bg-beautyagent-light-grey/20'
       };
     case 'gradient':
       // Enhanced cycle through vibrant colors for gradient scheme
