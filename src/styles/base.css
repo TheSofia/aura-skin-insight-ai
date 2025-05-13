@@ -1,0 +1,47 @@
+
+/* Base styles for typography and general appearance */
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--beautyagent-dark-grey);
+  background-color: var(--beautyagent-off-white);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--beautyagent-deeper-grey);
+  margin-bottom: 0.75rem;
+}
+
+a {
+  color: var(--beautyagent-deep-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* App container and layout */
+.app-container {
+  max-width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F6F6F7 100%);
+}
+
+/* Utility classes for common styling patterns */
+.text-accent {
+  color: var(--beautyagent-accent);
+}
+
+.bg-off-white {
+  background-color: var(--beautyagent-off-white);
+}
+
+.border-light-grey {
+  border-color: var(--beautyagent-light-grey);
+}

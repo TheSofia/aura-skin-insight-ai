@@ -1,0 +1,17 @@
+
+/* Custom CSS variables for colors */
+:root {
+  --beautyagent-white: #FFFFFF;
+  --beautyagent-off-white: #F6F6F7;
+  --beautyagent-light-grey: #F1F1F1;
+  --beautyagent-medium-grey: #9F9EA1;
+  --beautyagent-dark-grey: #403E43;
+  --beautyagent-deeper-grey: #221F26;
+  --beautyagent-accent: #F97316;
+  --beautyagent-dark-orange: #E84C12;
+  --beautyagent-deep-blue: #2A4365;
+  --beautyagent-muted-violet: #7E69AB;
+  --beautyagent-glass-white: rgba(255, 255, 255, 0.9);
+  --beautyagent-glass-light: rgba(255, 255, 255, 0.7);
+  --beautyagent-glass-accent: rgba(249, 115, 22, 0.08);
+}

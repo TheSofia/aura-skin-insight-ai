@@ -1,0 +1,5 @@
+
+.scan-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.5), transparent);
+}

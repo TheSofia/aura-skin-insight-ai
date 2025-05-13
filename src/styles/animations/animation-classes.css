@@ -1,0 +1,14 @@
+
+/* Other animation classes and styles */
+.animate-gradient {
+  animation: gradient-shift 7s infinite alternate;
+}
+
+/* New animation classes for refined hover states */
+.animate-hover-subtle {
+  transition: all 0.3s ease-out;
+}
+.animate-hover-subtle:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}

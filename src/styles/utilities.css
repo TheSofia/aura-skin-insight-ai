@@ -1,0 +1,81 @@
+
+@layer components {
+  /* Glass card effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  /* Button styles */
+  .btn {
+    @apply font-semibold py-2 px-4 rounded;
+  }
+  
+  .btn-primary {
+    @apply bg-beautyagent-accent text-white hover:bg-beautyagent-dark-orange;
+  }
+  
+  .btn-secondary {
+    @apply bg-beautyagent-deep-blue text-white hover:bg-beautyagent-dark-grey;
+  }
+  
+  .bg-gradient-light {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(246, 246, 247, 0.95) 100%);
+    animation: gradient-shift 12s infinite alternate ease-in-out;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-beautyagent-accent to-beautyagent-dark-orange;
+  }
+  
+  /* Enhanced hover interaction classes for consistent refinement */
+  .hover-accent {
+    @apply transition-colors duration-300;
+  }
+  .hover-accent:hover {
+    @apply text-beautyagent-accent;
+  }
+  
+  .hover-deep-blue {
+    @apply transition-colors duration-300;
+  }
+  .hover-deep-blue:hover {
+    @apply text-beautyagent-deep-blue;
+  }
+  
+  .hover-muted-violet {
+    @apply transition-colors duration-300;
+  }
+  .hover-muted-violet:hover {
+    @apply text-[#7E69AB];
+  }
+  
+  /* Hover text effect that applies to any text element */
+  .hover-accent-text {
+    @apply transition-colors duration-300 cursor-default;
+  }
+  .hover-accent-text:hover {
+    @apply text-beautyagent-accent/90;
+  }
+  
+  /* Enhanced button hover styles */
+  .hover-enhance {
+    @apply transition-all duration-500;
+  }
+  .hover-enhance:hover {
+    @apply scale-[1.02] brightness-105;
+    filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.2));
+  }
+  
+  /* Unified interactive element hover style */
+  .interactive-element {
+    @apply transition-all duration-300;
+  }
+  .interactive-element:hover {
+    @apply translate-y-[-2px] brightness-105;
+  }
+}
