@@ -4,8 +4,8 @@ import React, { forwardRef, useEffect, useState } from 'react';
 type DynamicLogoProps = {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
-  colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient';
-  animationStyle?: 'float' | 'pulse' | 'rotate' | 'morph' | 'combined';
+  colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined';
+  animationStyle?: 'float' | 'pulse' | 'rotate' | 'morph' | 'combined' | 'subtle';
 };
 
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
@@ -77,10 +77,10 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         };
       case 'teal':
         return {
-          core: 'bg-aurascan-deep-green',
-          innerRing: 'border-aurascan-deep-green',
-          outerRing: 'border-aurascan-deep-green/70',
-          glow: 'after:bg-aurascan-deep-green/50'
+          core: 'bg-aurascan-deep-blue',
+          innerRing: 'border-aurascan-deep-blue',
+          outerRing: 'border-aurascan-deep-blue/70',
+          glow: 'after:bg-aurascan-deep-blue/50'
         };
       case 'violet':
         return {
@@ -89,36 +89,43 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           outerRing: 'border-aurascan-dark-grey/70',
           glow: 'after:bg-aurascan-dark-grey/50'
         };
+      case 'refined':
+        return {
+          core: 'bg-aurascan-accent/90',
+          innerRing: 'border-aurascan-accent/80',
+          outerRing: 'border-aurascan-deep-blue/60',
+          glow: 'after:bg-aurascan-accent/30'
+        };
       case 'gradient':
         // Enhanced cycle through vibrant colors for gradient scheme
         if (gradientState === 0) {
           return {
             core: 'bg-gradient-to-r from-aurascan-accent to-aurascan-dark-orange',
             innerRing: 'border-aurascan-accent',
-            outerRing: 'border-aurascan-deep-green/70',
+            outerRing: 'border-aurascan-deep-blue/70',
             glow: 'after:bg-aurascan-accent/50'
           };
         } else if (gradientState === 1) {
           return {
-            core: 'bg-gradient-to-r from-aurascan-dark-orange to-aurascan-deep-green',
+            core: 'bg-gradient-to-r from-aurascan-dark-orange to-aurascan-deep-blue',
             innerRing: 'border-aurascan-dark-orange',
             outerRing: 'border-aurascan-accent/70',
             glow: 'after:bg-aurascan-dark-orange/50'
           };
         } else if (gradientState === 2) {
           return {
-            core: 'bg-gradient-to-r from-aurascan-deep-green to-aurascan-accent',
-            innerRing: 'border-aurascan-deep-green',
+            core: 'bg-gradient-to-r from-aurascan-deep-blue to-aurascan-accent',
+            innerRing: 'border-aurascan-deep-blue',
             outerRing: 'border-aurascan-dark-orange/70',
-            glow: 'after:bg-aurascan-deep-green/50'
+            glow: 'after:bg-aurascan-deep-blue/50'
           };
         } else {
           // Added a fourth state with mixed colors
           return {
-            core: 'bg-gradient-to-tr from-aurascan-accent via-aurascan-deep-green to-aurascan-dark-orange',
+            core: 'bg-gradient-to-tr from-aurascan-accent via-aurascan-deep-blue to-aurascan-dark-orange',
             innerRing: 'border-aurascan-accent',
-            outerRing: 'border-aurascan-deep-green/70',
-            glow: 'after:bg-gradient-to-r from-aurascan-accent/40 to-aurascan-deep-green/40'
+            outerRing: 'border-aurascan-deep-blue/70',
+            glow: 'after:bg-gradient-to-r from-aurascan-accent/40 to-aurascan-deep-blue/40'
           };
         }
       default:
@@ -161,6 +168,13 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           innerRing: 'animate-morph',
           outerRing: 'animate-rotate-slow',
           particles: 'animate-float'
+        };
+      case 'subtle':
+        return {
+          core: 'animate-subtle-pulse',
+          innerRing: 'animate-rotate-slow',
+          outerRing: 'animate-rotate-slow',
+          particles: 'animate-float-subtle'
         };
       case 'combined':
       default:

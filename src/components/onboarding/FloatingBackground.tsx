@@ -33,7 +33,7 @@ const FloatingBackground = ({ animationState }: FloatingElementProps) => {
       // Central zone: allow some accent colors mixed with translucent whites
       const colorRandom = Math.random();
       if (colorRandom > 0.85) { // Only 15% chance for accent colors in central area
-        color = colorRandom > 0.92 ? 'accent' : (Math.random() > 0.5 ? 'green' : 'deepOrange');
+        color = colorRandom > 0.92 ? 'accent' : (Math.random() > 0.5 ? 'deep-blue' : 'deepOrange');
         // Subtle opacity for accent colors but maintaining form visibility
         opacity = Math.random() * 0.1 + 0.18; // 0.18-0.28 range
       } else {
@@ -108,9 +108,9 @@ const FloatingBackground = ({ animationState }: FloatingElementProps) => {
           // Extremely refined color intensity for accent elements
           bgColorClass = 'bg-aurascan-accent/12'; // Refined from 10%
           borderColorClass = 'border border-aurascan-accent/18'; // Refined from 15%
-        } else if (el.color === 'green') {
-          bgColorClass = 'bg-aurascan-deep-green/10'; // Refined from 8%
-          borderColorClass = 'border border-aurascan-deep-green/15'; // Refined from 12%
+        } else if (el.color === 'deep-blue') {
+          bgColorClass = 'bg-aurascan-deep-blue/10'; // Refined from 8%
+          borderColorClass = 'border border-aurascan-deep-blue/15'; // Refined from 12%
         } else {
           // dark-orange with refined intensity
           bgColorClass = 'bg-aurascan-dark-orange/12'; // Refined from 10%

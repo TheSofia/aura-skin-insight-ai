@@ -9,11 +9,11 @@ const VisualizationElement = () => {
         {/* Abstract, morphing visualization with softened colors but enhanced visibility */}
         <div className="absolute inset-0 flex items-center justify-center">
           {/* Enhanced central morphing shape with more defined presence but subtler colors */}
-          <div className="morphing-shape w-56 h-56 md:w-72 md:h-72 opacity-80 animate-morph bg-gradient-to-tr from-aurascan-accent/25 via-aurascan-dark-orange/20 to-aurascan-deep-green/22 border border-white/10 backdrop-blur-sm"></div>
+          <div className="morphing-shape w-56 h-56 md:w-72 md:h-72 opacity-80 animate-morph bg-gradient-to-tr from-aurascan-accent/25 via-aurascan-dark-orange/20 to-aurascan-deep-blue/22 border border-white/10 backdrop-blur-sm"></div>
           
           {/* Overlapping circular elements with refined proportions and subtle color intensity */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 md:w-56 md:h-56 rounded-full border border-aurascan-accent/25 animate-rotate-slow" style={{ animationDuration: '22s' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 rounded-full border border-aurascan-deep-green/30 animate-rotate-slow" style={{ animationDuration: '18s', animationDirection: 'reverse' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 rounded-full border border-aurascan-deep-blue/30 animate-rotate-slow" style={{ animationDuration: '18s', animationDirection: 'reverse' }}></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full border border-aurascan-dark-orange/25 animate-rotate-slow" style={{ animationDuration: '15s' }}></div>
           
           {/* Expanded set of floating particles with layered visibility and varied cellular motion */}
@@ -22,7 +22,7 @@ const VisualizationElement = () => {
             const particleColor = i % 5 === 0 
               ? "bg-aurascan-accent/22" 
               : i % 5 === 1 
-                ? "bg-aurascan-deep-green/18" 
+                ? "bg-aurascan-deep-blue/18" 
                 : i % 5 === 2
                   ? "bg-aurascan-dark-orange/20"
                   : i % 5 === 3
@@ -33,7 +33,7 @@ const VisualizationElement = () => {
             const hoverColor = i % 5 === 0 
               ? "hover:bg-aurascan-accent/35" 
               : i % 5 === 1 
-                ? "hover:bg-aurascan-deep-green/30" 
+                ? "hover:bg-aurascan-deep-blue/30" 
                 : i % 5 === 2
                   ? "hover:bg-aurascan-dark-orange/30"
                   : i % 5 === 3
@@ -76,7 +76,7 @@ const VisualizationElement = () => {
           })}
 
           {/* More visible central glowing element with refined gradient */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-aurascan-accent/45 via-aurascan-dark-orange/35 to-aurascan-deep-green/40 shadow-sm z-10 animate-throb"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-aurascan-accent/45 via-aurascan-dark-orange/35 to-aurascan-deep-blue/40 shadow-sm z-10 animate-throb"></div>
         </div>
       </div>
     </div>

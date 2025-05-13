@@ -26,8 +26,8 @@
     @apply hover:text-aurascan-accent transition-colors duration-200;
   }
   
-  .hover-deep-green {
-    @apply hover:text-aurascan-deep-green transition-colors duration-200;
+  .hover-deep-blue {
+    @apply hover:text-aurascan-deep-blue transition-colors duration-200;
   }
   
   .hover-scale-subtle {
@@ -177,8 +177,6 @@
   transform: translateY(-1px);
   filter: brightness(1.1);
 }
-
-/* ... keep existing code (remaining CSS rules) */
 
 /* Shadow Glow Effect - Enhanced */
 .shadow-glow {
