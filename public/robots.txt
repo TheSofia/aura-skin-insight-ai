@@ -1,3 +1,4 @@
+
 User-agent: Googlebot
 Allow: /
 
@@ -12,3 +13,8 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Domain migration notice
+# Old domain: https://aura-skin-insight-ai.lovable.app/
+# New domain: https://beauty-agent-skin-ai.app/
+
