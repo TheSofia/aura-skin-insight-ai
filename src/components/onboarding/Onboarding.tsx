@@ -1,11 +1,13 @@
 
 import { useRef } from "react";
+import { useToast } from "@/components/ui/use-toast";
 import DynamicLogo from "../DynamicLogo";
 import useAnimationState from "./useAnimationState";
 import FloatingBackground from "./FloatingBackground";
 import AnimatedTitle from "./AnimatedTitle";
 import ActionButtons from "./ActionButtons";
 import VisualizationElement from "./VisualizationElement";
+import OnboardingDescription from "./OnboardingDescription";
 
 type OnboardingProps = {
   onGetStarted: () => void;
@@ -13,16 +15,17 @@ type OnboardingProps = {
 };
 
 const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
+  const { toast } = useToast();
   const logoRef = useRef<HTMLDivElement>(null);
   const animationState = useAnimationState();
   
   return (
     <div className="flex flex-col items-center text-center px-6 py-10 space-y-12 animate-fade-in min-h-screen justify-center bg-gradient-light relative overflow-hidden">
-      {/* Enhanced floating background elements with dynamic cellular movement - increased cell count */}
+      {/* Enhanced floating background elements with dynamic cellular movement */}
       <FloatingBackground animationState={animationState} />
       
       <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center relative z-10">
-        {/* Using standardized logo for landing page - with exact same structure as loading page but refined for context */}
+        {/* Logo component */}
         <div className="flex items-center gap-3 mb-8">
           <DynamicLogo 
             colorScheme="gradient" 
@@ -31,30 +34,26 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
             className="transition-transform duration-500 hover-enhance" 
             ref={logoRef}
             showText={true}
-            intensity="subtle" // Gentler animation for landing page
-            isLandingPage={true} // Special flag for landing page context
-            isLoadingPage={false} // Not a loading page
+            intensity="subtle" 
+            isLandingPage={true}
+            isLoadingPage={false}
           />
         </div>
         
-        {/* Animated Title with Enhanced Sequential Reveal and Refined Font Weight */}
+        {/* Animated Title */}
         <AnimatedTitle animationState={animationState} />
         
-        {/* Standardized description text with refined font weight and hover interaction */}
-        <p className="text-beautyagent-dark-grey mx-auto mb-10 leading-relaxed text-lg max-w-md font-light opacity-0 animate-fade-in hover-accent-text" 
-           style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}>
-          Experience personalized skincare powered by advanced AI analysis.
-          Find your perfect skincare protocol with just one scan.
-        </p>
+        {/* Description text */}
+        <OnboardingDescription />
         
-        {/* Action buttons component with refined interactions - enhanced hover states */}
+        {/* Action buttons component */}
         <ActionButtons 
           onGetStarted={onGetStarted} 
           onManualInput={onManualInput} 
         />
       </div>
       
-      {/* Enhanced visualization element with more pronounced form and increased dynamism */}
+      {/* Enhanced visualization element */}
       <VisualizationElement />
     </div>
   );
