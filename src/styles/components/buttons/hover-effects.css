@@ -85,6 +85,34 @@
   width: 80%;
 }
 
+/* Dark purple hover style - NEW */
+.btn-dark-purple-hover {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.btn-dark-purple-hover:hover {
+  color: #210B2C;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(33, 11, 44, 0.15);
+}
+
+.btn-dark-purple-hover::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #210B2C;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.btn-dark-purple-hover:hover::before {
+  width: 80%;
+}
+
 /* Burnt orange hover style */
 .btn-burnt-orange-hover {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
