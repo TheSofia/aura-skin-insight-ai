@@ -7,13 +7,15 @@ type LogoParticlesProps = {
   animationClasses: { particles: string };
   animationStyle: AnimationStyle;
   intensity?: 'subtle' | 'medium' | 'vibrant';
+  particleOpacity?: number; // Added to allow direct control of particle opacity
 };
 
 const LogoParticles: React.FC<LogoParticlesProps> = ({ 
   colorClasses, 
   animationClasses,
   animationStyle,
-  intensity = 'medium'
+  intensity = 'medium',
+  particleOpacity
 }) => {
   // Adjust particle characteristics based on intensity
   const getIntensityFactor = () => {
@@ -32,7 +34,12 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
     {
       count: Math.round(5 * intensityFactor.count),
       size: { base: 0.9 * intensityFactor.sizeFactor, variance: 0.2 },
-      opacity: { base: 0.7 * intensityFactor.opacityFactor, variance: 0.15 },
+      opacity: { 
+        base: particleOpacity !== undefined ? 
+          particleOpacity : 
+          0.7 * intensityFactor.opacityFactor, 
+        variance: 0.15 
+      },
       positionRadius: { min: 20, max: 35 },
       animationDuration: { base: 7 * intensityFactor.speedFactor, variance: 1.5 },
       orbitPath: 'inner', // Closer to core
@@ -41,7 +48,12 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
     {
       count: Math.round(6 * intensityFactor.count),
       size: { base: 1.1 * intensityFactor.sizeFactor, variance: 0.3 },
-      opacity: { base: 0.6 * intensityFactor.opacityFactor, variance: 0.2 },
+      opacity: { 
+        base: particleOpacity !== undefined ? 
+          particleOpacity * 0.85 : 
+          0.6 * intensityFactor.opacityFactor, 
+        variance: 0.2 
+      },
       positionRadius: { min: 30, max: 60 },
       animationDuration: { base: 9 * intensityFactor.speedFactor, variance: 2 },
       orbitPath: 'outer', // Further from core
@@ -53,7 +65,12 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
     particleSets.push({
       count: 4,
       size: { base: 1.3 * intensityFactor.sizeFactor, variance: 0.4 },
-      opacity: { base: 0.75 * intensityFactor.opacityFactor, variance: 0.25 },
+      opacity: { 
+        base: particleOpacity !== undefined ? 
+          particleOpacity * 1.1 : 
+          0.75 * intensityFactor.opacityFactor, 
+        variance: 0.25 
+      },
       positionRadius: { min: 25, max: 55 },
       animationDuration: { base: 8 * intensityFactor.speedFactor, variance: 1.8 },
       orbitPath: 'middle',
@@ -104,9 +121,9 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
                     ${particleColor} 0%, 
                     ${particleColor.replace(opacity.toString(), (opacity + 0.1).toString())} 80%)`,
                   boxShadow: `0 0 ${size * 2}px 0 ${particleColor.replace(opacity.toString(), (opacity / 3).toString())}`,
-                  animationDuration: animationStyle === 'cellular' ? `${duration}s` : `${duration / 3}s`,
-                  animationDelay: `${i * (animationStyle === 'cellular' ? 0.8 : 0.3)}s`,
-                  animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
+                  animationDuration: `${duration}s`,
+                  animationDelay: `${i * 0.8}s`,
+                  animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
                   transform: 'translateZ(0)', // Force hardware acceleration
                   opacity: opacity,
                   filter: 'brightness(1.05)',

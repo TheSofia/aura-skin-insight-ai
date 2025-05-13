@@ -9,7 +9,8 @@ type LogoRingsProps = {
   animationClasses: { innerRing: string; outerRing: string };
   animationStyle: AnimationStyle;
   intensity?: 'subtle' | 'medium' | 'vibrant';
-  isLandingPage?: boolean; // New prop to handle landing page context
+  isLandingPage?: boolean; // Controls ring visibility for landing page
+  isLoadingPage?: boolean; // Added to specifically identify loading page context
 };
 
 const LogoRings: React.FC<LogoRingsProps> = ({ 
@@ -19,9 +20,10 @@ const LogoRings: React.FC<LogoRingsProps> = ({
   animationClasses,
   animationStyle,
   intensity = 'medium',
-  isLandingPage = false
+  isLandingPage = false,
+  isLoadingPage = false
 }) => {
-  // Adjust ring characteristics based on intensity
+  // Adjust ring characteristics based on intensity and context
   const getIntensityStyles = () => {
     // Base styles determined by intensity
     let baseStyles = {
@@ -34,6 +36,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
       outerDuration: '15s'
     };
     
+    // Adjust for intensity levels
     switch (intensity) {
       case 'subtle':
         baseStyles = {
@@ -61,15 +64,29 @@ const LogoRings: React.FC<LogoRingsProps> = ({
         break;
     }
     
-    // Further reduce opacity for landing page context
+    // First apply landing page adjustments - make rings nearly invisible
     if (isLandingPage) {
-      return {
+      baseStyles = {
         ...baseStyles,
-        innerOpacity: baseStyles.innerOpacity * 0.5, // 50% more transparent for landing page
-        outerOpacity: baseStyles.outerOpacity * 0.4, // 60% more transparent for landing page
-        innerBorderOpacity: baseStyles.innerBorderOpacity * 0.6, // 40% more transparent for landing page
-        outerBorderOpacity: baseStyles.outerBorderOpacity * 0.5, // 50% more transparent for landing page
-        blurFactor: baseStyles.blurFactor * 0.7 // More subtle blur for landing page
+        innerOpacity: baseStyles.innerOpacity * 0.3, // 70% more transparent on landing page
+        outerOpacity: baseStyles.outerOpacity * 0.25, // 75% more transparent on landing page
+        innerBorderOpacity: baseStyles.innerBorderOpacity * 0.3, // 70% more transparent on landing page
+        outerBorderOpacity: baseStyles.outerBorderOpacity * 0.25, // 75% more transparent on landing page
+        blurFactor: baseStyles.blurFactor * 0.5 // More subtle blur for landing page
+      };
+    }
+    
+    // Then apply loading page adjustments (more visible rings)
+    if (isLoadingPage) {
+      baseStyles = {
+        ...baseStyles,
+        innerOpacity: baseStyles.innerOpacity * 1.4, // 40% more visible on loading page
+        outerOpacity: baseStyles.outerOpacity * 1.5, // 50% more visible on loading page
+        innerBorderOpacity: baseStyles.innerBorderOpacity * 1.3, // 30% more visible on loading page
+        outerBorderOpacity: baseStyles.outerBorderOpacity * 1.4, // 40% more visible on loading page
+        blurFactor: baseStyles.blurFactor * 1.2, // Enhanced blur for loading page
+        innerDuration: (parseFloat(baseStyles.innerDuration) * 0.9) + 's', // 10% faster on loading page
+        outerDuration: (parseFloat(baseStyles.outerDuration) * 0.9) + 's' // 10% faster on loading page
       };
     }
     
@@ -88,8 +105,8 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           background: `rgba(255, 255, 255, ${intensityStyles.innerOpacity})`,
           boxShadow: `inset 0 0 0 1px rgba(255, 255, 255, ${intensityStyles.innerBorderOpacity})`,
           backdropFilter: `blur(${intensityStyles.blurFactor}px)`,
-          animationDuration: animationStyle === 'cellular' ? intensityStyles.innerDuration : undefined,
-          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
+          animationDuration: intensityStyles.innerDuration,
+          animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
         }}
       ></div>
       
@@ -101,13 +118,13 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           background: `rgba(255, 255, 255, ${intensityStyles.outerOpacity})`,
           boxShadow: `inset 0 0 0 1px rgba(255, 255, 255, ${intensityStyles.outerBorderOpacity})`,
           backdropFilter: `blur(${intensityStyles.blurFactor * 0.4}px)`,
-          animationDuration: animationStyle === 'cellular' ? intensityStyles.outerDuration : undefined,
-          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.37, 0, 0.63, 1)' : undefined,
+          animationDuration: intensityStyles.outerDuration,
+          animationTimingFunction: 'cubic-bezier(0.37, 0, 0.63, 1)',
         }}
       ></div>
 
-      {/* Additional middle ring for more layered effect (visible only in medium and vibrant modes) */}
-      {intensity !== 'subtle' && (
+      {/* Additional middle ring for more layered effect (visible only in medium and vibrant modes, and always visible on loading page) */}
+      {(intensity !== 'subtle' || isLoadingPage) && (
         <div 
           className={`absolute rounded-full animate-cellular-ring-drift z-5`}
           style={{
@@ -118,6 +135,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
             backdropFilter: `blur(${intensityStyles.blurFactor * 0.6}px)`,
             animationDuration: '13s',
             animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
+            opacity: isLandingPage ? 0.7 : 1, // More subtle on landing page
           }}
         ></div>
       )}

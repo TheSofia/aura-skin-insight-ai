@@ -8,6 +8,7 @@ type LogoCoreProps = {
   animationClasses: { core: string };
   animationStyle: AnimationStyle;
   intensity?: 'subtle' | 'medium' | 'vibrant';
+  isLoadingPage?: boolean; // Added to identify loading page context
 };
 
 const LogoCore: React.FC<LogoCoreProps> = ({ 
@@ -15,36 +16,54 @@ const LogoCore: React.FC<LogoCoreProps> = ({
   colorClasses, 
   animationClasses, 
   animationStyle,
-  intensity = 'medium'
+  intensity = 'medium',
+  isLoadingPage = false
 }) => {
-  // Adjust core characteristics based on intensity
+  // Adjust core characteristics based on intensity and page context
   const getIntensityStyles = () => {
+    // Base styles based on intensity
+    let baseStyles = {
+      opacity: 0.95,
+      brightness: 1.0,
+      pulseMagnitude: '1s',
+      glowOpacity: 0.8,
+      glowSize: '-20%'
+    };
+    
     switch (intensity) {
       case 'subtle':
-        return {
+        baseStyles = {
           opacity: 0.85,
           brightness: 0.95,
           pulseMagnitude: '0.8s',
           glowOpacity: 0.65,
           glowSize: '-20%'
         };
+        break;
       case 'vibrant':
-        return {
+        baseStyles = {
           opacity: 1,
           brightness: 1.1,
           pulseMagnitude: '1.2s',
           glowOpacity: 0.9,
           glowSize: '-15%'
         };
-      default: // medium
-        return {
-          opacity: 0.95,
-          brightness: 1.0,
-          pulseMagnitude: '1s',
-          glowOpacity: 0.8,
-          glowSize: '-20%'
-        };
+        break;
+      default: // medium - already set
+        break;
     }
+
+    // Apply loading page contextual adjustments
+    if (isLoadingPage) {
+      return {
+        ...baseStyles,
+        brightness: baseStyles.brightness * 1.1, // 10% brighter on loading page
+        pulseMagnitude: (parseFloat(baseStyles.pulseMagnitude) * 0.85) + 's', // 15% faster pulse on loading page
+        glowOpacity: baseStyles.glowOpacity * 1.15, // 15% more glow on loading page
+      };
+    }
+
+    return baseStyles;
   };
 
   const intensityStyles = getIntensityStyles();
@@ -56,8 +75,8 @@ const LogoCore: React.FC<LogoCoreProps> = ({
       style={{
         background: 'radial-gradient(circle at 40% 40%, var(--core-color-bright, rgba(249, 115, 22, 0.90)) 0%, var(--core-color, rgba(233, 99, 12, 0.95)) 100%)',
         boxShadow: '0 0 15px 4px rgba(249, 115, 22, 0.15)',
-        animationDuration: animationStyle === 'cellular' ? `${intensity === 'subtle' ? '9s' : intensity === 'vibrant' ? '6s' : '7.5s'}` : undefined,
-        animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.45, 0, 0.55, 1)' : undefined,
+        animationDuration: isLoadingPage ? '7s' : '9s', // Faster animation on loading page
+        animationTimingFunction: 'cubic-bezier(0.45, 0, 0.55, 1)',
         opacity: intensityStyles.opacity,
         filter: `brightness(${intensityStyles.brightness})`,
         // Fix for TypeScript error by using computed property names with type casting

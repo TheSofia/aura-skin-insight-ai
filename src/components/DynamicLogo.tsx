@@ -21,20 +21,22 @@ export type DynamicLogoProps = {
   animationStyle?: AnimationStyle;
   showText?: boolean;
   intensity?: 'subtle' | 'medium' | 'vibrant';
-  isLandingPage?: boolean; // New prop to specifically identify the landing page context
+  isLandingPage?: boolean; // Identifies the landing page context for ring visibility
+  isLoadingPage?: boolean; // Added to specifically identify loading page context
 };
 
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
   size = 'md', 
   className = '', 
-  colorScheme = 'accent',
-  animationStyle = 'combined',
+  colorScheme = 'gradient', // Changed default to gradient for consistency
+  animationStyle = 'cellular', // Changed default to cellular for standardization
   showText = false,
   intensity = 'medium',
-  isLandingPage = false
+  isLandingPage = false,
+  isLoadingPage = false
 }, ref) => {
   // Use the gradient state hook for enhanced gradient colorScheme effect
-  const gradientState = useGradientState(colorScheme === 'gradient');
+  const gradientState = useGradientState(true); // Always use gradient for standardization
   
   // Get size classes for different parts of the logo
   const sizeClass = getLogoSizeClasses(size);
@@ -44,38 +46,71 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
   
   // Get color and animation classes
   const colorClasses = getColorClasses(colorScheme, gradientState);
-  const animationClasses = getAnimationClasses(animationStyle);
+  
+  // Standardize on cellular animation style for brand consistency
+  const animationClasses = getAnimationClasses('cellular');
 
   // Define sophisticated hover animation for the logo
   const hoverAnimationClass = useMemo(() => {
     return 'group transition-all duration-500 hover:scale-[1.02] hover:filter hover:brightness-[1.03]';
   }, []);
 
+  // Adjust animation speed based on context (loading vs regular pages)
+  const getContextualAnimation = () => {
+    if (isLoadingPage) {
+      return {
+        cellSpeed: intensity === 'subtle' ? '7s' : intensity === 'vibrant' ? '5s' : '6s',
+        particleOpacity: intensity === 'subtle' ? 0.7 : intensity === 'vibrant' ? 0.9 : 0.8,
+      };
+    } else {
+      // Slower, more subtle animation for non-loading pages
+      return {
+        cellSpeed: intensity === 'subtle' ? '9s' : intensity === 'vibrant' ? '7s' : '8s',
+        particleOpacity: intensity === 'subtle' ? 0.6 : intensity === 'vibrant' ? 0.8 : 0.7,
+      };
+    }
+  };
+
+  const contextualAnimation = getContextualAnimation();
+
   // Adjust opacity and animation speed based on intensity
   const getIntensityStyles = () => {
-    switch (intensity) {
-      case 'subtle':
-        return {
-          opacity: 'opacity-80',
-          animationDuration: 'animation-slow',
-          particleOpacity: 0.6,
-          glow: 'opacity-20'
-        };
-      case 'vibrant':
-        return {
-          opacity: 'opacity-100',
-          animationDuration: 'animation-fast',
-          particleOpacity: 0.9,
-          glow: 'opacity-40'
-        };
-      default: // medium
-        return {
-          opacity: 'opacity-90',
-          animationDuration: 'animation-normal',
-          particleOpacity: 0.75,
-          glow: 'opacity-30'
-        };
-    }
+    // Base styles
+    const baseIntensity = {
+      subtle: {
+        opacity: 'opacity-80',
+        animationDuration: 'animation-slow',
+        particleOpacity: 0.6,
+        glow: 'opacity-20'
+      },
+      vibrant: {
+        opacity: 'opacity-100',
+        animationDuration: 'animation-fast',
+        particleOpacity: 0.9,
+        glow: 'opacity-40'
+      },
+      medium: {
+        opacity: 'opacity-90',
+        animationDuration: 'animation-normal',
+        particleOpacity: 0.75,
+        glow: 'opacity-30'
+      }
+    };
+
+    // Get base style based on intensity
+    const baseStyle = baseIntensity[intensity] || baseIntensity.medium;
+    
+    // Return style with contextual adjustments
+    return {
+      ...baseStyle,
+      // Contextual overrides for loading state
+      particleOpacity: isLoadingPage ? 
+        baseStyle.particleOpacity * 1.1 : // Slightly more visible on loading page
+        baseStyle.particleOpacity,
+      glow: isLoadingPage ? 
+        `opacity-${(parseInt(baseStyle.glow.split('-')[1]) * 1.2).toFixed(0)}` : // Enhanced glow on loading page
+        baseStyle.glow
+    };
   };
 
   const intensityStyles = getIntensityStyles();
@@ -87,8 +122,8 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         role="presentation"
         ref={ref}
         style={{
-          animationDuration: animationStyle === 'cellular' ? `${intensity === 'subtle' ? '10s' : intensity === 'vibrant' ? '6s' : '8s'}` : undefined,
-          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
+          animationDuration: contextualAnimation.cellSpeed,
+          animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
           backdropFilter: 'blur(0.5px)',
         }}
       >
@@ -98,9 +133,10 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           outerRingSize={outerRingSize}
           colorClasses={colorClasses}
           animationClasses={animationClasses}
-          animationStyle={animationStyle}
+          animationStyle="cellular" // Standardize on cellular animation
           intensity={intensity}
-          isLandingPage={isLandingPage} // Pass the landing page context to rings
+          isLandingPage={isLandingPage} // Controls ring visibility for landing page
+          isLoadingPage={isLoadingPage} // Identifies the loading page context
         />
         
         {/* Core dot - refined with subtle gradient and inner highlight */}
@@ -108,16 +144,18 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           coreSize={coreSize} 
           colorClasses={colorClasses} 
           animationClasses={animationClasses} 
-          animationStyle={animationStyle}
+          animationStyle="cellular" // Standardize on cellular animation
           intensity={intensity}
+          isLoadingPage={isLoadingPage}
         />
         
-        {/* Refined orbital particles - more subtle & sophisticated */}
+        {/* Refined orbital particles - cellular, sophisticated movement */}
         <LogoParticles 
           colorClasses={colorClasses}
           animationClasses={animationClasses}
-          animationStyle={animationStyle}
+          animationStyle="cellular" // Standardize on cellular animation
           intensity={intensity}
+          particleOpacity={contextualAnimation.particleOpacity}
         />
         
         {/* Add a subtle outer glow effect */}

@@ -138,7 +138,7 @@ const Index = () => {
     }, 3300);
   };
 
-  // Enhanced loading state with improved animations and cellular visual effects
+  // Enhanced loading state with the standardized logo
   if (isLoading) {
     return (
       <div className="app-container flex items-center justify-center bg-gradient-light">
@@ -153,32 +153,38 @@ const Index = () => {
     );
   }
 
-  // Determine appropriate logo settings based on current step - updated to ensure consistency
+  // Standardized logo settings - now using a consistent structure with contextual variations
   const getLogoSettings = () => {
+    // Base settings common to all contexts
+    const baseSettings = {
+      colorScheme: 'gradient' as const,
+      animationStyle: 'cellular' as const,
+      size: 'md' as const,
+    };
+    
     switch (currentStep) {
-      case 0: // Landing page - more subtle with concentric rings less visible
+      case 0: // Landing page - more subtle with nearly invisible concentric rings
         return {
-          colorScheme: 'gradient' as const, // Changed from monochrome to gradient for consistency
-          animationStyle: 'combined' as const, // Changed to match loading page style
-          intensity: 'subtle' as const,
+          ...baseSettings,
+          intensity: 'medium' as const,
           size: 'lg' as const,
-          isLandingPage: true // Specific flag for landing page context
+          isLandingPage: true, // This reduces ring visibility significantly
+          isLoadingPage: false
         };
       case 2: // Processing page - more vibrant with visible concentric rings
         return {
-          colorScheme: 'gradient' as const,
-          animationStyle: 'combined' as const,
+          ...baseSettings,
           intensity: 'vibrant' as const,
           size: 'lg' as const,
-          isLandingPage: false
+          isLandingPage: false,
+          isLoadingPage: true // This enhances ring visibility
         };
-      default: // Other pages - medium intensity, consistent style
+      default: // Other pages - medium intensity
         return {
-          colorScheme: 'gradient' as const, // Changed from accent to gradient for consistency
-          animationStyle: 'combined' as const, // Changed to match loading page style
+          ...baseSettings,
           intensity: 'medium' as const,
-          size: 'md' as const,
-          isLandingPage: false
+          isLandingPage: false,
+          isLoadingPage: false
         };
     }
   };
