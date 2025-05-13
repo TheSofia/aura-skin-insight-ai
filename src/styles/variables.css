@@ -18,7 +18,7 @@
   --beautyagent-deep-blue: #2A4365; /* Reserved for specific UI accents */
   --beautyagent-muted-violet: #7E69AB; /* Elegant cool tone for secondary accents */
   --beautyagent-deep-purple: #5D4A8C; /* More subdued purple for select interactions */
-  --beautyagent-dark-purple: #210B2C; /* Extremely deep dark purple with violet undertone */
+  --beautyagent-dark-purple: #34184A; /* Slightly lighter dark purple with violet undertone */
   
   /* Translucent effects for layering and depth */
   --beautyagent-glass-white: rgba(255, 255, 255, 0.95);
