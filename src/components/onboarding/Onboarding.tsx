@@ -1,13 +1,12 @@
 
-import { useRef } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import DynamicLogo from "../DynamicLogo";
 import useAnimationState from "./useAnimationState";
 import FloatingBackground from "./FloatingBackground";
 import AnimatedTitle from "./AnimatedTitle";
 import ActionButtons from "./ActionButtons";
 import VisualizationElement from "./VisualizationElement";
 import OnboardingDescription from "./OnboardingDescription";
+import OnboardingLogo from "./OnboardingLogo";
 
 type OnboardingProps = {
   onGetStarted: () => void;
@@ -16,7 +15,6 @@ type OnboardingProps = {
 
 const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
   const { toast } = useToast();
-  const logoRef = useRef<HTMLDivElement>(null);
   const animationState = useAnimationState();
   
   return (
@@ -26,19 +24,7 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
       
       <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center relative z-10">
         {/* Logo component */}
-        <div className="flex items-center gap-3 mb-8">
-          <DynamicLogo 
-            colorScheme="gradient" 
-            animationStyle="cellular" 
-            size="lg" 
-            className="transition-transform duration-500 hover-enhance" 
-            ref={logoRef}
-            showText={true}
-            intensity="subtle" 
-            isLandingPage={true}
-            isLoadingPage={false}
-          />
-        </div>
+        <OnboardingLogo />
         
         {/* Animated Title */}
         <AnimatedTitle animationState={animationState} />
