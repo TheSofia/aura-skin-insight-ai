@@ -17,7 +17,7 @@ import {
 export type DynamicLogoProps = {
   size?: LogoSize;
   className?: string;
-  colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined';
+  colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined' | 'monochrome';
   animationStyle?: AnimationStyle;
   showText?: boolean;
 };
