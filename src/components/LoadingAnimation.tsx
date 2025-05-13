@@ -72,12 +72,13 @@ const LoadingAnimation = ({ message = "Processing", size = 'md' }: LoadingAnimat
         {/* Background light with enhanced dynamic gradient */}
         <div className={`absolute inset-0 rounded-full opacity-90 transition-all duration-700 ease-in-out ${getGradientClass()} animate-pulse-slow`}></div>
         
-        {/* Central dynamic logo with enhanced gradient coloring */}
+        {/* Central dynamic logo with enhanced gradient coloring - now using the standardized DynamicLogo */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           <DynamicLogo 
             colorScheme="gradient" 
-            animationStyle="combined" 
+            animationStyle="cellular" 
             size={size === 'sm' ? 'md' : size === 'md' ? 'lg' : 'xl'} 
+            intensity="vibrant"
           />
         </div>
         

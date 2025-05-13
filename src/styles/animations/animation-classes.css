@@ -12,3 +12,49 @@
   transform: translateY(-1px);
   filter: brightness(1.05);
 }
+
+/* Animation speed modifiers for the logo system */
+.animation-slow {
+  animation-duration: 1.5s !important;
+}
+.animation-normal {
+  animation-duration: 1s !important;
+}
+.animation-fast {
+  animation-duration: 0.7s !important;
+}
+
+/* Enhanced hover animations for logo interactions */
+.hover-enhance {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.hover-enhance:hover {
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.05);
+}
+
+/* Subtle glow effects for logo system */
+.glow-minimal {
+  position: relative;
+}
+.glow-minimal::after {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+.glow-minimal:hover::after {
+  opacity: 0.8;
+}
+
+/* Hover text accent effect */
+.hover-accent-text {
+  transition: color 0.3s ease;
+}
+.hover-accent-text:hover {
+  color: var(--beautyagent-accent);
+}

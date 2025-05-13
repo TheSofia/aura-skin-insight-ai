@@ -9,6 +9,7 @@ import LoadingAnimation from "@/components/LoadingAnimation";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 import { useLocation } from "react-router-dom";
+import DynamicLogo from "@/components/DynamicLogo";
 
 const Index = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -151,6 +152,35 @@ const Index = () => {
       </div>
     );
   }
+
+  // Determine appropriate logo settings based on current step
+  const getLogoSettings = () => {
+    switch (currentStep) {
+      case 0: // Landing page
+        return {
+          colorScheme: 'monochrome' as const,
+          animationStyle: 'cellular' as const,
+          intensity: 'subtle' as const,
+          size: 'lg' as const
+        };
+      case 2: // Processing page
+        return {
+          colorScheme: 'gradient' as const,
+          animationStyle: 'combined' as const,
+          intensity: 'vibrant' as const,
+          size: 'lg' as const
+        };
+      default: // Other pages
+        return {
+          colorScheme: 'accent' as const,
+          animationStyle: 'cellular' as const,
+          intensity: 'medium' as const,
+          size: 'md' as const
+        };
+    }
+  };
+
+  const logoSettings = getLogoSettings();
 
   return (
     <div className="app-container">

@@ -20,6 +20,7 @@ export type DynamicLogoProps = {
   colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined' | 'monochrome';
   animationStyle?: AnimationStyle;
   showText?: boolean;
+  intensity?: 'subtle' | 'medium' | 'vibrant';
 };
 
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
@@ -27,7 +28,8 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
   className = '', 
   colorScheme = 'accent',
   animationStyle = 'combined',
-  showText = false
+  showText = false,
+  intensity = 'medium'
 }, ref) => {
   // Use the gradient state hook for enhanced gradient colorScheme effect
   const gradientState = useGradientState(colorScheme === 'gradient');
@@ -47,16 +49,44 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
     return 'group transition-all duration-500 hover:scale-[1.02] hover:filter hover:brightness-[1.03]';
   }, []);
 
+  // Adjust opacity and animation speed based on intensity
+  const getIntensityStyles = () => {
+    switch (intensity) {
+      case 'subtle':
+        return {
+          opacity: 'opacity-80',
+          animationDuration: 'animation-slow',
+          particleOpacity: 0.6,
+          glow: 'opacity-20'
+        };
+      case 'vibrant':
+        return {
+          opacity: 'opacity-100',
+          animationDuration: 'animation-fast',
+          particleOpacity: 0.9,
+          glow: 'opacity-40'
+        };
+      default: // medium
+        return {
+          opacity: 'opacity-90',
+          animationDuration: 'animation-normal',
+          particleOpacity: 0.75,
+          glow: 'opacity-30'
+        };
+    }
+  };
+
+  const intensityStyles = getIntensityStyles();
+
   return (
     <div className={`flex items-center ${showText ? 'flex-col md:flex-row' : ''} gap-3`}>
       <div 
-        className={`dot-logo relative ${sizeClass} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''} ${hoverAnimationClass}`}
+        className={`dot-logo relative ${sizeClass} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''} ${hoverAnimationClass} ${intensityStyles.opacity}`}
         role="presentation"
         ref={ref}
         style={{
-          animationDuration: animationStyle === 'cellular' ? '8s' : undefined,
+          animationDuration: animationStyle === 'cellular' ? `${intensity === 'subtle' ? '10s' : intensity === 'vibrant' ? '6s' : '8s'}` : undefined,
           animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
-          // Add a subtle backdrop blur effect to enhance premium feel
           backdropFilter: 'blur(0.5px)',
         }}
       >
@@ -67,6 +97,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           colorClasses={colorClasses}
           animationClasses={animationClasses}
           animationStyle={animationStyle}
+          intensity={intensity}
         />
         
         {/* Core dot - refined with subtle gradient and inner highlight */}
@@ -75,6 +106,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           colorClasses={colorClasses} 
           animationClasses={animationClasses} 
           animationStyle={animationStyle}
+          intensity={intensity}
         />
         
         {/* Refined orbital particles - more subtle & sophisticated */}
@@ -82,10 +114,11 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           colorClasses={colorClasses}
           animationClasses={animationClasses}
           animationStyle={animationStyle}
+          intensity={intensity}
         />
         
         {/* Add a subtle outer glow effect */}
-        <div className="absolute inset-[-10%] rounded-full opacity-30 animate-pulse-slow bg-gradient-radial from-beautyagent-accent/10 to-transparent"></div>
+        <div className={`absolute inset-[-10%] rounded-full ${intensityStyles.glow} animate-pulse-slow bg-gradient-radial from-beautyagent-accent/10 to-transparent`}></div>
       </div>
       
       {showText && (
