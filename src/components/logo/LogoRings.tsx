@@ -23,54 +23,54 @@ const LogoRings: React.FC<LogoRingsProps> = ({
   isLandingPage = false,
   isLoadingPage = false
 }) => {
-  // Adjusted to match the loading page screenshot - more visible rings regardless of context
+  // Enhanced visibility for a consistent look across all pages
   const getIntensityStyles = () => {
-    // Base styles determined by intensity
+    // Base styles determined by intensity, but with improved visibility
     let baseStyles = {
-      innerOpacity: 0.08, // Increased from 0.06 to match loading page
-      outerOpacity: 0.05, // Increased from 0.04 to match loading page
-      innerBorderOpacity: 0.18, // Increased from 0.15 to match loading page
-      outerBorderOpacity: 0.12, // Increased from 0.1 to match loading page
+      innerOpacity: 0.12, // Increased visibility
+      outerOpacity: 0.085, // Increased visibility
+      innerBorderOpacity: 0.26, // Increased visibility
+      outerBorderOpacity: 0.18, // Increased visibility
       blurFactor: 0.5,
       innerDuration: '14s',
       outerDuration: '18s',
-      membraneOpacity: 0.12, // Increased from 0.1 to match loading page
+      membraneOpacity: 0.16, // Increased visibility
       membraneBlur: 0.7
     };
     
-    // Adjust for intensity levels
+    // Adjust for intensity levels but maintain higher visibility across all contexts
     switch (intensity) {
       case 'subtle':
         baseStyles = {
-          innerOpacity: 0.06, // Increased from 0.03 to match loading page
-          outerOpacity: 0.04, // Increased from 0.02 to match loading page
-          innerBorderOpacity: 0.14, // Increased from 0.09 to match loading page
-          outerBorderOpacity: 0.09, // Increased from 0.06 to match loading page
+          innerOpacity: 0.10, // Increased from 0.06 for better visibility
+          outerOpacity: 0.07, // Increased from 0.04 for better visibility
+          innerBorderOpacity: 0.20, // Increased from 0.14 for better visibility
+          outerBorderOpacity: 0.14, // Increased from 0.09 for better visibility
           blurFactor: 0.4,
           innerDuration: '20s',
           outerDuration: '24s',
-          membraneOpacity: 0.08, // Increased from 0.05 to match loading page
+          membraneOpacity: 0.13, // Increased from 0.08 for better visibility
           membraneBlur: 0.5
         };
         break;
       case 'vibrant':
         baseStyles = {
-          innerOpacity: 0.09, // Increased from 0.07 to match loading page
-          outerOpacity: 0.055, // Increased from 0.045 to match loading page
-          innerBorderOpacity: 0.22, // Increased from 0.18 to match loading page
-          outerBorderOpacity: 0.14, // Increased from 0.12 to match loading page
+          innerOpacity: 0.14, // Increased from 0.09 for better visibility
+          outerOpacity: 0.095, // Increased from 0.055 for better visibility
+          innerBorderOpacity: 0.30, // Increased from 0.22 for better visibility
+          outerBorderOpacity: 0.22, // Increased from 0.14 for better visibility
           blurFactor: 0.6,
           innerDuration: '12s',
           outerDuration: '15s',
-          membraneOpacity: 0.13, // Increased from 0.11 to match loading page
+          membraneOpacity: 0.18, // Increased from 0.13 for better visibility
           membraneBlur: 0.75
         };
         break;
-      default: // medium - already set in baseStyles
+      default: // medium - already set in baseStyles with improved values
         break;
     }
     
-    // All contexts now show rings with similar visibility to match loading page
+    // All contexts now show consistent rings with improved visibility
     return baseStyles;
   };
 
@@ -78,7 +78,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
 
   return (
     <>
-      {/* Semi-transparent irregular cellular membrane - refined for biological elegance */}
+      {/* Enhanced semi-transparent irregular cellular membrane - refined for biological elegance */}
       <div 
         className="absolute rounded-full animate-cellular-motion z-5"
         style={{
@@ -91,7 +91,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
         }}
       ></div>
 
-      {/* Inner ring with subtle clarity - refined for organic feel */}
+      {/* Inner ring with improved clarity */}
       <div 
         className={`absolute ${innerRingSize} rounded-full ${animationClasses.innerRing} z-10
           transition-all duration-500 backdrop-blur-[0.5px]`}
@@ -104,7 +104,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
         }}
       ></div>
       
-      {/* Outer ring with subtle clarity - enhanced organic motion */}
+      {/* Outer ring with improved clarity */}
       <div 
         className={`absolute ${outerRingSize} rounded-full ${animationClasses.outerRing} 
           transition-all duration-500 backdrop-blur-[0.2px]`}
@@ -117,7 +117,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
         }}
       ></div>
 
-      {/* Middle ring - always show regardless of context - refined biological motion */}
+      {/* Middle ring - enhanced visibility */}
       <div 
         className={`absolute rounded-full animate-cellular-ring-drift z-5`}
         style={{
@@ -128,19 +128,45 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           backdropFilter: `blur(${intensityStyles.blurFactor * 0.6}px)`,
           animationDuration: '18s',
           animationTimingFunction: 'cubic-bezier(0.42, 0, 0.58, 1)',
-          opacity: 1, // Always fully visible to match loading page
+          opacity: 1, // Always fully visible for consistency
         }}
       ></div>
       
-      {/* Additional outer halo - subtle ethereal glow around entire structure */}
+      {/* Additional outer halo - enhanced glow */}
       <div
         className="absolute rounded-full animate-pulse-slow"
         style={{
           width: `calc(${outerRingSize.split(' ')[0]} * 1.2)`,
           height: `calc(${outerRingSize.split(' ')[1]} * 1.2)`,
-          background: `radial-gradient(circle, rgba(255, 255, 255, ${intensityStyles.outerOpacity * 0.6}) 0%, transparent 85%)`,
+          background: `radial-gradient(circle, rgba(255, 255, 255, ${intensityStyles.outerOpacity * 0.8}) 0%, transparent 85%)`, // Increased from 0.6 to 0.8
           animationDuration: '25s',
-          opacity: 0.85, // Always more visible to match loading page
+          opacity: 0.9, // Increased from 0.85 for better visibility
+        }}
+      ></div>
+
+      {/* New additional pulsing ring for more fluidity and layering */}
+      <div 
+        className={`absolute rounded-full animate-pulse-cellular z-4`}
+        style={{
+          width: `calc(${outerRingSize.split(' ')[0]} * 1.4)`,
+          height: `calc(${outerRingSize.split(' ')[1]} * 1.4)`,
+          border: `1px solid rgba(255, 255, 255, ${intensityStyles.outerBorderOpacity * 0.6})`,
+          animationDuration: '30s',
+          opacity: 0.7,
+          filter: 'blur(0.5px)'
+        }}
+      ></div>
+
+      {/* New outer ethereal ring that slowly rotates */}
+      <div 
+        className={`absolute rounded-full animate-orbital-shift z-3`}
+        style={{
+          width: `calc(${outerRingSize.split(' ')[0]} * 1.6)`,
+          height: `calc(${outerRingSize.split(' ')[1]} * 1.6)`,
+          border: `0.5px solid rgba(255, 255, 255, ${intensityStyles.outerBorderOpacity * 0.5})`,
+          animationDuration: '40s',
+          opacity: 0.6,
+          filter: 'blur(0.7px)'
         }}
       ></div>
     </>

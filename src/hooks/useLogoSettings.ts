@@ -2,7 +2,7 @@
 import { LogoSettings } from "@/types/logo";
 
 export const useLogoSettings = (currentStep: number) => {
-  // Base settings common to all contexts - standardized on the cellular animation style
+  // Base settings standardized on the cellular animation style
   const baseSettings = {
     colorScheme: 'gradient' as const,
     animationStyle: 'cellular' as const,
@@ -10,13 +10,13 @@ export const useLogoSettings = (currentStep: number) => {
   };
   
   switch (currentStep) {
-    case 0: // Landing page - more visible with settings similar to loading page
+    case 0: // Landing page - using the unified animation style
       return {
         ...baseSettings,
-        intensity: 'medium' as const, // Changed from subtle to medium for better visibility
+        intensity: 'medium' as const,
         size: 'lg' as const,
-        isLandingPage: false, // This increases ring visibility
-        isLoadingPage: true // This enhances overall visibility
+        isLandingPage: false, // For consistent visibility
+        isLoadingPage: true // Apply the unified animation style
       };
     case 2: // Processing page - more vibrant with visible concentric rings
       return {
@@ -24,14 +24,14 @@ export const useLogoSettings = (currentStep: number) => {
         intensity: 'vibrant' as const,
         size: 'lg' as const,
         isLandingPage: false,
-        isLoadingPage: true // This enhances ring visibility
+        isLoadingPage: true // Apply the unified animation style
       };
-    default: // Other pages - medium intensity
+    default: // Other pages - consistent medium intensity
       return {
         ...baseSettings,
         intensity: 'medium' as const,
-        isLandingPage: false,
-        isLoadingPage: false
+        isLandingPage: false, 
+        isLoadingPage: true // Apply the unified animation style
       };
   }
 };

@@ -23,8 +23,8 @@ export type DynamicLogoProps = {
   animationStyle?: AnimationStyle;
   showText?: boolean;
   intensity?: IntensityLevel;
-  isLandingPage?: boolean; // Identifies the landing page context for ring visibility
-  isLoadingPage?: boolean; // Added to specifically identify loading page context
+  isLandingPage?: boolean;
+  isLoadingPage?: boolean;
 };
 
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
@@ -94,7 +94,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
       />
       
       {/* Add a subtle outer glow effect - adjusted based on context */}
-      <div className={`absolute inset-[-10%] rounded-full ${getIntensityStyles(intensity, { isLandingPage, isLoadingPage }).glow} animate-pulse-slow bg-gradient-radial from-beautyagent-accent/8 to-transparent`}></div>
+      <div className={`absolute inset-[-10%] rounded-full ${getIntensityStyles(intensity, { isLandingPage, isLoadingPage }).glow} animate-pulse-slow bg-gradient-radial from-beautyagent-accent/10 to-transparent`}></div>
     </LogoWrapper>
   );
 });
@@ -102,4 +102,3 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
 DynamicLogo.displayName = "DynamicLogo";
 
 export default DynamicLogo;
-
