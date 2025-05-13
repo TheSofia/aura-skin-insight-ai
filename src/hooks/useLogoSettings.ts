@@ -10,13 +10,13 @@ export const useLogoSettings = (currentStep: number) => {
   };
   
   switch (currentStep) {
-    case 0: // Landing page - more subtle with nearly invisible concentric rings
+    case 0: // Landing page - more visible with settings similar to loading page
       return {
         ...baseSettings,
-        intensity: 'subtle' as const,
+        intensity: 'medium' as const, // Changed from subtle to medium for better visibility
         size: 'lg' as const,
-        isLandingPage: true, // This reduces ring visibility significantly
-        isLoadingPage: false
+        isLandingPage: false, // This increases ring visibility
+        isLoadingPage: true // This enhances overall visibility
       };
     case 2: // Processing page - more vibrant with visible concentric rings
       return {
