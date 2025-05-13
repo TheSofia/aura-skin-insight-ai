@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -191,6 +190,31 @@ export default {
 					'33%': { transform: 'translateY(-3px) translateX(2px) scale(1.1)', opacity: '0.8' },
 					'66%': { transform: 'translateY(-1px) translateX(3px) scale(1.05)', opacity: '0.75' },
 					'100%': { transform: 'translateY(0) translateX(0) scale(1)', opacity: '0.7' }
+				},
+				
+				// New premium orbital animations
+				'orbital-motion': {
+					'0%': { transform: 'rotate(0deg) translateX(1px) rotate(0deg)' },
+					'33%': { transform: 'rotate(120deg) translateX(1px) rotate(-120deg)' },
+					'66%': { transform: 'rotate(240deg) translateX(1px) rotate(-240deg)' },
+					'100%': { transform: 'rotate(360deg) translateX(1px) rotate(-360deg)' }
+				},
+				'orbital-motion-reverse': {
+					'0%': { transform: 'rotate(360deg) translateX(1px) rotate(-360deg)' },
+					'33%': { transform: 'rotate(240deg) translateX(1px) rotate(-240deg)' },
+					'66%': { transform: 'rotate(120deg) translateX(1px) rotate(-120deg)' },
+					'100%': { transform: 'rotate(0deg) translateX(1px) rotate(0deg)' }
+				},
+				'orbital-float': {
+					'0%': { transform: 'rotate(0deg) translateX(0px) scale(1)', opacity: '0.7' },
+					'25%': { transform: 'rotate(90deg) translateX(3px) scale(1.05)', opacity: '0.8' },
+					'50%': { transform: 'rotate(180deg) translateX(0px) scale(1.02)', opacity: '0.75' },
+					'75%': { transform: 'rotate(270deg) translateX(2px) scale(0.98)', opacity: '0.7' },
+					'100%': { transform: 'rotate(360deg) translateX(0px) scale(1)', opacity: '0.7' }
+				},
+				'pulse-cellular': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '0.3' },
+					'50%': { transform: 'scale(1.15)', opacity: '0.5' }
 				}
 			},
 			animation: {
@@ -217,6 +241,12 @@ export default {
 				'cellular-core-pulse': 'cellular-core-pulse 7.5s infinite cubic-bezier(0.45, 0, 0.55, 1)',
 				'cellular-ring-drift': 'cellular-ring-drift 12s infinite ease-in-out',
 				'cellular-particle-float': 'cellular-particle-float 10s infinite ease-in-out',
+				
+				// New premium orbital animations
+				'orbital-motion': 'orbital-motion 20s infinite cubic-bezier(0.4, 0, 0.6, 1)',
+				'orbital-motion-reverse': 'orbital-motion-reverse 24s infinite cubic-bezier(0.4, 0, 0.6, 1)',
+				'orbital-float': 'orbital-float 18s infinite ease-in-out',
+				'pulse-cellular': 'pulse-cellular 8s infinite ease-in-out',
 			},
 			fontFamily: {
 				'sans': ['"Inter"', 'sans-serif'],

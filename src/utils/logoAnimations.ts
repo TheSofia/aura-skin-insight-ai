@@ -50,20 +50,20 @@ export const getAnimationClasses = (animationStyle: AnimationStyle): AnimationCl
         particles: 'animate-float-subtle'
       };
     case 'cellular':
-      // Enhanced cellular animation style with slower, more organic movement
+      // Enhanced cellular animation style with more refined, organic movement
       return {
         core: 'animate-cellular-core-pulse',
         innerRing: 'animate-cellular-ring-drift',
         outerRing: 'animate-cellular-drift',
-        particles: 'animate-cellular-particle-float'
+        particles: 'animate-orbital-float'
       };
     case 'combined':
     default:
       return {
-        core: 'animate-pulse-dot', // More pronounced pulse
-        innerRing: 'animate-circular-motion',
-        outerRing: 'animate-circular-motion-reverse',
-        particles: 'animate-float'
+        core: 'animate-pulse-subtle',
+        innerRing: 'animate-orbital-motion',
+        outerRing: 'animate-orbital-motion-reverse',
+        particles: 'animate-orbital-float'
       };
   }
 };

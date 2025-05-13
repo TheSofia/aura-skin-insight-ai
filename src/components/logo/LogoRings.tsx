@@ -19,27 +19,29 @@ const LogoRings: React.FC<LogoRingsProps> = ({
 }) => {
   return (
     <>
-      {/* Inner ring with refined border - thinner, more subtle */}
+      {/* Inner ring with subtle clarity */}
       <div 
-        className={`absolute ${innerRingSize} ${colorClasses.innerRing} rounded-full 
-          ${animationClasses.innerRing} transition-transform duration-300 hover:opacity-90`}
+        className={`absolute ${innerRingSize} rounded-full ${animationClasses.innerRing} z-10
+          transition-transform duration-300 backdrop-blur-[0.5px]`}
         style={{
+          background: 'rgba(255, 255, 255, 0.06)',
+          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(0.5px)',
           animationDuration: animationStyle === 'cellular' ? '12s' : undefined,
           animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
-          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.3)', // Extremely subtle inner highlight instead of border
-          border: 'none' // Remove the border completely
         }}
       ></div>
       
-      {/* Outer ring with refined border - thinner, more subtle */}
+      {/* Outer ring with subtle clarity */}
       <div 
-        className={`absolute ${outerRingSize} ${colorClasses.outerRing} rounded-full 
-          ${animationClasses.outerRing} transition-transform duration-300 hover:opacity-90`}
+        className={`absolute ${outerRingSize} rounded-full ${animationClasses.outerRing} 
+          transition-transform duration-300 backdrop-blur-[0.2px]`}
         style={{
+          background: 'rgba(255, 255, 255, 0.04)',
+          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(0.2px)',
           animationDuration: animationStyle === 'cellular' ? '15s' : undefined,
           animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.37, 0, 0.63, 1)' : undefined,
-          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.2)', // Extremely subtle inner highlight instead of border
-          border: 'none' // Remove the border completely
         }}
       ></div>
     </>

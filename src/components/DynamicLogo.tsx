@@ -52,18 +52,12 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
       ref={ref}
       style={{
         animationDuration: animationStyle === 'cellular' ? '8s' : undefined,
-        animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
+        animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
+        // Add a subtle backdrop blur effect to enhance premium feel
+        backdropFilter: 'blur(0.5px)',
       }}
     >
-      {/* Core dot - enhanced with gradient and inner highlight */}
-      <LogoCore 
-        coreSize={coreSize} 
-        colorClasses={colorClasses} 
-        animationClasses={animationClasses} 
-        animationStyle={animationStyle}
-      />
-      
-      {/* Inner and outer rings - no border, subtle highlight instead */}
+      {/* Structural concentric rings - provides the foundational structure */}
       <LogoRings 
         innerRingSize={innerRingSize}
         outerRingSize={outerRingSize}
@@ -72,7 +66,15 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         animationStyle={animationStyle}
       />
       
-      {/* Floating particles - enhanced with more organic movement */}
+      {/* Core dot - refined with subtle gradient and inner highlight */}
+      <LogoCore 
+        coreSize={coreSize} 
+        colorClasses={colorClasses} 
+        animationClasses={animationClasses} 
+        animationStyle={animationStyle}
+      />
+      
+      {/* Refined orbital particles - more subtle & sophisticated */}
       <LogoParticles 
         colorClasses={colorClasses}
         animationClasses={animationClasses}
