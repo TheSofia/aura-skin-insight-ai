@@ -11,15 +11,14 @@ type ActionButtonsProps = {
 const ActionButtons = ({ onGetStarted, onManualInput }: ActionButtonsProps) => {
   return (
     <>
-      {/* Enhanced primary call to action with refined pulse animation and vibrant gradient - UPDATED TO PILL SHAPE */}
+      {/* Refined primary call to action with more settled color and elegant styling */}
       <Button 
-        className="bg-gradient-to-r from-aurascan-accent via-aurascan-dark-orange to-aurascan-deep-green hover:from-aurascan-dark-orange hover:via-aurascan-deep-green hover:to-aurascan-accent text-white py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-500 shadow-subtle hover:shadow-accent transform hover:scale-[1.03]"
-        size="pill-lg" // Changed to pill-lg size to create fully rounded edges
+        className="bg-aurascan-deeper-grey hover:bg-aurascan-deep-green/90 text-white py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-500 shadow-subtle hover:shadow-accent transform hover:scale-[1.02]"
+        size="pill-lg" 
         onClick={onGetStarted}
         style={{ 
           animationDelay: '1.8s', 
-          animationFillMode: 'forwards',
-          backgroundSize: '200% 100%'
+          animationFillMode: 'forwards'
         }}
       >
         <ScanFace className="h-5 w-5 animate-pulse-dot" />
@@ -27,7 +26,7 @@ const ActionButtons = ({ onGetStarted, onManualInput }: ActionButtonsProps) => {
         <ArrowRight className="h-4 w-4 ml-1 animate-pulse-subtle" />
       </Button>
       
-      {/* Alternative path with standardized text color and updated to pill shape */}
+      {/* Alternative path with standardized text color */}
       <button
         onClick={onManualInput}
         className="flex items-center gap-2 px-4 py-2 rounded-full border border-aurascan-medium-grey/30 text-aurascan-dark-grey bg-white/50 hover:bg-aurascan-deep-green/10 hover:border-aurascan-deep-green/40 transition-all duration-300 text-sm font-light opacity-0 animate-fade-in group"
