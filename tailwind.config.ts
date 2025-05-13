@@ -54,6 +54,7 @@ export default {
 				},
 				'burnt-orange': '#C2410C', // New burnt orange color
 				'deep-purple': '#6E59A5', // Adding deep purple color
+				'dark-purple': '#210B2C', // Adding extremely dark purple color
 				beautyagent: {
 					'white': '#FFFFFF',     // Pure white - primary background
 					'off-white': '#F6F6F7', // Very pale cool grey - alternative background
@@ -66,6 +67,7 @@ export default {
 					'deep-blue': '#2A4365', // Deep blue to replace green accent - sophisticated, refined blue
 					'muted-violet': '#7E69AB', // New muted violet color added for hover states
 					'deep-purple': '#6E59A5', // Adding rich deep purple for premium hover states
+					'dark-purple': '#210B2C', // Adding extremely dark purple color with violet undertone
 					'glass-white': 'rgba(255, 255, 255, 0.9)',
 					'glass-light': 'rgba(255, 255, 255, 0.7)',
 					'glass-accent': 'rgba(249, 115, 22, 0.08)', // Very subtle orange glass effect
@@ -272,6 +274,7 @@ export default {
 				'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
 				'green-glow': '0 0 15px rgba(22, 163, 74, 0.2)',
 				'purple-glow': '0 0 20px rgba(110, 89, 165, 0.3), 0 0 40px rgba(110, 89, 165, 0.1)', // Added purple glow shadow
+				'dark-purple-glow': '0 0 20px rgba(33, 11, 44, 0.35), 0 0 40px rgba(33, 11, 44, 0.15)', // Added dark purple glow shadow
 			},
 			backdropFilter: {
 				'none': 'none',

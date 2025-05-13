@@ -11,9 +11,9 @@ type ActionButtonsProps = {
 const ActionButtons = ({ onGetStarted, onManualInput }: ActionButtonsProps) => {
   return (
     <>
-      {/* Primary call to action with deep purple hover transition */}
+      {/* Primary call to action with deep dark purple hover transition */}
       <Button 
-        className="btn-premium py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-300 shadow-subtle hover:shadow-purple-glow btn-purple-hover"
+        className="btn-premium py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-300 shadow-subtle hover:shadow-dark-purple-glow btn-purple-hover"
         size="pill-lg" 
         onClick={onGetStarted}
         style={{ 
