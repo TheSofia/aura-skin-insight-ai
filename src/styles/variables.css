@@ -1,20 +1,28 @@
 
-/* Custom CSS variables for colors */
+/* Custom CSS variables for BeautyAgent's refined visual identity */
 :root {
+  /* Core Color Palette - Quiet Confidence & Functional Richness */
   --beautyagent-white: #FFFFFF;
-  --beautyagent-off-white: #F6F6F7;
-  --beautyagent-light-grey: #F1F1F1;
+  --beautyagent-off-white: #F8F8F9;
+  --beautyagent-light-grey: #F1F1F3;
   --beautyagent-medium-grey: #9F9EA1;
   --beautyagent-dark-grey: #403E43;
   --beautyagent-deeper-grey: #221F26;
-  --beautyagent-accent: #F97316;
-  --beautyagent-dark-orange: #E84C12;
-  --beautyagent-burnt-orange: #C2410C;
-  --beautyagent-deep-blue: #2A4365;
-  --beautyagent-muted-violet: #7E69AB;
-  --beautyagent-deep-purple: #6E59A5;
-  --beautyagent-dark-purple: #210B2C; /* New extremely deep dark purple with violet undertone */
-  --beautyagent-glass-white: rgba(255, 255, 255, 0.9);
-  --beautyagent-glass-light: rgba(255, 255, 255, 0.7);
-  --beautyagent-glass-accent: rgba(249, 115, 22, 0.08);
+  
+  /* Refined accent colors - used ONLY for functional feedback and animations */
+  --beautyagent-accent: #E05F14; /* Refined, less bright burnt orange */
+  --beautyagent-dark-orange: #C94C10;
+  --beautyagent-burnt-orange: #B03A08;
+  
+  /* Deep muted cool tones for balance and contrast */
+  --beautyagent-deep-blue: #2A4365; /* Reserved for specific UI accents */
+  --beautyagent-muted-violet: #7E69AB; /* Elegant cool tone for secondary accents */
+  --beautyagent-deep-purple: #5D4A8C; /* More subdued purple for select interactions */
+  --beautyagent-dark-purple: #210B2C; /* Extremely deep dark purple with violet undertone */
+  
+  /* Translucent effects for layering and depth */
+  --beautyagent-glass-white: rgba(255, 255, 255, 0.95);
+  --beautyagent-glass-light: rgba(255, 255, 255, 0.85);
+  --beautyagent-glass-accent: rgba(224, 95, 20, 0.06);
 }
+

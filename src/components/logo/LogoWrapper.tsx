@@ -27,7 +27,7 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
   isLoadingPage = false,
   sizeClass
 }, ref) => {
-  // Get hover animation class
+  // Get hover animation class - refined for biological elegance
   const hoverAnimationClass = getHoverAnimationClass();
 
   // Get contextual animation parameters
@@ -47,7 +47,7 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
         ref={ref}
         style={{
           animationDuration: contextualAnimation.cellSpeed,
-          animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
+          animationTimingFunction: 'cubic-bezier(0.42, 0, 0.58, 1)',
           backdropFilter: 'blur(0.5px)',
         }}
       >
@@ -56,10 +56,11 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
       
       {showText && (
         <div 
-          className="font-clash font-light text-beautyagent-dark-grey text-xl md:text-2xl animate-fade-in" 
+          className="font-clash font-light text-beautyagent-dark-grey text-xl md:text-2xl animate-fade-in tracking-wide" 
           style={{
             animationDelay: '0.5s', 
             animationFillMode: 'forwards',
+            letterSpacing: '0.02em',
             ...wordmarkTextStyle
           }}
         >
@@ -73,3 +74,4 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
 LogoWrapper.displayName = "LogoWrapper";
 
 export default LogoWrapper;
+

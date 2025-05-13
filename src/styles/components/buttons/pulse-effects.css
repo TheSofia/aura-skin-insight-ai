@@ -1,9 +1,9 @@
 
-/* Animated Pulse Button Effects */
+/* Refined Animated Pulse Button Effects */
 .btn-pulse {
   position: relative;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .btn-pulse::after {
@@ -13,26 +13,26 @@
   left: 50%;
   width: 150%;
   height: 150%;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%);
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  transition: transform 0.6s, opacity 0.6s;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .btn-pulse:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -5px rgba(224, 95, 20, 0.2);
 }
 
 .btn-pulse:hover::after {
   transform: translate(-50%, -50%) scale(1);
-  opacity: 0.6;
-  animation: ripple-out 1.2s infinite ease-out;
+  opacity: 0.5;
+  animation: ripple-out 1.5s cubic-bezier(0.19, 1, 0.22, 1) infinite;
 }
 
 @keyframes ripple-out {
   0% {
-    opacity: 0.6;
+    opacity: 0.5;
     transform: translate(-50%, -50%) scale(0.8);
   }
   100% {
@@ -40,3 +40,96 @@
     transform: translate(-50%, -50%) scale(1.5);
   }
 }
+
+/* Cellular pulse effect - biologically elegant */
+.cellular-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.cellular-pulse::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(224, 95, 20, 0.1) 0%, rgba(224, 95, 20, 0) 70%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cellular-pulse:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  animation: cellular-expand 2s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+}
+
+@keyframes cellular-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0;
+  }
+}
+
+/* Subtle breathing animation for elements */
+.breathing-element {
+  animation: subtle-breathing 4s ease-in-out infinite;
+}
+
+@keyframes subtle-breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Elegant focus ring animation */
+.focus-ring {
+  position: relative;
+}
+
+.focus-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 1px solid var(--beautyagent-accent);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.focus-ring:focus::after,
+.focus-ring:focus-within::after {
+  opacity: 0.5;
+  transform: scale(1);
+  animation: pulse-ring 2s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+

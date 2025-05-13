@@ -8,7 +8,7 @@ type LogoCoreProps = {
   animationClasses: { core: string };
   animationStyle: AnimationStyle;
   intensity?: 'subtle' | 'medium' | 'vibrant';
-  isLoadingPage?: boolean; // Added to identify loading page context
+  isLoadingPage?: boolean;
 };
 
 const LogoCore: React.FC<LogoCoreProps> = ({ 
@@ -25,27 +25,27 @@ const LogoCore: React.FC<LogoCoreProps> = ({
     let baseStyles = {
       opacity: 0.95,
       brightness: 1.0,
-      pulseMagnitude: '1s',
-      glowOpacity: 0.8,
-      glowSize: '-20%'
+      pulseMagnitude: '9s',
+      glowOpacity: 0.75,
+      glowSize: '-18%'
     };
     
     switch (intensity) {
       case 'subtle':
         baseStyles = {
           opacity: 0.85,
-          brightness: 0.95,
-          pulseMagnitude: '0.8s',
-          glowOpacity: 0.65,
+          brightness: 0.92,
+          pulseMagnitude: '11s',
+          glowOpacity: 0.6,
           glowSize: '-20%'
         };
         break;
       case 'vibrant':
         baseStyles = {
           opacity: 1,
-          brightness: 1.1,
-          pulseMagnitude: '1.2s',
-          glowOpacity: 0.9,
+          brightness: 1.05,
+          pulseMagnitude: '7s',
+          glowOpacity: 0.85,
           glowSize: '-15%'
         };
         break;
@@ -57,9 +57,9 @@ const LogoCore: React.FC<LogoCoreProps> = ({
     if (isLoadingPage) {
       return {
         ...baseStyles,
-        brightness: baseStyles.brightness * 1.1, // 10% brighter on loading page
-        pulseMagnitude: (parseFloat(baseStyles.pulseMagnitude) * 0.85) + 's', // 15% faster pulse on loading page
-        glowOpacity: baseStyles.glowOpacity * 1.15, // 15% more glow on loading page
+        brightness: baseStyles.brightness * 1.08, 
+        pulseMagnitude: (parseFloat(baseStyles.pulseMagnitude) * 0.85) + 's', 
+        glowOpacity: baseStyles.glowOpacity * 1.1, 
       };
     }
 
@@ -71,35 +71,44 @@ const LogoCore: React.FC<LogoCoreProps> = ({
   return (
     <div 
       className={`absolute ${coreSize} rounded-full ${animationClasses.core} z-20 
-        transition-all duration-300 hover:scale-105`}
+        transition-all duration-500`}
       style={{
-        background: 'radial-gradient(circle at 40% 40%, var(--core-color-bright, rgba(249, 115, 22, 0.90)) 0%, var(--core-color, rgba(233, 99, 12, 0.95)) 100%)',
-        boxShadow: '0 0 15px 4px rgba(249, 115, 22, 0.15)',
-        animationDuration: isLoadingPage ? '7s' : '9s', // Faster animation on loading page
-        animationTimingFunction: 'cubic-bezier(0.45, 0, 0.55, 1)',
+        background: 'radial-gradient(circle at 35% 35%, var(--core-color-bright, rgba(224, 95, 20, 0.90)) 0%, var(--core-color, rgba(201, 76, 16, 0.95)) 100%)',
+        boxShadow: '0 0 15px 3px rgba(224, 95, 20, 0.12)',
+        animationDuration: intensityStyles.pulseMagnitude,
+        animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
         opacity: intensityStyles.opacity,
         filter: `brightness(${intensityStyles.brightness})`,
-        // Fix for TypeScript error by using computed property names with type casting
-        ['--core-color' as any]: 'rgba(233, 99, 12, 0.95)',
-        ['--core-color-bright' as any]: 'rgba(249, 115, 22, 0.90)',
+        ['--core-color' as any]: 'rgba(201, 76, 16, 0.95)',
+        ['--core-color-bright' as any]: 'rgba(224, 95, 20, 0.90)',
       }}
     >
-      {/* Inner glow layer */}
+      {/* Inner glow layer - refined highlight */}
       <div 
         className="absolute inset-0 rounded-full"
         style={{ 
-          background: 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, transparent 70%)',
+          background: 'radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.9) 0%, transparent 80%)',
           opacity: intensityStyles.glowOpacity,
         }}
       ></div>
       
-      {/* Subtle pulse effect */}
+      {/* Subtle pulse effect - more biologically elegant */}
       <div 
         className="absolute inset-[-20%] rounded-full opacity-0 animate-pulse-subtle"
         style={{ 
-          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.4) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.35) 0%, transparent 80%)',
           animationDuration: intensityStyles.pulseMagnitude,
           inset: intensityStyles.glowSize,
+        }}
+      ></div>
+      
+      {/* Additional soft bloom effect */}
+      <div 
+        className="absolute inset-[-30%] rounded-full opacity-0 animate-pulse-cellular"
+        style={{ 
+          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.15) 0%, transparent 90%)',
+          animationDuration: (parseFloat(intensityStyles.pulseMagnitude) * 1.2) + 's',
+          animationDelay: '0.5s',
         }}
       ></div>
     </div>
@@ -107,3 +116,4 @@ const LogoCore: React.FC<LogoCoreProps> = ({
 };
 
 export default LogoCore;
+

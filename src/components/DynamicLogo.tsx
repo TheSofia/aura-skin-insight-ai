@@ -30,15 +30,15 @@ export type DynamicLogoProps = {
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
   size = 'md', 
   className = '', 
-  colorScheme = 'gradient', // Standardized to gradient for consistency
-  animationStyle = 'cellular', // Standardized to cellular for brand identity
+  colorScheme = 'gradient',  
+  animationStyle = 'cellular', 
   showText = false,
   intensity = 'medium',
   isLandingPage = false,
   isLoadingPage = false
 }, ref) => {
   // Use the gradient state hook for enhanced gradient colorScheme effect
-  const gradientState = useGradientState(true); // Always use gradient for standardization
+  const gradientState = useGradientState(true);
   
   // Get size classes for different parts of the logo
   const sizeClass = getLogoSizeClasses(size);
@@ -46,10 +46,8 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
   const innerRingSize = getInnerRingSizeClasses(size);
   const outerRingSize = getOuterRingSizeClasses(size);
   
-  // Get color and animation classes
+  // Get color and animation classes - standardized on cellular
   const colorClasses = getColorClasses(colorScheme, gradientState);
-  
-  // Standardize on cellular animation style for brand consistency
   const animationClasses = getAnimationClasses('cellular');
 
   return (
@@ -64,16 +62,16 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
       sizeClass={sizeClass}
       ref={ref}
     >
-      {/* Structural concentric rings - provides the foundational structure */}
+      {/* Structural concentric rings - refined for cellular aesthetic */}
       <LogoRings 
         innerRingSize={innerRingSize}
         outerRingSize={outerRingSize}
         colorClasses={colorClasses}
         animationClasses={animationClasses}
-        animationStyle="cellular" // Standardize on cellular animation
+        animationStyle="cellular"
         intensity={intensity}
-        isLandingPage={isLandingPage} // Controls ring visibility for landing page
-        isLoadingPage={isLoadingPage} // Identifies the loading page context
+        isLandingPage={isLandingPage}
+        isLoadingPage={isLoadingPage}
       />
       
       {/* Core dot - refined with subtle gradient and inner highlight */}
@@ -81,22 +79,22 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
         coreSize={coreSize} 
         colorClasses={colorClasses} 
         animationClasses={animationClasses} 
-        animationStyle="cellular" // Standardize on cellular animation
+        animationStyle="cellular"
         intensity={intensity}
         isLoadingPage={isLoadingPage}
       />
       
-      {/* Refined orbital particles - cellular, sophisticated movement */}
+      {/* Refined orbital particles with biological movement */}
       <LogoParticles 
         colorClasses={colorClasses}
         animationClasses={animationClasses}
-        animationStyle="cellular" // Standardize on cellular animation
+        animationStyle="cellular"
         intensity={intensity}
         particleOpacity={getContextualAnimation(intensity, { isLandingPage, isLoadingPage }).particleOpacity}
       />
       
       {/* Add a subtle outer glow effect - adjusted based on context */}
-      <div className={`absolute inset-[-10%] rounded-full ${getIntensityStyles(intensity, { isLandingPage, isLoadingPage }).glow} animate-pulse-slow bg-gradient-radial from-beautyagent-accent/10 to-transparent`}></div>
+      <div className={`absolute inset-[-10%] rounded-full ${getIntensityStyles(intensity, { isLandingPage, isLoadingPage }).glow} animate-pulse-slow bg-gradient-radial from-beautyagent-accent/8 to-transparent`}></div>
     </LogoWrapper>
   );
 });
@@ -104,3 +102,4 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
 DynamicLogo.displayName = "DynamicLogo";
 
 export default DynamicLogo;
+

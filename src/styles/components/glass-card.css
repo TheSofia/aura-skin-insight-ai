@@ -1,20 +1,115 @@
 
-/* Enhanced Glass Card Effect */
+/* Enhanced Glass Card Effect with Layered Depth */
 .glass-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
 }
 
 .glass-card:hover {
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   transform: translateY(-2px);
 }
 
-/* Shadow Glow Effect - Enhanced */
-.shadow-glow {
-  box-shadow: 0 0 15px 6px rgba(64, 62, 67, 0.15); /* Refined glow */
+/* Enhanced layered glass card with depth */
+.glass-card-layered {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.03),
+    0 5px 10px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: hidden;
 }
+
+.glass-card-layered::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glass-card-layered::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: linear-gradient(0deg, rgba(248, 248, 249, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glass-card-layered:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.05),
+    0 7px 15px rgba(0, 0, 0, 0.03);
+}
+
+/* Shadow Glow Effect - Refined for luxury */
+.shadow-glow {
+  box-shadow: 0 0 20px 5px rgba(64, 62, 67, 0.08);
+  transition: box-shadow 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.shadow-glow:hover {
+  box-shadow: 0 0 25px 10px rgba(64, 62, 67, 0.1);
+}
+
+/* Accent shadow glow */
+.shadow-glow-accent {
+  box-shadow: 0 5px 20px rgba(224, 95, 20, 0.1);
+  transition: box-shadow 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.shadow-glow-accent:hover {
+  box-shadow: 0 8px 30px rgba(224, 95, 20, 0.15);
+}
+
+/* Frosted glass for darker backgrounds */
+.frosted-dark {
+  background: rgba(34, 31, 38, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.frosted-dark:hover {
+  backdrop-filter: blur(20px);
+  background: rgba(34, 31, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Elegant card with layered shadow */
+.elegant-card {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    0 4px 8px rgba(0, 0, 0, 0.02),
+    0 10px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.elegant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 8px 16px rgba(0, 0, 0, 0.03),
+    0 20px 40px rgba(0, 0, 0, 0.04);
+}
+

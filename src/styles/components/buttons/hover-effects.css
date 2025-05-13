@@ -1,16 +1,16 @@
 
-/* Button Hover Effect Styles */
+/* Refined Button Hover Effect Styles */
 
-/* Accent hover style */
+/* Accent hover style - more subtle and elegant */
 .btn-accent-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   position: relative;
 }
 
 .btn-accent-hover:hover {
-  color: #F97316;
-  transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(249, 115, 22, 0.15);
+  color: var(--beautyagent-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(224, 95, 20, 0.08);
 }
 
 .btn-accent-hover::before {
@@ -20,25 +20,26 @@
   left: 50%;
   width: 0;
   height: 1px;
-  background: #F97316;
+  background: var(--beautyagent-accent);
   transform: translateX(-50%);
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0.8;
 }
 
 .btn-accent-hover:hover::before {
-  width: 80%;
+  width: 70%;
 }
 
-/* Deep blue hover style */
+/* Deep blue hover style - subtle elegance */
 .btn-deep-blue-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   position: relative;
 }
 
 .btn-deep-blue-hover:hover {
-  color: #2A4365;
-  transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(42, 67, 101, 0.15);
+  color: var(--beautyagent-deep-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(42, 67, 101, 0.08);
 }
 
 .btn-deep-blue-hover::before {
@@ -48,25 +49,26 @@
   left: 50%;
   width: 0;
   height: 1px;
-  background: #2A4365;
+  background: var(--beautyagent-deep-blue);
   transform: translateX(-50%);
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0.8;
 }
 
 .btn-deep-blue-hover:hover::before {
-  width: 80%;
+  width: 70%;
 }
 
-/* Violet hover style */
+/* Muted violet hover style - refined elegance */
 .btn-violet-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   position: relative;
 }
 
 .btn-violet-hover:hover {
-  color: #7E69AB;
-  transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(126, 105, 171, 0.15);
+  color: var(--beautyagent-muted-violet);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(126, 105, 171, 0.08);
 }
 
 .btn-violet-hover::before {
@@ -76,25 +78,26 @@
   left: 50%;
   width: 0;
   height: 1px;
-  background: #7E69AB;
+  background: var(--beautyagent-muted-violet);
   transform: translateX(-50%);
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0.8;
 }
 
 .btn-violet-hover:hover::before {
-  width: 80%;
+  width: 70%;
 }
 
-/* Dark purple hover style - NEW */
+/* Dark purple hover style - sophisticated interaction */
 .btn-dark-purple-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   position: relative;
 }
 
 .btn-dark-purple-hover:hover {
-  color: #210B2C;
-  transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(33, 11, 44, 0.15);
+  color: var(--beautyagent-dark-purple);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(33, 11, 44, 0.08);
 }
 
 .btn-dark-purple-hover::before {
@@ -104,25 +107,26 @@
   left: 50%;
   width: 0;
   height: 1px;
-  background: #210B2C;
+  background: var(--beautyagent-dark-purple);
   transform: translateX(-50%);
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0.8;
 }
 
 .btn-dark-purple-hover:hover::before {
-  width: 80%;
+  width: 70%;
 }
 
-/* Burnt orange hover style */
+/* Burnt orange hover style - warm elegance */
 .btn-burnt-orange-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   position: relative;
 }
 
 .btn-burnt-orange-hover:hover {
-  color: #C2410C;
-  transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(194, 65, 12, 0.15);
+  color: var(--beautyagent-burnt-orange);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(176, 58, 8, 0.08);
 }
 
 .btn-burnt-orange-hover::before {
@@ -132,11 +136,35 @@
   left: 50%;
   width: 0;
   height: 1px;
-  background: #C2410C;
+  background: var(--beautyagent-burnt-orange);
   transform: translateX(-50%);
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0.8;
 }
 
 .btn-burnt-orange-hover:hover::before {
-  width: 80%;
+  width: 70%;
 }
+
+/* Text hover effects with enhanced subtlety */
+.text-hover-effect {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.text-hover-effect::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.text-hover-effect:hover::after {
+  width: 100%;
+}
+

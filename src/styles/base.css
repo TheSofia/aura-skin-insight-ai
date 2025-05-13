@@ -10,41 +10,58 @@
     @apply font-sans text-beautyagent-dark-grey antialiased;
     background-color: var(--beautyagent-white);
     overflow-x: hidden;
+    letter-spacing: 0.01em; /* Subtle increased tracking for body text */
+    line-height: 1.6; /* Improved vertical rhythm */
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-clash leading-tight;
+    @apply font-clash leading-tight tracking-wide;
+    letter-spacing: 0.02em; /* Luxury-grade letter spacing for headings */
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-medium;
+    @apply text-3xl md:text-4xl lg:text-5xl font-normal;
+    letter-spacing: 0.025em;
+    line-height: 1.2;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-medium;
+    @apply text-2xl md:text-3xl font-normal;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-medium;
+    @apply text-xl md:text-2xl font-normal;
+    letter-spacing: 0.015em;
+    line-height: 1.3;
   }
 
   h4 {
-    @apply text-xl md:text-2xl font-medium;
+    @apply text-lg md:text-xl font-normal;
+    letter-spacing: 0.015em;
   }
 
   h5 {
-    @apply text-lg md:text-xl font-medium;
+    @apply text-base md:text-lg font-medium;
+    letter-spacing: 0.01em;
   }
 
   h6 {
-    @apply text-base md:text-lg font-medium;
+    @apply text-sm md:text-base font-medium;
+    letter-spacing: 0.01em;
   }
 
   a {
-    @apply transition-colors duration-200;
+    @apply transition-all duration-300;
   }
 
-  /* App container and layout */
+  p {
+    @apply mb-4 font-light;
+    letter-spacing: 0.015em;
+  }
+
+  /* Enhanced app container with subtle layered depth */
   .app-container {
     max-width: 100%;
     margin: 0 auto;
@@ -52,12 +69,12 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(246, 246, 247, 0.95) 100%);
+    background: linear-gradient(135deg, var(--beautyagent-white) 0%, var(--beautyagent-off-white) 100%);
     position: relative;
     overflow-x: hidden;
   }
   
-  /* Add subtle animated grain texture */
+  /* Refined subtle animated grain texture for depth and luxury */
   .app-container::before {
     content: '';
     position: absolute;
@@ -65,9 +82,27 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 900 900' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015; /* Extremely subtle texture */
     pointer-events: none;
     z-index: 0;
   }
+
+  /* Input field enhancements */
+  input, textarea, select {
+    @apply font-light transition-all duration-200;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Focus states with accent colors for functional feedback */
+  input:focus, textarea:focus, select:focus {
+    @apply outline-none ring-1 ring-beautyagent-accent/30;
+  }
+  
+  /* Buttons with refined typography */
+  button {
+    @apply font-medium tracking-wide transition-all duration-300;
+    letter-spacing: 0.02em;
+  }
 }
+

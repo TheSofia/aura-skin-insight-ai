@@ -10,60 +10,20 @@ type AnimationClasses = {
 
 /**
  * Get animation classes based on the selected animation style
- * Enhanced with refined cellular animation options
+ * Enhanced with refined cellular animation options for biologically elegant motion
  */
 export const getAnimationClasses = (animationStyle: AnimationStyle): AnimationClasses => {
-  switch (animationStyle) {
-    case 'float':
-      return {
-        core: 'animate-subtle-float',
-        innerRing: 'animate-float',
-        outerRing: 'animate-float',
-        particles: 'animate-float'
-      };
-    case 'pulse':
-      return {
-        core: 'animate-pulse-dot',
-        innerRing: 'animate-pulse-slow',
-        outerRing: 'animate-pulse-slow',
-        particles: 'animate-pulse-dot'
-      };
-    case 'rotate':
-      return {
-        core: 'animate-subtle-pulse',
-        innerRing: 'animate-rotate-slow',
-        outerRing: 'animate-rotate-slow',
-        particles: 'animate-circular-motion'
-      };
-    case 'morph':
-      return {
-        core: 'animate-throb',
-        innerRing: 'animate-morph',
-        outerRing: 'animate-rotate-slow',
-        particles: 'animate-float'
-      };
-    case 'subtle':
-      return {
-        core: 'animate-subtle-pulse',
-        innerRing: 'animate-rotate-slow',
-        outerRing: 'animate-rotate-slow',
-        particles: 'animate-float-subtle'
-      };
-    case 'cellular':
-      // Enhanced cellular animation style with more refined, organic movement
-      return {
-        core: 'animate-cellular-core-pulse',
-        innerRing: 'animate-cellular-ring-drift',
-        outerRing: 'animate-cellular-drift',
-        particles: 'animate-orbital-float'
-      };
-    case 'combined':
-    default:
-      return {
-        core: 'animate-pulse-subtle',
-        innerRing: 'animate-orbital-motion',
-        outerRing: 'animate-orbital-motion-reverse',
-        particles: 'animate-orbital-float'
-      };
+  // Default to cellular for brand consistency
+  if (animationStyle !== 'cellular') {
+    animationStyle = 'cellular';
   }
+  
+  // Refined cellular animation system
+  return {
+    core: 'animate-cellular-core-pulse',
+    innerRing: 'animate-cellular-ring-drift',
+    outerRing: 'animate-cellular-drift',
+    particles: 'animate-orbital-float'
+  };
 };
+

@@ -1,21 +1,24 @@
 
-/* Premium CTA button styles */
+/* Refined Premium CTA Button Styles */
 .btn-premium {
   background: linear-gradient(135deg, #2A2A2E 0%, #3E3B44 100%);
   color: #FFFFFF;
   position: relative;
   z-index: 1;
   overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(34, 31, 38, 0.25);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 4px 12px rgba(34, 31, 38, 0.2);
+  letter-spacing: 0.03em;
+  font-weight: 400;
+  border-radius: 0.3rem;
 }
 
 .btn-premium:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(34, 31, 38, 0.3);
+  box-shadow: 0 6px 20px rgba(34, 31, 38, 0.25);
 }
 
-/* Deep Dark Purple Hover Effect for Premium CTA button */
+/* Refined Deep Dark Purple Hover Effect for Premium CTA button */
 .btn-purple-hover {
   position: relative;
   z-index: 1;
@@ -31,7 +34,7 @@
   background: linear-gradient(135deg, #1A0A1F 0%, #210B2C 100%);
   z-index: -1;
   opacity: 0;
-  transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   border-radius: inherit;
 }
 
@@ -40,7 +43,7 @@
   opacity: 1;
 }
 
-/* Button shimmer effect */
+/* Enhanced button shimmer effect - more subtle and elegant */
 .btn-premium .btn-shimmer {
   position: absolute;
   top: 0;
@@ -50,10 +53,10 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.12),
     transparent
   );
-  animation: shimmer-button 3s infinite;
+  animation: shimmer-button 4s cubic-bezier(0.19, 1, 0.22, 1) infinite;
 }
 
 @keyframes shimmer-button {
@@ -64,3 +67,90 @@
     left: 100%;
   }
 }
+
+/* Glass effect premium button */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--beautyagent-dark-grey);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-glass:hover::after {
+  opacity: 1;
+}
+
+/* Elegant outline button */
+.btn-outline-elegant {
+  background: transparent;
+  border: 1px solid var(--beautyagent-medium-grey);
+  color: var(--beautyagent-dark-grey);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+
+.btn-outline-elegant:hover {
+  border-color: var(--beautyagent-dark-grey);
+  transform: translateY(-1px);
+}
+
+.btn-outline-elegant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(159, 158, 161, 0.05) 0%, rgba(64, 62, 67, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-outline-elegant:hover::before {
+  opacity: 1;
+}
+
+/* Subtle accent button */
+.btn-subtle-accent {
+  background: rgba(224, 95, 20, 0.05);
+  color: var(--beautyagent-accent);
+  border: 1px solid rgba(224, 95, 20, 0.2);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-subtle-accent:hover {
+  background: rgba(224, 95, 20, 0.1);
+  border-color: rgba(224, 95, 20, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Pill shaped premium button */
+.btn-pill {
+  border-radius: 9999px !important;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
