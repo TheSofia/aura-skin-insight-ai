@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@200;300;400;500;600;700&display=swap');
@@ -21,6 +20,19 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-aurascan-accent to-aurascan-dark-orange;
   }
+  
+  /* New hover classes for consistent interaction */
+  .hover-accent {
+    @apply hover:text-aurascan-accent transition-colors duration-200;
+  }
+  
+  .hover-deep-green {
+    @apply hover:text-aurascan-deep-green transition-colors duration-200;
+  }
+  
+  .hover-scale-subtle {
+    @apply hover:scale-[1.02] transition-transform duration-200;
+  }
 }
 
 /* App container and layout */
@@ -42,27 +54,27 @@
 /* Enhanced Dynamic Dot Logo Animation */
 @keyframes pulse-dot {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.15); opacity: 0.8; } /* Enhanced scale */
+  50% { transform: scale(1.12); opacity: 0.85; } /* Refined scale */
 }
 
 @keyframes subtle-pulse {
   0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.08); opacity: 1; } /* Enhanced scale */
+  50% { transform: scale(1.06); opacity: 1; } /* Refined scale */
 }
 
 @keyframes subtle-glow {
   0%, 100% { opacity: 0; transform: scale(1.5); }
-  50% { opacity: 0.4; transform: scale(1.8); } /* Enhanced glow */
+  50% { opacity: 0.35; transform: scale(1.7); } /* Refined glow */
 }
 
 @keyframes subtle-float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); } /* Enhanced movement */
+  50% { transform: translateY(-3px); } /* Refined movement */
 }
 
 @keyframes throb {
   0%, 100% { transform: scale(1); opacity: 0.9; filter: brightness(1); }
-  50% { transform: scale(1.3); opacity: 1; filter: brightness(1.3); } /* Enhanced scale and brightness */
+  50% { transform: scale(1.25); opacity: 1; filter: brightness(1.2); } /* Refined scale and brightness */
 }
 
 @keyframes circular-motion {
@@ -89,15 +101,19 @@
 @keyframes morph {
   0%, 100% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg);
   }
   25% {
     border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: rotate(5deg);
   }
   50% {
     border-radius: 40% 60% 30% 70% / 40% 40% 60% 50%;
+    transform: rotate(0deg);
   }
   75% {
     border-radius: 60% 40% 50% 50% / 30% 60% 40% 70%;
+    transform: rotate(-5deg);
   }
 }
 
@@ -134,114 +150,39 @@
 /* New cellular motion animation */
 @keyframes cellular-motion {
   0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  25% { transform: translate(3px, -2px) rotate(2deg) scale(1.03); }
-  50% { transform: translate(5px, 0) rotate(5deg) scale(1.05); }
-  75% { transform: translate(2px, 3px) rotate(2deg) scale(1.02); }
+  20% { transform: translate(3px, -3px) rotate(2deg) scale(1.02); }
+  40% { transform: translate(5px, 1px) rotate(4deg) scale(1.04); }
+  60% { transform: translate(2px, 4px) rotate(2deg) scale(1.03); }
+  80% { transform: translate(-1px, 2px) rotate(-1deg) scale(1.01); }
   100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
-/* Enhanced float animation with more noticeable movement */
+/* Enhanced float animation with more refined, subtle movement */
 @keyframes float-enhanced {
   0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
-  50% { transform: translateY(-8px) scale(1.18); opacity: 1; } /* Enhanced movement and scale */
+  50% { transform: translateY(-7px) scale(1.15); opacity: 0.9; } /* Refined movement and scale */
 }
 
-/* Subtle cellular pulse animation */
+/* Refined cellular pulse animation */
 @keyframes pulse-cellular {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.12); opacity: 1; filter: brightness(1.1); }
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.1); opacity: 1; filter: brightness(1.08); }
 }
 
-/* Dynamic Dot Logo Setup */
-.dot-logo {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* New animation classes for refined hover states */
+.animate-hover-subtle {
+  transition: all 0.2s ease-out;
 }
-
-.animate-pulse-dot {
-  animation: pulse-dot 1.8s infinite ease-in-out; /* Faster animation */
-}
-
-.animate-subtle-pulse {
-  animation: subtle-pulse 2.5s infinite ease-in-out; /* Faster animation */
-}
-
-.animate-subtle-glow {
-  animation: subtle-glow 2.5s infinite ease-in-out; /* Faster animation */
-}
-
-.animate-subtle-float {
-  animation: subtle-float 3.5s infinite ease-in-out; /* Faster animation */
-}
-
-.animate-throb {
-  animation: throb 1.2s infinite ease-in-out; /* Faster animation */
-}
-
-.animate-circular-motion {
-  animation: circular-motion 8s infinite linear; /* Faster animation */
-}
-
-.animate-circular-motion-reverse {
-  animation: circular-motion-reverse 10s infinite linear; /* Faster animation */
-}
-
-.animate-float {
-  animation: float 2.5s infinite ease-in-out; /* Faster animation */
-}
-
-.animate-scanning {
-  animation: scanning 1.8s infinite ease-in-out; /* Faster animation */
-}
-
-.animate-shimmer {
-  animation: shimmer 1.8s infinite ease-in-out; /* Faster animation */
-}
-
-.animate-morph {
-  animation: morph 7s ease-in-out infinite; /* Faster animation */
-  background-size: 200% 200%;
-  background-position: center;
-}
-
-.animate-rotate-slow {
-  animation: rotate-slow 18s linear infinite; /* Faster animation */
-}
-
-.animate-pulse-slow {
-  animation: pulse-dot 3.5s infinite ease-in-out; /* Faster animation */
-}
-
-/* New animation classes for cellular effects */
-.animate-color-shift {
-  animation: color-shift 8s infinite ease-in-out;
-}
-
-.animate-orbital-shift {
-  animation: orbital-shift 15s infinite ease-in-out;
-}
-
-.animate-cellular-motion {
-  animation: cellular-motion 12s infinite ease-in-out;
-}
-
-.animate-float-enhanced {
-  animation: float-enhanced 4s infinite ease-in-out;
-}
-
-.animate-pulse-cellular {
-  animation: pulse-cellular 5s infinite ease-in-out;
+.animate-hover-subtle:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
 }
 
 /* ... keep existing code (remaining CSS rules) */
 
 /* Shadow Glow Effect - Enhanced */
 .shadow-glow {
-  box-shadow: 0 0 20px 8px rgba(64, 62, 67, 0.25); /* Enhanced glow */
+  box-shadow: 0 0 15px 6px rgba(64, 62, 67, 0.2); /* Refined glow */
 }
 
 /* Enhanced Glass Card Effect */
@@ -284,4 +225,5 @@
 
 .morphing-shape {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  transition: all 0.5s ease-in-out;
 }

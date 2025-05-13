@@ -13,7 +13,7 @@ const AnimatedTitle = ({ animationState }: AnimatedTitleProps) => {
   return (
     <div className="relative mb-6 h-20 md:h-24 flex items-center justify-center overflow-hidden">
       <div className="relative">
-        {/* Shadow text "Discover Your" with standardized neutral color */}
+        {/* Shadow text with refined weight and standardized neutral color */}
         <div className="absolute top-1 left-1 opacity-40">
           <span className={`inline-block font-clash font-light text-aurascan-dark-grey transition-all duration-700 ease-out
             ${animationState.discover ? 'translate-y-0 opacity-60' : 'translate-y-8 opacity-0'}`}>
@@ -26,7 +26,7 @@ const AnimatedTitle = ({ animationState }: AnimatedTitleProps) => {
           </span>
         </div>
         
-        {/* Primary text with sequential reveal and standardized neutral text color */}
+        {/* Primary text with sequential reveal, standardized neutral text color, and refined font weights */}
         <div className="flex flex-wrap justify-center">
           <span className={`inline-block font-clash font-light text-4xl md:text-5xl lg:text-6xl text-aurascan-dark-grey transition-all duration-700 ease-out
             ${animationState.discover ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
@@ -38,8 +38,8 @@ const AnimatedTitle = ({ animationState }: AnimatedTitleProps) => {
             Your{' '}
           </span>
           
-          {/* Modified: Changed from text-gradient to neutral text color with same animation */}
-          <span className={`inline-block font-clash font-bold text-4xl md:text-5xl lg:text-6xl text-aurascan-dark-grey transition-all duration-700 ease-out delay-[600ms]
+          {/* Modified: Changed from bold to medium for more elegant appearance */}
+          <span className={`inline-block font-clash font-medium text-4xl md:text-5xl lg:text-6xl text-aurascan-dark-grey transition-all duration-700 ease-out delay-[600ms]
             ${animationState.vitality ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             Skin Vitality
           </span>

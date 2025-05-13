@@ -22,27 +22,27 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
       <FloatingBackground animationState={animationState} />
       
       <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center relative z-10">
-        {/* Updated logo with enhanced animation */}
-        <DynamicLogo colorScheme="gradient" animationStyle="combined" size="lg" className="mb-8 animate-subtle-float" ref={logoRef}/>
+        {/* Updated logo with enhanced animation and refined colors */}
+        <DynamicLogo colorScheme="refined" animationStyle="subtle" size="lg" className="mb-8 animate-subtle-float hover:scale-105 transition-transform duration-300" ref={logoRef}/>
         
-        {/* Animated Title with Enhanced Sequential Reveal */}
+        {/* Animated Title with Enhanced Sequential Reveal and Refined Font Weight */}
         <AnimatedTitle animationState={animationState} />
         
-        {/* Standardized description text color */}
+        {/* Standardized description text with refined font weight */}
         <p className="text-aurascan-dark-grey mx-auto mb-10 leading-relaxed text-lg max-w-md font-light opacity-0 animate-fade-in" 
            style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}>
           Experience personalized skincare powered by advanced AI analysis.
           Find your perfect skincare protocol with just one scan.
         </p>
         
-        {/* Action buttons component */}
+        {/* Action buttons component with refined interactions */}
         <ActionButtons 
           onGetStarted={onGetStarted} 
           onManualInput={onManualInput} 
         />
       </div>
       
-      {/* Enhanced visualization element */}
+      {/* Enhanced visualization element with more pronounced form and increased dynamism */}
       <VisualizationElement />
     </div>
   );
