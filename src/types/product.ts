@@ -1,10 +1,17 @@
 
 export type Product = {
   id: string;
-  name: string;
+  productName: string;
   brand: string;
-  description: string;
-  url: string;
+  keyIngredients: string[];
+  useCase: string;
+  bestFor: string[];
+  solutionsOffered: string[];
+  howToUse: string;
+  imageUrl?: string;
+  links: {
+    us: string;
+    eu?: string;
+  };
   saved: boolean;
-  keywords?: string[]; // Keywords for filtering products based on user input
 };

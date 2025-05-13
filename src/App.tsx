@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <div className="bg-aurascan-white min-h-screen">
+      <div className="bg-beautyagent-white min-h-screen">
         <Toaster />
         <Sonner />
         <BrowserRouter>

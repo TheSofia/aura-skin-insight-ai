@@ -19,13 +19,15 @@ export type DynamicLogoProps = {
   className?: string;
   colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined';
   animationStyle?: AnimationStyle;
+  showText?: boolean;
 };
 
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
   size = 'md', 
   className = '', 
   colorScheme = 'accent',
-  animationStyle = 'combined'
+  animationStyle = 'combined',
+  showText = false
 }, ref) => {
   // Use the gradient state hook for enhanced gradient colorScheme effect
   const gradientState = useGradientState(colorScheme === 'gradient');
@@ -46,40 +48,48 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
   }, []);
 
   return (
-    <div 
-      className={`dot-logo relative ${sizeClass} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''} ${hoverAnimationClass}`}
-      role="presentation"
-      ref={ref}
-      style={{
-        animationDuration: animationStyle === 'cellular' ? '8s' : undefined,
-        animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
-        // Add a subtle backdrop blur effect to enhance premium feel
-        backdropFilter: 'blur(0.5px)',
-      }}
-    >
-      {/* Structural concentric rings - provides the foundational structure */}
-      <LogoRings 
-        innerRingSize={innerRingSize}
-        outerRingSize={outerRingSize}
-        colorClasses={colorClasses}
-        animationClasses={animationClasses}
-        animationStyle={animationStyle}
-      />
+    <div className={`flex items-center ${showText ? 'flex-col md:flex-row' : ''} gap-3`}>
+      <div 
+        className={`dot-logo relative ${sizeClass} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''} ${hoverAnimationClass}`}
+        role="presentation"
+        ref={ref}
+        style={{
+          animationDuration: animationStyle === 'cellular' ? '8s' : undefined,
+          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined,
+          // Add a subtle backdrop blur effect to enhance premium feel
+          backdropFilter: 'blur(0.5px)',
+        }}
+      >
+        {/* Structural concentric rings - provides the foundational structure */}
+        <LogoRings 
+          innerRingSize={innerRingSize}
+          outerRingSize={outerRingSize}
+          colorClasses={colorClasses}
+          animationClasses={animationClasses}
+          animationStyle={animationStyle}
+        />
+        
+        {/* Core dot - refined with subtle gradient and inner highlight */}
+        <LogoCore 
+          coreSize={coreSize} 
+          colorClasses={colorClasses} 
+          animationClasses={animationClasses} 
+          animationStyle={animationStyle}
+        />
+        
+        {/* Refined orbital particles - more subtle & sophisticated */}
+        <LogoParticles 
+          colorClasses={colorClasses}
+          animationClasses={animationClasses}
+          animationStyle={animationStyle}
+        />
+      </div>
       
-      {/* Core dot - refined with subtle gradient and inner highlight */}
-      <LogoCore 
-        coreSize={coreSize} 
-        colorClasses={colorClasses} 
-        animationClasses={animationClasses} 
-        animationStyle={animationStyle}
-      />
-      
-      {/* Refined orbital particles - more subtle & sophisticated */}
-      <LogoParticles 
-        colorClasses={colorClasses}
-        animationClasses={animationClasses}
-        animationStyle={animationStyle}
-      />
+      {showText && (
+        <div className="font-clash font-light text-beautyagent-dark-grey text-xl md:text-2xl">
+          beautyAgent
+        </div>
+      )}
     </div>
   );
 });

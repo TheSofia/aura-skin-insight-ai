@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,7 +53,8 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				aurascan: {
+				// Rename aurascan to beautyagent in color palette
+				beautyagent: {
 					'white': '#FFFFFF',     // Pure white - primary background
 					'off-white': '#F6F6F7', // Very pale cool grey - alternative background
 					'light-grey': '#F1F1F1', // Light grey for subtle contrasts

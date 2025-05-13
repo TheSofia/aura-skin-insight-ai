@@ -8,9 +8,10 @@ type SkinDescriptionInputProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit: () => void;
+  isProcessing: boolean;
 };
 
-const SkinDescriptionInput = ({ value, onChange, onSubmit }: SkinDescriptionInputProps) => {
+const SkinDescriptionInput = ({ value, onChange, onSubmit, isProcessing }: SkinDescriptionInputProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -19,22 +20,28 @@ const SkinDescriptionInput = ({ value, onChange, onSubmit }: SkinDescriptionInpu
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto mb-10 transition-all duration-300 notebook-textarea-container relative">
+    <div className="w-full max-w-xl mx-auto mb-10 transition-all duration-300 notebook-textarea-container relative">
       <Textarea
         variant="notebook"
         placeholder="Tell us about your skin: type, concerns, goals..."
         value={value}
         onChange={onChange}
         onKeyDown={handleKeyDown}
-        className="resize-none rounded-md p-4 pr-12 h-32 font-light text-base placeholder:text-aurascan-medium-grey/70"
+        className="resize-none rounded-md p-4 pr-12 h-32 font-light text-base placeholder:text-beautyagent-medium-grey/70"
+        disabled={isProcessing}
       />
       <Button 
         type="button"
         onClick={onSubmit}
-        className="absolute right-3 bottom-3 p-2 h-auto w-auto bg-transparent hover:bg-aurascan-light-grey text-aurascan-dark-grey"
+        className="absolute right-3 bottom-3 p-2 h-auto w-auto bg-transparent hover:bg-beautyagent-light-grey text-beautyagent-dark-grey"
         aria-label="Send"
+        disabled={isProcessing}
       >
-        <SendHorizontal className="h-5 w-5" />
+        {isProcessing ? (
+          <div className="h-5 w-5 border-2 border-t-beautyagent-accent border-r-beautyagent-accent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
+        ) : (
+          <SendHorizontal className="h-5 w-5" />
+        )}
       </Button>
     </div>
   );
