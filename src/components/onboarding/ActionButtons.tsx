@@ -11,9 +11,9 @@ type ActionButtonsProps = {
 const ActionButtons = ({ onGetStarted, onManualInput }: ActionButtonsProps) => {
   return (
     <>
-      {/* Refined primary call to action with more settled color and elegant styling */}
+      {/* Primary call to action with improved color contrast for better readability */}
       <Button 
-        className="bg-aurascan-deeper-grey hover:bg-aurascan-deep-green/85 text-white py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-400 shadow-subtle hover:shadow-accent transform hover:scale-[1.015]"
+        className="bg-beautyagent-deeper-grey hover:bg-beautyagent-deeper-grey/90 text-white py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-400 shadow-subtle hover:shadow-accent transform hover:scale-[1.015]"
         size="pill-lg" 
         onClick={onGetStarted}
         style={{ 
@@ -29,17 +29,17 @@ const ActionButtons = ({ onGetStarted, onManualInput }: ActionButtonsProps) => {
       {/* Alternative path with standardized text color and enhanced hover interaction */}
       <button
         onClick={onManualInput}
-        className="flex items-center gap-2 px-4 py-2 rounded-full border border-aurascan-medium-grey/30 text-aurascan-dark-grey bg-white/50 hover:bg-aurascan-deep-green/8 hover:text-aurascan-deep-green hover:border-aurascan-deep-green/30 transition-all duration-300 text-sm font-light opacity-0 animate-fade-in group"
+        className="flex items-center gap-2 px-4 py-2 rounded-full border border-beautyagent-medium-grey/30 text-beautyagent-dark-grey bg-white/50 hover:bg-beautyagent-deep-blue/8 hover:text-beautyagent-deep-blue hover:border-beautyagent-deep-blue/30 transition-all duration-300 text-sm font-light opacity-0 animate-fade-in group"
         style={{ animationDelay: '2s', animationFillMode: 'forwards' }}
       >
-        <MessageSquare className="h-4 w-4 text-aurascan-dark-grey opacity-70 group-hover:text-aurascan-deep-green group-hover:opacity-100 transition-opacity animate-subtle-pulse" />
+        <MessageSquare className="h-4 w-4 text-beautyagent-dark-grey opacity-70 group-hover:text-beautyagent-deep-blue group-hover:opacity-100 transition-opacity animate-subtle-pulse" />
         <span>Prefer to describe your skin?</span>
       </button>
       
       {/* Standardized footer text color with refined font weight and hover states */}
-      <p className="text-xs text-aurascan-dark-grey mt-6 max-w-md font-light opacity-0 animate-fade-in" 
+      <p className="text-xs text-beautyagent-dark-grey mt-6 max-w-md font-light opacity-0 animate-fade-in" 
         style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}>
-        By continuing, you agree to our <a href="#" className="text-aurascan-dark-grey hover:text-aurascan-accent underline-offset-4 hover:underline transition-all duration-200">Privacy Policy</a> and <a href="#" className="text-aurascan-dark-grey hover:text-aurascan-accent underline-offset-4 hover:underline transition-all duration-200">Terms of Service</a>.
+        By continuing, you agree to our <a href="#" className="text-beautyagent-dark-grey hover:text-beautyagent-accent underline-offset-4 hover:underline transition-all duration-200">Privacy Policy</a> and <a href="#" className="text-beautyagent-dark-grey hover:text-beautyagent-accent underline-offset-4 hover:underline transition-all duration-200">Terms of Service</a>.
       </p>
     </>
   );

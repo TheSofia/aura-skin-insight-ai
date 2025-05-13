@@ -8,37 +8,37 @@ const VisualizationElement = () => {
       <div className="relative w-64 h-64 md:w-80 md:h-80">
         {/* Abstract, morphing visualization with softened colors but enhanced visibility */}
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* Enhanced central morphing shape with more defined presence but subtler colors */}
-          <div className="morphing-shape w-56 h-56 md:w-72 md:h-72 opacity-80 animate-morph bg-gradient-to-tr from-aurascan-accent/25 via-aurascan-dark-orange/20 to-aurascan-deep-blue/22 border border-white/10 backdrop-blur-sm"></div>
+          {/* Enhanced central morphing shape with more defined presence */}
+          <div className="morphing-shape w-56 h-56 md:w-72 md:h-72 animate-morph bg-gradient-to-tr from-beautyagent-accent/30 via-beautyagent-dark-orange/25 to-beautyagent-deep-blue/28 border border-white/15 backdrop-blur-sm"></div>
           
-          {/* Overlapping circular elements with refined proportions and subtle color intensity */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 md:w-56 md:h-56 rounded-full border border-aurascan-accent/25 animate-rotate-slow" style={{ animationDuration: '22s' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 rounded-full border border-aurascan-deep-blue/30 animate-rotate-slow" style={{ animationDuration: '18s', animationDirection: 'reverse' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full border border-aurascan-dark-orange/25 animate-rotate-slow" style={{ animationDuration: '15s' }}></div>
+          {/* Overlapping circular elements with refined proportions and enhanced visibility */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 md:w-56 md:h-56 rounded-full border border-beautyagent-accent/30 animate-rotate-slow" style={{ animationDuration: '22s' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 rounded-full border border-beautyagent-deep-blue/35 animate-rotate-slow" style={{ animationDuration: '18s', animationDirection: 'reverse' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full border border-beautyagent-dark-orange/30 animate-rotate-slow" style={{ animationDuration: '15s' }}></div>
           
-          {/* Expanded set of floating particles with layered visibility and varied cellular motion */}
-          {Array(18).fill(0).map((_, i) => {  // Increased from 10 to 18 particles
-            // More sophisticated color assignment with layered opacity - some more visible, some very ethereal
+          {/* Expanded set of floating particles with improved visibility */}
+          {Array(18).fill(0).map((_, i) => {  
+            // More sophisticated color assignment with improved visibility
             const particleColor = i % 5 === 0 
-              ? "bg-aurascan-accent/22" 
+              ? "bg-beautyagent-accent/28"  // Increased from /22 to /28
               : i % 5 === 1 
-                ? "bg-aurascan-deep-blue/18" 
+                ? "bg-beautyagent-deep-blue/25"  // Increased from /18 to /25
                 : i % 5 === 2
-                  ? "bg-aurascan-dark-orange/20"
+                  ? "bg-beautyagent-dark-orange/27"  // Increased from /20 to /27
                   : i % 5 === 3
-                    ? "bg-white/25"
-                    : "bg-aurascan-light-grey/15";
+                    ? "bg-white/30"  // Increased from /25 to /30
+                    : "bg-beautyagent-light-grey/25";  // Increased from /15 to /25
             
             // Enhanced hover effect with layered translucency
             const hoverColor = i % 5 === 0 
-              ? "hover:bg-aurascan-accent/35" 
+              ? "hover:bg-beautyagent-accent/40" 
               : i % 5 === 1 
-                ? "hover:bg-aurascan-deep-blue/30" 
+                ? "hover:bg-beautyagent-deep-blue/35" 
                 : i % 5 === 2
-                  ? "hover:bg-aurascan-dark-orange/30"
+                  ? "hover:bg-beautyagent-dark-orange/35"
                   : i % 5 === 3
-                    ? "hover:bg-white/35"
-                    : "hover:bg-aurascan-light-grey/25";
+                    ? "hover:bg-white/40"
+                    : "hover:bg-beautyagent-light-grey/35";
                   
             // Create varying particle sizes to enhance layered effect
             const sizeVariant = i % 4 === 0 
@@ -56,8 +56,8 @@ const VisualizationElement = () => {
             const posX = 15 + (i * 4) + (i % 3 === 0 ? 5 : i % 3 === 1 ? -8 : 0);
             const posY = 10 + (i * 4) + (i % 4 === 0 ? 8 : i % 4 === 1 ? -5 : i % 4 === 2 ? 15 : 0);
             
-            // Vary opacity based on size for layered depth effect
-            const opacityValue = i % 4 === 2 ? 0.65 : (0.35 + (i % 5) * 0.08);
+            // Vary opacity based on size for layered depth effect - increased for better visibility
+            const opacityValue = i % 4 === 2 ? 0.75 : (0.45 + (i % 5) * 0.08);
                 
             return (
               <div 
@@ -75,8 +75,8 @@ const VisualizationElement = () => {
             );
           })}
 
-          {/* More visible central glowing element with refined gradient */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-aurascan-accent/45 via-aurascan-dark-orange/35 to-aurascan-deep-blue/40 shadow-sm z-10 animate-throb"></div>
+          {/* More visible central glowing element */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-beautyagent-accent/50 via-beautyagent-dark-orange/45 to-beautyagent-deep-blue/45 shadow-sm z-10 animate-throb"></div>
         </div>
       </div>
     </div>

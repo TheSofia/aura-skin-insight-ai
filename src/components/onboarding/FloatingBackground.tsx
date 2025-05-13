@@ -32,7 +32,7 @@ const FloatingBackground = ({ animationState }: FloatingElementProps) => {
       y = 20 + Math.random() * 60; // 20-80% of screen height
     }
     
-    // Enhanced color assignment with extremely refined visibility - more varied opacities
+    // Enhanced color assignment with improved visibility
     let color;
     let opacity;
     
@@ -42,19 +42,19 @@ const FloatingBackground = ({ animationState }: FloatingElementProps) => {
     if (x < 20 || x > 80 || y < 20 || y > 80) {
       // Edge zones: refined whites and light grays
       color = Math.random() > 0.75 ? 'translucent-white' : 'dark-white';
-      // Extremely varied opacity range for edges - some barely visible
-      opacity = opacityRandom * 0.2 + 0.25; // 0.25-0.45 range
+      // Improved opacity range for edges - more visible
+      opacity = opacityRandom * 0.25 + 0.35; // 0.35-0.60 range (increased)
     } else {
       // Central zone: primarily whites/grays with rare accent colors
       const colorRandom = Math.random();
       if (colorRandom > 0.92) { // Only 8% chance for accent colors in central area
         color = colorRandom > 0.96 ? 'accent' : (Math.random() > 0.5 ? 'deep-blue' : 'muted-violet');
-        // Very subtle opacity for accent colors but maintaining form visibility
-        opacity = opacityRandom * 0.08 + 0.12; // 0.12-0.20 range - extremely subtle
+        // Improved opacity for accent colors
+        opacity = opacityRandom * 0.15 + 0.18; // 0.18-0.33 range (increased)
       } else {
         color = Math.random() > 0.6 ? 'translucent-white' : 'dark-white';
-        // Very subtle whites/grays for better layered texture
-        opacity = opacityRandom * 0.15 + 0.3; // 0.30-0.45 range
+        // Improved opacity for whites/grays
+        opacity = opacityRandom * 0.20 + 0.35; // 0.35-0.55 range (increased)
       }
     }
     
@@ -97,7 +97,7 @@ const FloatingBackground = ({ animationState }: FloatingElementProps) => {
             x: el.x + (Math.random() * 0.3 - 0.15), // Reduced drift amount for subtlety
             y: el.y + (Math.random() * 0.3 - 0.15), // Reduced drift amount for subtlety
             // Apply subtle opacity fluctuations to mimic cellular activity
-            opacity: Math.max(0.12, Math.min(0.65, el.opacity + (Math.random() * 0.04 - 0.02)))
+            opacity: Math.max(0.18, Math.min(0.75, el.opacity + (Math.random() * 0.04 - 0.02)))
           };
         }
         return el;
@@ -114,26 +114,26 @@ const FloatingBackground = ({ animationState }: FloatingElementProps) => {
         let bgColorClass = '';
         let borderColorClass = '';
         
-        // Apply different styling with refined color intensity
+        // Apply different styling with refined color intensity and improved visibility
         if (el.color === 'translucent-white') {
-          // Semi-transparent white with refined opacity
-          bgColorClass = `bg-white/${Math.floor(el.opacity * 100)}`;
+          // Semi-transparent white with improved opacity
+          bgColorClass = `bg-white/${Math.floor(el.opacity * 120)}`; // Multiplier increased for better visibility
           borderColorClass = ''; // No border for translucent elements
         } else if (el.color === 'dark-white') {
           // "Dark White" (Light Grey / Off-White) with slightly increased contrast
           bgColorClass = 'bg-[#F1F1F1]'; // Lighter shade for more subtle visibility
-          borderColorClass = 'border border-[#E8E8E8]/30'; // Very subtle border
+          borderColorClass = 'border border-[#E8E8E8]/40'; // Increased from /30 to /40
         } else if (el.color === 'accent') {
-          // Extremely refined color intensity for accent elements
-          bgColorClass = 'bg-aurascan-accent/10'; // Extremely subtle
-          borderColorClass = 'border border-aurascan-accent/15'; // Extremely subtle
+          // Improved color intensity for accent elements
+          bgColorClass = 'bg-beautyagent-accent/15'; // Increased from /10 to /15
+          borderColorClass = 'border border-beautyagent-accent/20'; // Increased from /15 to /20
         } else if (el.color === 'deep-blue') {
-          bgColorClass = 'bg-aurascan-deep-blue/8'; // Extremely subtle
-          borderColorClass = 'border border-aurascan-deep-blue/12'; // Extremely subtle
+          bgColorClass = 'bg-beautyagent-deep-blue/12'; // Increased from /8 to /12
+          borderColorClass = 'border border-beautyagent-deep-blue/18'; // Increased from /12 to /18
         } else if (el.color === 'muted-violet') {
-          // New muted violet option
-          bgColorClass = 'bg-[#7E69AB]/8'; // Extremely subtle
-          borderColorClass = 'border border-[#7E69AB]/12'; // Extremely subtle
+          // New muted violet option with improved visibility
+          bgColorClass = 'bg-beautyagent-muted-violet/12'; // Increased from /8 to /12
+          borderColorClass = 'border border-beautyagent-muted-violet/18'; // Increased from /12 to /18
         }
 
         // Determine animation type for more sophisticated laboratory-like movement

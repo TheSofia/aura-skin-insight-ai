@@ -22,20 +22,23 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
       <FloatingBackground animationState={animationState} />
       
       <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center relative z-10">
-        {/* Refined logo with enhanced cellular animation and visual quality - no grey outline */}
-        <DynamicLogo 
-          colorScheme="refined" 
-          animationStyle="cellular" 
-          size="lg" 
-          className="mb-8 transition-transform duration-500 hover-enhance" 
-          ref={logoRef}
-        />
+        {/* Refined logo with enhanced cellular animation and visual quality with BeautyAgent brand name */}
+        <div className="flex items-center gap-3 mb-8">
+          <DynamicLogo 
+            colorScheme="refined" 
+            animationStyle="cellular" 
+            size="lg" 
+            className="transition-transform duration-500 hover-enhance" 
+            ref={logoRef}
+            showText={true}
+          />
+        </div>
         
         {/* Animated Title with Enhanced Sequential Reveal and Refined Font Weight */}
         <AnimatedTitle animationState={animationState} />
         
         {/* Standardized description text with refined font weight and hover interaction */}
-        <p className="text-aurascan-dark-grey mx-auto mb-10 leading-relaxed text-lg max-w-md font-light opacity-0 animate-fade-in hover-accent-text" 
+        <p className="text-beautyagent-dark-grey mx-auto mb-10 leading-relaxed text-lg max-w-md font-light opacity-0 animate-fade-in hover-accent-text" 
            style={{ animationDelay: '1.6s', animationFillMode: 'forwards' }}>
           Experience personalized skincare powered by advanced AI analysis.
           Find your perfect skincare protocol with just one scan.

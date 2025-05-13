@@ -22,7 +22,7 @@ const Index = () => {
     // Only show welcome message on initial load and at the landing page
     if (currentStep === 0 && location.pathname === '/') {
       const timer = setTimeout(() => {
-        toast("Welcome to AuraScan", {
+        toast("Welcome to BeautyAgent", {
           description: "Discover your personalized skincare journey",
           icon: "✨",
         });
@@ -143,7 +143,7 @@ const Index = () => {
       <div className="app-container flex items-center justify-center bg-gradient-light">
         <div className="flex flex-col items-center max-w-md text-center">
           <LoadingAnimation size="md" message={loadingMessage} />
-          <p className="text-aurascan-medium-grey text-sm mt-8 max-w-xs">
+          <p className="text-beautyagent-medium-grey text-sm mt-8 max-w-xs">
             We're creating a personalized experience just for you. This will only take a moment.
           </p>
         </div>
