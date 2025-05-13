@@ -20,7 +20,7 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
   // Adjust particle characteristics based on intensity for more biological elegance
   const getIntensityFactor = () => {
     switch (intensity) {
-      case 'subtle': return { count: 0.7, opacityFactor: 0.7, sizeFactor: 0.8, speedFactor: 1.4 };
+      case 'subtle': return { count: 0.7, opacityFactor: 0.6, sizeFactor: 0.8, speedFactor: 1.5 };
       case 'vibrant': return { count: 1.2, opacityFactor: 1.1, sizeFactor: 1.1, speedFactor: 0.8 };
       default: return { count: 1, opacityFactor: 1, sizeFactor: 1, speedFactor: 1 }; // medium
     }
@@ -37,11 +37,11 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
       opacity: { 
         base: particleOpacity !== undefined ? 
           particleOpacity : 
-          0.6 * intensityFactor.opacityFactor, 
+          0.5 * intensityFactor.opacityFactor, // Reduced from 0.6 to 0.5 for more subtlety
         variance: 0.15 
       },
       positionRadius: { min: 20, max: 35 },
-      animationDuration: { base: 8 * intensityFactor.speedFactor, variance: 1.5 },
+      animationDuration: { base: 9 * intensityFactor.speedFactor, variance: 1.5 }, // Slowed from 8s to 9s
       orbitPath: 'inner', // Closer to core
     },
     // Outer flowing particles - slightly larger, more spread out
@@ -51,11 +51,11 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
       opacity: { 
         base: particleOpacity !== undefined ? 
           particleOpacity * 0.85 : 
-          0.55 * intensityFactor.opacityFactor, 
+          0.45 * intensityFactor.opacityFactor, // Reduced from 0.55 to 0.45 for more subtlety
         variance: 0.2 
       },
       positionRadius: { min: 30, max: 60 },
-      animationDuration: { base: 12 * intensityFactor.speedFactor, variance: 2 },
+      animationDuration: { base: 14 * intensityFactor.speedFactor, variance: 2 }, // Slowed from 12s to 14s
       orbitPath: 'outer', // Further from core
     }
   ];
@@ -97,14 +97,14 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
             // Unique animation duration for varied, natural movement
             const duration = set.animationDuration.base + i * set.animationDuration.variance;
             
-            // Determine color based on setIndex and particle index for more variety
+            // Determine color based on setIndex and particle index - more muted colors for landing page
             let particleColor;
             if ((setIndex + i) % 5 === 0) {
-              particleColor = 'rgba(126, 105, 171, ' + opacity + ')'; // Muted violet
+              particleColor = 'rgba(126, 105, 171, ' + opacity * 0.7 + ')'; // More muted violet
             } else if ((setIndex + i) % 5 === 1) {
-              particleColor = 'rgba(176, 58, 8, ' + opacity + ')'; // Burnt orange
+              particleColor = 'rgba(176, 58, 8, ' + opacity * 0.6 + ')'; // More muted orange
             } else {
-              particleColor = 'rgba(224, 95, 20, ' + opacity + ')'; // Default accent
+              particleColor = 'rgba(255, 255, 255, ' + opacity * 0.85 + ')'; // More white/off-white particles
             }
             
             return (
@@ -120,13 +120,13 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
                   background: `radial-gradient(circle at 30% 30%, 
                     ${particleColor} 0%, 
                     ${particleColor.replace(opacity.toString(), (opacity * 0.9).toString())} 80%)`,
-                  boxShadow: `0 0 ${size * 1.5}px 0 ${particleColor.replace(opacity.toString(), (opacity / 4).toString())}`,
+                  boxShadow: `0 0 ${size * 1.5}px 0 ${particleColor.replace(opacity.toString(), (opacity / 5).toString())}`, // Reduced shadow intensity
                   animationDuration: `${duration}s`,
                   animationDelay: `${i * 0.7}s`,
                   animationTimingFunction: 'cubic-bezier(0.42, 0, 0.58, 1)',
                   transform: 'translateZ(0)', // Force hardware acceleration
                   opacity: opacity,
-                  filter: 'brightness(1.05)',
+                  filter: 'brightness(1.02)', // Slightly reduced brightness
                 }}
               >
                 {/* Inner highlight for dimensionality */}
@@ -134,7 +134,7 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
                   className="absolute inset-0 rounded-full"
                   style={{ 
                     background: 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7) 0%, transparent 75%)',
-                    opacity: 0.75,
+                    opacity: 0.6, // Reduced from 0.75 for more subtlety
                   }}
                 ></div>
               </div>
@@ -143,7 +143,7 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
         </React.Fragment>
       ))}
       
-      {/* Enhanced central pulsing glow effect */}
+      {/* Enhanced central pulsing glow effect - more subtle */}
       <div
         className="absolute rounded-full animate-pulse-cellular z-5"
         style={{
@@ -151,10 +151,10 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
           height: '95%',
           left: '2.5%',
           top: '2.5%',
-          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.06) 0%, transparent 75%)',
+          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.04) 0%, transparent 75%)', // Reduced opacity from 0.06 to 0.04
           filter: 'blur(2px)',
-          opacity: intensity === 'vibrant' ? 0.1 : intensity === 'subtle' ? 0.04 : 0.07,
-          animationDuration: '9s',
+          opacity: intensity === 'vibrant' ? 0.1 : intensity === 'subtle' ? 0.03 : 0.05, // Reduced from 0.04 to 0.03 for subtle
+          animationDuration: '12s', // Slowed from 9s to 12s
         }}
       ></div>
     </div>
@@ -162,4 +162,3 @@ const LogoParticles: React.FC<LogoParticlesProps> = ({
 };
 
 export default LogoParticles;
-

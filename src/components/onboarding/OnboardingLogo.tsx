@@ -25,7 +25,7 @@ const OnboardingLogo = () => {
           className="transition-transform duration-500" 
           ref={logoRef}
           showText={true}
-          intensity="medium" 
+          intensity="subtle" // Changed from "medium" to "subtle" for more refined animation
           isLandingPage={true}
           isLoadingPage={false}
         />

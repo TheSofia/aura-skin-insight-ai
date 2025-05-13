@@ -33,10 +33,10 @@ const LogoCore: React.FC<LogoCoreProps> = ({
     switch (intensity) {
       case 'subtle':
         baseStyles = {
-          opacity: 0.85,
-          brightness: 0.92,
-          pulseMagnitude: '11s',
-          glowOpacity: 0.6,
+          opacity: 0.80, // Reduced from 0.85 for more subtle appearance
+          brightness: 0.90, // Reduced from 0.92 for more subtle appearance
+          pulseMagnitude: '13s', // Slowed from 11s to 13s
+          glowOpacity: 0.55, // Reduced from 0.6 for more subtle glow
           glowSize: '-20%'
         };
         break;
@@ -74,7 +74,7 @@ const LogoCore: React.FC<LogoCoreProps> = ({
         transition-all duration-500`}
       style={{
         background: 'radial-gradient(circle at 35% 35%, var(--core-color-bright, rgba(224, 95, 20, 0.90)) 0%, var(--core-color, rgba(201, 76, 16, 0.95)) 100%)',
-        boxShadow: '0 0 15px 3px rgba(224, 95, 20, 0.12)',
+        boxShadow: '0 0 15px 3px rgba(224, 95, 20, 0.10)', // Reduced from 0.12 for more subtle glow
         animationDuration: intensityStyles.pulseMagnitude,
         animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
         opacity: intensityStyles.opacity,
@@ -96,7 +96,7 @@ const LogoCore: React.FC<LogoCoreProps> = ({
       <div 
         className="absolute inset-[-20%] rounded-full opacity-0 animate-pulse-subtle"
         style={{ 
-          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.35) 0%, transparent 80%)',
+          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.30) 0%, transparent 80%)', // Reduced from 0.35 for more subtlety
           animationDuration: intensityStyles.pulseMagnitude,
           inset: intensityStyles.glowSize,
         }}
@@ -106,7 +106,7 @@ const LogoCore: React.FC<LogoCoreProps> = ({
       <div 
         className="absolute inset-[-30%] rounded-full opacity-0 animate-pulse-cellular"
         style={{ 
-          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.15) 0%, transparent 90%)',
+          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.12) 0%, transparent 90%)', // Reduced from 0.15 for more subtlety
           animationDuration: (parseFloat(intensityStyles.pulseMagnitude) * 1.2) + 's',
           animationDelay: '0.5s',
         }}
@@ -116,4 +116,3 @@ const LogoCore: React.FC<LogoCoreProps> = ({
 };
 
 export default LogoCore;
-

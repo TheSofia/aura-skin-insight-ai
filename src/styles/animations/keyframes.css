@@ -47,31 +47,31 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Enhanced cellular animation keyframes for logo */
+/* Enhanced cellular animation keyframes for logo - more subtle and slower */
 @keyframes cellular-drift {
   0% { transform: translateX(0) translateY(0) scale(1); }
-  25% { transform: translateX(2px) translateY(-2px) scale(1.02); }
-  50% { transform: translateX(3px) translateY(1px) scale(1.01); }
-  75% { transform: translateX(0) translateY(2px) scale(0.99); }
+  25% { transform: translateX(1.5px) translateY(-1.5px) scale(1.01); } /* Reduced movement */
+  50% { transform: translateX(2px) translateY(1px) scale(1.005); } /* Reduced movement */
+  75% { transform: translateX(0) translateY(1.5px) scale(0.995); } /* Reduced movement */
   100% { transform: translateX(0) translateY(0) scale(1); }
 }
 
 @keyframes cellular-core-pulse {
   0%, 100% { transform: scale(1); opacity: 0.95; }
-  50% { transform: scale(1.08); opacity: 0.9; filter: brightness(1.03); }
+  50% { transform: scale(1.05); opacity: 0.92; filter: brightness(1.02); } /* Reduced scale from 1.08 to 1.05 */
 }
 
 @keyframes cellular-ring-drift {
   0% { transform: rotate(0deg) translate(0px, 0px); }
-  33% { transform: rotate(2deg) translate(1px, -1px); }
-  66% { transform: rotate(-1deg) translate(2px, 1px); }
+  33% { transform: rotate(1.5deg) translate(0.8px, -0.8px); } /* Reduced movement */
+  66% { transform: rotate(-0.8deg) translate(1.5px, 0.8px); } /* Reduced movement */
   100% { transform: rotate(0deg) translate(0px, 0px); }
 }
 
 @keyframes cellular-particle-float {
   0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
-  33% { transform: translateY(-3px) translateX(2px) scale(1.1); opacity: 0.8; }
-  66% { transform: translateY(-1px) translateX(3px) scale(1.05); opacity: 0.75; }
+  33% { transform: translateY(-2px) translateX(1.5px) scale(1.08); opacity: 0.8; } /* Reduced movement */
+  66% { transform: translateY(-0.8px) translateX(2px) scale(1.04); opacity: 0.75; } /* Reduced movement */
   100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
 }
 
@@ -82,52 +82,52 @@
   100% { filter: hue-rotate(0deg) brightness(1); }
 }
 
-/* Enhanced orbital-shift animation */
+/* Enhanced orbital-shift animation - more subtle */
 @keyframes orbital-shift {
   0% { transform: rotate(0deg) translateX(0) rotate(0deg); }
-  33% { transform: rotate(120deg) translateX(3px) rotate(-120deg); }
-  66% { transform: rotate(240deg) translateX(5px) rotate(-240deg); }
+  33% { transform: rotate(120deg) translateX(2px) rotate(-120deg); } /* Reduced movement from 3px to 2px */
+  66% { transform: rotate(240deg) translateX(3px) rotate(-240deg); } /* Reduced movement from 5px to 3px */
   100% { transform: rotate(360deg) translateX(0) rotate(-360deg); }
 }
 
-/* Enhanced cellular motion animation for irregular membrane shape - more organic and fluid */
+/* Enhanced cellular motion animation for irregular membrane shape - more subtle and fluid */
 @keyframes cellular-motion {
   0% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 1; }
-  25% { transform: scale(1.02) translate(2px, -2px) rotate(0.5deg); opacity: 0.95; }
-  50% { transform: scale(0.98) translate(1px, 1px) rotate(1deg); opacity: 0.9; }
-  75% { transform: scale(1.01) translate(-1px, 1px) rotate(0.5deg); opacity: 0.95; }
+  25% { transform: scale(1.015) translate(1.5px, -1.5px) rotate(0.4deg); opacity: 0.96; } /* Reduced movement and scale */
+  50% { transform: scale(0.985) translate(0.8px, 0.8px) rotate(0.8deg); opacity: 0.92; } /* Reduced movement and scale */
+  75% { transform: scale(1.008) translate(-0.8px, 0.8px) rotate(0.4deg); opacity: 0.96; } /* Reduced movement and scale */
   100% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 1; }
 }
 
 /* Enhanced float animation with more refined, subtle movement */
 @keyframes float-enhanced {
   0%, 100% { transform: translateY(0) scale(1); opacity: 0.75; }
-  50% { transform: translateY(-5px) scale(1.08); opacity: 0.85; } /* More subtle movement */
+  50% { transform: translateY(-4px) scale(1.06); opacity: 0.85; } /* More subtle movement - reduced Y from -5px to -4px and scale from 1.08 to 1.06 */
 }
 
-/* Refined cellular pulse animation */
+/* Refined cellular pulse animation - more subtle */
 @keyframes pulse-cellular {
   0%, 100% { transform: scale(1); opacity: 0.85; }
-  50% { transform: scale(1.08); opacity: 0.95; filter: brightness(1.04); }
+  50% { transform: scale(1.06); opacity: 0.92; filter: brightness(1.03); } /* Reduced scale from 1.08 to 1.06 */
 }
 
-/* Particle-specific animations */
+/* Particle-specific animations - more subtle */
 @keyframes particle-drift {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(2px, -1px) scale(1.03); }
-  50% { transform: translate(1px, 2px) scale(0.98); }
-  75% { transform: translate(-1px, 1px) scale(1.02); }
+  25% { transform: translate(1.5px, -0.8px) scale(1.02); } /* Reduced movement and scale */
+  50% { transform: translate(0.8px, 1.5px) scale(0.985); } /* Reduced movement and scale */
+  75% { transform: translate(-0.8px, 0.8px) scale(1.015); } /* Reduced movement and scale */
 }
 
 @keyframes particle-pulse {
   0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.15); }
+  50% { opacity: 0.9; transform: scale(1.12); } /* Reduced scale from 1.15 to 1.12 */
 }
 
 @keyframes orbital-float {
-  0% { transform: rotate(0deg) translateX(3px) translateY(0) rotate(0deg); }
-  50% { transform: rotate(180deg) translateX(6px) translateY(-2px) rotate(-180deg); }
-  100% { transform: rotate(360deg) translateX(3px) translateY(0) rotate(-360deg); }
+  0% { transform: rotate(0deg) translateX(2px) translateY(0) rotate(0deg); } /* Reduced X movement from 3px to 2px */
+  50% { transform: rotate(180deg) translateX(4px) translateY(-1.5px) rotate(-180deg); } /* Reduced X and Y movement */
+  100% { transform: rotate(360deg) translateX(2px) translateY(0) rotate(-360deg); } /* Reduced X movement from 3px to 2px */
 }
 
 /* New animation for scanning effect seen in screenshot */

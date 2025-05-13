@@ -18,7 +18,7 @@ export const getAnimationClasses = (animationStyle: AnimationStyle): AnimationCl
     animationStyle = 'cellular';
   }
   
-  // Refined cellular animation system
+  // Refined cellular animation system for a more ethereal, sophisticated look
   return {
     core: 'animate-cellular-core-pulse',
     innerRing: 'animate-cellular-ring-drift',
@@ -26,4 +26,3 @@ export const getAnimationClasses = (animationStyle: AnimationStyle): AnimationCl
     particles: 'animate-orbital-float'
   };
 };
-

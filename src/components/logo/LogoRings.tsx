@@ -42,14 +42,14 @@ const LogoRings: React.FC<LogoRingsProps> = ({
     switch (intensity) {
       case 'subtle':
         baseStyles = {
-          innerOpacity: 0.04,
-          outerOpacity: 0.025,
-          innerBorderOpacity: 0.12,
-          outerBorderOpacity: 0.07,
+          innerOpacity: 0.03, // Reduced from 0.04 for more subtlety
+          outerOpacity: 0.02, // Reduced from 0.025 for more subtlety
+          innerBorderOpacity: 0.09, // Reduced from 0.12 for more subtlety
+          outerBorderOpacity: 0.06, // Reduced from 0.07 for more subtlety
           blurFactor: 0.4,
-          innerDuration: '17s',
-          outerDuration: '20s',
-          membraneOpacity: 0.07,
+          innerDuration: '20s', // Slowed from 17s to 20s
+          outerDuration: '24s', // Slowed from 20s to 24s
+          membraneOpacity: 0.05, // Reduced from 0.07 for more subtlety
           membraneBlur: 0.5
         };
         break;
@@ -74,14 +74,14 @@ const LogoRings: React.FC<LogoRingsProps> = ({
     if (isLandingPage) {
       baseStyles = {
         ...baseStyles,
-        innerOpacity: baseStyles.innerOpacity * 0.75, 
-        outerOpacity: baseStyles.outerOpacity * 0.75, 
-        innerBorderOpacity: baseStyles.innerBorderOpacity * 0.75, 
-        outerBorderOpacity: baseStyles.outerBorderOpacity * 0.75, 
+        innerOpacity: baseStyles.innerOpacity * 0.7, // Reduced from 0.75 for more subtlety
+        outerOpacity: baseStyles.outerOpacity * 0.7, // Reduced from 0.75 for more subtlety
+        innerBorderOpacity: baseStyles.innerBorderOpacity * 0.7, // Reduced from 0.75 for more subtlety
+        outerBorderOpacity: baseStyles.outerBorderOpacity * 0.7, // Reduced from 0.75 for more subtlety
         blurFactor: baseStyles.blurFactor * 0.85,
-        innerDuration: (parseFloat(baseStyles.innerDuration) * 1.15) + 's', 
-        outerDuration: (parseFloat(baseStyles.outerDuration) * 1.15) + 's',
-        membraneOpacity: baseStyles.membraneOpacity * 0.75,
+        innerDuration: (parseFloat(baseStyles.innerDuration) * 1.2) + 's', // Slowed movement further
+        outerDuration: (parseFloat(baseStyles.outerDuration) * 1.2) + 's', // Slowed movement further
+        membraneOpacity: baseStyles.membraneOpacity * 0.7, // Reduced from 0.75 for more subtlety
         membraneBlur: baseStyles.membraneBlur * 0.85
       };
     }
@@ -118,7 +118,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           height: `calc(${innerRingSize.split(' ')[1]} * 2.2)`,
           background: `radial-gradient(circle, rgba(255, 255, 255, ${intensityStyles.membraneOpacity * 1.2}) 0%, rgba(255, 255, 255, ${intensityStyles.membraneOpacity * 0.8}) 40%, rgba(255, 255, 255, ${intensityStyles.membraneOpacity * 0.3}) 70%, transparent 100%)`,
           backdropFilter: `blur(${intensityStyles.membraneBlur}px)`,
-          animationDuration: '18s',
+          animationDuration: '22s', // Slowed from 18s to 22s
           animationTimingFunction: 'cubic-bezier(0.42, 0, 0.58, 1)',
         }}
       ></div>
@@ -158,9 +158,9 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           background: `rgba(255, 255, 255, ${intensityStyles.innerOpacity * 0.7})`,
           boxShadow: `inset 0 0 0 1px rgba(255, 255, 255, ${intensityStyles.innerBorderOpacity * 0.7})`,
           backdropFilter: `blur(${intensityStyles.blurFactor * 0.6}px)`,
-          animationDuration: '15s',
+          animationDuration: '18s', // Slowed from 15s to 18s
           animationTimingFunction: 'cubic-bezier(0.42, 0, 0.58, 1)',
-          opacity: isLandingPage ? 0.75 : 1,
+          opacity: isLandingPage ? 0.7 : 1, // Reduced from 0.75 for more subtlety on landing page
         }}
       ></div>
       
@@ -171,8 +171,8 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           width: `calc(${outerRingSize.split(' ')[0]} * 1.2)`,
           height: `calc(${outerRingSize.split(' ')[1]} * 1.2)`,
           background: `radial-gradient(circle, rgba(255, 255, 255, ${intensityStyles.outerOpacity * 0.6}) 0%, transparent 85%)`,
-          animationDuration: '22s',
-          opacity: isLandingPage ? 0.6 : 0.85,
+          animationDuration: '25s', // Slowed from 22s to 25s
+          opacity: isLandingPage ? 0.5 : 0.85, // Reduced from 0.6 for more subtlety on landing page
         }}
       ></div>
     </>
@@ -180,4 +180,3 @@ const LogoRings: React.FC<LogoRingsProps> = ({
 };
 
 export default LogoRings;
-
