@@ -13,18 +13,17 @@ const ProductCard = ({ product, onToggleSave }: ProductCardProps) => {
     <div 
       className="frosted-card overflow-hidden p-6 transition-all hover:shadow-lg hover:translate-y-[-2px]"
     >
-      <div className="flex flex-col md:flex-row gap-6">
+      <div className="flex flex-col md:flex-row gap-4">
         <div className="flex-1">
-          <div className="text-sm text-aurascan-dark-grey font-medium mb-1">{product.brand}</div>
-          <h3 className="font-clash text-2xl font-bold mb-2 text-aurascan-dark-grey">{product.name}</h3>
-          <p className="text-aurascan-medium-grey mb-4 font-light">{product.description}</p>
+          <div className="text-sm text-aurascan-dark-grey font-light mb-1">{product.brand}</div>
+          <h3 className="font-clash text-xl font-light mb-4 text-aurascan-dark-grey">{product.name}</h3>
           
           <div className="flex items-center gap-4">
             <Button 
-              className="bg-aurascan-dark-grey hover:bg-aurascan-dark-grey/90 text-white flex items-center gap-2"
+              className="bg-aurascan-dark-grey hover:bg-aurascan-deeper-grey text-white flex items-center gap-2 transition-colors"
               onClick={() => window.open(product.url, '_blank')}
             >
-              <span>Shop Now</span>
+              <span>Shop</span>
               <ExternalLink className="h-4 w-4" />
             </Button>
             

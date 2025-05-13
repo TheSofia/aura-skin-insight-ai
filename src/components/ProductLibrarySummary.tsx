@@ -11,21 +11,20 @@ const ProductLibrarySummary = ({ savedProducts }: ProductLibrarySummaryProps) =>
   const { toast } = useToast();
   
   return (
-    <div className="p-6 md:p-12 border-t border-aurascan-light-grey">
+    <div className="p-6 md:p-8 border-t border-aurascan-light-grey">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div>
-            <h3 className="text-lg font-bold text-aurascan-dark-grey mb-1">Your Product Library</h3>
-            <p className="text-aurascan-medium-grey text-sm font-light">
+            <h3 className="text-base font-light text-aurascan-dark-grey">
               {savedProducts.length === 0 
-                ? "You haven't saved any products yet" 
-                : `You have ${savedProducts.length} saved products`}
-            </p>
+                ? "Library" 
+                : `Library (${savedProducts.length})`}
+            </h3>
           </div>
           
           {savedProducts.length > 0 && (
             <Button 
-              className="bg-aurascan-dark-grey text-white hover:bg-aurascan-dark-grey/90 transition-all duration-300"
+              className="bg-aurascan-dark-grey text-white hover:bg-aurascan-deeper-grey transition-all"
               onClick={() => {
                 toast({
                   title: "View saved products",
@@ -33,7 +32,7 @@ const ProductLibrarySummary = ({ savedProducts }: ProductLibrarySummaryProps) =>
                 });
               }}
             >
-              View Saved Products
+              View Library
             </Button>
           )}
         </div>

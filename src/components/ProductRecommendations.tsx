@@ -104,19 +104,15 @@ const ProductRecommendations = ({ isManualPath = false }: ProductRecommendations
   return (
     <div className="flex flex-col h-full animate-fade-in bg-white">
       <div className="flex-1 overflow-auto pb-6">
-        <div className="px-6 py-16 md:px-12">
-          <div className="max-w-5xl mx-auto mb-12">
-            <div className="flex items-center mb-8">
-              <DynamicLogo colorScheme="cyan" size="sm" className="mr-4" />
-              <h2 className="text-2xl font-clash font-medium text-aurascan-dark-grey">Your Personalized Protocol</h2>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-clash tracking-tight text-aurascan-dark-grey mb-6 leading-tight">
-              <span className="font-bold">Premium Recommendations</span> <span className="font-light">For Your Skin</span>
+        <div className="p-8 md:p-12 flex justify-center">
+          <DynamicLogo colorScheme="refined" animationStyle="cellular" size="md" />
+        </div>
+        
+        <div className="px-6 md:px-12">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-2xl md:text-3xl font-clash font-light text-aurascan-dark-grey text-center mb-8">
+              Your Personalized Protocol
             </h1>
-            <p className="text-aurascan-medium-grey max-w-2xl leading-relaxed text-lg mb-8 font-light">
-              Based on your skin analysis, we've curated these high-quality products specifically for your unique needs.
-            </p>
             
             {/* Manual Input Text Area - only visible when coming via manual path */}
             {isManualPath && (
