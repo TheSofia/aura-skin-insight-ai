@@ -24,13 +24,10 @@ const LogoCore: React.FC<LogoCoreProps> = ({
         boxShadow: '0 0 10px 0 rgba(249, 115, 22, 0.15)', // Subtle glow instead of outline
         animationDuration: animationStyle === 'cellular' ? '7.5s' : undefined,
         animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.45, 0, 0.55, 1)' : undefined,
-        // Add CSS variables for dynamic color management with default values
-        '--core-color': '#F97316',
-        '--core-color-bright': '#FF8C42',
+        // Fix for TypeScript error by using computed property names with type casting
+        ['--core-color' as any]: '#F97316',
+        ['--core-color-bright' as any]: '#FF8C42',
       }}
-      
-      // Add enhanced layered glow effect instead of an outline
-      // This creates a more sophisticated, dimensional look without a harsh border
     >
       {/* Inner glow layer */}
       <div 
