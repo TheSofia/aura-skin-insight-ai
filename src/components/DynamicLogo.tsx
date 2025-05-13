@@ -131,6 +131,12 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
 
   const intensityStyles = getIntensityStyles();
 
+  // New: Ethereal text effect styles for the wordmark
+  const wordmarkTextStyle = {
+    textShadow: '0 0 0.5px rgba(64, 62, 67, 0.3), 0 0 1px rgba(64, 62, 67, 0.2), 0 0 2px rgba(64, 62, 67, 0.1)',
+    letterSpacing: '0.02em',
+  };
+
   return (
     <div className={`flex items-center ${showText ? 'flex-col md:flex-row' : ''} gap-3`}>
       <div 
@@ -179,7 +185,14 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
       </div>
       
       {showText && (
-        <div className="font-clash font-light text-beautyagent-dark-grey text-xl md:text-2xl animate-fade-in" style={{animationDelay: '0.5s', animationFillMode: 'forwards'}}>
+        <div 
+          className="font-clash font-light text-beautyagent-dark-grey text-xl md:text-2xl animate-fade-in" 
+          style={{
+            animationDelay: '0.5s', 
+            animationFillMode: 'forwards',
+            ...wordmarkTextStyle
+          }}
+        >
           beautyAgent
         </div>
       )}
