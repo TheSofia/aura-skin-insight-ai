@@ -1,89 +1,171 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const VisualizationElement = () => {
-  return (
-    <div className="w-full max-w-screen-lg mx-auto flex justify-center opacity-0 animate-fade-in" 
-         style={{ animationDelay: '2.4s', animationFillMode: 'forwards' }}>
-      <div className="relative w-64 h-64 md:w-80 md:h-80">
-        {/* Abstract, morphing visualization with more vibrant colors but still sophisticated */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {/* Primary morphing shape with more vibrant gradient including burnt orange */}
-          <div className="morphing-shape w-56 h-56 md:w-72 md:h-72 animate-morph bg-gradient-to-tr from-beautyagent-accent/45 via-burnt-orange/40 to-beautyagent-deep-blue/42 border border-white/20 backdrop-blur-sm glow-soft"></div>
-          
-          {/* Overlapping circular elements with refined proportions and enhanced visibility */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 md:w-56 md:h-56 rounded-full border border-beautyagent-accent/45 animate-rotate-slow" style={{ animationDuration: '22s' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 rounded-full border border-beautyagent-deep-blue/50 animate-rotate-slow" style={{ animationDuration: '18s', animationDirection: 'reverse' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-28 md:h-28 rounded-full border border-burnt-orange/45 animate-rotate-slow" style={{ animationDuration: '15s' }}></div>
-          
-          {/* Expanded set of floating particles with improved visibility and burnt orange accents */}
-          {Array(24).fill(0).map((_, i) => {  
-            // More sophisticated color assignment with improved visibility and burnt orange accents
-            const particleColor = i % 6 === 0 
-              ? "bg-beautyagent-accent/40"
-              : i % 6 === 1 
-                ? "bg-beautyagent-deep-blue/38"
-                : i % 6 === 2
-                  ? "bg-burnt-orange/42"
-                  : i % 6 === 3
-                    ? "bg-white/40"
-                    : i % 6 === 4
-                      ? "bg-beautyagent-light-grey/35"
-                      : "bg-beautyagent-muted-violet/32";
-            
-            // Enhanced hover effect with layered translucency
-            const hoverColor = i % 6 === 0 
-              ? "hover:bg-beautyagent-accent/60" 
-              : i % 6 === 1 
-                ? "hover:bg-beautyagent-deep-blue/55" 
-                : i % 6 === 2
-                  ? "hover:bg-burnt-orange/60"
-                  : i % 6 === 3
-                    ? "hover:bg-white/55"
-                    : i % 6 === 4
-                      ? "hover:bg-beautyagent-light-grey/50"
-                      : "hover:bg-beautyagent-muted-violet/50";
-                  
-            // Create varying particle sizes to enhance layered effect
-            const sizeVariant = i % 4 === 0 
-              ? "w-2 h-2 md:w-2.5 md:h-2.5" 
-              : i % 4 === 1
-                ? "w-1.5 h-1.5 md:w-2 md:h-2"
-                : i % 4 === 2
-                  ? "w-3 h-3 md:w-3.5 md:h-3.5"
-                  : "w-1 h-1 md:w-1.5 md:h-1.5";
-                
-            // Create varied animation durations
-            const durationBase = 3.5 + (i % 5) * 0.7;
-            
-            // Create varied positions with better distribution
-            const posX = 15 + (i * 3) + (i % 3 === 0 ? 5 : i % 3 === 1 ? -8 : 0);
-            const posY = 10 + (i * 3) + (i % 4 === 0 ? 8 : i % 4 === 1 ? -5 : i % 4 === 2 ? 15 : 0);
-            
-            // Vary opacity based on size for layered depth effect - increased for better visibility
-            const opacityValue = i % 4 === 2 ? 0.88 : (0.60 + (i % 5) * 0.08);
-                
-            return (
-              <div 
-                key={i}
-                className={`absolute ${sizeVariant} rounded-full ${particleColor} ${hoverColor} ${i % 3 === 0 ? 'animate-cellular-motion' : 'animate-float-enhanced'} transition-all duration-700`}
-                style={{
-                  left: `${posX}%`,
-                  top: `${posY}%`,
-                  animationDuration: `${durationBase}s`,
-                  animationDelay: `${i * 0.3}s`,
-                  opacity: opacityValue,
-                  zIndex: i % 4 === 2 ? 5 : 1,
-                  boxShadow: i % 6 === 2 ? '0 0 8px rgba(194, 65, 12, 0.25)' : 
-                             i % 6 === 0 ? '0 0 8px rgba(249, 115, 22, 0.25)' : 'none'
-                }}
-              ></div>
-            );
-          })}
+  // State for particles - dynamic elements that will replace static dot
+  const [particles, setParticles] = useState<Array<{
+    id: number;
+    size: number;
+    x: number; 
+    y: number;
+    opacity: number;
+    speed: number;
+    direction: number;
+    color: string;
+    glow: boolean;
+  }>>([]);
 
-          {/* More vibrant central glowing element */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-7 h-7 md:w-9 md:h-9 rounded-full bg-gradient-to-r from-beautyagent-accent/70 via-burnt-orange/65 to-beautyagent-deep-blue/60 shadow-md z-10 animate-throb glow-accent"></div>
-        </div>
+  // Generate particles on component mount
+  useEffect(() => {
+    // Create 12-18 particles with varied properties
+    const particleCount = Math.floor(Math.random() * 7) + 12;
+    const newParticles = Array.from({ length: particleCount }).map((_, index) => {
+      // Random position within circle boundaries (using polar coordinates for better distribution)
+      const radius = Math.random() * 0.7; // Keep within 70% of container radius
+      const angle = Math.random() * Math.PI * 2;
+      // Convert polar to cartesian coordinates (centered at 50%)
+      const x = 50 + radius * Math.cos(angle) * 30;
+      const y = 50 + radius * Math.sin(angle) * 30;
+      
+      // Random size between 2-8px
+      const size = Math.random() * 6 + 2;
+      
+      // Random opacity between 0.15-0.65
+      const opacity = Math.random() * 0.5 + 0.15;
+      
+      // Movement properties
+      const speed = Math.random() * 0.8 + 0.3; // Slow, gentle movement
+      const direction = Math.random() * Math.PI * 2; // Random initial direction
+      
+      // Color selection - mix of whites and subtle accent colors
+      const colorRandom = Math.random();
+      let color;
+      
+      if (colorRandom > 0.82) {
+        // ~18% chance for muted violet
+        color = "beautyagent-muted-violet";
+      } else if (colorRandom > 0.65) {
+        // ~17% chance for burnt orange
+        color = "burnt-orange";
+      } else {
+        // 65% chance for whites/off-whites
+        color = Math.random() > 0.5 ? "white" : "light-grey";
+      }
+      
+      // Some particles have subtle glow
+      const glow = Math.random() > 0.7;
+      
+      return {
+        id: index,
+        size,
+        x,
+        y,
+        opacity,
+        speed,
+        direction,
+        color,
+        glow
+      };
+    });
+    
+    setParticles(newParticles);
+  }, []);
+
+  // Animation for particles movement
+  useEffect(() => {
+    // Create animation frame for particle movement
+    const animationFrame = requestAnimationFrame(function animate() {
+      setParticles(prevParticles => 
+        prevParticles.map(particle => {
+          // Calculate new position with biomorphic movement
+          // Complex movement pattern to create organic, cell-like motion
+          // Particles tend to drift in circular/orbital patterns with slight variations
+          
+          // Calculate distance from center (50,50)
+          const dx = particle.x - 50;
+          const dy = particle.y - 50;
+          const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
+          
+          // Direction adjustment based on orbital tendency
+          // Creates a gentle orbital/gravitational effect
+          const orbitalInfluence = Math.max(0, (30 - distanceFromCenter) / 30) * 0.01;
+          const newDirection = particle.direction + 
+            (Math.atan2(dy, dx) + Math.PI/2) * orbitalInfluence;
+          
+          // Calculate new position with some randomness for organic feel
+          const randomFactor = (Math.random() - 0.5) * 0.1;
+          const newX = particle.x + Math.cos(newDirection) * particle.speed + randomFactor;
+          const newY = particle.y + Math.sin(newDirection) * particle.speed + randomFactor;
+          
+          // Boundary check - keep particles within outer rim
+          const newDx = newX - 50;
+          const newDy = newY - 50;
+          const newDistance = Math.sqrt(newDx * newDx + newDy * newDy);
+          
+          // If particle would go outside boundary, adjust
+          if (newDistance > 36) {
+            // Reflect back or redirect toward center
+            return {
+              ...particle,
+              direction: Math.atan2(-newDy, -newDx) + Math.random() * 0.2 - 0.1
+            };
+          }
+          
+          return {
+            ...particle,
+            x: newX,
+            y: newY,
+            direction: newDirection + randomFactor
+          };
+        })
+      );
+      
+      requestAnimationFrame(animate);
+    });
+    
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
+
+  return (
+    <div className="absolute bottom-0 left-0 right-0 h-64 md:h-96 pointer-events-none overflow-hidden">
+      {/* Main circular biomorphic container - preserved from original design */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/4
+                    w-[60vh] h-[60vh] max-w-[700px] max-h-[700px] min-w-[300px] min-h-[300px]
+                    morphing-shape bg-gradient-light opacity-40 backdrop-blur-sm
+                    border border-white/10">
+        {/* No more static central dot */}
+        
+        {/* Dynamic particles with subtle motion */}
+        {particles.map(particle => (
+          <div
+            key={particle.id}
+            className={cn(
+              "absolute rounded-full transition-all duration-1000",
+              particle.glow ? "glow-subtle" : "",
+              {
+                "bg-white/60": particle.color === "white",
+                "bg-beautyagent-light-grey/60": particle.color === "light-grey",
+                "bg-beautyagent-muted-violet/40": particle.color === "beautyagent-muted-violet",
+                "bg-burnt-orange/35": particle.color === "burnt-orange"
+              }
+            )}
+            style={{
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              opacity: particle.opacity,
+              transform: 'translate(-50%, -50%)',
+              filter: particle.glow ? 
+                `blur(${particle.size/4}px) brightness(1.2)` : 
+                `blur(${particle.size/8}px)`
+            }}
+          />
+        ))}
+        
+        {/* Subtle cellular rim highlight effect */}
+        <div className="absolute inset-0 rounded-full opacity-40
+                      bg-gradient-radial from-transparent via-transparent to-white/10" />
       </div>
     </div>
   );
