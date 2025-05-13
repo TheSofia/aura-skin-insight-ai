@@ -1,11 +1,10 @@
-
 import React, { forwardRef, useEffect, useState } from 'react';
 
 type DynamicLogoProps = {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   colorScheme?: 'accent' | 'coral' | 'cyan' | 'teal' | 'violet' | 'gradient' | 'refined';
-  animationStyle?: 'float' | 'pulse' | 'rotate' | 'morph' | 'combined' | 'subtle';
+  animationStyle?: 'float' | 'pulse' | 'rotate' | 'morph' | 'combined' | 'subtle' | 'cellular';
 };
 
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
@@ -138,7 +137,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
     }
   };
 
-  // Get enhanced animation classes based on the selected style
+  // Enhanced animation classes with new cellular animation style
   const getAnimationClasses = () => {
     switch (animationStyle) {
       case 'float':
@@ -176,6 +175,14 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           outerRing: 'animate-rotate-slow',
           particles: 'animate-float-subtle'
         };
+      case 'cellular':
+        // New cellular animation style with slower, organic movement
+        return {
+          core: 'animate-cellular-core-pulse',
+          innerRing: 'animate-cellular-ring-drift',
+          outerRing: 'animate-cellular-drift',
+          particles: 'animate-cellular-particle-float'
+        };
       case 'combined':
       default:
         return {
@@ -192,9 +199,13 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
 
   return (
     <div 
-      className={`dot-logo relative ${sizeClasses[size]} ${className} ${animationClasses.core}`}
+      className={`dot-logo relative ${sizeClasses[size]} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''}`}
       role="presentation"
       ref={ref}
+      style={{
+        animationDuration: animationStyle === 'cellular' ? '8s' : undefined,
+        animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
+      }}
     >
       {/* Core dot with enhanced pulsing animation and increased vibrancy */}
       <div 
@@ -202,23 +213,35 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           after:content-[''] after:absolute after:inset-0 after:rounded-full ${colorClasses.glow} 
           after:blur-md after:transform after:scale-150 after:opacity-0 after:animate-subtle-glow
           transition-all duration-300 hover:transform hover:scale-125`}
+        style={{
+          animationDuration: animationStyle === 'cellular' ? '7.5s' : undefined,
+          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.45, 0, 0.55, 1)' : undefined
+        }}
       ></div>
       
       {/* Inner ring with enhanced animation and increased vibrancy */}
       <div 
         className={`absolute ${innerRingSizes[size]} border-2 ${colorClasses.innerRing} rounded-full 
           ${animationClasses.innerRing} transition-transform duration-300 hover:border-opacity-100`}
+        style={{
+          animationDuration: animationStyle === 'cellular' ? '12s' : undefined,
+          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
+        }}
       ></div>
       
       {/* Outer ring with enhanced animation and increased vibrancy */}
       <div 
         className={`absolute ${outerRingSizes[size]} border-2 ${colorClasses.outerRing} rounded-full 
           ${animationClasses.outerRing} transition-transform duration-300 hover:border-opacity-100`}
+        style={{
+          animationDuration: animationStyle === 'cellular' ? '15s' : undefined,
+          animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.37, 0, 0.63, 1)' : undefined
+        }}
       ></div>
 
-      {/* Floating particles with enhanced animation and increased vibrancy */}
+      {/* Floating particles with enhanced cellular animation */}
       <div className="absolute inset-0 overflow-visible">
-        {Array(6).fill(0).map((_, i) => ( // Increased number of particles
+        {Array(6).fill(0).map((_, i) => ( 
           <div 
             key={i}
             className={`absolute w-1.5 h-1.5 rounded-full ${colorClasses.core} ${animationClasses.particles} opacity-80
@@ -226,8 +249,9 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
             style={{
               left: `${25 + (i * 10)}%`,
               top: `${15 + (i * 15)}%`,
-              animationDuration: `${1.5 + i * 0.4}s`, // Faster animation
-              animationDelay: `${i * 0.2}s`
+              animationDuration: animationStyle === 'cellular' ? `${8.5 + i * 1.2}s` : `${1.5 + i * 0.4}s`, // Slower for cellular
+              animationDelay: `${i * (animationStyle === 'cellular' ? 0.8 : 0.2)}s`,
+              animationTimingFunction: animationStyle === 'cellular' ? 'cubic-bezier(0.4, 0, 0.6, 1)' : undefined
             }}
           ></div>
         ))}

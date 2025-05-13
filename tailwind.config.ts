@@ -164,6 +164,31 @@ export default {
 				'float-subtle': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-2px)' }
+				},
+				
+				// New cellular animation keyframes for the logo
+				'cellular-drift': {
+					'0%': { transform: 'translateX(0) translateY(0) scale(1)' },
+					'25%': { transform: 'translateX(2px) translateY(-2px) scale(1.02)' },
+					'50%': { transform: 'translateX(3px) translateY(1px) scale(1.01)' },
+					'75%': { transform: 'translateX(0) translateY(2px) scale(0.99)' },
+					'100%': { transform: 'translateX(0) translateY(0) scale(1)' }
+				},
+				'cellular-core-pulse': {
+					'0%, 100%': { transform: 'scale(1)', opacity: '0.95' },
+					'50%': { transform: 'scale(1.08)', opacity: '0.9', filter: 'brightness(1.03)' }
+				},
+				'cellular-ring-drift': {
+					'0%': { transform: 'rotate(0deg) translate(0px, 0px)' },
+					'33%': { transform: 'rotate(2deg) translate(1px, -1px)' },
+					'66%': { transform: 'rotate(-1deg) translate(2px, 1px)' },
+					'100%': { transform: 'rotate(0deg) translate(0px, 0px)' }
+				},
+				'cellular-particle-float': {
+					'0%': { transform: 'translateY(0) translateX(0) scale(1)', opacity: '0.7' },
+					'33%': { transform: 'translateY(-3px) translateX(2px) scale(1.1)', opacity: '0.8' },
+					'66%': { transform: 'translateY(-1px) translateX(3px) scale(1.05)', opacity: '0.75' },
+					'100%': { transform: 'translateY(0) translateX(0) scale(1)', opacity: '0.7' }
 				}
 			},
 			animation: {
@@ -184,6 +209,12 @@ export default {
 				'morph': 'morph 12s ease-in-out infinite',
 				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
 				'float-subtle': 'float-subtle 4s ease-in-out infinite',
+				
+				// New cellular animations
+				'cellular-drift': 'cellular-drift 8s infinite ease-in-out',
+				'cellular-core-pulse': 'cellular-core-pulse 7.5s infinite cubic-bezier(0.45, 0, 0.55, 1)',
+				'cellular-ring-drift': 'cellular-ring-drift 12s infinite ease-in-out',
+				'cellular-particle-float': 'cellular-particle-float 10s infinite ease-in-out',
 			},
 			fontFamily: {
 				'sans': ['"Inter"', 'sans-serif'],

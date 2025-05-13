@@ -22,8 +22,14 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
       <FloatingBackground animationState={animationState} />
       
       <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center relative z-10">
-        {/* Updated logo with enhanced animation and refined colors */}
-        <DynamicLogo colorScheme="refined" animationStyle="subtle" size="lg" className="mb-8 animate-subtle-float hover:scale-105 transition-transform duration-300" ref={logoRef}/>
+        {/* Updated logo with cellular animation style for organic, fluid motion */}
+        <DynamicLogo 
+          colorScheme="refined" 
+          animationStyle="cellular" 
+          size="lg" 
+          className="mb-8 transition-transform duration-300 hover:scale-105" 
+          ref={logoRef}
+        />
         
         {/* Animated Title with Enhanced Sequential Reveal and Refined Font Weight */}
         <AnimatedTitle animationState={animationState} />
