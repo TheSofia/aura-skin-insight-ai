@@ -1,0 +1,114 @@
+
+/* Button Hover Effect Styles */
+
+/* Accent hover style */
+.btn-accent-hover {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.btn-accent-hover:hover {
+  color: #F97316;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(249, 115, 22, 0.15);
+}
+
+.btn-accent-hover::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #F97316;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.btn-accent-hover:hover::before {
+  width: 80%;
+}
+
+/* Deep blue hover style */
+.btn-deep-blue-hover {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.btn-deep-blue-hover:hover {
+  color: #2A4365;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(42, 67, 101, 0.15);
+}
+
+.btn-deep-blue-hover::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #2A4365;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.btn-deep-blue-hover:hover::before {
+  width: 80%;
+}
+
+/* Violet hover style */
+.btn-violet-hover {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.btn-violet-hover:hover {
+  color: #7E69AB;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(126, 105, 171, 0.15);
+}
+
+.btn-violet-hover::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #7E69AB;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.btn-violet-hover:hover::before {
+  width: 80%;
+}
+
+/* Burnt orange hover style */
+.btn-burnt-orange-hover {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.btn-burnt-orange-hover:hover {
+  color: #C2410C;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(194, 65, 12, 0.15);
+}
+
+.btn-burnt-orange-hover::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #C2410C;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.btn-burnt-orange-hover:hover::before {
+  width: 80%;
+}
