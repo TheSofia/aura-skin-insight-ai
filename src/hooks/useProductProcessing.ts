@@ -3,7 +3,7 @@ import { Product } from '@/types/product';
 import { findMatchingCategories, extractMatchedTerms } from '@/utils/productMatching';
 import { calculateProductRelevanceScores, getRelevantProducts } from '@/utils/productScoring';
 import { MatchResult } from '@/utils/productFilteringTypes';
-import { ToastAction } from '../components/ui/toast';
+import { useToast } from '@/hooks/use-toast';
 
 type UseProductProcessingProps = {
   products: Product[];
@@ -11,7 +11,6 @@ type UseProductProcessingProps = {
   setIsProcessing: React.Dispatch<React.SetStateAction<boolean>>;
   setHasFiltered: React.Dispatch<React.SetStateAction<boolean>>;
   setMatchedKeywords: React.Dispatch<React.SetStateAction<string[]>>;
-  toast: any; // Using any for toast since it's an external import
 };
 
 export const useProductProcessing = ({
@@ -20,8 +19,8 @@ export const useProductProcessing = ({
   setIsProcessing,
   setHasFiltered,
   setMatchedKeywords,
-  toast
 }: UseProductProcessingProps) => {
+  const { toast } = useToast();
   
   // Core filtering logic extracted for better organization
   const processFilteringLogic = (description: string, provideUserFeedback: (matches: MatchResult, resultCount: number) => void) => {

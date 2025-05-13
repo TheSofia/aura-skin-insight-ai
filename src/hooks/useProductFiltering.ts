@@ -1,6 +1,7 @@
+
 import { useState, useCallback } from 'react';
 import { Product } from '@/types/product';
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { findMatchingCategories, extractMatchedTerms } from '@/utils/productMatching';
 import { calculateProductRelevanceScores, getRelevantProducts } from '@/utils/productScoring';
 import { MatchResult } from '@/utils/productFilteringTypes';
@@ -34,12 +35,11 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     setFilteredProducts,
     setIsProcessing,
     setHasFiltered,
-    setMatchedKeywords,
-    toast
+    setMatchedKeywords
   });
   
   // Use toasts hook
-  const { provideUserFeedback } = useProductToasts(toast);
+  const { provideUserFeedback } = useProductToasts();
 
   // Better debounced filtering approach
   const handleSkinDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

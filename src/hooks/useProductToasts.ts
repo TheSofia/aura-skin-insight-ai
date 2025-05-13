@@ -1,7 +1,9 @@
 
 import { MatchResult } from '@/utils/productFilteringTypes';
+import { useToast } from "@/hooks/use-toast";
 
-export const useProductToasts = (toast: any) => { // Using any for toast since it's an external import
+export const useProductToasts = () => { 
+  const { toast } = useToast();
   
   // Separate function to provide toast feedback
   const provideUserFeedback = (matches: MatchResult, resultCount: number) => {

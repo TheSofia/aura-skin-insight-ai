@@ -1,5 +1,7 @@
 
-import { useToast as useOriginalToast, toast as originalToast } from "@/hooks/use-toast";
+import * as React from "react"
+import { toast as originalToast, useToast as useOriginalToast } from "@/hooks/use-toast"
+import { type ToastActionElement } from "@/components/ui/toast"
 
 // Enhanced toast with refined animations and styling
 export function useToast() {
@@ -20,34 +22,40 @@ export function useToast() {
 
 // Predefined toast variants for consistent styling
 export const toast = {
-  ...originalToast,
+  // Default base toast function
+  ...(props: Parameters<typeof originalToast>[0]) => {
+    return originalToast({
+      ...props,
+      className: `${props.className || ''} bg-white border-beautyagent-light-grey shadow-lg`,
+    });
+  },
   
   // Override default toast with enhanced styling
-  default: (props: Parameters<typeof originalToast.default>[0]) => {
-    return originalToast.default({
+  default: (props: Parameters<typeof originalToast>[0]) => {
+    return originalToast({
       ...props,
       className: `${props.className || ''} bg-white border-beautyagent-light-grey shadow-lg`,
     });
   },
   
   // Success toast with subtle green accent
-  success: (props: Parameters<typeof originalToast.success>[0]) => {
-    return originalToast.success({
+  success: (props: Parameters<typeof originalToast>[0]) => {
+    return originalToast({
       ...props,
       className: `${props.className || ''} bg-white border-l-4 border-l-green-500 border-t-white border-r-white border-b-white shadow-lg`,
     });
   },
   
   // Error toast with subtle red accent
-  error: (props: Parameters<typeof originalToast.error>[0]) => {
-    return originalToast.error({
+  error: (props: Parameters<typeof originalToast>[0]) => {
+    return originalToast({
       ...props,
       className: `${props.className || ''} bg-white border-l-4 border-l-red-500 border-t-white border-r-white border-b-white shadow-lg`,
     });
   },
   
   // BeautyAgent branded toast with accent color
-  brand: (props: { title?: string; description?: string; action?: React.ReactNode; className?: string }) => {
+  brand: (props: { title?: string; description?: string; action?: ToastActionElement; className?: string }) => {
     return originalToast({
       ...props,
       className: `${props.className || ''} bg-white border-l-4 border-l-beautyagent-accent border-t-white border-r-white border-b-white shadow-lg`,
@@ -55,7 +63,7 @@ export const toast = {
   },
   
   // Elegant glass effect toast
-  glass: (props: { title?: string; description?: string; action?: React.ReactNode; className?: string }) => {
+  glass: (props: { title?: string; description?: string; action?: ToastActionElement; className?: string }) => {
     return originalToast({
       ...props,
       className: `${props.className || ''} bg-white/80 backdrop-blur-lg border border-white/30 shadow-lg`,
