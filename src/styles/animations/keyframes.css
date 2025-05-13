@@ -129,3 +129,10 @@
   50% { transform: rotate(180deg) translateX(6px) translateY(-2px) rotate(-180deg); }
   100% { transform: rotate(360deg) translateX(3px) translateY(0) rotate(-360deg); }
 }
+
+/* New animation for scanning effect seen in screenshot */
+@keyframes scanning {
+  0% { transform: translateY(-100%); opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(100%); opacity: 0.5; }
+}
