@@ -33,10 +33,10 @@ const LogoCore: React.FC<LogoCoreProps> = ({
     switch (intensity) {
       case 'subtle':
         baseStyles = {
-          opacity: 0.80, // Reduced from 0.85 for more subtle appearance
-          brightness: 0.90, // Reduced from 0.92 for more subtle appearance
-          pulseMagnitude: '13s', // Slowed from 11s to 13s
-          glowOpacity: 0.55, // Reduced from 0.6 for more subtle glow
+          opacity: 0.85, // Increased from 0.80 for better visibility like loading page 
+          brightness: 0.95, // Increased from 0.90 for better visibility like loading page
+          pulseMagnitude: '13s',
+          glowOpacity: 0.6, // Increased from 0.55 for better visibility like loading page
           glowSize: '-20%'
         };
         break;
@@ -53,17 +53,13 @@ const LogoCore: React.FC<LogoCoreProps> = ({
         break;
     }
 
-    // Apply loading page contextual adjustments
-    if (isLoadingPage) {
-      return {
-        ...baseStyles,
-        brightness: baseStyles.brightness * 1.08, 
-        pulseMagnitude: (parseFloat(baseStyles.pulseMagnitude) * 0.85) + 's', 
-        glowOpacity: baseStyles.glowOpacity * 1.1, 
-      };
-    }
-
-    return baseStyles;
+    // Always apply loading page-like appearance for consistency
+    return {
+      ...baseStyles,
+      brightness: baseStyles.brightness * 1.05, 
+      pulseMagnitude: (parseFloat(baseStyles.pulseMagnitude) * 0.9) + 's', 
+      glowOpacity: baseStyles.glowOpacity * 1.05, 
+    };
   };
 
   const intensityStyles = getIntensityStyles();
@@ -73,14 +69,14 @@ const LogoCore: React.FC<LogoCoreProps> = ({
       className={`absolute ${coreSize} rounded-full ${animationClasses.core} z-20 
         transition-all duration-500`}
       style={{
-        background: 'radial-gradient(circle at 35% 35%, var(--core-color-bright, rgba(224, 95, 20, 0.90)) 0%, var(--core-color, rgba(201, 76, 16, 0.95)) 100%)',
-        boxShadow: '0 0 15px 3px rgba(224, 95, 20, 0.10)', // Reduced from 0.12 for more subtle glow
+        background: 'radial-gradient(circle at 35% 35%, var(--core-color-bright, rgba(242, 150, 105, 0.92)) 0%, var(--core-color, rgba(237, 137, 96, 0.95)) 100%)', // Changed to peach color
+        boxShadow: '0 0 15px 3px rgba(242, 150, 105, 0.14)', // Changed to peach color, increased from 0.10
         animationDuration: intensityStyles.pulseMagnitude,
         animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
         opacity: intensityStyles.opacity,
         filter: `brightness(${intensityStyles.brightness})`,
-        ['--core-color' as any]: 'rgba(201, 76, 16, 0.95)',
-        ['--core-color-bright' as any]: 'rgba(224, 95, 20, 0.90)',
+        ['--core-color' as any]: 'rgba(237, 137, 96, 0.95)', // Changed to peach color
+        ['--core-color-bright' as any]: 'rgba(242, 150, 105, 0.92)', // Changed to peach color
       }}
     >
       {/* Inner glow layer - refined highlight */}
@@ -96,7 +92,7 @@ const LogoCore: React.FC<LogoCoreProps> = ({
       <div 
         className="absolute inset-[-20%] rounded-full opacity-0 animate-pulse-subtle"
         style={{ 
-          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.30) 0%, transparent 80%)', // Reduced from 0.35 for more subtlety
+          background: 'radial-gradient(circle, rgba(242, 150, 105, 0.35) 0%, transparent 80%)', // Changed to peach color, increased from 0.30
           animationDuration: intensityStyles.pulseMagnitude,
           inset: intensityStyles.glowSize,
         }}
@@ -106,7 +102,7 @@ const LogoCore: React.FC<LogoCoreProps> = ({
       <div 
         className="absolute inset-[-30%] rounded-full opacity-0 animate-pulse-cellular"
         style={{ 
-          background: 'radial-gradient(circle, rgba(224, 95, 20, 0.12) 0%, transparent 90%)', // Reduced from 0.15 for more subtlety
+          background: 'radial-gradient(circle, rgba(242, 150, 105, 0.15) 0%, transparent 90%)', // Changed to peach color, increased from 0.12
           animationDuration: (parseFloat(intensityStyles.pulseMagnitude) * 1.2) + 's',
           animationDelay: '0.5s',
         }}

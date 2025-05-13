@@ -13,12 +13,7 @@ type AnimationClasses = {
  * Enhanced with refined cellular animation options for biologically elegant motion
  */
 export const getAnimationClasses = (animationStyle: AnimationStyle): AnimationClasses => {
-  // Default to cellular for brand consistency
-  if (animationStyle !== 'cellular') {
-    animationStyle = 'cellular';
-  }
-  
-  // Refined cellular animation system for a more ethereal, sophisticated look
+  // Always use cellular for brand consistency
   return {
     core: 'animate-cellular-core-pulse',
     innerRing: 'animate-cellular-ring-drift',
