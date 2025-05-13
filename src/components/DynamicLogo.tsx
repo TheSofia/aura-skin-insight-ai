@@ -28,8 +28,8 @@ export type DynamicLogoProps = {
 const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({ 
   size = 'md', 
   className = '', 
-  colorScheme = 'gradient', // Changed default to gradient for consistency
-  animationStyle = 'cellular', // Changed default to cellular for standardization
+  colorScheme = 'gradient', // Standardized to gradient for consistency
+  animationStyle = 'cellular', // Standardized to cellular for brand identity
   showText = false,
   intensity = 'medium',
   isLandingPage = false,
@@ -55,15 +55,22 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
     return 'group transition-all duration-500 hover:scale-[1.02] hover:filter hover:brightness-[1.03]';
   }, []);
 
-  // Adjust animation speed based on context (loading vs regular pages)
+  // Contextually adjust animation parameters based on the page context
   const getContextualAnimation = () => {
     if (isLoadingPage) {
+      // Loading page: more dynamic animation
       return {
         cellSpeed: intensity === 'subtle' ? '7s' : intensity === 'vibrant' ? '5s' : '6s',
         particleOpacity: intensity === 'subtle' ? 0.7 : intensity === 'vibrant' ? 0.9 : 0.8,
       };
+    } else if (isLandingPage) {
+      // Landing page: gentler, more ethereal animation
+      return {
+        cellSpeed: intensity === 'subtle' ? '11s' : intensity === 'vibrant' ? '9s' : '10s', // Even slower for landing page
+        particleOpacity: intensity === 'subtle' ? 0.5 : intensity === 'vibrant' ? 0.7 : 0.6, // More translucent for landing page
+      };
     } else {
-      // Slower, more subtle animation for non-loading pages
+      // Default for other pages: balanced animation
       return {
         cellSpeed: intensity === 'subtle' ? '9s' : intensity === 'vibrant' ? '7s' : '8s',
         particleOpacity: intensity === 'subtle' ? 0.6 : intensity === 'vibrant' ? 0.8 : 0.7,
@@ -73,7 +80,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
 
   const contextualAnimation = getContextualAnimation();
 
-  // Adjust opacity and animation speed based on intensity
+  // Adjust opacity and animation speed based on intensity and context
   const getIntensityStyles = () => {
     // Base styles
     const baseIntensity = {
@@ -100,17 +107,26 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
     // Get base style based on intensity
     const baseStyle = baseIntensity[intensity] || baseIntensity.medium;
     
-    // Return style with contextual adjustments
-    return {
-      ...baseStyle,
-      // Contextual overrides for loading state
-      particleOpacity: isLoadingPage ? 
-        baseStyle.particleOpacity * 1.1 : // Slightly more visible on loading page
-        baseStyle.particleOpacity,
-      glow: isLoadingPage ? 
-        `opacity-${(parseInt(baseStyle.glow.split('-')[1]) * 1.2).toFixed(0)}` : // Enhanced glow on loading page
-        baseStyle.glow
-    };
+    // Apply contextual refinements
+    if (isLandingPage) {
+      // For landing page: more ethereal, gentler appearance
+      return {
+        ...baseStyle,
+        opacity: intensity === 'subtle' ? 'opacity-70' : 'opacity-75', // Even more translucent on landing page
+        particleOpacity: baseStyle.particleOpacity * 0.85, // More translucent particles
+        glow: `opacity-${Math.max(10, parseInt(baseStyle.glow.split('-')[1]) * 0.7)}` // Subtler glow
+      };
+    } else if (isLoadingPage) {
+      // For loading page: more vibrant, dynamic appearance 
+      return {
+        ...baseStyle,
+        particleOpacity: baseStyle.particleOpacity * 1.1, // More visible particles
+        glow: `opacity-${Math.min(45, parseInt(baseStyle.glow.split('-')[1]) * 1.2)}` // Enhanced glow
+      };
+    }
+    
+    // Default for other pages
+    return baseStyle;
   };
 
   const intensityStyles = getIntensityStyles();
@@ -158,7 +174,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
           particleOpacity={contextualAnimation.particleOpacity}
         />
         
-        {/* Add a subtle outer glow effect */}
+        {/* Add a subtle outer glow effect - adjusted based on context */}
         <div className={`absolute inset-[-10%] rounded-full ${intensityStyles.glow} animate-pulse-slow bg-gradient-radial from-beautyagent-accent/10 to-transparent`}></div>
       </div>
       

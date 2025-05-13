@@ -68,11 +68,13 @@ const LogoRings: React.FC<LogoRingsProps> = ({
     if (isLandingPage) {
       baseStyles = {
         ...baseStyles,
-        innerOpacity: baseStyles.innerOpacity * 0.3, // 70% more transparent on landing page
-        outerOpacity: baseStyles.outerOpacity * 0.25, // 75% more transparent on landing page
-        innerBorderOpacity: baseStyles.innerBorderOpacity * 0.3, // 70% more transparent on landing page
-        outerBorderOpacity: baseStyles.outerBorderOpacity * 0.25, // 75% more transparent on landing page
-        blurFactor: baseStyles.blurFactor * 0.5 // More subtle blur for landing page
+        innerOpacity: baseStyles.innerOpacity * 0.2, // 80% more transparent on landing page
+        outerOpacity: baseStyles.outerOpacity * 0.15, // 85% more transparent on landing page
+        innerBorderOpacity: baseStyles.innerBorderOpacity * 0.2, // 80% more transparent on landing page
+        outerBorderOpacity: baseStyles.outerBorderOpacity * 0.15, // 85% more transparent on landing page
+        blurFactor: baseStyles.blurFactor * 0.4, // Much more subtle blur for landing page
+        innerDuration: (parseFloat(baseStyles.innerDuration) * 1.2) + 's', // 20% slower on landing page for gentler motion
+        outerDuration: (parseFloat(baseStyles.outerDuration) * 1.2) + 's' // 20% slower on landing page for gentler motion
       };
     }
     
@@ -94,6 +96,10 @@ const LogoRings: React.FC<LogoRingsProps> = ({
   };
 
   const intensityStyles = getIntensityStyles();
+
+  // Filter to decide whether to render additional middle ring
+  // Skip on landing page to reduce visual complexity, show on loading page or with higher intensity
+  const shouldShowMiddleRing = !isLandingPage || intensity === 'vibrant' || isLoadingPage;
 
   return (
     <>
@@ -123,8 +129,8 @@ const LogoRings: React.FC<LogoRingsProps> = ({
         }}
       ></div>
 
-      {/* Additional middle ring for more layered effect (visible only in medium and vibrant modes, and always visible on loading page) */}
-      {(intensity !== 'subtle' || isLoadingPage) && (
+      {/* Additional middle ring - only shown in specific contexts */}
+      {shouldShowMiddleRing && (
         <div 
           className={`absolute rounded-full animate-cellular-ring-drift z-5`}
           style={{
@@ -135,7 +141,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
             backdropFilter: `blur(${intensityStyles.blurFactor * 0.6}px)`,
             animationDuration: '13s',
             animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
-            opacity: isLandingPage ? 0.7 : 1, // More subtle on landing page
+            opacity: isLandingPage ? 0.3 : 1, // Much more subtle on landing page
           }}
         ></div>
       )}

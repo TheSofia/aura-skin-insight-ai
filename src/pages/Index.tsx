@@ -155,7 +155,7 @@ const Index = () => {
 
   // Standardized logo settings - now using a consistent structure with contextual variations
   const getLogoSettings = () => {
-    // Base settings common to all contexts
+    // Base settings common to all contexts - now standardized on the cellular animation style
     const baseSettings = {
       colorScheme: 'gradient' as const,
       animationStyle: 'cellular' as const,
@@ -166,7 +166,7 @@ const Index = () => {
       case 0: // Landing page - more subtle with nearly invisible concentric rings
         return {
           ...baseSettings,
-          intensity: 'medium' as const,
+          intensity: 'subtle' as const,
           size: 'lg' as const,
           isLandingPage: true, // This reduces ring visibility significantly
           isLoadingPage: false

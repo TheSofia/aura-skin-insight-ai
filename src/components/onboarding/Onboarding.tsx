@@ -22,15 +22,18 @@ const Onboarding = ({ onGetStarted, onManualInput }: OnboardingProps) => {
       <FloatingBackground animationState={animationState} />
       
       <div className="w-full max-w-screen-lg mx-auto flex flex-col items-center relative z-10">
-        {/* Simplified logo with monochromatic scheme to reduce competition with bottom animations */}
+        {/* Updated logo to match loading screen animation - using the exact cellular animation with refined parameters for landing context */}
         <div className="flex items-center gap-3 mb-8">
           <DynamicLogo 
-            colorScheme="monochrome" 
-            animationStyle="subtle" 
+            colorScheme="gradient" 
+            animationStyle="cellular" 
             size="lg" 
-            className="transition-transform duration-500 hover-enhance glow-minimal" 
+            className="transition-transform duration-500 hover-enhance" 
             ref={logoRef}
             showText={true}
+            intensity="subtle" // Gentler animation for landing page
+            isLandingPage={true} // Special flag to make rings nearly invisible
+            isLoadingPage={false} // Not a loading page
           />
         </div>
         
