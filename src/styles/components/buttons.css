@@ -151,28 +151,15 @@
   width: 80%;
 }
 
-/* Premium CTA button style with improved contrast for better readability */
+/* Premium CTA button style with deep purple hover transition */
 .btn-premium {
   background: linear-gradient(135deg, #2A2A2E 0%, #3E3B44 100%);
   color: #FFFFFF;
   position: relative;
   z-index: 1;
   overflow: hidden;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(34, 31, 38, 0.25);
-}
-
-.btn-premium::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #3E3B44 0%, #2A2A2E 100%);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
 }
 
 .btn-premium:hover {
@@ -180,7 +167,28 @@
   box-shadow: 0 8px 25px rgba(34, 31, 38, 0.3);
 }
 
-.btn-premium:hover::before {
+/* Deep Purple Hover Effect for Premium CTA button */
+.btn-purple-hover {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-purple-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #6E59A5 0%, #7E69AB 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  border-radius: inherit;
+}
+
+.btn-purple-hover:hover::before,
+.btn-purple-hover:active::before {
   opacity: 1;
 }
 
@@ -207,3 +215,5 @@
     left: 100%;
   }
 }
+
+/* ... keep existing code */

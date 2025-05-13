@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -54,6 +53,7 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				'burnt-orange': '#C2410C', // New burnt orange color
+				'deep-purple': '#6E59A5', // Adding deep purple color
 				beautyagent: {
 					'white': '#FFFFFF',     // Pure white - primary background
 					'off-white': '#F6F6F7', // Very pale cool grey - alternative background
@@ -65,6 +65,7 @@ export default {
 					'dark-orange': '#E84C12', // Darker orange-red accent for depth
 					'deep-blue': '#2A4365', // Deep blue to replace green accent - sophisticated, refined blue
 					'muted-violet': '#7E69AB', // New muted violet color added for hover states
+					'deep-purple': '#6E59A5', // Adding rich deep purple for premium hover states
 					'glass-white': 'rgba(255, 255, 255, 0.9)',
 					'glass-light': 'rgba(255, 255, 255, 0.7)',
 					'glass-accent': 'rgba(249, 115, 22, 0.08)', // Very subtle orange glass effect
@@ -270,6 +271,7 @@ export default {
 				'inner-glow': 'inset 0 0 10px rgba(249, 115, 22, 0.1)',
 				'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
 				'green-glow': '0 0 15px rgba(22, 163, 74, 0.2)',
+				'purple-glow': '0 0 20px rgba(110, 89, 165, 0.3), 0 0 40px rgba(110, 89, 165, 0.1)', // Added purple glow shadow
 			},
 			backdropFilter: {
 				'none': 'none',
