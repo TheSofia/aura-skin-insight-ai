@@ -56,21 +56,45 @@ export default {
 				'deep-purple': '#6E59A5', // Adding deep purple color
 				'dark-purple': '#210B2C', // Adding extremely dark purple color
 				beautyagent: {
-					'white': '#FFFFFF',     // Pure white - primary background
-					'off-white': '#F6F6F7', // Very pale cool grey - alternative background
-					'light-grey': '#F1F1F1', // Light grey for subtle contrasts
-					'medium-grey': '#9F9EA1', // Medium grey for secondary text
-					'dark-grey': '#403E43',  // Dark grey for important text (replacing black)
-					'deeper-grey': '#221F26', // Deeper grey for highest contrast elements
-					'accent': '#F97316',    // A refined orange accent (used very sparingly)
-					'dark-orange': '#E84C12', // Darker orange-red accent for depth
-					'deep-blue': '#2A4365', // Deep blue to replace green accent - sophisticated, refined blue
-					'muted-violet': '#7E69AB', // New muted violet color added for hover states
-					'deep-purple': '#6E59A5', // Adding rich deep purple for premium hover states
-					'dark-purple': '#210B2C', // Adding extremely dark purple color with violet undertone
-					'glass-white': 'rgba(255, 255, 255, 0.9)',
+					// Base colors
+					'white': '#FFFFFF',
+					'off-white': '#F8F8F9',
+					'light-grey': '#F1F1F3',
+					'medium-grey': '#9F9EA1',
+					'dark-grey': '#403E43',
+					'deeper-grey': '#221F26',
+					
+					// Bioluminescent palette base colors
+					'ultraviolet': '#33184A',
+					'ultraviolet-light': '#492266',
+					'rose-quartz': '#D6A9B8',
+					'rose-quartz-light': '#EACBD3',
+					'cosmic-peach': '#FFDAB9',
+					'cosmic-peach-light': '#FFE6D1',
+					'breathable-black': '#121014',
+					'breathable-black-light': '#1E1B22',
+					'plasma-white': '#FFFAF0',
+					'plasma-white-light': '#FFFCF7',
+					
+					// Smart metallic accents
+					'platinum-sheen': '#E5E4E2',
+					'violet-titanium': '#7E69AB',
+					'amber-shimmer': '#FFBF65',
+					
+					// Legacy colors maintained for compatibility
+					'accent': '#E05F14',
+					'dark-orange': '#C94C10',
+					'deep-blue': '#2A4365',
+					'muted-violet': '#7E69AB',
+					'deep-purple': '#5D4A8C',
+					'dark-purple': '#34184A',
+					
+					// Glass effects
+					'glass-white': 'rgba(255, 255, 255, 0.95)',
 					'glass-light': 'rgba(255, 255, 255, 0.7)',
-					'glass-accent': 'rgba(249, 115, 22, 0.08)', // Very subtle orange glass effect
+					'glass-accent': 'rgba(224, 95, 20, 0.08)',
+					'glass-cosmic': 'rgba(255, 218, 185, 0.08)',
+					'glass-ultraviolet': 'rgba(51, 24, 74, 0.1)',
 				},
 				glass: {
 					light: 'rgba(255, 255, 255, 0.7)',
@@ -257,6 +281,9 @@ export default {
 				'sans': ['"Inter"', 'sans-serif'],
 				'space': ['"Space Grotesk"', 'sans-serif'],
 				'clash': ['"Clash Display"', 'sans-serif'],
+				'kode': ['"Kode Mono"', 'monospace'],
+				'satoshi': ['"Satoshi"', 'sans-serif'],
+				'general': ['"General Sans"', 'sans-serif'],
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

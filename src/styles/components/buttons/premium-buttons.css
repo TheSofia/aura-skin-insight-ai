@@ -1,56 +1,33 @@
 
-/* Refined Premium CTA Button Styles */
+/* Premium Buttons with Bioluminescent Effects */
+
 .btn-premium {
-  background: linear-gradient(135deg, #2A2A2E 0%, #3E3B44 100%);
-  color: #FFFFFF;
   position: relative;
-  z-index: 1;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  box-shadow: 0 4px 12px rgba(34, 31, 38, 0.2);
-  letter-spacing: 0.03em;
-  font-weight: 400;
-  border-radius: 0.3rem;
+  background: linear-gradient(135deg, var(--beautyagent-violet-titanium) 0%, var(--beautyagent-ultraviolet) 100%);
+  border: none;
+  color: white;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  border-radius: 1.5rem;
+  padding: 0.75rem 2rem;
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 5px 15px rgba(51, 24, 74, 0.2), 
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 }
 
 .btn-premium:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(34, 31, 38, 0.25);
+  box-shadow: 0 8px 25px rgba(51, 24, 74, 0.3), 
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
-/* Refined Deep Dark Purple Hover Effect for Premium CTA button */
-.btn-purple-hover {
-  position: relative;
-  z-index: 1;
+.btn-premium:active {
+  transform: translateY(1px);
 }
 
-.btn-purple-hover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #34184A 0%, #432658 100%);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-  border-radius: inherit;
-}
-
-.btn-purple-hover:hover::before,
-.btn-purple-hover:active::before {
-  opacity: 1;
-}
-
-/* Enhanced active state for purple hover buttons */
-.btn-purple-hover:active {
-  transform: scale(0.98);
-  box-shadow: 0 3px 10px rgba(34, 31, 38, 0.3);
-}
-
-/* Enhanced button shimmer effect - more subtle and elegant */
-.btn-premium .btn-shimmer {
+/* Shimmer effect for premium buttons */
+.btn-shimmer {
   position: absolute;
   top: 0;
   left: -100%;
@@ -59,119 +36,118 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.2),
     transparent
   );
-  animation: shimmer-button 4s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation: shimmer 3s infinite;
+  pointer-events: none;
 }
 
-@keyframes shimmer-button {
+@keyframes shimmer {
   0% {
     left: -100%;
   }
-  50%, 100% {
+  50% {
+    left: 100%;
+  }
+  100% {
     left: 100%;
   }
 }
 
-/* Glass effect premium button */
-.btn-glass {
-  background: rgba(255, 255, 255, 0.1);
+/* Ethereal button style - ghostly, light appearance */
+.btn-ethereal {
+  background: rgba(126, 105, 171, 0.15);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--beautyagent-dark-grey);
+  color: var(--beautyagent-ultraviolet);
+  border: 1px solid rgba(126, 105, 171, 0.3);
+  box-shadow: 0 5px 15px rgba(126, 105, 171, 0.1),
+              0 0 0 1px rgba(126, 105, 171, 0.05) inset;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.btn-ethereal:hover {
+  background: rgba(126, 105, 171, 0.25);
+  border-color: rgba(126, 105, 171, 0.4);
+  box-shadow: 0 8px 25px rgba(126, 105, 171, 0.15),
+              0 0 0 1px rgba(126, 105, 171, 0.1) inset;
+}
+
+/* Biological sizes */
+.size-pill-lg {
+  padding: 1rem 2.5rem;
+  border-radius: 3rem;
+  font-size: 1.125rem;
+}
+
+.size-pill-md {
+  padding: 0.75rem 2rem;
+  border-radius: 2.5rem;
+  font-size: 1rem;
+}
+
+.size-pill-sm {
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+}
+
+/* Living button - subtly changes form */
+.btn-living {
   position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 2.5rem;
 }
 
-.btn-glass:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.btn-glass::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.btn-glass:hover::after {
-  opacity: 1;
-}
-
-/* Elegant outline button */
-.btn-outline-elegant {
-  background: transparent;
-  border: 1px solid var(--beautyagent-medium-grey);
-  color: var(--beautyagent-dark-grey);
-  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  position: relative;
-  overflow: hidden;
-  letter-spacing: 0.02em;
-}
-
-.btn-outline-elegant:hover {
-  border-color: var(--beautyagent-dark-grey);
-  transform: translateY(-1px);
-}
-
-.btn-outline-elegant::before {
+.btn-living::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(159, 158, 161, 0.05) 0%, rgba(64, 62, 67, 0.05) 100%);
+  border-radius: 3rem;
+  transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 0 0 0 rgba(126, 105, 171, 0);
   opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.btn-outline-elegant:hover::before {
-  opacity: 1;
+.btn-living:hover {
+  border-radius: 1.75rem;
 }
 
-/* Subtle accent button */
-.btn-subtle-accent {
-  background: rgba(224, 95, 20, 0.05);
-  color: var(--beautyagent-accent);
-  border: 1px solid rgba(224, 95, 20, 0.2);
-  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+.btn-living:hover::before {
+  opacity: 0.5;
+  border-radius: 2rem;
+  box-shadow: 0 0 20px 5px rgba(126, 105, 171, 0.3);
 }
 
-.btn-subtle-accent:hover {
-  background: rgba(224, 95, 20, 0.1);
-  border-color: rgba(224, 95, 20, 0.3);
-  transform: translateY(-1px);
+/* Neural network effect */
+.neural-button {
+  position: relative;
+  overflow: hidden;
 }
 
-/* Pill shaped premium button */
-.btn-pill {
-  border-radius: 9999px !important;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+.neural-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -5%;
+  width: 110%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 10px 10px, 20px 20px;
+  background-position: 0 0, 5px 5px;
+  opacity: 0;
+  transform: scale(1.2);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
 }
 
-/* Dark purple glow effect for premium buttons */
-.shadow-dark-purple-glow {
-  box-shadow: 0 8px 25px rgba(33, 11, 44, 0.25);
-}
-
-/* Elegant deep purple hover state */
-.btn-deep-purple-hover {
-  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.btn-deep-purple-hover:hover {
-  background: var(--beautyagent-dark-purple);
-  color: white;
-  transform: translateY(-2px);
+.neural-button:hover::after {
+  opacity: 0.15;
+  transform: scale(1);
 }

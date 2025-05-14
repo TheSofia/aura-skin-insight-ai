@@ -1,7 +1,7 @@
 
 /* Custom CSS variables for BeautyAgent's refined visual identity */
 :root {
-  /* Core Color Palette - Quiet Confidence & Functional Richness */
+  /* Bioluminescent Base Palette */
   --beautyagent-white: #FFFFFF;
   --beautyagent-off-white: #F8F8F9;
   --beautyagent-light-grey: #F1F1F3;
@@ -9,19 +9,49 @@
   --beautyagent-dark-grey: #403E43;
   --beautyagent-deeper-grey: #221F26;
   
-  /* Refined accent colors - used ONLY for functional feedback and animations */
+  /* Deep Ultraviolet Spectrum */
+  --beautyagent-ultraviolet: #33184A;
+  --beautyagent-ultraviolet-light: #492266;
+  --beautyagent-ultraviolet-glow: rgba(51, 24, 74, 0.15);
+  
+  /* Dusty Rose Quartz Spectrum */
+  --beautyagent-rose-quartz: #D6A9B8;
+  --beautyagent-rose-quartz-light: #EACBD3;
+  --beautyagent-rose-quartz-glow: rgba(214, 169, 184, 0.25);
+  
+  /* Cosmic Peach Spectrum */
+  --beautyagent-cosmic-peach: #FFDAB9;
+  --beautyagent-cosmic-peach-light: #FFE6D1;
+  --beautyagent-cosmic-peach-glow: rgba(255, 218, 185, 0.25);
+  
+  /* Breathable Black (near-black with depth) */
+  --beautyagent-breathable-black: #121014;
+  --beautyagent-breathable-black-light: #1E1B22;
+  --beautyagent-breathable-black-glow: rgba(18, 16, 20, 0.15);
+  
+  /* Golden Plasma White (luminous white with warm undertones) */
+  --beautyagent-plasma-white: #FFFAF0;
+  --beautyagent-plasma-white-light: #FFFCF7;
+  --beautyagent-plasma-white-glow: rgba(255, 250, 240, 0.35);
+  
+  /* Smart Metallics Accents */
+  --beautyagent-platinum-sheen: #E5E4E2;
+  --beautyagent-violet-titanium: #7E69AB;
+  --beautyagent-amber-shimmer: #FFBF65;
+  
+  /* Legacy palette integrated */
   --beautyagent-accent: #E05F14; /* Refined, less bright burnt orange */
   --beautyagent-dark-orange: #C94C10;
   --beautyagent-burnt-orange: #B03A08;
-  
-  /* Deep muted cool tones for balance and contrast */
-  --beautyagent-deep-blue: #2A4365; /* Reserved for specific UI accents */
-  --beautyagent-muted-violet: #7E69AB; /* Elegant cool tone for secondary accents */
-  --beautyagent-deep-purple: #5D4A8C; /* More subdued purple for select interactions */
-  --beautyagent-dark-purple: #34184A; /* Slightly lighter dark purple with violet undertone */
+  --beautyagent-deep-blue: #2A4365;
+  --beautyagent-muted-violet: #7E69AB; /* Aligned with violet titanium */
+  --beautyagent-deep-purple: #5D4A8C;
+  --beautyagent-dark-purple: #34184A; /* Aligned with deep ultraviolet */
   
   /* Translucent effects for layering and depth */
   --beautyagent-glass-white: rgba(255, 255, 255, 0.95);
   --beautyagent-glass-light: rgba(255, 255, 255, 0.85);
   --beautyagent-glass-accent: rgba(224, 95, 20, 0.06);
+  --beautyagent-glass-cosmic: rgba(255, 218, 185, 0.08);
+  --beautyagent-glass-ultraviolet: rgba(51, 24, 74, 0.1);
 }
