@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DynamicLogo from './DynamicLogo';
 import ProductList from './ProductList';
 import ProductLibrarySummary from './ProductLibrarySummary';
@@ -8,12 +8,16 @@ import TypingIndicator from './TypingIndicator';
 import { initialProducts } from '@/data/initialProducts';
 import { useProductFiltering } from '@/hooks/useProductFiltering';
 import './TypingIndicator.css';
+import { useToast } from '@/hooks/use-toast';
 
 type ProductRecommendationsProps = {
   isManualPath?: boolean;
 };
 
 const ProductRecommendations = ({ isManualPath = false }: ProductRecommendationsProps) => {
+  const { toast } = useToast();
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  
   const {
     filteredProducts,
     skinDescription,
@@ -26,6 +30,19 @@ const ProductRecommendations = ({ isManualPath = false }: ProductRecommendations
     toggleSaveProduct,
     getSavedProducts
   } = useProductFiltering(initialProducts);
+
+  // Show welcome toast on initial load
+  useEffect(() => {
+    if (isInitialLoad) {
+      setTimeout(() => {
+        toast({
+          title: "Welcome to BeautyAgent",
+          description: "Describe your skin concerns to get personalized product recommendations"
+        });
+        setIsInitialLoad(false);
+      }, 800);
+    }
+  }, [isInitialLoad, toast]);
 
   return (
     <div className="flex flex-col h-full animate-fade-in bg-white">
@@ -40,7 +57,7 @@ const ProductRecommendations = ({ isManualPath = false }: ProductRecommendations
               Your Personalized Protocol
             </h1>
             
-            {/* Manual Input Text Area - always visible in this version */}
+            {/* Manual Input Text Area */}
             <SkinDescriptionInput 
               value={skinDescription}
               onChange={handleSkinDescriptionChange}
@@ -53,8 +70,8 @@ const ProductRecommendations = ({ isManualPath = false }: ProductRecommendations
           </div>
         </div>
 
-        <div className="px-6 md:px-12 py-8">
-          <div className="max-w-3xl mx-auto">
+        <div className="px-6 md:px-12 py-2">
+          <div className="max-w-5xl mx-auto">
             {isProcessing ? (
               <div className="flex flex-col items-center justify-center py-12">
                 <div className="w-12 h-12 mb-4">

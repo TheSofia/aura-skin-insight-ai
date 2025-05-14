@@ -17,7 +17,28 @@ export const calculateProductRelevanceScores = (
     let score = 0;
     const matchedTerms: string[] = [];
     
-    // Check bestFor field (highest weight - direct match to user needs)
+    // Check for direct brand matches (highest weight)
+    const brandMatches = matches.concerns.filter(concern => 
+      product.brand.toLowerCase().includes(concern.toLowerCase()));
+    
+    if (brandMatches.length > 0) {
+      score += 20;
+      matchedTerms.push(...brandMatches);
+    }
+    
+    // Check for direct ingredient matches (high weight)
+    const ingredientMatches = matches.concerns.filter(concern => 
+      product.keyIngredients.some(ingredient => 
+        ingredient.toLowerCase().includes(concern.toLowerCase())
+      )
+    );
+    
+    if (ingredientMatches.length > 0) {
+      score += 15;
+      matchedTerms.push(...ingredientMatches);
+    }
+    
+    // Check bestFor field (high weight - direct match to user needs)
     matches.skinTypes.forEach(skinType => {
       product.bestFor.forEach(bf => {
         if (bf.toLowerCase().includes(skinType.toLowerCase())) {

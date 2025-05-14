@@ -36,6 +36,32 @@ export const findMatchingCategories = (input: string): MatchResult => {
     });
   });
   
+  // Direct ingredient matching
+  const commonIngredients = [
+    'vitamin c', 'retinol', 'retinaldehyde', 'niacinamide', 'peptides', 'hyaluronic acid', 
+    'glycolic acid', 'salicylic acid', 'azelaic acid', 'ceramides', 'squalane',
+    'lactic acid', 'polyhydroxy acid', 'pha', 'aha', 'bha', 'bakuchiol', 'zinc'
+  ];
+  
+  commonIngredients.forEach(ingredient => {
+    if (normalizedInput.includes(ingredient)) {
+      results.concerns.push(ingredient);
+    }
+  });
+  
+  // Direct brand matching
+  const brands = [
+    'medik8', 'the ordinary', 'augustinus bader', 'skinceuticals', 'allies of skin',
+    'codex labs', 'timebeam', 'phyla', 'truskin', 'rejuran', 'true botanicals', 'may lindstrom',
+    'vintner'
+  ];
+  
+  brands.forEach(brand => {
+    if (normalizedInput.includes(brand)) {
+      results.concerns.push(brand);
+    }
+  });
+  
   return results;
 };
 

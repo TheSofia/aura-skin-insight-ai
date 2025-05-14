@@ -2,8 +2,9 @@
 import { useState } from 'react';
 import { Product } from '@/types/product';
 import { cn } from '@/lib/utils';
-import { Heart } from 'lucide-react';
+import { Heart, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Card } from '@/components/ui/card';
 
 interface ProductCardProps {
   product: Product;
@@ -33,10 +34,12 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
   };
 
   return (
-    <div className={cn(
-      "border rounded-lg overflow-hidden transition-all duration-300",
-      expanded ? "shadow-md" : "shadow-sm hover:shadow-md"
-    )}>
+    <Card 
+      className={cn(
+        "overflow-hidden transition-all duration-300 hover:shadow-md",
+        expanded ? "shadow-md" : "shadow-sm"
+      )}
+    >
       <div className="flex flex-col md:flex-row">
         {/* Image Container */}
         <div className="md:w-1/3 lg:w-1/4 p-4 flex-shrink-0">
@@ -56,13 +59,13 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
               <h3 className="font-medium text-lg text-beautyagent-dark-grey">
                 {highlightIfMatch(product.productName)}
               </h3>
-              <p className="text-beautyagent-medium-grey">
+              <p className="text-beautyagent-medium-grey font-light">
                 {product.brand}
               </p>
             </div>
             <button 
               onClick={() => onToggleSave(product.id)}
-              className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100"
+              className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors"
               aria-label={product.saved ? "Remove from library" : "Add to library"}
             >
               <Heart 
@@ -75,8 +78,8 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
             </button>
           </div>
           
-          <div className="mt-3">
-            <p className="text-sm text-beautyagent-dark-grey">
+          <div className="mt-2">
+            <p className="text-sm text-beautyagent-dark-grey font-light">
               {highlightIfMatch(product.useCase)}
             </p>
           </div>
@@ -85,7 +88,7 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
           <div className="mt-3 flex flex-wrap gap-1">
             {product.bestFor.slice(0, 3).map((item, i) => (
               <span key={i} className={cn(
-                "text-xs px-2 py-1 rounded-full",
+                "text-xs px-2 py-1 rounded-full font-light",
                 matchedKeywords.some(kw => item.toLowerCase().includes(kw.toLowerCase())) 
                   ? "bg-teal-100 text-teal-800" 
                   : "bg-gray-100 text-gray-800"
@@ -94,7 +97,7 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
               </span>
             ))}
             {product.bestFor.length > 3 && (
-              <span className="text-xs text-gray-500">+{product.bestFor.length - 3} more</span>
+              <span className="text-xs text-gray-500 font-light">+{product.bestFor.length - 3} more</span>
             )}
           </div>
           
@@ -103,8 +106,8 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
             <div className="mt-4 pt-4 border-t animate-fade-in">
               {/* Key Ingredients */}
               <div className="mb-3">
-                <h4 className="text-sm font-medium text-beautyagent-dark-grey">Key Ingredients:</h4>
-                <p className="text-sm text-beautyagent-medium-grey">
+                <h4 className="text-sm font-medium text-beautyagent-dark-grey">Key Ingredients</h4>
+                <p className="text-sm text-beautyagent-medium-grey font-light">
                   {product.keyIngredients.map((ingredient, i) => (
                     <span key={i}>
                       {i > 0 && ", "}
@@ -116,13 +119,13 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
               
               {/* Solutions Offered */}
               <div className="mb-3">
-                <h4 className="text-sm font-medium text-beautyagent-dark-grey">Solutions:</h4>
+                <h4 className="text-sm font-medium text-beautyagent-dark-grey">Solutions</h4>
                 <div className="flex flex-wrap gap-1 mt-1">
                   {product.solutionsOffered.map((solution, i) => (
                     <span 
                       key={i}
                       className={cn(
-                        "text-xs px-2 py-1 rounded-full",
+                        "text-xs px-2 py-1 rounded-full font-light",
                         matchedKeywords.some(kw => solution.toLowerCase().includes(kw.toLowerCase())) 
                           ? "bg-blue-100 text-blue-800" 
                           : "bg-gray-100 text-gray-800"
@@ -135,10 +138,12 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
               </div>
               
               {/* How to Use */}
-              <div className="mb-3">
-                <h4 className="text-sm font-medium text-beautyagent-dark-grey">How to Use:</h4>
-                <p className="text-sm text-beautyagent-medium-grey">{product.howToUse}</p>
-              </div>
+              {product.howToUse && (
+                <div className="mb-3">
+                  <h4 className="text-sm font-medium text-beautyagent-dark-grey">How to Use</h4>
+                  <p className="text-sm text-beautyagent-medium-grey font-light">{product.howToUse}</p>
+                </div>
+              )}
               
               {/* Shop links */}
               <div className="mt-4 flex gap-2">
@@ -147,9 +152,10 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
                     href={product.links.us} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="px-3 py-1 bg-beautyagent-accent text-white text-sm rounded hover:bg-beautyagent-accent-dark"
+                    className="flex items-center gap-1 px-3 py-1 bg-beautyagent-accent text-white text-sm rounded hover:bg-beautyagent-accent-dark"
                   >
-                    Shop US
+                    <span>Shop US</span>
+                    <ExternalLink size={14} />
                   </a>
                 )}
                 {product.links.eu && (
@@ -157,9 +163,10 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
                     href={product.links.eu} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="px-3 py-1 bg-beautyagent-accent text-white text-sm rounded hover:bg-beautyagent-accent-dark"
+                    className="flex items-center gap-1 px-3 py-1 bg-beautyagent-accent text-white text-sm rounded hover:bg-beautyagent-accent-dark"
                   >
-                    Shop EU
+                    <span>Shop EU</span>
+                    <ExternalLink size={14} />
                   </a>
                 )}
               </div>
@@ -168,14 +175,15 @@ const ProductCard = ({ product, onToggleSave, matchedKeywords = [] }: ProductCar
           
           {/* Show More/Less button */}
           <button 
-            className="mt-3 text-sm text-beautyagent-accent hover:text-beautyagent-accent-dark"
+            className="mt-3 text-sm flex items-center gap-1 text-beautyagent-accent hover:text-beautyagent-accent-dark transition-colors"
             onClick={() => setExpanded(prev => !prev)}
           >
-            {expanded ? "Show Less" : "Show Details"}
+            <span>{expanded ? "Show Less" : "Show Details"}</span>
+            {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 
