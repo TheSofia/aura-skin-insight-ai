@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ScanFace, ArrowRight, MessageSquare } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type ActionButtonsProps = {
   onGetStarted: () => void;
@@ -9,11 +10,13 @@ type ActionButtonsProps = {
 };
 
 const ActionButtons = ({ onGetStarted, onManualInput }: ActionButtonsProps) => {
+  const isMobile = useIsMobile();
+  
   return (
     <>
-      {/* Primary call to action with enhanced biomorphic animations */}
+      {/* Primary call to action with enhanced biomorphic animations and mobile optimizations */}
       <Button 
-        className="btn-premium btn-ethereal py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-500 shadow-subtle hover:shadow-dark-purple-glow plasma-glow"
+        className={`btn-premium btn-ethereal py-6 px-8 text-lg w-full sm:w-auto flex items-center justify-center gap-3 max-w-xs sm:max-w-none mb-6 opacity-0 animate-fade-in transition-all duration-500 shadow-subtle hover:shadow-dark-purple-glow plasma-glow ${isMobile ? 'mobile-enhanced-text' : ''}`}
         size="pill-lg" 
         onClick={onGetStarted}
         style={{ 
@@ -21,23 +24,25 @@ const ActionButtons = ({ onGetStarted, onManualInput }: ActionButtonsProps) => {
           animationFillMode: 'forwards'
         }}
       >
+        {isMobile && <div className="text-lift-overlay"></div>}
+        <div className="touch-feedback"></div>
         <div className="btn-shimmer"></div>
         <ScanFace className="h-5 w-5 text-white bioluminescent-breathing" />
-        <span className="font-medium text-white tracking-wide">Find My Skincare Protocol</span>
+        <span className="font-medium text-white tracking-wide relative z-2">Find My Skincare Protocol</span>
         <ArrowRight className="h-4 w-4 ml-1 text-white animate-pulse-subtle" />
       </Button>
       
       {/* Alternative path with enhanced hover interaction */}
       <button
         onClick={onManualInput}
-        className="flex items-center gap-2 px-4 py-2 rounded-full border border-beautyagent-medium-grey/30 text-beautyagent-dark-grey bg-white/50 hover:bg-burnt-orange/8 hover:text-burnt-orange hover:border-burnt-orange/30 transition-all duration-500 text-sm font-light opacity-0 animate-fade-in group neural-pulse synaptic-focus"
+        className={`flex items-center gap-2 px-4 py-2 rounded-full border border-beautyagent-medium-grey/30 text-beautyagent-dark-grey bg-white/50 hover:bg-burnt-orange/8 hover:text-burnt-orange hover:border-burnt-orange/30 transition-all duration-500 text-sm font-light opacity-0 animate-fade-in group neural-pulse synaptic-focus ${isMobile ? 'py-3 text-base' : ''}`}
         style={{ 
           animationDelay: '2s', 
           animationFillMode: 'forwards', 
           backdropFilter: 'blur(4px)'
         }}
       >
-        <MessageSquare className="h-4 w-4 text-beautyagent-dark-grey opacity-70 group-hover:text-burnt-orange group-hover:opacity-100 transition-opacity animate-subtle-pulse" />
+        <MessageSquare className={`text-beautyagent-dark-grey opacity-70 group-hover:text-burnt-orange group-hover:opacity-100 transition-opacity animate-subtle-pulse ${isMobile ? 'h-5 w-5' : 'h-4 w-4'}`} />
         <span className="tracking-wide">Prefer to describe your skin?</span>
       </button>
       
@@ -51,3 +56,4 @@ const ActionButtons = ({ onGetStarted, onManualInput }: ActionButtonsProps) => {
 };
 
 export default ActionButtons;
+

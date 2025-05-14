@@ -1,3 +1,4 @@
+
 /* Refined Button Hover Effect Styles */
 
 /* Accent hover style - more subtle and elegant */
@@ -196,3 +197,55 @@
 .btn-premium-purple-hover:active {
   transform: scale(0.98);
 }
+
+/* NEW: Neural pulse effect - specific for mobile interactions */
+.neural-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.neural-pulse::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(224, 95, 20, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  z-index: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  pointer-events: none;
+}
+
+/* Apply pulse effect on active (tap) state for mobile */
+@media (max-width: 767px) {
+  .neural-pulse:active::after {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+}
+
+/* NEW: Synaptic focus effect for mobile interaction clarity */
+.synaptic-focus {
+  position: relative;
+}
+
+.synaptic-focus:focus {
+  outline: none;
+}
+
+/* Special focus state for mobile - increases clarity of interaction */
+@media (max-width: 767px) {
+  .synaptic-focus:focus {
+    box-shadow: 0 0 0 2px rgba(224, 95, 20, 0.2);
+  }
+  
+  .synaptic-focus:active {
+    transform: scale(0.98);
+    transition: transform 0.2s ease;
+  }
+}
+
