@@ -54,4 +54,7 @@
   --beautyagent-glass-accent: rgba(224, 95, 20, 0.06);
   --beautyagent-glass-cosmic: rgba(255, 218, 185, 0.08);
   --beautyagent-glass-ultraviolet: rgba(51, 24, 74, 0.1);
+  
+  /* Define the CSS variables for shadcn/ui compatibility */
+  --ring: 270deg 56% 67%;
 }

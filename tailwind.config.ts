@@ -21,7 +21,10 @@ export default {
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
+				ring: {
+					DEFAULT: 'hsl(var(--ring))',
+					'violet-titanium': '#7E69AB', // Adding violet-titanium color to the ring palette
+				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
@@ -55,6 +58,7 @@ export default {
 				'burnt-orange': '#C2410C', // New burnt orange color
 				'deep-purple': '#6E59A5', // Adding deep purple color
 				'dark-purple': '#210B2C', // Adding extremely dark purple color
+				'violet-titanium': '#7E69AB', // Add violet-titanium as a root-level color
 				beautyagent: {
 					// Base colors
 					'white': '#FFFFFF',
@@ -78,7 +82,6 @@ export default {
 					
 					// Smart metallic accents
 					'platinum-sheen': '#E5E4E2',
-					'violet-titanium': '#7E69AB',
 					'amber-shimmer': '#FFBF65',
 					
 					// Legacy colors maintained for compatibility
