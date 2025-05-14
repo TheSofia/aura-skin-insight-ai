@@ -24,7 +24,7 @@
   animation-duration: 0.8s !important;
 }
 
-/* Refined hover animations for logo interactions - organic movement */
+/* Refined hover animations for interactive elements - organic movement */
 .hover-enhance {
   transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -33,7 +33,7 @@
   filter: brightness(1.03);
 }
 
-/* Subtle glow effects for logo system */
+/* Subtle glow effects for interactive elements */
 .glow-minimal {
   position: relative;
 }
@@ -127,7 +127,7 @@
   }
 }
 
-/* Subtle floating animation - feels weightless */
+/* Subtle floating animation - ethereal weightless motion */
 .floating {
   animation: floating 8s infinite ease-in-out;
 }
@@ -174,3 +174,148 @@
   }
 }
 
+/* NEW: Neural network animations */
+.neural-wave {
+  position: relative;
+  overflow: hidden;
+}
+
+.neural-wave::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(110, 89, 165, 0.5) 50%, 
+    transparent 100%);
+  animation: neural-wave 2s ease-in-out infinite;
+  transform: translateX(-100%);
+}
+
+@keyframes neural-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* NEW: Ethereal reveal animation */
+.ethereal-reveal {
+  animation: ethereal-reveal 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* NEW: Morphing shape animation */
+.animate-morph-enhanced {
+  animation: morph-enhanced 15s ease-in-out infinite;
+}
+
+/* NEW: Digital breathing animation */
+.digital-breathing {
+  animation: digital-breathing 4s infinite ease-in-out;
+}
+
+/* NEW: Plasma hover effects */
+.plasma-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.plasma-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(110, 89, 165, 0.1) 0%,
+    rgba(110, 89, 165, 0.05) 50%,
+    rgba(249, 115, 22, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.plasma-hover:hover::before {
+  opacity: 1;
+}
+
+/* NEW: Synaptic trail effect */
+.synaptic-trail {
+  position: relative;
+}
+
+.synaptic-trail::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  background: linear-gradient(90deg,
+    rgba(110, 89, 165, 0.7) 0%,
+    rgba(249, 115, 22, 0.7) 100%);
+  transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.synaptic-trail:hover::after {
+  width: 100%;
+}
+
+/* NEW: Biomorphic button transitions */
+.biomorphic-button {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.biomorphic-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(110, 89, 165, 0.9) 0%,
+    rgba(33, 11, 44, 0.95) 100%);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+}
+
+.biomorphic-button:hover {
+  transform: scale(1.03) translateY(-2px);
+  border-radius: calc(var(--radius) + 4px);
+}
+
+.biomorphic-button:hover::before {
+  opacity: 1;
+}
+
+/* NEW: Content fade reveal (fog lift effect) */
+.content-reveal {
+  opacity: 0;
+  transform: translateY(15px);
+  filter: blur(5px);
+}
+
+.content-reveal.revealed {
+  animation: content-reveal 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes content-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* NEW: Bioluminescent breathing effect */
+.bioluminescent-breathing {
+  animation: bioluminescent-breath 5s ease-in-out infinite;
+}

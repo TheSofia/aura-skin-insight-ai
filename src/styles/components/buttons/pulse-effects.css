@@ -1,9 +1,9 @@
 
-/* Refined Animated Pulse Button Effects */
+/* Refined Animated Pulse Button Effects - Bio-organic Interaction System */
 .btn-pulse {
   position: relative;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .btn-pulse::after {
@@ -16,18 +16,18 @@
   background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%);
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .btn-pulse:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px -5px rgba(224, 95, 20, 0.2);
+  box-shadow: 0 8px 24px -5px rgba(110, 89, 165, 0.3);
 }
 
 .btn-pulse:hover::after {
   transform: translate(-50%, -50%) scale(1);
   opacity: 0.5;
-  animation: ripple-out 1.5s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation: ripple-out 1.8s cubic-bezier(0.19, 1, 0.22, 1) infinite;
 }
 
 @keyframes ripple-out {
@@ -41,13 +41,14 @@
   }
 }
 
-/* Cellular pulse effect - biologically elegant */
-.cellular-pulse {
+/* Neural pulse effect - biologically intelligent */
+.neural-pulse {
   position: relative;
   overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.cellular-pulse::before {
+.neural-pulse::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -55,19 +56,19 @@
   width: 120%;
   height: 120%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(224, 95, 20, 0.1) 0%, rgba(224, 95, 20, 0) 70%);
+  background: radial-gradient(circle, rgba(110, 89, 165, 0.15) 0%, rgba(110, 89, 165, 0) 70%);
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.cellular-pulse:hover::before {
+.neural-pulse:hover::before {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
-  animation: cellular-expand 2s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation: neural-expand 2.2s cubic-bezier(0.19, 1, 0.22, 1) infinite;
 }
 
-@keyframes cellular-expand {
+@keyframes neural-expand {
   0% {
     transform: translate(-50%, -50%) scale(0.95);
     opacity: 0.5;
@@ -76,60 +77,251 @@
     opacity: 0.2;
   }
   100% {
-    transform: translate(-50%, -50%) scale(1.05);
+    transform: translate(-50%, -50%) scale(1.08);
     opacity: 0;
   }
 }
 
-/* Subtle breathing animation for elements */
-.breathing-element {
-  animation: subtle-breathing 4s ease-in-out infinite;
+/* Bioluminescent breathing animation for elements */
+.bioluminescent-breathing {
+  animation: bioluminescent-breath 5s ease-in-out infinite;
+  filter: saturate(1.05);
 }
 
-@keyframes subtle-breathing {
+@keyframes bioluminescent-breath {
   0%, 100% {
     transform: scale(1);
+    filter: brightness(1);
   }
   50% {
     transform: scale(1.02);
+    filter: brightness(1.07);
   }
 }
 
-/* Elegant focus ring animation */
-.focus-ring {
+/* Synaptic focus ring animation */
+.synaptic-focus {
   position: relative;
 }
 
-.focus-ring::after {
+.synaptic-focus::after {
   content: '';
   position: absolute;
   inset: -4px;
   border-radius: inherit;
-  border: 1px solid var(--beautyagent-accent);
+  border: 1px solid rgba(110, 89, 165, 0.4);
   opacity: 0;
   transform: scale(0.95);
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.focus-ring:focus::after,
-.focus-ring:focus-within::after {
-  opacity: 0.5;
+.synaptic-focus:focus::after,
+.synaptic-focus:focus-within::after {
+  opacity: 0.7;
   transform: scale(1);
-  animation: pulse-ring 2s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+  animation: synaptic-pulse 2.5s cubic-bezier(0.19, 1, 0.22, 1) infinite;
 }
 
-@keyframes pulse-ring {
+@keyframes synaptic-pulse {
   0% {
-    opacity: 0.5;
+    opacity: 0.7;
     transform: scale(1);
+    border-color: rgba(110, 89, 165, 0.4);
   }
   50% {
-    opacity: 0.3;
-    transform: scale(1.02);
+    opacity: 0.4;
+    transform: scale(1.03);
+    border-color: rgba(249, 115, 22, 0.3);
   }
   100% {
-    opacity: 0.5;
+    opacity: 0.7;
     transform: scale(1);
+    border-color: rgba(110, 89, 165, 0.4);
   }
 }
 
+/* Smart metallic hover effect */
+.smart-metallic {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.smart-metallic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    rgba(255, 255, 255, 0.1) 30%, 
+    rgba(255, 255, 255, 0.05) 50%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.7s ease;
+  transform: translateY(100%) rotate(10deg);
+}
+
+.smart-metallic:hover::before {
+  opacity: 1;
+  animation: metallic-flow 2s ease-in-out infinite alternate;
+  transform: translateY(0) rotate(0deg);
+}
+
+@keyframes metallic-flow {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.5;
+  }
+  100% {
+    background-position: 100% 100%;
+    opacity: 0.8;
+  }
+}
+
+/* Plasma glow buttons */
+.plasma-glow {
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.plasma-glow::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: linear-gradient(135deg, 
+    rgba(110, 89, 165, 0.7) 0%, 
+    rgba(249, 115, 22, 0.5) 100%);
+  filter: blur(8px);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.plasma-glow:hover {
+  transform: translateY(-1px);
+}
+
+.plasma-glow:hover::after {
+  opacity: 0.6;
+  animation: plasma-pulse 2s infinite alternate;
+}
+
+@keyframes plasma-pulse {
+  0% {
+    filter: blur(8px);
+    opacity: 0.6;
+  }
+  100% {
+    filter: blur(12px);
+    opacity: 0.8;
+  }
+}
+
+/* Ethereal button effects */
+.btn-ethereal {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-ethereal .btn-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.08) 50%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+}
+
+.btn-ethereal:hover .btn-shimmer {
+  animation: ethereal-shimmer 1.5s infinite;
+}
+
+@keyframes ethereal-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Button with purple hover state - smooth transition to purple glow */
+.btn-purple-hover {
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-purple-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(110, 89, 165, 0.9) 0%, 
+    rgba(33, 11, 44, 0.95) 100%);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+}
+
+.btn-purple-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(110, 89, 165, 0.4);
+}
+
+.btn-purple-hover:hover::before {
+  opacity: 1;
+}
+
+/* Premium button with neural effects */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, 
+    rgba(33, 11, 44, 0.95) 0%, 
+    rgba(46, 52, 64, 0.98) 100%);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-premium:hover {
+  background: linear-gradient(135deg, 
+    rgba(110, 89, 165, 0.9) 0%, 
+    rgba(33, 11, 44, 0.95) 100%);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-premium::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(to right, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.btn-premium:hover::after {
+  transform: translateX(100%);
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Biomorphic button expansion */
+.biomorphic-expand {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.biomorphic-expand:hover {
+  transform: scale(1.03);
+  border-radius: calc(var(--radius) + 2px);
+}

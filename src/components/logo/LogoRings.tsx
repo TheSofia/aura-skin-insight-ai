@@ -27,14 +27,14 @@ const LogoRings: React.FC<LogoRingsProps> = ({
   const getIntensityStyles = () => {
     // Base styles determined by intensity, but with improved visibility
     let baseStyles = {
-      innerOpacity: 0.12, // Increased visibility
-      outerOpacity: 0.085, // Increased visibility
-      innerBorderOpacity: 0.26, // Increased visibility
-      outerBorderOpacity: 0.18, // Increased visibility
+      innerOpacity: 0.12,
+      outerOpacity: 0.085,
+      innerBorderOpacity: 0.26,
+      outerBorderOpacity: 0.18,
       blurFactor: 0.5,
       innerDuration: '14s',
       outerDuration: '18s',
-      membraneOpacity: 0.16, // Increased visibility
+      membraneOpacity: 0.16,
       membraneBlur: 0.7
     };
     
@@ -42,27 +42,27 @@ const LogoRings: React.FC<LogoRingsProps> = ({
     switch (intensity) {
       case 'subtle':
         baseStyles = {
-          innerOpacity: 0.10, // Increased from 0.06 for better visibility
-          outerOpacity: 0.07, // Increased from 0.04 for better visibility
-          innerBorderOpacity: 0.20, // Increased from 0.14 for better visibility
-          outerBorderOpacity: 0.14, // Increased from 0.09 for better visibility
+          innerOpacity: 0.10,
+          outerOpacity: 0.07,
+          innerBorderOpacity: 0.20,
+          outerBorderOpacity: 0.14,
           blurFactor: 0.4,
           innerDuration: '20s',
           outerDuration: '24s',
-          membraneOpacity: 0.13, // Increased from 0.08 for better visibility
+          membraneOpacity: 0.13,
           membraneBlur: 0.5
         };
         break;
       case 'vibrant':
         baseStyles = {
-          innerOpacity: 0.14, // Increased from 0.09 for better visibility
-          outerOpacity: 0.095, // Increased from 0.055 for better visibility
-          innerBorderOpacity: 0.30, // Increased from 0.22 for better visibility
-          outerBorderOpacity: 0.22, // Increased from 0.14 for better visibility
+          innerOpacity: 0.14,
+          outerOpacity: 0.095,
+          innerBorderOpacity: 0.30,
+          outerBorderOpacity: 0.22,
           blurFactor: 0.6,
           innerDuration: '12s',
           outerDuration: '15s',
-          membraneOpacity: 0.18, // Increased from 0.13 for better visibility
+          membraneOpacity: 0.18,
           membraneBlur: 0.75
         };
         break;
@@ -70,7 +70,6 @@ const LogoRings: React.FC<LogoRingsProps> = ({
         break;
     }
     
-    // All contexts now show consistent rings with improved visibility
     return baseStyles;
   };
 
@@ -128,7 +127,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           backdropFilter: `blur(${intensityStyles.blurFactor * 0.6}px)`,
           animationDuration: '18s',
           animationTimingFunction: 'cubic-bezier(0.42, 0, 0.58, 1)',
-          opacity: 1, // Always fully visible for consistency
+          opacity: 1,
         }}
       ></div>
       
@@ -138,13 +137,13 @@ const LogoRings: React.FC<LogoRingsProps> = ({
         style={{
           width: `calc(${outerRingSize.split(' ')[0]} * 1.2)`,
           height: `calc(${outerRingSize.split(' ')[1]} * 1.2)`,
-          background: `radial-gradient(circle, rgba(255, 255, 255, ${intensityStyles.outerOpacity * 0.8}) 0%, transparent 85%)`, // Increased from 0.6 to 0.8
+          background: `radial-gradient(circle, rgba(255, 255, 255, ${intensityStyles.outerOpacity * 0.8}) 0%, transparent 85%)`,
           animationDuration: '25s',
-          opacity: 0.9, // Increased from 0.85 for better visibility
+          opacity: 0.9,
         }}
       ></div>
 
-      {/* New additional pulsing ring for more fluidity and layering */}
+      {/* Pulsing ring for more fluidity and layering */}
       <div 
         className={`absolute rounded-full animate-pulse-cellular z-4`}
         style={{
@@ -157,7 +156,7 @@ const LogoRings: React.FC<LogoRingsProps> = ({
         }}
       ></div>
 
-      {/* New outer ethereal ring that slowly rotates */}
+      {/* Outer ethereal ring that slowly rotates */}
       <div 
         className={`absolute rounded-full animate-orbital-shift z-3`}
         style={{
@@ -169,6 +168,55 @@ const LogoRings: React.FC<LogoRingsProps> = ({
           filter: 'blur(0.7px)'
         }}
       ></div>
+
+      {/* NEW: Subtle violet accent ring - adding a hint of color */}
+      <div 
+        className={`absolute rounded-full animate-cellular-ring-drift z-6`}
+        style={{
+          width: `calc(${innerRingSize.split(' ')[0]} * 1.25)`,
+          height: `calc(${innerRingSize.split(' ')[1]} * 1.25)`,
+          border: `0.5px solid rgba(110, 89, 165, ${intensity === 'vibrant' ? 0.20 : intensity === 'subtle' ? 0.08 : 0.14})`,
+          animationDuration: '22s',
+          animationDelay: '0.5s',
+          opacity: 0.85,
+          filter: 'blur(0.3px)'
+        }}
+      ></div>
+
+      {/* NEW: Irregular morphing shape for added organic movement */}
+      {intensity !== 'subtle' && (
+        <div 
+          className="absolute z-2 animate-morph-enhanced"
+          style={{
+            width: `calc(${outerRingSize.split(' ')[0]} * 1.3)`,
+            height: `calc(${outerRingSize.split(' ')[1]} * 1.3)`,
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            background: `radial-gradient(circle, 
+              rgba(110, 89, 165, ${intensity === 'vibrant' ? 0.04 : 0.02}) 0%, 
+              transparent 70%)`,
+            borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
+            animationDuration: '15s'
+          }}
+        ></div>
+      )}
+
+      {/* NEW: Subtle golden plasma accent - for depth and warmth */}
+      {intensity === 'vibrant' && (
+        <div 
+          className="absolute rounded-full animate-pulse-cellular z-4"
+          style={{
+            width: `calc(${innerRingSize.split(' ')[0]} * 0.9)`,
+            height: `calc(${innerRingSize.split(' ')[1]} * 0.9)`,
+            background: `radial-gradient(circle, 
+              rgba(249, 215, 165, 0.08) 0%, 
+              transparent 80%)`,
+            animationDuration: '8s',
+            filter: 'blur(1px)'
+          }}
+        ></div>
+      )}
     </>
   );
 };
