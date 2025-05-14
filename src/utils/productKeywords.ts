@@ -1,4 +1,3 @@
-
 // Keyword categorization with weighted terms and synonyms
 export const keywordMap = {
   skinTypes: {
@@ -22,7 +21,13 @@ export const keywordMap = {
     lips: ['lips', 'dry lips', 'chapped', 'lip care'],
     barrier: ['barrier', 'skin barrier', 'compromised barrier', 'damaged barrier', 'moisture barrier'],
     irritation: ['irritation', 'irritated', 'sensitive', 'reaction', 'stinging', 'burning'],
-    firmness: ['firmness', 'sagging', 'loose skin', 'elasticity', 'tightening']
+    firmness: ['firmness', 'sagging', 'loose skin', 'elasticity', 'tightening'],
+    
+    puffiness: ['puffy', 'puffiness', 'bloated face', 'morning puffiness', 'swelling', 'fluid retention'],
+    jawline: ['jawline', 'facial contour', 'face sculpting', 'face shape', 'defined jawline'],
+    stress: ['stress', 'stress-related', 'tension', 'anxiety', 'cortisol', 'stress skin'],
+    gut: ['gut health', 'microbiome', 'probiotic', 'digestive', 'gut-skin connection'],
+    supplement: ['supplement', 'vitamin', 'mineral', 'nutrition', 'dietary supplement', 'wellness']
   },
   goals: {
     hydration: ['hydration', 'moisturize', 'hydrate', 'moisture', 'quench', 'plump', 'dewy', 'juicy'],
@@ -33,7 +38,13 @@ export const keywordMap = {
     exfoliating: ['exfoliate', 'exfoliation', 'peel', 'remove dead skin', 'resurface', 'smooth'],
     protection: ['protect', 'protection', 'shield', 'defense', 'antioxidant', 'environmental'],
     acneTreatment: ['acne treatment', 'pimple treatment', 'spot treatment', 'clear skin', 'prevent breakouts'],
-    repair: ['repair', 'restore', 'heal', 'regenerate', 'renewal', 'recovery']
+    repair: ['repair', 'restore', 'heal', 'regenerate', 'renewal', 'recovery'],
+    
+    drainage: ['lymphatic drainage', 'de-puff', 'drain', 'lymphatic', 'facial massage', 'circulation'],
+    sculpting: ['sculpt', 'contour', 'define', 'facial sculpting', 'jawline definition', 'facial definition'],
+    detox: ['detox', 'detoxify', 'cleanse', 'purify', 'toxins', 'internal cleansing'],
+    internalBalance: ['balance', 'harmonize', 'internal wellness', 'holistic', 'overall wellness', 'inner health'],
+    collagenProduction: ['boost collagen', 'collagen production', 'collagen synthesis', 'produce collagen', 'stimulate collagen']
   }
 };
 
@@ -72,5 +83,21 @@ export const ingredientToConcernMap = {
   'phloretin': ['brightening', 'protection', 'texture'],
   'silymarin': ['oily', 'acne', 'antioxidant'],
   'willow bark': ['acne', 'exfoliating', 'calming'],
-  'tfc8': ['repair', 'antiAging', 'regeneration']
+  'tfc8': ['repair', 'antiAging', 'regeneration'],
+  
+  'collagen peptides': ['antiAging', 'firming', 'elasticity', 'wrinkles', 'joint health'],
+  'bovine collagen': ['antiAging', 'wrinkles', 'elasticity', 'hair', 'nails'],
+  'marine collagen': ['antiAging', 'hydration', 'elasticity', 'sensitive'],
+  'probiotics': ['gut', 'acne', 'redness', 'inflammation', 'balance'],
+  'adaptogens': ['stress', 'hormonal', 'balance', 'inflammation'],
+  'ashwagandha': ['stress', 'hormonal', 'redness', 'inflammation'],
+  'rhodiola': ['stress', 'fatigue', 'cellular protection'],
+  'prebiotics': ['gut', 'microbiome', 'balance'],
+  'spirulina': ['detox', 'antioxidant', 'nutrition'],
+  'barley grass': ['alkalizing', 'detox', 'nutrition'],
+  'maqui berry': ['antioxidant', 'brightening', 'protection'],
+  'grape seed extract': ['antioxidant', 'protection', 'circulation'],
+  'stainless steel': ['cooling', 'puffiness', 'sculpting', 'drainage'],
+  'jade': ['cooling', 'puffiness', 'calming', 'circulation'],
+  'rose quartz': ['cooling', 'soothing', 'circulation', 'drainage']
 };

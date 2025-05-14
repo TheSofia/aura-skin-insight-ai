@@ -1,4 +1,3 @@
-
 import { Product } from '@/types/product';
 
 // Enhanced product catalog with full collection of skincare products
@@ -496,6 +495,118 @@ export const initialProducts: Product[] = [
     links: {
       us: "https://www.maylindstrom.com/products/the-blue-cocoon",
       eu: "https://www.maylindstrom.com/products/the-blue-cocoon"
+    },
+    saved: false
+  },
+  {
+    id: "p34",
+    productName: "Vital Proteins Collagen Peptides",
+    brand: "Vital Proteins",
+    keyIngredients: ["Hydrolyzed Bovine Collagen", "Vitamin C"],
+    useCase: "Daily supplement for skin, hair, nail, and joint health.",
+    bestFor: ["Improving skin elasticity", "Reducing wrinkles", "Strengthening hair and nails", "Joint health"],
+    solutionsOffered: ["Boosts collagen production for firmer skin", "Enhances skin hydration and repair", "Supports overall anti-aging efforts"],
+    howToUse: "Mix 1-2 scoops into hot or cold liquids (coffee, smoothies, water) daily.",
+    imageUrl: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+    links: {
+      us: "https://www.vitalproteins.com/products/collagen-peptides",
+      eu: "https://www.vitalproteins.eu/products/collagen-peptides"
+    },
+    saved: false
+  },
+  {
+    id: "p35",
+    productName: "Further Food Collagen Peptides",
+    brand: "Further Food",
+    keyIngredients: ["Grass-Fed Collagen Peptides", "Hyaluronic Acid", "Vitamin C"],
+    useCase: "Collagen supplement for youthful skin and hydration.",
+    bestFor: ["Enhancing skin hydration", "Reducing fine lines", "Supporting skin rejuvenation"],
+    solutionsOffered: ["Promotes smooth and youthful skin by enhancing collagen synthesis", "Deeply hydrates skin from within"],
+    howToUse: "Add to drinks, oatmeal, or baked goods.",
+    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    links: {
+      us: "https://www.furtherfood.com/product/collagen-peptides-protein-powder/",
+      eu: "https://www.furtherfood.com/product/collagen-peptides-protein-powder/"
+    },
+    saved: false
+  },
+  {
+    id: "p36",
+    productName: "Collagen Inner Beauty Boost",
+    brand: "The Beauty Chef",
+    keyIngredients: ["Bio-fermented Maqui Berry", "Grape Seed Extract", "Vitamin C", "Zinc", "Probiotics"],
+    useCase: "Probiotic liquid supplement for skin and gut health.",
+    bestFor: ["Overall skin wellness", "Radiance", "Gut health linked to skin appearance", "Maintaining youthful skin"],
+    solutionsOffered: ["Promotes collagen production for skin plumpness", "Enhances skin radiance and clarity", "Supports a healthy gut microbiome which can influence skin"],
+    howToUse: "Mix 15ml with 200ml of water daily.",
+    imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    links: {
+      us: "https://thebeautychef.com/products/collagen-inner-beauty-boost",
+      eu: "https://www.cultbeauty.co.uk/the-beauty-chef-collagen-inner-beauty-boost/12647956.html"
+    },
+    saved: false
+  },
+  {
+    id: "p37",
+    productName: "SuperElixir Greens Supplement",
+    brand: "WelleCo",
+    keyIngredients: ["Barley Grass", "Spirulina", "Aloe Vera", "Prebiotics", "Probiotics"],
+    useCase: "Alkalizing daily supplement for skin clarity and overall wellness.",
+    bestFor: ["Supporting skin clarity", "Detoxification", "Internal balance that reflects in skin"],
+    solutionsOffered: ["Alkalizes the body for clearer skin", "Supports natural detoxification", "Provides essential nutrients for healthy skin"],
+    howToUse: "Mix 2 teaspoons with water or plant-based milk daily.",
+    imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    links: {
+      us: "https://www.welleco.com/products/the-super-elixir",
+      eu: "https://www.welleco.eu/products/the-super-elixir"
+    },
+    saved: false
+  },
+  {
+    id: "p38",
+    productName: "Moon Juice SuperYou",
+    brand: "Moon Juice",
+    keyIngredients: ["Ashwagandha", "Rhodiola", "Amla", "Shatavari"],
+    useCase: "Adaptogenic supplement to reduce stress effects on skin.",
+    bestFor: ["Stress-related skin issues", "Hormone balance", "Anti-aging"],
+    solutionsOffered: ["Combats effects of stress on skin", "Supports hormonal balance for clearer skin", "Helps maintain skin vitality"],
+    howToUse: "Take 2 capsules daily with food.",
+    imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    links: {
+      us: "https://moonjuice.com/products/superyou",
+      eu: "https://www.cultbeauty.co.uk/moon-juice-superyou/12894635.html"
+    },
+    saved: false
+  },
+  {
+    id: "p39",
+    productName: "Stainless Steel Gua Sha Tool",
+    brand: "Mount Lai",
+    keyIngredients: ["Medical-grade Stainless Steel"],
+    useCase: "Facial massage tool for lymphatic drainage and reducing puffiness.",
+    bestFor: ["Facial puffiness", "Lymphatic drainage", "Jawline definition", "Facial tension"],
+    solutionsOffered: ["Reduces morning puffiness", "Sculpts facial contours", "Enhances product absorption", "Improves blood circulation"],
+    howToUse: "Use with facial oil or serum. Glide gently across skin in upward and outward motions.",
+    imageUrl: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+    links: {
+      us: "https://mountlai.com/collections/tools/products/the-stainless-steel-gua-sha-facial-lifting-tool",
+      eu: "https://www.cultbeauty.co.uk/mount-lai-gua-sha-facial-lifting-tool/12902008.html"
+    },
+    saved: false
+  },
+  {
+    id: "p40",
+    productName: "Ice Roller",
+    brand: "Esarora",
+    keyIngredients: ["Stainless Steel"],
+    useCase: "Cooling facial massage tool for puffiness and inflammation.",
+    bestFor: ["Morning puffiness", "Skin inflammation", "Headache relief", "Post-treatment soothing"],
+    solutionsOffered: ["Reduces undereye bags and facial puffiness", "Calms redness and irritation", "Temporarily tightens pores", "Soothes skin after treatments"],
+    howToUse: "Store in freezer. Roll gently over clean face in upward and outward motions for 3-5 minutes.",
+    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    links: {
+      us: "https://www.amazon.com/Esarora-Roller-Puffiness-Migraine-Products/dp/B01E8IZ4ZA",
+      eu: "https://www.amazon.co.uk/Esarora-Roller-Puffiness-Migraine-Products/dp/B01E8IZ4ZA"
     },
     saved: false
   }
