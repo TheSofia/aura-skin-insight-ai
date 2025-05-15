@@ -173,3 +173,19 @@
   50% { opacity: 1; }
   100% { opacity: 0.85; }
 }
+
+/* Parallax shift animation for layered depth */
+@keyframes parallax-shift {
+  0% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(2px) translateY(-2px); }
+  50% { transform: translateX(0) translateY(-3px); }
+  75% { transform: translateX(-2px) translateY(-1px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+/* Bioluminescent pulse for text */
+@keyframes bioluminescent-pulse {
+  0% { text-shadow: 0 0 5px rgba(126, 105, 171, 0.2); }
+  50% { text-shadow: 0 0 12px rgba(126, 105, 171, 0.5), 0 0 20px rgba(126, 105, 171, 0.2); }
+  100% { text-shadow: 0 0 5px rgba(126, 105, 171, 0.2); }
+}

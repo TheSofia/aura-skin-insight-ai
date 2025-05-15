@@ -110,6 +110,7 @@
     @apply relative;
     text-shadow: 0 0 15px rgba(126, 105, 171, 0.3);
     transition: text-shadow 0.5s ease;
+    animation: bioluminescent-pulse 3s infinite ease-in-out;
   }
   
   .text-bioluminescent:hover {
@@ -125,5 +126,23 @@
   
   .text-liquid {
     animation: liquid-text 6s infinite ease-in-out;
+  }
+
+  /* New parallax layers for depth */
+  .parallax-layer {
+    transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform;
+  }
+
+  .parallax-deep {
+    transform: translateZ(-10px);
+  }
+
+  .parallax-middle {
+    transform: translateZ(-5px);
+  }
+
+  .parallax-shallow {
+    transform: translateZ(-2px);
   }
 }
