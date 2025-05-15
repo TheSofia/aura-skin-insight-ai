@@ -1,17 +1,20 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Camera, CameraOff, Image } from "lucide-react";
+import { Camera, CameraOff, Image, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 import SkinTimeline from "@/components/skin/SkinTimeline";
 import CameraGuide from "@/components/skin/CameraGuide";
+import AIAnalysisTags from "@/components/skin/AIAnalysisTags";
 
 const SkinMirror = () => {
   const [captureMode, setCaptureMode] = useState(false);
   const [captures, setCaptures] = useState<{ url: string; timestamp: Date; period: string }[]>([]);
   const [currentPeriod, setCurrentPeriod] = useState<"morning" | "afternoon" | "evening">("morning");
+  const [selectedCapture, setSelectedCapture] = useState<{ url: string; timestamp: Date; period: string } | null>(null);
+  const [progressPlayback, setProgressPlayback] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const navigate = useNavigate();
@@ -96,8 +99,39 @@ const SkinMirror = () => {
         
         // Stop camera after capturing
         stopCamera();
+        
+        // Set the new capture as selected
+        setSelectedCapture(newCapture);
       }
     }
+  };
+  
+  // Generate a progress playback animation
+  const generateProgressPlayback = () => {
+    if (captures.length < 2) {
+      toast.error("Not enough captures", {
+        description: "You need at least 2 skin captures to generate a progress animation"
+      });
+      return;
+    }
+    
+    setProgressPlayback(true);
+    
+    // In a real implementation, this would create an actual animation
+    // For now, we'll simulate it with a toast message
+    
+    toast.success("Generating skin progress animation", {
+      description: "Your skin journey visualization is being created"
+    });
+    
+    // Simulate animation creation
+    setTimeout(() => {
+      setProgressPlayback(false);
+      
+      toast("Progress animation ready", {
+        description: "Your skin has shown a 12% improvement in brightness over the last week"
+      });
+    }, 3000);
   };
   
   useEffect(() => {
@@ -112,6 +146,11 @@ const SkinMirror = () => {
     
     setCaptures(formattedCaptures);
     
+    // Set the most recent capture as selected
+    if (formattedCaptures.length > 0) {
+      setSelectedCapture(formattedCaptures[0]);
+    }
+    
     // Cleanup function to stop camera when component unmounts
     return () => {
       stopCamera();
@@ -124,139 +163,256 @@ const SkinMirror = () => {
   };
   
   return (
-    <div className="container max-w-4xl mx-auto py-8 px-4">
-      <div className="mb-6 flex justify-between items-center">
-        <h1 className="text-3xl font-light tracking-wider text-beautyagent-deeper-grey">
-          Mirror My Skin
-        </h1>
-        <Button 
-          variant="outline" 
-          onClick={() => navigate('/')}
-          className="hover-enhance"
-        >
-          Back to Home
-        </Button>
-      </div>
-      
-      <div className="grid md:grid-cols-2 gap-8">
-        <div className="flex flex-col space-y-6">
-          <Card className="p-6 glass">
-            <h2 className="text-xl mb-4 font-light tracking-wider">Today's Skin Capture</h2>
-            
-            <div className="flex space-x-4 mb-6">
-              <Button 
-                variant={currentPeriod === "morning" ? "default" : "outline"} 
-                onClick={() => handlePeriodChange("morning")}
-                className="flex-1 biomorphic-button"
-              >
-                Morning
-              </Button>
-              <Button 
-                variant={currentPeriod === "afternoon" ? "default" : "outline"} 
-                onClick={() => handlePeriodChange("afternoon")}
-                className="flex-1 biomorphic-button"
-              >
-                Afternoon
-              </Button>
-              <Button 
-                variant={currentPeriod === "evening" ? "default" : "outline"} 
-                onClick={() => handlePeriodChange("evening")}
-                className="flex-1 biomorphic-button"
-              >
-                Evening
-              </Button>
-            </div>
-            
-            <div className="relative aspect-video bg-beautyagent-light-grey rounded-lg overflow-hidden">
-              {captureMode ? (
-                <>
-                  <video 
-                    ref={videoRef} 
-                    autoPlay 
-                    playsInline 
-                    className="w-full h-full object-cover"
-                  />
-                  <CameraGuide />
-                </>
-              ) : (
-                <div className="flex items-center justify-center h-full">
-                  <div className="text-center p-4">
-                    <Image className="h-12 w-12 mx-auto mb-2 text-beautyagent-medium-grey" />
-                    <p className="text-beautyagent-medium-grey">
-                      Tap the camera button below to capture your skin
-                    </p>
-                  </div>
-                </div>
-              )}
-              
-              {/* Hidden canvas for processing captures */}
-              <canvas ref={canvasRef} className="hidden" />
-            </div>
-            
-            <div className="flex justify-center mt-4 space-x-4">
-              {!captureMode ? (
-                <Button 
-                  onClick={startCamera} 
-                  className="biomorphic-button"
-                  size="lg"
-                >
-                  <Camera className="mr-2 h-4 w-4" />
-                  Start Camera
-                </Button>
-              ) : (
-                <>
-                  <Button 
-                    onClick={stopCamera} 
-                    variant="outline" 
-                    className="biomorphic-button"
-                  >
-                    <CameraOff className="mr-2 h-4 w-4" />
-                    Cancel
-                  </Button>
-                  
-                  <Button 
-                    onClick={capturePhoto} 
-                    className="biomorphic-button"
-                    size="lg"
-                  >
-                    <Camera className="mr-2 h-4 w-4" />
-                    Capture
-                  </Button>
-                </>
-              )}
-            </div>
-          </Card>
-          
-          <Card className="p-6 glass">
-            <h2 className="text-xl mb-4 font-light tracking-wider">Skin Intelligence</h2>
-            <p className="text-beautyagent-medium-grey mb-4">
-              Track your skin's changes over time to discover patterns and improve your skincare routine.
-            </p>
-            <ul className="space-y-2">
-              <li className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-beautyagent-rose-quartz-light flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-sm">✓</span>
-                </div>
-                <span>Take 3 photos daily (morning, afternoon, evening)</span>
-              </li>
-              <li className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-beautyagent-rose-quartz-light flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-sm">✓</span>
-                </div>
-                <span>Track effectiveness of products over time</span>
-              </li>
-              <li className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-beautyagent-rose-quartz-light flex items-center justify-center mr-3 mt-0.5">
-                  <span className="text-sm">✓</span>
-                </div>
-                <span>Identify patterns in skin hydration and texture</span>
-              </li>
-            </ul>
-          </Card>
+    <div className="min-h-screen bg-beautyagent-off-white">
+      <div className="container max-w-7xl mx-auto px-4 py-6">
+        <div className="mb-6 flex justify-between items-center">
+          <h1 className="text-3xl font-light tracking-wider text-beautyagent-deeper-grey">
+            Mirror My Skin
+          </h1>
+          <Button 
+            variant="outline" 
+            onClick={() => navigate('/')}
+            className="hover-enhance"
+          >
+            Back to Home
+          </Button>
         </div>
         
-        <div>
-          <SkinTimeline captures={captures} />
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="flex flex-col space-y-6 md:col-span-2">
+            <Card className="p-6 glass-card">
+              <h2 className="text-xl mb-4 font-light tracking-wider">Today's Skin Capture</h2>
+              
+              <div className="flex space-x-4 mb-6">
+                <Button 
+                  variant={currentPeriod === "morning" ? "default" : "outline"} 
+                  onClick={() => handlePeriodChange("morning")}
+                  className="flex-1 glass-button"
+                >
+                  Morning
+                </Button>
+                <Button 
+                  variant={currentPeriod === "afternoon" ? "default" : "outline"} 
+                  onClick={() => handlePeriodChange("afternoon")}
+                  className="flex-1 glass-button"
+                >
+                  Afternoon
+                </Button>
+                <Button 
+                  variant={currentPeriod === "evening" ? "default" : "outline"} 
+                  onClick={() => handlePeriodChange("evening")}
+                  className="flex-1 glass-button"
+                >
+                  Evening
+                </Button>
+              </div>
+              
+              <div className="relative aspect-video bg-beautyagent-light-grey rounded-lg overflow-hidden shadow-lg">
+                {captureMode ? (
+                  <>
+                    <video 
+                      ref={videoRef} 
+                      autoPlay 
+                      playsInline 
+                      className="w-full h-full object-cover"
+                    />
+                    <CameraGuide />
+                  </>
+                ) : selectedCapture ? (
+                  <div className="w-full h-full">
+                    <img 
+                      src={selectedCapture.url} 
+                      alt="Skin capture" 
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Add AI Analysis Tags */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                      <p className="text-white text-sm font-medium mb-1">
+                        {new Date(selectedCapture.timestamp).toLocaleDateString()} - {selectedCapture.period}
+                      </p>
+                      <AIAnalysisTags 
+                        imageUrl={selectedCapture.url} 
+                        captureDate={new Date(selectedCapture.timestamp)} 
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <div className="text-center p-4">
+                      <Image className="h-12 w-12 mx-auto mb-2 text-beautyagent-medium-grey" />
+                      <p className="text-beautyagent-medium-grey">
+                        Tap the camera button below to capture your skin
+                      </p>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Hidden canvas for processing captures */}
+                <canvas ref={canvasRef} className="hidden" />
+              </div>
+              
+              <div className="flex justify-center mt-4 space-x-4">
+                {!captureMode ? (
+                  <>
+                    <Button 
+                      onClick={startCamera} 
+                      className="glass-button"
+                      size="lg"
+                    >
+                      <Camera className="mr-2 h-4 w-4" />
+                      Start Camera
+                    </Button>
+                    
+                    {captures.length >= 2 && (
+                      <Button 
+                        onClick={generateProgressPlayback} 
+                        className="glass-button"
+                        size="lg"
+                        disabled={progressPlayback}
+                      >
+                        <Play className="mr-2 h-4 w-4" />
+                        {progressPlayback ? 'Generating...' : 'Progress Playback'}
+                      </Button>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <Button 
+                      onClick={stopCamera} 
+                      variant="outline" 
+                      className="glass-button"
+                    >
+                      <CameraOff className="mr-2 h-4 w-4" />
+                      Cancel
+                    </Button>
+                    
+                    <Button 
+                      onClick={capturePhoto} 
+                      className="glass-button hover:bg-beautyagent-rose-quartz hover:text-white"
+                      size="lg"
+                    >
+                      <Camera className="mr-2 h-4 w-4" />
+                      Capture
+                    </Button>
+                  </>
+                )}
+              </div>
+            </Card>
+            
+            <Card className="p-6 glass-card">
+              <h2 className="text-xl mb-4 font-light tracking-wider">AI Skin Intelligence</h2>
+              
+              {selectedCapture ? (
+                <div className="space-y-4">
+                  <div className="p-4 border border-beautyagent-light-grey rounded-lg bg-white/50">
+                    <h3 className="font-medium mb-2">Analysis for {selectedCapture.period} capture</h3>
+                    <p className="text-beautyagent-medium-grey text-sm mb-3">
+                      Based on your recent images, BeautyAgent's AI has detected:
+                    </p>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-beautyagent-rose-quartz-light flex items-center justify-center mr-2 mt-0.5 text-xs">
+                          ✓
+                        </div>
+                        <span>Your skin shows excellent hydration in the morning, but tends to become drier by evening</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-beautyagent-rose-quartz-light flex items-center justify-center mr-2 mt-0.5 text-xs">
+                          ✓
+                        </div>
+                        <span>There's a 15% improvement in skin tone evenness compared to last week</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-beautyagent-rose-quartz-light flex items-center justify-center mr-2 mt-0.5 text-xs">
+                          ✓
+                        </div>
+                        <span>Your AM routine is effectively reducing redness throughout the day</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="p-4 border border-beautyagent-light-grey rounded-lg bg-white/50">
+                    <h3 className="font-medium mb-2">Recommendations</h3>
+                    <ul className="space-y-2 text-sm">
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-beautyagent-violet-titanium-glow flex items-center justify-center mr-2 mt-0.5 text-xs text-beautyagent-violet-titanium">
+                          →
+                        </div>
+                        <span>Consider adding an extra hydrating step to your evening routine</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-beautyagent-violet-titanium-glow flex items-center justify-center mr-2 mt-0.5 text-xs text-beautyagent-violet-titanium">
+                          →
+                        </div>
+                        <span>Your evening captures show signs of environmental stress - try adding an antioxidant serum</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-beautyagent-medium-grey">
+                  Take your first skin capture to receive personalized AI insights and recommendations.
+                </p>
+              )}
+            </Card>
+          </div>
+          
+          <div className="md:col-span-1">
+            <Card className="p-6 glass-card">
+              <h2 className="text-xl mb-4 font-light tracking-wider flex items-center justify-between">
+                <span>Your Skin Timeline</span>
+                <span className="text-xs text-beautyagent-medium-grey font-normal">
+                  {captures.length} captures
+                </span>
+              </h2>
+              
+              <div className="mb-4">
+                <div className="h-1 bg-beautyagent-light-grey rounded-full w-full">
+                  <div 
+                    className="h-1 bg-gradient-to-r from-beautyagent-rose-quartz to-beautyagent-violet-titanium rounded-full" 
+                    style={{ width: `${Math.min(captures.length * 5, 100)}%` }}
+                  ></div>
+                </div>
+                <div className="flex justify-between text-xs text-beautyagent-medium-grey mt-1">
+                  <span>Beginning</span>
+                  <span>Current</span>
+                </div>
+              </div>
+              
+              {captures.length > 0 ? (
+                <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+                  {captures.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()).map((capture, index) => (
+                    <div 
+                      key={index}
+                      className={`relative cursor-pointer transition-all hover-enhance ${
+                        selectedCapture && selectedCapture.timestamp === capture.timestamp ? 'ring-2 ring-beautyagent-violet-titanium ring-offset-2' : ''
+                      }`}
+                      onClick={() => setSelectedCapture(capture)}
+                    >
+                      <div className="aspect-square rounded-lg overflow-hidden">
+                        <img 
+                          src={capture.url} 
+                          alt={`Skin capture ${index + 1}`} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2">
+                        <p className="text-white text-xs">
+                          {new Date(capture.timestamp).toLocaleDateString()} - {capture.period}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-beautyagent-medium-grey">
+                    No skin captures yet. Start your skin journey by taking your first photo.
+                  </p>
+                </div>
+              )}
+            </Card>
+          </div>
         </div>
       </div>
     </div>

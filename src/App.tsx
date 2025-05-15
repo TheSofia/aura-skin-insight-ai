@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import SkinMirror from "./pages/SkinMirror";
 import SkinDiary from "./pages/SkinDiary";
+import BeautyExchange from "./pages/BeautyExchange";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/skin-mirror" element={<SkinMirror />} />
             <Route path="/skin-diary" element={<SkinDiary />} />
+            <Route path="/beauty-exchange" element={<BeautyExchange />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

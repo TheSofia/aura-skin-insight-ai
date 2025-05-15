@@ -1,321 +1,245 @@
 
-/* Refined animation classes and styles */
-.animate-gradient {
-  animation: gradient-shift 9s infinite alternate cubic-bezier(0.42, 0, 0.58, 1);
-}
+/* Animation Classes for BeautyAgent */
 
-/* Refined animation classes for subtle hover states */
-.animate-hover-subtle {
-  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-.animate-hover-subtle:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.03);
-}
-
-/* Animation speed modifiers for the logo system */
-.animation-slow {
-  animation-duration: 1.6s !important;
-}
-.animation-normal {
-  animation-duration: 1.2s !important;
-}
-.animation-fast {
-  animation-duration: 0.8s !important;
-}
-
-/* Refined hover animations for interactive elements - organic movement */
-.hover-enhance {
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-.hover-enhance:hover {
-  transform: translateY(-2px) scale(1.02);
-  filter: brightness(1.03);
-}
-
-/* Subtle glow effects for interactive elements */
-.glow-minimal {
-  position: relative;
-}
-.glow-minimal::after {
-  content: '';
-  position: absolute;
-  inset: -15%;
-  background: radial-gradient(circle, rgba(224, 95, 20, 0.12) 0%, transparent 75%);
-  border-radius: 50%;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-}
-.glow-minimal:hover::after {
-  opacity: 0.7;
-}
-
-/* Hover text accent effect */
-.hover-accent-text {
-  transition: color 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  position: relative;
-}
-.hover-accent-text::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--beautyagent-accent);
-  transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  opacity: 0;
-}
-.hover-accent-text:hover {
-  color: var(--beautyagent-accent);
-}
-.hover-accent-text:hover::after {
-  width: 100%;
-  opacity: 0.7;
-}
-
-/* Element entry animations - refined for gentle emergence */
-.fade-enter {
-  opacity: 0;
-  transform: translateY(8px);
-}
-.fade-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1), transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* Staggered entry animation for groups of elements */
-.stagger-item {
-  opacity: 0;
-  transform: translateY(10px);
-}
-.stagger-visible {
-  animation: stagger-fade-in 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-@keyframes stagger-fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Elegant biological motion transitions */
-.bio-transition {
-  transition-property: transform, opacity, background-color, box-shadow;
-  transition-duration: 0.4s;
-  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* Breathing animation - subtle organic pulsing */
-.breathing {
+/* Breathing animations */
+.animate-breathing {
   animation: breathing 6s infinite ease-in-out;
 }
 
-@keyframes breathing {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.015);
-  }
+.animate-breathing-fast {
+  animation: breathing 3s infinite ease-in-out;
 }
 
-/* Subtle floating animation - ethereal weightless motion */
-.floating {
-  animation: floating 8s infinite ease-in-out;
+/* Floating animations */
+.animate-float {
+  animation: float 6s infinite ease-in-out;
 }
 
-@keyframes floating {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
+.animate-float-slow {
+  animation: float 8s infinite ease-in-out;
 }
 
-/* Enhanced focus animation for form elements */
-.focus-animation:focus-within {
-  animation: gentle-pulse 2s infinite cubic-bezier(0.19, 1, 0.22, 1);
+/* Orbital animations */
+.animate-orbit {
+  animation: orbit 12s infinite linear;
 }
 
-@keyframes gentle-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 1px rgba(224, 95, 20, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 0 3px rgba(224, 95, 20, 0.1);
-  }
+.animate-orbit-slow {
+  animation: orbit 20s infinite linear;
 }
 
-/* Elegant loading indicator animation */
-.loading-dots span {
-  display: inline-block;
-  animation: loading-dot 1.4s infinite ease-in-out both;
-}
-.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
-.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
-
-@keyframes loading-dot {
-  0%, 80%, 100% { 
-    opacity: 0;
-    transform: scale(0.7); 
-  }
-  40% { 
-    opacity: 1;
-    transform: scale(1); 
-  }
+.animate-orbit-reverse {
+  animation: orbit 15s infinite linear reverse;
 }
 
-/* NEW: Neural network animations */
-.neural-wave {
-  position: relative;
-  overflow: hidden;
+/* Pulse glow animations */
+.animate-pulse-glow {
+  animation: pulse-glow 4s infinite ease-in-out;
 }
 
-.neural-wave::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(110, 89, 165, 0.5) 50%, 
-    transparent 100%);
-  animation: neural-wave 2s ease-in-out infinite;
-  transform: translateX(-100%);
+/* Fade in animations with different timings */
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
 }
 
-@keyframes neural-wave {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+.animate-fade-in-fast {
+  animation: fade-in 0.5s ease-out forwards;
 }
 
-/* NEW: Ethereal reveal animation */
-.ethereal-reveal {
-  animation: ethereal-reveal 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+.animate-fade-in-slow {
+  animation: fade-in 1.2s ease-out forwards;
 }
 
-/* NEW: Morphing shape animation */
+/* Directional fade animations */
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.8s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  animation: fade-in-left 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fade-in-right 0.8s ease-out forwards;
+}
+
+/* Delayed animations */
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-600 {
+  animation-delay: 0.6s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
+.delay-800 {
+  animation-delay: 0.8s;
+}
+
+.delay-900 {
+  animation-delay: 0.9s;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Cellular animations for logo particles */
+.animate-cellular-drift {
+  animation: cellular-drift 18s infinite cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.animate-cellular-drift-slow {
+  animation: cellular-drift 25s infinite cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.animate-cellular-drift-fast {
+  animation: cellular-drift 12s infinite cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+/* Neural animations */
+.animate-neural-wave {
+  animation: neural-wave 2s infinite cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+/* Morph animations for shapes */
+.animate-morph {
+  animation: morph 8s infinite ease-in-out;
+}
+
 .animate-morph-enhanced {
-  animation: morph-enhanced 15s ease-in-out infinite;
+  animation: morph 15s infinite cubic-bezier(0.42, 0, 0.58, 1);
 }
 
-/* NEW: Digital breathing animation */
-.digital-breathing {
+/* Font weight animations */
+.animate-font-weight {
+  animation: font-weight-shift 8s infinite ease-in-out;
+}
+
+/* Card animations */
+.animate-card-glow {
+  animation: card-glow 1.5s infinite alternate;
+}
+
+/* Sequence fade for landing page */
+.animate-fade-sequence-1 {
+  animation: fade-in-sequence 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animate-fade-sequence-2 {
+  animation: fade-in-sequence 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.animate-fade-sequence-3 {
+  animation: fade-in-sequence 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+/* Chat animations */
+.animate-chat-bubble {
+  animation: chat-bubble-in 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Badge animations */
+.animate-badge-pulse {
+  animation: badge-pulse 1.5s infinite ease-in-out;
+}
+
+/* Digital animations */
+.animate-digital-breathing {
   animation: digital-breathing 4s infinite ease-in-out;
 }
 
-/* NEW: Plasma hover effects */
-.plasma-hover {
-  position: relative;
-  overflow: hidden;
+/* Hover/Touch interactions */
+.hover-enhance {
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.plasma-hover::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg,
-    rgba(110, 89, 165, 0.1) 0%,
-    rgba(110, 89, 165, 0.05) 50%,
-    rgba(249, 115, 22, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.hover-enhance:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.plasma-hover:hover::before {
-  opacity: 1;
+/* Liquid button animations */
+.liquid-button {
+  animation: liquid-button 8s infinite ease-in-out;
 }
 
-/* NEW: Synaptic trail effect */
-.synaptic-trail {
-  position: relative;
+/* Animation utilities */
+.animate-pause {
+  animation-play-state: paused;
 }
 
-.synaptic-trail::after {
-  content: '';
-  position: absolute;
-  height: 1px;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  background: linear-gradient(90deg,
-    rgba(110, 89, 165, 0.7) 0%,
-    rgba(249, 115, 22, 0.7) 100%);
-  transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+.animate-running {
+  animation-play-state: running;
 }
 
-.synaptic-trail:hover::after {
-  width: 100%;
+.animate-forwards {
+  animation-fill-mode: forwards;
 }
 
-/* NEW: Biomorphic button transitions */
-.biomorphic-button {
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
+.animate-backwards {
+  animation-fill-mode: backwards;
 }
 
-.biomorphic-button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg,
-    rgba(110, 89, 165, 0.9) 0%,
-    rgba(33, 11, 44, 0.95) 100%);
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  z-index: -1;
+.animate-both {
+  animation-fill-mode: both;
 }
 
-.biomorphic-button:hover {
-  transform: scale(1.03) translateY(-2px);
-  border-radius: calc(var(--radius) + 4px);
+.animate-infinite {
+  animation-iteration-count: infinite;
 }
 
-.biomorphic-button:hover::before {
-  opacity: 1;
+.animate-once {
+  animation-iteration-count: 1;
 }
 
-/* NEW: Content fade reveal (fog lift effect) */
-.content-reveal {
-  opacity: 0;
-  transform: translateY(15px);
-  filter: blur(5px);
+/* Animation easing */
+.ease-in-out {
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
-.content-reveal.revealed {
-  animation: content-reveal 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+.ease-spring {
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-@keyframes content-reveal {
-  0% {
-    opacity: 0;
-    transform: translateY(15px);
-    filter: blur(5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-/* NEW: Bioluminescent breathing effect */
-.bioluminescent-breathing {
-  animation: bioluminescent-breath 5s ease-in-out infinite;
+.ease-bounce {
+  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
