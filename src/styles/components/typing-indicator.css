@@ -5,15 +5,39 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  height: 24px;
-  padding: 0 8px;
+  height: 28px;
+  padding: 0 12px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
-  border-radius: 12px;
+  border-radius: 14px;
   margin: 0 auto;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.typing-indicator span {
+/* Text label for the typing indicator */
+.typing-text {
+  font-size: 14px;
+  color: var(--beautyagent-medium-grey);
+  margin-right: 6px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* Animation states for mount/unmount */
+.typing-hidden {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.typing-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated dots */
+.typing-dot {
   display: inline-block;
   width: 6px;
   height: 6px;
@@ -23,11 +47,11 @@
   box-shadow: 0 0 6px rgba(126, 105, 171, 0.3);
 }
 
-.typing-indicator span:nth-child(1) {
+.typing-dot:nth-child(1) {
   animation-delay: -0.32s;
 }
 
-.typing-indicator span:nth-child(2) {
+.typing-dot:nth-child(2) {
   animation-delay: -0.16s;
 }
 
@@ -35,10 +59,50 @@
   0%, 80%, 100% { 
     transform: scale(0);
     opacity: 0.6;
+    background-color: var(--beautyagent-medium-grey, #9F9EA1);
   }
   40% { 
     transform: scale(1);
     opacity: 1;
     background-color: var(--beautyagent-violet-titanium-light, var(--beautyagent-violet-titanium));
+  }
+}
+
+/* Fluid pulsing glow effect */
+.typing-indicator::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  opacity: 0;
+  background: radial-gradient(ellipse at center, 
+    rgba(126, 105, 171, 0.25) 0%, 
+    rgba(126, 105, 171, 0) 70%);
+  animation: typing-glow 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes typing-glow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.5; }
+}
+
+/* Make the typing indicator more elegant and elevated on larger screens */
+@media (min-width: 768px) {
+  .typing-indicator {
+    height: 32px;
+    padding: 0 16px;
+    gap: 6px;
+    border-radius: 16px;
+  }
+  
+  .typing-dot {
+    width: 7px;
+    height: 7px;
+  }
+  
+  .typing-text {
+    font-size: 15px;
   }
 }

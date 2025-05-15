@@ -146,55 +146,70 @@ const Index = () => {
           </Link>
         </Button>
         
-        {/* Enhanced feature boxes with improved animations */}
+        {/* Enhanced feature boxes with improved animations - with TypeScript error fix */}
         <div className="grid md:grid-cols-3 gap-6 mt-20 w-full">
-          <Link 
-            to="/skin-mirror" 
-            className="glass-card p-6 hover-enhance depth-layer-2 opacity-0 transform transition-all duration-500"
+          {/* Feature 1 - Fixed TypeScript error by properly using a div with ref */}
+          <div 
+            className="opacity-0 transform transition-all duration-500"
             ref={el => featureRefs.current[0] = el}
           >
-            <div className="relative overflow-hidden rounded-lg mb-3 aspect-video bg-gradient-to-br from-beautyagent-plasma-white-light to-beautyagent-plasma-white">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-beautyagent-violet-titanium-glow opacity-50 animate-pulse-slow"></div>
+            <Link 
+              to="/skin-mirror" 
+              className="glass-card p-6 hover-enhance depth-layer-2 block h-full"
+            >
+              <div className="relative overflow-hidden rounded-lg mb-3 aspect-video bg-gradient-to-br from-beautyagent-plasma-white-light to-beautyagent-plasma-white">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-beautyagent-violet-titanium-glow opacity-50 animate-pulse-slow"></div>
+                </div>
               </div>
-            </div>
-            <h3 className="text-xl font-light tracking-wider mb-3 text-beautyagent-dark-grey">Mirror My Skin</h3>
-            <p className="text-beautyagent-medium-grey text-sm">
-              Track your skin's journey with AI-powered photo analysis and visualize changes over time.
-            </p>
-          </Link>
+              <h3 className="text-xl font-light tracking-wider mb-3 text-beautyagent-dark-grey">Mirror My Skin</h3>
+              <p className="text-beautyagent-medium-grey text-sm">
+                Track your skin's journey with AI-powered photo analysis and visualize changes over time.
+              </p>
+            </Link>
+          </div>
           
-          <Link 
-            to="/skin-diary" 
-            className="glass-card p-6 hover-enhance depth-layer-2 opacity-0 transform transition-all duration-500"
+          {/* Feature 2 - Fixed TypeScript error by properly using a div with ref */}
+          <div 
+            className="opacity-0 transform transition-all duration-500"
             ref={el => featureRefs.current[1] = el}
           >
-            <div className="relative overflow-hidden rounded-lg mb-3 aspect-video bg-gradient-to-br from-beautyagent-plasma-white-light to-beautyagent-plasma-white">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-beautyagent-rose-quartz-glow opacity-50 animate-pulse-slow"></div>
+            <Link 
+              to="/skin-diary" 
+              className="glass-card p-6 hover-enhance depth-layer-2 block h-full"
+            >
+              <div className="relative overflow-hidden rounded-lg mb-3 aspect-video bg-gradient-to-br from-beautyagent-plasma-white-light to-beautyagent-plasma-white">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-beautyagent-rose-quartz-glow opacity-50 animate-pulse-slow"></div>
+                </div>
               </div>
-            </div>
-            <h3 className="text-xl font-light tracking-wider mb-3 text-beautyagent-dark-grey">Skin Diary</h3>
-            <p className="text-beautyagent-medium-grey text-sm">
-              Record observations, track product reactions, and discover patterns in your skin's behavior.
-            </p>
-          </Link>
+              <h3 className="text-xl font-light tracking-wider mb-3 text-beautyagent-dark-grey">Skin Diary</h3>
+              <p className="text-beautyagent-medium-grey text-sm">
+                Record observations, track product reactions, and discover patterns in your skin's behavior.
+              </p>
+            </Link>
+          </div>
           
-          <Link 
-            to="/beauty-exchange" 
-            className="glass-card p-6 hover-enhance depth-layer-2 opacity-0 transform transition-all duration-500"
+          {/* Feature 3 - Fixed TypeScript error by properly using a div with ref */}
+          <div 
+            className="opacity-0 transform transition-all duration-500"
             ref={el => featureRefs.current[2] = el}
           >
-            <div className="relative overflow-hidden rounded-lg mb-3 aspect-video bg-gradient-to-br from-beautyagent-plasma-white-light to-beautyagent-plasma-white">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-beautyagent-cosmic-peach-glow opacity-50 animate-pulse-slow"></div>
+            <Link 
+              to="/beauty-exchange" 
+              className="glass-card p-6 hover-enhance depth-layer-2 block h-full"
+            >
+              <div className="relative overflow-hidden rounded-lg mb-3 aspect-video bg-gradient-to-br from-beautyagent-plasma-white-light to-beautyagent-plasma-white">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-beautyagent-cosmic-peach-glow opacity-50 animate-pulse-slow"></div>
+                </div>
               </div>
-            </div>
-            <h3 className="text-xl font-light tracking-wider mb-3 text-beautyagent-dark-grey">BeautyExchange</h3>
-            <p className="text-beautyagent-medium-grey text-sm">
-              Connect with others, share insights, and exchange product experiences in a supportive community.
-            </p>
-          </Link>
+              <h3 className="text-xl font-light tracking-wider mb-3 text-beautyagent-dark-grey">BeautyExchange</h3>
+              <p className="text-beautyagent-medium-grey text-sm">
+                Connect with others, share insights, and exchange product experiences in a supportive community.
+              </p>
+            </Link>
+          </div>
         </div>
         
         {/* Subtle footer signifier */}
