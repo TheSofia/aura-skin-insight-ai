@@ -8,6 +8,13 @@
   100% { transform: scale(1); }
 }
 
+/* Digital breathing for UI elements */
+@keyframes digital-breathing {
+  0% { opacity: 0.85; }
+  50% { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+
 /* Gentle floating animation */
 @keyframes float {
   0% { transform: translateY(0px); }
@@ -15,10 +22,26 @@
   100% { transform: translateY(0px); }
 }
 
+/* Subtle floating animation */
+@keyframes float-subtle {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
 /* Orbital motion for particles */
 @keyframes orbit {
   0% { transform: rotate(0deg) translateX(10px) rotate(0deg); }
   100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+/* Orbital shift animation for layered depth */
+@keyframes orbital-shift {
+  0% { transform: rotate(0deg) translateX(15px) translateY(0); }
+  25% { transform: rotate(90deg) translateX(15px) translateY(5px); }
+  50% { transform: rotate(180deg) translateX(15px) translateY(0); }
+  75% { transform: rotate(270deg) translateX(15px) translateY(-5px); }
+  100% { transform: rotate(360deg) translateX(15px) translateY(0); }
 }
 
 /* Pulse glow effect */
@@ -30,10 +53,16 @@
 
 /* Scanning animation for face scanner */
 @keyframes scanning {
-  0% { transform: translateY(0%); opacity: 0.8; }
+  0% { transform: translateY(-50%) translateX(-50%); opacity: 0.8; }
   45% { opacity: 0.6; }
   55% { opacity: 0.6; }
-  100% { transform: translateY(100%); opacity: 0.8; }
+  100% { transform: translateY(50%) translateX(50%); opacity: 0.8; }
+}
+
+/* Slow spin animation */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Fade-in animations with different directions */
@@ -63,16 +92,30 @@
 }
 
 /* Typing indicator animation */
-@keyframes typing-dot {
-  0% { opacity: 0.3; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0.3; transform: scale(0.8); }
+@keyframes typing-indicator {
+  0%, 80%, 100% { 
+    transform: scale(0);
+    opacity: 0.6;
+    background-color: var(--beautyagent-medium-grey, #9F9EA1);
+  }
+  40% { 
+    transform: scale(1);
+    opacity: 1;
+    background-color: var(--beautyagent-violet-titanium-light, var(--beautyagent-violet-titanium));
+  }
 }
 
 /* Shimmer effect for cards and buttons */
 @keyframes shimmer {
   0% { background-position: -100% 0; }
   100% { background-position: 100% 0; }
+}
+
+/* Shimmer gradient for text with gradient background */
+@keyframes shimmer-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Neural wave animation for scan lines */
@@ -88,6 +131,38 @@
   33% { transform: rotate(120deg) translateX(7px) rotate(-120deg); }
   66% { transform: rotate(240deg) translateX(5px) rotate(-240deg); }
   100% { transform: rotate(360deg) translateX(5px) rotate(-360deg); }
+}
+
+/* Cellular core pulse animation */
+@keyframes cellular-core-pulse {
+  0% { transform: scale(1); opacity: 0.95; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.95; }
+}
+
+/* Cellular ring drift animation */
+@keyframes cellular-ring-drift {
+  0% { transform: rotate(0deg) scale(1); }
+  33% { transform: rotate(120deg) scale(0.98); }
+  66% { transform: rotate(240deg) scale(1.02); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Cellular motion animation for membranes */
+@keyframes cellular-motion {
+  0% { transform: rotate(0deg) scale(1); border-radius: 50%; }
+  25% { transform: rotate(90deg) scale(0.98); border-radius: 47% 53% 52% 48% / 48% 52% 48% 52%; }
+  50% { transform: rotate(180deg) scale(1.02); border-radius: 53% 47% 48% 52% / 52% 48% 52% 48%; }
+  75% { transform: rotate(270deg) scale(0.98); border-radius: 48% 52% 47% 53% / 52% 48% 52% 48%; }
+  100% { transform: rotate(360deg) scale(1); border-radius: 50%; }
+}
+
+/* Orbital float for particles */
+@keyframes orbital-float {
+  0% { transform: rotate(0deg) translateX(10px) translateY(0px) rotate(0deg); }
+  33% { transform: rotate(120deg) translateX(12px) translateY(5px) rotate(-120deg); }
+  66% { transform: rotate(240deg) translateX(8px) translateY(-3px) rotate(-240deg); }
+  100% { transform: rotate(360deg) translateX(10px) translateY(0px) rotate(-360deg); }
 }
 
 /* Ripple animation for buttons */
@@ -148,10 +223,24 @@
   100% { border-radius: 50px; }
 }
 
-/* Fade in sequence for landing page text */
+/* Fade in sequence for landing page text - enhanced */
 @keyframes fade-in-sequence {
   0% { opacity: 0; transform: translateY(10px); filter: blur(5px); }
+  20% { opacity: 0.2; transform: translateY(8px); filter: blur(3px); }
+  60% { opacity: 0.6; transform: translateY(4px); filter: blur(1px); }
   100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Letter reveal animation */
+@keyframes letter-reveal {
+  0% { opacity: 0; transform: translateY(10px); filter: blur(2px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Kerning adjustment animation */
+@keyframes kerning-adjust {
+  0% { letter-spacing: -0.02em; }
+  100% { letter-spacing: normal; }
 }
 
 /* Chat bubble animation */
@@ -165,13 +254,6 @@
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
-}
-
-/* Digital breathing for UI elements */
-@keyframes digital-breathing {
-  0% { opacity: 0.85; }
-  50% { opacity: 1; }
-  100% { opacity: 0.85; }
 }
 
 /* Parallax shift animation for layered depth */
@@ -188,4 +270,38 @@
   0% { text-shadow: 0 0 5px rgba(126, 105, 171, 0.2); }
   50% { text-shadow: 0 0 12px rgba(126, 105, 171, 0.5), 0 0 20px rgba(126, 105, 171, 0.2); }
   100% { text-shadow: 0 0 5px rgba(126, 105, 171, 0.2); }
+}
+
+/* Pulse subtle animation */
+@keyframes pulse-subtle {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+
+/* Pulse slow animation */
+@keyframes pulse-slow {
+  0% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+  100% { opacity: 0.6; transform: scale(1); }
+}
+
+/* Pulse cellular animation */
+@keyframes pulse-cellular {
+  0% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.1); }
+  100% { opacity: 0.5; transform: scale(1); }
+}
+
+/* Text blur transition */
+@keyframes text-blur-transition {
+  0% { filter: blur(3px); opacity: 0.7; }
+  100% { filter: blur(0); opacity: 1; }
+}
+
+/* Light shimmer animation */
+@keyframes light-shimmer {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.3; }
 }

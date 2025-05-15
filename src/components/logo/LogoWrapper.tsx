@@ -39,8 +39,15 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
   // Wordmark text style for ethereal effect
   const wordmarkTextStyle = getWordmarkTextStyle();
 
+  // Adjust layout for different screen sizes and showText option
+  const layoutClasses = showText 
+    ? isLandingPage 
+      ? 'flex flex-col items-center gap-2' 
+      : 'flex items-center md:flex-row gap-3'
+    : '';
+
   return (
-    <div className={`flex items-center ${showText ? 'flex-col md:flex-row' : ''} gap-3`}>
+    <div className={layoutClasses}>
       <div 
         className={`dot-logo relative ${sizeClass} ${className} ${animationStyle === 'cellular' ? 'animate-cellular-drift' : ''} ${hoverAnimationClass} ${intensityStyles.opacity}`}
         role="presentation"
@@ -56,7 +63,9 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
       
       {showText && (
         <div 
-          className="font-clash font-light text-beautyagent-dark-grey text-xl md:text-2xl animate-fade-in tracking-wide" 
+          className={`font-clash font-light text-beautyagent-dark-grey animate-fade-in tracking-wide ${
+            isLandingPage ? 'text-xl md:text-2xl mt-2' : 'text-lg md:text-xl'
+          }`}
           style={{
             animationDelay: '0.5s', 
             animationFillMode: 'forwards',
@@ -74,4 +83,3 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
 LogoWrapper.displayName = "LogoWrapper";
 
 export default LogoWrapper;
-

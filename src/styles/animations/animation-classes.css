@@ -10,6 +10,10 @@
   animation: breathing 3s infinite ease-in-out;
 }
 
+.animate-digital-breathing {
+  animation: digital-breathing 4s infinite ease-in-out;
+}
+
 /* Floating animations */
 .animate-float {
   animation: float 6s infinite ease-in-out;
@@ -17,6 +21,10 @@
 
 .animate-float-slow {
   animation: float 8s infinite ease-in-out;
+}
+
+.animate-float-subtle {
+  animation: float-subtle 5s infinite ease-in-out;
 }
 
 /* Orbital animations */
@@ -32,9 +40,63 @@
   animation: orbit 15s infinite linear reverse;
 }
 
-/* Pulse glow animations */
+.animate-orbital-shift {
+  animation: orbital-shift 28s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.animate-orbital-float {
+  animation: orbital-float 15s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Pulse animations */
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s infinite ease-in-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s infinite ease-in-out;
+}
+
+.animate-pulse-cellular {
+  animation: pulse-cellular 5s infinite ease-in-out;
+}
+
 .animate-pulse-glow {
   animation: pulse-glow 4s infinite ease-in-out;
+}
+
+/* Scanning animation */
+.animate-scanning {
+  animation: scanning 2s infinite ease-in-out alternate;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s infinite linear;
+}
+
+/* Cellular animations */
+.animate-cellular-drift {
+  animation: cellular-drift 18s infinite cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.animate-cellular-drift-slow {
+  animation: cellular-drift 25s infinite cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.animate-cellular-drift-fast {
+  animation: cellular-drift 12s infinite cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.animate-cellular-core-pulse {
+  animation: cellular-core-pulse 6s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.animate-cellular-ring-drift {
+  animation: cellular-ring-drift 15s infinite cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.animate-cellular-motion {
+  animation: cellular-motion 20s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 /* Fade in animations with different timings */
@@ -67,66 +129,27 @@
   animation: fade-in-right 0.8s ease-out forwards;
 }
 
-/* Delayed animations */
-.delay-100 {
-  animation-delay: 0.1s;
+/* Light shimmer animation */
+.animate-light-shimmer {
+  animation: light-shimmer 3s infinite ease-in-out;
 }
 
-.delay-200 {
-  animation-delay: 0.2s;
+/* Shimmer animations */
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.15) 40%,
+    rgba(255, 255, 255, 0.05) 60%
+  );
+  background-size: 200% 100%;
 }
 
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-.delay-400 {
-  animation-delay: 0.4s;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
-}
-
-.delay-600 {
-  animation-delay: 0.6s;
-}
-
-.delay-700 {
-  animation-delay: 0.7s;
-}
-
-.delay-800 {
-  animation-delay: 0.8s;
-}
-
-.delay-900 {
-  animation-delay: 0.9s;
-}
-
-.delay-1000 {
-  animation-delay: 1s;
-}
-
-.delay-1500 {
-  animation-delay: 1.5s;
-}
-
-.delay-2000 {
-  animation-delay: 2s;
-}
-
-/* Cellular animations for logo particles */
-.animate-cellular-drift {
-  animation: cellular-drift 18s infinite cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.animate-cellular-drift-slow {
-  animation: cellular-drift 25s infinite cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.animate-cellular-drift-fast {
-  animation: cellular-drift 12s infinite cubic-bezier(0.42, 0, 0.58, 1);
+/* Gradient shimmer animation */
+.animate-shimmer-gradient {
+  animation: shimmer-gradient 8s infinite ease-in-out;
+  background-size: 200% 100%;
 }
 
 /* Neural animations */
@@ -153,6 +176,23 @@
   animation: card-glow 1.5s infinite alternate;
 }
 
+/* Ripple effect */
+.ripple-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
 /* Sequence fade for landing page */
 .animate-fade-sequence-1 {
   animation: fade-in-sequence 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
@@ -172,6 +212,16 @@
   opacity: 0;
 }
 
+/* Letter reveal animation */
+.animate-letter-reveal {
+  animation: letter-reveal 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Kerning adjustment animation */
+.animate-kerning-adjust {
+  animation: kerning-adjust 1s ease-out forwards;
+}
+
 /* Chat animations */
 .animate-chat-bubble {
   animation: chat-bubble-in 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
@@ -182,9 +232,82 @@
   animation: badge-pulse 1.5s infinite ease-in-out;
 }
 
-/* Digital animations */
-.animate-digital-breathing {
-  animation: digital-breathing 4s infinite ease-in-out;
+/* Text blur transition */
+.animate-text-blur-transition {
+  animation: text-blur-transition 0.8s ease-out forwards;
+}
+
+/* Sonar ring animation */
+.animate-sonar-ring {
+  animation: sonar-ring 2s infinite cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Bioluminescent class */
+.text-bioluminescent {
+  animation: bioluminescent-pulse 3s infinite ease-in-out;
+}
+
+/* Liquid styling */
+.text-liquid {
+  animation: kerning-adjust 1.5s ease-out forwards;
+}
+
+.liquid-button {
+  animation: liquid-button 8s infinite ease-in-out;
+}
+
+/* Plasma glow */
+.plasma-glow {
+  position: relative;
+}
+
+.plasma-glow::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(126, 105, 171, 0.3) 0%, transparent 70%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.plasma-glow:hover::after {
+  opacity: 0.8;
+}
+
+/* Delayed animations */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+.delay-1500 { animation-delay: 1.5s; }
+.delay-1800 { animation-delay: 1.8s; }
+.delay-2000 { animation-delay: 2s; }
+
+/* Parallax layers */
+.parallax-layer {
+  will-change: transform;
+}
+
+.parallax-shallow {
+  animation: parallax-shift 10s infinite ease-in-out;
+}
+
+.parallax-middle {
+  animation: parallax-shift 15s infinite ease-in-out;
+  animation-delay: 0.5s;
+}
+
+.parallax-deep {
+  animation: parallax-shift 20s infinite ease-in-out;
+  animation-delay: 1s;
 }
 
 /* Hover/Touch interactions */
@@ -193,53 +316,36 @@
 }
 
 .hover-enhance:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(126, 105, 171, 0.15);
 }
 
-/* Liquid button animations */
-.liquid-button {
-  animation: liquid-button 8s infinite ease-in-out;
+/* Depth layers */
+.depth-layer-1 {
+  position: relative;
+  z-index: 1;
+}
+
+.depth-layer-2 {
+  position: relative;
+  z-index: 2;
+}
+
+.depth-layer-3 {
+  position: relative;
+  z-index: 3;
 }
 
 /* Animation utilities */
-.animate-pause {
-  animation-play-state: paused;
-}
-
-.animate-running {
-  animation-play-state: running;
-}
-
-.animate-forwards {
-  animation-fill-mode: forwards;
-}
-
-.animate-backwards {
-  animation-fill-mode: backwards;
-}
-
-.animate-both {
-  animation-fill-mode: both;
-}
-
-.animate-infinite {
-  animation-iteration-count: infinite;
-}
-
-.animate-once {
-  animation-iteration-count: 1;
-}
+.animate-pause { animation-play-state: paused; }
+.animate-running { animation-play-state: running; }
+.animate-forwards { animation-fill-mode: forwards; }
+.animate-backwards { animation-fill-mode: backwards; }
+.animate-both { animation-fill-mode: both; }
+.animate-infinite { animation-iteration-count: infinite; }
+.animate-once { animation-iteration-count: 1; }
 
 /* Animation easing */
-.ease-in-out {
-  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.ease-spring {
-  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.ease-bounce {
-  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+.ease-in-out { animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1); }
+.ease-spring { animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
+.ease-bounce { animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
