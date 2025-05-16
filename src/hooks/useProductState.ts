@@ -10,6 +10,7 @@ export const useProductState = (initialProducts: Product[]) => {
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [skinDescription, setSkinDescription] = useState<string>("");
   const [matchedKeywords, setMatchedKeywords] = useState<string[]>([]);
+  const [recommendationReasons, setRecommendationReasons] = useState<Record<string, string>>({});
   
   return {
     products,
@@ -24,6 +25,8 @@ export const useProductState = (initialProducts: Product[]) => {
     skinDescription,
     setSkinDescription,
     matchedKeywords,
-    setMatchedKeywords
+    setMatchedKeywords,
+    recommendationReasons,
+    setRecommendationReasons
   };
 };

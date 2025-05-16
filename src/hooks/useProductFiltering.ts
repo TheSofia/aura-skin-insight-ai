@@ -8,6 +8,7 @@ import { MatchResult } from '@/utils/productFilteringTypes';
 import { useProductProcessing } from './useProductProcessing';
 import { useProductState } from './useProductState';
 import { useProductToasts } from './useProductToasts';
+import { generateRecommendationReasons } from '@/utils/recommendationReasons';
 
 export const useProductFiltering = (initialProducts: Product[]) => {
   const { toast } = useToast();
@@ -26,7 +27,9 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     isTyping,
     setIsTyping,
     matchedKeywords,
-    setMatchedKeywords
+    setMatchedKeywords,
+    recommendationReasons,
+    setRecommendationReasons
   } = useProductState(initialProducts);
   
   // Use processing hook
@@ -35,7 +38,8 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     setFilteredProducts,
     setIsProcessing,
     setHasFiltered,
-    setMatchedKeywords
+    setMatchedKeywords,
+    setRecommendationReasons
   });
   
   // Use toasts hook
@@ -55,8 +59,10 @@ export const useProductFiltering = (initialProducts: Product[]) => {
   };
 
   // Process description with improved feedback
-  const handleProcessSkinDescription = () => {
-    if (!skinDescription.trim()) {
+  const handleProcessSkinDescription = (manualDescription?: string) => {
+    const description = manualDescription || skinDescription;
+    
+    if (!description.trim()) {
       toast({
         title: "Empty description",
         description: "Please describe your skin concerns to get personalized recommendations.",
@@ -70,7 +76,7 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     
     // Process with a small delay to show the processing state
     setTimeout(() => {
-      processFilteringLogic(skinDescription, provideUserFeedback);
+      processFilteringLogic(description, provideUserFeedback);
     }, 800);
   };
   
@@ -108,6 +114,9 @@ export const useProductFiltering = (initialProducts: Product[]) => {
   // Get list of saved products
   const getSavedProducts = () => products.filter(product => product.saved);
 
+  // Get product recommendation reasons
+  const getRecommendationReasons = () => recommendationReasons;
+
   return {
     products,
     filteredProducts,
@@ -119,6 +128,7 @@ export const useProductFiltering = (initialProducts: Product[]) => {
     handleSkinDescriptionChange,
     handleProcessSkinDescription,
     toggleSaveProduct,
-    getSavedProducts
+    getSavedProducts,
+    getRecommendationReasons
   };
 };

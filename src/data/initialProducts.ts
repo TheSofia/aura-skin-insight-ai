@@ -1,6 +1,6 @@
 
 import { Product } from '@/types/product';
-import { allProducts } from './products';
+import { allProducts } from '@/data/products/index';
 
-// Export the full product catalog
+// Export all products as the initial set
 export const initialProducts: Product[] = allProducts;

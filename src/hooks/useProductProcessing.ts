@@ -4,6 +4,7 @@ import { findMatchingCategories, extractMatchedTerms } from '@/utils/productMatc
 import { calculateProductRelevanceScores, getRelevantProducts } from '@/utils/productScoring';
 import { MatchResult } from '@/utils/productFilteringTypes';
 import { useToast } from '@/hooks/use-toast';
+import { generateRecommendationReasons } from '@/utils/recommendationReasons';
 
 type UseProductProcessingProps = {
   products: Product[];
@@ -11,6 +12,7 @@ type UseProductProcessingProps = {
   setIsProcessing: React.Dispatch<React.SetStateAction<boolean>>;
   setHasFiltered: React.Dispatch<React.SetStateAction<boolean>>;
   setMatchedKeywords: React.Dispatch<React.SetStateAction<string[]>>;
+  setRecommendationReasons: React.Dispatch<React.SetStateAction<Record<string, string>>>;
 };
 
 export const useProductProcessing = ({
@@ -19,6 +21,7 @@ export const useProductProcessing = ({
   setIsProcessing,
   setHasFiltered,
   setMatchedKeywords,
+  setRecommendationReasons
 }: UseProductProcessingProps) => {
   const { toast } = useToast();
   
@@ -47,6 +50,10 @@ export const useProductProcessing = ({
     // Get scored and sorted products
     const scoredProducts = calculateProductRelevanceScores(products, matches);
     const relevantProducts = getRelevantProducts(scoredProducts);
+    
+    // Generate personalized recommendation reasons
+    const reasons = generateRecommendationReasons(relevantProducts, matches, description);
+    setRecommendationReasons(reasons);
     
     // Update state with filtered products
     setFilteredProducts(relevantProducts.length > 0 ? relevantProducts : products);
