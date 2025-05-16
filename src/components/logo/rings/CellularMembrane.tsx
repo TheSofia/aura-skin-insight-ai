@@ -8,6 +8,8 @@ interface CellularMembraneProps {
 }
 
 const CellularMembrane: React.FC<CellularMembraneProps> = ({ innerRingSize, intensityStyles }) => {
+  const pulseFactor = intensityStyles.pulseFactor || 1.0;
+  
   return (
     <div 
       className="absolute rounded-full animate-cellular-motion z-5"
@@ -16,7 +18,7 @@ const CellularMembrane: React.FC<CellularMembraneProps> = ({ innerRingSize, inte
         height: `calc(${innerRingSize.split(' ')[1]} * 2.2)`,
         background: `radial-gradient(circle, rgba(255, 255, 255, ${intensityStyles.membraneOpacity * 1.2}) 0%, rgba(255, 255, 255, ${intensityStyles.membraneOpacity * 0.8}) 40%, rgba(255, 255, 255, ${intensityStyles.membraneOpacity * 0.3}) 70%, transparent 100%)`,
         backdropFilter: `blur(${intensityStyles.membraneBlur}px)`,
-        animationDuration: '22s',
+        animationDuration: `${22 / Math.sqrt(pulseFactor)}s`,
         animationTimingFunction: 'cubic-bezier(0.42, 0, 0.58, 1)',
       }}
     ></div>

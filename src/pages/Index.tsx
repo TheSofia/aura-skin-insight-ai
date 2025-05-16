@@ -39,7 +39,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-radial from-beautyagent-plasma-white to-beautyagent-light-grey overflow-hidden">
-      {/* Dynamic background logo centerpiece */}
+      {/* Dynamic background logo centerpiece - enhanced with hypnotic movement */}
       <BackgroundLogo />
       
       {/* Enhanced atmospheric background elements */}

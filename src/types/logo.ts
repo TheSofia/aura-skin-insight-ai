@@ -1,7 +1,7 @@
 
 import { AnimationStyle } from "@/utils/logoAnimations";
 
-export type IntensityLevel = 'subtle' | 'medium' | 'vibrant';
+export type IntensityLevel = 'subtle' | 'medium' | 'vibrant' | 'hypnotic';
 
 export type LogoSettings = {
   colorScheme: 'gradient' | 'monochrome' | 'refined';
@@ -22,4 +22,5 @@ export type IntensityStyles = {
   outerDuration: string;
   membraneOpacity: number;
   membraneBlur: number;
+  pulseFactor?: number;
 };

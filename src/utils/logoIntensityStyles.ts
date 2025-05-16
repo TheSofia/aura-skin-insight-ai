@@ -4,7 +4,7 @@ import { LogoSize } from './logoSizes';
 /**
  * Types for intensity and context controls
  */
-export type IntensityLevel = 'subtle' | 'medium' | 'vibrant';
+export type IntensityLevel = 'subtle' | 'medium' | 'vibrant' | 'hypnotic';
 export type PageContext = {
   isLandingPage?: boolean;
   isLoadingPage?: boolean; 
@@ -20,20 +20,32 @@ export const getContextualAnimation = (
   if (isLoadingPage) {
     // Loading page: more dynamic animation
     return {
-      cellSpeed: intensity === 'subtle' ? '7s' : intensity === 'vibrant' ? '5s' : '6s',
-      particleOpacity: intensity === 'subtle' ? 0.7 : intensity === 'vibrant' ? 0.9 : 0.8,
+      cellSpeed: intensity === 'subtle' ? '7s' : 
+                 intensity === 'vibrant' ? '5s' : 
+                 intensity === 'hypnotic' ? '4s' : '6s',
+      particleOpacity: intensity === 'subtle' ? 0.7 : 
+                       intensity === 'vibrant' ? 0.9 : 
+                       intensity === 'hypnotic' ? 0.95 : 0.8,
     };
   } else if (isLandingPage) {
     // Landing page: gentler, more ethereal animation
     return {
-      cellSpeed: intensity === 'subtle' ? '11s' : intensity === 'vibrant' ? '9s' : '10s', // Even slower for landing page
-      particleOpacity: intensity === 'subtle' ? 0.5 : intensity === 'vibrant' ? 0.7 : 0.6, // More translucent for landing page
+      cellSpeed: intensity === 'subtle' ? '11s' : 
+                 intensity === 'vibrant' ? '9s' : 
+                 intensity === 'hypnotic' ? '8s' : '10s', // Even slower for landing page
+      particleOpacity: intensity === 'subtle' ? 0.5 : 
+                       intensity === 'vibrant' ? 0.7 : 
+                       intensity === 'hypnotic' ? 0.8 : 0.6, // More translucent for landing page
     };
   } else {
     // Default for other pages: balanced animation
     return {
-      cellSpeed: intensity === 'subtle' ? '9s' : intensity === 'vibrant' ? '7s' : '8s',
-      particleOpacity: intensity === 'subtle' ? 0.6 : intensity === 'vibrant' ? 0.8 : 0.7,
+      cellSpeed: intensity === 'subtle' ? '9s' : 
+                 intensity === 'vibrant' ? '7s' : 
+                 intensity === 'hypnotic' ? '6s' : '8s',
+      particleOpacity: intensity === 'subtle' ? 0.6 : 
+                       intensity === 'vibrant' ? 0.8 : 
+                       intensity === 'hypnotic' ? 0.85 : 0.7,
     };
   }
 };
@@ -64,6 +76,12 @@ export const getIntensityStyles = (
       animationDuration: 'animation-normal',
       particleOpacity: 0.75,
       glow: 'opacity-30'
+    },
+    hypnotic: {
+      opacity: 'opacity-100',
+      animationDuration: 'animation-very-slow',
+      particleOpacity: 1.0,
+      glow: 'opacity-50'
     }
   };
 
@@ -72,12 +90,13 @@ export const getIntensityStyles = (
   
   // Apply contextual refinements
   if (isLandingPage) {
-    // For landing page: more ethereal, gentler appearance
+    // For landing page: more ethereal, gentler appearance with enhanced glow
     return {
       ...baseStyle,
-      opacity: intensity === 'subtle' ? 'opacity-70' : 'opacity-75', // More translucent on landing page
-      particleOpacity: baseStyle.particleOpacity * 0.85, // More translucent particles
-      glow: `opacity-${Math.max(10, parseInt(baseStyle.glow.split('-')[1]) * 0.7)}` // Subtler glow
+      opacity: intensity === 'hypnotic' ? 'opacity-85' : 
+               intensity === 'subtle' ? 'opacity-70' : 'opacity-75', // More translucent on landing page
+      particleOpacity: baseStyle.particleOpacity * (intensity === 'hypnotic' ? 0.95 : 0.85), // More translucent particles
+      glow: `opacity-${intensity === 'hypnotic' ? '45' : Math.max(10, parseInt(baseStyle.glow.split('-')[1]) * 0.7)}` // Enhanced glow for hypnotic
     };
   } else if (isLoadingPage) {
     // For loading page: more vibrant, dynamic appearance 

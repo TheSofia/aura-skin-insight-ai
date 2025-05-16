@@ -59,8 +59,19 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
       if (headlineRef.current) {
         const scrollPos = window.scrollY;
         const moveY = scrollPos * 0.15; // Subtle movement
+        const opacityFactor = 1 - (scrollPos / 500);
+        const blurAmount = Math.min(2, scrollPos * 0.005); // Progressive blur effect
+        const glowIntensity = Math.max(0, 0.2 - scrollPos * 0.0005); // Glow fades as user scrolls
+        
         headlineRef.current.style.transform = `translateY(${-moveY}px) scale(${1 - scrollPos * 0.0005})`;
-        headlineRef.current.style.opacity = `${1 - (scrollPos / 500)}`;
+        headlineRef.current.style.opacity = `${opacityFactor}`;
+        headlineRef.current.style.filter = `blur(${blurAmount}px)`;
+        
+        // Adjust glow on the "VERSION" text as user scrolls
+        const versionElement = headlineRef.current.querySelector('.version-text') as HTMLElement;
+        if (versionElement) {
+          versionElement.style.textShadow = `0 0 ${10 + scrollPos * 0.05}px rgba(242, 150, 105, ${glowIntensity})`;
+        }
       }
     };
     
@@ -85,7 +96,7 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
         </div>
       </div>
       
-      {/* New headline with refined animations */}
+      {/* Enhanced headline with refined animations */}
       <div ref={headlineRef} className="text-center mb-16 relative mt-20 pt-16">
         <h1 className="font-clash tracking-wider text-beautyagent-dark-grey">
           <span 
@@ -106,7 +117,7 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
           </span>
           
           <span 
-            className={`block text-4xl md:text-5xl lg:text-6xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-beautyagent-burnt-orange to-beautyagent-violet-titanium transition-all duration-700 ease-out transform ${
+            className={`version-text block text-4xl md:text-5xl lg:text-6xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-beautyagent-burnt-orange to-beautyagent-violet-titanium transition-all duration-700 ease-out transform ${
               animationStates.version ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-4 blur-sm'
             }`}
             style={{ 
@@ -114,19 +125,22 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
               backgroundSize: '200% 100%',
               animation: animationStates.version ? 'shimmer-gradient 8s ease-in-out infinite' : 'none',
               animationDelay: '0.8s',
-              textShadow: '0 0 20px rgba(126, 105, 171, 0.15)'
+              textShadow: '0 0 20px rgba(242, 150, 105, 0.2)'
             }}
           >
             VERSION
           </span>
         </h1>
         
-        {/* Added subtitle */}
+        {/* Enhanced subtitle with better animation */}
         <p 
           className={`text-beautyagent-medium-grey text-sm md:text-base mt-6 transition-all duration-700 ease-out transform ${
             animationStates.subtitle ? 'opacity-70 translate-y-0 blur-0' : 'opacity-0 translate-y-4 blur-sm'
           }`}
-          style={{ transitionDelay: '600ms' }}
+          style={{ 
+            transitionDelay: '600ms',
+            letterSpacing: '0.04em'
+          }}
         >
           Powered by AI. Rooted in Ritual.
         </p>
