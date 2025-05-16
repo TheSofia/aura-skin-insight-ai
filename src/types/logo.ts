@@ -11,3 +11,15 @@ export type LogoSettings = {
   isLandingPage: boolean;
   isLoadingPage: boolean;
 };
+
+export type IntensityStyles = {
+  innerOpacity: number;
+  outerOpacity: number;
+  innerBorderOpacity: number;
+  outerBorderOpacity: number;
+  blurFactor: number;
+  innerDuration: string;
+  outerDuration: string;
+  membraneOpacity: number;
+  membraneBlur: number;
+};
