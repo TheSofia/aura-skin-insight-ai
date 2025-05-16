@@ -1,10 +1,10 @@
 
 import { LogoSize } from './logoSizes';
+import { IntensityLevel } from '@/types/logo';
 
 /**
- * Types for intensity and context controls
+ * Types for context controls
  */
-export type IntensityLevel = 'subtle' | 'medium' | 'vibrant' | 'hypnotic';
 export type PageContext = {
   isLandingPage?: boolean;
   isLoadingPage?: boolean; 

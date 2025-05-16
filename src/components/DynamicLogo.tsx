@@ -14,7 +14,8 @@ import {
   getOuterRingSizeClasses,
   LogoSize
 } from '../utils/logoSizes';
-import { IntensityLevel, getContextualAnimation, getIntensityStyles } from '../utils/logoIntensityStyles';
+import { IntensityLevel } from '../types/logo';
+import { getContextualAnimation, getIntensityStyles } from '../utils/logoIntensityStyles';
 
 export type DynamicLogoProps = {
   size?: LogoSize;

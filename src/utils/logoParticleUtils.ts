@@ -9,6 +9,7 @@ export const getIntensityFactor = (intensity: IntensityLevel = 'medium') => {
   switch (intensity) {
     case 'subtle': return { count: 0.8, opacityFactor: 0.7, sizeFactor: 0.9, speedFactor: 1.4 };
     case 'vibrant': return { count: 1.3, opacityFactor: 1.2, sizeFactor: 1.15, speedFactor: 0.75 };
+    case 'hypnotic': return { count: 1.5, opacityFactor: 1.3, sizeFactor: 1.2, speedFactor: 0.65 };
     default: return { count: 1.1, opacityFactor: 1.1, sizeFactor: 1.05, speedFactor: 0.95 };
   }
 };
@@ -85,10 +86,10 @@ export const getParticleSets = (
     }
   ];
 
-  // Add extra particle set for vibrant intensity
-  if (intensity === 'vibrant') {
+  // Add extra particle set for vibrant and hypnotic intensities
+  if (intensity === 'vibrant' || intensity === 'hypnotic') {
     particleSets.push({
-      count: 4,
+      count: intensity === 'hypnotic' ? 5 : 4,
       size: { base: 1.25 * intensityFactor.sizeFactor, variance: 0.35 },
       opacity: { 
         base: particleOpacity !== undefined ? 
