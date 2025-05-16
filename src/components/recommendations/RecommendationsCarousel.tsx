@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Product } from '@/types/product';
 import RecommendationCard from './RecommendationCard';

@@ -5,7 +5,7 @@ import { useToast } from '@/hooks/use-toast';
 import RecommendationsCarousel from './RecommendationsCarousel';
 import SkinDescriptionInput from '@/components/SkinDescriptionInput';
 import TypingIndicator from '@/components/TypingIndicator';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'; // Fixed import
 import { useProductFiltering } from '@/hooks/useProductFiltering';
 import { initialProducts } from '@/data/initialProducts';
 
