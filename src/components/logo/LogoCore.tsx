@@ -1,13 +1,14 @@
 
 import React from 'react';
 import { AnimationStyle } from '../../utils/logoAnimations';
+import { IntensityLevel } from '../../types/logo';
 
 type LogoCoreProps = {
   coreSize: string;
   colorClasses: { core: string; glow: string };
   animationClasses: { core: string };
   animationStyle: AnimationStyle;
-  intensity?: 'subtle' | 'medium' | 'vibrant';
+  intensity?: IntensityLevel;
   isLoadingPage?: boolean;
 };
 
@@ -47,6 +48,15 @@ const LogoCore: React.FC<LogoCoreProps> = ({
           pulseMagnitude: '7s',
           glowOpacity: 0.9,
           glowSize: '-15%'
+        };
+        break;
+      case 'hypnotic':
+        baseStyles = {
+          opacity: 1,
+          brightness: 1.1,
+          pulseMagnitude: '6s',
+          glowOpacity: 0.95,
+          glowSize: '-12%'
         };
         break;
       default: // medium - already enhanced in baseStyles

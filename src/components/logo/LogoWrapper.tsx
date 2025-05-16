@@ -2,7 +2,8 @@
 import React, { forwardRef } from 'react';
 import { AnimationStyle } from '../../utils/logoAnimations';
 import { LogoSize } from '../../utils/logoSizes';
-import { IntensityLevel, PageContext, getHoverAnimationClass, getIntensityStyles, getContextualAnimation, getWordmarkTextStyle } from '../../utils/logoIntensityStyles';
+import { IntensityLevel } from '../../types/logo';
+import { PageContext, getHoverAnimationClass, getIntensityStyles, getContextualAnimation, getWordmarkTextStyle } from '../../utils/logoIntensityStyles';
 
 type LogoWrapperProps = {
   children: React.ReactNode;
