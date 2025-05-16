@@ -6,6 +6,7 @@ import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
 import Footer from "@/components/landing/Footer";
 import BackgroundElements from "@/components/landing/BackgroundElements";
+import BackgroundLogo from "@/components/landing/BackgroundLogo";
 
 const Index = () => {
   const location = useLocation();
@@ -37,7 +38,10 @@ const Index = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-beautyagent-plasma-white overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-gradient-radial from-beautyagent-plasma-white to-beautyagent-light-grey overflow-hidden">
+      {/* Dynamic background logo centerpiece */}
+      <BackgroundLogo />
+      
       {/* Enhanced atmospheric background elements */}
       <BackgroundElements />
       

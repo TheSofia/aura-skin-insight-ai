@@ -21,6 +21,7 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
     discover: false,
     yourBest: false,
     version: false,
+    subtitle: false,
     underlineVisible: false
   });
 
@@ -42,8 +43,12 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
     }, 1600));
     
     timers.push(setTimeout(() => {
+      setAnimationStates(prev => ({ ...prev, subtitle: true }));
+    }, 2200));
+    
+    timers.push(setTimeout(() => {
       setAnimationStates(prev => ({ ...prev, underlineVisible: true }));
-    }, 2000));
+    }, 2600));
 
     return () => timers.forEach(timer => clearTimeout(timer));
   }, []);
@@ -64,37 +69,36 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center mb-16">
-      {/* Logo prominently displayed ABOVE headline */}
-      <div className="mb-8 animate-fade-in">
-        <DynamicLogo 
-          ref={logoRef}
-          size="lg" 
-          colorScheme="refined" 
-          animationStyle="cellular" 
-          intensity="vibrant" 
-          isLandingPage={true}
-          showText={true}
-        />
-        
-        {/* Animated underline for logo */}
-        <div className={`mx-auto h-[1px] mt-2 bg-gradient-to-r from-transparent via-beautyagent-amber-shimmer to-transparent transition-all duration-1000 ease-out ${animationStates.underlineVisible ? 'w-48 opacity-80' : 'w-0 opacity-0'} animate-pulse-subtle`}></div>
+    <div className="flex flex-col items-center justify-center mb-16 relative z-10">
+      {/* Smaller logo in header */}
+      <div className="absolute top-0 left-0 p-4 md:p-6 z-20">
+        <div className="flex items-center gap-2">
+          <DynamicLogo 
+            ref={logoRef}
+            size="sm" 
+            colorScheme="refined" 
+            animationStyle="cellular" 
+            intensity="medium" 
+            isLandingPage={true}
+            showText={true}
+          />
+        </div>
       </div>
       
-      {/* New headline "DISCOVER YOUR BEST VERSION" with refined animations */}
-      <div ref={headlineRef} className="text-center mb-16 relative">
+      {/* New headline with refined animations */}
+      <div ref={headlineRef} className="text-center mb-16 relative mt-20 pt-16">
         <h1 className="font-clash tracking-wider text-beautyagent-dark-grey">
           <span 
-            className={`block text-4xl md:text-5xl lg:text-6xl font-light transition-all duration-700 ease-out transform ${
-              animationStates.discover ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-4 blur-sm'
+            className={`block text-4xl md:text-5xl lg:text-6xl font-light transition-all duration-700 ease-out transform filter ${
+              animationStates.discover ? 'opacity-80 translate-y-0 blur-[0.5px]' : 'opacity-0 translate-y-4 blur-sm'
             }`}
           >
             DISCOVER
           </span>
           
           <span 
-            className={`block text-4xl md:text-5xl lg:text-6xl font-light transition-all duration-700 ease-out transform ${
-              animationStates.yourBest ? 'opacity-100 translate-y-0 scale-100 blur-0' : 'opacity-0 translate-y-2 scale-95 blur-sm'
+            className={`block text-4xl md:text-5xl lg:text-6xl font-light transition-all duration-700 ease-out transform filter ${
+              animationStates.yourBest ? 'opacity-80 translate-y-0 scale-100 blur-[0.5px]' : 'opacity-0 translate-y-2 scale-95 blur-sm'
             }`}
             style={{ transitionDelay: '200ms' }}
           >
@@ -116,6 +120,16 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
             VERSION
           </span>
         </h1>
+        
+        {/* Added subtitle */}
+        <p 
+          className={`text-beautyagent-medium-grey text-sm md:text-base mt-6 transition-all duration-700 ease-out transform ${
+            animationStates.subtitle ? 'opacity-70 translate-y-0 blur-0' : 'opacity-0 translate-y-4 blur-sm'
+          }`}
+          style={{ transitionDelay: '600ms' }}
+        >
+          Powered by AI. Rooted in Ritual.
+        </p>
       </div>
       
       {/* Welcoming message with typing indicator */}
