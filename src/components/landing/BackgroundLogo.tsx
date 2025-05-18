@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import DynamicLogo from '../DynamicLogo';
+import { IntensityLevel } from '@/types/logo';
 
 interface BackgroundLogoProps {
   className?: string;
@@ -60,6 +61,9 @@ const BackgroundLogo: React.FC<BackgroundLogoProps> = ({ className = '' }) => {
     };
   }, [windowSize.width, windowSize.height]);
   
+  // Define the intensity level correctly
+  const logoIntensity: IntensityLevel = "hypnotic";
+  
   return (
     <div 
       className={`fixed inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-0 ${className}`}
@@ -81,7 +85,7 @@ const BackgroundLogo: React.FC<BackgroundLogoProps> = ({ className = '' }) => {
           className="transition-transform duration-700" 
           ref={logoRef}
           showText={false}
-          intensity="hypnotic" 
+          intensity={logoIntensity} 
           isLandingPage={true} 
           isLoadingPage={false} 
         />

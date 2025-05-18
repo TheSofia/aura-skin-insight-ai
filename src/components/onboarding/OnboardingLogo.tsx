@@ -1,6 +1,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import DynamicLogo from "../DynamicLogo";
+import { IntensityLevel } from "@/types/logo";
 
 const OnboardingLogo = () => {
   const logoRef = useRef<HTMLDivElement>(null);
@@ -14,6 +15,9 @@ const OnboardingLogo = () => {
     
     return () => clearTimeout(timer);
   }, []);
+  
+  // Define the intensity level correctly
+  const logoIntensity: IntensityLevel = "medium";
   
   return (
     <div className="flex items-center gap-3 mb-8">
@@ -33,7 +37,7 @@ const OnboardingLogo = () => {
           className="transition-transform duration-700" 
           ref={logoRef}
           showText={true}
-          intensity="medium" 
+          intensity={logoIntensity} 
           isLandingPage={false} 
           isLoadingPage={true}
         />

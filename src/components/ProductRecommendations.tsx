@@ -5,6 +5,7 @@ import ProductLibrarySummary from './ProductLibrarySummary';
 import RecommendationEngine from './recommendations/RecommendationEngine';
 import './TypingIndicator.css';
 import { useToast } from '@/hooks/use-toast';
+import { IntensityLevel } from '@/types/logo';
 
 type ProductRecommendationsProps = {
   isManualPath?: boolean;
@@ -32,12 +33,21 @@ const ProductRecommendations = ({
       }, 800);
     }
   }, [isInitialLoad, toast]);
+  
+  // Define the intensity level correctly
+  const logoIntensity: IntensityLevel = "medium";
 
   return (
     <div className="flex flex-col h-full animate-fade-in bg-white">
       <div className="flex-1 overflow-auto pb-6">
         <div className="p-8 md:p-12 flex justify-center">
-          <DynamicLogo colorScheme="refined" animationStyle="cellular" size="md" showText={true} />
+          <DynamicLogo 
+            colorScheme="refined" 
+            animationStyle="cellular" 
+            size="md" 
+            showText={true} 
+            intensity={logoIntensity}
+          />
         </div>
         
         {/* Recommendation Engine */}
