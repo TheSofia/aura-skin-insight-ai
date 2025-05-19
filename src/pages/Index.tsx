@@ -2,7 +2,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Hero from "@/components/landing/Hero";
-import Features from "@/components/landing/Features";
 import Footer from "@/components/landing/Footer";
 import BackgroundElements from "@/components/landing/BackgroundElements";
 import BackgroundLogo from "@/components/landing/BackgroundLogo";
@@ -60,17 +59,14 @@ const Index = () => {
       <BackgroundElements mousePosition={mousePosition} />
       
       <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        {/* Hero Section */}
+        {/* Hero Section - Now purified with only essential elements */}
         <Hero
           isLoaded={isLoaded}
           showTyping={false}
           mousePosition={mousePosition}
         />
         
-        {/* Features Section */}
-        <Features />
-        
-        {/* Footer Section */}
+        {/* Footer Section - Kept for essential links and information */}
         <Footer />
       </div>
     </div>

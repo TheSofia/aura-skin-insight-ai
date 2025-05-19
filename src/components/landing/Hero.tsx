@@ -3,7 +3,6 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import DynamicLogo from "@/components/DynamicLogo";
-import TypingIndicator from "@/components/TypingIndicator";
 import { RippleButton } from "@/components/ui/ripple-button";
 import { IntensityLevel } from "@/types/logo";
 
@@ -224,7 +223,7 @@ const Hero = ({ isLoaded, showTyping, mousePosition = { x: 0.5, y: 0.5 } }: Hero
         </Link>
       </RippleButton>
       
-      {/* Minimal subcopy for CTA - retained but minimalist */}
+      {/* Minimal subcopy for CTA - retained in a minimal form as it supports the CTA functionality */}
       <p 
         className={`text-beautyagent-medium-grey text-xs font-light mb-16 transition-all duration-1200 ease-out transform ${
           animationStates.ctaReady ? 'opacity-70 translate-y-0' : 'opacity-0 translate-y-4'
