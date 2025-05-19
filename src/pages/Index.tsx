@@ -1,7 +1,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { toast } from "sonner";
 import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
 import Footer from "@/components/landing/Footer";
@@ -11,29 +10,15 @@ import BackgroundLogo from "@/components/landing/BackgroundLogo";
 const Index = () => {
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showTyping, setShowTyping] = useState(false);
-  const [welcomeMessage, setWelcomeMessage] = useState("");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const pageRef = useRef<HTMLDivElement>(null);
   
-  // Effect to welcome users when they first arrive
+  // Effect to set page as loaded after a delay
   useEffect(() => {
-    // Only show welcome message on initial load and at the landing page
     if (location.pathname === '/') {
       const timer = setTimeout(() => {
-        setShowTyping(true);
-        
-        setTimeout(() => {
-          setShowTyping(false);
-          setWelcomeMessage("Your AI-powered skin intelligence ecosystem");
-          
-          toast("Welcome to BeautyAgent", {
-            description: "Your beauty companion awaits",
-            icon: "✨",
-          });
-          setIsLoaded(true);
-        }, 2500); // Extended typing time for more dramatic effect
-      }, 1500); // Delayed start for more dramatic effect
+        setIsLoaded(true);
+      }, 1500);
       
       return () => clearTimeout(timer);
     }
@@ -78,8 +63,7 @@ const Index = () => {
         {/* Hero Section */}
         <Hero
           isLoaded={isLoaded}
-          showTyping={showTyping}
-          welcomeMessage={welcomeMessage}
+          showTyping={false}
           mousePosition={mousePosition}
         />
         

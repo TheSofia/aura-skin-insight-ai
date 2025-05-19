@@ -10,11 +10,10 @@ import { IntensityLevel } from "@/types/logo";
 interface HeroProps {
   isLoaded: boolean;
   showTyping: boolean;
-  welcomeMessage: string;
   mousePosition?: { x: number, y: number };
 }
 
-const Hero = ({ isLoaded, showTyping, welcomeMessage, mousePosition = { x: 0.5, y: 0.5 } }: HeroProps) => {
+const Hero = ({ isLoaded, showTyping, mousePosition = { x: 0.5, y: 0.5 } }: HeroProps) => {
   const logoRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
   
@@ -26,7 +25,6 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage, mousePosition = { x: 0.5, 
     discover: false,
     yourBest: false,
     version: false,
-    subtitle: false,
     underlineVisible: false,
     ctaReady: false
   });
@@ -50,10 +48,6 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage, mousePosition = { x: 0.5, 
     timers.push(setTimeout(() => {
       setAnimationStates(prev => ({ ...prev, version: true }));
     }, 2400)); // Further spacing for dramatic reveal
-    
-    timers.push(setTimeout(() => {
-      setAnimationStates(prev => ({ ...prev, subtitle: true }));
-    }, 3200)); // Longer pause before subtitle appears
     
     timers.push(setTimeout(() => {
       setAnimationStates(prev => ({ ...prev, underlineVisible: true }));
@@ -207,42 +201,6 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage, mousePosition = { x: 0.5, 
             VERSION
           </span>
         </h1>
-        
-        {/* Enhanced subtitle with better animation and cursor reactivity */}
-        <p 
-          className={`text-beautyagent-medium-grey text-lg md:text-xl mt-8 transition-all duration-1000 ease-out transform ${
-            animationStates.subtitle ? 'opacity-80 translate-y-0 blur-0' : 'opacity-0 translate-y-4 blur-sm'
-          }`}
-          style={{ 
-            transitionDelay: '800ms',
-            letterSpacing: '0.06em',
-            fontWeight: 300,
-            transformStyle: 'preserve-3d',
-            transform: `translateZ(${cursorProximity * 5}px)`,
-            opacity: animationStates.subtitle ? 0.8 + cursorProximity * 0.1 : 0
-          }}
-        >
-          Powered by AI. Rooted in Ritual.
-        </p>
-      </div>
-      
-      {/* Welcoming message with typing indicator */}
-      <div className="mb-12 h-6 flex justify-center items-center">
-        {showTyping ? (
-          <TypingIndicator visible={true} />
-        ) : (
-          <p 
-            className={`text-beautyagent-medium-grey max-w-xl mx-auto transition-all duration-1000 ease-out transform ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-            style={{ 
-              transitionDelay: '1200ms',
-              opacity: isLoaded ? 1 + cursorProximity * 0.2 : 0
-            }}
-          >
-            {welcomeMessage}
-          </p>
-        )}
       </div>
       
       {/* Enhanced Main CTA Button with ripple effect and cursor reactivity */}
@@ -266,14 +224,15 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage, mousePosition = { x: 0.5, 
         </Link>
       </RippleButton>
       
-      {/* Subcopy below CTA with cursor reactivity */}
+      {/* Minimal subcopy for CTA - retained but minimalist */}
       <p 
-        className={`text-beautyagent-medium-grey text-sm mb-16 transition-all duration-1200 ease-out transform ${
-          animationStates.ctaReady ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        className={`text-beautyagent-medium-grey text-xs font-light mb-16 transition-all duration-1200 ease-out transform ${
+          animationStates.ctaReady ? 'opacity-70 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
         style={{ 
           transitionDelay: '1600ms',
-          opacity: animationStates.ctaReady ? 0.9 + cursorProximity * 0.2 : 0
+          letterSpacing: '0.03em',
+          opacity: animationStates.ctaReady ? 0.7 + cursorProximity * 0.1 : 0
         }}
       >
         Upload a photo or describe your skin today
