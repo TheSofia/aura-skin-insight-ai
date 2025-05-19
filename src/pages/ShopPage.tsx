@@ -7,19 +7,21 @@ import ShopAssistant from "@/components/shop/ShopAssistant";
 import ProductList from "@/components/ProductList";
 import { initialProducts } from "@/data/initialProducts";
 import ProductLibrarySummary from "@/components/ProductLibrarySummary";
-import { useProductState } from "@/hooks/useProductState"; // Fixed import statement
+import { useProductFiltering } from "@/hooks/useProductFiltering"; // Use useProductFiltering instead
 
 const ShopPage = () => {
   const { 
     products, 
-    savedProducts, 
-    filteredProducts, 
+    filteredProducts,
+    hasFiltered,
     matchedKeywords,
-    isFiltered,
-    handleSaveProduct,
-    handleProcessInput,
-    handleClearFilters
-  } = useProductState(initialProducts);
+    toggleSaveProduct,
+    handleProcessSkinDescription,
+    getSavedProducts
+  } = useProductFiltering(initialProducts);
+  
+  // Get saved products
+  const savedProducts = getSavedProducts();
 
   return (
     <div className="min-h-screen bg-beautyagent-white">
@@ -31,10 +33,10 @@ const ShopPage = () => {
         
         {/* AI Assistant */}
         <ShopAssistant 
-          onSubmit={handleProcessInput}
-          onClear={handleClearFilters}
+          onSubmit={handleProcessSkinDescription}
+          onClear={() => handleProcessSkinDescription("")}
           resultCount={filteredProducts.length}
-          isFiltered={isFiltered}
+          isFiltered={hasFiltered}
         />
         
         {/* Content Grid */}
@@ -46,7 +48,7 @@ const ShopPage = () => {
           
           {/* Products Grid */}
           <div className="lg:col-span-3">
-            {isFiltered && (
+            {hasFiltered && (
               <div className="mb-6 animate-fade-in">
                 <h2 className="text-2xl font-light text-beautyagent-dark-grey mb-2">
                   {filteredProducts.length > 0 ? "Recommended Products" : "No Results"}
@@ -57,11 +59,10 @@ const ShopPage = () => {
             {/* Import and use the ProductList component */}
             <div className="space-y-6">
               {/* This will be populated with products based on filtering */}
-              {/* We'll implement this component later */}
               <ProductList 
-                products={isFiltered ? filteredProducts : products} 
-                onToggleSave={handleSaveProduct}
-                isFiltered={isFiltered}
+                products={hasFiltered ? filteredProducts : products} 
+                onToggleSave={toggleSaveProduct}
+                isFiltered={hasFiltered}
                 matchedKeywords={matchedKeywords}
               />
             </div>
