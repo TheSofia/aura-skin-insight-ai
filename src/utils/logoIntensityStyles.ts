@@ -1,130 +1,133 @@
 
-import { LogoSize } from './logoSizes';
 import { IntensityLevel } from '@/types/logo';
 
-/**
- * Types for context controls
- */
 export type PageContext = {
   isLandingPage?: boolean;
-  isLoadingPage?: boolean; 
+  isLoadingPage?: boolean;
 };
 
 /**
- * Gets animation parameters based on page context and intensity
+ * Get the hover animation class for the logo
+ */
+export const getHoverAnimationClass = () => {
+  return 'hover:scale-105 transition-transform duration-300';
+};
+
+/**
+ * Get contextual animation parameters based on intensity and page context
  */
 export const getContextualAnimation = (
-  intensity: IntensityLevel = 'medium',
-  { isLoadingPage = false, isLandingPage = false }: PageContext = {}
+  intensity: IntensityLevel,
+  { isLandingPage = false, isLoadingPage = false }: PageContext
 ) => {
-  if (isLoadingPage) {
-    // Loading page: more dynamic animation
-    return {
-      cellSpeed: intensity === 'subtle' ? '7s' : 
-                 intensity === 'vibrant' ? '5s' : 
-                 intensity === 'hypnotic' ? '4s' : '6s',
-      particleOpacity: intensity === 'subtle' ? 0.7 : 
-                       intensity === 'vibrant' ? 0.9 : 
-                       intensity === 'hypnotic' ? 0.95 : 0.8,
-    };
-  } else if (isLandingPage) {
-    // Landing page: gentler, more ethereal animation
-    return {
-      cellSpeed: intensity === 'subtle' ? '11s' : 
-                 intensity === 'vibrant' ? '9s' : 
-                 intensity === 'hypnotic' ? '8s' : '10s', // Even slower for landing page
-      particleOpacity: intensity === 'subtle' ? 0.5 : 
-                       intensity === 'vibrant' ? 0.7 : 
-                       intensity === 'hypnotic' ? 0.8 : 0.6, // More translucent for landing page
-    };
-  } else {
-    // Default for other pages: balanced animation
-    return {
-      cellSpeed: intensity === 'subtle' ? '9s' : 
-                 intensity === 'vibrant' ? '7s' : 
-                 intensity === 'hypnotic' ? '6s' : '8s',
-      particleOpacity: intensity === 'subtle' ? 0.6 : 
-                       intensity === 'vibrant' ? 0.8 : 
-                       intensity === 'hypnotic' ? 0.85 : 0.7,
-    };
+  let particleOpacity = 0.65;
+  let cellSpeed = '20s';
+  
+  // Define the base values for each intensity level
+  switch (intensity) {
+    case 'subtle':
+      particleOpacity = 0.5;
+      cellSpeed = '28s';
+      break;
+    case 'vibrant':
+      particleOpacity = 0.75;
+      cellSpeed = '16s';
+      break;
+    case 'hypnotic':
+      particleOpacity = 0.85;
+      cellSpeed = '14s';
+      break;
+    default: // medium
+      particleOpacity = 0.65;
+      cellSpeed = '20s';
   }
+
+  // Adjust values based on page context
+  if (isLandingPage) {
+    particleOpacity = Math.min(1.0, particleOpacity * 1.2);
+    cellSpeed = (parseInt(cellSpeed) * 1.1) + 's'; // Slightly slower for landing
+  }
+  
+  if (isLoadingPage) {
+    particleOpacity = Math.min(1.0, particleOpacity * 1.3);
+    cellSpeed = (parseInt(cellSpeed) * 0.75) + 's'; // Faster for loading
+  }
+  
+  return { particleOpacity, cellSpeed };
 };
 
 /**
- * Get intensity styles based on the selected intensity level and page context
+ * Get intensity-based style classes and values
  */
 export const getIntensityStyles = (
-  intensity: IntensityLevel = 'medium',
-  { isLandingPage = false, isLoadingPage = false }: PageContext = {}
+  intensity: IntensityLevel,
+  { isLandingPage = false, isLoadingPage = false }: PageContext
 ) => {
-  // Base styles
-  const baseIntensity = {
-    subtle: {
-      opacity: 'opacity-80',
-      animationDuration: 'animation-slow',
-      particleOpacity: 0.6,
-      glow: 'opacity-20'
-    },
-    vibrant: {
-      opacity: 'opacity-100',
-      animationDuration: 'animation-fast',
-      particleOpacity: 0.9,
-      glow: 'opacity-40'
-    },
-    medium: {
-      opacity: 'opacity-90',
-      animationDuration: 'animation-normal',
-      particleOpacity: 0.75,
-      glow: 'opacity-30'
-    },
-    hypnotic: {
-      opacity: 'opacity-100',
-      animationDuration: 'animation-very-slow',
-      particleOpacity: 1.0,
-      glow: 'opacity-50'
-    }
-  };
+  // Adjust appearance based on intensity
+  let glow = 'bg-transparent';
+  let opacity = '';
 
-  // Get base style based on intensity
-  const baseStyle = baseIntensity[intensity] || baseIntensity.medium;
-  
-  // Apply contextual refinements
-  if (isLandingPage) {
-    // For landing page: more ethereal, gentler appearance with enhanced glow
-    return {
-      ...baseStyle,
-      opacity: intensity === 'hypnotic' ? 'opacity-85' : 
-               intensity === 'subtle' ? 'opacity-70' : 'opacity-75', // More translucent on landing page
-      particleOpacity: baseStyle.particleOpacity * (intensity === 'hypnotic' ? 0.95 : 0.85), // More translucent particles
-      glow: `opacity-${intensity === 'hypnotic' ? '45' : Math.max(10, parseInt(baseStyle.glow.split('-')[1]) * 0.7)}` // Enhanced glow for hypnotic
-    };
-  } else if (isLoadingPage) {
-    // For loading page: more vibrant, dynamic appearance 
-    return {
-      ...baseStyle,
-      particleOpacity: baseStyle.particleOpacity * 1.1, // More visible particles
-      glow: `opacity-${Math.min(45, parseInt(baseStyle.glow.split('-')[1]) * 1.2)}` // Enhanced glow
-    };
+  switch (intensity) {
+    case 'subtle':
+      glow = 'after:bg-beautyagent-accent/10';
+      opacity = 'opacity-85';
+      break;
+    case 'vibrant':
+      glow = 'after:bg-beautyagent-accent/25';
+      opacity = 'opacity-100';
+      break;
+    case 'hypnotic':
+      glow = 'after:bg-gradient-to-r from-beautyagent-accent/30 to-beautyagent-deep-blue/30';
+      opacity = 'opacity-100';
+      break;
+    default: // medium
+      glow = 'after:bg-beautyagent-accent/15';
+      opacity = 'opacity-90';
   }
-  
-  // Default for other pages
-  return baseStyle;
+
+  // Enhanced for landing page - more pronounced
+  if (isLandingPage) {
+    switch (intensity) {
+      case 'subtle':
+        glow = 'after:bg-gradient-to-r from-beautyagent-accent/15 to-beautyagent-deep-blue/10';
+        break;
+      case 'vibrant':
+        glow = 'after:bg-gradient-to-r from-beautyagent-accent/35 to-beautyagent-deep-blue/30';
+        break;
+      case 'hypnotic':
+        glow = 'after:bg-gradient-to-r from-beautyagent-accent/40 to-beautyagent-deep-blue/35';
+        break;
+      default: // medium
+        glow = 'after:bg-gradient-to-r from-beautyagent-accent/25 to-beautyagent-deep-blue/20';
+    }
+  }
+
+  // Enhanced loading state - even more pronounced
+  if (isLoadingPage) {
+    switch (intensity) {
+      case 'subtle':
+        glow = 'after:bg-gradient-to-r from-beautyagent-accent/20 to-beautyagent-deep-blue/15';
+        break;
+      case 'vibrant':
+        glow = 'after:bg-gradient-to-r from-beautyagent-accent/40 to-beautyagent-deep-blue/35';
+        break;
+      case 'hypnotic':
+        glow = 'after:bg-gradient-to-r from-beautyagent-accent/45 to-beautyagent-deep-blue/40';
+        break;
+      default: // medium
+        glow = 'after:bg-gradient-to-r from-beautyagent-accent/30 to-beautyagent-deep-blue/25';
+    }
+  }
+
+  return { glow, opacity };
 };
 
 /**
- * Generate enhanced ethereal text effect styles for the wordmark
+ * Get wordmark text style
  */
 export const getWordmarkTextStyle = () => {
   return {
-    textShadow: '0 0 0.5px rgba(64, 62, 67, 0.3), 0 0 1px rgba(64, 62, 67, 0.2), 0 0 2px rgba(64, 62, 67, 0.1)',
-    letterSpacing: '0.02em',
-    filter: 'blur(0.2px)', // Very subtle blur for ethereal effect
+    textShadow: '0 0 12px rgba(255, 255, 255, 0.5)',
+    transition: 'all 0.5s ease',
   };
-};
-
-/**
- * Generate hover animation class for logo
- */
-export const getHoverAnimationClass = () => {
-  return 'group transition-all duration-500 hover:scale-[1.02] hover:filter hover:brightness-[1.03]';
 };

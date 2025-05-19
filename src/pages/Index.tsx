@@ -4,12 +4,13 @@ import { useLocation } from "react-router-dom";
 import Hero from "@/components/landing/Hero";
 import Footer from "@/components/landing/Footer";
 import BackgroundElements from "@/components/landing/BackgroundElements";
-import BackgroundLogo from "@/components/landing/BackgroundLogo";
+import CentralBackgroundLogo from "@/components/landing/logo/CentralBackgroundLogo";
 
 const Index = () => {
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrollPosition, setScrollPosition] = useState(0);
   const pageRef = useRef<HTMLDivElement>(null);
   
   // Effect to set page as loaded after a delay
@@ -38,6 +39,16 @@ const Index = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div 
       ref={pageRef}
@@ -53,7 +64,11 @@ const Index = () => {
       }}
     >
       {/* Dynamic background logo centerpiece - enhanced with hypnotic movement */}
-      <BackgroundLogo />
+      <CentralBackgroundLogo 
+        isVisible={isLoaded}
+        mousePosition={mousePosition}
+        scrollPosition={scrollPosition}
+      />
       
       {/* Enhanced atmospheric background elements */}
       <BackgroundElements mousePosition={mousePosition} />
