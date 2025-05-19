@@ -1,60 +1,47 @@
 
 /* Custom CSS variables for BeautyAgent's refined visual identity */
 :root {
-  /* Bioluminescent Base Palette */
-  --beautyagent-white: #FFFFFF;
-  --beautyagent-off-white: #F8F8F9;
-  --beautyagent-light-grey: #F1F1F3;
-  --beautyagent-medium-grey: #9F9EA1;
-  --beautyagent-dark-grey: #403E43;
-  --beautyagent-deeper-grey: #221F26;
+  /* Core Palette - Foundation of Clarity & Sophistication */
+  --beautyagent-deep-pearl-white: #FDFDFD;
+  --beautyagent-midnight-graphite: #1B1B1B;
+  --beautyagent-pure-bone-neutral: #E6E6E6;
   
-  /* Deep Ultraviolet Spectrum */
-  --beautyagent-ultraviolet: #33184A;
-  --beautyagent-ultraviolet-light: #492266;
-  --beautyagent-ultraviolet-glow: rgba(51, 24, 74, 0.15);
+  /* Accent Color Enhancers - Energy & Emotion */
+  --beautyagent-warm-amber: #FF8743;
+  --beautyagent-refined-emerald: #004F4D;
+  --beautyagent-deep-crimson: #9C1C3D;
+  --beautyagent-gold-light-start: #E9DAAE;
+  --beautyagent-gold-light-end: #FDE6BF;
+  --beautyagent-sapphire-violet: #3E3166;
   
-  /* Dusty Rose Quartz Spectrum */
-  --beautyagent-rose-quartz: #D6A9B8;
-  --beautyagent-rose-quartz-light: #EACBD3;
-  --beautyagent-rose-quartz-glow: rgba(214, 169, 184, 0.25);
-  
-  /* Cosmic Peach Spectrum */
-  --beautyagent-cosmic-peach: #FFDAB9;
-  --beautyagent-cosmic-peach-light: #FFE6D1;
-  --beautyagent-cosmic-peach-glow: rgba(255, 218, 185, 0.25);
-  
-  /* Breathable Black (near-black with depth) */
-  --beautyagent-breathable-black: #121014;
-  --beautyagent-breathable-black-light: #1E1B22;
-  --beautyagent-breathable-black-glow: rgba(18, 16, 20, 0.15);
-  
-  /* Golden Plasma White (luminous white with warm undertones) */
-  --beautyagent-plasma-white: #FFFAF0;
-  --beautyagent-plasma-white-light: #FFFCF7;
-  --beautyagent-plasma-white-glow: rgba(255, 250, 240, 0.35);
-  
-  /* Smart Metallics Accents */
-  --beautyagent-platinum-sheen: #E5E4E2;
-  --beautyagent-violet-titanium: #7E69AB;
-  --beautyagent-violet-titanium-glow: rgba(126, 105, 171, 0.15);
-  --beautyagent-amber-shimmer: #FFBF65;
-  
-  /* Legacy palette integrated */
-  --beautyagent-accent: #E05F14; /* Refined, less bright burnt orange */
-  --beautyagent-dark-orange: #C94C10;
+  /* Legacy palette integrated - with adjustments to align with new direction */
+  --beautyagent-accent: #FF8743; /* Changed to match warm amber */
+  --beautyagent-dark-orange: #E05F14; 
   --beautyagent-burnt-orange: #B03A08;
   --beautyagent-deep-blue: #2A4365;
-  --beautyagent-muted-violet: #7E69AB; /* Aligned with violet titanium */
-  --beautyagent-deep-purple: #5D4A8C;
-  --beautyagent-dark-purple: #34184A; /* Aligned with deep ultraviolet */
+  --beautyagent-muted-violet: #3E3166; /* Aligned with sapphire violet */
+  --beautyagent-deep-purple: #2C1A4D;
+  --beautyagent-dark-purple: #1A0833;
+  
+  /* Base colors & backgrounds */
+  --beautyagent-white: var(--beautyagent-deep-pearl-white);
+  --beautyagent-off-white: var(--beautyagent-pure-bone-neutral);
+  --beautyagent-light-grey: #F1F1F3;
+  --beautyagent-medium-grey: #9F9EA1;
+  --beautyagent-dark-grey: var(--beautyagent-midnight-graphite);
+  --beautyagent-deeper-grey: #121011;
   
   /* Translucent effects for layering and depth */
   --beautyagent-glass-white: rgba(255, 255, 255, 0.95);
   --beautyagent-glass-light: rgba(255, 255, 255, 0.85);
-  --beautyagent-glass-accent: rgba(224, 95, 20, 0.06);
+  --beautyagent-glass-accent: rgba(255, 135, 67, 0.06);
   --beautyagent-glass-cosmic: rgba(255, 218, 185, 0.08);
-  --beautyagent-glass-ultraviolet: rgba(51, 24, 74, 0.1);
+  --beautyagent-glass-violet: rgba(62, 49, 102, 0.1);
+  
+  /* Gradient combinations */
+  --beautyagent-gold-gradient: linear-gradient(to right, var(--beautyagent-gold-light-start), var(--beautyagent-gold-light-end));
+  --beautyagent-warm-gradient: linear-gradient(to right, var(--beautyagent-warm-amber), var(--beautyagent-deep-crimson));
+  --beautyagent-cool-gradient: linear-gradient(to right, var(--beautyagent-refined-emerald), var(--beautyagent-sapphire-violet));
   
   /* Define the CSS variables for shadcn/ui compatibility */
   --ring: 270deg 56% 67%;

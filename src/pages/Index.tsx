@@ -83,18 +83,18 @@ const Index = () => {
   return (
     <div 
       ref={pageRef}
-      className="min-h-screen flex flex-col bg-gradient-radial from-beautyagent-plasma-white via-beautyagent-light-grey to-beautyagent-cosmic-peach-glow/5 overflow-hidden"
+      className="min-h-screen flex flex-col overflow-hidden"
       style={{
-        // Enhanced gradient with subtle animation based on mouse position
+        // Enhanced background with more structure and depth
         background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, 
-          rgba(255, 255, 255, 0.98) 0%, 
-          rgba(246, 246, 247, 0.95) 50%,
-          rgba(249, 216, 195, 0.1) 85%, 
-          rgba(249, 216, 195, 0.05) 100%)`,
+          rgba(253, 253, 253, 0.98) 0%, 
+          rgba(230, 230, 230, 0.95) 50%,
+          rgba(27, 27, 27, 0.1) 85%, 
+          rgba(27, 27, 27, 0.05) 100%)`,
         transition: 'background 1.5s cubic-bezier(0.19, 1, 0.22, 1)',
       }}
     >
-      {/* Dynamic background logo centerpiece with enhanced hypnotic movement */}
+      {/* Dynamic background logo centerpiece with enhanced structure */}
       <CentralBackgroundLogo 
         isVisible={isLoaded}
         mousePosition={mousePosition}
@@ -114,6 +114,28 @@ const Index = () => {
         
         {/* Footer Section - Kept for essential links and information */}
         <Footer />
+      </div>
+      
+      {/* Enhanced CTA with a floating chat input prompt at the bottom */}
+      <div 
+        className={`fixed bottom-6 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-1000 
+          ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        style={{ transitionDelay: '2000ms' }}
+      >
+        <div 
+          className="flex items-center bg-beautyagent-midnight-graphite/90 backdrop-blur-sm border border-beautyagent-gold-light-start/20 
+            rounded-full py-3 px-6 shadow-lg transition-all duration-300 hover:bg-beautyagent-midnight-graphite/95 
+            hover:border-beautyagent-gold-light-start/30 hover:shadow-beautyagent-warm-amber/10
+            cursor-pointer group"
+        >
+          <span 
+            className="text-sm text-beautyagent-pure-bone-neutral mr-2 whitespace-nowrap transition-all duration-300 
+              group-hover:text-beautyagent-deep-pearl-white"
+          >
+            Describe your skin today...
+          </span>
+          <div className="w-4 h-4 rounded-full bg-beautyagent-warm-amber animate-pulse-subtle"></div>
+        </div>
       </div>
     </div>
   );

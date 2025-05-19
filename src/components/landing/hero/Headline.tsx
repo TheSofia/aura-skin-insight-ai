@@ -142,6 +142,20 @@ const Headline: React.FC<HeadlineProps> = ({
             VERSION
           </motion.span>
           
+          {/* Optional subheadline */}
+          <div 
+            className={`text-sm md:text-base font-light mt-4 tracking-wide ${
+              animationStates.version ? 'opacity-70 translate-y-0' : 'opacity-0 translate-y-4'
+            } transition-all duration-1000 ease-out delay-700`}
+            style={{
+              fontFamily: "'Satoshi', sans-serif",
+              fontWeight: 300,
+              color: '#E6E6E6',
+            }}
+          >
+            Welcome to skin intelligence. Ritual meets precision.
+          </div>
+          
           {/* Light shimmer effect overlay */}
           <div 
             className="absolute inset-0 pointer-events-none opacity-0"
@@ -160,14 +174,14 @@ const Headline: React.FC<HeadlineProps> = ({
         <div 
           className="absolute w-full h-full opacity-0 animate-radial-pulse"
           style={{
-            background: 'radial-gradient(circle at 50% 50%, rgba(255, 220, 180, 0.15) 0%, transparent 70%)',
+            background: 'radial-gradient(circle at 50% 50%, rgba(255, 135, 67, 0.15) 0%, transparent 70%)',
             animationDelay: '2s',
           }}
         />
         <div 
           className="absolute w-3/4 h-1/2 top-1/4 left-[12.5%] opacity-0 animate-light-ray"
           style={{
-            background: 'linear-gradient(90deg, transparent, rgba(218, 196, 255, 0.1), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(233, 218, 174, 0.1), transparent)',
             animationDelay: '8s',
           }}
         />
