@@ -13,39 +13,70 @@ const Index = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const pageRef = useRef<HTMLDivElement>(null);
   
-  // Effect to set page as loaded after a delay
+  // Effect to set page as loaded after a delay - extended for more dramatic animation
   useEffect(() => {
     if (location.pathname === '/') {
-      const timer = setTimeout(() => {
+      // First establish the background
+      const backgroundTimer = setTimeout(() => {
         setIsLoaded(true);
-      }, 1500);
+      }, 500);
       
-      return () => clearTimeout(timer);
+      return () => clearTimeout(backgroundTimer);
     }
   }, [location.pathname]);
 
-  // Enhanced mouse movement tracking for global interactivity
+  // Enhanced mouse movement tracking for global interactivity with smoother response
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (pageRef.current) {
         const rect = pageRef.current.getBoundingClientRect();
+        
+        // Calculate normalized position (0-1) for the position within the viewport
         const x = (e.clientX - rect.left) / rect.width;
         const y = (e.clientY - rect.top) / rect.height;
-        setMousePosition({ x, y });
+        
+        // Apply easing for smoother transitions
+        setMousePosition(prev => ({ 
+          x: prev.x + (x - prev.x) * 0.1, 
+          y: prev.y + (y - prev.y) * 0.1 
+        }));
       }
     };
     
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Track scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
+    // Use requestAnimationFrame for smoother tracking
+    let animationId: number;
+    const smoothMouseTracking = () => {
+      window.addEventListener('mousemove', handleMouseMove);
+      animationId = requestAnimationFrame(smoothMouseTracking);
     };
     
-    window.addEventListener('scroll', handleScroll);
+    smoothMouseTracking();
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
+  // Enhanced scroll position tracking with improved smoothing
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
+    const handleScroll = () => {
+      lastScrollY = window.scrollY;
+      
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollPosition(lastScrollY);
+          ticking = false;
+        });
+        
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -60,10 +91,10 @@ const Index = () => {
           rgba(246, 246, 247, 0.95) 50%,
           rgba(249, 216, 195, 0.1) 85%, 
           rgba(249, 216, 195, 0.05) 100%)`,
-        transition: 'background 1s cubic-bezier(0.19, 1, 0.22, 1)',
+        transition: 'background 1.5s cubic-bezier(0.19, 1, 0.22, 1)',
       }}
     >
-      {/* Dynamic background logo centerpiece - enhanced with hypnotic movement */}
+      {/* Dynamic background logo centerpiece with enhanced hypnotic movement */}
       <CentralBackgroundLogo 
         isVisible={isLoaded}
         mousePosition={mousePosition}
@@ -74,7 +105,7 @@ const Index = () => {
       <BackgroundElements mousePosition={mousePosition} />
       
       <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        {/* Hero Section - Now purified with only essential elements */}
+        {/* Hero Section with refined typography and animations */}
         <Hero
           isLoaded={isLoaded}
           showTyping={false}

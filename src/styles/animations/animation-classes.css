@@ -103,3 +103,36 @@
 .animate-float-ui {
   animation: float-ui 6s infinite ease-in-out;
 }
+
+/* New: Text shimmer animation for the headline */
+@keyframes text-shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-text-shimmer {
+  animation: text-shimmer 8s infinite ease-in-out;
+  background-size: 200% 100%;
+}
+
+/* New: Letter blur-to-clarity animation for "DISCOVER" */
+@keyframes blur-to-clarity {
+  0% { filter: blur(8px); opacity: 0.2; }
+  50% { filter: blur(3px); opacity: 0.5; }
+  100% { filter: blur(0px); opacity: 0.7; }
+}
+
+.animate-blur-to-clarity {
+  animation: blur-to-clarity 2s forwards;
+}
+
+/* New: Light trail effect animation for "YOUR BEST VERSION" */
+@keyframes light-trail {
+  0% { width: 0; opacity: 0.7; }
+  50% { opacity: 0.5; }
+  100% { width: 100%; opacity: 0; }
+}
+
+.animate-light-trail {
+  animation: light-trail 2s forwards cubic-bezier(0.19, 1, 0.22, 1);
+}

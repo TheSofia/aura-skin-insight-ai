@@ -5,3 +5,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400;500&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@300;400;500&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400&family=Canela+Text:wght@300&display=swap');
+
+/* Font fallbacks */
+@font-face {
+  font-family: 'Canela Text';
+  src: local('Times New Roman');
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* For Editorial New, we'll use a fallback since it's a premium font */
+@font-face {
+  font-family: 'Editorial New';
+  src: local('Canela Text'), local('Georgia');
+  font-weight: 300;
+  font-style: italic;
+}
