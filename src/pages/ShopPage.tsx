@@ -7,7 +7,7 @@ import ShopAssistant from "@/components/shop/ShopAssistant";
 import ProductList from "@/components/ProductList";
 import { initialProducts } from "@/data/initialProducts";
 import ProductLibrarySummary from "@/components/ProductLibrarySummary";
-import useProductState from "@/hooks/useProductState";
+import { useProductState } from "@/hooks/useProductState"; // Fixed import statement
 
 const ShopPage = () => {
   const { 
@@ -23,7 +23,7 @@ const ShopPage = () => {
 
   return (
     <div className="min-h-screen bg-beautyagent-white">
-      <Header />
+      <Header currentStep={0} /> {/* Added the required currentStep prop */}
       
       <main className="px-4 pt-24 pb-16 md:px-6 lg:px-8">
         {/* Hero Section */}
