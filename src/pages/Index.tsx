@@ -30,15 +30,15 @@ const Index = () => {
             icon: "✨",
           });
           setIsLoaded(true);
-        }, 2000);
-      }, 800);
+        }, 2500); // Extended typing time for more dramatic effect
+      }, 1500); // Delayed start for more dramatic effect
       
       return () => clearTimeout(timer);
     }
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-radial from-beautyagent-plasma-white to-beautyagent-light-grey overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-gradient-radial from-beautyagent-plasma-white via-beautyagent-light-grey to-beautyagent-cosmic-peach-glow/5 overflow-hidden">
       {/* Dynamic background logo centerpiece - enhanced with hypnotic movement */}
       <BackgroundLogo />
       

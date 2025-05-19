@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import DynamicLogo from "@/components/DynamicLogo";
 import TypingIndicator from "@/components/TypingIndicator";
 import { RippleButton } from "@/components/ui/ripple-button";
+import { IntensityLevel } from "@/types/logo";
 
 interface HeroProps {
   isLoaded: boolean;
@@ -16,61 +17,69 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
   const logoRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
   
-  // Text animation states
+  // Define the intensity level correctly
+  const logoIntensity: IntensityLevel = "medium";
+  
+  // Text animation states with more refined timing
   const [animationStates, setAnimationStates] = useState({
     discover: false,
     yourBest: false,
     version: false,
     subtitle: false,
-    underlineVisible: false
+    underlineVisible: false,
+    ctaReady: false
   });
 
   // Effect for headline animation sequence
   useEffect(() => {
     const timers: NodeJS.Timeout[] = [];
     
-    // Sequence the headline animations
+    // Sequence the headline animations with more dramatic timing
     timers.push(setTimeout(() => {
       setAnimationStates(prev => ({ ...prev, discover: true }));
-    }, 800));
+    }, 1200)); // Delayed start for more impact
     
     timers.push(setTimeout(() => {
       setAnimationStates(prev => ({ ...prev, yourBest: true }));
-    }, 1200));
+    }, 1800)); // Further spacing between elements
     
     timers.push(setTimeout(() => {
       setAnimationStates(prev => ({ ...prev, version: true }));
-    }, 1600));
+    }, 2400)); // Further spacing for dramatic reveal
     
     timers.push(setTimeout(() => {
       setAnimationStates(prev => ({ ...prev, subtitle: true }));
-    }, 2200));
+    }, 3200)); // Longer pause before subtitle appears
     
     timers.push(setTimeout(() => {
       setAnimationStates(prev => ({ ...prev, underlineVisible: true }));
-    }, 2600));
+    }, 3600));
+    
+    timers.push(setTimeout(() => {
+      setAnimationStates(prev => ({ ...prev, ctaReady: true }));
+    }, 4000)); // Longer delay before CTA appears
 
     return () => timers.forEach(timer => clearTimeout(timer));
   }, []);
 
-  // Parallax effect for headline on scroll
+  // Parallax effect for headline on scroll - enhanced for more depth
   useEffect(() => {
     const handleScroll = () => {
       if (headlineRef.current) {
         const scrollPos = window.scrollY;
-        const moveY = scrollPos * 0.15; // Subtle movement
-        const opacityFactor = 1 - (scrollPos / 500);
-        const blurAmount = Math.min(2, scrollPos * 0.005); // Progressive blur effect
-        const glowIntensity = Math.max(0, 0.2 - scrollPos * 0.0005); // Glow fades as user scrolls
+        const moveY = scrollPos * 0.25; // Enhanced subtle movement
+        const opacityFactor = 1 - (scrollPos / 600); // Fade out more slowly
+        const blurAmount = Math.min(3, scrollPos * 0.01); // More progressive blur effect
+        const glowIntensity = Math.max(0, 0.3 - scrollPos * 0.0007); // Enhanced glow fades as user scrolls
         
-        headlineRef.current.style.transform = `translateY(${-moveY}px) scale(${1 - scrollPos * 0.0005})`;
-        headlineRef.current.style.opacity = `${opacityFactor}`;
+        headlineRef.current.style.transform = `translateY(${-moveY}px) scale(${1 - scrollPos * 0.0003})`;
+        headlineRef.current.style.opacity = `${Math.max(0, opacityFactor)}`;
         headlineRef.current.style.filter = `blur(${blurAmount}px)`;
         
         // Adjust glow on the "VERSION" text as user scrolls
         const versionElement = headlineRef.current.querySelector('.version-text') as HTMLElement;
         if (versionElement) {
-          versionElement.style.textShadow = `0 0 ${10 + scrollPos * 0.05}px rgba(242, 150, 105, ${glowIntensity})`;
+          versionElement.style.textShadow = `0 0 ${15 + scrollPos * 0.08}px rgba(242, 150, 105, ${glowIntensity})`;
         }
       }
     };
@@ -89,7 +98,7 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
             size="sm" 
             colorScheme="refined" 
             animationStyle="cellular" 
-            intensity="medium" 
+            intensity={logoIntensity} 
             isLandingPage={true}
             showText={true}
           />
@@ -97,35 +106,35 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
       </div>
       
       {/* Enhanced headline with refined animations */}
-      <div ref={headlineRef} className="text-center mb-16 relative mt-20 pt-16">
+      <div ref={headlineRef} className="text-center mb-20 relative mt-24 pt-16">
         <h1 className="font-clash tracking-wider text-beautyagent-dark-grey">
           <span 
-            className={`block text-4xl md:text-5xl lg:text-6xl font-light transition-all duration-700 ease-out transform filter ${
-              animationStates.discover ? 'opacity-80 translate-y-0 blur-[0.5px]' : 'opacity-0 translate-y-4 blur-sm'
+            className={`block text-5xl md:text-6xl lg:text-7xl font-light transition-all duration-1000 ease-out transform filter ${
+              animationStates.discover ? 'opacity-70 translate-y-0 blur-[0.8px]' : 'opacity-0 translate-y-6 blur-md'
             }`}
           >
             DISCOVER
           </span>
           
           <span 
-            className={`block text-4xl md:text-5xl lg:text-6xl font-light transition-all duration-700 ease-out transform filter ${
-              animationStates.yourBest ? 'opacity-80 translate-y-0 scale-100 blur-[0.5px]' : 'opacity-0 translate-y-2 scale-95 blur-sm'
+            className={`block text-5xl md:text-6xl lg:text-7xl font-light transition-all duration-1000 ease-out transform filter ${
+              animationStates.yourBest ? 'opacity-70 translate-y-0 scale-100 blur-[0.8px]' : 'opacity-0 translate-y-4 scale-95 blur-md'
             }`}
-            style={{ transitionDelay: '200ms' }}
+            style={{ transitionDelay: '300ms' }}
           >
             YOUR BEST
           </span>
           
           <span 
-            className={`version-text block text-4xl md:text-5xl lg:text-6xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-beautyagent-burnt-orange to-beautyagent-violet-titanium transition-all duration-700 ease-out transform ${
-              animationStates.version ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-4 blur-sm'
+            className={`version-text block text-5xl md:text-6xl lg:text-7xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-beautyagent-burnt-orange to-beautyagent-violet-titanium transition-all duration-1000 ease-out transform ${
+              animationStates.version ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-6 blur-md'
             }`}
             style={{ 
-              transitionDelay: '400ms',
+              transitionDelay: '600ms',
               backgroundSize: '200% 100%',
-              animation: animationStates.version ? 'shimmer-gradient 8s ease-in-out infinite' : 'none',
-              animationDelay: '0.8s',
-              textShadow: '0 0 20px rgba(242, 150, 105, 0.2)'
+              animation: animationStates.version ? 'shimmer-gradient 10s ease-in-out infinite' : 'none',
+              animationDelay: '1s',
+              textShadow: '0 0 25px rgba(242, 150, 105, 0.25)'
             }}
           >
             VERSION
@@ -134,12 +143,13 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
         
         {/* Enhanced subtitle with better animation */}
         <p 
-          className={`text-beautyagent-medium-grey text-sm md:text-base mt-6 transition-all duration-700 ease-out transform ${
-            animationStates.subtitle ? 'opacity-70 translate-y-0 blur-0' : 'opacity-0 translate-y-4 blur-sm'
+          className={`text-beautyagent-medium-grey text-lg md:text-xl mt-8 transition-all duration-1000 ease-out transform ${
+            animationStates.subtitle ? 'opacity-80 translate-y-0 blur-0' : 'opacity-0 translate-y-4 blur-sm'
           }`}
           style={{ 
-            transitionDelay: '600ms',
-            letterSpacing: '0.04em'
+            transitionDelay: '800ms',
+            letterSpacing: '0.06em',
+            fontWeight: 300
           }}
         >
           Powered by AI. Rooted in Ritual.
@@ -147,11 +157,16 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
       </div>
       
       {/* Welcoming message with typing indicator */}
-      <div className="mb-10 h-6 flex justify-center items-center">
+      <div className="mb-12 h-6 flex justify-center items-center">
         {showTyping ? (
           <TypingIndicator visible={true} />
         ) : (
-          <p className="text-beautyagent-medium-grey max-w-xl mx-auto animate-fade-in opacity-0">
+          <p 
+            className={`text-beautyagent-medium-grey max-w-xl mx-auto transition-all duration-1000 ease-out transform ${
+              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+            style={{ transitionDelay: '1200ms' }}
+          >
             {welcomeMessage}
           </p>
         )}
@@ -159,7 +174,10 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
       
       {/* Enhanced Main CTA Button with ripple effect */}
       <RippleButton 
-        className="glass-button hover:bg-beautyagent-violet-titanium hover:text-white text-lg px-8 py-6 h-auto mb-6 animate-fade-in opacity-0 delay-1500 liquid-button plasma-glow"
+        className={`glass-button hover:bg-beautyagent-violet-titanium hover:text-white text-lg px-8 py-6 h-auto mb-6 transition-all duration-1200 ease-out transform ${
+          animationStates.ctaReady ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+        } liquid-button plasma-glow`}
+        style={{ transitionDelay: '1400ms' }}
         asChild
       >
         <Link to="/skin-mirror">
@@ -169,7 +187,12 @@ const Hero = ({ isLoaded, showTyping, welcomeMessage }: HeroProps) => {
       </RippleButton>
       
       {/* Subcopy below CTA */}
-      <p className="text-beautyagent-medium-grey text-sm mb-16 animate-fade-in opacity-0 delay-1800">
+      <p 
+        className={`text-beautyagent-medium-grey text-sm mb-16 transition-all duration-1200 ease-out transform ${
+          animationStates.ctaReady ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+        style={{ transitionDelay: '1600ms' }}
+      >
         Upload a photo or describe your skin today
       </p>
     </div>

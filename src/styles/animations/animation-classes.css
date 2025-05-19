@@ -1,351 +1,56 @@
 
-/* Animation Classes for BeautyAgent */
+/* Extended animation classes for the hypnotic landing page */
 
-/* Breathing animations */
-.animate-breathing {
-  animation: breathing 6s infinite ease-in-out;
+/* Add new animation classes for very slow pulse */
+.animate-pulse-very-slow {
+  animation: pulse-slow 30s infinite ease-in-out;
 }
 
-.animate-breathing-fast {
-  animation: breathing 3s infinite ease-in-out;
-}
-
-.animate-digital-breathing {
-  animation: digital-breathing 4s infinite ease-in-out;
-}
-
-/* Floating animations */
-.animate-float {
-  animation: float 6s infinite ease-in-out;
-}
-
-.animate-float-slow {
-  animation: float 8s infinite ease-in-out;
-}
-
-.animate-float-subtle {
-  animation: float-subtle 5s infinite ease-in-out;
-}
-
-/* Orbital animations */
-.animate-orbit {
-  animation: orbit 12s infinite linear;
-}
-
-.animate-orbit-slow {
-  animation: orbit 20s infinite linear;
-}
-
-.animate-orbit-reverse {
-  animation: orbit 15s infinite linear reverse;
-}
-
-.animate-orbital-shift {
-  animation: orbital-shift 28s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-.animate-orbital-float {
-  animation: orbital-float 15s infinite cubic-bezier(0.4, 0, 0.6, 1);
-}
-
-/* Pulse animations */
-.animate-pulse-subtle {
-  animation: pulse-subtle 4s infinite ease-in-out;
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 6s infinite ease-in-out;
-}
-
-.animate-pulse-cellular {
-  animation: pulse-cellular 5s infinite ease-in-out;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s infinite ease-in-out;
-}
-
-/* Scanning animation */
-.animate-scanning {
-  animation: scanning 2s infinite ease-in-out alternate;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 6s infinite linear;
-}
-
-/* Cellular animations */
-.animate-cellular-drift {
-  animation: cellular-drift 18s infinite cubic-bezier(0.42, 0, 0.58, 1);
-}
-
+/* Add cellular drift variations with different speeds */
 .animate-cellular-drift-slow {
-  animation: cellular-drift 25s infinite cubic-bezier(0.42, 0, 0.58, 1);
+  animation: cellular-drift 35s infinite linear;
 }
 
 .animate-cellular-drift-fast {
-  animation: cellular-drift 12s infinite cubic-bezier(0.42, 0, 0.58, 1);
+  animation: cellular-drift 15s infinite linear;
 }
 
-.animate-cellular-core-pulse {
-  animation: cellular-core-pulse 6s infinite cubic-bezier(0.4, 0, 0.6, 1);
+/* Additional animation class for radial pulse */
+.animate-radial-pulse {
+  animation: radial-pulse 15s infinite ease-in-out;
 }
 
-.animate-cellular-ring-drift {
-  animation: cellular-ring-drift 15s infinite cubic-bezier(0.45, 0, 0.55, 1);
+/* Enhanced animation class for the version text shimmer */
+@keyframes enhanced-shimmer-gradient {
+  0% { background-position: 0% 50%; opacity: 0.9; }
+  50% { background-position: 100% 50%; opacity: 1; }
+  100% { background-position: 0% 50%; opacity: 0.9; }
 }
 
-.animate-cellular-motion {
-  animation: cellular-motion 20s infinite cubic-bezier(0.4, 0, 0.6, 1);
+.animate-shimmer-enhanced {
+  animation: enhanced-shimmer-gradient 10s infinite ease-in-out;
 }
 
-/* Fade in animations with different timings */
-.animate-fade-in {
-  animation: fade-in 0.8s ease-out forwards;
+/* Animation for light rays */
+@keyframes light-ray-pulse {
+  0% { opacity: 0.03; transform: scale(1); }
+  50% { opacity: 0.08; transform: scale(1.05); }
+  100% { opacity: 0.03; transform: scale(1); }
 }
 
-.animate-fade-in-fast {
-  animation: fade-in 0.5s ease-out forwards;
+.animate-light-ray {
+  animation: light-ray-pulse 20s infinite ease-in-out;
 }
 
-.animate-fade-in-slow {
-  animation: fade-in 1.2s ease-out forwards;
-}
-
-/* Directional fade animations */
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-}
-
-.animate-fade-in-down {
-  animation: fade-in-down 0.8s ease-out forwards;
-}
-
-.animate-fade-in-left {
-  animation: fade-in-left 0.8s ease-out forwards;
-}
-
-.animate-fade-in-right {
-  animation: fade-in-right 0.8s ease-out forwards;
-}
-
-/* Light shimmer animation */
-.animate-light-shimmer {
-  animation: light-shimmer 3s infinite ease-in-out;
-}
-
-/* Shimmer animations */
-.animate-shimmer {
-  animation: shimmer 2s infinite linear;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.05) 20%,
-    rgba(255, 255, 255, 0.15) 40%,
-    rgba(255, 255, 255, 0.05) 60%
-  );
-  background-size: 200% 100%;
-}
-
-/* Gradient shimmer animation */
-.animate-shimmer-gradient {
-  animation: shimmer-gradient 8s infinite ease-in-out;
-  background-size: 200% 100%;
-}
-
-/* Neural animations */
-.animate-neural-wave {
-  animation: neural-wave 2s infinite cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-/* Morph animations for shapes */
-.animate-morph {
-  animation: morph 8s infinite ease-in-out;
+/* Animation for enhanced morph */
+@keyframes morph-enhanced {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); }
+  25% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; transform: rotate(1deg); }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: rotate(0deg); }
+  75% { border-radius: 40% 30% 60% 70% / 60% 40% 50% 40%; transform: rotate(-1deg); }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); }
 }
 
 .animate-morph-enhanced {
-  animation: morph 15s infinite cubic-bezier(0.42, 0, 0.58, 1);
+  animation: morph-enhanced 15s infinite ease-in-out;
 }
-
-/* Font weight animations */
-.animate-font-weight {
-  animation: font-weight-shift 8s infinite ease-in-out;
-}
-
-/* Card animations */
-.animate-card-glow {
-  animation: card-glow 1.5s infinite alternate;
-}
-
-/* Ripple effect */
-.ripple-button {
-  position: relative;
-  overflow: hidden;
-}
-
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.4);
-  width: 100px;
-  height: 100px;
-  transform: translate(-50%, -50%);
-  animation: ripple 0.6s linear;
-  pointer-events: none;
-}
-
-/* Sequence fade for landing page */
-.animate-fade-sequence-1 {
-  animation: fade-in-sequence 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  animation-delay: 0.2s;
-  opacity: 0;
-}
-
-.animate-fade-sequence-2 {
-  animation: fade-in-sequence 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  animation-delay: 0.6s;
-  opacity: 0;
-}
-
-.animate-fade-sequence-3 {
-  animation: fade-in-sequence 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  animation-delay: 1s;
-  opacity: 0;
-}
-
-/* Letter reveal animation */
-.animate-letter-reveal {
-  animation: letter-reveal 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-/* Kerning adjustment animation */
-.animate-kerning-adjust {
-  animation: kerning-adjust 1s ease-out forwards;
-}
-
-/* Chat animations */
-.animate-chat-bubble {
-  animation: chat-bubble-in 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-/* Badge animations */
-.animate-badge-pulse {
-  animation: badge-pulse 1.5s infinite ease-in-out;
-}
-
-/* Text blur transition */
-.animate-text-blur-transition {
-  animation: text-blur-transition 0.8s ease-out forwards;
-}
-
-/* Sonar ring animation */
-.animate-sonar-ring {
-  animation: sonar-ring 2s infinite cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* Bioluminescent class */
-.text-bioluminescent {
-  animation: bioluminescent-pulse 3s infinite ease-in-out;
-}
-
-/* Liquid styling */
-.text-liquid {
-  animation: kerning-adjust 1.5s ease-out forwards;
-}
-
-.liquid-button {
-  animation: liquid-button 8s infinite ease-in-out;
-}
-
-/* Plasma glow */
-.plasma-glow {
-  position: relative;
-}
-
-.plasma-glow::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: inherit;
-  background: radial-gradient(circle, rgba(126, 105, 171, 0.3) 0%, transparent 70%);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.plasma-glow:hover::after {
-  opacity: 0.8;
-}
-
-/* Delayed animations */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-600 { animation-delay: 0.6s; }
-.delay-700 { animation-delay: 0.7s; }
-.delay-800 { animation-delay: 0.8s; }
-.delay-900 { animation-delay: 0.9s; }
-.delay-1000 { animation-delay: 1s; }
-.delay-1500 { animation-delay: 1.5s; }
-.delay-1800 { animation-delay: 1.8s; }
-.delay-2000 { animation-delay: 2s; }
-
-/* Parallax layers */
-.parallax-layer {
-  will-change: transform;
-}
-
-.parallax-shallow {
-  animation: parallax-shift 10s infinite ease-in-out;
-}
-
-.parallax-middle {
-  animation: parallax-shift 15s infinite ease-in-out;
-  animation-delay: 0.5s;
-}
-
-.parallax-deep {
-  animation: parallax-shift 20s infinite ease-in-out;
-  animation-delay: 1s;
-}
-
-/* Hover/Touch interactions */
-.hover-enhance {
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.hover-enhance:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(126, 105, 171, 0.15);
-}
-
-/* Depth layers */
-.depth-layer-1 {
-  position: relative;
-  z-index: 1;
-}
-
-.depth-layer-2 {
-  position: relative;
-  z-index: 2;
-}
-
-.depth-layer-3 {
-  position: relative;
-  z-index: 3;
-}
-
-/* Animation utilities */
-.animate-pause { animation-play-state: paused; }
-.animate-running { animation-play-state: running; }
-.animate-forwards { animation-fill-mode: forwards; }
-.animate-backwards { animation-fill-mode: backwards; }
-.animate-both { animation-fill-mode: both; }
-.animate-infinite { animation-iteration-count: infinite; }
-.animate-once { animation-iteration-count: 1; }
-
-/* Animation easing */
-.ease-in-out { animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1); }
-.ease-spring { animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
-.ease-bounce { animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
