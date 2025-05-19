@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import SkinMirror from "./pages/SkinMirror";
 import SkinDiary from "./pages/SkinDiary";
 import BeautyExchange from "./pages/BeautyExchange";
+import ShopPage from "./pages/ShopPage"; // Add import for our new Shop page
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/skin-mirror" element={<SkinMirror />} />
             <Route path="/skin-diary" element={<SkinDiary />} />
             <Route path="/beauty-exchange" element={<BeautyExchange />} />
+            <Route path="/shop" element={<ShopPage />} /> {/* Add route for Shop page */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
