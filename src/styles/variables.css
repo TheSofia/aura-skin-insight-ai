@@ -31,17 +31,21 @@
   --beautyagent-dark-grey: var(--beautyagent-midnight-graphite);
   --beautyagent-deeper-grey: #121011;
   
-  /* Translucent effects for layering and depth */
+  /* Enhanced translucent effects for layering and depth */
   --beautyagent-glass-white: rgba(255, 255, 255, 0.95);
   --beautyagent-glass-light: rgba(255, 255, 255, 0.85);
-  --beautyagent-glass-accent: rgba(255, 135, 67, 0.06);
+  --beautyagent-glass-accent: rgba(255, 135, 67, 0.08);
   --beautyagent-glass-cosmic: rgba(255, 218, 185, 0.08);
-  --beautyagent-glass-violet: rgba(62, 49, 102, 0.1);
+  --beautyagent-glass-violet: rgba(62, 49, 102, 0.12);
+  --beautyagent-glass-emerald: rgba(0, 79, 77, 0.1);
+  --beautyagent-glass-crimson: rgba(156, 28, 61, 0.08);
   
-  /* Gradient combinations */
+  /* Enhanced gradient combinations */
   --beautyagent-gold-gradient: linear-gradient(to right, var(--beautyagent-gold-light-start), var(--beautyagent-gold-light-end));
-  --beautyagent-warm-gradient: linear-gradient(to right, var(--beautyagent-warm-amber), var(--beautyagent-deep-crimson));
-  --beautyagent-cool-gradient: linear-gradient(to right, var(--beautyagent-refined-emerald), var(--beautyagent-sapphire-violet));
+  --beautyagent-warm-gradient: linear-gradient(135deg, var(--beautyagent-warm-amber), var(--beautyagent-deep-crimson));
+  --beautyagent-cool-gradient: linear-gradient(135deg, var(--beautyagent-refined-emerald), var(--beautyagent-sapphire-violet));
+  --beautyagent-depth-gradient: linear-gradient(135deg, var(--beautyagent-midnight-graphite), var(--beautyagent-sapphire-violet));
+  --beautyagent-energy-gradient: linear-gradient(45deg, var(--beautyagent-warm-amber), var(--beautyagent-gold-light-end));
   
   /* Define the CSS variables for shadcn/ui compatibility */
   --ring: 270deg 56% 67%;

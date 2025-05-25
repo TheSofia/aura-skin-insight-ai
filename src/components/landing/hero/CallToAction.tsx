@@ -22,34 +22,43 @@ const CallToAction: React.FC<CallToActionProps> = ({
         animationStates.ctaReady ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
       style={{ 
-        transitionDelay: '800ms',
+        transitionDelay: '1200ms',
         perspective: '1000px',
         transformStyle: 'preserve-3d',
       }}
     >
-      {/* Main CTA Button with enhanced styling */}
+      {/* Main CTA Button with enhanced styling using new color palette */}
       <button 
-        className="mb-6 py-3 px-8 rounded-lg text-sm sm:text-base font-medium transition-all duration-500 
-          relative overflow-hidden group hover:shadow-lg transform hover:scale-105 active:scale-95"
+        className="mb-6 py-4 px-10 rounded-xl text-sm sm:text-base font-medium transition-all duration-500 
+          relative overflow-hidden group hover:shadow-xl transform hover:scale-105 active:scale-95"
         style={{
-          background: 'var(--beautyagent-sapphire-violet)',
-          color: 'var(--beautyagent-gold-light-end)',
-          boxShadow: '0 4px 20px rgba(62, 49, 102, 0.2)',
-          transform: `perspective(1000px) translateZ(${cursorProximity * 10}px)`,
-          transition: 'all 0.6s cubic-bezier(0.19, 1, 0.22, 1)'
+          background: 'linear-gradient(135deg, #3E3166 0%, #1B1B1B 100%)',
+          color: '#FDE6BF',
+          boxShadow: '0 8px 32px rgba(62, 49, 102, 0.3), 0 0 20px rgba(255, 135, 67, 0.1)',
+          transform: `perspective(1000px) translateZ(${cursorProximity * 12}px)`,
+          transition: 'all 0.6s cubic-bezier(0.19, 1, 0.22, 1)',
+          border: '1px solid rgba(233, 218, 174, 0.2)',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'linear-gradient(135deg, #FF8743 0%, #3E3166 100%)';
+          e.currentTarget.style.color = '#FDFDFD';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'linear-gradient(135deg, #3E3166 0%, #1B1B1B 100%)';
+          e.currentTarget.style.color = '#FDE6BF';
         }}
       >
         {/* Inner glow that animates on hover */}
         <span 
-          className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-30 transition-all duration-1000"
+          className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-40 transition-all duration-1000"
           style={{
-            background: 'radial-gradient(circle at center, rgba(253, 230, 191, 0.8) 0%, transparent 70%)'
+            background: 'radial-gradient(circle at center, rgba(255, 135, 67, 0.8) 0%, transparent 70%)'
           }}
         />
         
         Find My Skin Protocol
         
-        {/* Ripple effect on click */}
+        {/* Enhanced ripple effect */}
         <span className="absolute inset-0 pointer-events-none" onClick={e => {
           const button = e.currentTarget.parentElement;
           if (!button) return;
@@ -67,7 +76,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
           circle.style.top = `${y}px`;
           circle.style.position = 'absolute';
           circle.style.borderRadius = '50%';
-          circle.style.backgroundColor = 'rgba(255, 230, 191, 0.3)';
+          circle.style.backgroundColor = 'rgba(255, 135, 67, 0.4)';
           circle.style.transform = 'scale(0)';
           circle.style.animation = 'ripple 0.8s linear';
 
@@ -87,16 +96,16 @@ const CallToAction: React.FC<CallToActionProps> = ({
         }} />
       </button>
       
-      <div className="w-12 h-0.5 mb-6 opacity-40" 
+      <div className="w-16 h-0.5 mb-6 opacity-50" 
         style={{
-          background: 'linear-gradient(to right, transparent, var(--beautyagent-pure-bone-neutral), transparent)'
+          background: 'linear-gradient(to right, transparent, #E9DAAE, transparent)'
         }}
       />
       
       <p 
-        className="text-center text-xs sm:text-sm opacity-70 max-w-xs"
+        className="text-center text-xs sm:text-sm opacity-70 max-w-sm"
         style={{
-          color: 'var(--beautyagent-pure-bone-neutral)',
+          color: '#E6E6E6',
           transform: `translateZ(${cursorProximity * 5}px)`,
           transition: 'transform 0.6s cubic-bezier(0.19, 1, 0.22, 1)'
         }}
