@@ -86,14 +86,14 @@ const Index = () => {
         background: 'linear-gradient(135deg, #FDFDFD 0%, #F8F9FA 50%, #F2F4F6 100%)',
       }}
     >
-      {/* Full-screen cellular background animation - single, comprehensive layer */}
+      {/* Enhanced full-screen cellular background animation - single, comprehensive layer */}
       <FullScreenCellularBackground 
         isVisible={isLoaded}
         mousePosition={mousePosition}
         scrollPosition={scrollPosition}
       />
       
-      {/* Brand name at top */}
+      {/* Brand name at top with enhanced styling */}
       <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30">
         <h1 
           className={`text-xl font-light tracking-wide transition-all duration-1000 ${
@@ -102,8 +102,8 @@ const Index = () => {
           style={{
             fontFamily: "'Satoshi', sans-serif",
             color: '#1B1B1B',
-            textShadow: '0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.4)',
-            filter: 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1))',
+            textShadow: '0 0 12px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.5)',
+            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
           }}
         >
           BeautyAgent
@@ -129,10 +129,13 @@ const Index = () => {
         style={{ transitionDelay: '2000ms' }}
       >
         <div 
-          className="flex items-center bg-beautyagent-sapphire-violet/90 backdrop-blur-sm border border-beautyagent-gold-light-start/20 
-            rounded-full py-3 px-6 shadow-lg transition-all duration-300 hover:bg-beautyagent-sapphire-violet/95 
-            hover:border-beautyagent-gold-light-start/30 hover:shadow-beautyagent-warm-amber/10
+          className="flex items-center bg-beautyagent-sapphire-violet/95 backdrop-blur-sm border border-beautyagent-gold-light-start/30 
+            rounded-full py-3 px-6 shadow-lg transition-all duration-300 hover:bg-beautyagent-sapphire-violet/98 
+            hover:border-beautyagent-gold-light-start/40 hover:shadow-beautyagent-warm-amber/15
             cursor-pointer group"
+          style={{
+            boxShadow: '0 8px 32px rgba(62, 49, 102, 0.4), 0 0 20px rgba(255, 135, 67, 0.1)',
+          }}
         >
           <span 
             className="text-sm text-beautyagent-deep-pearl-white mr-2 whitespace-nowrap transition-all duration-300 

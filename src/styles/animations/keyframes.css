@@ -1,3 +1,4 @@
+
 /* Base KeyFrames for BeautyAgent */
 
 /* Breathing animation for subtle element pulsing */
@@ -147,13 +148,52 @@
   100% { transform: rotate(360deg) scale(1); }
 }
 
-/* Cellular motion animation for membranes */
+/* Enhanced cellular motion animation for cinematic backgrounds */
 @keyframes cellular-motion {
-  0% { transform: rotate(0deg) scale(1); border-radius: 50%; }
-  25% { transform: rotate(90deg) scale(0.98); border-radius: 47% 53% 52% 48% / 48% 52% 48% 52%; }
-  50% { transform: rotate(180deg) scale(1.02); border-radius: 53% 47% 48% 52% / 52% 48% 52% 48%; }
-  75% { transform: rotate(270deg) scale(0.98); border-radius: 48% 52% 47% 53% / 52% 48% 52% 48%; }
-  100% { transform: rotate(360deg) scale(1); border-radius: 50%; }
+  0% { 
+    transform: rotate(0deg) scale(1); 
+    border-radius: 50%; 
+  }
+  25% { 
+    transform: rotate(90deg) scale(0.98); 
+    border-radius: 47% 53% 52% 48% / 48% 52% 48% 52%; 
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.02); 
+    border-radius: 53% 47% 48% 52% / 52% 48% 52% 48%; 
+  }
+  75% { 
+    transform: rotate(270deg) scale(0.98); 
+    border-radius: 48% 52% 47% 53% / 52% 48% 52% 48%; 
+  }
+  100% { 
+    transform: rotate(360deg) scale(1); 
+    border-radius: 50%; 
+  }
+}
+
+/* Enhanced cellular morph for large background elements */
+@keyframes cellular-morph {
+  0% { 
+    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%; 
+    transform: scale(1) rotate(0deg); 
+  }
+  25% { 
+    border-radius: 60% 40% 45% 55% / 40% 60% 50% 50%; 
+    transform: scale(1.03) rotate(1deg); 
+  }
+  50% { 
+    border-radius: 40% 60% 55% 45% / 60% 40% 55% 45%; 
+    transform: scale(0.97) rotate(0deg); 
+  }
+  75% { 
+    border-radius: 55% 45% 40% 60% / 45% 55% 40% 60%; 
+    transform: scale(1.01) rotate(-1deg); 
+  }
+  100% { 
+    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%; 
+    transform: scale(1) rotate(0deg); 
+  }
 }
 
 /* Orbital float for particles */
@@ -285,11 +325,23 @@
   100% { opacity: 0.6; transform: scale(1); }
 }
 
-/* Pulse cellular animation */
+/* Enhanced pulse cellular for cinematic backgrounds */
 @keyframes pulse-cellular {
-  0% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.1); }
-  100% { opacity: 0.5; transform: scale(1); }
+  0% { 
+    opacity: 0.4; 
+    transform: scale(1); 
+    filter: brightness(1); 
+  }
+  50% { 
+    opacity: 0.9; 
+    transform: scale(1.08); 
+    filter: brightness(1.2); 
+  }
+  100% { 
+    opacity: 0.4; 
+    transform: scale(1); 
+    filter: brightness(1); 
+  }
 }
 
 /* Text blur transition */
@@ -298,35 +350,122 @@
   100% { filter: blur(0); opacity: 1; }
 }
 
-/* Light shimmer animation */
+/* Enhanced light shimmer animation for cinematic effects */
 @keyframes light-shimmer {
-  0% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-  100% { opacity: 0.3; }
+  0% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+  100% { opacity: 0.2; transform: scale(1); }
 }
 
-/* NEW: Particle drift animation for background logo */
+/* Enhanced light ray pulse for atmospheric effects */
+@keyframes light-ray-pulse {
+  0% { 
+    opacity: 0.02; 
+    transform: scale(1) translateY(0); 
+    filter: blur(35px); 
+  }
+  25% { 
+    opacity: 0.06; 
+    transform: scale(1.02) translateY(-2px); 
+    filter: blur(30px); 
+  }
+  50% { 
+    opacity: 0.12; 
+    transform: scale(1.05) translateY(-5px); 
+    filter: blur(25px); 
+  }
+  75% { 
+    opacity: 0.08; 
+    transform: scale(1.02) translateY(-2px); 
+    filter: blur(30px); 
+  }
+  100% { 
+    opacity: 0.02; 
+    transform: scale(1) translateY(0); 
+    filter: blur(35px); 
+  }
+}
+
+/* Enhanced structural cellular motion for large background elements */
+@keyframes structural-cell-motion {
+  0% { 
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1); 
+    border-radius: 40% 60% 50% 50% / 30% 70% 60% 40%; 
+  }
+  25% { 
+    transform: translateX(8px) translateY(-8px) rotate(2deg) scale(1.02); 
+    border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%; 
+  }
+  50% { 
+    transform: translateX(12px) translateY(5px) rotate(0deg) scale(0.98); 
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%; 
+  }
+  75% { 
+    transform: translateX(-5px) translateY(12px) rotate(-2deg) scale(1.01); 
+    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%; 
+  }
+  100% { 
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1); 
+    border-radius: 40% 60% 50% 50% / 30% 70% 60% 40%; 
+  }
+}
+
+/* Enhanced drift particle animation with more dynamic movement */
 @keyframes drift-particle {
   0% { 
-    transform: translate(0, 0) scale(1); 
-    opacity: 0.4;
+    transform: translate(0, 0) scale(1) rotate(0deg); 
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(
+      calc(var(--end-x, 10px) * 0.3),
+      calc(var(--end-y, 10px) * 0.2)
+    ) scale(1.1) rotate(90deg);
+    opacity: 0.6;
   }
   50% {
     transform: translate(
-      calc(var(--end-x) - var(--start-x)),
-      calc(var(--end-y) - var(--start-y))
-    ) scale(1.2);
-    opacity: 0.7;
+      calc(var(--end-x, 10px) * 0.7),
+      calc(var(--end-y, 10px) * 0.6)
+    ) scale(1.3) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(
+      calc(var(--end-x, 10px) * 0.9),
+      calc(var(--end-y, 10px) * 0.8)
+    ) scale(1.1) rotate(270deg);
+    opacity: 0.5;
   }
   100% { 
-    transform: translate(0, 0) scale(1); 
-    opacity: 0.4;
+    transform: translate(
+      var(--end-x, 10px),
+      var(--end-y, 10px)
+    ) scale(1) rotate(360deg); 
+    opacity: 0.3;
   }
 }
 
-/* NEW: Radial gradient pulse for background logo */
+/* Enhanced radial gradient pulse for cinematic backgrounds */
 @keyframes radial-pulse {
-  0% { opacity: 0.3; transform: scale(0.95); }
-  50% { opacity: 0.6; transform: scale(1.05); }
-  100% { opacity: 0.3; transform: scale(0.95); }
+  0% { 
+    opacity: 0.2; 
+    transform: scale(0.95) rotate(0deg); 
+    filter: brightness(1); 
+  }
+  33% { 
+    opacity: 0.5; 
+    transform: scale(1.02) rotate(1deg); 
+    filter: brightness(1.1); 
+  }
+  66% { 
+    opacity: 0.8; 
+    transform: scale(1.08) rotate(0deg); 
+    filter: brightness(1.2); 
+  }
+  100% { 
+    opacity: 0.2; 
+    transform: scale(0.95) rotate(-1deg); 
+    filter: brightness(1); 
+  }
 }
