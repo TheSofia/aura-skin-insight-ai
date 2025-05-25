@@ -20,16 +20,16 @@ const FullScreenCellularBackground: React.FC<FullScreenCellularBackgroundProps> 
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Enhanced dynamic properties for cinematic experience
-  const dynamicIntensity = Math.max(0.4, 1 - (scrollPosition / 3000));
-  const parallaxOffset = scrollPosition * 0.15;
-  const scaleVariation = 1 + (scrollPosition / 8000);
+  // Enhanced dynamic properties for award-winning cinematic experience
+  const dynamicIntensity = Math.max(0.5, 1.2 - (scrollPosition / 2500));
+  const parallaxOffset = scrollPosition * 0.12;
+  const scaleVariation = 1 + (scrollPosition / 6000);
   
-  // Enhanced cursor interaction intensity
+  // Enhanced cursor interaction intensity with intelligent responsiveness
   const cursorIntensity = Math.sqrt(
     Math.pow(mousePosition.x - 0.5, 2) + Math.pow(mousePosition.y - 0.5, 2)
   );
-  const cursorGlow = 0.3 + (1 - cursorIntensity) * 0.7;
+  const cursorGlow = 0.4 + (1 - cursorIntensity) * 0.8;
   
   return (
     <div 
@@ -37,19 +37,19 @@ const FullScreenCellularBackground: React.FC<FullScreenCellularBackgroundProps> 
       className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0"
       style={{
         opacity: isVisible ? dynamicIntensity : 0,
-        transition: 'opacity 3s cubic-bezier(0.19, 1, 0.22, 1)',
+        transition: 'opacity 2.5s cubic-bezier(0.19, 1, 0.22, 1)',
         transform: `translateY(${parallaxOffset}px) scale(${scaleVariation})`,
-        filter: `brightness(${0.9 + cursorGlow * 0.3})`,
+        filter: `brightness(${1.0 + cursorGlow * 0.4}) contrast(${1.1 + cursorIntensity * 0.2}) saturate(${1.3 + cursorGlow * 0.3})`,
       }}
     >
-      {/* Large-scale cellular core structures - cinematic presence */}
+      {/* Enhanced large-scale intelligent cellular core structures */}
       <CellularCore 
         isVisible={isVisible}
         cursorGlow={cursorGlow}
         scrollPosition={scrollPosition}
       />
       
-      {/* Enhanced membrane wave structures - cinematic flow */}
+      {/* Enhanced intelligent membrane wave structures with fluid dynamics */}
       <MembraneFlows 
         isVisible={isVisible}
         cursorGlow={cursorGlow}
@@ -58,27 +58,27 @@ const FullScreenCellularBackground: React.FC<FullScreenCellularBackgroundProps> 
         scrollPosition={scrollPosition}
       />
       
-      {/* Enhanced dynamic particle system - 3 layers for depth */}
+      {/* Enhanced intelligent dynamic particle system - 3 layers for cinematic depth */}
       <ParticleSystem 
         cursorGlow={cursorGlow}
         cursorIntensity={cursorIntensity}
         mousePosition={mousePosition}
       />
       
-      {/* Enhanced light ray system - cinematic atmosphere */}
+      {/* Enhanced intelligent light ray system with connector bridges */}
       <LightRaySystem 
         cursorGlow={cursorGlow}
         cursorIntensity={cursorIntensity}
         scrollPosition={scrollPosition}
       />
       
-      {/* Enhanced SVG neural network - connecting tissue */}
+      {/* Enhanced intelligent SVG neural network - living connective tissue */}
       <NeuralNetwork 
         cursorGlow={cursorGlow}
         cursorIntensity={cursorIntensity}
       />
       
-      {/* Cinematic edge fade overlay */}
+      {/* Refined cinematic edge fade overlay for seamless integration */}
       <EdgeFadeOverlay />
     </div>
   );

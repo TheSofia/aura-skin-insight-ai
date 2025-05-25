@@ -7,9 +7,10 @@ const EdgeFadeOverlay: React.FC = () => {
       className="absolute inset-0 pointer-events-none"
       style={{
         background: `radial-gradient(ellipse at center, 
-          transparent 30%, 
-          rgba(253, 253, 253, 0.05) 60%, 
-          rgba(253, 253, 253, 0.15) 85%, 
+          transparent 25%, 
+          rgba(253, 253, 253, 0.03) 50%, 
+          rgba(253, 253, 253, 0.08) 75%, 
+          rgba(253, 253, 253, 0.15) 90%, 
           rgba(253, 253, 253, 0.25) 100%)`,
       }}
     />
