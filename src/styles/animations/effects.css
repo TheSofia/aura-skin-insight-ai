@@ -1,0 +1,170 @@
+
+/* Visual Effects and Transitions Keyframes */
+
+/* Digital breathing for UI elements */
+@keyframes digital-breathing {
+  0% { opacity: 0.85; }
+  50% { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+
+/* Gentle floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Subtle floating animation */
+@keyframes float-subtle {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Pulse glow effect */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 5px rgba(126, 105, 171, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(126, 105, 171, 0.4); }
+  100% { box-shadow: 0 0 5px rgba(126, 105, 171, 0.2); }
+}
+
+/* Scanning animation for face scanner */
+@keyframes scanning {
+  0% { transform: translateY(-50%) translateX(-50%); opacity: 0.8; }
+  45% { opacity: 0.6; }
+  55% { opacity: 0.6; }
+  100% { transform: translateY(50%) translateX(50%); opacity: 0.8; }
+}
+
+/* Slow spin animation */
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Shimmer effect for cards and buttons */
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Shimmer gradient for text with gradient background */
+@keyframes shimmer-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neural wave animation for scan lines */
+@keyframes neural-wave {
+  0% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(100%) scaleY(1.2); }
+  100% { transform: translateY(200%) scaleY(1); }
+}
+
+/* Synaptic spark animation for logo neural connections */
+@keyframes synaptic-spark {
+  0% { opacity: 0; transform: scale(0.5); }
+  20% { opacity: 1; transform: scale(1.2); }
+  40% { opacity: 0.7; }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* Neural path animation for logo neural connections */
+@keyframes neural-path {
+  0% { opacity: 0; stroke-dashoffset: 100; }
+  20% { opacity: 0.7; }
+  40% { opacity: 0.4; }
+  100% { opacity: 0; stroke-dashoffset: 0; }
+}
+
+/* Parallax shift animation for layered depth */
+@keyframes parallax-shift {
+  0% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(2px) translateY(-2px); }
+  50% { transform: translateX(0) translateY(-3px); }
+  75% { transform: translateX(-2px) translateY(-1px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+/* Bioluminescent pulse for text */
+@keyframes bioluminescent-pulse {
+  0% { text-shadow: 0 0 5px rgba(126, 105, 171, 0.2); }
+  50% { text-shadow: 0 0 12px rgba(126, 105, 171, 0.5), 0 0 20px rgba(126, 105, 171, 0.2); }
+  100% { text-shadow: 0 0 5px rgba(126, 105, 171, 0.2); }
+}
+
+/* Pulse subtle animation */
+@keyframes pulse-subtle {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+
+/* Pulse slow animation */
+@keyframes pulse-slow {
+  0% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+  100% { opacity: 0.6; transform: scale(1); }
+}
+
+/* Enhanced light shimmer animation for cinematic effects */
+@keyframes light-shimmer {
+  0% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+  100% { opacity: 0.2; transform: scale(1); }
+}
+
+/* Enhanced light ray pulse for atmospheric effects */
+@keyframes light-ray-pulse {
+  0% { 
+    opacity: 0.02; 
+    transform: scale(1) translateY(0); 
+    filter: blur(35px); 
+  }
+  25% { 
+    opacity: 0.06; 
+    transform: scale(1.02) translateY(-2px); 
+    filter: blur(30px); 
+  }
+  50% { 
+    opacity: 0.12; 
+    transform: scale(1.05) translateY(-5px); 
+    filter: blur(25px); 
+  }
+  75% { 
+    opacity: 0.08; 
+    transform: scale(1.02) translateY(-2px); 
+    filter: blur(30px); 
+  }
+  100% { 
+    opacity: 0.02; 
+    transform: scale(1) translateY(0); 
+    filter: blur(35px); 
+  }
+}
+
+/* Enhanced radial gradient pulse for cinematic backgrounds */
+@keyframes radial-pulse {
+  0% { 
+    opacity: 0.2; 
+    transform: scale(0.95) rotate(0deg); 
+    filter: brightness(1); 
+  }
+  33% { 
+    opacity: 0.5; 
+    transform: scale(1.02) rotate(1deg); 
+    filter: brightness(1.1); 
+  }
+  66% { 
+    opacity: 0.8; 
+    transform: scale(1.08) rotate(0deg); 
+    filter: brightness(1.2); 
+  }
+  100% { 
+    opacity: 0.2; 
+    transform: scale(0.95) rotate(-1deg); 
+    filter: brightness(1); 
+  }
+}

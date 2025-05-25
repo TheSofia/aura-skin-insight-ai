@@ -1,0 +1,106 @@
+
+/* Particle and Orbital Animation Keyframes */
+
+/* Orbital motion for particles */
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+/* Orbital shift animation for layered depth */
+@keyframes orbital-shift {
+  0% { transform: rotate(0deg) translateX(15px) translateY(0); }
+  25% { transform: rotate(90deg) translateX(15px) translateY(5px); }
+  50% { transform: rotate(180deg) translateX(15px) translateY(0); }
+  75% { transform: rotate(270deg) translateX(15px) translateY(-5px); }
+  100% { transform: rotate(360deg) translateX(15px) translateY(0); }
+}
+
+/* Premium orbital animations */
+@keyframes orbital-motion {
+  0% { transform: rotate(0deg) translateX(1px) rotate(0deg); }
+  33% { transform: rotate(120deg) translateX(1px) rotate(-120deg); }
+  66% { transform: rotate(240deg) translateX(1px) rotate(-240deg); }
+  100% { transform: rotate(360deg) translateX(1px) rotate(-360deg); }
+}
+
+@keyframes orbital-motion-reverse {
+  0% { transform: rotate(360deg) translateX(1px) rotate(-360deg); }
+  33% { transform: rotate(240deg) translateX(1px) rotate(-240deg); }
+  66% { transform: rotate(120deg) translateX(1px) rotate(-120deg); }
+  100% { transform: rotate(0deg) translateX(1px) rotate(0deg); }
+}
+
+@keyframes orbital-float {
+  0% { transform: rotate(0deg) translateX(0px) scale(1); opacity: 0.7; }
+  25% { transform: rotate(90deg) translateX(3px) scale(1.05); opacity: 0.8; }
+  50% { transform: rotate(180deg) translateX(0px) scale(1.02); opacity: 0.75; }
+  75% { transform: rotate(270deg) translateX(2px) scale(0.98); opacity: 0.7; }
+  100% { transform: rotate(360deg) translateX(0px) scale(1); opacity: 0.7; }
+}
+
+/* Cellular particle float animation */
+@keyframes cellular-particle-float {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+  33% { transform: translateY(-3px) translateX(2px) scale(1.1); opacity: 0.8; }
+  66% { transform: translateY(-1px) translateX(3px) scale(1.05); opacity: 0.75; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+}
+
+/* Enhanced drift particle animation with more dynamic movement */
+@keyframes drift-particle {
+  0% { 
+    transform: translate(0, 0) scale(1) rotate(0deg); 
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(
+      calc(var(--end-x, 10px) * 0.3),
+      calc(var(--end-y, 10px) * 0.2)
+    ) scale(1.1) rotate(90deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(
+      calc(var(--end-x, 10px) * 0.7),
+      calc(var(--end-y, 10px) * 0.6)
+    ) scale(1.3) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(
+      calc(var(--end-x, 10px) * 0.9),
+      calc(var(--end-y, 10px) * 0.8)
+    ) scale(1.1) rotate(270deg);
+    opacity: 0.5;
+  }
+  100% { 
+    transform: translate(
+      var(--end-x, 10px),
+      var(--end-y, 10px)
+    ) scale(1) rotate(360deg); 
+    opacity: 0.3;
+  }
+}
+
+/* Circular motion for particles */
+@keyframes circular-motion {
+  0% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-2px) translateX(2px); }
+  50% { transform: translateY(0) translateX(3px); }
+  75% { transform: translateY(2px) translateX(2px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* Pulse dot animation for particles */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* Sonar ring animation */
+@keyframes sonar-ring {
+  0% { transform: scale(0.8); opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 0; }
+}

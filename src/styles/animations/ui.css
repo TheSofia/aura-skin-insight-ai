@@ -1,0 +1,109 @@
+
+/* UI Element Animation Keyframes */
+
+/* Fade-in animations with different directions */
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-down {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-left {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in-right {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Fade in sequence for landing page text - enhanced */
+@keyframes fade-in-sequence {
+  0% { opacity: 0; transform: translateY(10px); filter: blur(5px); }
+  20% { opacity: 0.2; transform: translateY(8px); filter: blur(3px); }
+  60% { opacity: 0.6; transform: translateY(4px); filter: blur(1px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Letter reveal animation */
+@keyframes letter-reveal {
+  0% { opacity: 0; transform: translateY(10px); filter: blur(2px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Kerning adjustment animation */
+@keyframes kerning-adjust {
+  0% { letter-spacing: -0.02em; }
+  100% { letter-spacing: normal; }
+}
+
+/* Chat bubble animation */
+@keyframes chat-bubble-in {
+  0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Badge notification pulse */
+@keyframes badge-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Typing indicator animation */
+@keyframes typing-indicator {
+  0%, 80%, 100% { 
+    transform: scale(0);
+    opacity: 0.6;
+    background-color: var(--beautyagent-medium-grey, #9F9EA1);
+  }
+  40% { 
+    transform: scale(1);
+    opacity: 1;
+    background-color: var(--beautyagent-violet-titanium-light, var(--beautyagent-violet-titanium));
+  }
+}
+
+/* Liquid button animation */
+@keyframes liquid-button {
+  0% { border-radius: 50px; }
+  25% { border-radius: 56px 44px 54px 46px / 50px; }
+  50% { border-radius: 44px 56px 46px 54px / 50px; }
+  75% { border-radius: 50px 50px 46px 54px / 56px 44px 52px 48px; }
+  100% { border-radius: 50px; }
+}
+
+/* Ripple animation for buttons */
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* Variable font weight animation */
+@keyframes font-weight-shift {
+  0% { font-variation-settings: 'wght' 300; }
+  50% { font-variation-settings: 'wght' 400; }
+  100% { font-variation-settings: 'wght' 300; }
+}
+
+/* Glass card hover glow */
+@keyframes card-glow {
+  0% { box-shadow: 0 8px 20px rgba(31, 38, 135, 0.07); }
+  100% { box-shadow: 0 8px 25px rgba(126, 105, 171, 0.15); }
+}
+
+/* Text blur transition */
+@keyframes text-blur-transition {
+  0% { filter: blur(3px); opacity: 0.7; }
+  100% { filter: blur(0); opacity: 1; }
+}

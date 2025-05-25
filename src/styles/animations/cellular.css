@@ -1,0 +1,137 @@
+
+/* Cellular and Organic Animation Keyframes */
+
+/* Enhanced cellular motion animation for cinematic backgrounds */
+@keyframes cellular-motion {
+  0% { 
+    transform: rotate(0deg) scale(1); 
+    border-radius: 50%; 
+  }
+  25% { 
+    transform: rotate(90deg) scale(0.98); 
+    border-radius: 47% 53% 52% 48% / 48% 52% 48% 52%; 
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.02); 
+    border-radius: 53% 47% 48% 52% / 52% 48% 52% 48%; 
+  }
+  75% { 
+    transform: rotate(270deg) scale(0.98); 
+    border-radius: 48% 52% 47% 53% / 52% 48% 52% 48%; 
+  }
+  100% { 
+    transform: rotate(360deg) scale(1); 
+    border-radius: 50%; 
+  }
+}
+
+/* Enhanced cellular morph for large background elements */
+@keyframes cellular-morph {
+  0% { 
+    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%; 
+    transform: scale(1) rotate(0deg); 
+  }
+  25% { 
+    border-radius: 60% 40% 45% 55% / 40% 60% 50% 50%; 
+    transform: scale(1.03) rotate(1deg); 
+  }
+  50% { 
+    border-radius: 40% 60% 55% 45% / 60% 40% 55% 45%; 
+    transform: scale(0.97) rotate(0deg); 
+  }
+  75% { 
+    border-radius: 55% 45% 40% 60% / 45% 55% 40% 60%; 
+    transform: scale(1.01) rotate(-1deg); 
+  }
+  100% { 
+    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%; 
+    transform: scale(1) rotate(0deg); 
+  }
+}
+
+/* Enhanced pulse cellular for cinematic backgrounds */
+@keyframes pulse-cellular {
+  0% { 
+    opacity: 0.4; 
+    transform: scale(1); 
+    filter: brightness(1); 
+  }
+  50% { 
+    opacity: 0.9; 
+    transform: scale(1.08); 
+    filter: brightness(1.2); 
+  }
+  100% { 
+    opacity: 0.4; 
+    transform: scale(1); 
+    filter: brightness(1); 
+  }
+}
+
+/* Cellular drift animation for logo particles */
+@keyframes cellular-drift {
+  0% { transform: rotate(0deg) translateX(5px) rotate(0deg); }
+  33% { transform: rotate(120deg) translateX(7px) rotate(-120deg); }
+  66% { transform: rotate(240deg) translateX(5px) rotate(-240deg); }
+  100% { transform: rotate(360deg) translateX(5px) rotate(-360deg); }
+}
+
+/* Cellular core pulse animation */
+@keyframes cellular-core-pulse {
+  0% { transform: scale(1); opacity: 0.95; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.95; }
+}
+
+/* Cellular ring drift animation */
+@keyframes cellular-ring-drift {
+  0% { transform: rotate(0deg) scale(1); }
+  33% { transform: rotate(120deg) scale(0.98); }
+  66% { transform: rotate(240deg) scale(1.02); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Enhanced structural cellular motion for large background elements */
+@keyframes structural-cell-motion {
+  0% { 
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1); 
+    border-radius: 40% 60% 50% 50% / 30% 70% 60% 40%; 
+  }
+  25% { 
+    transform: translateX(8px) translateY(-8px) rotate(2deg) scale(1.02); 
+    border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%; 
+  }
+  50% { 
+    transform: translateX(12px) translateY(5px) rotate(0deg) scale(0.98); 
+    border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%; 
+  }
+  75% { 
+    transform: translateX(-5px) translateY(12px) rotate(-2deg) scale(1.01); 
+    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%; 
+  }
+  100% { 
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1); 
+    border-radius: 40% 60% 50% 50% / 30% 70% 60% 40%; 
+  }
+}
+
+/* Breathing animation for subtle element pulsing */
+@keyframes breathing {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* Morph animation for shapes */
+@keyframes morph {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+/* Fluid motion for organic shapes */
+@keyframes fluid-motion {
+  0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40% }
+  50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60% }
+  100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40% }
+}
