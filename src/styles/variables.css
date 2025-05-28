@@ -1,59 +1,48 @@
 
-/* DermaAgent - Sophisticated Notebook + Futuristic Design Variables */
+/* DermaAgent - Minimal Futuristic Notebook Design Variables */
 :root {
   /* Core Brand Identity - DermaAgent */
   --dermaagent-app-name: "DermaAgent";
   
-  /* Primary Backgrounds - Notebook Inspired */
-  --dermaagent-bone-white: #FDFDFD;
+  /* Base Colors - Minimal Notebook Palette */
+  --dermaagent-pearl-white: #FDFDFD;
+  --dermaagent-soft-sand: #F4F2F0;
   --dermaagent-warm-off-white: #FEFCFA;
-  --dermaagent-soft-sand: #FAF8F5;
-  --dermaagent-warm-gray: #F5F3F0;
-  --dermaagent-textured-paper: #F2F0ED;
   
   /* Primary Text & UI */
-  --dermaagent-deep-ink-black: #1A1A1A;
-  --dermaagent-graphite-gray: #2C2C2C;
+  --dermaagent-graphite-black: #1B1B1B;
+  --dermaagent-charcoal-gray: #3A3A3A;
   --dermaagent-medium-gray: #6B6B6B;
   --dermaagent-light-gray: #A8A8A8;
   
-  /* Accent Colors - Used Sparingly & Precisely */
-  --dermaagent-amber-glow: #D4AF37;
-  --dermaagent-amber-glow-light: #E8C35F;
-  --dermaagent-amber-glow-dark: #B8941F;
+  /* Accent Colors - Restrained & Elegant */
+  --dermaagent-warm-beige: #D8CAB8;
+  --dermaagent-soft-clay: #C9B4A3;
+  --dermaagent-emerald-dust: #7FA48A;
+  --dermaagent-emerald-dust-light: #9BB8A5;
   
-  --dermaagent-deep-emerald: #2F5233;
-  --dermaagent-deep-emerald-light: #4A6B4E;
-  --dermaagent-deep-emerald-dark: #1E3621;
+  /* Cellular & Scientific Theme Colors - Subtle */
+  --dermaagent-cellular-white: rgba(253, 253, 253, 0.9);
+  --dermaagent-cellular-beige: rgba(216, 202, 184, 0.1);
+  --dermaagent-cellular-emerald: rgba(127, 164, 138, 0.08);
+  --dermaagent-cellular-soft: rgba(196, 180, 163, 0.06);
   
-  --dermaagent-sapphire-blue: #1E3A5F;
-  --dermaagent-sapphire-blue-light: #2C5282;
-  --dermaagent-sapphire-blue-dark: #153047;
+  /* Glass & Depth Effects - Refined */
+  --dermaagent-glass-overlay: rgba(253, 253, 253, 0.95);
+  --dermaagent-glass-shadow: rgba(27, 27, 27, 0.04);
+  --dermaagent-glass-border: rgba(27, 27, 27, 0.06);
   
-  /* Cellular & Scientific Theme Colors */
-  --dermaagent-cellular-white: rgba(255, 255, 255, 0.85);
-  --dermaagent-cellular-amber: rgba(212, 175, 55, 0.12);
-  --dermaagent-cellular-emerald: rgba(47, 82, 51, 0.08);
-  --dermaagent-cellular-sapphire: rgba(30, 58, 95, 0.1);
-  
-  /* Glass & Depth Effects */
-  --dermaagent-glass-overlay: rgba(255, 255, 255, 0.92);
-  --dermaagent-glass-shadow: rgba(0, 0, 0, 0.06);
-  --dermaagent-glass-border: rgba(0, 0, 0, 0.08);
+  /* Notebook Lines & Dividers */
+  --dermaagent-ruling-line: rgba(58, 58, 58, 0.12);
+  --dermaagent-margin-line: rgba(58, 58, 58, 0.08);
+  --dermaagent-divider-soft: rgba(27, 27, 27, 0.05);
   
   /* Enhanced Gradient Combinations */
-  --dermaagent-notebook-gradient: linear-gradient(135deg, var(--dermaagent-bone-white) 0%, var(--dermaagent-warm-off-white) 50%, var(--dermaagent-soft-sand) 100%);
-  --dermaagent-amber-gradient: linear-gradient(135deg, var(--dermaagent-amber-glow) 0%, var(--dermaagent-amber-glow-light) 100%);
-  --dermaagent-emerald-gradient: linear-gradient(135deg, var(--dermaagent-deep-emerald) 0%, var(--dermaagent-deep-emerald-light) 100%);
-  --dermaagent-sapphire-gradient: linear-gradient(135deg, var(--dermaagent-sapphire-blue) 0%, var(--dermaagent-sapphire-blue-light) 100%);
+  --dermaagent-notebook-gradient: linear-gradient(135deg, var(--dermaagent-pearl-white) 0%, var(--dermaagent-warm-off-white) 50%, var(--dermaagent-soft-sand) 100%);
+  --dermaagent-beige-gradient: linear-gradient(135deg, var(--dermaagent-warm-beige) 0%, var(--dermaagent-soft-clay) 100%);
+  --dermaagent-emerald-gradient: linear-gradient(135deg, var(--dermaagent-emerald-dust) 0%, var(--dermaagent-emerald-dust-light) 100%);
   
-  /* Cellular Background Patterns */
-  --dermaagent-cellular-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='cellular'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cellular)' opacity='0.03'/%3E%3C/svg%3E");
-  
-  /* Legacy compatibility mappings */
-  --beautyagent-deep-pearl-white: var(--dermaagent-bone-white);
-  --beautyagent-midnight-graphite: var(--dermaagent-deep-ink-black);
-  --beautyagent-warm-amber: var(--dermaagent-amber-glow);
-  --beautyagent-refined-emerald: var(--dermaagent-deep-emerald);
-  --beautyagent-sapphire-violet: var(--dermaagent-sapphire-blue);
+  /* Cellular Background Patterns - Sophisticated */
+  --dermaagent-cellular-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='cellular'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cellular)' opacity='0.02'/%3E%3C/svg%3E");
+  --dermaagent-notebook-grid: url("data:image/svg+xml,%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233A3A3A' stroke-width='0.3' opacity='0.08'%3E%3Cpath d='M40 0H0v40'/%3E%3C/g%3E%3C/svg%3E");
 }

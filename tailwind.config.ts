@@ -56,31 +56,24 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 
-				// DermaAgent Brand Colors
+				// DermaAgent Minimal Futuristic Notebook Colors
 				dermaagent: {
-					// Primary Backgrounds
-					'bone-white': '#FDFDFD',
+					// Base Colors - Minimal Notebook Palette
+					'pearl-white': '#FDFDFD',
+					'soft-sand': '#F4F2F0',
 					'warm-off-white': '#FEFCFA',
-					'soft-sand': '#FAF8F5',
-					'warm-gray': '#F5F3F0',
-					'textured-paper': '#F2F0ED',
 					
 					// Primary Text & UI
-					'deep-ink-black': '#1A1A1A',
-					'graphite-gray': '#2C2C2C',
+					'graphite-black': '#1B1B1B',
+					'charcoal-gray': '#3A3A3A',
 					'medium-gray': '#6B6B6B',
 					'light-gray': '#A8A8A8',
 					
-					// Accent Colors
-					'amber-glow': '#D4AF37',
-					'amber-glow-light': '#E8C35F',
-					'amber-glow-dark': '#B8941F',
-					'deep-emerald': '#2F5233',
-					'deep-emerald-light': '#4A6B4E',
-					'deep-emerald-dark': '#1E3621',
-					'sapphire-blue': '#1E3A5F',
-					'sapphire-blue-light': '#2C5282',
-					'sapphire-blue-dark': '#153047',
+					// Accent Colors - Restrained & Elegant
+					'warm-beige': '#D8CAB8',
+					'soft-clay': '#C9B4A3',
+					'emerald-dust': '#7FA48A',
+					'emerald-dust-light': '#9BB8A5',
 				},
 
 				// Legacy compatibility
@@ -89,7 +82,6 @@ export default {
 				'dark-purple': '#210B2C',
 				'violet-titanium': '#7E69AB',
 				beautyagent: {
-					// ... keep existing code (all existing beautyagent colors)
 					'white': '#FFFFFF',
 					'off-white': '#F8F8F9',
 					'light-grey': '#F1F1F3',
@@ -264,6 +256,24 @@ export default {
 				'pulse-cellular': {
 					'0%, 100%': { transform: 'scale(1)', opacity: '0.3' },
 					'50%': { transform: 'scale(1.15)', opacity: '0.5' }
+				},
+				'typewriter-blink': {
+					'0%, 50%': { opacity: '1' },
+					'51%, 100%': { opacity: '0' }
+				},
+				'cellular-morph': {
+					'0%': { 
+						borderRadius: '45% 55% 60% 40% / 50% 40% 60% 50%',
+						transform: 'scale(1) rotate(0deg)' 
+					},
+					'50%': { 
+						borderRadius: '60% 40% 45% 55% / 40% 60% 50% 50%',
+						transform: 'scale(1.02) rotate(1deg)' 
+					},
+					'100%': { 
+						borderRadius: '45% 55% 60% 40% / 50% 40% 60% 50%',
+						transform: 'scale(1) rotate(0deg)' 
+					}
 				}
 			},
 			animation: {
@@ -292,6 +302,9 @@ export default {
 				'orbital-motion-reverse': 'orbital-motion-reverse 24s infinite cubic-bezier(0.4, 0, 0.6, 1)',
 				'orbital-float': 'orbital-float 18s infinite ease-in-out',
 				'pulse-cellular': 'pulse-cellular 8s infinite ease-in-out',
+				'typewriter-blink': 'typewriter-blink 1s infinite',
+				'cellular-drift': 'cellular-drift 30s infinite ease-in-out',
+				'cellular-morph': 'cellular-morph 50s infinite ease-in-out',
 			},
 			fontFamily: {
 				'sans': ['"Inter"', 'sans-serif'],
@@ -302,8 +315,10 @@ export default {
 				'general': ['"General Sans"', 'sans-serif'],
 				
 				// DermaAgent Typography System
-				'dermaagent-typewriter': ['"DermaAgent Typewriter"', '"JetBrains Mono"', '"Source Code Pro"', 'monospace'],
-				'dermaagent-ui': ['"DermaAgent UI"', '"Outfit"', '"Inter"', 'system-ui', 'sans-serif'],
+				'dermaagent-typewriter': ['"DermaAgent Typewriter"', '"IBM Plex Mono"', 'monospace'],
+				'dermaagent-ui': ['"DermaAgent UI"', '"Aeonik"', '"Inter"', 'system-ui', 'sans-serif'],
+				'ibm-plex-mono': ['"IBM Plex Mono"', 'monospace'],
+				'aeonik': ['"Aeonik"', 'sans-serif'],
 				'jetbrains': ['"JetBrains Mono"', 'monospace'],
 				'outfit': ['"Outfit"', 'sans-serif'],
 			},
@@ -318,6 +333,8 @@ export default {
 				
 				// DermaAgent Gradients
 				'dermaagent-notebook': 'var(--dermaagent-notebook-gradient)',
+				'dermaagent-beige': 'var(--dermaagent-beige-gradient)',
+				'dermaagent-emerald': 'var(--dermaagent-emerald-gradient)',
 				'dermaagent-amber': 'var(--dermaagent-amber-gradient)',
 				'dermaagent-emerald': 'var(--dermaagent-emerald-gradient)',
 				'dermaagent-sapphire': 'var(--dermaagent-sapphire-gradient)',
@@ -332,6 +349,9 @@ export default {
 				'dark-purple-glow': '0 0 20px rgba(33, 11, 44, 0.35), 0 0 40px rgba(33, 11, 44, 0.15)',
 				
 				// DermaAgent Shadows
+				'dermaagent-notebook': '0 4px 16px rgba(27, 27, 27, 0.04)',
+				'dermaagent-soft': '0 2px 8px rgba(27, 27, 27, 0.06)',
+				'dermaagent-emerald': '0 0 16px rgba(127, 164, 138, 0.2)',
 				'dermaagent-amber': '0 0 20px rgba(212, 175, 55, 0.2), 0 0 40px rgba(212, 175, 55, 0.1)',
 				'dermaagent-emerald': '0 0 15px rgba(47, 82, 51, 0.2)',
 				'dermaagent-sapphire': '0 0 20px rgba(30, 58, 95, 0.2)',

@@ -17,7 +17,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DermaAgent Global Styles */
+/* DermaAgent Global Styles - Minimal Futuristic Notebook */
 @layer base {
   :root {
     --radius: 0.5rem;
@@ -28,60 +28,113 @@
   }
   
   body {
-    @apply bg-dermaagent-bone-white text-dermaagent-deep-ink-black;
+    @apply text-dermaagent-graphite-black;
+    background: var(--dermaagent-notebook-gradient);
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: var(--font-dermaagent-ui, 'Outfit', 'Inter', system-ui, sans-serif);
+    font-family: var(--font-dermaagent-ui, 'Aeonik', 'Inter', system-ui, sans-serif);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
   }
   
   /* DermaAgent Typography Hierarchy */
   .dermaagent-headline {
-    font-family: var(--font-dermaagent-typewriter, 'JetBrains Mono', 'Source Code Pro', monospace);
+    font-family: var(--font-dermaagent-typewriter, 'IBM Plex Mono', monospace);
     font-weight: 400;
-    letter-spacing: 0.02em;
-    color: var(--dermaagent-deep-ink-black);
+    letter-spacing: 0.04em;
+    color: var(--dermaagent-graphite-black);
+    line-height: 1.2;
   }
   
   .dermaagent-ui-text {
-    font-family: var(--font-dermaagent-ui, 'Outfit', 'Inter', system-ui, sans-serif);
-    color: var(--dermaagent-graphite-gray);
+    font-family: var(--font-dermaagent-ui, 'Aeonik', 'Inter', system-ui, sans-serif);
+    font-weight: 300;
+    color: var(--dermaagent-charcoal-gray);
+    letter-spacing: 0.01em;
   }
   
   /* DermaAgent Interactive Elements */
   .dermaagent-button {
-    @apply transition-all duration-300 ease-out;
-    font-family: var(--font-dermaagent-ui, 'Outfit', 'Inter', system-ui, sans-serif);
-    border-radius: 0.75rem;
-    backdrop-filter: blur(8px);
+    @apply transition-all duration-500 ease-out;
+    font-family: var(--font-dermaagent-ui, 'Aeonik', 'Inter', system-ui, sans-serif);
+    font-weight: 300;
+    border-radius: 0.5rem;
+    letter-spacing: 0.02em;
   }
   
   .dermaagent-button:hover {
+    color: var(--dermaagent-emerald-dust);
     transform: translateY(-1px);
-    filter: brightness(1.05);
   }
   
-  /* DermaAgent Glass Effects */
-  .dermaagent-glass {
+  /* DermaAgent Notebook Elements */
+  .dermaagent-notebook-page {
     background: var(--dermaagent-glass-overlay);
-    backdrop-filter: blur(12px);
     border: 1px solid var(--dermaagent-glass-border);
-    box-shadow: 0 8px 20px var(--dermaagent-glass-shadow);
+    box-shadow: 0 4px 16px var(--dermaagent-glass-shadow);
+    backdrop-filter: blur(8px);
+  }
+  
+  .dermaagent-ruling-line {
+    border-bottom: 1px solid var(--dermaagent-ruling-line);
+  }
+  
+  .dermaagent-margin-line {
+    border-left: 1px solid var(--dermaagent-margin-line);
+  }
+  
+  /* DermaAgent Input Fields */
+  .dermaagent-input {
+    font-family: var(--font-dermaagent-typewriter, 'IBM Plex Mono', monospace);
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--dermaagent-graphite-black);
+    letter-spacing: 0.02em;
+    caret-color: var(--dermaagent-emerald-dust);
+  }
+  
+  .dermaagent-input:focus {
+    box-shadow: 0 0 0 2px var(--dermaagent-warm-beige);
+  }
+  
+  /* Typewriter Cursor Animation */
+  .typewriter-cursor::after {
+    content: '|';
+    color: var(--dermaagent-emerald-dust);
+    animation: typewriter-blink 1s infinite;
+  }
+  
+  @keyframes typewriter-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
   }
 }
 
 /* DermaAgent Animation Utilities */
 @layer utilities {
   .cellular-motion-subtle {
-    animation: cellular-drift 25s infinite ease-in-out;
+    animation: cellular-drift 30s infinite ease-in-out;
   }
   
   .cellular-glow {
-    filter: drop-shadow(0 0 8px var(--dermaagent-cellular-amber));
+    filter: drop-shadow(0 0 6px var(--dermaagent-cellular-beige));
   }
   
   .dermaagent-text-gradient {
-    background: var(--dermaagent-amber-gradient);
+    background: var(--dermaagent-beige-gradient);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+  }
+  
+  .notebook-grid-bg {
+    background-image: var(--dermaagent-notebook-grid);
+    background-size: 40px 40px;
+  }
+  
+  .cellular-texture-bg {
+    background-image: var(--dermaagent-cellular-texture);
+    background-size: 200px 200px;
   }
 }
