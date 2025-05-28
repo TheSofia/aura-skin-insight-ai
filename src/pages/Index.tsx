@@ -102,14 +102,15 @@ const Index = () => {
       {/* DermaAgent brand name - minimal typewriter style */}
       <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30">
         <h1 
-          className={`text-xl font-light tracking-wide transition-all duration-1500 dermaagent-headline ${
+          className={`text-xl font-light tracking-wider transition-all duration-2000 dermaagent-headline ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
             color: 'var(--dermaagent-graphite-black)',
-            textShadow: '0 0 8px rgba(253, 253, 253, 0.8)',
-            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05))',
-            letterSpacing: '0.05em',
+            textShadow: '0 0 6px rgba(249, 248, 247, 0.9)',
+            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.03))',
+            letterSpacing: '0.08em',
+            fontWeight: '300',
           }}
         >
           DermaAgent
@@ -117,7 +118,7 @@ const Index = () => {
       </div>
       
       <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        {/* Hero Section with DermaAgent minimal styling */}
+        {/* Hero Section with DermaAgent refined styling */}
         <Hero
           isLoaded={isLoaded}
           showTyping={false}
@@ -128,11 +129,11 @@ const Index = () => {
         <Footer />
       </div>
       
-      {/* Enhanced DermaAgent CTA with notebook aesthetic */}
+      {/* Enhanced DermaAgent CTA with refined notebook aesthetic */}
       <div 
-        className={`fixed bottom-6 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-1500 
+        className={`fixed bottom-6 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-2000 
           ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-        style={{ transitionDelay: '2500ms' }}
+        style={{ transitionDelay: '3000ms' }}
       >
         <div 
           className="flex items-center backdrop-blur-sm border rounded-full py-3 px-8 shadow-lg transition-all duration-500 
@@ -140,7 +141,7 @@ const Index = () => {
           style={{
             background: 'var(--dermaagent-glass-overlay)',
             borderColor: 'var(--dermaagent-glass-border)',
-            boxShadow: '0 4px 20px var(--dermaagent-glass-shadow)',
+            boxShadow: '0 2px 12px var(--dermaagent-glass-shadow)',
           }}
         >
           <span 
@@ -155,7 +156,7 @@ const Index = () => {
           <div 
             className="w-3 h-3 rounded-full animate-pulse-subtle"
             style={{
-              background: 'var(--dermaagent-emerald-gradient)',
+              background: 'var(--dermaagent-interactive-gradient)',
             }}
           ></div>
         </div>

@@ -1,7 +1,6 @@
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aeonik:wght@200;300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
 
 /* Fallback for Aeonik if not available */
 @font-face {
@@ -15,7 +14,7 @@
 @font-face {
   font-family: 'DermaAgent Typewriter';
   src: local('IBM Plex Mono'), local('Monaco'), local('Courier New');
-  font-weight: 300 600;
+  font-weight: 200 500;
   font-style: normal;
 }
 

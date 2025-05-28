@@ -16,8 +16,8 @@ const CallToAction = ({ animationStates, cursorProximity }: CallToActionProps) =
         animationStates.isTextVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}
       style={{
-        transitionDelay: '1000ms',
-        transform: `scale(${1 + cursorProximity * 0.015})`,
+        transitionDelay: '1600ms',
+        transform: `scale(${1 + cursorProximity * 0.01})`,
       }}
     >
       <Button
@@ -29,19 +29,19 @@ const CallToAction = ({ animationStates, cursorProximity }: CallToActionProps) =
           color: 'var(--dermaagent-graphite-black)',
           fontFamily: "'DermaAgent UI', 'Aeonik', 'Inter', system-ui, sans-serif",
           fontWeight: '300',
-          letterSpacing: '0.02em',
-          boxShadow: '0 4px 16px var(--dermaagent-glass-shadow)',
-          backdropFilter: 'blur(8px)',
+          letterSpacing: '0.01em',
+          boxShadow: '0 2px 8px var(--dermaagent-glass-shadow)',
+          backdropFilter: 'blur(4px)',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'var(--dermaagent-emerald-dust)';
-          e.currentTarget.style.borderColor = 'var(--dermaagent-emerald-dust)';
-          e.currentTarget.style.boxShadow = '0 6px 24px var(--dermaagent-glass-shadow), 0 0 0 1px var(--dermaagent-emerald-dust)';
+          e.currentTarget.style.color = 'var(--dermaagent-cool-gray-blue)';
+          e.currentTarget.style.borderColor = 'var(--dermaagent-cool-gray-blue)';
+          e.currentTarget.style.boxShadow = '0 4px 16px var(--dermaagent-glass-shadow), 0 0 0 1px var(--dermaagent-cool-gray-blue)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.color = 'var(--dermaagent-graphite-black)';
           e.currentTarget.style.borderColor = 'var(--dermaagent-glass-border)';
-          e.currentTarget.style.boxShadow = '0 4px 16px var(--dermaagent-glass-shadow)';
+          e.currentTarget.style.boxShadow = '0 2px 8px var(--dermaagent-glass-shadow)';
         }}
       >
         Find My Skin Protocol
