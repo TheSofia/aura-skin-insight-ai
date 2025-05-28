@@ -16,7 +16,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <div className="bg-beautyagent-white min-h-screen">
+      <div className="dermaagent-soft-paper-white min-h-screen">
         <Toaster />
         <Sonner />
         <BrowserRouter>
@@ -25,7 +25,7 @@ const App = () => (
             <Route path="/skin-mirror" element={<SkinMirror />} />
             <Route path="/skin-diary" element={<SkinDiary />} />
             <Route path="/beauty-exchange" element={<BeautyExchange />} />
-            <Route path="/shop" element={<ShopPage />} /> {/* Add route for Shop page */}
+            <Route path="/shop" element={<ShopPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -1,10 +1,10 @@
 
-/* DermaAgent - Final Minimal Futuristic Notebook Design Variables */
+/* DermaAgent - Final Minimal & Sleek Design Variables */
 :root {
   /* Core Brand Identity - DermaAgent */
   --dermaagent-app-name: "DermaAgent";
   
-  /* Base Colors - Refined Minimal Notebook Palette */
+  /* Base Colors - Refined Minimal Palette */
   --dermaagent-soft-paper-white: #F9F8F7;
   --dermaagent-warm-bone: #F4F1ED;
   --dermaagent-light-graphite-lines: #D3D3D3;
@@ -14,7 +14,7 @@
   --dermaagent-charcoal-gray: #333333;
   --dermaagent-light-gray-text: #999999;
   
-  /* Accent Colors - Refined & Purposeful */
+  /* Accent Colors - Minimal & Muted */
   --dermaagent-muted-dusty-beige: #D2BBA2;
   --dermaagent-soft-olive: #A3A99E;
   --dermaagent-cool-gray-blue: #AAB6C9;

@@ -4,6 +4,7 @@
 @import './styles/base.css';
 @import './styles/animations/keyframes.css';
 @import './styles/animations/animation-classes.css';
+@import './styles/animations/cellular.css';
 @import './styles/components/scan-line.css';
 @import './styles/components/glass-card.css';
 @import './styles/components/glass-morphism.css';
@@ -17,7 +18,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DermaAgent Global Styles - Minimal Futuristic Notebook */
+/* DermaAgent Global Styles - Final Minimal Design */
 @layer base {
   :root {
     --radius: 0.5rem;
@@ -37,7 +38,16 @@
     line-height: 1.6;
   }
   
-  /* DermaAgent Typography Hierarchy - Refined */
+  /* DermaAgent Typography Hierarchy - Final Refined */
+  .dermaagent-logo {
+    font-family: var(--font-dermaagent-logo, 'Playfair Display', serif);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--dermaagent-graphite-black);
+    line-height: 1.1;
+    text-shadow: 0 1px 2px rgba(26, 26, 26, 0.1);
+  }
+  
   .dermaagent-headline {
     font-family: var(--font-dermaagent-typewriter, 'IBM Plex Mono', monospace);
     font-weight: 300;
@@ -75,11 +85,16 @@
     font-weight: 300;
     border-radius: 0.5rem;
     letter-spacing: 0.01em;
+    background: var(--dermaagent-muted-dusty-beige);
+    color: var(--dermaagent-graphite-black);
+    border: 1px solid var(--dermaagent-glass-border);
   }
   
   .dermaagent-button:hover {
-    color: var(--dermaagent-cool-gray-blue);
+    color: var(--dermaagent-soft-olive);
+    border-color: var(--dermaagent-soft-olive);
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--dermaagent-glass-shadow);
   }
   
   /* DermaAgent Notebook Elements - Clean & Minimal */
@@ -107,17 +122,19 @@
     outline: none;
     color: var(--dermaagent-graphite-black);
     letter-spacing: 0.02em;
-    caret-color: var(--dermaagent-cool-gray-blue);
+    caret-color: var(--dermaagent-soft-olive);
+    border-bottom: 1px solid var(--dermaagent-light-graphite-lines);
   }
   
   .dermaagent-input:focus {
-    box-shadow: 0 0 0 2px var(--dermaagent-muted-dusty-beige);
+    border-bottom-color: var(--dermaagent-soft-olive);
+    box-shadow: 0 1px 0 0 var(--dermaagent-soft-olive);
   }
   
   /* Typewriter Cursor Animation - Refined */
   .typewriter-cursor::after {
     content: '|';
-    color: var(--dermaagent-cool-gray-blue);
+    color: var(--dermaagent-soft-olive);
     animation: typewriter-blink 1.2s infinite;
   }
   

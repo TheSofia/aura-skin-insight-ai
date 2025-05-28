@@ -23,7 +23,6 @@ export default {
 				input: 'hsl(var(--input))',
 				ring: {
 					DEFAULT: 'hsl(var(--ring))',
-					'violet-titanium': '#7E69AB',
 				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
@@ -56,7 +55,7 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 
-				// DermaAgent Refined Minimal Futuristic Notebook Colors
+				// DermaAgent Refined Color System
 				dermaagent: {
 					// Base Colors - Refined Minimal Palette
 					'soft-paper-white': '#F9F8F7',
@@ -68,53 +67,18 @@ export default {
 					'charcoal-gray': '#333333',
 					'light-gray-text': '#999999',
 					
-					// Accent Colors - Refined & Purposeful
+					// Accent Colors - Minimal & Muted
 					'muted-dusty-beige': '#D2BBA2',
 					'soft-olive': '#A3A99E',
 					'cool-gray-blue': '#AAB6C9',
 				},
 
-				// Legacy compatibility
-				'burnt-orange': '#C2410C',
-				'deep-purple': '#6E59A5',
-				'dark-purple': '#210B2C',
-				'violet-titanium': '#7E69AB',
-				beautyagent: {
-					'white': '#FFFFFF',
-					'off-white': '#F8F8F9',
-					'light-grey': '#F1F1F3',
-					'medium-grey': '#9F9EA1',
-					'dark-grey': '#403E43',
-					'deeper-grey': '#221F26',
-					'ultraviolet': '#33184A',
-					'ultraviolet-light': '#492266',
-					'rose-quartz': '#D6A9B8',
-					'rose-quartz-light': '#EACBD3',
-					'cosmic-peach': '#FFDAB9',
-					'cosmic-peach-light': '#FFE6D1',
-					'breathable-black': '#121014',
-					'breathable-black-light': '#1E1B22',
-					'plasma-white': '#FFFAF0',
-					'plasma-white-light': '#FFFCF7',
-					'platinum-sheen': '#E5E4E2',
-					'amber-shimmer': '#FFBF65',
-					'accent': '#E05F14',
-					'dark-orange': '#C94C10',
-					'deep-blue': '#2A4365',
-					'muted-violet': '#7E69AB',
-					'deep-purple': '#5D4A8C',
-					'dark-purple': '#34184A',
-					'glass-white': 'rgba(255, 255, 255, 0.95)',
-					'glass-light': 'rgba(255, 255, 255, 0.7)',
-					'glass-accent': 'rgba(224, 95, 20, 0.08)',
-					'glass-cosmic': 'rgba(255, 218, 185, 0.08)',
-					'glass-ultraviolet': 'rgba(51, 24, 74, 0.1)',
-				},
+				// Glass effects
 				glass: {
 					light: 'rgba(255, 255, 255, 0.7)',
 					white: 'rgba(255, 255, 255, 0.9)',
 					dark: 'rgba(34, 31, 38, 0.05)',
-					accent: 'rgba(249, 115, 22, 0.08)',
+					accent: 'rgba(163, 169, 158, 0.08)',
 				}
 			},
 			borderRadius: {
@@ -265,28 +229,17 @@ export default {
 			},
 			fontFamily: {
 				'sans': ['"Inter"', 'sans-serif'],
-				'space': ['"Space Grotesk"', 'sans-serif'],
-				'clash': ['"Clash Display"', 'sans-serif'],
-				'kode': ['"Kode Mono"', 'monospace'],
-				'satoshi': ['"Satoshi"', 'sans-serif'],
-				'general': ['"General Sans"', 'sans-serif'],
 				
-				// DermaAgent Typography System - Refined
+				// DermaAgent Typography System - Final
+				'dermaagent-logo': ['"DermaAgent Logo"', '"Playfair Display"', 'serif'],
 				'dermaagent-typewriter': ['"DermaAgent Typewriter"', '"IBM Plex Mono"', 'monospace'],
 				'dermaagent-ui': ['"DermaAgent UI"', '"Aeonik"', '"Inter"', 'system-ui', 'sans-serif'],
 				'ibm-plex-mono': ['"IBM Plex Mono"', 'monospace'],
 				'aeonik': ['"Aeonik"', 'sans-serif'],
-				'jetbrains': ['"JetBrains Mono"', 'monospace'],
-				'outfit': ['"Outfit"', 'sans-serif'],
+				'playfair': ['"Playfair Display"', 'serif'],
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-light': 'linear-gradient(135deg, #FFFFFF 0%, #F6F6F7 100%)',
-				'gradient-accent': 'linear-gradient(225deg, rgba(249, 115, 22, 0.9) 0%, rgba(249, 115, 22, 1) 100%)',
-				'shimmer-accent': 'linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.08), transparent)',
-				'glass-effect': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%)',
-				'gradient-warm': 'linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(232, 76, 18, 0.1) 100%)',
-				'gradient-cool': 'linear-gradient(135deg, rgba(22, 163, 74, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%)',
 				
 				// DermaAgent Refined Gradients
 				'dermaagent-notebook': 'var(--dermaagent-notebook-gradient)',
@@ -294,13 +247,7 @@ export default {
 				'dermaagent-interactive': 'var(--dermaagent-interactive-gradient)',
 			},
 			boxShadow: {
-				'accent': '0 0 20px rgba(249, 115, 22, 0.2), 0 0 40px rgba(249, 115, 22, 0.1)',
-				'light': '0 10px 30px -5px rgba(0, 0, 0, 0.05)',
-				'inner-glow': 'inset 0 0 10px rgba(249, 115, 22, 0.1)',
 				'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-				'green-glow': '0 0 15px rgba(22, 163, 74, 0.2)',
-				'purple-glow': '0 0 20px rgba(110, 89, 165, 0.3), 0 0 40px rgba(110, 89, 165, 0.1)',
-				'dark-purple-glow': '0 0 20px rgba(33, 11, 44, 0.35), 0 0 40px rgba(33, 11, 44, 0.15)',
 				
 				// DermaAgent Refined Shadows
 				'dermaagent-minimal': '0 2px 8px rgba(26, 26, 26, 0.03)',

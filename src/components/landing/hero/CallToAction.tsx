@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 
@@ -24,19 +23,18 @@ const CallToAction = ({ animationStates, cursorProximity }: CallToActionProps) =
         className="dermaagent-button px-8 py-4 text-base rounded-lg transition-all duration-500 
           hover:scale-105 active:scale-95"
         style={{
-          background: 'var(--dermaagent-glass-overlay)',
+          background: 'var(--dermaagent-muted-dusty-beige)',
           border: '1px solid var(--dermaagent-glass-border)',
           color: 'var(--dermaagent-graphite-black)',
           fontFamily: "'DermaAgent UI', 'Aeonik', 'Inter', system-ui, sans-serif",
           fontWeight: '300',
           letterSpacing: '0.01em',
           boxShadow: '0 2px 8px var(--dermaagent-glass-shadow)',
-          backdropFilter: 'blur(4px)',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'var(--dermaagent-cool-gray-blue)';
-          e.currentTarget.style.borderColor = 'var(--dermaagent-cool-gray-blue)';
-          e.currentTarget.style.boxShadow = '0 4px 16px var(--dermaagent-glass-shadow), 0 0 0 1px var(--dermaagent-cool-gray-blue)';
+          e.currentTarget.style.color = 'var(--dermaagent-soft-olive)';
+          e.currentTarget.style.borderColor = 'var(--dermaagent-soft-olive)';
+          e.currentTarget.style.boxShadow = '0 4px 16px var(--dermaagent-glass-shadow), 0 0 0 1px var(--dermaagent-soft-olive)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.color = 'var(--dermaagent-graphite-black)';

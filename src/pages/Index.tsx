@@ -99,18 +99,18 @@ const Index = () => {
         scrollPosition={scrollPosition}
       />
       
-      {/* DermaAgent brand name - minimal typewriter style */}
-      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-30">
+      {/* DermaAgent Logo - Bold & Prominent */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30">
         <h1 
-          className={`text-xl font-light tracking-wider transition-all duration-2000 dermaagent-headline ${
+          className={`text-3xl md:text-4xl font-bold tracking-wide transition-all duration-2000 dermaagent-logo ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
             color: 'var(--dermaagent-graphite-black)',
-            textShadow: '0 0 6px rgba(249, 248, 247, 0.9)',
-            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.03))',
-            letterSpacing: '0.08em',
-            fontWeight: '300',
+            textShadow: '0 2px 4px rgba(249, 248, 247, 0.8)',
+            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05))',
+            letterSpacing: '0.03em',
+            fontWeight: '700',
           }}
         >
           DermaAgent
