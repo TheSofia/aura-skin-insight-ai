@@ -19,13 +19,13 @@ const Index = () => {
     if (location.pathname === '/') {
       const backgroundTimer = setTimeout(() => {
         setIsLoaded(true);
-      }, 800);
+      }, 600);
       
       return () => clearTimeout(backgroundTimer);
     }
   }, [location.pathname]);
 
-  // Enhanced mouse movement tracking
+  // Mouse movement tracking
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (pageRef.current) {
@@ -33,43 +33,18 @@ const Index = () => {
         const x = (e.clientX - rect.left) / rect.width;
         const y = (e.clientY - rect.top) / rect.height;
         
-        setMousePosition(prev => ({ 
-          x: prev.x + (x - prev.x) * 0.08, 
-          y: prev.y + (y - prev.y) * 0.08 
-        }));
+        setMousePosition({ x, y });
       }
     };
     
-    let animationId: number;
-    const smoothMouseTracking = () => {
-      window.addEventListener('mousemove', handleMouseMove);
-      animationId = requestAnimationFrame(smoothMouseTracking);
-    };
-    
-    smoothMouseTracking();
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationId);
-    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Enhanced scroll position tracking
+  // Scroll position tracking
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    
     const handleScroll = () => {
-      lastScrollY = window.scrollY;
-      
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollPosition(lastScrollY);
-          ticking = false;
-        });
-        
-        ticking = true;
-      }
+      setScrollPosition(window.scrollY);
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -85,42 +60,23 @@ const Index = () => {
         fontFamily: "'IBM Plex Mono', monospace",
       }}
     >
-      {/* DermaAgent Minimal Notebook Background with subtle grid */}
+      {/* DermaAgent Minimal Notebook Background with ultra-subtle grid */}
       <MinimalNotebookBackground 
         isVisible={isLoaded}
         intensity="subtle"
-        variant="cellular-texture"
+        variant="notebook-grid"
         showCellularMotion={true}
       />
       
-      {/* Enhanced monochrome cellular background animation */}
+      {/* Pure monochrome cellular background animation */}
       <FullScreenCellularBackground 
         isVisible={isLoaded}
         mousePosition={mousePosition}
         scrollPosition={scrollPosition}
       />
       
-      {/* DermaAgent Logo - Bold Monospace, Pure Monochrome */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30">
-        <h1 
-          className={`text-3xl md:text-4xl font-bold tracking-widest transition-all duration-2000 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontWeight: '700',
-            color: 'var(--dermaagent-graphite-black)',
-            textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)',
-            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.03))',
-            letterSpacing: '0.15em',
-          }}
-        >
-          DERMAAGENT
-        </h1>
-      </div>
-      
       <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        {/* Hero Section with monochrome styling */}
+        {/* Hero Section with new logo and minimal design */}
         <Hero
           isLoaded={isLoaded}
           showTyping={false}

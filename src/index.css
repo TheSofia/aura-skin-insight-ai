@@ -18,7 +18,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DermaAgent Ultimate Monochrome Design System */
+/* DermaAgent Ultimate Pure Monochrome Design System */
 @layer base {
   :root {
     --radius: 0.5rem;
@@ -38,33 +38,22 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
-  /* DermaAgent Ultimate Monochrome Typography - Pure IBM Plex Mono */
+  /* DermaAgent Pure Monochrome Typography - All IBM Plex Mono */
   .dermaagent-logo {
     font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    letter-spacing: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0.12em;
     color: var(--dermaagent-graphite-black);
     line-height: 1.1;
     text-transform: uppercase;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
   }
   
   .dermaagent-headline {
     font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--dermaagent-graphite-black);
-    line-height: 1.1;
-    text-transform: uppercase;
-  }
-  
-  .dermaagent-headline-light {
-    font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    letter-spacing: 0.08em;
-    color: var(--dermaagent-charcoal-gray);
-    line-height: 1.1;
-    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--dermaagent-graphite-black);
+    line-height: 1.2;
   }
   
   .dermaagent-ui-text {
@@ -90,43 +79,28 @@
   
   /* Pure Monochrome Interactive Elements */
   .dermaagent-button {
-    @apply transition-all duration-500 ease-out;
+    @apply transition-all duration-300 ease-out;
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 300;
-    border-radius: 0.5rem;
-    letter-spacing: 0.02em;
-    background: var(--dermaagent-pale-paper-white);
+    letter-spacing: 0.05em;
+    background: transparent;
     color: var(--dermaagent-graphite-black);
     border: 1px solid var(--dermaagent-light-gray);
-    box-shadow: 0 1px 3px rgba(26, 26, 26, 0.03);
   }
   
   .dermaagent-button:hover {
     background: var(--dermaagent-light-gray);
-    border-color: var(--dermaagent-muted-mid-gray);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(26, 26, 26, 0.05);
+    border-color: var(--dermaagent-charcoal-gray);
   }
   
-  /* Monochrome Notebook Elements */
+  /* Minimal Notebook Elements */
   .dermaagent-notebook-page {
-    background: rgba(249, 248, 247, 0.95);
-    border: 1px solid var(--dermaagent-light-gray);
-    box-shadow: 0 1px 4px rgba(26, 26, 26, 0.02);
-    backdrop-filter: blur(4px);
+    background: var(--dermaagent-pale-paper-white);
+    border: 1px solid var(--dermaagent-glass-border);
+    box-shadow: 0 1px 3px rgba(26, 26, 26, 0.02);
   }
   
-  .dermaagent-notebook-lines {
-    background-image: var(--dermaagent-notebook-ruled-lines);
-    background-size: 100% 40px;
-  }
-  
-  .dermaagent-notebook-grid {
-    background-image: var(--dermaagent-notebook-grid);
-    background-size: 20px 20px;
-  }
-  
-  /* Monochrome Input Fields */
+  /* Pure Monochrome Input Fields */
   .dermaagent-input {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 300;
@@ -135,56 +109,36 @@
     outline: none;
     color: var(--dermaagent-graphite-black);
     letter-spacing: 0.02em;
-    caret-color: var(--dermaagent-muted-mid-gray);
     border-bottom: 1px solid var(--dermaagent-light-gray);
   }
   
   .dermaagent-input:focus {
-    border-bottom-color: var(--dermaagent-muted-mid-gray);
-    box-shadow: 0 1px 0 0 var(--dermaagent-muted-mid-gray);
+    border-bottom-color: var(--dermaagent-charcoal-gray);
   }
   
   .dermaagent-input::placeholder {
     color: var(--dermaagent-muted-mid-gray);
-    font-weight: 300;
-  }
-  
-  /* Monochrome Typewriter Cursor Animation */
-  .typewriter-cursor::after {
-    content: '|';
-    color: var(--dermaagent-muted-mid-gray);
-    animation: typewriter-blink 1.2s infinite;
-  }
-  
-  @keyframes typewriter-blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
   }
 }
 
-/* Monochrome Animation Utilities */
+/* Pure Monochrome Animation Utilities */
 @layer utilities {
   .cellular-motion-minimal {
-    animation: cellular-drift-minimal 40s infinite ease-in-out;
+    animation: cellular-drift-minimal 50s infinite ease-in-out;
   }
   
   .cellular-glow-subtle {
-    filter: drop-shadow(0 0 4px rgba(227, 227, 227, 0.15));
+    filter: drop-shadow(0 0 2px rgba(227, 227, 227, 0.1));
   }
   
   .notebook-grid-bg {
     background-image: var(--dermaagent-notebook-grid);
-    background-size: 20px 20px;
-  }
-  
-  .notebook-lines-bg {
-    background-image: var(--dermaagent-notebook-ruled-lines);
-    background-size: 100% 24px;
+    background-size: 40px 40px;
   }
   
   .cellular-texture-bg {
     background-image: var(--dermaagent-notebook-texture);
-    background-size: 120px 120px;
+    background-size: 200px 200px;
   }
   
   .monochrome-depth {

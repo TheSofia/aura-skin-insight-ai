@@ -1,5 +1,5 @@
 
-/* DermaAgent - Ultimate Monochrome Design System Variables */
+/* DermaAgent - Ultimate Pure Monochrome Design System Variables */
 :root {
   /* Core Brand Identity */
   --dermaagent-app-name: "DermaAgent";
@@ -13,21 +13,21 @@
   --dermaagent-graphite-black: #1A1A1A;
   
   /* Monochrome Cellular Background - Pure Grayscale */
-  --dermaagent-cellular-ambient: rgba(227, 227, 227, 0.03);
-  --dermaagent-cellular-soft: rgba(227, 227, 227, 0.05);
-  --dermaagent-cellular-subtle: rgba(227, 227, 227, 0.02);
+  --dermaagent-cellular-ambient: rgba(227, 227, 227, 0.02);
+  --dermaagent-cellular-soft: rgba(227, 227, 227, 0.03);
+  --dermaagent-cellular-subtle: rgba(227, 227, 227, 0.01);
   
   /* Monochrome Glass & Depth Effects */
   --dermaagent-glass-overlay: rgba(249, 248, 247, 0.95);
-  --dermaagent-glass-shadow: rgba(26, 26, 26, 0.02);
-  --dermaagent-glass-border: rgba(227, 227, 227, 0.4);
+  --dermaagent-glass-shadow: rgba(26, 26, 26, 0.01);
+  --dermaagent-glass-border: rgba(227, 227, 227, 0.3);
   
-  /* Monochrome Gradients */
+  /* Pure Monochrome Gradients */
   --dermaagent-background-gradient: linear-gradient(135deg, #F9F8F7 0%, #FFFFFF 100%);
-  --dermaagent-subtle-depth-gradient: linear-gradient(135deg, #F9F8F7 0%, rgba(227, 227, 227, 0.1) 100%);
+  --dermaagent-subtle-depth-gradient: linear-gradient(135deg, #F9F8F7 0%, rgba(227, 227, 227, 0.05) 100%);
   
-  /* Notebook Grid Pattern - Subtle Gray */
-  --dermaagent-notebook-texture: radial-gradient(circle at 50% 50%, rgba(227, 227, 227, 0.02) 0%, transparent 70%);
-  --dermaagent-notebook-grid: linear-gradient(rgba(227, 227, 227, 0.08) 1px, transparent 1px);
-  --dermaagent-notebook-ruled-lines: linear-gradient(rgba(227, 227, 227, 0.12) 1px, transparent 1px);
+  /* Minimal Notebook Grid Pattern - Ultra Subtle Gray */
+  --dermaagent-notebook-texture: radial-gradient(circle at 50% 50%, rgba(227, 227, 227, 0.01) 0%, transparent 70%);
+  --dermaagent-notebook-grid: linear-gradient(rgba(227, 227, 227, 0.06) 0.5px, transparent 0.5px);
+  --dermaagent-notebook-ruled-lines: linear-gradient(rgba(227, 227, 227, 0.08) 0.5px, transparent 0.5px);
 }
