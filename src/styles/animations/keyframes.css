@@ -1,4 +1,5 @@
 
+
 /* Main Keyframes File - Imports all animation categories */
 
 @import './cellular.css';
@@ -27,12 +28,12 @@
 /* Accordion animations for UI components */
 @keyframes accordion-down {
   from { height: 0; }
-  to: { height: var(--radix-accordion-content-height); }
+  to { height: var(--radix-accordion-content-height); }
 }
 
 @keyframes accordion-up {
   from { height: var(--radix-accordion-content-height); }
-  to: { height: 0; }
+  to { height: 0; }
 }
 
 /* Basic glow animation */
@@ -46,3 +47,4 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
