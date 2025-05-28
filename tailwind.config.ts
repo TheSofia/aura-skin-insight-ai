@@ -23,7 +23,7 @@ export default {
 				input: 'hsl(var(--input))',
 				ring: {
 					DEFAULT: 'hsl(var(--ring))',
-					'violet-titanium': '#7E69AB', // Adding violet-titanium color to the ring palette
+					'violet-titanium': '#7E69AB',
 				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
@@ -55,20 +55,47 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				'burnt-orange': '#C2410C', // New burnt orange color
-				'deep-purple': '#6E59A5', // Adding deep purple color
-				'dark-purple': '#210B2C', // Adding extremely dark purple color
-				'violet-titanium': '#7E69AB', // Add violet-titanium as a root-level color
+
+				// DermaAgent Brand Colors
+				dermaagent: {
+					// Primary Backgrounds
+					'bone-white': '#FDFDFD',
+					'warm-off-white': '#FEFCFA',
+					'soft-sand': '#FAF8F5',
+					'warm-gray': '#F5F3F0',
+					'textured-paper': '#F2F0ED',
+					
+					// Primary Text & UI
+					'deep-ink-black': '#1A1A1A',
+					'graphite-gray': '#2C2C2C',
+					'medium-gray': '#6B6B6B',
+					'light-gray': '#A8A8A8',
+					
+					// Accent Colors
+					'amber-glow': '#D4AF37',
+					'amber-glow-light': '#E8C35F',
+					'amber-glow-dark': '#B8941F',
+					'deep-emerald': '#2F5233',
+					'deep-emerald-light': '#4A6B4E',
+					'deep-emerald-dark': '#1E3621',
+					'sapphire-blue': '#1E3A5F',
+					'sapphire-blue-light': '#2C5282',
+					'sapphire-blue-dark': '#153047',
+				},
+
+				// Legacy compatibility
+				'burnt-orange': '#C2410C',
+				'deep-purple': '#6E59A5',
+				'dark-purple': '#210B2C',
+				'violet-titanium': '#7E69AB',
 				beautyagent: {
-					// Base colors
+					// ... keep existing code (all existing beautyagent colors)
 					'white': '#FFFFFF',
 					'off-white': '#F8F8F9',
 					'light-grey': '#F1F1F3',
 					'medium-grey': '#9F9EA1',
 					'dark-grey': '#403E43',
 					'deeper-grey': '#221F26',
-					
-					// Bioluminescent palette base colors
 					'ultraviolet': '#33184A',
 					'ultraviolet-light': '#492266',
 					'rose-quartz': '#D6A9B8',
@@ -79,20 +106,14 @@ export default {
 					'breathable-black-light': '#1E1B22',
 					'plasma-white': '#FFFAF0',
 					'plasma-white-light': '#FFFCF7',
-					
-					// Smart metallic accents
 					'platinum-sheen': '#E5E4E2',
 					'amber-shimmer': '#FFBF65',
-					
-					// Legacy colors maintained for compatibility
 					'accent': '#E05F14',
 					'dark-orange': '#C94C10',
 					'deep-blue': '#2A4365',
 					'muted-violet': '#7E69AB',
 					'deep-purple': '#5D4A8C',
 					'dark-purple': '#34184A',
-					
-					// Glass effects
 					'glass-white': 'rgba(255, 255, 255, 0.95)',
 					'glass-light': 'rgba(255, 255, 255, 0.7)',
 					'glass-accent': 'rgba(224, 95, 20, 0.08)',
@@ -198,8 +219,6 @@ export default {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-2px)' }
 				},
-				
-				// New cellular animation keyframes for the logo
 				'cellular-drift': {
 					'0%': { transform: 'translateX(0) translateY(0) scale(1)' },
 					'25%': { transform: 'translateX(2px) translateY(-2px) scale(1.02)' },
@@ -223,8 +242,6 @@ export default {
 					'66%': { transform: 'translateY(-1px) translateX(3px) scale(1.05)', opacity: '0.75' },
 					'100%': { transform: 'translateY(0) translateX(0) scale(1)', opacity: '0.7' }
 				},
-				
-				// New premium orbital animations
 				'orbital-motion': {
 					'0%': { transform: 'rotate(0deg) translateX(1px) rotate(0deg)' },
 					'33%': { transform: 'rotate(120deg) translateX(1px) rotate(-120deg)' },
@@ -267,14 +284,10 @@ export default {
 				'morph': 'morph 12s ease-in-out infinite',
 				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
 				'float-subtle': 'float-subtle 4s ease-in-out infinite',
-				
-				// New cellular animations
 				'cellular-drift': 'cellular-drift 8s infinite ease-in-out',
 				'cellular-core-pulse': 'cellular-core-pulse 7.5s infinite cubic-bezier(0.45, 0, 0.55, 1)',
 				'cellular-ring-drift': 'cellular-ring-drift 12s infinite ease-in-out',
 				'cellular-particle-float': 'cellular-particle-float 10s infinite ease-in-out',
-				
-				// New premium orbital animations
 				'orbital-motion': 'orbital-motion 20s infinite cubic-bezier(0.4, 0, 0.6, 1)',
 				'orbital-motion-reverse': 'orbital-motion-reverse 24s infinite cubic-bezier(0.4, 0, 0.6, 1)',
 				'orbital-float': 'orbital-float 18s infinite ease-in-out',
@@ -287,6 +300,12 @@ export default {
 				'kode': ['"Kode Mono"', 'monospace'],
 				'satoshi': ['"Satoshi"', 'sans-serif'],
 				'general': ['"General Sans"', 'sans-serif'],
+				
+				// DermaAgent Typography System
+				'dermaagent-typewriter': ['"DermaAgent Typewriter"', '"JetBrains Mono"', '"Source Code Pro"', 'monospace'],
+				'dermaagent-ui': ['"DermaAgent UI"', '"Outfit"', '"Inter"', 'system-ui', 'sans-serif'],
+				'jetbrains': ['"JetBrains Mono"', 'monospace'],
+				'outfit': ['"Outfit"', 'sans-serif'],
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -296,6 +315,12 @@ export default {
 				'glass-effect': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%)',
 				'gradient-warm': 'linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(232, 76, 18, 0.1) 100%)',
 				'gradient-cool': 'linear-gradient(135deg, rgba(22, 163, 74, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%)',
+				
+				// DermaAgent Gradients
+				'dermaagent-notebook': 'var(--dermaagent-notebook-gradient)',
+				'dermaagent-amber': 'var(--dermaagent-amber-gradient)',
+				'dermaagent-emerald': 'var(--dermaagent-emerald-gradient)',
+				'dermaagent-sapphire': 'var(--dermaagent-sapphire-gradient)',
 			},
 			boxShadow: {
 				'accent': '0 0 20px rgba(249, 115, 22, 0.2), 0 0 40px rgba(249, 115, 22, 0.1)',
@@ -303,8 +328,14 @@ export default {
 				'inner-glow': 'inset 0 0 10px rgba(249, 115, 22, 0.1)',
 				'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
 				'green-glow': '0 0 15px rgba(22, 163, 74, 0.2)',
-				'purple-glow': '0 0 20px rgba(110, 89, 165, 0.3), 0 0 40px rgba(110, 89, 165, 0.1)', // Added purple glow shadow
-				'dark-purple-glow': '0 0 20px rgba(33, 11, 44, 0.35), 0 0 40px rgba(33, 11, 44, 0.15)', // Added dark purple glow shadow
+				'purple-glow': '0 0 20px rgba(110, 89, 165, 0.3), 0 0 40px rgba(110, 89, 165, 0.1)',
+				'dark-purple-glow': '0 0 20px rgba(33, 11, 44, 0.35), 0 0 40px rgba(33, 11, 44, 0.15)',
+				
+				// DermaAgent Shadows
+				'dermaagent-amber': '0 0 20px rgba(212, 175, 55, 0.2), 0 0 40px rgba(212, 175, 55, 0.1)',
+				'dermaagent-emerald': '0 0 15px rgba(47, 82, 51, 0.2)',
+				'dermaagent-sapphire': '0 0 20px rgba(30, 58, 95, 0.2)',
+				'dermaagent-glass': '0 8px 32px rgba(0, 0, 0, 0.06), 0 0 20px rgba(212, 175, 55, 0.1)',
 			},
 			backdropFilter: {
 				'none': 'none',

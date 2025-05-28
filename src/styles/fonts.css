@@ -7,6 +7,13 @@
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@200;300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400&family=Canela+Text:wght@300&display=swap');
 
+/* DermaAgent Primary Typography - Typewriting Style Monospace */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600&display=swap');
+
+/* DermaAgent Secondary Typography - Elegant Sans-Serif */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
 /* Font fallbacks */
 @font-face {
   font-family: 'Canela Text';
@@ -21,4 +28,20 @@
   src: local('Canela Text'), local('Georgia');
   font-weight: 300;
   font-style: italic;
+}
+
+/* DermaAgent Typewriting Font System */
+@font-face {
+  font-family: 'DermaAgent Typewriter';
+  src: local('JetBrains Mono'), local('Source Code Pro'), local('Courier New');
+  font-weight: 300 600;
+  font-style: normal;
+}
+
+/* DermaAgent UI Font System */
+@font-face {
+  font-family: 'DermaAgent UI';
+  src: local('Outfit'), local('Inter'), local('system-ui');
+  font-weight: 200 700;
+  font-style: normal;
 }

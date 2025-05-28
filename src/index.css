@@ -16,3 +16,72 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* DermaAgent Global Styles */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-dermaagent-bone-white text-dermaagent-deep-ink-black;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-dermaagent-ui, 'Outfit', 'Inter', system-ui, sans-serif);
+  }
+  
+  /* DermaAgent Typography Hierarchy */
+  .dermaagent-headline {
+    font-family: var(--font-dermaagent-typewriter, 'JetBrains Mono', 'Source Code Pro', monospace);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--dermaagent-deep-ink-black);
+  }
+  
+  .dermaagent-ui-text {
+    font-family: var(--font-dermaagent-ui, 'Outfit', 'Inter', system-ui, sans-serif);
+    color: var(--dermaagent-graphite-gray);
+  }
+  
+  /* DermaAgent Interactive Elements */
+  .dermaagent-button {
+    @apply transition-all duration-300 ease-out;
+    font-family: var(--font-dermaagent-ui, 'Outfit', 'Inter', system-ui, sans-serif);
+    border-radius: 0.75rem;
+    backdrop-filter: blur(8px);
+  }
+  
+  .dermaagent-button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+  }
+  
+  /* DermaAgent Glass Effects */
+  .dermaagent-glass {
+    background: var(--dermaagent-glass-overlay);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--dermaagent-glass-border);
+    box-shadow: 0 8px 20px var(--dermaagent-glass-shadow);
+  }
+}
+
+/* DermaAgent Animation Utilities */
+@layer utilities {
+  .cellular-motion-subtle {
+    animation: cellular-drift 25s infinite ease-in-out;
+  }
+  
+  .cellular-glow {
+    filter: drop-shadow(0 0 8px var(--dermaagent-cellular-amber));
+  }
+  
+  .dermaagent-text-gradient {
+    background: var(--dermaagent-amber-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
