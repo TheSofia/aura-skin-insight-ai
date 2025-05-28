@@ -1,10 +1,10 @@
-
 import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Hero from "@/components/landing/Hero";
 import Footer from "@/components/landing/Footer";
 import FullScreenCellularBackground from "@/components/landing/FullScreenCellularBackground";
 import MinimalNotebookBackground from "@/components/dermaagent/MinimalNotebookBackground";
+import TypingBottomCTA from "@/components/landing/TypingBottomCTA";
 
 const Index = () => {
   const location = useLocation();
@@ -161,6 +161,9 @@ const Index = () => {
           ></div>
         </div>
       </div>
+      
+      {/* Typing Bottom CTA */}
+      <TypingBottomCTA />
     </div>
   );
 };
