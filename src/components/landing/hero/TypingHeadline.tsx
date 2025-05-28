@@ -56,7 +56,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
         transition: 'transform 0.4s ease-out',
       }}
     >
-      {/* Main Headline - Unified IBM Plex Mono */}
+      {/* Main Headline - Pure Monochrome IBM Plex Mono */}
       <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
         {/* "DISCOVER" - Medium weight */}
         <span 
@@ -67,7 +67,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
             letterSpacing: '0.08em',
             lineHeight: '1.1',
             minHeight: '1.2em',
-            color: '#333333',
+            color: 'var(--dermaagent-charcoal-gray)',
             textTransform: 'uppercase'
           }}
         >
@@ -76,7 +76,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
             <span 
               className="animate-pulse"
               style={{
-                color: '#D2BBA2',
+                color: 'var(--dermaagent-muted-mid-gray)',
                 marginLeft: '2px'
               }}
             >
@@ -95,7 +95,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
             lineHeight: '1.1',
             marginTop: '0.5rem',
             minHeight: '1.2em',
-            color: '#1A1A1A',
+            color: 'var(--dermaagent-graphite-black)',
             textTransform: 'uppercase'
           }}
         >
@@ -104,7 +104,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
             <span 
               className="animate-pulse"
               style={{
-                color: '#D2BBA2',
+                color: 'var(--dermaagent-muted-mid-gray)',
                 marginLeft: '2px'
               }}
             >
@@ -124,7 +124,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
           minHeight: '1.5em',
           opacity: subtitle.displayedText ? 0.7 : 0,
           transition: 'opacity 0.3s ease-out',
-          color: '#1A1A1A'
+          color: 'var(--dermaagent-graphite-black)'
         }}
       >
         {subtitle.displayedText}
@@ -132,7 +132,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
           <span 
             className="animate-pulse"
             style={{
-              color: '#D2BBA2',
+              color: 'var(--dermaagent-muted-mid-gray)',
               marginLeft: '2px'
             }}
           >

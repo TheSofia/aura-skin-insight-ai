@@ -48,22 +48,22 @@ const TypingCallToAction = ({ animationStates, cursorProximity }: TypingCallToAc
           fontFamily: "'IBM Plex Mono', monospace",
           fontWeight: '300',
           letterSpacing: '0.02em',
-          background: '#F9F8F7',
-          border: '1px solid #D3D3D3',
-          color: '#1A1A1A',
-          boxShadow: '0 1px 3px rgba(26, 26, 26, 0.05)',
+          background: 'var(--dermaagent-pale-paper-white)',
+          border: '1px solid var(--dermaagent-light-gray)',
+          color: 'var(--dermaagent-graphite-black)',
+          boxShadow: '0 1px 3px rgba(26, 26, 26, 0.03)',
           minWidth: '200px',
           minHeight: '56px'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = '#D2BBA2';
-          e.currentTarget.style.borderColor = '#D2BBA2';
-          e.currentTarget.style.boxShadow = '0 2px 6px rgba(26, 26, 26, 0.08)';
+          e.currentTarget.style.background = 'var(--dermaagent-light-gray)';
+          e.currentTarget.style.borderColor = 'var(--dermaagent-muted-mid-gray)';
+          e.currentTarget.style.boxShadow = '0 2px 6px rgba(26, 26, 26, 0.05)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = '#F9F8F7';
-          e.currentTarget.style.borderColor = '#D3D3D3';
-          e.currentTarget.style.boxShadow = '0 1px 3px rgba(26, 26, 26, 0.05)';
+          e.currentTarget.style.background = 'var(--dermaagent-pale-paper-white)';
+          e.currentTarget.style.borderColor = 'var(--dermaagent-light-gray)';
+          e.currentTarget.style.boxShadow = '0 1px 3px rgba(26, 26, 26, 0.03)';
         }}
       >
         {buttonText.displayedText || "\u00A0"}

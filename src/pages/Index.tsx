@@ -79,13 +79,13 @@ const Index = () => {
   return (
     <div 
       ref={pageRef}
-      className="min-h-screen flex flex-col overflow-hidden relative"
+      className="min-h-screen flex flex-col overflow-hidden relative notebook-grid-bg"
       style={{
-        background: '#F9F8F7',
+        background: 'var(--dermaagent-pale-paper-white)',
         fontFamily: "'IBM Plex Mono', monospace",
       }}
     >
-      {/* DermaAgent Minimal Notebook Background */}
+      {/* DermaAgent Minimal Notebook Background with subtle grid */}
       <MinimalNotebookBackground 
         isVisible={isLoaded}
         intensity="subtle"
@@ -93,14 +93,14 @@ const Index = () => {
         showCellularMotion={true}
       />
       
-      {/* Enhanced full-screen cellular background animation */}
+      {/* Enhanced monochrome cellular background animation */}
       <FullScreenCellularBackground 
         isVisible={isLoaded}
         mousePosition={mousePosition}
         scrollPosition={scrollPosition}
       />
       
-      {/* DermaAgent Logo - Bold Monospace */}
+      {/* DermaAgent Logo - Bold Monospace, Pure Monochrome */}
       <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30">
         <h1 
           className={`text-3xl md:text-4xl font-bold tracking-widest transition-all duration-2000 ${
@@ -109,9 +109,9 @@ const Index = () => {
           style={{
             fontFamily: "'IBM Plex Mono', monospace",
             fontWeight: '700',
-            color: '#1A1A1A',
-            textShadow: '0 1px 2px rgba(249, 248, 247, 0.8)',
-            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05))',
+            color: 'var(--dermaagent-graphite-black)',
+            textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)',
+            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.03))',
             letterSpacing: '0.15em',
           }}
         >
@@ -120,7 +120,7 @@ const Index = () => {
       </div>
       
       <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        {/* Hero Section with DermaAgent refined styling */}
+        {/* Hero Section with monochrome styling */}
         <Hero
           isLoaded={isLoaded}
           showTyping={false}
@@ -131,7 +131,7 @@ const Index = () => {
         <Footer />
       </div>
       
-      {/* Typing Bottom CTA - Fixed with isLoaded prop */}
+      {/* Typing Bottom CTA */}
       <TypingBottomCTA isLoaded={isLoaded} />
     </div>
   );
