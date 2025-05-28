@@ -5,6 +5,7 @@
 @import './styles/animations/keyframes.css';
 @import './styles/animations/animation-classes.css';
 @import './styles/animations/cellular.css';
+@import './styles/animations/particles.css';
 @import './styles/components/scan-line.css';
 @import './styles/components/glass-card.css';
 @import './styles/components/glass-morphism.css';
@@ -123,22 +124,27 @@
 
 /* Pure Monochrome Animation Utilities */
 @layer utilities {
-  .cellular-motion-minimal {
-    animation: cellular-drift-minimal 50s infinite ease-in-out;
-  }
-  
-  .cellular-glow-subtle {
-    filter: drop-shadow(0 0 2px rgba(227, 227, 227, 0.1));
-  }
-  
+  /* Pure notebook grid background - static, no motion */
   .notebook-grid-bg {
-    background-image: var(--dermaagent-notebook-grid);
+    background-image: 
+      linear-gradient(var(--dermaagent-light-gray) 0.5px, transparent 0.5px),
+      linear-gradient(90deg, var(--dermaagent-light-gray) 0.5px, transparent 0.5px);
     background-size: 40px 40px;
+    background-position: 0 0, 0 0;
+    opacity: 0.15;
   }
   
-  .cellular-texture-bg {
-    background-image: var(--dermaagent-notebook-texture);
-    background-size: 200px 200px;
+  /* Alternative dot-grid pattern */
+  .notebook-dot-grid-bg {
+    background-image: radial-gradient(circle, var(--dermaagent-light-gray) 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0;
+    opacity: 0.12;
+  }
+  
+  /* Ensure cellular motion is disabled on landing */
+  .no-cellular-motion {
+    background-attachment: local;
   }
   
   .monochrome-depth {
