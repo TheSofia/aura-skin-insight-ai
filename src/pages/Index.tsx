@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Hero from "@/components/landing/Hero";
@@ -80,8 +81,8 @@ const Index = () => {
       ref={pageRef}
       className="min-h-screen flex flex-col overflow-hidden relative"
       style={{
-        background: 'var(--dermaagent-notebook-gradient)',
-        fontFamily: "'DermaAgent UI', 'Aeonik', 'Inter', system-ui, sans-serif",
+        background: '#F9F8F7',
+        fontFamily: "'IBM Plex Mono', monospace",
       }}
     >
       {/* DermaAgent Minimal Notebook Background */}
@@ -99,21 +100,22 @@ const Index = () => {
         scrollPosition={scrollPosition}
       />
       
-      {/* DermaAgent Logo - Bold & Prominent */}
+      {/* DermaAgent Logo - Bold Monospace */}
       <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30">
         <h1 
-          className={`text-3xl md:text-4xl font-bold tracking-wide transition-all duration-2000 dermaagent-logo ${
+          className={`text-3xl md:text-4xl font-bold tracking-widest transition-all duration-2000 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
-            color: 'var(--dermaagent-graphite-black)',
-            textShadow: '0 2px 4px rgba(249, 248, 247, 0.8)',
-            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05))',
-            letterSpacing: '0.03em',
+            fontFamily: "'IBM Plex Mono', monospace",
             fontWeight: '700',
+            color: '#1A1A1A',
+            textShadow: '0 1px 2px rgba(249, 248, 247, 0.8)',
+            filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05))',
+            letterSpacing: '0.15em',
           }}
         >
-          DermaAgent
+          DERMAAGENT
         </h1>
       </div>
       
@@ -129,41 +131,8 @@ const Index = () => {
         <Footer />
       </div>
       
-      {/* Enhanced DermaAgent CTA with refined notebook aesthetic */}
-      <div 
-        className={`fixed bottom-6 left-1/2 transform -translate-x-1/2 z-20 transition-all duration-2000 
-          ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-        style={{ transitionDelay: '3000ms' }}
-      >
-        <div 
-          className="flex items-center backdrop-blur-sm border rounded-full py-3 px-8 shadow-lg transition-all duration-500 
-            hover:shadow-xl cursor-pointer group dermaagent-button"
-          style={{
-            background: 'var(--dermaagent-glass-overlay)',
-            borderColor: 'var(--dermaagent-glass-border)',
-            boxShadow: '0 2px 12px var(--dermaagent-glass-shadow)',
-          }}
-        >
-          <span 
-            className="text-sm mr-3 whitespace-nowrap transition-all duration-500 
-              group-hover:tracking-wider dermaagent-ui-text"
-            style={{
-              fontWeight: '300',
-            }}
-          >
-            Find My Skin Protocol
-          </span>
-          <div 
-            className="w-3 h-3 rounded-full animate-pulse-subtle"
-            style={{
-              background: 'var(--dermaagent-interactive-gradient)',
-            }}
-          ></div>
-        </div>
-      </div>
-      
-      {/* Typing Bottom CTA */}
-      <TypingBottomCTA />
+      {/* Typing Bottom CTA - Fixed with isLoaded prop */}
+      <TypingBottomCTA isLoaded={isLoaded} />
     </div>
   );
 };

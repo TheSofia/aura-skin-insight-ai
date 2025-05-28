@@ -1,37 +1,25 @@
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Aeonik:wght@200;300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500;600;700&display=swap');
 
-/* Bold Display Font for DermaAgent Logo */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
-
-/* Fallback for Aeonik if not available */
-@font-face {
-  font-family: 'Aeonik';
-  src: local('Inter'), local('system-ui');
-  font-weight: 200 500;
-  font-style: normal;
-}
-
-/* DermaAgent Typography System - Final Refined Version */
-@font-face {
-  font-family: 'DermaAgent Logo';
-  src: local('Playfair Display'), local('Times New Roman'), local('serif');
-  font-weight: 400 900;
-  font-style: normal;
-}
-
+/* DermaAgent Unified Typography System - IBM Plex Mono Only */
 @font-face {
   font-family: 'DermaAgent Typewriter';
   src: local('IBM Plex Mono'), local('Monaco'), local('Courier New');
-  font-weight: 200 500;
+  font-weight: 200 700;
+  font-style: normal;
+}
+
+/* Ensure IBM Plex Mono is the primary font across all weight variations */
+@font-face {
+  font-family: 'DermaAgent UI';
+  src: local('IBM Plex Mono'), local('Monaco'), local('Courier New');
+  font-weight: 200 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'DermaAgent UI';
-  src: local('Aeonik'), local('Inter'), local('system-ui');
-  font-weight: 200 500;
+  font-family: 'DermaAgent Logo';
+  src: local('IBM Plex Mono'), local('Monaco'), local('Courier New');
+  font-weight: 600 700;
   font-style: normal;
 }

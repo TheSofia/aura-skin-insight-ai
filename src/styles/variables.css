@@ -1,45 +1,32 @@
 
-/* DermaAgent - Final Minimal & Sleek Design Variables */
+/* DermaAgent - Final Unified Design System Variables */
 :root {
-  /* Core Brand Identity - DermaAgent */
+  /* Core Brand Identity */
   --dermaagent-app-name: "DermaAgent";
   
-  /* Base Colors - Refined Minimal Palette */
+  /* Simplified Color Palette - Monochromatic with Single Accent */
   --dermaagent-soft-paper-white: #F9F8F7;
-  --dermaagent-warm-bone: #F4F1ED;
   --dermaagent-light-graphite-lines: #D3D3D3;
-  
-  /* Primary Text & UI - High Contrast for Readability */
   --dermaagent-graphite-black: #1A1A1A;
-  --dermaagent-charcoal-gray: #333333;
-  --dermaagent-light-gray-text: #999999;
-  
-  /* Accent Colors - Minimal & Muted */
+  --dermaagent-deep-charcoal: #333333;
   --dermaagent-muted-dusty-beige: #D2BBA2;
-  --dermaagent-soft-olive: #A3A99E;
-  --dermaagent-cool-gray-blue: #AAB6C9;
   
-  /* Cellular & Scientific Theme Colors - Ultra Subtle */
-  --dermaagent-cellular-ambient: rgba(163, 169, 158, 0.05);
-  --dermaagent-cellular-beige: rgba(210, 187, 162, 0.08);
-  --dermaagent-cellular-blue: rgba(170, 182, 201, 0.06);
+  /* Simplified Cellular Background - Monochrome Only */
+  --dermaagent-cellular-ambient: rgba(211, 211, 211, 0.05);
+  --dermaagent-cellular-soft: rgba(211, 211, 211, 0.08);
+  --dermaagent-cellular-subtle: rgba(211, 211, 211, 0.03);
   
-  /* Glass & Depth Effects - Minimal & Elegant */
+  /* Simplified Glass & Depth Effects */
   --dermaagent-glass-overlay: rgba(249, 248, 247, 0.95);
   --dermaagent-glass-shadow: rgba(26, 26, 26, 0.03);
-  --dermaagent-glass-border: rgba(26, 26, 26, 0.05);
+  --dermaagent-glass-border: rgba(211, 211, 211, 0.3);
   
-  /* Notebook Lines & Structure */
-  --dermaagent-notebook-lines: rgba(211, 211, 211, 0.6);
-  --dermaagent-page-divider: rgba(51, 51, 51, 0.08);
-  --dermaagent-subtle-shadow: rgba(26, 26, 26, 0.04);
+  /* Simplified Gradients - Monochrome */
+  --dermaagent-background-gradient: linear-gradient(135deg, #F9F8F7 0%, #F4F1ED 100%);
+  --dermaagent-accent-gradient: linear-gradient(135deg, #D2BBA2 0%, rgba(210, 187, 162, 0.8) 100%);
   
-  /* Enhanced Gradient Combinations - Refined */
-  --dermaagent-notebook-gradient: linear-gradient(135deg, var(--dermaagent-soft-paper-white) 0%, var(--dermaagent-warm-bone) 100%);
-  --dermaagent-beige-gradient: linear-gradient(135deg, var(--dermaagent-muted-dusty-beige) 0%, var(--dermaagent-soft-olive) 100%);
-  --dermaagent-interactive-gradient: linear-gradient(135deg, var(--dermaagent-cool-gray-blue) 0%, var(--dermaagent-muted-dusty-beige) 100%);
-  
-  /* Cellular Background Patterns - Sophisticated & Minimal */
-  --dermaagent-cellular-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='cellular'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cellular)' opacity='0.02'/%3E%3C/svg%3E");
-  --dermaagent-notebook-grid: url("data:image/svg+xml,%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D3D3D3' stroke-width='0.5' opacity='0.6'%3E%3Cpath d='M40 0H0v40'/%3E%3C/g%3E%3C/svg%3E");
+  /* Simplified Cellular Patterns - Atmospheric */
+  --dermaagent-cellular-texture: radial-gradient(circle at 50% 50%, rgba(211, 211, 211, 0.03) 0%, transparent 70%);
+  --dermaagent-notebook-grid: linear-gradient(rgba(211, 211, 211, 0.15) 1px, transparent 1px);
 }
+</dermaagent-notebook-grid>

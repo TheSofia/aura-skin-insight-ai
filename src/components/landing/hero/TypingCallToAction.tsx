@@ -45,28 +45,28 @@ const TypingCallToAction = ({ animationStates, cursorProximity }: TypingCallToAc
         className="dermaagent-button px-8 py-4 text-base rounded-lg transition-all duration-500 
           hover:scale-105 active:scale-95"
         style={{
-          background: 'var(--dermaagent-muted-dusty-beige)',
-          border: '1px solid var(--dermaagent-glass-border)',
-          color: 'var(--dermaagent-graphite-black)',
-          fontFamily: "'DermaAgent UI', 'Aeonik', 'Inter', system-ui, sans-serif",
+          fontFamily: "'IBM Plex Mono', monospace",
           fontWeight: '300',
-          letterSpacing: '0.01em',
-          boxShadow: '0 2px 8px var(--dermaagent-glass-shadow)',
+          letterSpacing: '0.02em',
+          background: '#F9F8F7',
+          border: '1px solid #D3D3D3',
+          color: '#1A1A1A',
+          boxShadow: '0 1px 3px rgba(26, 26, 26, 0.05)',
           minWidth: '200px',
           minHeight: '56px'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'var(--dermaagent-soft-olive)';
-          e.currentTarget.style.borderColor = 'var(--dermaagent-soft-olive)';
-          e.currentTarget.style.boxShadow = '0 4px 16px var(--dermaagent-glass-shadow), 0 0 0 1px var(--dermaagent-soft-olive)';
+          e.currentTarget.style.background = '#D2BBA2';
+          e.currentTarget.style.borderColor = '#D2BBA2';
+          e.currentTarget.style.boxShadow = '0 2px 6px rgba(26, 26, 26, 0.08)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = 'var(--dermaagent-graphite-black)';
-          e.currentTarget.style.borderColor = 'var(--dermaagent-glass-border)';
-          e.currentTarget.style.boxShadow = '0 2px 8px var(--dermaagent-glass-shadow)';
+          e.currentTarget.style.background = '#F9F8F7';
+          e.currentTarget.style.borderColor = '#D3D3D3';
+          e.currentTarget.style.boxShadow = '0 1px 3px rgba(26, 26, 26, 0.05)';
         }}
       >
-        {buttonText.displayedText || "\u00A0"} {/* Non-breaking space to maintain button height */}
+        {buttonText.displayedText || "\u00A0"}
       </Button>
     </div>
   );

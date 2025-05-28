@@ -56,14 +56,19 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
         transition: 'transform 0.4s ease-out',
       }}
     >
-      {/* Main Headline - Typing Animation */}
+      {/* Main Headline - Unified IBM Plex Mono */}
       <h1 className="text-4xl md:text-5xl lg:text-6xl mb-8">
-        {/* "DISCOVER" - Light gray typewriter style with typing */}
+        {/* "DISCOVER" - Medium weight */}
         <span 
           className="block dermaagent-headline-light"
           style={{
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontWeight: '400',
+            letterSpacing: '0.08em',
             lineHeight: '1.1',
             minHeight: '1.2em',
+            color: '#333333',
+            textTransform: 'uppercase'
           }}
         >
           {firstLine.displayedText}
@@ -71,7 +76,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
             <span 
               className="animate-pulse"
               style={{
-                color: 'var(--dermaagent-soft-olive)',
+                color: '#D2BBA2',
                 marginLeft: '2px'
               }}
             >
@@ -80,13 +85,18 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
           )}
         </span>
         
-        {/* "YOUR BEST VERSION" - Strong contrast UI font with typing */}
+        {/* "YOUR BEST VERSION" - Bold weight */}
         <span 
-          className="block dermaagent-ui-text-medium"
+          className="block dermaagent-headline"
           style={{
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontWeight: '500',
+            letterSpacing: '0.08em',
             lineHeight: '1.1',
             marginTop: '0.5rem',
             minHeight: '1.2em',
+            color: '#1A1A1A',
+            textTransform: 'uppercase'
           }}
         >
           {secondLine.displayedText}
@@ -94,7 +104,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
             <span 
               className="animate-pulse"
               style={{
-                color: 'var(--dermaagent-soft-olive)',
+                color: '#D2BBA2',
                 marginLeft: '2px'
               }}
             >
@@ -104,15 +114,17 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
         </span>
       </h1>
       
-      {/* Subtitle with typing animation */}
+      {/* Subtitle - Regular weight */}
       <p 
         className="text-lg md:text-xl dermaagent-ui-text"
         style={{
+          fontFamily: "'IBM Plex Mono', monospace",
           fontWeight: '300',
-          letterSpacing: '0.01em',
+          letterSpacing: '0.02em',
           minHeight: '1.5em',
           opacity: subtitle.displayedText ? 0.7 : 0,
-          transition: 'opacity 0.3s ease-out'
+          transition: 'opacity 0.3s ease-out',
+          color: '#1A1A1A'
         }}
       >
         {subtitle.displayedText}
@@ -120,7 +132,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
           <span 
             className="animate-pulse"
             style={{
-              color: 'var(--dermaagent-soft-olive)',
+              color: '#D2BBA2',
               marginLeft: '2px'
             }}
           >
