@@ -8,46 +8,27 @@ type UseHeroAnimationsProps = {
 
 export const useHeroAnimations = ({ headlineRef, mousePosition }: UseHeroAnimationsProps) => {
   const [animationStates, setAnimationStates] = useState({
-    discover: false,
-    yourBest: false,
-    version: false,
-    underlineVisible: false,
-    ctaReady: false
+    isTextVisible: false,
+    showVersionHighlight: false
   });
   
   const [cursorProximity, setCursorProximity] = useState(0);
   
   // Start animations with staggered timing
   useEffect(() => {
-    // First, trigger the "DISCOVER" animation
-    const discoverTimer = setTimeout(() => {
-      setAnimationStates(prev => ({ ...prev, discover: true }));
+    // First, trigger the text visibility animation
+    const textTimer = setTimeout(() => {
+      setAnimationStates(prev => ({ ...prev, isTextVisible: true }));
     }, 1000);
     
-    // After a short delay, trigger "YOUR BEST" animation
-    const yourBestTimer = setTimeout(() => {
-      setAnimationStates(prev => ({ ...prev, yourBest: true }));
-    }, 1700); // The 0.7s delay referenced in the design
-    
-    // After another short delay, trigger "VERSION" animation
-    const versionTimer = setTimeout(() => {
-      setAnimationStates(prev => ({ ...prev, version: true }));
-    }, 2300); // 0.6s after YOUR BEST starts
-    
-    // Finally, after all text is visible, show the underline and CTA
-    const finalTimer = setTimeout(() => {
-      setAnimationStates(prev => ({ 
-        ...prev, 
-        underlineVisible: true,
-        ctaReady: true 
-      }));
-    }, 3200);
+    // After text is visible, show the version highlight
+    const highlightTimer = setTimeout(() => {
+      setAnimationStates(prev => ({ ...prev, showVersionHighlight: true }));
+    }, 2500);
     
     return () => {
-      clearTimeout(discoverTimer);
-      clearTimeout(yourBestTimer);
-      clearTimeout(versionTimer);
-      clearTimeout(finalTimer);
+      clearTimeout(textTimer);
+      clearTimeout(highlightTimer);
     };
   }, []);
   
