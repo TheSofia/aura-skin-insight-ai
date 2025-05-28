@@ -6,6 +6,7 @@ import ParticleSystem from './background/ParticleSystem';
 import LightRaySystem from './background/LightRaySystem';
 import NeuralNetwork from './background/NeuralNetwork';
 import EdgeFadeOverlay from './background/EdgeFadeOverlay';
+import BottomParticleSystem from './background/BottomParticleSystem';
 
 type FullScreenCellularBackgroundProps = {
   isVisible: boolean;
@@ -74,6 +75,13 @@ const FullScreenCellularBackground: React.FC<FullScreenCellularBackgroundProps> 
       
       {/* Enhanced intelligent SVG neural network - living connective tissue */}
       <NeuralNetwork 
+        cursorGlow={cursorGlow}
+        cursorIntensity={cursorIntensity}
+      />
+      
+      {/* NEW: Dynamic bottom particle system replacing static dot */}
+      <BottomParticleSystem 
+        isVisible={isVisible}
         cursorGlow={cursorGlow}
         cursorIntensity={cursorIntensity}
       />
