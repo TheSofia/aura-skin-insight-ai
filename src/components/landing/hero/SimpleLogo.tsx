@@ -8,12 +8,12 @@ interface SimpleLogoProps {
 const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
   return (
     <div 
-      className={`text-center mb-16 transition-all duration-2000 ${
+      className={`text-center mb-12 transition-all duration-2000 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
     >
       <h1 
-        className={`text-3xl md:text-4xl lg:text-5xl font-light tracking-wider relative ${
+        className={`text-2xl md:text-3xl lg:text-4xl font-light tracking-wider relative ${
           isVisible ? 'animate-logo-breathe' : ''
         }`}
         style={{
@@ -24,64 +24,38 @@ const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
           lineHeight: '1.1',
         }}
       >
-        {/* Clean "d e r m a . a g e n t" logotype with sophisticated futuristic motion */}
+        {/* Clean "d e r m a . a g e n t" logotype - reduced size for better proportion */}
         <span className="relative inline-block overflow-hidden">
           {/* Individual letterforms with enhanced spacing for elegance - all lowercase */}
           <span className="relative logo-letterform-enhance">d</span>
-          <span className="mx-2"></span>
+          <span className="mx-1.5"></span>
           <span className="relative logo-letterform-enhance">e</span>
-          <span className="mx-2"></span>
+          <span className="mx-1.5"></span>
           <span className="relative logo-letterform-enhance">r</span>
-          <span className="mx-2"></span>
+          <span className="mx-1.5"></span>
           <span className="relative logo-letterform-enhance">m</span>
-          <span className="mx-2"></span>
+          <span className="mx-1.5"></span>
           <span className="relative logo-letterform-enhance">a</span>
-          <span className="mx-3"></span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">.</span>
-          <span className="mx-3"></span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">a</span>
-          <span className="mx-2"></span>
+          <span className="mx-1.5"></span>
           <span className="relative logo-letterform-enhance">g</span>
-          <span className="mx-2"></span>
+          <span className="mx-1.5"></span>
           <span className="relative logo-letterform-enhance">e</span>
-          <span className="mx-2"></span>
+          <span className="mx-1.5"></span>
           <span className="relative logo-letterform-enhance">n</span>
-          <span className="mx-2"></span>
+          <span className="mx-1.5"></span>
           <span className="relative logo-letterform-enhance">t</span>
-          
-          {/* Sophisticated shimmer light wave effect */}
-          <span 
-            className={`absolute inset-0 ${
-              isVisible ? 'animate-logo-shimmer-sophisticated' : ''
-            }`}
-            style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(26, 26, 26, 0.15) 30%, rgba(255, 255, 255, 0.4) 50%, rgba(26, 26, 26, 0.15) 70%, transparent 100%)',
-              backgroundSize: '200% 100%',
-              transform: 'translateX(-100%)',
-              filter: 'blur(0.5px)',
-            }}
-          />
-          
-          {/* Elegant typewriter cursor blink - signature detail */}
-          <span 
-            className={`ml-2 inline-block w-0.5 h-full bg-current ${
-              isVisible ? 'animate-cursor-blink-elegant' : 'opacity-0'
-            }`}
-            style={{
-              animationDelay: '4s',
-              animationDuration: '1.2s',
-              animationIterationCount: '2',
-              opacity: 0.7,
-            }}
-          />
         </span>
       </h1>
       
-      {/* Clean underline with refined gradient */}
+      {/* Clean underline with refined gradient - smaller for proportionality */}
       <div 
-        className="mx-auto mt-8 transition-all duration-2000 relative"
+        className="mx-auto mt-6 transition-all duration-2000 relative"
         style={{
-          width: isVisible ? '250px' : '0px',
+          width: isVisible ? '200px' : '0px',
           height: '1px',
           background: `linear-gradient(90deg, 
             transparent 0%, 
@@ -90,18 +64,6 @@ const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
             var(--dermaagent-light-gray) 80%, 
             transparent 100%)`,
           opacity: 0.4,
-        }}
-      />
-      
-      {/* Minimal notebook margin line - perfectly clean */}
-      <div 
-        className={`absolute left-0 top-0 bottom-0 transition-all duration-2000 ${
-          isVisible ? 'opacity-10' : 'opacity-0'
-        }`}
-        style={{
-          width: '1px',
-          background: 'var(--dermaagent-light-gray)',
-          marginLeft: '8%',
         }}
       />
     </div>
