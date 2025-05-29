@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import Hero from "@/components/landing/Hero";
 import Footer from "@/components/landing/Footer";
 import MinimalNotebookBackground from "@/components/dermaagent/MinimalNotebookBackground";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const Index = () => {
   const location = useLocation();
@@ -30,6 +31,9 @@ const Index = () => {
         fontFamily: "'IBM Plex Mono', monospace",
       }}
     >
+      {/* Custom Cellular Cursor */}
+      <CustomCursor />
+      
       {/* Premium Digital Notebook Background - Clean stripes without any scratch effects */}
       <div 
         className="fixed inset-0 pointer-events-none z-0"

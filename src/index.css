@@ -12,6 +12,7 @@
 @import './styles/components/shapes.css';
 @import './styles/components/animated-gradients.css';
 @import './styles/components/typing-indicator.css';
+@import './styles/components/custom-cursor.css';
 @import './styles/utilities.css';
 
 @tailwind base;
