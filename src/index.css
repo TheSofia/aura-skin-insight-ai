@@ -1,3 +1,4 @@
+
 @import './styles/fonts.css';
 @import './styles/variables.css';
 @import './styles/base.css';
@@ -184,13 +185,15 @@
     background: linear-gradient(135deg, var(--dermaagent-notebook-base) 0%, rgba(227, 227, 227, 0.02) 100%);
   }
   
-  /* Enhanced logo animation for dermaAgent - removed shadow */
+  /* Enhanced logo animation for d e r m a . a g e n t - clean and refined */
   .logo-letterform-enhance {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
   }
   
   .logo-letterform-enhance:hover {
     transform: translateY(-1px);
+    opacity: 0.8;
   }
   
   /* Typing cursor animation */

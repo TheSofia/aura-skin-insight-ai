@@ -20,22 +20,33 @@ const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
           fontFamily: 'var(--dermaagent-primary-font)',
           fontWeight: 'var(--dermaagent-logo-weight)',
           color: 'var(--dermaagent-graphite-black)',
-          letterSpacing: 'var(--dermaagent-letter-spacing-logo)',
+          letterSpacing: '0.25em',
           lineHeight: '1.1',
         }}
       >
-        {/* Clean "dermaAgent" logotype with sophisticated futuristic motion */}
+        {/* Clean "d e r m a . a g e n t" logotype with sophisticated futuristic motion */}
         <span className="relative inline-block overflow-hidden">
-          {/* Individual letterforms with enhanced spacing for elegance */}
+          {/* Individual letterforms with enhanced spacing for elegance - all lowercase */}
           <span className="relative logo-letterform-enhance">d</span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">e</span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">r</span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">m</span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">a</span>
-          <span className="relative logo-letterform-enhance">A</span>
+          <span className="mx-3"></span>
+          <span className="relative logo-letterform-enhance">.</span>
+          <span className="mx-3"></span>
+          <span className="relative logo-letterform-enhance">a</span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">g</span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">e</span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">n</span>
+          <span className="mx-2"></span>
           <span className="relative logo-letterform-enhance">t</span>
           
           {/* Sophisticated shimmer light wave effect */}
@@ -70,7 +81,7 @@ const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
       <div 
         className="mx-auto mt-8 transition-all duration-2000 relative"
         style={{
-          width: isVisible ? '200px' : '0px',
+          width: isVisible ? '300px' : '0px',
           height: '1px',
           background: `linear-gradient(90deg, 
             transparent 0%, 

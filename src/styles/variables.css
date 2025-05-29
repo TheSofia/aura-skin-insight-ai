@@ -36,12 +36,12 @@
   --dermaagent-glass-shadow: rgba(26, 26, 26, 0.02);
   --dermaagent-glass-border: rgba(227, 227, 227, 0.3);
   
-  /* Premium Notebook Typography Variables - Refined for dermaAgent Logo */
+  /* Premium Notebook Typography Variables - Refined for d e r m a . a g e n t Logo */
   --dermaagent-primary-font: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
-  --dermaagent-logo-weight: 300; /* Lighter weight for elegance */
+  --dermaagent-logo-weight: 200; /* Ultra-light weight for refined elegance */
   --dermaagent-heading-weight: 400;
   --dermaagent-body-weight: 300;
-  --dermaagent-letter-spacing-logo: 0.18em; /* Increased for breathable, elegant spacing */
+  --dermaagent-letter-spacing-logo: 0.25em; /* Wide spacing for breathable, elegant appearance */
   --dermaagent-letter-spacing-heading: 0.06em;
   --dermaagent-letter-spacing-body: 0.02em;
 }
