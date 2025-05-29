@@ -1,0 +1,50 @@
+
+/* DermaAgent Text and Link Interaction Styles */
+
+.dermaagent-text-hover {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.dermaagent-text-hover:hover {
+  color: #6A5ACD;
+}
+
+.dermaagent-text-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #6A5ACD;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dermaagent-text-hover:hover::after {
+  width: 100%;
+}
+
+.footer-link {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.footer-link:hover {
+  color: #6A5ACD;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #6A5ACD;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
