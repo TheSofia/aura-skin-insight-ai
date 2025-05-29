@@ -1,7 +1,7 @@
 
-/* DermaAgent Elegant Interaction Styles */
+/* DermaAgent Elegant Interaction Styles - Enhanced Visibility */
 
-/* Refined button with subtle color accent and underline on interaction */
+/* Refined button with more noticeable color accent and underline on interaction */
 .dermaagent-elegant-button {
   position: relative;
   overflow: visible;
@@ -27,17 +27,18 @@
   background: linear-gradient(135deg, #6A5ACD 0%, #7B68EE 100%);
   color: white;
   border-color: #6A5ACD;
-  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.15);
-  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(106, 90, 205, 0.25);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .dermaagent-elegant-button:hover::after {
-  width: 80%;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .dermaagent-elegant-button:active {
   transform: translateY(0) scale(1.01);
-  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.2);
+  box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3);
   background: linear-gradient(135deg, #5B4B9D 0%, #6A5ACD 100%);
 }
 
@@ -48,19 +49,10 @@
 /* Subtle glow effect on focus for accessibility */
 .dermaagent-elegant-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.2);
+  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.3);
 }
 
-/* Alternative orange-red accent for variety */
-.dermaagent-elegant-button.accent-orange {
-  /* ... keep existing code for accent-orange styles ... */
-}
-
-.dermaagent-elegant-button.accent-orange::after {
-  background: #FF4500;
-}
-
-/* Enhanced input field elegant focus states with box transitions and underlines */
+/* Enhanced input field elegant focus states with more visible transitions */
 .dermaagent-input-elegant {
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,35 +67,36 @@
   bottom: -3px;
   left: 50%;
   width: 0;
-  height: 1px;
+  height: 2px;
   background: #6A5ACD;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(-50%);
 }
 
 .dermaagent-input-elegant:hover {
-  border-color: rgba(106, 90, 205, 0.3);
-  background: rgba(106, 90, 205, 0.02);
-  box-shadow: 0 2px 6px rgba(106, 90, 205, 0.08);
-  transform: translateY(-0.5px);
+  border-color: rgba(106, 90, 205, 0.5);
+  background: rgba(106, 90, 205, 0.05);
+  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.15);
+  transform: translateY(-1px);
 }
 
 .dermaagent-input-elegant:hover::after {
-  width: 60%;
+  width: 70%;
 }
 
 .dermaagent-input-elegant:focus {
   border-color: #6A5ACD;
-  box-shadow: 0 0 0 1px rgba(106, 90, 205, 0.1), 0 2px 8px rgba(106, 90, 205, 0.12);
-  background: rgba(106, 90, 205, 0.03);
+  box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.2), 0 4px 16px rgba(106, 90, 205, 0.2);
+  background: rgba(106, 90, 205, 0.08);
   transform: translateY(0);
 }
 
 .dermaagent-input-elegant:focus::after {
   width: 100%;
+  height: 3px;
 }
 
-/* Box element base class for consistent interaction behavior with underlines */
+/* Enhanced box element base class with more noticeable interactions */
 .dermaagent-box-element {
   position: relative;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -115,40 +108,41 @@
 .dermaagent-box-element::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -4px;
   left: 50%;
   width: 0;
-  height: 2px;
+  height: 3px;
   background: #6A5ACD;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(-50%);
 }
 
 .dermaagent-box-element:hover {
-  border-color: rgba(106, 90, 205, 0.4);
-  background: rgba(106, 90, 205, 0.04);
-  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.1);
-  transform: translateY(-0.5px) scale(1.01);
+  border-color: rgba(106, 90, 205, 0.6);
+  background: rgba(106, 90, 205, 0.08);
+  box-shadow: 0 4px 16px rgba(106, 90, 205, 0.2);
+  transform: translateY(-1px) scale(1.01);
 }
 
 .dermaagent-box-element:hover::after {
-  width: 70%;
+  width: 80%;
 }
 
 .dermaagent-box-element:active,
 .dermaagent-box-element:focus {
   border-color: #6A5ACD;
-  background: rgba(106, 90, 205, 0.06);
-  box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.15), 0 3px 10px rgba(106, 90, 205, 0.12);
+  background: rgba(106, 90, 205, 0.12);
+  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.25), 0 6px 20px rgba(106, 90, 205, 0.2);
   transform: translateY(0) scale(1);
 }
 
 .dermaagent-box-element:active::after,
 .dermaagent-box-element:focus::after {
   width: 100%;
+  height: 4px;
 }
 
-/* Refined text hover effects for other interactive elements */
+/* Enhanced text hover effects for other interactive elements */
 .dermaagent-text-hover {
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -164,7 +158,7 @@
   bottom: -2px;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 2px;
   background: #6A5ACD;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -173,8 +167,6 @@
   width: 100%;
 }
 
-/* ... keep existing code for remaining styles ... */
-
 /* Enhanced cellular cursor interactions for notebook elements */
 .notebook-interactive {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -182,21 +174,22 @@
 }
 
 .notebook-interactive:hover {
-  background: rgba(106, 90, 205, 0.03);
-  border-color: rgba(106, 90, 205, 0.2);
+  background: rgba(106, 90, 205, 0.06);
+  border-color: rgba(106, 90, 205, 0.4);
   transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.1);
 }
 
 .notebook-interactive:hover::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(106, 90, 205, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(106, 90, 205, 0.08) 0%, transparent 100%);
   border-radius: inherit;
   pointer-events: none;
 }
 
-/* Footer link hover effects with color accent and underlines */
+/* Footer link hover effects with enhanced color accent and underlines */
 .footer-link {
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -212,7 +205,7 @@
   bottom: -1px;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 2px;
   background: #6A5ACD;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -224,12 +217,12 @@
 /* Enhanced button states for mobile optimization */
 @media (max-width: 767px) {
   .dermaagent-elegant-button:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
     transition: transform 0.15s ease;
   }
   
   .dermaagent-box-element:active {
-    transform: scale(0.99);
+    transform: scale(0.98);
     transition: transform 0.15s ease;
   }
 }
