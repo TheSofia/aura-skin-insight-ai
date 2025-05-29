@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -213,6 +212,8 @@ const SkinDiary = () => {
                 value={entry}
                 onChange={(e) => setEntry(e.target.value)}
                 placeholder="How does your skin feel today? Note any changes, reactions to products, or factors that might be affecting your skin..."
+                variant="notebook"
+                enableAutocorrect={true}
                 className="min-h-[150px] mb-4 focus-animation glass-morphism"
               />
               
@@ -257,6 +258,8 @@ const SkinDiary = () => {
                     value={newProduct}
                     onChange={(e) => setNewProduct(e.target.value)}
                     placeholder="Add a product you used today..."
+                    variant="notebook"
+                    enableAutocorrect={true}
                     className="flex-grow focus-animation glass-morphism"
                     onKeyDown={(e) => e.key === 'Enter' && addProduct()}
                   />
@@ -325,6 +328,8 @@ const SkinDiary = () => {
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
                         placeholder="Search entries..."
+                        variant="notebook"
+                        enableAutocorrect={true}
                         className="pl-10 focus-animation glass-morphism"
                       />
                     </div>

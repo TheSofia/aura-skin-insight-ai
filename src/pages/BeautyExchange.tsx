@@ -309,6 +309,8 @@ const BeautyExchange = () => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Type your message..."
+                    variant="notebook"
+                    enableAutocorrect={true}
                     className="flex-grow focus-animation"
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                   />

@@ -1,4 +1,3 @@
-
 @import './styles/fonts.css';
 @import './styles/variables.css';
 @import './styles/base.css';
@@ -204,5 +203,34 @@
   @keyframes typing-cursor-blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
+  }
+  
+  /* Enhanced spellcheck and autocorrection styling */
+  .spellcheck-enabled {
+    /* Custom styling for spellcheck underlines */
+    text-decoration-skip-ink: none;
+  }
+  
+  /* Subtle spellcheck indicators for notebook style */
+  .spellcheck-enabled::-webkit-spelling-error-highlight {
+    background: transparent;
+    border-bottom: 1px dotted var(--dermaagent-charcoal-gray);
+  }
+  
+  .spellcheck-enabled::-webkit-grammar-error-highlight {
+    background: transparent;
+    border-bottom: 1px dotted var(--dermaagent-light-gray);
+  }
+  
+  /* Enhanced notebook input styling */
+  .notebook-container input,
+  .notebook-container textarea {
+    caret-color: var(--dermaagent-graphite-black);
+  }
+  
+  .notebook-container input::selection,
+  .notebook-container textarea::selection {
+    background-color: var(--dermaagent-light-gray);
+    color: var(--dermaagent-graphite-black);
   }
 }
