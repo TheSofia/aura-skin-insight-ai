@@ -10,7 +10,7 @@ const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const pageRef = useRef<HTMLDivElement>(null);
   
-  // Effect to set page as loaded after a delay
+  // Effect to set page as loaded after a delay for orchestrated animation reveal
   useEffect(() => {
     if (location.pathname === '/') {
       const backgroundTimer = setTimeout(() => {
@@ -24,25 +24,25 @@ const Index = () => {
   return (
     <div 
       ref={pageRef}
-      className="min-h-screen flex flex-col overflow-hidden relative notebook-grid-bg"
+      className="min-h-screen flex flex-col overflow-hidden relative"
       style={{
         background: 'var(--dermaagent-pale-paper-white)',
-        fontFamily: "'IBM Plex Mono', monospace",
+        fontFamily: "'Suisse Int'l', 'Neue Haas Unica', 'Inter', system-ui, -apple-system, sans-serif",
       }}
     >
-      {/* Pure Notebook Background - NO cellular animation on landing page */}
+      {/* Dynamic Cellular Background with subtle notebook texture integration */}
       <MinimalNotebookBackground 
         isVisible={isLoaded}
         intensity="subtle"
-        variant="notebook-grid"
-        showCellularMotion={false}
+        variant="cellular-texture"
+        showCellularMotion={true}
       />
       
       <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        {/* Hero Section with pure notebook aesthetic */}
+        {/* Hero Section with dynamic title animation and sophisticated aesthetic */}
         <Hero
           isLoaded={isLoaded}
-          showTyping={false}
+          showTyping={true}
         />
         
         {/* Footer Section */}
