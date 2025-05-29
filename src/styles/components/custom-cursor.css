@@ -1,5 +1,5 @@
 
-/* DermaAgent Custom Cellular Cursor System */
+/* DermaAgent Custom Cellular Cursor System - Global Implementation */
 
 /* Hide default cursor globally */
 * {
@@ -221,4 +221,25 @@
   * {
     cursor: auto !important;
   }
+}
+
+/* Ensure cursor works well with different page backgrounds */
+.cellular-cursor-core {
+  backdrop-filter: blur(0.5px);
+}
+
+/* Enhanced visibility on light backgrounds */
+@media (prefers-color-scheme: light) {
+  .cellular-cursor-core {
+    background: radial-gradient(circle at 35% 35%, 
+      rgba(26, 26, 26, 0.15) 0%, 
+      rgba(26, 26, 26, 0.08) 60%, 
+      rgba(26, 26, 26, 0.03) 100%);
+    border-color: rgba(26, 26, 26, 0.12);
+  }
+}
+
+/* Ensure proper z-index hierarchy across all pages */
+.cellular-cursor {
+  z-index: 99999;
 }

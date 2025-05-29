@@ -35,7 +35,7 @@ const CustomCursor: React.FC = () => {
     // Enhanced mouse enter handler for interactive elements
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isInteractive = target.matches('button, a, input, textarea, [role="button"], .hover-target, .elegant-button-hover');
+      const isInteractive = target.matches('button, a, input, textarea, [role="button"], .hover-target, .enhanced-cta-button, .glass-button, .dermaagent-elegant-button, .dermaagent-button, [data-interactive], .interactive');
       const isTextInput = target.matches('input[type="text"], input[type="email"], textarea, [contenteditable]');
       
       setIsHovering(isInteractive);
