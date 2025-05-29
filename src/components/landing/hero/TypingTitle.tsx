@@ -69,9 +69,9 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
         )}
       </h1>
       
-      {/* Subtitle - With ONE-TIME typing animation */}
+      {/* Subtitle - With ONE-TIME typing animation and SMALLER font size */}
       <p 
-        className="text-lg md:text-xl"
+        className="text-sm md:text-base lg:text-lg"
         style={{
           fontFamily: "'IBM Plex Mono', monospace",
           fontWeight: '300',
