@@ -1,0 +1,93 @@
+
+/* DermaAgent Elegant Interaction Styles */
+
+/* Refined button with subtle color accent on interaction */
+.dermaagent-elegant-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dermaagent-elegant-button:hover {
+  background: linear-gradient(135deg, #6A5ACD 0%, #7B68EE 100%);
+  color: white;
+  border-color: #6A5ACD;
+  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.15);
+  transform: translateY(-1px);
+}
+
+.dermaagent-elegant-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.2);
+}
+
+/* Subtle glow effect on focus for accessibility */
+.dermaagent-elegant-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.2);
+}
+
+/* Alternative orange-red accent for variety */
+.dermaagent-elegant-button.accent-orange:hover {
+  background: linear-gradient(135deg, #FF4500 0%, #FF6347 100%);
+  border-color: #FF4500;
+  box-shadow: 0 4px 12px rgba(255, 69, 0, 0.15);
+}
+
+.dermaagent-elegant-button.accent-orange:active {
+  box-shadow: 0 2px 8px rgba(255, 69, 0, 0.2);
+}
+
+.dermaagent-elegant-button.accent-orange:focus {
+  box-shadow: 0 0 0 2px rgba(255, 69, 0, 0.2);
+}
+
+/* Refined text hover effects for other interactive elements */
+.dermaagent-text-hover {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.dermaagent-text-hover:hover {
+  color: #6A5ACD;
+}
+
+.dermaagent-text-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #6A5ACD;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dermaagent-text-hover:hover::after {
+  width: 100%;
+}
+
+/* Input field elegant focus states */
+.dermaagent-input-elegant {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dermaagent-input-elegant:focus {
+  border-color: #6A5ACD;
+  box-shadow: 0 0 0 1px rgba(106, 90, 205, 0.1);
+  background: rgba(106, 90, 205, 0.02);
+}
+
+/* Elegant custom cursor interaction enhancement */
+.dermaagent-hover-target:hover {
+  cursor: none;
+}
+
+/* Smooth transitions for all interactive elements */
+.dermaagent-interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dermaagent-interactive:hover {
+  transform: translateY(-1px);
+}

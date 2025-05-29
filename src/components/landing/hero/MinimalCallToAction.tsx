@@ -1,110 +1,54 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
-import { useTypingAnimation } from "@/hooks/useTypingAnimation";
 
 interface MinimalCallToActionProps {
   isVisible: boolean;
 }
 
 const MinimalCallToAction = ({ isVisible }: MinimalCallToActionProps) => {
-  const [showButton, setShowButton] = useState(false);
-
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => {
-        setShowButton(true);
-      }, 1500);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible]);
-
-  // Typing animation for button text
-  const buttonText = useTypingAnimation({
-    text: "Begin Skin Analysis",
-    speed: 80,
-    delay: showButton ? 500 : 9999,
-    showCursor: true,
-    cursorBlinkCount: 3
-  });
-
-  // Typing animation for subtitle
-  const subtitleText = useTypingAnimation({
-    text: "AI-powered skincare intelligence",
-    speed: 60,
-    delay: showButton ? 2000 : 9999,
-    showCursor: true,
-    cursorBlinkCount: 2
-  });
-
   return (
     <div 
-      className={`text-center transition-all duration-1000 ${
-        showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+      className={`text-center transition-all duration-2000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
+      style={{
+        animationDelay: '1s',
+      }}
     >
-      <Button
-        className="px-8 py-4 text-base rounded-none transition-all duration-300 
-          hover:scale-105 active:scale-95"
-        style={{
-          fontFamily: 'var(--beautyagent-primary-font)',
-          fontWeight: 'var(--beautyagent-body-weight)',
-          letterSpacing: 'var(--beautyagent-letter-spacing-body)',
-          background: 'transparent',
-          border: '1px solid var(--beautyagent-light-gray)',
-          color: 'var(--beautyagent-graphite-black)',
-          boxShadow: 'none',
-          minWidth: '280px',
-          minHeight: '56px'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'var(--beautyagent-light-gray)';
-          e.currentTarget.style.borderColor = 'var(--beautyagent-charcoal-gray)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'transparent';
-          e.currentTarget.style.borderColor = 'var(--beautyagent-light-gray)';
-        }}
-      >
-        {buttonText.displayedText}
-        {buttonText.showTypingCursor && (
-          <span 
-            className="animate-pulse ml-1"
-            style={{
-              color: 'var(--beautyagent-charcoal-gray)',
-            }}
-          >
-            |
-          </span>
-        )}
-      </Button>
-      
-      {/* Typing subtitle with cursor */}
+      {/* Clean subtitle */}
       <p 
-        className="mt-6 text-sm"
+        className="text-lg md:text-xl mb-8 transition-all duration-2000"
         style={{
-          fontFamily: 'var(--beautyagent-primary-font)',
-          fontWeight: 'var(--beautyagent-body-weight)',
-          color: 'var(--beautyagent-charcoal-gray)',
-          letterSpacing: 'var(--beautyagent-letter-spacing-body)',
-          minHeight: '1.5em',
-          opacity: subtitleText.displayedText ? 0.8 : 0,
-          transition: 'opacity 0.3s ease-out',
+          fontFamily: 'var(--dermaagent-primary-font)',
+          fontWeight: 'var(--dermaagent-body-weight)',
+          color: 'var(--dermaagent-charcoal-gray)',
+          letterSpacing: '0.02em',
+          lineHeight: '1.6',
+          opacity: isVisible ? 0.8 : 0,
         }}
       >
-        {subtitleText.displayedText}
-        {subtitleText.showTypingCursor && (
-          <span 
-            className="animate-pulse ml-1"
-            style={{
-              color: 'var(--beautyagent-charcoal-gray)',
-            }}
-          >
-            |
-          </span>
-        )}
+        AI-powered skincare intelligence
       </p>
+      
+      {/* Elegant interaction button with refined color accent */}
+      <Button
+        className={`dermaagent-elegant-button px-8 py-3 text-base transition-all duration-500 ${
+          isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          fontFamily: 'var(--dermaagent-primary-font)',
+          fontWeight: 'var(--dermaagent-body-weight)',
+          letterSpacing: '0.05em',
+          background: 'transparent',
+          color: 'var(--dermaagent-graphite-black)',
+          border: '1px solid var(--dermaagent-light-gray)',
+          borderRadius: '2px',
+          animationDelay: '1.5s',
+        }}
+      >
+        Begin Skin Analysis
+      </Button>
     </div>
   );
 };
