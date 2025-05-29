@@ -34,12 +34,12 @@
   --beautyagent-glass-shadow: rgba(26, 26, 26, 0.02);
   --beautyagent-glass-border: rgba(227, 227, 227, 0.3);
   
-  /* Premium Notebook Typography Variables */
+  /* Premium Notebook Typography Variables - Enhanced for Logo */
   --beautyagent-primary-font: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
-  --beautyagent-logo-weight: 700;
+  --beautyagent-logo-weight: 800; /* Increased for more presence */
   --beautyagent-heading-weight: 500;
   --beautyagent-body-weight: 300;
-  --beautyagent-letter-spacing-logo: 0.12em;
+  --beautyagent-letter-spacing-logo: 0.15em; /* Slightly tighter for cohesive block */
   --beautyagent-letter-spacing-heading: 0.06em;
   --beautyagent-letter-spacing-body: 0.02em;
 }

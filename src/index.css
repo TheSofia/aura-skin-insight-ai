@@ -1,4 +1,3 @@
-
 @import './styles/fonts.css';
 @import './styles/variables.css';
 @import './styles/base.css';
@@ -39,7 +38,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
-  /* BeautyAgent Premium Notebook Typography - All IBM Plex Mono */
+  /* BeautyAgent Premium Notebook Typography - Enhanced Logo Styling */
   .beautyagent-logo {
     font-family: var(--beautyagent-primary-font);
     font-weight: var(--beautyagent-logo-weight);
@@ -47,6 +46,26 @@
     color: var(--beautyagent-graphite-black);
     line-height: 1.1;
     text-transform: uppercase;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Enhanced logo letterform styling */
+  .beautyagent-logo-enhanced {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .beautyagent-logo-enhanced::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    width: 1px;
+    height: 30%;
+    background: currentColor;
+    opacity: 0.2;
+    transform: translateY(-50%);
   }
   
   .beautyagent-headline {
@@ -162,6 +181,16 @@
   
   .monochrome-depth {
     background: linear-gradient(135deg, var(--beautyagent-notebook-base) 0%, rgba(227, 227, 227, 0.02) 100%);
+  }
+  
+  /* Enhanced logo animation */
+  .logo-letterform-enhance {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .logo-letterform-enhance:hover {
+    transform: translateY(-1px);
+    text-shadow: 0 2px 4px rgba(26, 26, 26, 0.1);
   }
   
   /* Typing cursor animation */
