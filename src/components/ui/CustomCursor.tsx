@@ -16,9 +16,9 @@ const CustomCursor: React.FC = () => {
     let cursorX = 0;
     let cursorY = 0;
 
-    // Smooth cursor following with slight lag for organic feel
+    // Enhanced smooth cursor following with organic cell-like lag
     const updateCursor = () => {
-      const lag = 0.15;
+      const lag = 0.12; // Slightly more organic trailing for luxury feel
       cursorX += (mouseX - cursorX) * lag;
       cursorY += (mouseY - cursorY) * lag;
       
@@ -26,17 +26,17 @@ const CustomCursor: React.FC = () => {
       requestAnimationFrame(updateCursor);
     };
 
-    // Mouse move handler
+    // Mouse move handler with subtle motion intensity variation
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     };
 
-    // Mouse enter handler for interactive elements
+    // Enhanced mouse enter handler for interactive elements
     const handleMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isInteractive = target.matches('button, a, input, textarea, [role="button"], .hover-target');
-      const isTextInput = target.matches('input[type="text"], input[type="email"], textarea');
+      const isInteractive = target.matches('button, a, input, textarea, [role="button"], .hover-target, .elegant-button-hover');
+      const isTextInput = target.matches('input[type="text"], input[type="email"], textarea, [contenteditable]');
       
       setIsHovering(isInteractive);
       setIsText(isTextInput);
@@ -48,18 +48,18 @@ const CustomCursor: React.FC = () => {
       setIsText(false);
     };
 
-    // Mouse down handler
+    // Enhanced mouse down handler with elegant ripple
     const handleMouseDown = () => {
       setIsActive(true);
       
-      // Create ripple effect
+      // Create enhanced ripple effect for luxury notebook feel
       const ripple = document.createElement('div');
       ripple.className = 'cellular-cursor-ripple';
       cursor.appendChild(ripple);
       
       setTimeout(() => {
         ripple.remove();
-      }, 400);
+      }, 500);
     };
 
     // Mouse up handler

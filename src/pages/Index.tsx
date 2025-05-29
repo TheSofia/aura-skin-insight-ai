@@ -31,10 +31,10 @@ const Index = () => {
         fontFamily: "'IBM Plex Mono', monospace",
       }}
     >
-      {/* Custom Cellular Cursor */}
+      {/* Custom Cellular Cursor - Luxury Digital Notebook */}
       <CustomCursor />
       
-      {/* Premium Digital Notebook Background - Clean stripes without any scratch effects */}
+      {/* Refined School Notebook Background - Clean horizontal stripes with margin line */}
       <div 
         className="fixed inset-0 pointer-events-none z-0"
         style={{
@@ -42,23 +42,23 @@ const Index = () => {
             repeating-linear-gradient(
               0deg,
               transparent,
-              transparent 28px,
-              var(--dermaagent-notebook-line) 28px,
-              var(--dermaagent-notebook-line) 29px
+              transparent 27px,
+              #E3E3E3 27px,
+              #E3E3E3 28px
             ),
             linear-gradient(
               90deg,
-              var(--dermaagent-notebook-margin) 0px,
-              var(--dermaagent-notebook-margin) 1px,
-              transparent 1px,
-              transparent 90px
+              #E3E3E3 88px,
+              #E3E3E3 90px,
+              transparent 90px,
+              transparent 100%
             )
           `,
-          opacity: 0.3,
+          opacity: 0.4,
         }}
       />
       
-      {/* Ultra-subtle cellular motion behind notebook stripes - completely clean */}
+      {/* Ultra-subtle cellular motion behind notebook stripes - perfect harmony */}
       <MinimalNotebookBackground 
         isVisible={isLoaded}
         intensity="subtle"
@@ -66,8 +66,8 @@ const Index = () => {
         showCellularMotion={true}
       />
       
-      {/* Elegant page wrapper with enhanced spacing */}
-      <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-6 py-16 relative z-10">
+      {/* Elegant page wrapper with enhanced spacing for luxury notebook feel */}
+      <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-8 py-20 relative z-10">
         {/* Hero Section with premium notebook aesthetic and refined animations */}
         <div className="animate-elegant-fade-in">
           <Hero
