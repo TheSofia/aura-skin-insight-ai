@@ -31,18 +31,15 @@ const MinimalCallToAction = ({ isVisible }: MinimalCallToActionProps) => {
         AI-powered skincare intelligence
       </p>
       
-      {/* Elegant interaction button with refined color accent and hover target class */}
+      {/* Enhanced interaction button with refined color accent and hover target class */}
       <Button
-        className={`dermaagent-elegant-button hover-target px-8 py-3 text-base transition-all duration-500 ${
+        className={`dermaagent-elegant-button dermaagent-box-element hover-target px-8 py-3 text-base transition-all duration-500 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
           fontFamily: 'var(--dermaagent-primary-font)',
           fontWeight: 'var(--dermaagent-body-weight)',
           letterSpacing: '0.05em',
-          background: 'transparent',
-          color: 'var(--dermaagent-graphite-black)',
-          border: '1px solid var(--dermaagent-light-gray)',
           borderRadius: '2px',
           animationDelay: '1.5s',
         }}
