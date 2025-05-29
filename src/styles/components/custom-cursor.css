@@ -28,7 +28,9 @@
   border: 0.5px solid rgba(26, 26, 26, 0.08);
   position: relative;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.2s ease-out;
+              opacity 0.2s ease-out,
+              background 0.3s ease-out,
+              border-color 0.3s ease-out;
   transform-origin: center;
   box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
 }
@@ -48,6 +50,7 @@
   transform: translate(-50%, -50%);
   opacity: 0.7;
   animation: cellular-gentle-pulse 4s infinite ease-in-out;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 /* Refined outer ring for luxury floating effect */
@@ -64,34 +67,43 @@
   opacity: 0.3;
   filter: blur(1px);
   animation: cellular-ring-float 6s infinite ease-in-out;
+  transition: all 0.3s ease-out;
 }
 
-/* Hover state for interactive elements - enhanced elegance */
+/* Enhanced hover state for interactive elements with color accent */
 .cellular-cursor.hover .cellular-cursor-core {
-  transform: scale(1.4);
+  transform: scale(1.6);
   background: radial-gradient(circle at 35% 35%, 
-    rgba(26, 26, 26, 0.18) 0%, 
-    rgba(26, 26, 26, 0.12) 60%, 
-    rgba(26, 26, 26, 0.04) 100%);
-  border-color: rgba(26, 26, 26, 0.15);
-  box-shadow: 0 4px 12px rgba(26, 26, 26, 0.08);
+    rgba(106, 90, 205, 0.25) 0%, 
+    rgba(106, 90, 205, 0.15) 60%, 
+    rgba(106, 90, 205, 0.05) 100%);
+  border-color: rgba(106, 90, 205, 0.3);
+  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.15);
 }
 
 .cellular-cursor.hover .cellular-cursor-core::before {
   opacity: 1;
   animation-duration: 2s;
-  transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%) scale(1.4);
+  background: radial-gradient(circle, 
+    rgba(106, 90, 205, 0.4) 0%, 
+    transparent 70%);
 }
 
 .cellular-cursor.hover .cellular-cursor-core::after {
-  opacity: 0.6;
-  transform: translate(-50%, -50%) scale(1.2);
-  border-color: rgba(26, 26, 26, 0.08);
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1.4);
+  border-color: rgba(106, 90, 205, 0.2);
+  filter: blur(0.5px);
 }
 
 /* Click/active state with enhanced ripple effect */
 .cellular-cursor.active .cellular-cursor-core {
-  transform: scale(0.8);
+  transform: scale(0.7);
+  background: radial-gradient(circle at 35% 35%, 
+    rgba(106, 90, 205, 0.4) 0%, 
+    rgba(106, 90, 205, 0.25) 60%, 
+    rgba(106, 90, 205, 0.1) 100%);
 }
 
 /* Enhanced click ripple animation for notebook harmony */
@@ -102,11 +114,11 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(26, 26, 26, 0.08);
+  background: rgba(106, 90, 205, 0.15);
   transform: translate(-50%, -50%);
-  animation: cursor-ripple-elegant 0.5s ease-out forwards;
+  animation: cursor-ripple-elegant 0.6s ease-out forwards;
   pointer-events: none;
-  border: 1px solid rgba(26, 26, 26, 0.04);
+  border: 1px solid rgba(106, 90, 205, 0.1);
 }
 
 /* Text cursor state for text inputs - notebook-inspired */
@@ -139,12 +151,20 @@
 
 @keyframes cellular-ring-float {
   0%, 100% { 
-    transform: translate(-50%, -50%) scale(1); 
+    transform: translate(-50%, -50%) scale(1) rotate(0deg); 
     opacity: 0.3; 
   }
+  25% {
+    transform: translate(-50%, -50%) scale(1.02) rotate(90deg);
+    opacity: 0.4;
+  }
   50% { 
-    transform: translate(-50%, -50%) scale(1.05); 
+    transform: translate(-50%, -50%) scale(1.05) rotate(180deg); 
     opacity: 0.5; 
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.02) rotate(270deg);
+    opacity: 0.4;
   }
 }
 
@@ -158,8 +178,8 @@
     opacity: 0.4;
   }
   100% {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     opacity: 0;
   }
 }
@@ -170,6 +190,25 @@
   }
   51%, 100% { 
     opacity: 0.3; 
+  }
+}
+
+/* Organic cellular motion for the cursor ring */
+@keyframes cellular-morph {
+  0% { 
+    border-radius: 50%; 
+  }
+  25% { 
+    border-radius: 48% 52% 51% 49% / 49% 51% 49% 51%; 
+  }
+  50% { 
+    border-radius: 52% 48% 49% 51% / 51% 49% 51% 49%; 
+  }
+  75% { 
+    border-radius: 49% 51% 48% 52% / 51% 49% 51% 49%; 
+  }
+  100% { 
+    border-radius: 50%; 
   }
 }
 

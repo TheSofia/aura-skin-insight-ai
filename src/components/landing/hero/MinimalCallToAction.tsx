@@ -31,9 +31,9 @@ const MinimalCallToAction = ({ isVisible }: MinimalCallToActionProps) => {
         AI-powered skincare intelligence
       </p>
       
-      {/* Elegant interaction button with refined color accent */}
+      {/* Elegant interaction button with refined color accent and hover target class */}
       <Button
-        className={`dermaagent-elegant-button px-8 py-3 text-base transition-all duration-500 ${
+        className={`dermaagent-elegant-button hover-target px-8 py-3 text-base transition-all duration-500 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
         style={{

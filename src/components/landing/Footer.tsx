@@ -3,37 +3,47 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="mt-24 text-center w-full">
-      <p className="text-beautyagent-medium-grey text-xs opacity-60 mb-2">
-        Designed with light. Powered by AI.
-      </p>
-      <div className="flex justify-center space-x-4">
-        <a href="#" className="text-beautyagent-medium-grey hover:text-beautyagent-violet-titanium transition-colors">
-          <span className="w-6 h-6 flex items-center justify-center rounded-full border border-beautyagent-medium-grey/30 hover:border-beautyagent-violet-titanium/60 group transition-all">
-            <span className="transform group-hover:scale-110 transition-transform">
-              IG
-            </span>
-          </span>
-        </a>
-        <a href="#" className="text-beautyagent-medium-grey hover:text-beautyagent-violet-titanium transition-colors">
-          <span className="w-6 h-6 flex items-center justify-center rounded-full border border-beautyagent-medium-grey/30 hover:border-beautyagent-violet-titanium/60 group transition-all">
-            <span className="transform group-hover:scale-110 transition-transform">
-              FB
-            </span>
-          </span>
-        </a>
-        <a href="#" className="text-beautyagent-medium-grey hover:text-beautyagent-violet-titanium transition-colors">
-          <span className="w-6 h-6 flex items-center justify-center rounded-full border border-beautyagent-medium-grey/30 hover:border-beautyagent-violet-titanium/60 group transition-all">
-            <span className="transform group-hover:scale-110 transition-transform">
-              TW
-            </span>
-          </span>
-        </a>
-      </div>
-      <div className="mt-6 flex justify-center space-x-4 text-xs text-beautyagent-medium-grey/60">
-        <a href="#" className="hover:text-beautyagent-violet-titanium transition-colors">Terms</a>
-        <a href="#" className="hover:text-beautyagent-violet-titanium transition-colors">Privacy</a>
-        <a href="#" className="hover:text-beautyagent-violet-titanium transition-colors">Contact</a>
+    <footer className="mt-20 text-center">
+      <div className="flex flex-col items-center space-y-6">
+        {/* Navigation Links with enhanced hover effects */}
+        <nav className="flex flex-wrap justify-center gap-8 text-sm">
+          <a 
+            href="#about" 
+            className="footer-link hover-target dermaagent-ui-text-subtle hover:dermaagent-text-hover transition-colors"
+          >
+            About
+          </a>
+          <a 
+            href="#science" 
+            className="footer-link hover-target dermaagent-ui-text-subtle hover:dermaagent-text-hover transition-colors"
+          >
+            Science
+          </a>
+          <a 
+            href="#privacy" 
+            className="footer-link hover-target dermaagent-ui-text-subtle hover:dermaagent-text-hover transition-colors"
+          >
+            Privacy
+          </a>
+          <a 
+            href="#contact" 
+            className="footer-link hover-target dermaagent-ui-text-subtle hover:dermaagent-text-hover transition-colors"
+          >
+            Contact
+          </a>
+        </nav>
+        
+        {/* Copyright Notice */}
+        <p 
+          className="text-xs opacity-60"
+          style={{
+            fontFamily: 'var(--dermaagent-primary-font)',
+            color: 'var(--dermaagent-charcoal-gray)',
+            letterSpacing: '0.02em',
+          }}
+        >
+          © 2024 dermaAgent. Intelligent skincare analysis.
+        </p>
       </div>
     </footer>
   );

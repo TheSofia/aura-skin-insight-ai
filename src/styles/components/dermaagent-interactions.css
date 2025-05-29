@@ -79,7 +79,7 @@
 }
 
 /* Elegant custom cursor interaction enhancement */
-.dermaagent-hover-target:hover {
+.hover-target:hover {
   cursor: none;
 }
 
@@ -90,4 +90,50 @@
 
 .dermaagent-interactive:hover {
   transform: translateY(-1px);
+}
+
+/* Enhanced cellular cursor interactions for notebook elements */
+.notebook-interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.notebook-interactive:hover {
+  background: rgba(106, 90, 205, 0.03);
+  border-color: rgba(106, 90, 205, 0.2);
+  transform: translateY(-1px);
+}
+
+.notebook-interactive:hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(106, 90, 205, 0.05) 0%, transparent 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Footer link hover effects with color accent */
+.footer-link {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.footer-link:hover {
+  color: #6A5ACD;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #6A5ACD;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-link:hover::after {
+  width: 100%;
 }
