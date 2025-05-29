@@ -33,7 +33,7 @@ const Index = () => {
       {/* Pure Notebook Background - NO cellular animation on landing page */}
       <MinimalNotebookBackground 
         isVisible={isLoaded}
-        intensity="minimal"
+        intensity="subtle"
         variant="notebook-grid"
         showCellularMotion={false}
       />
