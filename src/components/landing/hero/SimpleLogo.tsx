@@ -13,7 +13,7 @@ const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
       }`}
     >
       <h1 
-        className={`text-5xl md:text-6xl lg:text-7xl font-light tracking-wider relative ${
+        className={`text-3xl md:text-4xl lg:text-5xl font-light tracking-wider relative ${
           isVisible ? 'animate-logo-breathe' : ''
         }`}
         style={{
@@ -81,7 +81,7 @@ const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
       <div 
         className="mx-auto mt-8 transition-all duration-2000 relative"
         style={{
-          width: isVisible ? '300px' : '0px',
+          width: isVisible ? '250px' : '0px',
           height: '1px',
           background: `linear-gradient(90deg, 
             transparent 0%, 

@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Hero from "@/components/landing/Hero";
 import Footer from "@/components/landing/Footer";
-import MinimalNotebookBackground from "@/components/dermaagent/MinimalNotebookBackground";
 import CustomCursor from "@/components/ui/CustomCursor";
 
 const Index = () => {
@@ -34,7 +33,7 @@ const Index = () => {
       {/* Custom Cellular Cursor - Luxury Digital Notebook */}
       <CustomCursor />
       
-      {/* Refined School Notebook Background - Clean horizontal stripes with margin line */}
+      {/* Static School Notebook Background - Clean horizontal stripes with margin line */}
       <div 
         className="fixed inset-0 pointer-events-none z-0"
         style={{
@@ -56,14 +55,6 @@ const Index = () => {
           `,
           opacity: 0.4,
         }}
-      />
-      
-      {/* Ultra-subtle cellular motion behind notebook stripes - perfect harmony */}
-      <MinimalNotebookBackground 
-        isVisible={isLoaded}
-        intensity="subtle"
-        variant="cellular-texture"
-        showCellularMotion={true}
       />
       
       {/* Elegant page wrapper with enhanced spacing for luxury notebook feel */}
