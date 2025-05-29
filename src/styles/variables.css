@@ -1,45 +1,47 @@
 
-/* BeautyAgent - Premium Digital Notebook Design System Variables */
+/* DermaAgent - Premium Digital Notebook Design System Variables */
 :root {
   /* Core Brand Identity */
-  --beautyagent-app-name: "BeautyAgent";
+  --dermaagent-app-name: "dermaAgent";
   
   /* Premium Digital Notebook Color Palette - Strict Monochrome */
-  --beautyagent-pure-white: #FFFFFF;
-  --beautyagent-warm-bone: #F4F1ED;
-  --beautyagent-light-gray: #E3E3E3;
-  --beautyagent-charcoal-gray: #333333;
-  --beautyagent-graphite-black: #1A1A1A;
+  --dermaagent-pure-white: #FFFFFF;
+  --dermaagent-warm-bone: #F4F1ED;
+  --dermaagent-light-gray: #E3E3E3;
+  --dermaagent-charcoal-gray: #333333;
+  --dermaagent-graphite-black: #1A1A1A;
   
   /* Digital Notebook Background System */
-  --beautyagent-notebook-base: #FFFFFF;
-  --beautyagent-notebook-line: rgba(227, 227, 227, 0.4);
-  --beautyagent-notebook-margin: rgba(227, 227, 227, 0.3);
+  --dermaagent-notebook-base: #FFFFFF;
+  --dermaagent-notebook-line: rgba(227, 227, 227, 0.4);
+  --dermaagent-notebook-margin: rgba(227, 227, 227, 0.3);
   
   /* Monochrome Cellular Background - Ultra Subtle Behind Notebook */
-  --beautyagent-cellular-ambient: rgba(227, 227, 227, 0.01);
-  --beautyagent-cellular-soft: rgba(227, 227, 227, 0.015);
-  --beautyagent-cellular-subtle: rgba(227, 227, 227, 0.005);
+  --dermaagent-cellular-ambient: rgba(227, 227, 227, 0.01);
+  --dermaagent-cellular-soft: rgba(227, 227, 227, 0.015);
+  --dermaagent-cellular-subtle: rgba(227, 227, 227, 0.005);
   
-  /* Legacy DermaAgent Variables (for compatibility) */
-  --dermaagent-pure-white: var(--beautyagent-pure-white);
-  --dermaagent-pale-paper-white: var(--beautyagent-warm-bone);
-  --dermaagent-light-gray: var(--beautyagent-light-gray);
-  --dermaagent-muted-mid-gray: var(--beautyagent-charcoal-gray);
-  --dermaagent-charcoal-gray: var(--beautyagent-charcoal-gray);
-  --dermaagent-graphite-black: var(--beautyagent-graphite-black);
+  /* BeautyAgent Legacy Variables (for compatibility during transition) */
+  --beautyagent-pure-white: var(--dermaagent-pure-white);
+  --beautyagent-warm-bone: var(--dermaagent-warm-bone);
+  --beautyagent-light-gray: var(--dermaagent-light-gray);
+  --beautyagent-charcoal-gray: var(--dermaagent-charcoal-gray);
+  --beautyagent-graphite-black: var(--dermaagent-graphite-black);
+  --beautyagent-notebook-base: var(--dermaagent-notebook-base);
+  --beautyagent-notebook-line: var(--dermaagent-notebook-line);
+  --beautyagent-notebook-margin: var(--dermaagent-notebook-margin);
   
   /* Monochrome Glass & Depth Effects */
-  --beautyagent-glass-overlay: rgba(255, 255, 255, 0.95);
-  --beautyagent-glass-shadow: rgba(26, 26, 26, 0.02);
-  --beautyagent-glass-border: rgba(227, 227, 227, 0.3);
+  --dermaagent-glass-overlay: rgba(255, 255, 255, 0.95);
+  --dermaagent-glass-shadow: rgba(26, 26, 26, 0.02);
+  --dermaagent-glass-border: rgba(227, 227, 227, 0.3);
   
-  /* Premium Notebook Typography Variables - Enhanced for Logo */
-  --beautyagent-primary-font: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
-  --beautyagent-logo-weight: 800; /* Increased for more presence */
-  --beautyagent-heading-weight: 500;
-  --beautyagent-body-weight: 300;
-  --beautyagent-letter-spacing-logo: 0.15em; /* Slightly tighter for cohesive block */
-  --beautyagent-letter-spacing-heading: 0.06em;
-  --beautyagent-letter-spacing-body: 0.02em;
+  /* Premium Notebook Typography Variables - Refined for dermaAgent Logo */
+  --dermaagent-primary-font: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
+  --dermaagent-logo-weight: 300; /* Lighter weight for elegance */
+  --dermaagent-heading-weight: 400;
+  --dermaagent-body-weight: 300;
+  --dermaagent-letter-spacing-logo: 0.18em; /* Increased for breathable, elegant spacing */
+  --dermaagent-letter-spacing-heading: 0.06em;
+  --dermaagent-letter-spacing-body: 0.02em;
 }

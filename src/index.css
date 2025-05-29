@@ -18,7 +18,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BeautyAgent Premium Digital Notebook Design System */
+/* DermaAgent Premium Digital Notebook Design System */
 @layer base {
   :root {
     --radius: 0.5rem;
@@ -29,127 +29,127 @@
   }
   
   body {
-    background: var(--beautyagent-notebook-base);
-    font-family: var(--beautyagent-primary-font);
-    font-weight: var(--beautyagent-body-weight);
-    color: var(--beautyagent-graphite-black);
-    letter-spacing: var(--beautyagent-letter-spacing-body);
+    background: var(--dermaagent-notebook-base);
+    font-family: var(--dermaagent-primary-font);
+    font-weight: var(--dermaagent-body-weight);
+    color: var(--dermaagent-graphite-black);
+    letter-spacing: var(--dermaagent-letter-spacing-body);
     line-height: 1.6;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
-  /* BeautyAgent Premium Notebook Typography - Enhanced Logo Styling */
-  .beautyagent-logo {
-    font-family: var(--beautyagent-primary-font);
-    font-weight: var(--beautyagent-logo-weight);
-    letter-spacing: var(--beautyagent-letter-spacing-logo);
-    color: var(--beautyagent-graphite-black);
+  /* DermaAgent Premium Notebook Typography - Refined Logo Styling */
+  .dermaagent-logo {
+    font-family: var(--dermaagent-primary-font);
+    font-weight: var(--dermaagent-logo-weight);
+    letter-spacing: var(--dermaagent-letter-spacing-logo);
+    color: var(--dermaagent-graphite-black);
     line-height: 1.1;
-    text-transform: uppercase;
+    text-transform: none; /* Preserve dermaAgent casing */
     font-feature-settings: "kern" 1, "liga" 1;
     text-rendering: optimizeLegibility;
   }
   
-  /* Enhanced logo letterform styling */
-  .beautyagent-logo-enhanced {
+  /* Enhanced logo letterform styling for dermaAgent */
+  .dermaagent-logo-enhanced {
     position: relative;
     display: inline-block;
   }
   
-  .beautyagent-logo-enhanced::before {
+  .dermaagent-logo-enhanced::before {
     content: '';
     position: absolute;
     left: -2px;
     top: 50%;
     width: 1px;
-    height: 30%;
+    height: 25%;
     background: currentColor;
-    opacity: 0.2;
+    opacity: 0.15;
     transform: translateY(-50%);
   }
   
-  .beautyagent-headline {
-    font-family: var(--beautyagent-primary-font);
-    font-weight: var(--beautyagent-heading-weight);
-    letter-spacing: var(--beautyagent-letter-spacing-heading);
-    color: var(--beautyagent-graphite-black);
+  .dermaagent-headline {
+    font-family: var(--dermaagent-primary-font);
+    font-weight: var(--dermaagent-heading-weight);
+    letter-spacing: var(--dermaagent-letter-spacing-heading);
+    color: var(--dermaagent-graphite-black);
     line-height: 1.2;
   }
   
-  .beautyagent-ui-text {
-    font-family: var(--beautyagent-primary-font);
-    font-weight: var(--beautyagent-body-weight);
-    color: var(--beautyagent-graphite-black);
-    letter-spacing: var(--beautyagent-letter-spacing-body);
+  .dermaagent-ui-text {
+    font-family: var(--dermaagent-primary-font);
+    font-weight: var(--dermaagent-body-weight);
+    color: var(--dermaagent-graphite-black);
+    letter-spacing: var(--dermaagent-letter-spacing-body);
   }
   
-  .beautyagent-ui-text-medium {
-    font-family: var(--beautyagent-primary-font);
-    font-weight: var(--beautyagent-heading-weight);
-    color: var(--beautyagent-graphite-black);
-    letter-spacing: var(--beautyagent-letter-spacing-body);
+  .dermaagent-ui-text-medium {
+    font-family: var(--dermaagent-primary-font);
+    font-weight: var(--dermaagent-heading-weight);
+    color: var(--dermaagent-graphite-black);
+    letter-spacing: var(--dermaagent-letter-spacing-body);
   }
   
-  .beautyagent-ui-text-subtle {
-    font-family: var(--beautyagent-primary-font);
-    font-weight: var(--beautyagent-body-weight);
-    color: var(--beautyagent-charcoal-gray);
-    letter-spacing: var(--beautyagent-letter-spacing-body);
+  .dermaagent-ui-text-subtle {
+    font-family: var(--dermaagent-primary-font);
+    font-weight: var(--dermaagent-body-weight);
+    color: var(--dermaagent-charcoal-gray);
+    letter-spacing: var(--dermaagent-letter-spacing-body);
   }
   
   /* Premium Monochrome Interactive Elements */
-  .beautyagent-button {
+  .dermaagent-button {
     @apply transition-all duration-300 ease-out;
-    font-family: var(--beautyagent-primary-font);
-    font-weight: var(--beautyagent-body-weight);
-    letter-spacing: var(--beautyagent-letter-spacing-body);
+    font-family: var(--dermaagent-primary-font);
+    font-weight: var(--dermaagent-body-weight);
+    letter-spacing: var(--dermaagent-letter-spacing-body);
     background: transparent;
-    color: var(--beautyagent-graphite-black);
-    border: 1px solid var(--beautyagent-light-gray);
+    color: var(--dermaagent-graphite-black);
+    border: 1px solid var(--dermaagent-light-gray);
   }
   
-  .beautyagent-button:hover {
-    background: var(--beautyagent-light-gray);
-    border-color: var(--beautyagent-charcoal-gray);
+  .dermaagent-button:hover {
+    background: var(--dermaagent-light-gray);
+    border-color: var(--dermaagent-charcoal-gray);
   }
   
   /* Premium Notebook Page Elements */
-  .beautyagent-notebook-page {
-    background: var(--beautyagent-notebook-base);
-    border: 1px solid var(--beautyagent-glass-border);
+  .dermaagent-notebook-page {
+    background: var(--dermaagent-notebook-base);
+    border: 1px solid var(--dermaagent-glass-border);
     box-shadow: 0 1px 3px rgba(26, 26, 26, 0.02);
   }
   
   /* Premium Monochrome Input Fields */
-  .beautyagent-input {
-    font-family: var(--beautyagent-primary-font);
-    font-weight: var(--beautyagent-body-weight);
+  .dermaagent-input {
+    font-family: var(--dermaagent-primary-font);
+    font-weight: var(--dermaagent-body-weight);
     background: transparent;
     border: none;
     outline: none;
-    color: var(--beautyagent-graphite-black);
-    letter-spacing: var(--beautyagent-letter-spacing-body);
-    border-bottom: 1px solid var(--beautyagent-light-gray);
+    color: var(--dermaagent-graphite-black);
+    letter-spacing: var(--dermaagent-letter-spacing-body);
+    border-bottom: 1px solid var(--dermaagent-light-gray);
   }
   
-  .beautyagent-input:focus {
-    border-bottom-color: var(--beautyagent-charcoal-gray);
+  .dermaagent-input:focus {
+    border-bottom-color: var(--dermaagent-charcoal-gray);
   }
   
-  .beautyagent-input::placeholder {
-    color: var(--beautyagent-charcoal-gray);
+  .dermaagent-input::placeholder {
+    color: var(--dermaagent-charcoal-gray);
     opacity: 0.7;
   }
   
-  /* Legacy DermaAgent classes for compatibility */
-  .dermaagent-logo { @extend .beautyagent-logo; }
-  .dermaagent-headline { @extend .beautyagent-headline; }
-  .dermaagent-ui-text { @extend .beautyagent-ui-text; }
-  .dermaagent-ui-text-medium { @extend .beautyagent-ui-text-medium; }
-  .dermaagent-ui-text-subtle { @extend .beautyagent-ui-text-subtle; }
-  .dermaagent-button { @extend .beautyagent-button; }
-  .dermaagent-notebook-page { @extend .beautyagent-notebook-page; }
-  .dermaagent-input { @extend .beautyagent-input; }
+  /* Legacy BeautyAgent classes for compatibility during transition */
+  .beautyagent-logo { @extend .dermaagent-logo; }
+  .beautyagent-headline { @extend .dermaagent-headline; }
+  .beautyagent-ui-text { @extend .dermaagent-ui-text; }
+  .beautyagent-ui-text-medium { @extend .dermaagent-ui-text-medium; }
+  .beautyagent-ui-text-subtle { @extend .dermaagent-ui-text-subtle; }
+  .beautyagent-button { @extend .dermaagent-button; }
+  .beautyagent-notebook-page { @extend .dermaagent-notebook-page; }
+  .beautyagent-input { @extend .dermaagent-input; }
 }
 
 /* Premium Monochrome Animation Utilities */
@@ -161,13 +161,13 @@
         0deg,
         transparent,
         transparent 24px,
-        var(--beautyagent-notebook-line) 24px,
-        var(--beautyagent-notebook-line) 25px
+        var(--dermaagent-notebook-line) 24px,
+        var(--dermaagent-notebook-line) 25px
       ),
       linear-gradient(
         90deg,
-        var(--beautyagent-notebook-margin) 0px,
-        var(--beautyagent-notebook-margin) 1px,
+        var(--dermaagent-notebook-margin) 0px,
+        var(--dermaagent-notebook-margin) 1px,
         transparent 1px,
         transparent 80px
       );
@@ -180,17 +180,17 @@
   }
   
   .monochrome-depth {
-    background: linear-gradient(135deg, var(--beautyagent-notebook-base) 0%, rgba(227, 227, 227, 0.02) 100%);
+    background: linear-gradient(135deg, var(--dermaagent-notebook-base) 0%, rgba(227, 227, 227, 0.02) 100%);
   }
   
-  /* Enhanced logo animation */
+  /* Enhanced logo animation for dermaAgent */
   .logo-letterform-enhance {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .logo-letterform-enhance:hover {
     transform: translateY(-1px);
-    text-shadow: 0 2px 4px rgba(26, 26, 26, 0.1);
+    text-shadow: 0 2px 4px rgba(26, 26, 26, 0.08);
   }
   
   /* Typing cursor animation */

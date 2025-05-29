@@ -64,7 +64,7 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
       
       {showText && (
         <div 
-          className={`font-clash font-light text-beautyagent-dark-grey animate-fade-in tracking-wide ${
+          className={`font-clash font-light text-dermaagent-dark-grey animate-fade-in tracking-wide ${
             isLandingPage ? 'text-xl md:text-2xl mt-2' : 'text-lg md:text-xl'
           }`}
           style={{
@@ -74,7 +74,7 @@ const LogoWrapper = forwardRef<HTMLDivElement, LogoWrapperProps>(({
             ...wordmarkTextStyle
           }}
         >
-          beautyAgent
+          dermaAgent
         </div>
       )}
     </div>
