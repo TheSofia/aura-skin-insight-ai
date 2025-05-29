@@ -42,7 +42,7 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
           minHeight: '1.2em'
         }}
       >
-        dermaAgent
+        derma.agent
       </h1>
       
       {/* Subtitle - With typing animation */}
