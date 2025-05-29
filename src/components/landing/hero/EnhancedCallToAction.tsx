@@ -36,7 +36,7 @@ const EnhancedCallToAction = ({ isVisible }: EnhancedCallToActionProps) => {
       }`}
     >
       <Button
-        className="dermaagent-elegant-button px-8 py-3 text-base transition-all duration-300"
+        className="dermaagent-elegant-button dermaagent-box-element hover-target px-8 py-3 text-base"
         style={{
           fontFamily: "'IBM Plex Mono', monospace",
           fontWeight: '300',
