@@ -27,9 +27,9 @@ const LandingHeader = () => {
   };
 
   return (
-    <header className="fixed top-0 right-0 z-50 p-6">
-      <div className="flex justify-end">
-        {/* Navigation Dropdown - Top right corner placement */}
+    <header className="fixed top-0 left-0 z-50 p-6">
+      <div className="flex justify-start">
+        {/* Navigation Dropdown - Top left corner placement */}
         <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <DropdownMenuTrigger asChild>
             <Button
@@ -55,7 +55,7 @@ const LandingHeader = () => {
           </DropdownMenuTrigger>
           
           <DropdownMenuContent
-            align="end"
+            align="start"
             className="w-48 mt-2"
             style={{
               background: 'var(--dermaagent-pale-paper-white, #FFFFFF)',
