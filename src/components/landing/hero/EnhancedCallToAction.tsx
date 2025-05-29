@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useTypingAnimation } from "@/hooks/useTypingAnimation";
 
@@ -9,6 +9,7 @@ interface EnhancedCallToActionProps {
 
 const EnhancedCallToAction = ({ isVisible }: EnhancedCallToActionProps) => {
   const [showButton, setShowButton] = useState(false);
+  const navigate = useNavigate();
 
   // Start button animation after title completes
   useEffect(() => {
@@ -29,6 +30,11 @@ const EnhancedCallToAction = ({ isVisible }: EnhancedCallToActionProps) => {
     showCursor: false
   });
 
+  // Handle button click - navigate to skin analysis
+  const handleBeginAnalysis = () => {
+    navigate('/skin-mirror');
+  };
+
   return (
     <div 
       className={`transition-all duration-1000 ${
@@ -36,6 +42,7 @@ const EnhancedCallToAction = ({ isVisible }: EnhancedCallToActionProps) => {
       }`}
     >
       <Button
+        onClick={handleBeginAnalysis}
         className="enhanced-cta-button px-8 py-3 text-base relative overflow-hidden interactive"
         style={{
           fontFamily: "'IBM Plex Mono', monospace",

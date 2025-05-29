@@ -8,18 +8,47 @@ import CustomCursor from "@/components/ui/CustomCursor";
 const Index = () => {
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const pageRef = useRef<HTMLDivElement>(null);
   
   // Effect to set page as loaded after a delay for orchestrated animation reveal
   useEffect(() => {
-    if (location.pathname === '/') {
-      const backgroundTimer = setTimeout(() => {
-        setIsLoaded(true);
-      }, 400);
-      
-      return () => clearTimeout(backgroundTimer);
+    try {
+      if (location.pathname === '/') {
+        const backgroundTimer = setTimeout(() => {
+          setIsLoaded(true);
+        }, 400);
+        
+        return () => clearTimeout(backgroundTimer);
+      }
+    } catch (error) {
+      console.error("Error loading home page:", error);
+      setHasError(true);
+      setIsLoaded(true); // Still show the page even if there's an error
     }
   }, [location.pathname]);
+
+  // Error boundary for graceful error handling
+  if (hasError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="text-center p-8">
+          <h1 className="text-2xl font-light tracking-wider text-gray-800 mb-4">
+            Welcome to derma.agent
+          </h1>
+          <p className="text-gray-600 mb-6">
+            Your AI-powered skincare companion is loading...
+          </p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="px-6 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition-colors"
+          >
+            Refresh Page
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
