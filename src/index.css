@@ -184,14 +184,13 @@
     background: linear-gradient(135deg, var(--dermaagent-notebook-base) 0%, rgba(227, 227, 227, 0.02) 100%);
   }
   
-  /* Enhanced logo animation for dermaAgent */
+  /* Enhanced logo animation for dermaAgent - removed shadow */
   .logo-letterform-enhance {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .logo-letterform-enhance:hover {
     transform: translateY(-1px);
-    text-shadow: 0 2px 4px rgba(26, 26, 26, 0.08);
   }
   
   /* Typing cursor animation */
