@@ -27,23 +27,9 @@ const LandingHeader = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6">
-      <div className="flex justify-between items-center">
-        {/* Logo/Brand */}
-        <div 
-          className="cursor-pointer hover-target"
-          onClick={() => navigate('/')}
-          style={{
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontWeight: '300',
-            letterSpacing: '0.02em',
-            color: 'var(--dermaagent-charcoal-gray, #333333)',
-          }}
-        >
-          <span className="text-lg">derma.agent</span>
-        </div>
-
-        {/* Navigation Dropdown */}
+    <header className="fixed top-0 right-0 z-50 p-6">
+      <div className="flex justify-end">
+        {/* Navigation Dropdown - Optimally positioned top right */}
         <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <DropdownMenuTrigger asChild>
             <Button
@@ -57,6 +43,7 @@ const LandingHeader = () => {
                 borderRadius: '2px',
                 width: '40px',
                 height: '40px',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
             >
               {isMenuOpen ? (
@@ -77,13 +64,14 @@ const LandingHeader = () => {
               fontFamily: "'IBM Plex Mono', monospace",
               fontWeight: '300',
               letterSpacing: '0.02em',
+              boxShadow: '0 4px 12px rgba(26, 26, 26, 0.1)',
             }}
           >
             {navigationItems.map((item) => (
               <DropdownMenuItem
                 key={item.href}
                 onClick={() => handleNavigation(item.href)}
-                className="cursor-pointer hover-target"
+                className="cursor-pointer hover-target transition-all duration-200"
                 style={{
                   color: 'var(--dermaagent-charcoal-gray, #333333)',
                   padding: '12px 16px',
@@ -104,7 +92,7 @@ const LandingHeader = () => {
             
             {/* Additional Links */}
             <DropdownMenuItem
-              className="cursor-pointer hover-target"
+              className="cursor-pointer hover-target transition-all duration-200"
               style={{
                 color: 'var(--dermaagent-charcoal-gray, #333333)',
                 padding: '12px 16px',
@@ -115,7 +103,7 @@ const LandingHeader = () => {
               About
             </DropdownMenuItem>
             <DropdownMenuItem
-              className="cursor-pointer hover-target"
+              className="cursor-pointer hover-target transition-all duration-200"
               style={{
                 color: 'var(--dermaagent-charcoal-gray, #333333)',
                 padding: '12px 16px',

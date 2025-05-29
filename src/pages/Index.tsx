@@ -56,7 +56,7 @@ const Index = () => {
       {/* Cellular Cursor Component */}
       <CustomCursor />
       
-      {/* Landing Page Header with Navigation */}
+      {/* Landing Page Header with Navigation - positioned top right */}
       <LandingHeader />
       
       <div 
