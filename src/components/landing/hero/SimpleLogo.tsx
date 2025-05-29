@@ -24,66 +24,68 @@ const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
           lineHeight: '1.1',
         }}
       >
-        {/* Clean "dermaAgent" logotype with subtle animation enhancements */}
+        {/* Clean "dermaAgent" logotype with sophisticated futuristic motion */}
         <span className="relative inline-block overflow-hidden">
-          {/* "derma" in lowercase with clean letterforms */}
-          <span className="relative">d</span>
-          <span className="relative">e</span>
-          <span className="relative">r</span>
-          <span className="relative">m</span>
-          <span className="relative">a</span>
-          {/* "Agent" with capital A and clean styling */}
-          <span className="relative">A</span>
-          <span className="relative">g</span>
-          <span className="relative">e</span>
-          <span className="relative">n</span>
-          <span className="relative">t</span>
+          {/* Individual letterforms with enhanced spacing for elegance */}
+          <span className="relative logo-letterform-enhance">d</span>
+          <span className="relative logo-letterform-enhance">e</span>
+          <span className="relative logo-letterform-enhance">r</span>
+          <span className="relative logo-letterform-enhance">m</span>
+          <span className="relative logo-letterform-enhance">a</span>
+          <span className="relative logo-letterform-enhance">A</span>
+          <span className="relative logo-letterform-enhance">g</span>
+          <span className="relative logo-letterform-enhance">e</span>
+          <span className="relative logo-letterform-enhance">n</span>
+          <span className="relative logo-letterform-enhance">t</span>
           
-          {/* Subtle shimmer light pass effect */}
+          {/* Sophisticated shimmer light wave effect */}
           <span 
-            className={`absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 ${
-              isVisible ? 'animate-logo-shimmer' : ''
+            className={`absolute inset-0 ${
+              isVisible ? 'animate-logo-shimmer-sophisticated' : ''
             }`}
             style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(26, 26, 26, 0.15) 30%, rgba(255, 255, 255, 0.4) 50%, rgba(26, 26, 26, 0.15) 70%, transparent 100%)',
+              backgroundSize: '200% 100%',
               transform: 'translateX(-100%)',
+              filter: 'blur(0.5px)',
             }}
           />
           
-          {/* Subtle typewriter cursor blink at the end */}
+          {/* Elegant typewriter cursor blink - signature detail */}
           <span 
-            className={`ml-1 inline-block w-0.5 h-full bg-current ${
-              isVisible ? 'animate-cursor-blink' : 'opacity-0'
+            className={`ml-2 inline-block w-0.5 h-full bg-current ${
+              isVisible ? 'animate-cursor-blink-elegant' : 'opacity-0'
             }`}
             style={{
-              animationDelay: '3s',
-              animationDuration: '1s',
-              animationIterationCount: '3',
+              animationDelay: '4s',
+              animationDuration: '1.2s',
+              animationIterationCount: '2',
+              opacity: 0.7,
             }}
           />
         </span>
       </h1>
       
-      {/* Clean underline with elegant gradient effect */}
+      {/* Clean underline with refined gradient */}
       <div 
-        className="mx-auto mt-8 transition-all duration-1800 relative"
+        className="mx-auto mt-8 transition-all duration-2000 relative"
         style={{
-          width: isVisible ? '180px' : '0px',
+          width: isVisible ? '200px' : '0px',
           height: '1px',
           background: `linear-gradient(90deg, 
             transparent 0%, 
-            var(--dermaagent-light-gray) 15%, 
+            var(--dermaagent-light-gray) 20%, 
             var(--dermaagent-charcoal-gray) 50%, 
-            var(--dermaagent-light-gray) 85%, 
+            var(--dermaagent-light-gray) 80%, 
             transparent 100%)`,
-          opacity: 0.6,
+          opacity: 0.4,
         }}
       />
       
-      {/* Clean margin line - minimal notebook integration */}
+      {/* Minimal notebook margin line - perfectly clean */}
       <div 
         className={`absolute left-0 top-0 bottom-0 transition-all duration-2000 ${
-          isVisible ? 'opacity-15' : 'opacity-0'
+          isVisible ? 'opacity-10' : 'opacity-0'
         }`}
         style={{
           width: '1px',

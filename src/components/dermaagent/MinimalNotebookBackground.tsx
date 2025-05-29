@@ -17,13 +17,13 @@ const MinimalNotebookBackground: React.FC<MinimalNotebookBackgroundProps> = ({
   const getOpacityByIntensity = () => {
     switch (intensity) {
       case 'subtle':
-        return 0.015;
+        return 0.008;
       case 'medium':
-        return 0.025;
-      case 'enhanced':
-        return 0.035;
-      default:
         return 0.015;
+      case 'enhanced':
+        return 0.025;
+      default:
+        return 0.008;
     }
   };
 
@@ -32,27 +32,26 @@ const MinimalNotebookBackground: React.FC<MinimalNotebookBackgroundProps> = ({
       case 'notebook-grid':
         return {
           background: `
-            linear-gradient(var(--dermaagent-notebook-lines) 0.5px, transparent 0.5px),
-            linear-gradient(90deg, var(--dermaagent-notebook-lines) 0.5px, transparent 0.5px)
+            linear-gradient(var(--dermaagent-light-gray) 0.5px, transparent 0.5px),
+            linear-gradient(90deg, var(--dermaagent-light-gray) 0.5px, transparent 0.5px)
           `,
           backgroundSize: '40px 40px',
         };
       case 'cellular-texture':
         return {
-          background: 'var(--dermaagent-cellular-texture)',
-          backgroundSize: '160px 160px',
+          background: 'transparent',
+          backgroundSize: '200px 200px',
         };
       case 'organic-flow':
         return {
-          background: `radial-gradient(circle at 30% 30%, var(--dermaagent-cellular-beige) 0%, transparent 45%),
-                      radial-gradient(circle at 70% 70%, var(--dermaagent-cellular-blue) 0%, transparent 40%),
-                      radial-gradient(circle at 50% 85%, var(--dermaagent-cellular-ambient) 0%, transparent 35%)`,
-          backgroundSize: '240px 240px, 200px 200px, 180px 180px',
+          background: `radial-gradient(circle at 35% 35%, var(--dermaagent-cellular-ambient) 0%, transparent 50%),
+                      radial-gradient(circle at 65% 65%, var(--dermaagent-cellular-soft) 0%, transparent 45%)`,
+          backgroundSize: '300px 300px, 250px 250px',
         };
       default:
         return {
-          background: 'var(--dermaagent-cellular-texture)',
-          backgroundSize: '160px 160px',
+          background: 'transparent',
+          backgroundSize: '200px 200px',
         };
     }
   };
@@ -64,51 +63,49 @@ const MinimalNotebookBackground: React.FC<MinimalNotebookBackgroundProps> = ({
       className="fixed inset-0 pointer-events-none z-0"
       style={{
         opacity: isVisible ? getOpacityByIntensity() : 0,
-        transition: 'opacity 4s ease-out',
+        transition: 'opacity 3s ease-out',
         ...patternStyle,
       }}
     >
-      {/* Refined cellular motion overlay - ultra subtle */}
+      {/* Ultra-refined cellular motion overlay - completely clean and subtle */}
       {showCellularMotion && (
         <div className="absolute inset-0 overflow-hidden">
-          {/* Floating cellular elements - minimal and refined */}
-          {Array.from({ length: 6 }).map((_, i) => (
+          {/* Minimal floating cellular elements - pristine and elegant */}
+          {Array.from({ length: 4 }).map((_, i) => (
             <div
               key={`cellular-${i}`}
-              className="absolute rounded-full animate-cellular-drift"
+              className="absolute rounded-full animate-cellular-background-drift"
               style={{
-                width: `${Math.random() * 30 + 25}px`,
-                height: `${Math.random() * 30 + 25}px`,
+                width: `${Math.random() * 25 + 20}px`,
+                height: `${Math.random() * 25 + 20}px`,
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 background: `radial-gradient(circle, ${
-                  i % 3 === 0 
-                    ? 'var(--dermaagent-cellular-beige)' 
-                    : i % 3 === 1 
-                      ? 'var(--dermaagent-cellular-blue)' 
-                      : 'var(--dermaagent-cellular-ambient)'
-                } 0%, transparent 70%)`,
-                animationDelay: `${i * 4}s`,
-                animationDuration: `${35 + i * 5}s`,
-                filter: 'blur(3px)',
+                  i % 2 === 0 
+                    ? 'var(--dermaagent-cellular-ambient)' 
+                    : 'var(--dermaagent-cellular-soft)'
+                } 0%, transparent 80%)`,
+                animationDelay: `${i * 6}s`,
+                animationDuration: `${45 + i * 8}s`,
+                filter: 'blur(4px)',
               }}
             />
           ))}
           
-          {/* Ultra-subtle atmospheric gradient */}
+          {/* Ultra-subtle atmospheric gradient - completely clean */}
           <div 
-            className="absolute inset-0 animate-cellular-morph"
+            className="absolute inset-0 animate-cellular-drift-ultra-slow"
             style={{
-              background: `conic-gradient(from 0deg at 40% 50%, 
-                var(--dermaagent-cellular-beige) 0deg, 
-                transparent 100deg, 
-                var(--dermaagent-cellular-blue) 180deg, 
-                transparent 280deg, 
-                var(--dermaagent-cellular-ambient) 320deg, 
+              background: `conic-gradient(from 0deg at 45% 55%, 
+                var(--dermaagent-cellular-ambient) 0deg, 
+                transparent 120deg, 
+                var(--dermaagent-cellular-soft) 200deg, 
+                transparent 300deg, 
+                var(--dermaagent-cellular-ambient) 340deg, 
                 transparent 360deg)`,
-              filter: 'blur(6px)',
-              opacity: 0.25,
-              animationDuration: '60s',
+              filter: 'blur(8px)',
+              opacity: 0.15,
+              animationDuration: '80s',
             }}
           />
         </div>

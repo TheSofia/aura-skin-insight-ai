@@ -15,7 +15,7 @@ const Index = () => {
     if (location.pathname === '/') {
       const backgroundTimer = setTimeout(() => {
         setIsLoaded(true);
-      }, 600);
+      }, 400);
       
       return () => clearTimeout(backgroundTimer);
     }
@@ -26,11 +26,11 @@ const Index = () => {
       ref={pageRef}
       className="min-h-screen flex flex-col overflow-hidden relative"
       style={{
-        background: 'var(--beautyagent-notebook-base)',
+        background: 'var(--dermaagent-notebook-base)',
         fontFamily: "'IBM Plex Mono', monospace",
       }}
     >
-      {/* Premium Digital Notebook Background - Stripes with subtle cellular motion */}
+      {/* Premium Digital Notebook Background - Clean stripes without any scratch effects */}
       <div 
         className="fixed inset-0 pointer-events-none z-0"
         style={{
@@ -38,22 +38,23 @@ const Index = () => {
             repeating-linear-gradient(
               0deg,
               transparent,
-              transparent 24px,
-              var(--beautyagent-notebook-line) 24px,
-              var(--beautyagent-notebook-line) 25px
+              transparent 28px,
+              var(--dermaagent-notebook-line) 28px,
+              var(--dermaagent-notebook-line) 29px
             ),
             linear-gradient(
               90deg,
-              var(--beautyagent-notebook-margin) 0px,
-              var(--beautyagent-notebook-margin) 1px,
+              var(--dermaagent-notebook-margin) 0px,
+              var(--dermaagent-notebook-margin) 1px,
               transparent 1px,
-              transparent 80px
+              transparent 90px
             )
           `,
+          opacity: 0.3,
         }}
       />
       
-      {/* Subtle cellular motion behind notebook stripes */}
+      {/* Ultra-subtle cellular motion behind notebook stripes - completely clean */}
       <MinimalNotebookBackground 
         isVisible={isLoaded}
         intensity="subtle"
@@ -61,15 +62,20 @@ const Index = () => {
         showCellularMotion={true}
       />
       
-      <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        {/* Hero Section with premium notebook aesthetic and typing animations */}
-        <Hero
-          isLoaded={isLoaded}
-          showTyping={true}
-        />
+      {/* Elegant page wrapper with enhanced spacing */}
+      <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-6 py-16 relative z-10">
+        {/* Hero Section with premium notebook aesthetic and refined animations */}
+        <div className="animate-elegant-fade-in">
+          <Hero
+            isLoaded={isLoaded}
+            showTyping={true}
+          />
+        </div>
         
-        {/* Footer Section */}
-        <Footer />
+        {/* Footer Section with delayed entrance */}
+        <div className="animate-elegant-fade-in-delayed">
+          <Footer />
+        </div>
       </div>
     </div>
   );

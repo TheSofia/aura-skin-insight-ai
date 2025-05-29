@@ -1,184 +1,134 @@
 
-/* Extended animation classes for the hypnotic landing page */
+/* Extended animation classes for the elegant landing page */
 
-/* Add new animation classes for very slow pulse */
-.animate-pulse-very-slow {
-  animation: pulse-slow 30s infinite ease-in-out;
-}
-
-/* Add cellular drift variations with different speeds */
-.animate-cellular-drift-slow {
-  animation: cellular-drift 35s infinite linear;
-}
-
-.animate-cellular-drift-fast {
-  animation: cellular-drift 15s infinite linear;
-}
-
-/* Additional animation class for radial pulse */
-.animate-radial-pulse {
-  animation: radial-pulse 15s infinite ease-in-out;
-}
-
-/* Enhanced animation class for the version text shimmer */
-@keyframes enhanced-shimmer-gradient {
-  0% { background-position: 0% 50%; opacity: 0.9; }
-  50% { background-position: 100% 50%; opacity: 1; }
-  100% { background-position: 0% 50%; opacity: 0.9; }
-}
-
-.animate-shimmer-enhanced {
-  animation: enhanced-shimmer-gradient 10s infinite ease-in-out;
-}
-
-/* Animation for light rays */
-@keyframes light-ray-pulse {
-  0% { opacity: 0.03; transform: scale(1); }
-  50% { opacity: 0.08; transform: scale(1.05); }
-  100% { opacity: 0.03; transform: scale(1); }
-}
-
-.animate-light-ray {
-  animation: light-ray-pulse 20s infinite ease-in-out;
-}
-
-/* Animation for enhanced morph */
-@keyframes morph-enhanced {
-  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); }
-  25% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; transform: rotate(1deg); }
-  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: rotate(0deg); }
-  75% { border-radius: 40% 30% 60% 70% / 60% 40% 50% 40%; transform: rotate(-1deg); }
-  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg); }
-}
-
-.animate-morph-enhanced {
-  animation: morph-enhanced 15s infinite ease-in-out;
-}
-
-/* New: Animation for synaptic connections */
-@keyframes synapse-pulse {
-  0% { opacity: 0; stroke-dashoffset: 12; }
-  20% { opacity: 0.7; }
-  80% { opacity: 0.7; }
-  100% { opacity: 0; stroke-dashoffset: 0; }
-}
-
-/* New: Animation for cellular morph */
-@keyframes cellular-morph {
-  0% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; transform: scale(1); }
-  25% { border-radius: 60% 40% 45% 55% / 55% 45% 55% 45%; transform: scale(1.03); }
-  50% { border-radius: 40% 60% 55% 45% / 45% 55% 45% 55%; transform: scale(0.97); }
-  75% { border-radius: 55% 45% 40% 60% / 50% 50% 50% 50%; transform: scale(1.01); }
-  100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; transform: scale(1); }
-}
-
-/* New: Animation for drift particles with more organic motion */
-@keyframes drift-particle {
-  0% { transform: translate(0, 0); opacity: 0.3; }
-  50% { transform: translate(var(--end-x, 10%) calc(var(--end-y, 10%) / 2)); opacity: 0.8; }
-  100% { transform: translate(var(--end-x, 10%) var(--end-y, 10%)); opacity: 0.3; }
-}
-
-/* New: Enhanced perspective animation for 3D depth */
-@keyframes perspective-shift {
-  0% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
-  25% { transform: perspective(1000px) rotateX(1deg) rotateY(-1deg); }
-  50% { transform: perspective(1000px) rotateX(0deg) rotateY(1deg); }
-  75% { transform: perspective(1000px) rotateX(-1deg) rotateY(0deg); }
-  100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
-}
-
-.animate-perspective {
-  animation: perspective-shift 20s infinite ease-in-out;
-  transform-style: preserve-3d;
-}
-
-/* New: Subtle floating animation for UI elements */
-@keyframes float-ui {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
-  100% { transform: translateY(0px); }
-}
-
-.animate-float-ui {
-  animation: float-ui 6s infinite ease-in-out;
-}
-
-/* New: Text shimmer animation for the headline */
-@keyframes text-shimmer {
-  0% { background-position: -100% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-text-shimmer {
-  animation: text-shimmer 8s infinite ease-in-out;
-  background-size: 200% 100%;
-}
-
-/* New: Letter blur-to-clarity animation for "DISCOVER" */
-@keyframes blur-to-clarity {
-  0% { filter: blur(8px); opacity: 0.2; }
-  50% { filter: blur(3px); opacity: 0.5; }
-  100% { filter: blur(0px); opacity: 0.7; }
-}
-
-.animate-blur-to-clarity {
-  animation: blur-to-clarity 2s forwards;
-}
-
-/* New: Light trail effect animation for "YOUR BEST VERSION" */
-@keyframes light-trail {
-  0% { width: 0; opacity: 0.7; }
-  50% { opacity: 0.5; }
-  100% { width: 100%; opacity: 0; }
-}
-
-.animate-light-trail {
-  animation: light-trail 2s forwards cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* New: Ripple animation for enhanced button effects */
-@keyframes ripple {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-/* New: Structural cellular animation for background */
-@keyframes structural-cell-motion {
-  0% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); }
-  25% { transform: translateX(5px) translateY(-5px) rotate(1deg) scale(1.02); }
-  50% { transform: translateX(8px) translateY(3px) rotate(0deg) scale(0.98); }
-  75% { transform: translateX(-3px) translateY(8px) rotate(-1deg) scale(1.01); }
-  100% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); }
-}
-
-.animate-structural-cell {
-  animation: structural-cell-motion 20s infinite ease-in-out;
-}
-
-/* Pulse subtle animation for interactive UI elements */
-@keyframes pulse-subtle {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
-}
-
-.animate-pulse-subtle {
-  animation: pulse-subtle 2s infinite ease-in-out;
-}
-
-/* DermaAgent Logo Animations - Refined and Subtle */
+/* Enhanced logo animations - sophisticated and refined */
 .animate-logo-breathe {
+  animation: logo-breathe 6s infinite ease-in-out;
+}
+
+.animate-logo-shimmer-sophisticated {
+  animation: logo-shimmer-sophisticated 8s infinite ease-in-out;
+  animation-delay: 1.5s;
+}
+
+.animate-cursor-blink-elegant {
+  animation: cursor-blink-elegant 1.2s ease-in-out;
+}
+
+/* Elegant page element animations */
+.animate-elegant-fade-in {
+  animation: elegant-fade-in 1.5s ease-out forwards;
+}
+
+.animate-elegant-fade-in-delayed {
+  animation: elegant-fade-in 1.5s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+/* Subtle background cellular motion */
+.animate-cellular-background-drift {
+  animation: cellular-background-drift 40s infinite ease-in-out;
+}
+
+/* Interactive element animations */
+.animate-underline-reveal {
+  animation: underline-reveal 0.3s ease-out forwards;
+}
+
+.animate-gentle-glow {
+  animation: gentle-glow 0.2s ease-out forwards;
+}
+
+/* Enhanced hover effects for buttons and interactive elements */
+.hover-elegant-underline {
+  position: relative;
+  transition: all 0.3s ease-out;
+}
+
+.hover-elegant-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--dermaagent-charcoal-gray);
+  transition: width 0.3s ease-out;
+}
+
+.hover-elegant-underline:hover::after {
+  width: 100%;
+}
+
+/* Elegant button hover effects - monochrome focus */
+.elegant-button-hover {
+  transition: all 0.25s ease-out;
+  border: 1px solid transparent;
+}
+
+.elegant-button-hover:hover {
+  border-color: var(--dermaagent-light-gray);
+  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Page section transitions - notebook page turning feel */
+.page-section-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.page-section-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle focus states for form elements */
+.elegant-input-focus {
+  transition: all 0.3s ease-out;
+  border-bottom: 1px solid var(--dermaagent-light-gray);
+}
+
+.elegant-input-focus:focus {
+  border-bottom-color: var(--dermaagent-charcoal-gray);
+  box-shadow: 0 1px 0 0 var(--dermaagent-charcoal-gray);
+}
+
+/* Enhanced letterform hover for logo */
+.logo-letterform-enhance {
+  transition: all 0.2s ease-out;
+  display: inline-block;
+}
+
+.logo-letterform-enhance:hover {
+  transform: translateY(-0.5px);
+  text-shadow: 0 1px 2px rgba(26, 26, 26, 0.1);
+}
+
+/* Refined cellular motion variations */
+.animate-cellular-drift-ultra-slow {
+  animation: cellular-background-drift 60s infinite linear;
+}
+
+.animate-cellular-drift-gentle {
+  animation: cellular-background-drift 35s infinite ease-in-out;
+}
+
+/* Sophisticated pulse for key elements */
+.animate-sophisticated-pulse {
   animation: logo-breathe 8s infinite ease-in-out;
 }
 
-.animate-logo-shimmer {
-  animation: logo-shimmer 12s infinite ease-in-out;
-  animation-delay: 2s;
+/* Scroll-triggered animations */
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.animate-cursor-blink {
-  animation: cursor-blink 1s ease-in-out;
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

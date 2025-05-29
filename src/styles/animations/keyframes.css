@@ -47,22 +47,107 @@
   100% { transform: rotate(360deg); }
 }
 
-/* DermaAgent Logo Animation - Gentle breathing effect */
+/* DermaAgent Logo Animation - Refined gentle breathing effect */
 @keyframes logo-breathe {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.015); }
-  100% { transform: scale(1); }
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.008); opacity: 0.98; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* DermaAgent Logo Animation - Subtle shimmer light pass */
-@keyframes logo-shimmer {
-  0% { transform: translateX(-100%); opacity: 0; }
-  50% { opacity: 0.3; }
-  100% { transform: translateX(100%); opacity: 0; }
+/* DermaAgent Logo Animation - Sophisticated shimmer light wave */
+@keyframes logo-shimmer-sophisticated {
+  0% { 
+    transform: translateX(-100%); 
+    opacity: 0; 
+    background-position: 0% 50%; 
+  }
+  20% { 
+    opacity: 0.6; 
+    background-position: 25% 50%; 
+  }
+  50% { 
+    opacity: 0.8; 
+    background-position: 50% 50%; 
+  }
+  80% { 
+    opacity: 0.6; 
+    background-position: 75% 50%; 
+  }
+  100% { 
+    transform: translateX(100%); 
+    opacity: 0; 
+    background-position: 100% 50%; 
+  }
 }
 
-/* DermaAgent Logo Animation - Typewriter cursor blink */
-@keyframes cursor-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+/* DermaAgent Logo Animation - Elegant typewriter cursor blink */
+@keyframes cursor-blink-elegant {
+  0%, 40% { opacity: 0.7; }
+  41%, 80% { opacity: 0; }
+  81%, 100% { opacity: 0.7; }
+}
+
+/* Elegant fade-in sequence for page elements */
+@keyframes elegant-fade-in {
+  0% { 
+    opacity: 0; 
+    transform: translateY(15px); 
+    filter: blur(2px); 
+  }
+  60% { 
+    opacity: 0.7; 
+    transform: translateY(5px); 
+    filter: blur(0.5px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+    filter: blur(0); 
+  }
+}
+
+/* Subtle cellular background motion - ultra refined */
+@keyframes cellular-background-drift {
+  0% { 
+    transform: translateX(0) translateY(0) scale(1); 
+    opacity: 0.02; 
+  }
+  25% { 
+    transform: translateX(2px) translateY(-1px) scale(1.005); 
+    opacity: 0.04; 
+  }
+  50% { 
+    transform: translateX(1px) translateY(2px) scale(0.998); 
+    opacity: 0.03; 
+  }
+  75% { 
+    transform: translateX(-1px) translateY(1px) scale(1.002); 
+    opacity: 0.035; 
+  }
+  100% { 
+    transform: translateX(0) translateY(0) scale(1); 
+    opacity: 0.02; 
+  }
+}
+
+/* Smooth underline reveal for interactive elements */
+@keyframes underline-reveal {
+  0% { 
+    width: 0; 
+    opacity: 0.6; 
+  }
+  100% { 
+    width: 100%; 
+    opacity: 0.9; 
+  }
+}
+
+/* Gentle glow for interactive feedback */
+@keyframes gentle-glow {
+  0% { 
+    box-shadow: 0 0 0 rgba(26, 26, 26, 0); 
+  }
+  100% { 
+    box-shadow: 0 0 8px rgba(26, 26, 26, 0.1); 
+  }
 }
