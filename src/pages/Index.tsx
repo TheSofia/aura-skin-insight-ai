@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Hero from "@/components/landing/Hero";
 import Footer from "@/components/landing/Footer";
-import CustomCursor from "@/components/ui/CustomCursor";
 
 const Index = () => {
   const location = useLocation();
@@ -30,9 +29,6 @@ const Index = () => {
         fontFamily: "'IBM Plex Mono', monospace",
       }}
     >
-      {/* Custom Cellular Cursor - Luxury Digital Notebook */}
-      <CustomCursor />
-      
       {/* Static School Notebook Background - Clean horizontal stripes with margin line */}
       <div 
         className="fixed inset-0 pointer-events-none z-0"
