@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Hero from "@/components/landing/Hero";
 import Footer from "@/components/landing/Footer";
+import LandingHeader from "@/components/landing/LandingHeader";
 import CustomCursor from "@/components/ui/CustomCursor";
 
 const Index = () => {
@@ -54,6 +55,9 @@ const Index = () => {
     <>
       {/* Cellular Cursor Component */}
       <CustomCursor />
+      
+      {/* Landing Page Header with Navigation */}
+      <LandingHeader />
       
       <div 
         ref={pageRef}
