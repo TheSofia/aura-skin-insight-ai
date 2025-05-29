@@ -17,5 +17,4 @@ Allow: /
 # Domain migration notice
 # Old domain: https://aura-skin-insight-ai.lovable.app/
 # Previous domain: https://beauty-agent-skin-ai.app/
-# New domain: https://beautyagent.app/
-
+# Current domain: https://derma-agent.app/
