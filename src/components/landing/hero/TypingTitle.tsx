@@ -9,22 +9,21 @@ interface TypingTitleProps {
 const TypingTitle = ({ isVisible }: TypingTitleProps) => {
   const [showSubtitle, setShowSubtitle] = useState(false);
 
-  // Main title typing animation
-  const mainTitle = useTypingAnimation({
-    text: "dermaAgent",
-    speed: 80,
-    delay: isVisible ? 500 : 9999,
-    showCursor: true,
-    cursorBlinkCount: 2,
-    onComplete: () => {
-      setTimeout(() => setShowSubtitle(true), 600);
+  // Start subtitle typing after a delay when component is visible
+  React.useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        setShowSubtitle(true);
+      }, 800); // Brief delay after page loads
+      
+      return () => clearTimeout(timer);
     }
-  });
+  }, [isVisible]);
 
   // Subtitle typing animation
   const subtitle = useTypingAnimation({
     text: "AI-powered skincare intelligence",
-    speed: 60,
+    speed: 75,
     delay: showSubtitle ? 0 : 9999,
     showCursor: true,
     cursorBlinkCount: 3
@@ -32,7 +31,7 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
 
   return (
     <div className="text-center mb-12">
-      {/* Main Title */}
+      {/* Main Title - Static, no animation */}
       <h1 
         className="text-3xl md:text-4xl lg:text-5xl mb-6"
         style={{
@@ -43,21 +42,10 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
           minHeight: '1.2em'
         }}
       >
-        {mainTitle.displayedText}
-        {mainTitle.showTypingCursor && (
-          <span 
-            className="animate-pulse"
-            style={{
-              color: 'var(--dermaagent-muted-mid-gray)',
-              marginLeft: '2px'
-            }}
-          >
-            |
-          </span>
-        )}
+        dermaAgent
       </h1>
       
-      {/* Subtitle */}
+      {/* Subtitle - With typing animation */}
       <p 
         className="text-lg md:text-xl"
         style={{
