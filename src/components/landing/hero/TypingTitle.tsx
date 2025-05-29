@@ -8,8 +8,10 @@ interface TypingTitleProps {
 
 const TypingTitle = ({ isVisible }: TypingTitleProps) => {
   const [showSubtitle, setShowSubtitle] = useState(false);
+  const [logoComplete, setLogoComplete] = useState(false);
+  const [subtitleComplete, setSubtitleComplete] = useState(false);
 
-  // Logo typing animation
+  // Logo typing animation - ONE TIME ONLY
   const logoText = useTypingAnimation({
     text: "derma.agent",
     speed: 100,
@@ -17,6 +19,7 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
     showCursor: true,
     cursorBlinkCount: 2,
     onComplete: () => {
+      setLogoComplete(true);
       // Start subtitle animation after logo completes
       const timer = setTimeout(() => {
         setShowSubtitle(true);
@@ -25,18 +28,21 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
     }
   });
 
-  // Subtitle typing animation
+  // Subtitle typing animation - ONE TIME ONLY
   const subtitle = useTypingAnimation({
     text: "AI-powered skincare intelligence",
     speed: 75,
     delay: showSubtitle ? 0 : 9999,
     showCursor: true,
-    cursorBlinkCount: 3
+    cursorBlinkCount: 3,
+    onComplete: () => {
+      setSubtitleComplete(true);
+    }
   });
 
   return (
     <div className="text-center mb-12">
-      {/* Main Title - With typing animation */}
+      {/* Main Title - With ONE-TIME typing animation */}
       <h1 
         className="text-3xl md:text-4xl lg:text-5xl mb-6"
         style={{
@@ -47,8 +53,10 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
           minHeight: '1.2em'
         }}
       >
-        {logoText.displayedText}
-        {logoText.showTypingCursor && (
+        {/* Show either the typing animation OR the final static text */}
+        {logoComplete ? "derma.agent" : logoText.displayedText}
+        {/* Show cursor only during typing, fade out when complete */}
+        {logoText.showTypingCursor && !logoComplete && (
           <span 
             className="animate-pulse"
             style={{
@@ -61,7 +69,7 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
         )}
       </h1>
       
-      {/* Subtitle - With typing animation */}
+      {/* Subtitle - With ONE-TIME typing animation */}
       <p 
         className="text-lg md:text-xl"
         style={{
@@ -69,13 +77,15 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
           fontWeight: '300',
           letterSpacing: '0.02em',
           color: 'var(--dermaagent-charcoal-gray)',
-          opacity: subtitle.displayedText ? 0.8 : 0,
+          opacity: (subtitle.displayedText || subtitleComplete) ? 0.8 : 0,
           transition: 'opacity 0.3s ease-out',
           minHeight: '1.5em'
         }}
       >
-        {subtitle.displayedText}
-        {subtitle.showTypingCursor && (
+        {/* Show either the typing animation OR the final static text */}
+        {subtitleComplete ? "AI-powered skincare intelligence" : subtitle.displayedText}
+        {/* Show cursor only during typing, fade out when complete */}
+        {subtitle.showTypingCursor && !subtitleComplete && (
           <span 
             className="animate-pulse"
             style={{

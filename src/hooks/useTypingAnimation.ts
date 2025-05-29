@@ -22,14 +22,18 @@ export const useTypingAnimation = ({
   const [isTyping, setIsTyping] = useState(false);
   const [showTypingCursor, setShowTypingCursor] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  
   const indexRef = useRef(0);
   const timeoutRef = useRef<NodeJS.Timeout>();
   const cursorTimeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
-    if (!text) return;
+    // Prevent re-execution if animation has already started
+    if (!text || hasStarted) return;
 
     const startTyping = () => {
+      setHasStarted(true); // Mark as started to prevent re-execution
       setIsTyping(true);
       setShowTypingCursor(showCursor);
       
@@ -39,6 +43,7 @@ export const useTypingAnimation = ({
           indexRef.current++;
           timeoutRef.current = setTimeout(typeNextCharacter, speed);
         } else {
+          // Typing complete
           setIsTyping(false);
           
           if (showCursor && cursorBlinkCount > 0) {
@@ -49,6 +54,7 @@ export const useTypingAnimation = ({
                 blinkCount++;
                 cursorTimeoutRef.current = setTimeout(blinkCursor, 400);
               } else {
+                // Animation fully complete - cursor fades out permanently
                 setShowTypingCursor(false);
                 setIsComplete(true);
                 onComplete?.();
@@ -65,14 +71,19 @@ export const useTypingAnimation = ({
       timeoutRef.current = setTimeout(typeNextCharacter, speed);
     };
 
-    const delayTimer = setTimeout(startTyping, delay);
+    // Start animation only once after delay
+    if (delay === 0) {
+      startTyping();
+    } else if (delay < 9999) { // 9999 is our "don't start" signal
+      const delayTimer = setTimeout(startTyping, delay);
+      return () => clearTimeout(delayTimer);
+    }
 
     return () => {
-      clearTimeout(delayTimer);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       if (cursorTimeoutRef.current) clearTimeout(cursorTimeoutRef.current);
     };
-  }, [text, speed, delay, showCursor, cursorBlinkCount, onComplete]);
+  }, [text, speed, delay, showCursor, cursorBlinkCount, onComplete, hasStarted]);
 
   return {
     displayedText,
