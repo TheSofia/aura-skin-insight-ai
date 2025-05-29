@@ -13,27 +13,27 @@ const SimpleLogo = ({ isVisible }: SimpleLogoProps) => {
       }`}
     >
       <h1 
-        className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-wider"
+        className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-widest uppercase"
         style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontWeight: '500',
-          color: 'var(--dermaagent-graphite-black)',
-          letterSpacing: '0.12em',
+          fontFamily: 'var(--beautyagent-primary-font)',
+          fontWeight: 'var(--beautyagent-logo-weight)',
+          color: 'var(--beautyagent-graphite-black)',
+          letterSpacing: 'var(--beautyagent-letter-spacing-logo)',
           lineHeight: '1.1',
           textShadow: '0 1px 3px rgba(0, 0, 0, 0.02)',
         }}
       >
-        DERMAAGENT
+        BEAUTYAGENT
       </h1>
       
-      {/* Subtle underline */}
+      {/* Notebook-style underline */}
       <div 
         className="mx-auto mt-4 transition-all duration-1000"
         style={{
-          width: isVisible ? '120px' : '0px',
+          width: isVisible ? '140px' : '0px',
           height: '1px',
-          background: 'var(--dermaagent-light-gray)',
-          opacity: 0.4,
+          background: 'var(--beautyagent-light-gray)',
+          opacity: 0.6,
         }}
       />
     </div>

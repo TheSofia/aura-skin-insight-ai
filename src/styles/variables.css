@@ -1,33 +1,45 @@
 
-/* DermaAgent - Ultimate Pure Monochrome Design System Variables */
+/* BeautyAgent - Premium Digital Notebook Design System Variables */
 :root {
   /* Core Brand Identity */
-  --dermaagent-app-name: "DermaAgent";
+  --beautyagent-app-name: "BeautyAgent";
   
-  /* Pure Monochrome Color Palette - Strict Grayscale Only */
-  --dermaagent-pure-white: #FFFFFF;
-  --dermaagent-pale-paper-white: #F9F8F7;
-  --dermaagent-light-gray: #E3E3E3;
-  --dermaagent-muted-mid-gray: #888888;
-  --dermaagent-charcoal-gray: #333333;
-  --dermaagent-graphite-black: #1A1A1A;
+  /* Premium Digital Notebook Color Palette - Strict Monochrome */
+  --beautyagent-pure-white: #FFFFFF;
+  --beautyagent-warm-bone: #F4F1ED;
+  --beautyagent-light-gray: #E3E3E3;
+  --beautyagent-charcoal-gray: #333333;
+  --beautyagent-graphite-black: #1A1A1A;
   
-  /* Monochrome Cellular Background - Pure Grayscale */
-  --dermaagent-cellular-ambient: rgba(227, 227, 227, 0.02);
-  --dermaagent-cellular-soft: rgba(227, 227, 227, 0.03);
-  --dermaagent-cellular-subtle: rgba(227, 227, 227, 0.01);
+  /* Digital Notebook Background System */
+  --beautyagent-notebook-base: #FFFFFF;
+  --beautyagent-notebook-line: rgba(227, 227, 227, 0.4);
+  --beautyagent-notebook-margin: rgba(227, 227, 227, 0.3);
+  
+  /* Monochrome Cellular Background - Ultra Subtle Behind Notebook */
+  --beautyagent-cellular-ambient: rgba(227, 227, 227, 0.01);
+  --beautyagent-cellular-soft: rgba(227, 227, 227, 0.015);
+  --beautyagent-cellular-subtle: rgba(227, 227, 227, 0.005);
+  
+  /* Legacy DermaAgent Variables (for compatibility) */
+  --dermaagent-pure-white: var(--beautyagent-pure-white);
+  --dermaagent-pale-paper-white: var(--beautyagent-warm-bone);
+  --dermaagent-light-gray: var(--beautyagent-light-gray);
+  --dermaagent-muted-mid-gray: var(--beautyagent-charcoal-gray);
+  --dermaagent-charcoal-gray: var(--beautyagent-charcoal-gray);
+  --dermaagent-graphite-black: var(--beautyagent-graphite-black);
   
   /* Monochrome Glass & Depth Effects */
-  --dermaagent-glass-overlay: rgba(249, 248, 247, 0.95);
-  --dermaagent-glass-shadow: rgba(26, 26, 26, 0.01);
-  --dermaagent-glass-border: rgba(227, 227, 227, 0.3);
+  --beautyagent-glass-overlay: rgba(255, 255, 255, 0.95);
+  --beautyagent-glass-shadow: rgba(26, 26, 26, 0.02);
+  --beautyagent-glass-border: rgba(227, 227, 227, 0.3);
   
-  /* Pure Monochrome Gradients */
-  --dermaagent-background-gradient: linear-gradient(135deg, #F9F8F7 0%, #FFFFFF 100%);
-  --dermaagent-subtle-depth-gradient: linear-gradient(135deg, #F9F8F7 0%, rgba(227, 227, 227, 0.05) 100%);
-  
-  /* Minimal Notebook Grid Pattern - Ultra Subtle Gray */
-  --dermaagent-notebook-texture: radial-gradient(circle at 50% 50%, rgba(227, 227, 227, 0.01) 0%, transparent 70%);
-  --dermaagent-notebook-grid: linear-gradient(rgba(227, 227, 227, 0.06) 0.5px, transparent 0.5px);
-  --dermaagent-notebook-ruled-lines: linear-gradient(rgba(227, 227, 227, 0.08) 0.5px, transparent 0.5px);
+  /* Premium Notebook Typography Variables */
+  --beautyagent-primary-font: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
+  --beautyagent-logo-weight: 700;
+  --beautyagent-heading-weight: 500;
+  --beautyagent-body-weight: 300;
+  --beautyagent-letter-spacing-logo: 0.12em;
+  --beautyagent-letter-spacing-heading: 0.06em;
+  --beautyagent-letter-spacing-body: 0.02em;
 }

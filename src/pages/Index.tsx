@@ -26,11 +26,34 @@ const Index = () => {
       ref={pageRef}
       className="min-h-screen flex flex-col overflow-hidden relative"
       style={{
-        background: 'var(--dermaagent-pale-paper-white)',
-        fontFamily: "'Suisse Int'l', 'Neue Haas Unica', 'Inter', system-ui, -apple-system, sans-serif",
+        background: 'var(--beautyagent-notebook-base)',
+        fontFamily: "'IBM Plex Mono', monospace",
       }}
     >
-      {/* Dynamic Cellular Background with subtle notebook texture integration */}
+      {/* Premium Digital Notebook Background - Stripes with subtle cellular motion */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          background: `
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 24px,
+              var(--beautyagent-notebook-line) 24px,
+              var(--beautyagent-notebook-line) 25px
+            ),
+            linear-gradient(
+              90deg,
+              var(--beautyagent-notebook-margin) 0px,
+              var(--beautyagent-notebook-margin) 1px,
+              transparent 1px,
+              transparent 80px
+            )
+          `,
+        }}
+      />
+      
+      {/* Subtle cellular motion behind notebook stripes */}
       <MinimalNotebookBackground 
         isVisible={isLoaded}
         intensity="subtle"
@@ -39,7 +62,7 @@ const Index = () => {
       />
       
       <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        {/* Hero Section with dynamic title animation and sophisticated aesthetic */}
+        {/* Hero Section with premium notebook aesthetic and typing animations */}
         <Hero
           isLoaded={isLoaded}
           showTyping={true}

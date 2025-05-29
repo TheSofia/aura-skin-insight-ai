@@ -19,7 +19,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DermaAgent Ultimate Pure Monochrome Design System */
+/* BeautyAgent Premium Digital Notebook Design System */
 @layer base {
   :root {
     --radius: 0.5rem;
@@ -30,124 +30,147 @@
   }
   
   body {
-    background: var(--dermaagent-pale-paper-white);
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 300;
-    color: var(--dermaagent-graphite-black);
-    letter-spacing: 0.02em;
+    background: var(--beautyagent-notebook-base);
+    font-family: var(--beautyagent-primary-font);
+    font-weight: var(--beautyagent-body-weight);
+    color: var(--beautyagent-graphite-black);
+    letter-spacing: var(--beautyagent-letter-spacing-body);
     line-height: 1.6;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
-  /* DermaAgent Pure Monochrome Typography - All IBM Plex Mono */
-  .dermaagent-logo {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    color: var(--dermaagent-graphite-black);
+  /* BeautyAgent Premium Notebook Typography - All IBM Plex Mono */
+  .beautyagent-logo {
+    font-family: var(--beautyagent-primary-font);
+    font-weight: var(--beautyagent-logo-weight);
+    letter-spacing: var(--beautyagent-letter-spacing-logo);
+    color: var(--beautyagent-graphite-black);
     line-height: 1.1;
     text-transform: uppercase;
   }
   
-  .dermaagent-headline {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    color: var(--dermaagent-graphite-black);
+  .beautyagent-headline {
+    font-family: var(--beautyagent-primary-font);
+    font-weight: var(--beautyagent-heading-weight);
+    letter-spacing: var(--beautyagent-letter-spacing-heading);
+    color: var(--beautyagent-graphite-black);
     line-height: 1.2;
   }
   
-  .dermaagent-ui-text {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 300;
-    color: var(--dermaagent-graphite-black);
-    letter-spacing: 0.02em;
+  .beautyagent-ui-text {
+    font-family: var(--beautyagent-primary-font);
+    font-weight: var(--beautyagent-body-weight);
+    color: var(--beautyagent-graphite-black);
+    letter-spacing: var(--beautyagent-letter-spacing-body);
   }
   
-  .dermaagent-ui-text-medium {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    color: var(--dermaagent-graphite-black);
-    letter-spacing: 0.02em;
+  .beautyagent-ui-text-medium {
+    font-family: var(--beautyagent-primary-font);
+    font-weight: var(--beautyagent-heading-weight);
+    color: var(--beautyagent-graphite-black);
+    letter-spacing: var(--beautyagent-letter-spacing-body);
   }
   
-  .dermaagent-ui-text-subtle {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 300;
-    color: var(--dermaagent-muted-mid-gray);
-    letter-spacing: 0.02em;
+  .beautyagent-ui-text-subtle {
+    font-family: var(--beautyagent-primary-font);
+    font-weight: var(--beautyagent-body-weight);
+    color: var(--beautyagent-charcoal-gray);
+    letter-spacing: var(--beautyagent-letter-spacing-body);
   }
   
-  /* Pure Monochrome Interactive Elements */
-  .dermaagent-button {
+  /* Premium Monochrome Interactive Elements */
+  .beautyagent-button {
     @apply transition-all duration-300 ease-out;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 300;
-    letter-spacing: 0.05em;
+    font-family: var(--beautyagent-primary-font);
+    font-weight: var(--beautyagent-body-weight);
+    letter-spacing: var(--beautyagent-letter-spacing-body);
     background: transparent;
-    color: var(--dermaagent-graphite-black);
-    border: 1px solid var(--dermaagent-light-gray);
+    color: var(--beautyagent-graphite-black);
+    border: 1px solid var(--beautyagent-light-gray);
   }
   
-  .dermaagent-button:hover {
-    background: var(--dermaagent-light-gray);
-    border-color: var(--dermaagent-charcoal-gray);
+  .beautyagent-button:hover {
+    background: var(--beautyagent-light-gray);
+    border-color: var(--beautyagent-charcoal-gray);
   }
   
-  /* Minimal Notebook Elements */
-  .dermaagent-notebook-page {
-    background: var(--dermaagent-pale-paper-white);
-    border: 1px solid var(--dermaagent-glass-border);
+  /* Premium Notebook Page Elements */
+  .beautyagent-notebook-page {
+    background: var(--beautyagent-notebook-base);
+    border: 1px solid var(--beautyagent-glass-border);
     box-shadow: 0 1px 3px rgba(26, 26, 26, 0.02);
   }
   
-  /* Pure Monochrome Input Fields */
-  .dermaagent-input {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 300;
+  /* Premium Monochrome Input Fields */
+  .beautyagent-input {
+    font-family: var(--beautyagent-primary-font);
+    font-weight: var(--beautyagent-body-weight);
     background: transparent;
     border: none;
     outline: none;
-    color: var(--dermaagent-graphite-black);
-    letter-spacing: 0.02em;
-    border-bottom: 1px solid var(--dermaagent-light-gray);
+    color: var(--beautyagent-graphite-black);
+    letter-spacing: var(--beautyagent-letter-spacing-body);
+    border-bottom: 1px solid var(--beautyagent-light-gray);
   }
   
-  .dermaagent-input:focus {
-    border-bottom-color: var(--dermaagent-charcoal-gray);
+  .beautyagent-input:focus {
+    border-bottom-color: var(--beautyagent-charcoal-gray);
   }
   
-  .dermaagent-input::placeholder {
-    color: var(--dermaagent-muted-mid-gray);
+  .beautyagent-input::placeholder {
+    color: var(--beautyagent-charcoal-gray);
+    opacity: 0.7;
   }
+  
+  /* Legacy DermaAgent classes for compatibility */
+  .dermaagent-logo { @extend .beautyagent-logo; }
+  .dermaagent-headline { @extend .beautyagent-headline; }
+  .dermaagent-ui-text { @extend .beautyagent-ui-text; }
+  .dermaagent-ui-text-medium { @extend .beautyagent-ui-text-medium; }
+  .dermaagent-ui-text-subtle { @extend .beautyagent-ui-text-subtle; }
+  .dermaagent-button { @extend .beautyagent-button; }
+  .dermaagent-notebook-page { @extend .beautyagent-notebook-page; }
+  .dermaagent-input { @extend .beautyagent-input; }
 }
 
-/* Pure Monochrome Animation Utilities */
+/* Premium Monochrome Animation Utilities */
 @layer utilities {
-  /* Pure notebook grid background - static, no motion */
-  .notebook-grid-bg {
-    background-image: 
-      linear-gradient(var(--dermaagent-light-gray) 0.5px, transparent 0.5px),
-      linear-gradient(90deg, var(--dermaagent-light-gray) 0.5px, transparent 0.5px);
-    background-size: 40px 40px;
-    background-position: 0 0, 0 0;
-    opacity: 0.15;
+  /* Premium notebook stripe background - integrated in component */
+  .notebook-stripes-bg {
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 24px,
+        var(--beautyagent-notebook-line) 24px,
+        var(--beautyagent-notebook-line) 25px
+      ),
+      linear-gradient(
+        90deg,
+        var(--beautyagent-notebook-margin) 0px,
+        var(--beautyagent-notebook-margin) 1px,
+        transparent 1px,
+        transparent 80px
+      );
   }
   
-  /* Alternative dot-grid pattern */
-  .notebook-dot-grid-bg {
-    background-image: radial-gradient(circle, var(--dermaagent-light-gray) 0.5px, transparent 0.5px);
-    background-size: 20px 20px;
-    background-position: 0 0;
-    opacity: 0.12;
-  }
-  
-  /* Ensure cellular motion is disabled on landing */
-  .no-cellular-motion {
+  /* Ensure cellular motion is ultra-subtle behind notebook stripes */
+  .notebook-cellular-subtle {
     background-attachment: local;
+    opacity: 0.3;
   }
   
   .monochrome-depth {
-    background: var(--dermaagent-subtle-depth-gradient);
+    background: linear-gradient(135deg, var(--beautyagent-notebook-base) 0%, rgba(227, 227, 227, 0.02) 100%);
+  }
+  
+  /* Typing cursor animation */
+  .typing-cursor {
+    animation: typing-cursor-blink 1s infinite;
+  }
+  
+  @keyframes typing-cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
   }
 }
