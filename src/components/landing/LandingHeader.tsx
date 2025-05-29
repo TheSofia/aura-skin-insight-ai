@@ -27,17 +27,9 @@ const LandingHeader = () => {
   };
 
   return (
-    <header className="fixed top-0 right-0 z-50">
-      {/* Navigation positioned to align with CTA button */}
-      <div 
-        className="absolute"
-        style={{
-          top: 'calc(50vh - 120px)', // Position above the CTA button area
-          right: 'calc(50vw - 100px)', // Align with right edge of CTA button
-          transform: 'translateX(100px)', // Fine-tune right edge alignment
-        }}
-      >
-        {/* Navigation Dropdown - Aligned with CTA button */}
+    <header className="fixed top-0 right-0 z-50 p-6">
+      <div className="flex justify-end">
+        {/* Navigation Dropdown - Top right corner placement */}
         <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <DropdownMenuTrigger asChild>
             <Button
