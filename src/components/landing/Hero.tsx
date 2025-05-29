@@ -1,7 +1,7 @@
 
 import React from "react";
-import SimpleLogo from "./hero/SimpleLogo";
-import MinimalCallToAction from "./hero/MinimalCallToAction";
+import TypingTitle from "./hero/TypingTitle";
+import EnhancedCallToAction from "./hero/EnhancedCallToAction";
 
 interface HeroProps {
   isLoaded: boolean;
@@ -11,11 +11,11 @@ interface HeroProps {
 const Hero = ({ isLoaded }: HeroProps) => {
   return (
     <div className="flex flex-col items-center justify-center mb-16 relative z-10">
-      {/* Pure minimalist logo for notebook aesthetic */}
-      <SimpleLogo isVisible={isLoaded} />
+      {/* Typing Title */}
+      <TypingTitle isVisible={isLoaded} />
       
-      {/* Minimal call to action */}
-      <MinimalCallToAction isVisible={isLoaded} />
+      {/* Enhanced Call to Action */}
+      <EnhancedCallToAction isVisible={isLoaded} />
     </div>
   );
 };

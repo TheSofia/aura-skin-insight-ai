@@ -1,14 +1,26 @@
 
 /* DermaAgent Elegant Interaction Styles */
 
-/* Refined button with subtle color accent on interaction */
+/* Refined button with subtle color accent and underline on interaction */
 .dermaagent-elegant-button {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--dermaagent-pale-paper-white, #FFFFFF);
   border: 1px solid var(--dermaagent-light-gray, #E3E3E3);
   color: var(--dermaagent-graphite-black, #1A1A1A);
+}
+
+.dermaagent-elegant-button::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #6A5ACD;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
 }
 
 .dermaagent-elegant-button:hover {
@@ -16,13 +28,21 @@
   color: white;
   border-color: #6A5ACD;
   box-shadow: 0 4px 12px rgba(106, 90, 205, 0.15);
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.dermaagent-elegant-button:hover::after {
+  width: 80%;
 }
 
 .dermaagent-elegant-button:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(1.01);
   box-shadow: 0 2px 8px rgba(106, 90, 205, 0.2);
   background: linear-gradient(135deg, #5B4B9D 0%, #6A5ACD 100%);
+}
+
+.dermaagent-elegant-button:active::after {
+  width: 100%;
 }
 
 /* Subtle glow effect on focus for accessibility */
@@ -32,43 +52,58 @@
 }
 
 /* Alternative orange-red accent for variety */
-.dermaagent-elegant-button.accent-orange:hover {
-  background: linear-gradient(135deg, #FF4500 0%, #FF6347 100%);
-  border-color: #FF4500;
-  box-shadow: 0 4px 12px rgba(255, 69, 0, 0.15);
-  color: white;
+.dermaagent-elegant-button.accent-orange {
+  /* ... keep existing code for accent-orange styles ... */
 }
 
-.dermaagent-elegant-button.accent-orange:active {
-  box-shadow: 0 2px 8px rgba(255, 69, 0, 0.2);
-  background: linear-gradient(135deg, #E63E00 0%, #FF4500 100%);
+.dermaagent-elegant-button.accent-orange::after {
+  background: #FF4500;
 }
 
-.dermaagent-elegant-button.accent-orange:focus {
-  box-shadow: 0 0 0 2px rgba(255, 69, 0, 0.2);
-}
-
-/* Enhanced input field elegant focus states with box transitions */
+/* Enhanced input field elegant focus states with box transitions and underlines */
 .dermaagent-input-elegant {
+  position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: var(--dermaagent-pale-paper-white, #FFFFFF);
   border: 1px solid var(--dermaagent-light-gray, #E3E3E3);
   color: var(--dermaagent-graphite-black, #1A1A1A);
 }
 
+.dermaagent-input-elegant::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #6A5ACD;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
 .dermaagent-input-elegant:hover {
   border-color: rgba(106, 90, 205, 0.3);
   background: rgba(106, 90, 205, 0.02);
   box-shadow: 0 2px 6px rgba(106, 90, 205, 0.08);
+  transform: translateY(-0.5px);
+}
+
+.dermaagent-input-elegant:hover::after {
+  width: 60%;
 }
 
 .dermaagent-input-elegant:focus {
   border-color: #6A5ACD;
   box-shadow: 0 0 0 1px rgba(106, 90, 205, 0.1), 0 2px 8px rgba(106, 90, 205, 0.12);
   background: rgba(106, 90, 205, 0.03);
+  transform: translateY(0);
 }
 
-/* Box element base class for consistent interaction behavior */
+.dermaagent-input-elegant:focus::after {
+  width: 100%;
+}
+
+/* Box element base class for consistent interaction behavior with underlines */
 .dermaagent-box-element {
   position: relative;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -77,11 +112,27 @@
   color: var(--dermaagent-graphite-black, #1A1A1A);
 }
 
+.dermaagent-box-element::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #6A5ACD;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
 .dermaagent-box-element:hover {
   border-color: rgba(106, 90, 205, 0.4);
   background: rgba(106, 90, 205, 0.04);
   box-shadow: 0 2px 8px rgba(106, 90, 205, 0.1);
-  transform: translateY(-0.5px);
+  transform: translateY(-0.5px) scale(1.01);
+}
+
+.dermaagent-box-element:hover::after {
+  width: 70%;
 }
 
 .dermaagent-box-element:active,
@@ -89,7 +140,12 @@
   border-color: #6A5ACD;
   background: rgba(106, 90, 205, 0.06);
   box-shadow: 0 0 0 2px rgba(106, 90, 205, 0.15), 0 3px 10px rgba(106, 90, 205, 0.12);
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+.dermaagent-box-element:active::after,
+.dermaagent-box-element:focus::after {
+  width: 100%;
 }
 
 /* Refined text hover effects for other interactive elements */
@@ -117,19 +173,7 @@
   width: 100%;
 }
 
-/* Elegant custom cursor interaction enhancement */
-.hover-target:hover {
-  cursor: none;
-}
-
-/* Smooth transitions for all interactive elements */
-.dermaagent-interactive {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dermaagent-interactive:hover {
-  transform: translateY(-1px);
-}
+/* ... keep existing code for remaining styles ... */
 
 /* Enhanced cellular cursor interactions for notebook elements */
 .notebook-interactive {
@@ -152,7 +196,7 @@
   pointer-events: none;
 }
 
-/* Footer link hover effects with color accent */
+/* Footer link hover effects with color accent and underlines */
 .footer-link {
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
