@@ -168,3 +168,17 @@
 .animate-pulse-subtle {
   animation: pulse-subtle 2s infinite ease-in-out;
 }
+
+/* DermaAgent Logo Animations - Refined and Subtle */
+.animate-logo-breathe {
+  animation: logo-breathe 8s infinite ease-in-out;
+}
+
+.animate-logo-shimmer {
+  animation: logo-shimmer 12s infinite ease-in-out;
+  animation-delay: 2s;
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 1s ease-in-out;
+}

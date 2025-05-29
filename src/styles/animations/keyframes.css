@@ -46,3 +46,23 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* DermaAgent Logo Animation - Gentle breathing effect */
+@keyframes logo-breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+/* DermaAgent Logo Animation - Subtle shimmer light pass */
+@keyframes logo-shimmer {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 0.3; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* DermaAgent Logo Animation - Typewriter cursor blink */
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
