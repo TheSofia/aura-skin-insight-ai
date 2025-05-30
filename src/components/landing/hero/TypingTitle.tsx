@@ -13,7 +13,7 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
 
   // Logo typing animation - ONE TIME ONLY
   const logoText = useTypingAnimation({
-    text: "derma.agent",
+    text: "DERMA.AGENT",
     speed: 100,
     delay: isVisible ? 500 : 9999,
     showCursor: true,
@@ -54,7 +54,7 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
         }}
       >
         {/* Show either the typing animation OR the final static text */}
-        {logoComplete ? "derma.agent" : logoText.displayedText}
+        {logoComplete ? "DERMA.AGENT" : logoText.displayedText}
         {/* Show cursor only during typing, fade out when complete */}
         {logoText.showTypingCursor && !logoComplete && (
           <span 
