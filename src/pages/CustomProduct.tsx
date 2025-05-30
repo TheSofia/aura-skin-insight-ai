@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Camera, MessageSquare, ArrowLeft, Sparkles, BeakerIcon, ShoppingBag } from 'lucide-react';
@@ -6,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import CustomCursor from '@/components/ui/CustomCursor';
 
 type CustomProductStep = 'intro' | 'scan-choice' | 'scanning' | 'scan-results' | 'chatbox' | 'formulation' | 'proposal';
 
@@ -327,52 +327,57 @@ const CustomProduct = () => {
   );
 
   return (
-    <div className="min-h-screen bg-beautyagent-off-white">
-      <div className="container max-w-6xl mx-auto px-4 py-8">
-        <div className="mb-8 flex items-center">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => navigate('/')}
-            className="mr-3 hover-enhance"
-          >
-            <ArrowLeft className="h-5 w-5" />
-          </Button>
-          <div className="flex-1">
-            <div className="flex items-center space-x-8">
-              {(['intro', 'scan-choice', 'scanning', 'scan-results'] as CustomProductStep[]).includes(currentStep) && (
-                <div className="flex items-center space-x-2">
-                  <div className={`w-2 h-2 rounded-full ${currentStep !== 'intro' ? 'bg-beautyagent-violet-titanium' : 'bg-beautyagent-light-grey'}`}></div>
-                  <span className="text-sm">Scan</span>
-                </div>
-              )}
-              {(['chatbox'] as CustomProductStep[]).includes(currentStep) && (
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 rounded-full bg-beautyagent-violet-titanium"></div>
-                  <span className="text-sm">Personalize</span>
-                </div>
-              )}
-              {(['formulation', 'proposal'] as CustomProductStep[]).includes(currentStep) && (
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 rounded-full bg-beautyagent-violet-titanium"></div>
-                  <span className="text-sm">Formulation</span>
-                </div>
-              )}
+    <>
+      {/* Cellular Cursor Component */}
+      <CustomCursor />
+      
+      <div className="min-h-screen bg-beautyagent-off-white">
+        <div className="container max-w-6xl mx-auto px-4 py-8">
+          <div className="mb-8 flex items-center">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => navigate('/')}
+              className="mr-3 hover-enhance"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+            <div className="flex-1">
+              <div className="flex items-center space-x-8">
+                {(['intro', 'scan-choice', 'scanning', 'scan-results'] as CustomProductStep[]).includes(currentStep) && (
+                  <div className="flex items-center space-x-2">
+                    <div className={`w-2 h-2 rounded-full ${currentStep !== 'intro' ? 'bg-beautyagent-violet-titanium' : 'bg-beautyagent-light-grey'}`}></div>
+                    <span className="text-sm">Scan</span>
+                  </div>
+                )}
+                {(['chatbox'] as CustomProductStep[]).includes(currentStep) && (
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-beautyagent-violet-titanium"></div>
+                    <span className="text-sm">Personalize</span>
+                  </div>
+                )}
+                {(['formulation', 'proposal'] as CustomProductStep[]).includes(currentStep) && (
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-beautyagent-violet-titanium"></div>
+                    <span className="text-sm">Formulation</span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="min-h-[60vh] flex items-center justify-center">
-          {currentStep === 'intro' && renderIntroStep()}
-          {currentStep === 'scan-choice' && renderScanChoice()}
-          {currentStep === 'scanning' && renderScanning()}
-          {currentStep === 'scan-results' && renderScanResults()}
-          {currentStep === 'chatbox' && renderChatbox()}
-          {currentStep === 'formulation' && renderFormulation()}
-          {currentStep === 'proposal' && renderProposal()}
+          <div className="min-h-[60vh] flex items-center justify-center">
+            {currentStep === 'intro' && renderIntroStep()}
+            {currentStep === 'scan-choice' && renderScanChoice()}
+            {currentStep === 'scanning' && renderScanning()}
+            {currentStep === 'scan-results' && renderScanResults()}
+            {currentStep === 'chatbox' && renderChatbox()}
+            {currentStep === 'formulation' && renderFormulation()}
+            {currentStep === 'proposal' && renderProposal()}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
