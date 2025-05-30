@@ -23,26 +23,12 @@ const Header = ({ currentStep }: HeaderProps) => {
   
   return (
     <header 
-      className={`fixed w-full z-50 border-b transition-all duration-300 py-3 px-6 flex justify-between items-center backdrop-blur-xl ${
+      className={`fixed w-full z-50 border-b transition-all duration-300 py-3 px-6 flex justify-end items-center backdrop-blur-xl ${
         scrolled 
           ? 'bg-white/90 shadow-light border-beautyagent-light-grey' 
           : 'bg-white/70 border-transparent'
       }`}
     >
-      <div className="flex items-center gap-3 group">
-        <h1 className="text-xl font-clash font-medium">
-          <span className="text-beautyagent-dark-grey">Beauty</span>
-          <span className="text-beautyagent-accent">Agent</span>
-          <span className="text-xs font-space ml-2 text-beautyagent-medium-grey opacity-80 transition-opacity duration-300 group-hover:opacity-100">
-            {currentStep === 0 && "/ Home"}
-            {currentStep === 1 && "/ Face Scan"}
-            {currentStep === 2 && "/ Processing"}
-            {currentStep === 3 && "/ Results"}
-            {currentStep === 4 && "/ Protocol"}
-          </span>
-        </h1>
-      </div>
-
       {/* Interactive menu button */}
       <Button 
         variant="ghost" 
