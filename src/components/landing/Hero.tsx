@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import CustomCursor from '@/components/ui/CustomCursor';
-import useTypingAnimation from '@/hooks/useTypingAnimation';
+import { useTypingAnimation } from '@/hooks/useTypingAnimation';
 import { useHeroAnimations } from '@/hooks/useHeroAnimations';
 
 interface HeroProps {
@@ -36,11 +36,11 @@ const Hero: React.FC<HeroProps> = ({ isLoaded = false, showTyping = true }) => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const typingText = useTypingAnimation(
-    "Experience the future of personalized skincare through intelligent analysis and custom formulations.",
-    50,
-    isLoaded && showTyping ? 2000 : 0
-  );
+  const { displayedText } = useTypingAnimation({
+    text: "Experience the future of personalized skincare through intelligent analysis and custom formulations.",
+    speed: 50,
+    delay: isLoaded && showTyping ? 2000 : 9999
+  });
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[80vh] space-y-8 px-4">
@@ -81,8 +81,8 @@ const Hero: React.FC<HeroProps> = ({ isLoaded = false, showTyping = true }) => {
         <p className="text-lg md:text-xl text-gray-600 dermaagent-ui-text leading-relaxed">
           {showTyping ? (
             <>
-              {typingText}
-              {typingText.length < "Experience the future of personalized skincare through intelligent analysis and custom formulations.".length && (
+              {displayedText}
+              {displayedText.length < "Experience the future of personalized skincare through intelligent analysis and custom formulations.".length && (
                 <span className="animate-pulse text-gray-800">|</span>
               )}
             </>
