@@ -7,7 +7,7 @@ import ShopAssistant from "@/components/shop/ShopAssistant";
 import ProductList from "@/components/ProductList";
 import { initialProducts } from "@/data/initialProducts";
 import ProductLibrarySummary from "@/components/ProductLibrarySummary";
-import { useProductFiltering } from "@/hooks/useProductFiltering"; // Use useProductFiltering instead
+import { useProductFiltering } from "@/hooks/useProductFiltering";
 
 const ShopPage = () => {
   const { 
@@ -24,8 +24,8 @@ const ShopPage = () => {
   const savedProducts = getSavedProducts();
 
   return (
-    <div className="min-h-screen bg-beautyagent-white">
-      <Header currentStep={0} /> {/* Added the required currentStep prop */}
+    <div className="min-h-screen bg-white">
+      <Header currentStep={0} />
       
       <main className="px-4 pt-24 pb-16 md:px-6 lg:px-8">
         {/* Hero Section */}
@@ -50,15 +50,13 @@ const ShopPage = () => {
           <div className="lg:col-span-3">
             {hasFiltered && (
               <div className="mb-6 animate-fade-in">
-                <h2 className="text-2xl font-light text-beautyagent-dark-grey mb-2">
+                <h2 className="text-2xl font-light text-gray-800 mb-2 dermaagent-headline">
                   {filteredProducts.length > 0 ? "Recommended Products" : "No Results"}
                 </h2>
               </div>
             )}
             
-            {/* Import and use the ProductList component */}
             <div className="space-y-6">
-              {/* This will be populated with products based on filtering */}
               <ProductList 
                 products={hasFiltered ? filteredProducts : products} 
                 onToggleSave={toggleSaveProduct}

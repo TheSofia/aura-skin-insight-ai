@@ -2,7 +2,7 @@
 /* DermaAgent - Premium Digital Notebook Design System Variables */
 :root {
   /* Core Brand Identity */
-  --dermaagent-app-name: "dermaAgent";
+  --dermaagent-app-name: "derma.agent";
   
   /* Premium Digital Notebook Color Palette - Strict Monochrome */
   --dermaagent-pure-white: #FFFFFF;
@@ -21,15 +21,7 @@
   --dermaagent-cellular-soft: rgba(227, 227, 227, 0.015);
   --dermaagent-cellular-subtle: rgba(227, 227, 227, 0.005);
   
-  /* BeautyAgent Legacy Variables (for compatibility during transition) */
-  --beautyagent-pure-white: var(--dermaagent-pure-white);
-  --beautyagent-warm-bone: var(--dermaagent-warm-bone);
-  --beautyagent-light-gray: var(--dermaagent-light-gray);
-  --beautyagent-charcoal-gray: var(--dermaagent-charcoal-gray);
-  --beautyagent-graphite-black: var(--dermaagent-graphite-black);
-  --beautyagent-notebook-base: var(--dermaagent-notebook-base);
-  --beautyagent-notebook-line: var(--dermaagent-notebook-line);
-  --beautyagent-notebook-margin: var(--dermaagent-notebook-margin);
+  /* Legacy Variables Removed - derma.agent is the permanent brand */
   
   /* Monochrome Glass & Depth Effects */
   --dermaagent-glass-overlay: rgba(255, 255, 255, 0.95);

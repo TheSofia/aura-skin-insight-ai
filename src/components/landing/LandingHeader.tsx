@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X, ShoppingBag, BookOpen, Camera, Users, BeakerIcon } from 'lucide-react';
@@ -16,59 +17,57 @@ const LandingHeader = () => {
   ];
 
   return (
-    <header className="bg-beautyagent-off-white py-4 px-6">
-      <div className="container max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <div className="text-2xl font-medium tracking-wider text-beautyagent-deeper-grey">
-          BeautyAgent
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+      <div className="container max-w-7xl mx-auto flex items-start justify-between p-6">
+        {/* Top Left Navigation Box */}
+        <div className="relative">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-3 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg shadow-sm hover:bg-white transition-all duration-200 text-gray-700 hover:text-gray-900"
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+
+          {/* Navigation Dropdown */}
+          {isMenuOpen && (
+            <>
+              {/* Backdrop */}
+              <div 
+                className="fixed inset-0 bg-black/10 backdrop-blur-sm"
+                onClick={() => setIsMenuOpen(false)}
+              />
+              
+              {/* Dropdown Menu */}
+              <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg shadow-lg z-50">
+                <div className="p-2">
+                  <div className="px-3 py-2 text-sm font-medium text-gray-500 border-b border-gray-100 mb-2">
+                    derma.agent
+                  </div>
+                  {navigationItems.map((item) => (
+                    <button
+                      key={item.name}
+                      className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors duration-150"
+                      onClick={() => {
+                        navigate(item.path);
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      <item.icon className="mr-3 h-4 w-4 text-gray-500" />
+                      {item.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-beautyagent-medium-grey hover:text-beautyagent-deeper-grey focus:outline-none"
-        >
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-
-        {/* Navigation (Desktop) */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navigationItems.map((item) => (
-            <Button
-              key={item.name}
-              variant="ghost"
-              size="sm"
-              className="text-beautyagent-medium-grey hover:text-beautyagent-deeper-grey hover:bg-beautyagent-light-grey/50"
-              onClick={() => navigate(item.path)}
-            >
-              <item.icon className="mr-2 h-4 w-4" />
-              {item.name}
-            </Button>
-          ))}
-        </nav>
-
-        {/* Mobile Menu (Overlay) */}
-        {isMenuOpen && (
-          <div className="fixed inset-0 bg-beautyagent-off-white z-10 md:hidden">
-            <div className="flex flex-col items-center justify-center h-full">
-              {navigationItems.map((item) => (
-                <Button
-                  key={item.name}
-                  variant="ghost"
-                  size="lg"
-                  className="text-beautyagent-medium-grey hover:text-beautyagent-deeper-grey hover:bg-beautyagent-light-grey/50 py-4"
-                  onClick={() => {
-                    navigate(item.path);
-                    setIsMenuOpen(false); // Close menu after navigation
-                  }}
-                >
-                  <item.icon className="mr-2 h-5 w-5" />
-                  {item.name}
-                </Button>
-              ))}
-            </div>
+        {/* derma.agent Brand Logo - Top Center */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-6">
+          <div className="text-2xl font-light tracking-wider text-gray-800 dermaagent-logo">
+            d e r m a . a g e n t
           </div>
-        )}
+        </div>
       </div>
     </header>
   );

@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index';
 import ShopPage from './pages/ShopPage';
@@ -12,7 +13,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-beautyagent-off-white">
+      <div className="min-h-screen bg-white">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/shop" element={<ShopPage />} />
