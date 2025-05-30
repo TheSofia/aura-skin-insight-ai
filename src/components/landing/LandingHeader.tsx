@@ -1,120 +1,74 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShoppingBag, BookOpen, Camera, Users, BeakerIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 const LandingHeader = () => {
-  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navigationItems = [
-    { label: 'Skin Mirror', href: '/skin-mirror' },
-    { label: 'Skin Diary', href: '/skin-diary' },
-    { label: 'Beauty Exchange', href: '/beauty-exchange' },
-    { label: 'Shop', href: '/shop' },
+    { name: 'Custom Products', path: '/custom-product', icon: BeakerIcon },
+    { name: 'Shop', path: '/shop', icon: ShoppingBag },
+    { name: 'Skin Diary', path: '/skin-diary', icon: BookOpen },
+    { name: 'Skin Mirror', path: '/skin-mirror', icon: Camera },
+    { name: 'Beauty Exchange', path: '/beauty-exchange', icon: Users }
   ];
 
-  const handleNavigation = (href: string) => {
-    navigate(href);
-    setIsMenuOpen(false);
-  };
-
   return (
-    <header className="fixed top-0 left-0 z-50 p-6">
-      <div className="flex justify-start">
-        {/* Navigation Dropdown - Top left corner placement */}
-        <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-          <DropdownMenuTrigger asChild>
+    <header className="bg-beautyagent-off-white py-4 px-6">
+      <div className="container max-w-7xl mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <div className="text-2xl font-medium tracking-wider text-beautyagent-deeper-grey">
+          BeautyAgent
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden text-beautyagent-medium-grey hover:text-beautyagent-deeper-grey focus:outline-none"
+        >
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+
+        {/* Navigation (Desktop) */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navigationItems.map((item) => (
             <Button
+              key={item.name}
               variant="ghost"
-              size="icon"
-              className="hover-target"
-              style={{
-                color: 'var(--dermaagent-charcoal-gray, #333333)',
-                background: 'transparent',
-                border: '1px solid var(--dermaagent-charcoal-gray, #333333)',
-                borderRadius: '2px',
-                width: '40px',
-                height: '40px',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
+              size="sm"
+              className="text-beautyagent-medium-grey hover:text-beautyagent-deeper-grey hover:bg-beautyagent-light-grey/50"
+              onClick={() => navigate(item.path)}
             >
-              {isMenuOpen ? (
-                <X className="h-4 w-4" />
-              ) : (
-                <Menu className="h-4 w-4" />
-              )}
+              <item.icon className="mr-2 h-4 w-4" />
+              {item.name}
             </Button>
-          </DropdownMenuTrigger>
-          
-          <DropdownMenuContent
-            align="start"
-            className="w-48 mt-2"
-            style={{
-              background: 'var(--dermaagent-pale-paper-white, #FFFFFF)',
-              border: '1px solid var(--dermaagent-charcoal-gray, #333333)',
-              borderRadius: '2px',
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontWeight: '300',
-              letterSpacing: '0.02em',
-              boxShadow: '0 4px 12px rgba(26, 26, 26, 0.1)',
-            }}
-          >
-            {navigationItems.map((item) => (
-              <DropdownMenuItem
-                key={item.href}
-                onClick={() => handleNavigation(item.href)}
-                className="cursor-pointer hover-target transition-all duration-200"
-                style={{
-                  color: 'var(--dermaagent-charcoal-gray, #333333)',
-                  padding: '12px 16px',
-                }}
-              >
-                {item.label}
-              </DropdownMenuItem>
-            ))}
-            
-            {/* Divider */}
-            <div 
-              className="h-px mx-2 my-2"
-              style={{
-                background: 'var(--dermaagent-charcoal-gray, #333333)',
-                opacity: 0.2,
-              }}
-            />
-            
-            {/* Additional Links */}
-            <DropdownMenuItem
-              className="cursor-pointer hover-target transition-all duration-200"
-              style={{
-                color: 'var(--dermaagent-charcoal-gray, #333333)',
-                padding: '12px 16px',
-                fontSize: '0.85em',
-                opacity: 0.8,
-              }}
-            >
-              About
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              className="cursor-pointer hover-target transition-all duration-200"
-              style={{
-                color: 'var(--dermaagent-charcoal-gray, #333333)',
-                padding: '12px 16px',
-                fontSize: '0.85em',
-                opacity: 0.8,
-              }}
-            >
-              Privacy
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          ))}
+        </nav>
+
+        {/* Mobile Menu (Overlay) */}
+        {isMenuOpen && (
+          <div className="fixed inset-0 bg-beautyagent-off-white z-10 md:hidden">
+            <div className="flex flex-col items-center justify-center h-full">
+              {navigationItems.map((item) => (
+                <Button
+                  key={item.name}
+                  variant="ghost"
+                  size="lg"
+                  className="text-beautyagent-medium-grey hover:text-beautyagent-deeper-grey hover:bg-beautyagent-light-grey/50 py-4"
+                  onClick={() => {
+                    navigate(item.path);
+                    setIsMenuOpen(false); // Close menu after navigation
+                  }}
+                >
+                  <item.icon className="mr-2 h-5 w-5" />
+                  {item.name}
+                </Button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

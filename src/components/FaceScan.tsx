@@ -13,6 +13,7 @@ const FaceScan = ({ onScanComplete, onBack }: FaceScanProps) => {
   const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -50,8 +51,13 @@ const FaceScan = ({ onScanComplete, onBack }: FaceScanProps) => {
       return;
     }
     
-    // In a real app, we would send the image to the backend for processing
-    onScanComplete();
+    setIsAnalyzing(true);
+    
+    // Simulate AI analysis
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      onScanComplete();
+    }, 2000);
   };
 
   return (
@@ -81,6 +87,18 @@ const FaceScan = ({ onScanComplete, onBack }: FaceScanProps) => {
               
               {/* Scan grid overlay */}
               <div className="absolute inset-0 grid-lines pointer-events-none"></div>
+              
+              {/* Analysis overlay when processing */}
+              {isAnalyzing && (
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                  <div className="text-white text-center">
+                    <div className="animate-pulse mb-2">
+                      <DynamicLogo colorScheme="cyan" size="sm" />
+                    </div>
+                    <p className="text-sm">Analyzing skin...</p>
+                  </div>
+                </div>
+              )}
             </>
           ) : (
             <div className="text-center p-6 grid grid-cols-1 gap-6 place-items-center">
@@ -144,9 +162,9 @@ const FaceScan = ({ onScanComplete, onBack }: FaceScanProps) => {
           <Button
             className={`w-full py-6 ${imagePreview ? 'button-cyan' : 'bg-aurascan-light-grey text-aurascan-medium-grey cursor-not-allowed'}`}
             onClick={handleContinue}
-            disabled={!imagePreview}
+            disabled={!imagePreview || isAnalyzing}
           >
-            Continue to Analysis
+            {isAnalyzing ? 'Analyzing...' : 'Continue to Analysis'}
           </Button>
         </div>
       </div>
