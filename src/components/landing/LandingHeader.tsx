@@ -18,7 +18,7 @@ const LandingHeader = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="container max-w-7xl mx-auto flex items-start justify-between p-6">
+      <div className="container max-w-7xl mx-auto flex items-start justify-start p-6">
         {/* Top Left Navigation Box */}
         <div className="relative">
           <button
@@ -60,13 +60,6 @@ const LandingHeader = () => {
               </div>
             </>
           )}
-        </div>
-
-        {/* derma.agent Brand Logo - Top Center */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-6">
-          <div className="text-2xl font-light tracking-wider text-gray-800 dermaagent-logo">
-            d e r m a . a g e n t
-          </div>
         </div>
       </div>
     </header>
