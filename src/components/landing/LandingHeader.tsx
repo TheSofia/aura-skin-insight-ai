@@ -2,18 +2,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X, ShoppingBag, BookOpen, Camera, Users, BeakerIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
 const LandingHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const navigationItems = [
-    { name: 'Custom Products', path: '/custom-product', icon: BeakerIcon },
-    { name: 'Shop', path: '/shop', icon: ShoppingBag },
-    { name: 'Skin Diary', path: '/skin-diary', icon: BookOpen },
     { name: 'Skin Mirror', path: '/skin-mirror', icon: Camera },
-    { name: 'Beauty Exchange', path: '/beauty-exchange', icon: Users }
+    { name: 'Skin Diary', path: '/skin-diary', icon: BookOpen },
+    { name: 'Beauty Exchange', path: '/beauty-exchange', icon: Users },
+    { name: 'Shop', path: '/shop', icon: ShoppingBag },
+    { name: 'Custom Products', path: '/custom-product', icon: BeakerIcon }
   ];
 
   return (
