@@ -44,14 +44,14 @@ const Hero: React.FC<HeroProps> = ({ isLoaded = false, showTyping = true }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-[80vh] space-y-8 px-4">
-      {/* Main Logo - Scaled down by 15% */}
+      {/* Main Logo - Scaled down by 12% */}
       <div 
         ref={headlineRef}
         className={`text-center transition-all duration-2000 ease-out transform ${
           animationStates.isTextVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
         style={{
-          transform: `scale(0.85) translateY(${animationStates.isTextVisible ? '0' : '32px'})`,
+          transform: `scale(0.73) translateY(${animationStates.isTextVisible ? '0' : '32px'})`,
           filter: `blur(${Math.max(0, 2 - cursorProximity * 2)}px)`,
         }}
       >
