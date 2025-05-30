@@ -42,9 +42,9 @@ const TypingTitle = ({ isVisible }: TypingTitleProps) => {
 
   return (
     <div className="text-center mb-12">
-      {/* Main Title - With ONE-TIME typing animation */}
+      {/* Main Title - With ONE-TIME typing animation - Made smaller */}
       <h1 
-        className="text-3xl md:text-4xl lg:text-5xl mb-6"
+        className="text-2xl md:text-3xl lg:text-4xl mb-6"
         style={{
           fontFamily: "'IBM Plex Mono', monospace",
           fontWeight: '300',
