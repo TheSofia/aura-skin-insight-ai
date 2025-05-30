@@ -61,13 +61,6 @@ const LandingHeader = () => {
             </>
           )}
         </div>
-
-        {/* derma.agent Brand Logo - Top Center */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-6">
-          <div className="text-2xl font-light tracking-wider text-gray-800 dermaagent-logo">
-            d e r m a . a g e n t
-          </div>
-        </div>
       </div>
     </header>
   );
