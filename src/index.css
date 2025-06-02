@@ -1,3 +1,4 @@
+
 @import './styles/fonts.css';
 @import './styles/variables.css';
 @import './styles/base.css';
@@ -172,6 +173,40 @@
         transparent 1px,
         transparent 80px
       );
+  }
+  
+  /* Elegant Red Margin Line - Sophisticated Notebook Enhancement */
+  .notebook-red-margin {
+    position: relative;
+  }
+  
+  .notebook-red-margin::before {
+    content: '';
+    position: absolute;
+    left: 88px; /* Aligned with existing notebook margin */
+    top: 0;
+    bottom: 0;
+    width: 0.5px;
+    background: var(--dermaagent-margin-red);
+    opacity: 0.8;
+    z-index: 1;
+  }
+  
+  /* Variant for content areas with different positioning */
+  .content-red-margin {
+    position: relative;
+  }
+  
+  .content-red-margin::before {
+    content: '';
+    position: absolute;
+    left: 2rem; /* 32px from content edge */
+    top: 0;
+    bottom: 0;
+    width: 0.5px;
+    background: var(--dermaagent-margin-red);
+    opacity: 0.7;
+    z-index: 1;
   }
   
   /* Ensure cellular motion is ultra-subtle behind notebook stripes */

@@ -61,7 +61,7 @@ const Index = () => {
       
       <div 
         ref={pageRef}
-        className="min-h-screen flex flex-col overflow-hidden relative"
+        className="min-h-screen flex flex-col overflow-hidden relative notebook-red-margin"
         style={{
           background: 'var(--dermaagent-notebook-base)',
           fontFamily: "'IBM Plex Mono', monospace",

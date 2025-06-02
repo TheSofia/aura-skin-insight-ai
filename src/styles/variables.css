@@ -11,6 +11,11 @@
   --dermaagent-charcoal-gray: #333333;
   --dermaagent-graphite-black: #1A1A1A;
   
+  /* Elegant Red Margin Line - Sophisticated Notebook Detail */
+  --dermaagent-margin-red: #A93226;
+  --dermaagent-margin-red-light: rgba(169, 50, 38, 0.6);
+  --dermaagent-margin-red-subtle: rgba(169, 50, 38, 0.3);
+  
   /* Digital Notebook Background System */
   --dermaagent-notebook-base: #FFFFFF;
   --dermaagent-notebook-line: rgba(227, 227, 227, 0.4);

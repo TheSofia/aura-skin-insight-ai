@@ -71,6 +71,11 @@ export default {
 					'muted-dusty-beige': '#D2BBA2',
 					'soft-olive': '#A3A99E',
 					'cool-gray-blue': '#AAB6C9',
+					
+					// Elegant Red Margin Line
+					'margin-red': '#A93226',
+					'margin-red-light': 'rgba(169, 50, 38, 0.6)',
+					'margin-red-subtle': 'rgba(169, 50, 38, 0.3)',
 				},
 
 				// Glass effects

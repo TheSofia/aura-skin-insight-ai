@@ -38,7 +38,7 @@ const ProductRecommendations = ({
   const logoIntensity: IntensityLevel = "medium";
 
   return (
-    <div className="flex flex-col h-full animate-fade-in bg-white">
+    <div className="flex flex-col h-full animate-fade-in bg-white content-red-margin">
       <div className="flex-1 overflow-auto pb-6">
         <div className="p-8 md:p-12 flex justify-center">
           <DynamicLogo 
