@@ -19,7 +19,7 @@ const LandingHeader = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div className="container max-w-7xl mx-auto flex items-start justify-between p-6">
         {/* Top Left Navigation Box */}
-        <div className="relative">
+        <div className="relative ml-1">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-3 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg shadow-sm hover:bg-white transition-all duration-200 text-gray-700 hover:text-gray-900"
