@@ -12,6 +12,78 @@ const CustomCursor: React.FC = () => {
   const cursorPositionRef = useRef({ x: 0, y: 0 });
   const animationIdRef = useRef<number>();
 
+  // Move all useCallback hooks to top level
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    mousePositionRef.current = { x: e.clientX, y: e.clientY };
+  }, []);
+
+  const handleMouseOver = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    
+    // More comprehensive interactive element detection
+    const isInteractive = Boolean(target.matches(`
+      button, a, input, textarea, select,
+      [role="button"], [role="link"], [role="tab"], [role="menuitem"],
+      [data-interactive], .hover-target, .interactive,
+      .enhanced-cta-button, .glass-button, 
+      .dermaagent-elegant-button, .dermaagent-button,
+      .cursor-pointer, [onclick]
+    `)) || Boolean(target.closest(`
+      button, a, input, textarea, select,
+      [role="button"], [role="link"], [role="tab"], [role="menuitem"],
+      [data-interactive], .hover-target, .interactive
+    `));
+    
+    const isTextInput = Boolean(target.matches(`
+      input[type="text"], input[type="email"], input[type="password"], 
+      input[type="search"], textarea, [contenteditable="true"]
+    `));
+    
+    setIsHovering(isInteractive);
+    setIsText(isTextInput);
+  }, []);
+
+  const handleMouseOut = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const relatedTarget = e.relatedTarget as HTMLElement;
+    
+    // Only clear hover state if we're actually leaving the interactive element
+    if (!relatedTarget || !target.contains(relatedTarget)) {
+      setIsHovering(false);
+      setIsText(false);
+    }
+  }, []);
+
+  const handleMouseDown = useCallback((e: MouseEvent) => {
+    const cursor = cursorRef.current;
+    if (!cursor) return;
+    
+    setIsActive(true);
+    
+    // Create enhanced ripple effect
+    const ripple = document.createElement('div');
+    ripple.className = 'cellular-cursor-ripple';
+    cursor.appendChild(ripple);
+    
+    setTimeout(() => {
+      if (ripple.parentNode) {
+        ripple.remove();
+      }
+    }, 400);
+  }, []);
+
+  const handleMouseUp = useCallback(() => {
+    setIsActive(false);
+  }, []);
+
+  const handleVisibilityChange = useCallback(() => {
+    if (document.hidden) {
+      setIsHovering(false);
+      setIsActive(false);
+      setIsText(false);
+    }
+  }, []);
+
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor) return;
@@ -28,80 +100,6 @@ const CustomCursor: React.FC = () => {
       cursor.style.transform = `translate(${cursorPos.x - 10}px, ${cursorPos.y - 10}px)`;
       animationIdRef.current = requestAnimationFrame(updateCursor);
     };
-
-    // High-precision mouse move handler
-    const handleMouseMove = useCallback((e: MouseEvent) => {
-      mousePositionRef.current = { x: e.clientX, y: e.clientY };
-    }, []);
-
-    // Enhanced interactive element detection
-    const handleMouseOver = useCallback((e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      
-      // More comprehensive interactive element detection
-      const isInteractive = Boolean(target.matches(`
-        button, a, input, textarea, select,
-        [role="button"], [role="link"], [role="tab"], [role="menuitem"],
-        [data-interactive], .hover-target, .interactive,
-        .enhanced-cta-button, .glass-button, 
-        .dermaagent-elegant-button, .dermaagent-button,
-        .cursor-pointer, [onclick]
-      `)) || Boolean(target.closest(`
-        button, a, input, textarea, select,
-        [role="button"], [role="link"], [role="tab"], [role="menuitem"],
-        [data-interactive], .hover-target, .interactive
-      `));
-      
-      const isTextInput = Boolean(target.matches(`
-        input[type="text"], input[type="email"], input[type="password"], 
-        input[type="search"], textarea, [contenteditable="true"]
-      `));
-      
-      setIsHovering(isInteractive);
-      setIsText(isTextInput);
-    }, []);
-
-    // Mouse leave handler with debouncing
-    const handleMouseOut = useCallback((e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const relatedTarget = e.relatedTarget as HTMLElement;
-      
-      // Only clear hover state if we're actually leaving the interactive element
-      if (!relatedTarget || !target.contains(relatedTarget)) {
-        setIsHovering(false);
-        setIsText(false);
-      }
-    }, []);
-
-    // Precise mouse down handler
-    const handleMouseDown = useCallback((e: MouseEvent) => {
-      setIsActive(true);
-      
-      // Create enhanced ripple effect
-      const ripple = document.createElement('div');
-      ripple.className = 'cellular-cursor-ripple';
-      cursor.appendChild(ripple);
-      
-      setTimeout(() => {
-        if (ripple.parentNode) {
-          ripple.remove();
-        }
-      }, 400);
-    }, []);
-
-    // Mouse up handler
-    const handleMouseUp = useCallback(() => {
-      setIsActive(false);
-    }, []);
-
-    // Prevent cursor issues during page transitions
-    const handleVisibilityChange = useCallback(() => {
-      if (document.hidden) {
-        setIsHovering(false);
-        setIsActive(false);
-        setIsText(false);
-      }
-    }, []);
 
     // Start cursor animation
     updateCursor();
@@ -127,7 +125,7 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, []);
+  }, [handleMouseMove, handleMouseOver, handleMouseOut, handleMouseDown, handleMouseUp, handleVisibilityChange]);
 
   return (
     <div
