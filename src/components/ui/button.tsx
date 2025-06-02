@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-normal ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-normal ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-target interactive",
   {
     variants: {
       variant: {
@@ -30,21 +30,13 @@ const buttonVariants = cva(
         lg: "h-11 px-6 rounded-md tracking-wide",
         xl: "h-12 px-8 text-base rounded-md tracking-wide",
         icon: "h-10 w-10 rounded-md",
-        pill: "h-10 px-5 py-2 rounded-full", // Added pill variant with fully rounded corners
-        "pill-lg": "h-11 px-8 py-2 rounded-full text-base tracking-wide", // Added larger pill variant
+        pill: "h-10 px-5 py-2 rounded-full",
+        "pill-lg": "h-11 px-8 py-2 rounded-full text-base tracking-wide",
       },
-      animation: {
-        none: "",
-        pulse: "btn-pulse", // Pulsing animation effect
-        cellular: "cellular-pulse", // Cellular animation effect
-        subtle: "animate-hover-subtle", // Very subtle animation
-        scale: "active:scale-95 transition-transform", // Scale down when clicked
-      }
     },
     defaultVariants: {
       variant: "default",
       size: "default",
-      animation: "none",
     },
   }
 );
@@ -56,13 +48,21 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, animation, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
+    
+    // Filter out any non-standard props that shouldn't be passed to DOM
+    const {
+      // Remove any custom props that might cause warnings
+      ...domProps
+    } = props;
+    
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, animation, className }))}
+        className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        {...props}
+        data-interactive="true"
+        {...domProps}
       />
     );
   }

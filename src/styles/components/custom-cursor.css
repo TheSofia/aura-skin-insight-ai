@@ -1,112 +1,139 @@
 
-/* DermaAgent Custom Cellular Cursor System - Global Implementation */
+/* DERMO.AGENT Custom Cellular Cursor System - Enhanced for Accurate Interactions */
 
 /* Hide default cursor globally */
 * {
   cursor: none !important;
 }
 
+/* Ensure all interactive elements are properly marked */
+button, a, input, textarea, select, [role="button"], [data-interactive], 
+.hover-target, .interactive, .enhanced-cta-button, .glass-button, 
+.dermaagent-elegant-button, .dermaagent-button {
+  cursor: none !important;
+  pointer-events: auto !important;
+  position: relative;
+  /* Ensure minimum click area */
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Enhanced click area for small interactive elements */
+button:before, a:before, [data-interactive]:before, .hover-target:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  z-index: -1;
+  pointer-events: auto;
+}
+
 /* Custom cellular cursor container */
 .cellular-cursor {
   position: fixed;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999;
   mix-blend-mode: normal;
   transition: none;
   will-change: transform;
+  top: 0;
+  left: 0;
 }
 
-/* Main cellular cursor element - refined for notebook harmony */
+/* Main cellular cursor element - optimized for precision */
 .cellular-cursor-core {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, 
-    rgba(26, 26, 26, 0.12) 0%, 
-    rgba(26, 26, 26, 0.06) 60%, 
-    rgba(26, 26, 26, 0.02) 100%);
-  border: 0.5px solid rgba(26, 26, 26, 0.08);
+    rgba(26, 26, 26, 0.15) 0%, 
+    rgba(26, 26, 26, 0.08) 60%, 
+    rgba(26, 26, 26, 0.03) 100%);
+  border: 0.5px solid rgba(26, 26, 26, 0.12);
   position: relative;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.2s ease-out,
-              background 0.3s ease-out,
-              border-color 0.3s ease-out;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.15s ease-out,
+              background 0.2s ease-out,
+              border-color 0.2s ease-out;
   transform-origin: center;
-  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.04);
+  box-shadow: 0 1px 4px rgba(26, 26, 26, 0.06);
 }
 
-/* Subtle internal glow - enhanced for notebook aesthetic */
+/* Subtle internal dot for precision */
 .cellular-cursor-core::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   background: radial-gradient(circle, 
-    rgba(26, 26, 26, 0.15) 0%, 
+    rgba(26, 26, 26, 0.2) 0%, 
     transparent 70%);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.7;
-  animation: cellular-gentle-pulse 4s infinite ease-in-out;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  opacity: 0.8;
+  animation: cellular-gentle-pulse 3s infinite ease-in-out;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
 }
 
-/* Refined outer ring for luxury floating effect */
+/* Outer ring for enhanced visibility */
 .cellular-cursor-core::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 36px;
-  height: 36px;
-  border: 0.5px solid rgba(26, 26, 26, 0.04);
+  width: 32px;
+  height: 32px;
+  border: 0.5px solid rgba(26, 26, 26, 0.06);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.3;
-  filter: blur(1px);
-  animation: cellular-ring-float 6s infinite ease-in-out;
-  transition: all 0.3s ease-out;
+  opacity: 0.4;
+  filter: blur(0.5px);
+  animation: cellular-ring-float 4s infinite ease-in-out;
+  transition: all 0.2s ease-out;
 }
 
-/* Enhanced hover state for interactive elements with color accent */
+/* Enhanced hover state for interactive elements */
 .cellular-cursor.hover .cellular-cursor-core {
-  transform: scale(1.6);
+  transform: scale(1.8);
   background: radial-gradient(circle at 35% 35%, 
-    rgba(106, 90, 205, 0.25) 0%, 
-    rgba(106, 90, 205, 0.15) 60%, 
-    rgba(106, 90, 205, 0.05) 100%);
-  border-color: rgba(106, 90, 205, 0.3);
-  box-shadow: 0 4px 12px rgba(106, 90, 205, 0.15);
+    rgba(169, 50, 38, 0.3) 0%, 
+    rgba(169, 50, 38, 0.18) 60%, 
+    rgba(169, 50, 38, 0.08) 100%);
+  border-color: rgba(169, 50, 38, 0.4);
+  box-shadow: 0 2px 8px rgba(169, 50, 38, 0.2);
 }
 
 .cellular-cursor.hover .cellular-cursor-core::before {
   opacity: 1;
-  animation-duration: 2s;
-  transform: translate(-50%, -50%) scale(1.4);
+  animation-duration: 1.5s;
+  transform: translate(-50%, -50%) scale(1.6);
   background: radial-gradient(circle, 
-    rgba(106, 90, 205, 0.4) 0%, 
+    rgba(169, 50, 38, 0.5) 0%, 
     transparent 70%);
 }
 
 .cellular-cursor.hover .cellular-cursor-core::after {
-  opacity: 0.8;
-  transform: translate(-50%, -50%) scale(1.4);
-  border-color: rgba(106, 90, 205, 0.2);
-  filter: blur(0.5px);
+  opacity: 0.7;
+  transform: translate(-50%, -50%) scale(1.6);
+  border-color: rgba(169, 50, 38, 0.3);
+  filter: blur(0.3px);
 }
 
-/* Click/active state with enhanced ripple effect */
+/* Click/active state with precise feedback */
 .cellular-cursor.active .cellular-cursor-core {
-  transform: scale(0.7);
+  transform: scale(0.6);
   background: radial-gradient(circle at 35% 35%, 
-    rgba(106, 90, 205, 0.4) 0%, 
-    rgba(106, 90, 205, 0.25) 60%, 
-    rgba(106, 90, 205, 0.1) 100%);
+    rgba(169, 50, 38, 0.5) 0%, 
+    rgba(169, 50, 38, 0.3) 60%, 
+    rgba(169, 50, 38, 0.15) 100%);
+  transition: transform 0.1s ease-out;
 }
 
-/* Enhanced click ripple animation for notebook harmony */
+/* Enhanced click ripple animation */
 .cellular-cursor-ripple {
   position: absolute;
   top: 50%;
@@ -114,22 +141,22 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(106, 90, 205, 0.15);
+  background: rgba(169, 50, 38, 0.2);
   transform: translate(-50%, -50%);
-  animation: cursor-ripple-elegant 0.6s ease-out forwards;
+  animation: cursor-ripple-precise 0.4s ease-out forwards;
   pointer-events: none;
-  border: 1px solid rgba(106, 90, 205, 0.1);
+  border: 1px solid rgba(169, 50, 38, 0.15);
 }
 
-/* Text cursor state for text inputs - notebook-inspired */
+/* Text cursor state for text inputs */
 .cellular-cursor.text .cellular-cursor-core {
-  width: 2px;
-  height: 22px;
+  width: 1.5px;
+  height: 20px;
   border-radius: 1px;
   background: rgba(26, 26, 26, 0.9);
   border: none;
-  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
-  animation: text-cursor-blink 1.2s infinite ease-in-out;
+  box-shadow: 0 1px 2px rgba(26, 26, 26, 0.15);
+  animation: text-cursor-blink 1s infinite ease-in-out;
 }
 
 .cellular-cursor.text .cellular-cursor-core::before,
@@ -137,38 +164,30 @@
   display: none;
 }
 
-/* Enhanced cursor animations for luxury notebook feel */
+/* Optimized cursor animations */
 @keyframes cellular-gentle-pulse {
   0%, 100% { 
-    opacity: 0.7; 
+    opacity: 0.8; 
     transform: translate(-50%, -50%) scale(1); 
   }
   50% { 
     opacity: 1; 
-    transform: translate(-50%, -50%) scale(1.15); 
+    transform: translate(-50%, -50%) scale(1.1); 
   }
 }
 
 @keyframes cellular-ring-float {
   0%, 100% { 
     transform: translate(-50%, -50%) scale(1) rotate(0deg); 
-    opacity: 0.3; 
-  }
-  25% {
-    transform: translate(-50%, -50%) scale(1.02) rotate(90deg);
-    opacity: 0.4;
+    opacity: 0.4; 
   }
   50% { 
     transform: translate(-50%, -50%) scale(1.05) rotate(180deg); 
-    opacity: 0.5; 
-  }
-  75% {
-    transform: translate(-50%, -50%) scale(1.02) rotate(270deg);
-    opacity: 0.4;
+    opacity: 0.6; 
   }
 }
 
-@keyframes cursor-ripple-elegant {
+@keyframes cursor-ripple-precise {
   0% {
     width: 0;
     height: 0;
@@ -178,8 +197,8 @@
     opacity: 0.4;
   }
   100% {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     opacity: 0;
   }
 }
@@ -189,57 +208,33 @@
     opacity: 1; 
   }
   51%, 100% { 
-    opacity: 0.3; 
-  }
-}
-
-/* Organic cellular motion for the cursor ring */
-@keyframes cellular-morph {
-  0% { 
-    border-radius: 50%; 
-  }
-  25% { 
-    border-radius: 48% 52% 51% 49% / 49% 51% 49% 51%; 
-  }
-  50% { 
-    border-radius: 52% 48% 49% 51% / 51% 49% 51% 49%; 
-  }
-  75% { 
-    border-radius: 49% 51% 48% 52% / 51% 49% 51% 49%; 
-  }
-  100% { 
-    border-radius: 50%; 
+    opacity: 0.2; 
   }
 }
 
 /* Hide cursor on touch devices */
 @media (hover: none) and (pointer: coarse) {
   .cellular-cursor {
-    display: none;
+    display: none !important;
   }
   
   * {
     cursor: auto !important;
   }
-}
-
-/* Ensure cursor works well with different page backgrounds */
-.cellular-cursor-core {
-  backdrop-filter: blur(0.5px);
-}
-
-/* Enhanced visibility on light backgrounds */
-@media (prefers-color-scheme: light) {
-  .cellular-cursor-core {
-    background: radial-gradient(circle at 35% 35%, 
-      rgba(26, 26, 26, 0.15) 0%, 
-      rgba(26, 26, 26, 0.08) 60%, 
-      rgba(26, 26, 26, 0.03) 100%);
-    border-color: rgba(26, 26, 26, 0.12);
+  
+  button, a, input, textarea, select, [role="button"], [data-interactive] {
+    cursor: pointer !important;
   }
 }
 
-/* Ensure proper z-index hierarchy across all pages */
+/* Ensure proper layering */
 .cellular-cursor {
-  z-index: 99999;
+  z-index: 999999;
 }
+
+/* Debug mode - uncomment to visualize hit areas */
+/*
+button, a, [data-interactive], .hover-target {
+  outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+}
+*/

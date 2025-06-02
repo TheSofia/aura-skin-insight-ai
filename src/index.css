@@ -1,24 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-@import './styles/fonts.css';
-@import './styles/variables.css';
+/* Base Styles */
 @import './styles/base.css';
-@import './styles/animations/keyframes.css';
-@import './styles/animations/animation-classes.css';
-@import './styles/animations/cellular.css';
-@import './styles/animations/particles.css';
-@import './styles/components/scan-line.css';
-@import './styles/components/glass-card.css';
-@import './styles/components/glass-morphism.css';
-@import './styles/components/buttons/index.css';
-@import './styles/components/shapes.css';
-@import './styles/components/animated-gradients.css';
-@import './styles/components/typing-indicator.css';
-@import './styles/components/custom-cursor.css';
+@import './styles/variables.css';
+@import './styles/fonts.css';
 @import './styles/utilities.css';
 
+/* Component Styles */
+@import './styles/components/buttons/index.css';
+@import './styles/components/glass-card.css';
+@import './styles/components/glass-morphism.css';
+@import './styles/components/custom-cursor.css';
+@import './styles/components/interaction-enhancement.css';
+@import './styles/components/typing-indicator.css';
+@import './styles/components/scan-line.css';
+@import './styles/components/shapes.css';
+@import './styles/components/animated-gradients.css';
+@import './styles/components/dermaagent-interactions.css';
+
+/* Animation Styles */
+@import './styles/animations/keyframes.css';
+@import './styles/animations/cellular.css';
+@import './styles/animations/particles.css';
+@import './styles/animations/effects.css';
+@import './styles/animations/ui.css';
+@import './styles/animations/animation-classes.css';
+
+/* Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Enhanced Red Margin Line Implementation */
+.content-red-margin {
+  position: relative;
+}
+
+.content-red-margin::before {
+  content: '';
+  position: absolute;
+  left: 80px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--dermoagent-margin-red);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+/* Notebook Red Margin for Landing Page */
+.notebook-red-margin::after {
+  content: '';
+  position: fixed;
+  left: 88px;
+  top: 0;
+  bottom: 0;
+  width: 0.5px;
+  background-color: var(--dermoagent-margin-red);
+  opacity: 0.4;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* DERMO.AGENT Brand Typography Enhancement */
+.dermoagent-logo-text {
+  font-family: var(--dermoagent-primary-font);
+  font-weight: var(--dermoagent-logo-weight);
+  letter-spacing: var(--dermoagent-letter-spacing-logo);
+  color: var(--dermoagent-charcoal-gray);
+  text-transform: lowercase;
+}
+
+.dermoagent-headline {
+  font-family: var(--dermoagent-primary-font);
+  font-weight: var(--dermoagent-heading-weight);
+  letter-spacing: var(--dermoagent-letter-spacing-heading);
+  color: var(--dermoagent-graphite-black);
+}
+
+.dermoagent-ui-text-subtle {
+  font-family: var(--dermoagent-primary-font);
+  font-weight: var(--dermoagent-body-weight);
+  letter-spacing: var(--dermoagent-letter-spacing-body);
+  color: var(--dermoagent-charcoal-gray);
+}
 
 /* DermoAgent Premium Digital Notebook Design System */
 @layer base {
