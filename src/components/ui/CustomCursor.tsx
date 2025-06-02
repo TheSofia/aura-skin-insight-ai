@@ -39,23 +39,23 @@ const CustomCursor: React.FC = () => {
       const target = e.target as HTMLElement;
       
       // More comprehensive interactive element detection
-      const isInteractive = target.matches(`
+      const isInteractive = Boolean(target.matches(`
         button, a, input, textarea, select,
         [role="button"], [role="link"], [role="tab"], [role="menuitem"],
         [data-interactive], .hover-target, .interactive,
         .enhanced-cta-button, .glass-button, 
         .dermaagent-elegant-button, .dermaagent-button,
         .cursor-pointer, [onclick]
-      `) || target.closest(`
+      `)) || Boolean(target.closest(`
         button, a, input, textarea, select,
         [role="button"], [role="link"], [role="tab"], [role="menuitem"],
         [data-interactive], .hover-target, .interactive
-      `);
+      `));
       
-      const isTextInput = target.matches(`
+      const isTextInput = Boolean(target.matches(`
         input[type="text"], input[type="email"], input[type="password"], 
         input[type="search"], textarea, [contenteditable="true"]
-      `);
+      `));
       
       setIsHovering(isInteractive);
       setIsText(isTextInput);
