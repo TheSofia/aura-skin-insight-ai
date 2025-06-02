@@ -40,7 +40,7 @@ const LandingHeader = () => {
               <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg shadow-lg z-50">
                 <div className="p-2">
                   <div className="px-3 py-2 text-sm font-medium text-gray-500 border-b border-gray-100 mb-2">
-                    derma.agent
+                    dermo.agent
                   </div>
                   {navigationItems.map((item) => (
                     <button
