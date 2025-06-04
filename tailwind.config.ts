@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -55,35 +56,43 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 
-				// DermaAgent Refined Color System
-				dermaagent: {
-					// Base Colors - Refined Minimal Palette
-					'soft-paper-white': '#F9F8F7',
-					'warm-bone': '#F4F1ED',
-					'light-graphite-lines': '#D3D3D3',
+				// DermoAgent Knowledge Dataset Aligned Color System
+				dermoagent: {
+					// Base Colors - Knowledge Dataset Palette
+					'pure-white': '#FFFFFF',
+					'pale-cool-grey': '#F8F9FA',
+					'light-gray': '#E3E3E3',
+					'pale-black': '#212529',
+					'dark-cool-grey': '#495057',
 					
-					// Primary Text & UI - High Contrast
-					'graphite-black': '#1A1A1A',
-					'charcoal-gray': '#333333',
-					'light-gray-text': '#999999',
+					// Primary CTA & Warm Accent - Orange-Red Spectrum
+					'primary-orange-red': '#A93226',
+					'burnt-orange': '#D2691E',
+					'warm-accent': '#CC5500',
 					
-					// Accent Colors - Minimal & Muted
-					'muted-dusty-beige': '#D2BBA2',
-					'soft-olive': '#A3A99E',
-					'cool-gray-blue': '#AAB6C9',
+					// Secondary Cool Accent - Deep Blue (NO GREEN)
+					'deep-blue': '#2C3E73',
+					'muted-blue': '#4A5D8A',
+					'light-blue': 'rgba(44, 62, 115, 0.1)',
 					
-					// Elegant Red Margin Line
-					'margin-red': '#A93226',
-					'margin-red-light': 'rgba(169, 50, 38, 0.6)',
-					'margin-red-subtle': 'rgba(169, 50, 38, 0.3)',
+					// Alternative Secondary - Muted Violet
+					'muted-violet': '#6B5B95',
+					'light-violet': 'rgba(107, 91, 149, 0.1)',
+					
+					// Subtle Dynamic Elements - Cellular Textures
+					'dark-white': '#ECECEC',
+					'off-white': '#F5F5F5',
+					'semi-transparent-white-light': 'rgba(255, 255, 255, 0.1)',
+					'semi-transparent-white-medium': 'rgba(255, 255, 255, 0.3)',
+					'semi-transparent-white-strong': 'rgba(255, 255, 255, 0.6)',
 				},
 
-				// Glass effects
+				// Glass effects - Updated to use new color system
 				glass: {
 					light: 'rgba(255, 255, 255, 0.7)',
 					white: 'rgba(255, 255, 255, 0.9)',
-					dark: 'rgba(34, 31, 38, 0.05)',
-					accent: 'rgba(163, 169, 158, 0.08)',
+					dark: 'rgba(33, 37, 41, 0.05)',
+					accent: 'rgba(44, 62, 115, 0.08)', // Deep blue instead of green
 				}
 			},
 			borderRadius: {
@@ -235,29 +244,26 @@ export default {
 			fontFamily: {
 				'sans': ['"Inter"', 'sans-serif'],
 				
-				// DermaAgent Typography System - Final
-				'dermaagent-logo': ['"DermaAgent Logo"', '"Playfair Display"', 'serif'],
-				'dermaagent-typewriter': ['"DermaAgent Typewriter"', '"IBM Plex Mono"', 'monospace'],
-				'dermaagent-ui': ['"DermaAgent UI"', '"Aeonik"', '"Inter"', 'system-ui', 'sans-serif'],
+				// DermoAgent Typography System - Knowledge Dataset Aligned
+				'dermoagent-logo': ['"IBM Plex Mono"', 'monospace'],
+				'dermoagent-ui': ['"IBM Plex Mono"', 'monospace'],
 				'ibm-plex-mono': ['"IBM Plex Mono"', 'monospace'],
-				'aeonik': ['"Aeonik"', 'sans-serif'],
-				'playfair': ['"Playfair Display"', 'serif'],
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				
-				// DermaAgent Refined Gradients
-				'dermaagent-notebook': 'var(--dermaagent-notebook-gradient)',
-				'dermaagent-beige': 'var(--dermaagent-beige-gradient)',
-				'dermaagent-interactive': 'var(--dermaagent-interactive-gradient)',
+				// DermoAgent Refined Gradients - Knowledge Dataset Aligned
+				'dermoagent-notebook': 'linear-gradient(to bottom, #FFFFFF, #F8F9FA)',
+				'dermoagent-primary-cta': 'linear-gradient(135deg, #A93226, #CC5500)',
+				'dermoagent-secondary-accent': 'linear-gradient(135deg, #2C3E73, #4A5D8A)',
 			},
 			boxShadow: {
 				'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
 				
-				// DermaAgent Refined Shadows
-				'dermaagent-minimal': '0 2px 8px rgba(26, 26, 26, 0.03)',
-				'dermaagent-soft': '0 1px 4px rgba(26, 26, 26, 0.04)',
-				'dermaagent-interactive': '0 0 12px rgba(170, 182, 201, 0.15)',
+				// DermoAgent Refined Shadows - Knowledge Dataset Aligned
+				'dermaagent-minimal': '0 2px 8px rgba(33, 37, 41, 0.03)',
+				'dermaagent-soft': '0 1px 4px rgba(33, 37, 41, 0.04)',
+				'dermaagent-interactive': '0 0 12px rgba(44, 62, 115, 0.15)',
 			},
 			backdropFilter: {
 				'none': 'none',
