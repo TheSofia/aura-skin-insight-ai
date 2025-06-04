@@ -20,49 +20,91 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
     motionType: 'drift' | 'float' | 'orbital' | 'morph' | 'cluster' | 'disperse';
     pathRadius: number;
     pulseOffset: number;
+    depthLayer: 'background' | 'middle' | 'foreground';
+    speed: number;
   }>>([]);
 
   useEffect(() => {
-    // Generate sophisticated cellular particles with enhanced lab-like distribution
+    // Generate enhanced cellular particles with 3D depth layers and varied sizes
     const generateCells = () => {
-      const cells = Array.from({ length: 85 }, (_, i) => {
-        // Create natural distribution with clustering patterns
+      const cells = Array.from({ length: 120 }, (_, i) => {
+        // Create natural distribution with enhanced clustering patterns
         const clusterCenters = [
-          { x: 20, y: 30 }, { x: 70, y: 20 }, { x: 40, y: 60 }, 
-          { x: 80, y: 75 }, { x: 15, y: 80 }, { x: 60, y: 45 }
+          { x: 15, y: 25 }, { x: 65, y: 15 }, { x: 35, y: 55 }, 
+          { x: 75, y: 70 }, { x: 20, y: 75 }, { x: 55, y: 40 },
+          { x: 85, y: 30 }, { x: 10, y: 50 }, { x: 45, y: 80 }
         ];
         
         const cluster = clusterCenters[Math.floor(Math.random() * clusterCenters.length)];
-        const clusterSpread = 25 + Math.random() * 20;
+        const clusterSpread = 20 + Math.random() * 30;
         
-        const x = Math.max(5, Math.min(95, cluster.x + (Math.random() - 0.5) * clusterSpread));
-        const y = Math.max(5, Math.min(95, cluster.y + (Math.random() - 0.5) * clusterSpread));
+        const x = Math.max(2, Math.min(98, cluster.x + (Math.random() - 0.5) * clusterSpread));
+        const y = Math.max(2, Math.min(98, cluster.y + (Math.random() - 0.5) * clusterSpread));
         
-        // Enhanced size range for better visibility and depth
-        const size = 3 + Math.random() * 12; // 3-15px range
+        // Enhanced size range for better depth perception - wider variation
+        const depthRandom = Math.random();
+        let depthLayer: 'background' | 'middle' | 'foreground';
+        let size: number;
+        let baseOpacity: number;
+        let speed: number;
         
-        // Improved opacity for better visibility while maintaining subtlety
-        const opacity = 0.25 + Math.random() * 0.5; // 0.25-0.75 range
+        if (depthRandom > 0.7) { // 30% foreground - larger, more visible
+          depthLayer = 'foreground';
+          size = 8 + Math.random() * 18; // 8-26px
+          baseOpacity = 0.4 + Math.random() * 0.4; // 0.4-0.8
+          speed = 0.8 + Math.random() * 0.4; // Faster movement
+        } else if (depthRandom > 0.3) { // 40% middle - medium
+          depthLayer = 'middle';
+          size = 4 + Math.random() * 12; // 4-16px
+          baseOpacity = 0.25 + Math.random() * 0.35; // 0.25-0.6
+          speed = 0.6 + Math.random() * 0.3;
+        } else { // 30% background - smaller, more subtle
+          depthLayer = 'background';
+          size = 2 + Math.random() * 8; // 2-10px
+          baseOpacity = 0.1 + Math.random() * 0.25; // 0.1-0.35
+          speed = 0.4 + Math.random() * 0.2; // Slower movement
+        }
         
-        // Varied animation timing for organic feel
-        const duration = 25 + Math.random() * 35; // 25-60 seconds
-        const delay = Math.random() * 20; // 0-20 second delay
+        // Enhanced opacity with depth variation
+        const opacity = baseOpacity;
         
-        // Enhanced color assignment with subtle accent integration
+        // Varied animation timing for organic feel with speed variation
+        const baseDuration = 30 + Math.random() * 40; // 30-70 seconds
+        const duration = baseDuration / speed; // Adjust duration by speed
+        const delay = Math.random() * 25; // 0-25 second delay
+        
+        // Enhanced color assignment with depth-based distribution
         let color: 'white' | 'light-grey' | 'accent' | 'ultra-subtle' | 'violet-hint' | 'orange-hint';
         const colorRandom = Math.random();
-        if (colorRandom > 0.96) { // 4% chance for violet hint
-          color = 'violet-hint';
-        } else if (colorRandom > 0.92) { // 4% chance for orange hint
-          color = 'orange-hint';
-        } else if (colorRandom > 0.85) { // 7% chance for subtle accent
-          color = 'accent';
-        } else if (colorRandom > 0.65) { // 20% ultra-subtle
-          color = 'ultra-subtle';
-        } else if (colorRandom > 0.35) { // 30% light grey
-          color = 'light-grey';
-        } else { // 35% white/transparent
-          color = 'white';
+        
+        // Foreground cells get more chance for accent colors
+        if (depthLayer === 'foreground') {
+          if (colorRandom > 0.93) { // 7% chance for violet hint
+            color = 'violet-hint';
+          } else if (colorRandom > 0.86) { // 7% chance for orange hint
+            color = 'orange-hint';
+          } else if (colorRandom > 0.75) { // 11% chance for accent
+            color = 'accent';
+          } else if (colorRandom > 0.5) { // 25% light grey
+            color = 'light-grey';
+          } else { // 50% white
+            color = 'white';
+          }
+        } else {
+          // Background and middle layers remain mostly neutral
+          if (colorRandom > 0.97) { // 3% chance for violet hint
+            color = 'violet-hint';
+          } else if (colorRandom > 0.94) { // 3% chance for orange hint
+            color = 'orange-hint';
+          } else if (colorRandom > 0.85) { // 9% chance for accent
+            color = 'accent';
+          } else if (colorRandom > 0.55) { // 30% ultra-subtle
+            color = 'ultra-subtle';
+          } else if (colorRandom > 0.25) { // 30% light grey
+            color = 'light-grey';
+          } else { // 25% white
+            color = 'white';
+          }
         }
         
         // Enhanced motion types for more organic movement
@@ -71,7 +113,7 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
         const motionType = motionTypes[Math.floor(Math.random() * motionTypes.length)];
         
         // Additional properties for enhanced organic movement
-        const pathRadius = 10 + Math.random() * 25; // Orbital/cluster radius
+        const pathRadius = 8 + Math.random() * 30; // Larger orbital/cluster radius
         const pulseOffset = Math.random() * Math.PI * 2; // Phase offset for pulsing
         
         return {
@@ -85,7 +127,9 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
           color,
           motionType,
           pathRadius,
-          pulseOffset
+          pulseOffset,
+          depthLayer,
+          speed
         };
       });
       
@@ -102,45 +146,50 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {cellElements.map((cell) => {
-        // Enhanced color styling with subtle accent integration
+        // Enhanced color styling with depth-based opacity and subtle accent integration
         let colorClass = '';
         let backgroundStyle = '';
         let boxShadowStyle = '';
         
+        // Depth-based opacity multiplier for 3D effect
+        const depthOpacityMultiplier = cell.depthLayer === 'foreground' ? 1 : 
+                                     cell.depthLayer === 'middle' ? 0.85 : 0.7;
+        const finalOpacity = cell.opacity * depthOpacityMultiplier;
+        
         switch (cell.color) {
           case 'white':
             colorClass = 'bg-white';
-            backgroundStyle = `rgba(255, 255, 255, ${cell.opacity})`;
-            boxShadowStyle = `0 0 ${cell.size * 0.8}px rgba(255, 255, 255, ${cell.opacity * 0.3})`;
+            backgroundStyle = `rgba(255, 255, 255, ${finalOpacity})`;
+            boxShadowStyle = `0 0 ${cell.size * 0.9}px rgba(255, 255, 255, ${finalOpacity * 0.4})`;
             break;
           case 'light-grey':
             colorClass = 'bg-gray-100';
-            backgroundStyle = `rgba(243, 244, 246, ${cell.opacity})`;
-            boxShadowStyle = `0 0 ${cell.size * 0.6}px rgba(243, 244, 246, ${cell.opacity * 0.25})`;
+            backgroundStyle = `rgba(243, 244, 246, ${finalOpacity})`;
+            boxShadowStyle = `0 0 ${cell.size * 0.7}px rgba(243, 244, 246, ${finalOpacity * 0.3})`;
             break;
           case 'ultra-subtle':
             colorClass = 'bg-gray-200';
-            backgroundStyle = `rgba(229, 231, 235, ${cell.opacity})`;
-            boxShadowStyle = `0 0 ${cell.size * 0.7}px rgba(229, 231, 235, ${cell.opacity * 0.2})`;
+            backgroundStyle = `rgba(229, 231, 235, ${finalOpacity})`;
+            boxShadowStyle = `0 0 ${cell.size * 0.8}px rgba(229, 231, 235, ${finalOpacity * 0.25})`;
             break;
           case 'accent':
             colorClass = 'bg-gray-300';
-            backgroundStyle = `rgba(209, 213, 219, ${cell.opacity})`;
-            boxShadowStyle = `0 0 ${cell.size}px rgba(209, 213, 219, ${cell.opacity * 0.4})`;
+            backgroundStyle = `rgba(209, 213, 219, ${finalOpacity})`;
+            boxShadowStyle = `0 0 ${cell.size * 1.1}px rgba(209, 213, 219, ${finalOpacity * 0.5})`;
             break;
           case 'violet-hint':
             colorClass = 'bg-violet-100';
-            backgroundStyle = `rgba(124, 58, 237, ${cell.opacity * 0.15})`;
-            boxShadowStyle = `0 0 ${cell.size * 1.2}px rgba(124, 58, 237, ${cell.opacity * 0.1})`;
+            backgroundStyle = `rgba(124, 58, 237, ${finalOpacity * 0.2})`;
+            boxShadowStyle = `0 0 ${cell.size * 1.4}px rgba(124, 58, 237, ${finalOpacity * 0.15})`;
             break;
           case 'orange-hint':
             colorClass = 'bg-orange-100';
-            backgroundStyle = `rgba(255, 119, 69, ${cell.opacity * 0.12})`;
-            boxShadowStyle = `0 0 ${cell.size * 1.1}px rgba(255, 119, 69, ${cell.opacity * 0.08})`;
+            backgroundStyle = `rgba(255, 119, 69, ${finalOpacity * 0.18})`;
+            boxShadowStyle = `0 0 ${cell.size * 1.3}px rgba(255, 119, 69, ${finalOpacity * 0.12})`;
             break;
         }
 
-        // Enhanced motion class assignment
+        // Enhanced motion class assignment with depth-based speed
         let motionClass = '';
         let customTransform = '';
         
@@ -166,10 +215,14 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
             break;
         }
 
-        // Dynamic border radius for organic shapes
+        // Dynamic border radius for organic shapes with enhanced variation
         const organicRadius = cell.motionType === 'morph' || cell.motionType === 'cluster' 
-          ? `${40 + Math.sin(cell.pulseOffset) * 20}% ${60 - Math.sin(cell.pulseOffset) * 20}% ${50 + Math.cos(cell.pulseOffset) * 15}% ${50 - Math.cos(cell.pulseOffset) * 15}% / ${30 + Math.sin(cell.pulseOffset * 1.3) * 15}% ${70 - Math.sin(cell.pulseOffset * 1.3) * 15}% ${60 + Math.cos(cell.pulseOffset * 0.7) * 10}% ${40 - Math.cos(cell.pulseOffset * 0.7) * 10}%`
+          ? `${35 + Math.sin(cell.pulseOffset) * 25}% ${65 - Math.sin(cell.pulseOffset) * 25}% ${45 + Math.cos(cell.pulseOffset) * 20}% ${55 - Math.cos(cell.pulseOffset) * 20}% / ${25 + Math.sin(cell.pulseOffset * 1.4) * 20}% ${75 - Math.sin(cell.pulseOffset * 1.4) * 20}% ${65 + Math.cos(cell.pulseOffset * 0.8) * 15}% ${35 - Math.cos(cell.pulseOffset * 0.8) * 15}%`
           : '50%';
+
+        // Depth-based blur for 3D effect
+        const depthBlur = cell.depthLayer === 'background' ? 'blur(0.8px)' : 
+                         cell.depthLayer === 'middle' ? 'blur(0.4px)' : 'blur(0.2px)';
 
         return (
           <div
@@ -181,14 +234,15 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
               left: `${cell.x}%`,
               top: `${cell.y}%`,
               background: backgroundStyle,
-              opacity: cell.opacity,
+              opacity: finalOpacity,
               animationDuration: `${cell.duration}s`,
               animationDelay: `${cell.delay}s`,
-              filter: 'blur(0.3px)',
+              filter: depthBlur,
               transform: `scale(1) ${customTransform}`,
               borderRadius: organicRadius,
               boxShadow: boxShadowStyle,
-              transition: 'all 0.3s ease-out',
+              transition: 'all 0.4s ease-out',
+              zIndex: cell.depthLayer === 'foreground' ? 3 : cell.depthLayer === 'middle' ? 2 : 1,
             }}
           />
         );
@@ -196,31 +250,45 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
       
       {/* Enhanced multi-layered membrane overlay for sophisticated lab atmosphere */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-transparent via-white/[0.04] to-transparent animate-pulse-cellular-minimal"
+        className="absolute inset-0 bg-gradient-radial from-transparent via-white/[0.06] to-transparent animate-pulse-cellular-minimal"
         style={{
-          backgroundSize: '300% 300%',
+          backgroundSize: '250% 250%',
           backgroundPosition: '50% 50%',
-          animationDuration: '50s'
+          animationDuration: '45s',
+          zIndex: 1
         }}
       />
       
       {/* Secondary depth layer with enhanced organic patterns */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-gray-50/[0.03] via-transparent to-gray-100/[0.02] animate-cellular-drift"
+        className="absolute inset-0 bg-gradient-radial from-gray-50/[0.04] via-transparent to-gray-100/[0.03] animate-cellular-drift"
         style={{
-          backgroundSize: '500% 500%',
+          backgroundSize: '400% 400%',
           backgroundPosition: '30% 70%',
-          animationDuration: '70s'
+          animationDuration: '65s',
+          zIndex: 1
         }}
       />
       
-      {/* Tertiary atmospheric layer for enhanced depth */}
+      {/* Tertiary atmospheric layer for enhanced depth with subtle accent hints */}
       <div 
-        className="absolute inset-0 bg-gradient-conic from-transparent via-violet-50/[0.015] to-transparent animate-cellular-morph"
+        className="absolute inset-0 bg-gradient-conic from-transparent via-violet-50/[0.02] to-transparent animate-cellular-morph"
         style={{
-          backgroundSize: '400% 400%',
+          backgroundSize: '350% 350%',
           backgroundPosition: '60% 40%',
-          animationDuration: '90s'
+          animationDuration: '80s',
+          zIndex: 1
+        }}
+      />
+      
+      {/* Additional subtle orange accent layer for depth */}
+      <div 
+        className="absolute inset-0 bg-gradient-radial from-orange-50/[0.015] via-transparent to-transparent animate-cellular-cluster"
+        style={{
+          backgroundSize: '300% 300%',
+          backgroundPosition: '70% 30%',
+          animationDuration: '95s',
+          zIndex: 1
         }}
       />
     </div>
