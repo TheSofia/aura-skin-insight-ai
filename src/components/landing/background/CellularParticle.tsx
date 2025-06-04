@@ -40,14 +40,14 @@ const CellularParticle: React.FC<CellularParticleProps> = ({ particle }) => {
       borderStyle = `1px solid rgba(209, 213, 219, ${finalOpacity * 0.4})`;
       break;
     case 'violet-hint':
-      backgroundStyle = `radial-gradient(ellipse at 42% 28%, rgba(139, 92, 246, ${finalOpacity * 0.18}) 0%, rgba(124, 58, 237, ${finalOpacity * 0.12}) 30%, rgba(248, 250, 252, ${finalOpacity * 0.7}) 65%, rgba(255, 255, 255, ${finalOpacity * 0.4}) 100%)`;
-      boxShadowStyle = `0 0 ${particle.size * 1.4}px rgba(124, 58, 237, ${finalOpacity * 0.15}), inset 0 0 ${particle.size * 0.6}px rgba(139, 92, 246, ${finalOpacity * 0.1})`;
-      borderStyle = `1px solid rgba(124, 58, 237, ${finalOpacity * 0.2})`;
+      backgroundStyle = `radial-gradient(ellipse at 42% 28%, rgba(139, 92, 246, ${finalOpacity * 0.15}) 0%, rgba(124, 58, 237, ${finalOpacity * 0.1}) 30%, rgba(248, 250, 252, ${finalOpacity * 0.65}) 65%, rgba(255, 255, 255, ${finalOpacity * 0.35}) 100%)`;
+      boxShadowStyle = `0 0 ${particle.size * 1.3}px rgba(124, 58, 237, ${finalOpacity * 0.12}), inset 0 0 ${particle.size * 0.55}px rgba(139, 92, 246, ${finalOpacity * 0.08})`;
+      borderStyle = `1px solid rgba(124, 58, 237, ${finalOpacity * 0.18})`;
       break;
     case 'orange-hint':
-      backgroundStyle = `radial-gradient(ellipse at 35% 42%, rgba(251, 146, 60, ${finalOpacity * 0.15}) 0%, rgba(255, 119, 69, ${finalOpacity * 0.1}) 35%, rgba(254, 249, 195, ${finalOpacity * 0.6}) 70%, rgba(255, 255, 255, ${finalOpacity * 0.4}) 100%)`;
-      boxShadowStyle = `0 0 ${particle.size * 1.3}px rgba(255, 119, 69, ${finalOpacity * 0.12}), inset 0 0 ${particle.size * 0.5}px rgba(251, 146, 60, ${finalOpacity * 0.08})`;
-      borderStyle = `1px solid rgba(255, 119, 69, ${finalOpacity * 0.15})`;
+      backgroundStyle = `radial-gradient(ellipse at 35% 42%, rgba(251, 146, 60, ${finalOpacity * 0.12}) 0%, rgba(255, 119, 69, ${finalOpacity * 0.08}) 35%, rgba(254, 249, 195, ${finalOpacity * 0.55}) 70%, rgba(255, 255, 255, ${finalOpacity * 0.35}) 100%)`;
+      boxShadowStyle = `0 0 ${particle.size * 1.25}px rgba(255, 119, 69, ${finalOpacity * 0.1}), inset 0 0 ${particle.size * 0.5}px rgba(251, 146, 60, ${finalOpacity * 0.06})`;
+      borderStyle = `1px solid rgba(255, 119, 69, ${finalOpacity * 0.12})`;
       break;
   }
 
@@ -75,14 +75,18 @@ const CellularParticle: React.FC<CellularParticleProps> = ({ particle }) => {
     case 'cluster':
       motionClass = 'animate-cellular-cluster-interaction';
       break;
+    case 'lifecycle':
+      motionClass = 'animate-cellular-lifecycle';
+      break;
   }
 
-  // Enhanced organic border radius with more variation
+  // Enhanced organic border radius with more variation including multi-lobed shapes
   let organicRadius = '';
   const baseRadius = 40 + Math.sin(particle.pulseOffset) * 25;
   const variation1 = 30 + Math.cos(particle.pulseOffset * 1.4) * 20;
   const variation2 = 50 + Math.sin(particle.pulseOffset * 0.8) * 30;
   const variation3 = 60 + Math.cos(particle.pulseOffset * 1.2) * 25;
+  const variation4 = 35 + Math.sin(particle.pulseOffset * 1.6) * 15;
   
   switch (particle.organicShape) {
     case 'amoeba':
@@ -100,14 +104,17 @@ const CellularParticle: React.FC<CellularParticleProps> = ({ particle }) => {
     case 'cluster':
       organicRadius = `${variation2}% ${100 - variation2}% ${baseRadius + 20}% ${100 - baseRadius - 20}% / ${variation3 - 15}% ${100 - variation3 + 15}% ${variation1 + 8}% ${100 - variation1 - 8}%`;
       break;
+    case 'multi-lobed':
+      organicRadius = `${variation1}% ${variation4}% ${variation2}% ${variation3}% ${baseRadius}% ${100 - baseRadius}% ${variation4 + 10}% ${variation1 - 5}% / ${variation2 + 8}% ${variation3 - 12}% ${baseRadius + 5}% ${variation4 + 15}% ${variation1 - 8}% ${variation2}% ${100 - variation3}% ${baseRadius - 10}%`;
+      break;
   }
 
   // Enhanced depth-based effects
-  const depthBlur = particle.depthLayer === 'background' ? 'blur(1.5px)' : 
-                   particle.depthLayer === 'middle' ? 'blur(0.8px)' : 'blur(0.4px)';
+  const depthBlur = particle.depthLayer === 'background' ? 'blur(1.2px)' : 
+                   particle.depthLayer === 'middle' ? 'blur(0.6px)' : 'blur(0.3px)';
   
-  const depthBrightness = particle.depthLayer === 'foreground' ? 'brightness(1.15)' : 
-                         particle.depthLayer === 'middle' ? 'brightness(1.08)' : 'brightness(1.02)';
+  const depthBrightness = particle.depthLayer === 'foreground' ? 'brightness(1.12)' : 
+                         particle.depthLayer === 'middle' ? 'brightness(1.06)' : 'brightness(1.02)';
 
   return (
     <div
@@ -126,35 +133,54 @@ const CellularParticle: React.FC<CellularParticleProps> = ({ particle }) => {
         borderRadius: organicRadius,
         boxShadow: boxShadowStyle,
         border: borderStyle,
-        transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
         zIndex: particle.depthLayer === 'foreground' ? 3 : particle.depthLayer === 'middle' ? 2 : 1,
-        backdropFilter: 'blur(0.8px)',
-        WebkitBackdropFilter: 'blur(0.8px)',
+        backdropFilter: 'blur(0.6px)',
+        WebkitBackdropFilter: 'blur(0.6px)',
       }}
     >
       {/* Enhanced internal cellular structure */}
       <div
-        className="absolute inset-3 opacity-40"
+        className="absolute inset-2 opacity-35"
         style={{
-          background: `radial-gradient(circle at 65% 35%, rgba(255, 255, 255, 0.4) 0%, transparent 65%)`,
+          background: `radial-gradient(circle at 65% 35%, rgba(255, 255, 255, 0.35) 0%, transparent 60%)`,
           borderRadius: `${baseRadius - 15}% ${100 - baseRadius + 15}% ${variation1}% ${100 - variation1}% / ${variation2 - 8}% ${100 - variation2 + 8}% ${baseRadius + 8}% ${100 - baseRadius - 8}%`,
-          filter: 'blur(3px)',
+          filter: 'blur(2px)',
         }}
       />
       
       {/* Enhanced cellular nucleus for larger cells */}
-      {particle.depthLayer === 'foreground' && particle.size > 30 && (
+      {particle.depthLayer === 'foreground' && particle.size > 25 && (
         <div
           className="absolute"
           style={{
-            width: `${particle.size * 0.25}px`,
-            height: `${particle.size * 0.2}px`,
-            left: '42%',
-            top: '38%',
-            background: `radial-gradient(ellipse, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.15) 100%)`,
-            borderRadius: '60%',
+            width: `${particle.size * 0.22}px`,
+            height: `${particle.size * 0.18}px`,
+            left: '40%',
+            top: '35%',
+            background: `radial-gradient(ellipse, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 100%)`,
+            borderRadius: '65%',
+            filter: 'blur(1px)',
+            opacity: 0.6,
+          }}
+        />
+      )}
+
+      {/* Additional organelle for accent colored cells */}
+      {(particle.color === 'violet-hint' || particle.color === 'orange-hint') && particle.size > 20 && (
+        <div
+          className="absolute"
+          style={{
+            width: `${particle.size * 0.15}px`,
+            height: `${particle.size * 0.12}px`,
+            left: '60%',
+            top: '25%',
+            background: particle.color === 'violet-hint' 
+              ? `radial-gradient(ellipse, rgba(139, 92, 246, 0.2) 0%, transparent 70%)`
+              : `radial-gradient(ellipse, rgba(251, 146, 60, 0.15) 0%, transparent 70%)`,
+            borderRadius: '80%',
             filter: 'blur(1.5px)',
-            opacity: 0.7,
+            opacity: 0.4,
           }}
         />
       )}

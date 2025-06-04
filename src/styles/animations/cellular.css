@@ -181,29 +181,67 @@
   }
 }
 
+/* New lifecycle animation for organic growth and contraction */
+@keyframes cellular-lifecycle {
+  0% { 
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.2;
+    border-radius: 60% 40% 45% 55% / 55% 45% 40% 60%;
+  }
+  15% { 
+    transform: scale(1.0) rotate(25deg);
+    opacity: 0.4;
+    border-radius: 45% 55% 60% 40% / 40% 60% 55% 45%;
+  }
+  35% { 
+    transform: scale(1.2) rotate(70deg);
+    opacity: 0.7;
+    border-radius: 55% 45% 40% 60% / 60% 40% 45% 55%;
+  }
+  55% { 
+    transform: scale(1.35) rotate(120deg);
+    opacity: 0.8;
+    border-radius: 40% 60% 55% 45% / 45% 55% 60% 40%;
+  }
+  75% { 
+    transform: scale(1.1) rotate(180deg);
+    opacity: 0.5;
+    border-radius: 50% 50% 48% 52% / 52% 48% 50% 50%;
+  }
+  100% { 
+    transform: scale(0.8) rotate(220deg);
+    opacity: 0.2;
+    border-radius: 60% 40% 45% 55% / 55% 45% 40% 60%;
+  }
+}
+
 /* Enhanced animation utility classes */
 .animate-cellular-morph-enhanced {
-  animation: cellular-morph-enhanced 50s infinite ease-in-out;
+  animation: cellular-morph-enhanced 45s infinite ease-in-out;
 }
 
 .animate-cellular-respiration-enhanced {
-  animation: cellular-respiration-enhanced 35s infinite ease-in-out;
+  animation: cellular-respiration-enhanced 32s infinite ease-in-out;
 }
 
 .animate-cellular-drift-enhanced {
-  animation: cellular-drift-enhanced 60s infinite linear;
+  animation: cellular-drift-enhanced 55s infinite linear;
 }
 
 .animate-membrane-fluctuation-enhanced {
-  animation: membrane-fluctuation-enhanced 45s infinite ease-in-out;
+  animation: membrane-fluctuation-enhanced 40s infinite ease-in-out;
 }
 
 .animate-cellular-division {
-  animation: cellular-division 40s infinite ease-in-out;
+  animation: cellular-division 38s infinite ease-in-out;
 }
 
 .animate-cellular-cluster-interaction {
-  animation: cellular-cluster-interaction 55s infinite ease-in-out;
+  animation: cellular-cluster-interaction 50s infinite ease-in-out;
+}
+
+.animate-cellular-lifecycle {
+  animation: cellular-lifecycle 60s infinite ease-in-out;
 }
 
 /* Performance optimizations */
@@ -221,8 +259,9 @@
   .animate-cellular-drift-enhanced,
   .animate-membrane-fluctuation-enhanced,
   .animate-cellular-division,
-  .animate-cellular-cluster-interaction {
-    animation-duration: 300s;
+  .animate-cellular-cluster-interaction,
+  .animate-cellular-lifecycle {
+    animation-duration: 400s;
     animation-timing-function: linear;
   }
 }

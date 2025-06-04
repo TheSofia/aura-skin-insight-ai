@@ -15,8 +15,8 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
 
   useEffect(() => {
     if (isVisible) {
-      // Significantly increased particle count for richer ambient animation
-      const particles = generateCellularParticles(45);
+      // Significantly increased particle count for rich, immersive cellular environment
+      const particles = generateCellularParticles(85);
       setCellElements(particles);
     }
   }, [isVisible]);
@@ -25,7 +25,7 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Enhanced cellular particle system with independent motion */}
+      {/* Enhanced cellular particle system with sophisticated organic motion */}
       <div className="cellular-background-container">
         {cellElements.map((particle) => (
           <CellularParticle key={particle.id} particle={particle} />
@@ -35,15 +35,38 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
       {/* Enhanced membrane overlay system */}
       <MembraneOverlays />
       
-      {/* Enhanced atmospheric depth */}
+      {/* Enhanced atmospheric depth with multiple layers */}
       <div 
-        className="absolute inset-0 opacity-8"
+        className="absolute inset-0 opacity-6"
         style={{
           background: `
-            radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.025) 0%, transparent 60%),
-            radial-gradient(circle at 70% 60%, rgba(248, 250, 252, 0.02) 0%, transparent 70%)
+            radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 55%),
+            radial-gradient(circle at 75% 70%, rgba(248, 250, 252, 0.015) 0%, transparent 65%),
+            radial-gradient(circle at 50% 20%, rgba(139, 92, 246, 0.008) 0%, transparent 40%),
+            radial-gradient(circle at 80% 40%, rgba(251, 146, 60, 0.006) 0%, transparent 45%)
           `,
-          filter: 'blur(120px)',
+          filter: 'blur(100px)',
+          zIndex: 0
+        }}
+      />
+
+      {/* Additional subtle texture layer for enhanced depth */}
+      <div 
+        className="absolute inset-0 opacity-4"
+        style={{
+          background: `
+            repeating-radial-gradient(circle at 30% 60%, 
+              transparent 0%, 
+              rgba(255, 255, 255, 0.003) 20%, 
+              transparent 40%
+            ),
+            repeating-radial-gradient(circle at 70% 30%, 
+              transparent 0%, 
+              rgba(229, 231, 235, 0.005) 25%, 
+              transparent 50%
+            )
+          `,
+          filter: 'blur(150px)',
           zIndex: 0
         }}
       />
