@@ -6,12 +6,14 @@ import Footer from "@/components/landing/Footer";
 import LandingHeader from "@/components/landing/LandingHeader";
 import CustomCursor from "@/components/ui/CustomCursor";
 import SubtleCellularBackground from "@/components/landing/SubtleCellularBackground";
+import { useCustomCursor } from "@/hooks/useCustomCursor";
 
 const Index = () => {
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const pageRef = useRef<HTMLDivElement>(null);
+  const { isCustomCursorEnabled } = useCustomCursor();
   
   // Effect to set page as loaded after a delay for orchestrated animation reveal
   useEffect(() => {
@@ -26,7 +28,7 @@ const Index = () => {
     } catch (error) {
       console.error("Error loading home page:", error);
       setHasError(true);
-      setIsLoaded(true); // Still show the page even if there's an error
+      setIsLoaded(true);
     }
   }, [location.pathname]);
 
@@ -54,13 +56,13 @@ const Index = () => {
 
   return (
     <>
-      {/* Cellular Cursor Component */}
-      <CustomCursor />
+      {/* Conditional Custom Cursor - only on supported devices */}
+      {isCustomCursorEnabled && <CustomCursor />}
       
-      {/* Enhanced Cellular Background Animation */}
+      {/* Optimized Cellular Background Animation */}
       <SubtleCellularBackground isVisible={isLoaded} />
       
-      {/* Landing Page Header with Navigation - positioned top left */}
+      {/* Landing Page Header with Navigation */}
       <LandingHeader />
       
       <div 
@@ -71,7 +73,7 @@ const Index = () => {
           fontFamily: "'IBM Plex Mono', monospace",
         }}
       >
-        {/* Static School Notebook Background - Clean horizontal stripes without margin line */}
+        {/* Static School Notebook Background */}
         <div 
           className="fixed inset-0 pointer-events-none z-0"
           style={{
@@ -88,9 +90,9 @@ const Index = () => {
           }}
         />
         
-        {/* Elegant page wrapper with enhanced spacing for luxury notebook feel */}
+        {/* Page content wrapper */}
         <div className="container max-w-5xl mx-auto flex-1 flex flex-col items-center justify-center px-8 py-20 relative z-10">
-          {/* Hero Section with premium notebook aesthetic and refined animations */}
+          {/* Hero Section */}
           <div className="animate-elegant-fade-in">
             <Hero
               isLoaded={isLoaded}
@@ -98,7 +100,7 @@ const Index = () => {
             />
           </div>
           
-          {/* Footer Section with delayed entrance */}
+          {/* Footer Section */}
           <div className="animate-elegant-fade-in-delayed">
             <Footer />
           </div>
