@@ -1,5 +1,5 @@
 
-/* DERMO.AGENT Custom Cellular Cursor System - Optimized for Performance */
+/* Optimized Custom Cursor System - Performance Focused */
 
 /* Conditional cursor hiding - only when custom cursor is active */
 .custom-cursor-active * {
@@ -22,147 +22,108 @@
 }
 
 /* Enhanced interactive element styling */
-button, a, input, textarea, select, [role="button"], [data-interactive], 
-.hover-target, .interactive {
+button, a, input, textarea, select, [role="button"], [data-interactive] {
   position: relative;
-  min-height: 44px;
-  min-width: 44px;
   pointer-events: auto !important;
 }
 
-/* Custom cellular cursor container - optimized */
+/* Optimized custom cursor container */
 .cellular-cursor {
   position: fixed;
   pointer-events: none;
   z-index: 99999;
-  mix-blend-mode: normal;
   top: 0;
   left: 0;
-  width: 60px;
-  height: 60px;
+  width: 16px;
+  height: 16px;
   will-change: transform;
+  mix-blend-mode: normal;
 }
 
-/* Cellular particle system container */
+/* Simplified particle system container */
 .cellular-particle-system {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -8px;
+  left: -8px;
+  width: 32px;
+  height: 32px;
   pointer-events: none;
 }
 
-/* Individual cellular particles - optimized */
+/* Optimized cellular particles */
 .cellular-particle {
   position: absolute;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   pointer-events: none;
-  transform-origin: center;
-  filter: blur(0.3px);
   will-change: transform, opacity;
 }
 
-/* Main cellular cursor element - optimized for precision */
+/* Main cursor core - precise and functional */
 .cellular-cursor-core {
-  width: 16px;
-  height: 16px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, 
-    rgba(26, 26, 26, 0.12) 0%, 
-    rgba(26, 26, 26, 0.06) 60%, 
-    rgba(26, 26, 26, 0.02) 100%);
-  border: 0.5px solid rgba(26, 26, 26, 0.1);
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(26, 26, 26, 0.8) 0%, 
+    rgba(26, 26, 26, 0.6) 70%, 
+    rgba(26, 26, 26, 0.4) 100%);
+  border: 0.5px solid rgba(26, 26, 26, 0.3);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.1s ease-out,
-              background 0.15s ease-out;
-  transform-origin: center;
-  box-shadow: 0 1px 3px rgba(26, 26, 26, 0.04);
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.1s ease-out;
+  box-shadow: 0 0 2px rgba(26, 26, 26, 0.2);
   z-index: 10;
 }
 
-/* Precision dot */
+/* Precision dot for exact targeting */
 .cellular-cursor-core::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, rgba(26, 26, 26, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
+  width: 1px;
+  height: 1px;
+  background: rgba(26, 26, 26, 0.9);
   transform: translate(-50%, -50%);
-  opacity: 0.7;
-  animation: cellular-gentle-pulse 2.5s infinite ease-in-out;
 }
 
-/* Outer ring */
-.cellular-cursor-core::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  border: 0.5px solid rgba(26, 26, 26, 0.04);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.3;
-  filter: blur(0.3px);
-  animation: cellular-ring-float 3s infinite ease-in-out;
-}
-
-/* Hover state - optimized */
+/* Hover state - clear visual feedback */
 .cellular-cursor.hover .cellular-cursor-core {
-  transform: translate(-50%, -50%) scale(1.5);
-  background: radial-gradient(circle at 35% 35%, 
-    rgba(169, 50, 38, 0.2) 0%, 
-    rgba(169, 50, 38, 0.12) 60%, 
-    rgba(169, 50, 38, 0.06) 100%);
-  border-color: rgba(169, 50, 38, 0.3);
-  box-shadow: 0 2px 6px rgba(169, 50, 38, 0.15);
+  transform: translate(-50%, -50%) scale(1.8);
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(169, 50, 38, 0.9) 0%, 
+    rgba(169, 50, 38, 0.7) 70%, 
+    rgba(169, 50, 38, 0.5) 100%);
+  border-color: rgba(169, 50, 38, 0.6);
+  box-shadow: 0 0 4px rgba(169, 50, 38, 0.3);
 }
 
-.cellular-cursor.hover .cellular-cursor-core::before {
-  opacity: 1;
-  animation-duration: 1.2s;
-  transform: translate(-50%, -50%) scale(1.3);
-  background: radial-gradient(circle, rgba(169, 50, 38, 0.4) 0%, transparent 70%);
-}
-
-.cellular-cursor.hover .cellular-cursor-core::after {
-  opacity: 0.5;
-  transform: translate(-50%, -50%) scale(1.3);
-  border-color: rgba(169, 50, 38, 0.2);
-}
-
-/* Active state - optimized */
+/* Active state - immediate feedback */
 .cellular-cursor.active .cellular-cursor-core {
-  transform: translate(-50%, -50%) scale(0.7);
-  background: radial-gradient(circle at 35% 35%, 
-    rgba(169, 50, 38, 0.4) 0%, 
-    rgba(169, 50, 38, 0.25) 60%, 
-    rgba(169, 50, 38, 0.12) 100%);
-  transition: transform 0.08s ease-out;
+  transform: translate(-50%, -50%) scale(0.6);
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(169, 50, 38, 1) 0%, 
+    rgba(169, 50, 38, 0.8) 100%);
+  transition: transform 0.05s ease-out;
 }
 
-/* Text cursor state */
+/* Text cursor state - clear I-beam indication */
 .cellular-cursor.text .cellular-cursor-core {
-  width: 1.5px;
-  height: 16px;
-  border-radius: 1px;
+  width: 1px;
+  height: 12px;
+  border-radius: 0;
   background: rgba(26, 26, 26, 0.8);
   border: none;
-  box-shadow: 0 1px 2px rgba(26, 26, 26, 0.1);
-  animation: text-cursor-blink 1s infinite ease-in-out;
+  box-shadow: none;
+  animation: text-cursor-blink 1s infinite;
 }
 
-.cellular-cursor.text .cellular-cursor-core::before,
-.cellular-cursor.text .cellular-cursor-core::after {
+.cellular-cursor.text .cellular-cursor-core::before {
   display: none;
 }
 
@@ -170,105 +131,45 @@ button, a, input, textarea, select, [role="button"], [data-interactive],
   display: none;
 }
 
-/* Optimized particle motion animations */
-.cellular-particle-drift {
-  animation: cellular-drift-simple 8s infinite ease-in-out;
-}
-
-@keyframes cellular-drift-simple {
-  0%, 100% { 
-    transform: translate(0, 0) scale(1); 
-    opacity: 0.2;
-  }
-  50% { 
-    transform: translate(6px, -4px) scale(1.1); 
-    opacity: 0.4;
-  }
-}
-
-.cellular-particle-orbit {
-  animation: cellular-orbital-simple 10s infinite linear;
-}
-
-@keyframes cellular-orbital-simple {
-  0% { 
-    transform: rotate(0deg) translateX(10px) rotate(0deg); 
-  }
-  100% { 
-    transform: rotate(360deg) translateX(10px) rotate(-360deg); 
-  }
-}
-
+/* Optimized particle animations - minimal performance impact */
 .cellular-particle-pulse {
-  animation: cellular-pulse-simple 5s infinite ease-in-out;
+  animation: cellular-pulse-minimal 2s infinite ease-in-out;
+  top: 4px;
+  left: 8px;
 }
 
-@keyframes cellular-pulse-simple {
+.cellular-particle-drift {
+  animation: cellular-drift-minimal 3s infinite linear;
+  top: 8px;
+  left: 4px;
+}
+
+@keyframes cellular-pulse-minimal {
   0%, 100% { 
     transform: scale(1); 
-    opacity: 0.15; 
-  }
-  50% { 
-    transform: scale(1.2); 
-    opacity: 0.35; 
-  }
-}
-
-.cellular-particle-flow {
-  animation: cellular-flow-simple 12s infinite ease-in-out;
-}
-
-@keyframes cellular-flow-simple {
-  0%, 100% { 
-    transform: translate(0, 0) scale(1); 
-    border-radius: 50%;
-    opacity: 0.15;
-  }
-  33% { 
-    transform: translate(4px, -6px) scale(1.1); 
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    opacity: 0.3;
-  }
-  66% { 
-    transform: translate(-3px, 4px) scale(0.9); 
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    opacity: 0.25;
-  }
-}
-
-/* Core cursor animations - optimized */
-@keyframes cellular-gentle-pulse {
-  0%, 100% { 
-    opacity: 0.7; 
-    transform: translate(-50%, -50%) scale(1); 
-  }
-  50% { 
-    opacity: 1; 
-    transform: translate(-50%, -50%) scale(1.05); 
-  }
-}
-
-@keyframes cellular-ring-float {
-  0%, 100% { 
-    transform: translate(-50%, -50%) scale(1); 
     opacity: 0.3; 
   }
   50% { 
-    transform: translate(-50%, -50%) scale(1.02); 
-    opacity: 0.5; 
+    transform: scale(1.5); 
+    opacity: 0.6; 
+  }
+}
+
+@keyframes cellular-drift-minimal {
+  0% { 
+    transform: rotate(0deg) translateX(6px) rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg) translateX(6px) rotate(-360deg); 
   }
 }
 
 @keyframes text-cursor-blink {
-  0%, 50% { 
-    opacity: 1; 
-  }
-  51%, 100% { 
-    opacity: 0.2; 
-  }
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
 }
 
-/* Ensure proper layering and no conflicts */
+/* Ensure proper layering */
 .cellular-cursor {
   z-index: 999999;
 }
