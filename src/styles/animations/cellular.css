@@ -1,5 +1,5 @@
 
-/* Optimized Cellular Animation System - Performance First */
+/* Enhanced Cellular Animation System - Organic Motion Focus */
 
 .cellular-background-container {
   position: absolute;
@@ -8,89 +8,113 @@
   transform: translateZ(0); /* Force hardware acceleration */
 }
 
-/* Optimized cellular morphing animation */
-@keyframes cellular-morph-optimized {
+/* Enhanced cellular morphing with more organic variation */
+@keyframes cellular-morph-enhanced {
   0% { 
-    border-radius: 45% 55% 48% 52% / 52% 48% 55% 45%; 
+    border-radius: 42% 58% 45% 55% / 55% 45% 58% 42%; 
     transform: scale(1) rotate(0deg); 
     opacity: 0.3;
   }
-  25% { 
-    border-radius: 62% 38% 35% 65% / 48% 52% 42% 58%; 
-    transform: scale(1.1) rotate(90deg); 
-    opacity: 0.5;
+  20% { 
+    border-radius: 65% 35% 38% 62% / 45% 55% 40% 60%; 
+    transform: scale(1.15) rotate(72deg); 
+    opacity: 0.6;
   }
-  50% { 
-    border-radius: 35% 65% 58% 42% / 62% 38% 48% 52%; 
-    transform: scale(0.9) rotate(180deg); 
-    opacity: 0.4;
-  }
-  75% { 
-    border-radius: 58% 42% 52% 48% / 38% 62% 55% 45%; 
-    transform: scale(1.05) rotate(270deg); 
+  40% { 
+    border-radius: 38% 62% 55% 45% / 62% 38% 45% 55%; 
+    transform: scale(0.85) rotate(144deg); 
     opacity: 0.45;
   }
+  60% { 
+    border-radius: 55% 45% 48% 52% / 35% 65% 58% 42%; 
+    transform: scale(1.08) rotate(216deg); 
+    opacity: 0.55;
+  }
+  80% { 
+    border-radius: 48% 52% 62% 38% / 58% 42% 52% 48%; 
+    transform: scale(0.92) rotate(288deg); 
+    opacity: 0.4;
+  }
   100% { 
-    border-radius: 45% 55% 48% 52% / 52% 48% 55% 45%; 
+    border-radius: 42% 58% 45% 55% / 55% 45% 58% 42%; 
     transform: scale(1) rotate(360deg); 
     opacity: 0.3;
   }
 }
 
-/* Optimized cellular respiration */
-@keyframes cellular-respiration-optimized {
+/* Enhanced cellular respiration with growth cycles */
+@keyframes cellular-respiration-enhanced {
   0% { 
     transform: scale(1); 
     opacity: 0.35;
-    border-radius: 46% 54% 51% 49% / 49% 51% 54% 46%;
-  }
-  50% { 
-    transform: scale(1.08); 
-    opacity: 0.55;
-    border-radius: 54% 46% 49% 51% / 51% 49% 46% 54%;
-  }
-  100% { 
-    transform: scale(1); 
-    opacity: 0.35;
-    border-radius: 46% 54% 51% 49% / 49% 51% 54% 46%;
-  }
-}
-
-/* Optimized drift animation */
-@keyframes cellular-drift-optimized {
-  0% { 
-    transform: rotate(0deg) translateX(10px) rotate(0deg) scale(1); 
-    opacity: 0.35;
+    border-radius: 44% 56% 52% 48% / 48% 52% 56% 44%;
   }
   25% { 
-    transform: rotate(90deg) translateX(12px) rotate(-90deg) scale(1.05); 
-    opacity: 0.5;
+    transform: scale(1.12); 
+    opacity: 0.65;
+    border-radius: 56% 44% 48% 52% / 52% 48% 44% 56%;
   }
   50% { 
-    transform: rotate(180deg) translateX(8px) rotate(-180deg) scale(0.95); 
-    opacity: 0.4;
+    transform: scale(1.25); 
+    opacity: 0.8;
+    border-radius: 48% 52% 56% 44% / 44% 56% 52% 48%;
   }
   75% { 
-    transform: rotate(270deg) translateX(11px) rotate(-270deg) scale(1.02); 
-    opacity: 0.45;
+    transform: scale(1.08); 
+    opacity: 0.55;
+    border-radius: 52% 48% 44% 56% / 56% 44% 48% 52%;
   }
   100% { 
-    transform: rotate(360deg) translateX(10px) rotate(-360deg) scale(1); 
+    transform: scale(1); 
+    opacity: 0.35;
+    border-radius: 44% 56% 52% 48% / 48% 52% 56% 44%;
+  }
+}
+
+/* Enhanced drift with more organic paths */
+@keyframes cellular-drift-enhanced {
+  0% { 
+    transform: rotate(0deg) translateX(12px) rotate(0deg) scale(1); 
+    opacity: 0.35;
+  }
+  20% { 
+    transform: rotate(72deg) translateX(18px) rotate(-72deg) scale(1.08); 
+    opacity: 0.55;
+  }
+  40% { 
+    transform: rotate(144deg) translateX(8px) rotate(-144deg) scale(0.92); 
+    opacity: 0.4;
+  }
+  60% { 
+    transform: rotate(216deg) translateX(15px) rotate(-216deg) scale(1.05); 
+    opacity: 0.5;
+  }
+  80% { 
+    transform: rotate(288deg) translateX(10px) rotate(-288deg) scale(0.95); 
+    opacity: 0.42;
+  }
+  100% { 
+    transform: rotate(360deg) translateX(12px) rotate(-360deg) scale(1); 
     opacity: 0.35;
   }
 }
 
-/* Optimized membrane fluctuation */
-@keyframes membrane-fluctuation-optimized {
+/* Enhanced membrane fluctuation with organic pulsing */
+@keyframes membrane-fluctuation-enhanced {
   0% { 
     border-radius: 50%; 
     transform: scale(1); 
     opacity: 0.25;
   }
-  50% { 
-    border-radius: 45% 55% 60% 40% / 40% 60% 55% 45%; 
-    transform: scale(1.12); 
-    opacity: 0.4;
+  33% { 
+    border-radius: 42% 58% 65% 35% / 35% 65% 58% 42%; 
+    transform: scale(1.18); 
+    opacity: 0.5;
+  }
+  66% { 
+    border-radius: 65% 35% 42% 58% / 58% 42% 35% 65%; 
+    transform: scale(0.88); 
+    opacity: 0.35;
   }
   100% { 
     border-radius: 50%; 
@@ -99,21 +123,87 @@
   }
 }
 
-/* Animation utility classes - optimized */
-.animate-cellular-morph-advanced {
-  animation: cellular-morph-optimized 40s infinite ease-in-out;
+/* New cellular division animation */
+@keyframes cellular-division {
+  0% { 
+    border-radius: 50%;
+    transform: scale(1) scaleX(1);
+    opacity: 0.4;
+  }
+  25% { 
+    border-radius: 45% 55% 50% 50% / 50% 50% 55% 45%;
+    transform: scale(1.1) scaleX(0.95);
+    opacity: 0.6;
+  }
+  50% { 
+    border-radius: 40% 60% 48% 52% / 52% 48% 60% 40%;
+    transform: scale(1.05) scaleX(0.8);
+    opacity: 0.5;
+  }
+  75% { 
+    border-radius: 45% 55% 50% 50% / 50% 50% 55% 45%;
+    transform: scale(1.08) scaleX(0.9);
+    opacity: 0.55;
+  }
+  100% { 
+    border-radius: 50%;
+    transform: scale(1) scaleX(1);
+    opacity: 0.4;
+  }
 }
 
-.animate-cellular-respiration {
-  animation: cellular-respiration-optimized 30s infinite ease-in-out;
+/* New cluster interaction animation */
+@keyframes cellular-cluster-interaction {
+  0% { 
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 0.3;
+    border-radius: 48% 52% 52% 48% / 52% 48% 48% 52%;
+  }
+  25% { 
+    transform: translateX(3px) translateY(-2px) scale(1.06);
+    opacity: 0.5;
+    border-radius: 52% 48% 55% 45% / 45% 55% 48% 52%;
+  }
+  50% { 
+    transform: translateX(-1px) translateY(4px) scale(0.94);
+    opacity: 0.4;
+    border-radius: 55% 45% 48% 52% / 52% 48% 45% 55%;
+  }
+  75% { 
+    transform: translateX(-2px) translateY(-1px) scale(1.03);
+    opacity: 0.45;
+    border-radius: 48% 52% 45% 55% / 55% 45% 52% 48%;
+  }
+  100% { 
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 0.3;
+    border-radius: 48% 52% 52% 48% / 52% 48% 48% 52%;
+  }
 }
 
-.animate-cellular-drift-organic {
-  animation: cellular-drift-optimized 50s infinite linear;
+/* Enhanced animation utility classes */
+.animate-cellular-morph-enhanced {
+  animation: cellular-morph-enhanced 50s infinite ease-in-out;
 }
 
-.animate-membrane-fluctuation {
-  animation: membrane-fluctuation-optimized 35s infinite ease-in-out;
+.animate-cellular-respiration-enhanced {
+  animation: cellular-respiration-enhanced 35s infinite ease-in-out;
+}
+
+.animate-cellular-drift-enhanced {
+  animation: cellular-drift-enhanced 60s infinite linear;
+}
+
+.animate-membrane-fluctuation-enhanced {
+  animation: membrane-fluctuation-enhanced 45s infinite ease-in-out;
+}
+
+.animate-cellular-division {
+  animation: cellular-division 40s infinite ease-in-out;
+}
+
+.animate-cellular-cluster-interaction {
+  animation: cellular-cluster-interaction 55s infinite ease-in-out;
 }
 
 /* Performance optimizations */
@@ -124,13 +214,15 @@
   transform-style: preserve-3d;
 }
 
-/* Reduce motion for users who prefer it */
+/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .animate-cellular-morph-advanced,
-  .animate-cellular-respiration,
-  .animate-cellular-drift-organic,
-  .animate-membrane-fluctuation {
-    animation-duration: 200s;
+  .animate-cellular-morph-enhanced,
+  .animate-cellular-respiration-enhanced,
+  .animate-cellular-drift-enhanced,
+  .animate-membrane-fluctuation-enhanced,
+  .animate-cellular-division,
+  .animate-cellular-cluster-interaction {
+    animation-duration: 300s;
     animation-timing-function: linear;
   }
 }

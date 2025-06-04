@@ -15,8 +15,8 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
 
   useEffect(() => {
     if (isVisible) {
-      // Optimized particle count for smooth performance
-      const particles = generateCellularParticles(25);
+      // Significantly increased particle count for richer ambient animation
+      const particles = generateCellularParticles(45);
       setCellElements(particles);
     }
   }, [isVisible]);
@@ -25,22 +25,25 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Optimized cellular particle system with performance monitoring */}
+      {/* Enhanced cellular particle system with independent motion */}
       <div className="cellular-background-container">
         {cellElements.map((particle) => (
           <CellularParticle key={particle.id} particle={particle} />
         ))}
       </div>
       
-      {/* Optimized membrane overlay system */}
+      {/* Enhanced membrane overlay system */}
       <MembraneOverlays />
       
-      {/* Subtle atmosphere enhancement */}
+      {/* Enhanced atmospheric depth */}
       <div 
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-8"
         style={{
-          background: `radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 70%)`,
-          filter: 'blur(100px)',
+          background: `
+            radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.025) 0%, transparent 60%),
+            radial-gradient(circle at 70% 60%, rgba(248, 250, 252, 0.02) 0%, transparent 70%)
+          `,
+          filter: 'blur(120px)',
           zIndex: 0
         }}
       />
