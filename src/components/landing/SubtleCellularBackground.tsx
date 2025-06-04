@@ -15,8 +15,8 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
 
   useEffect(() => {
     if (isVisible) {
-      // Significantly increased particle count for rich, immersive cellular environment
-      const particles = generateCellularParticles(85);
+      // Significantly increased particle count for rich, immersive cellular lab environment
+      const particles = generateCellularParticles(120);
       setCellElements(particles);
     }
   }, [isVisible]);
@@ -32,41 +32,73 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
         ))}
       </div>
       
-      {/* Enhanced membrane overlay system */}
+      {/* Enhanced membrane overlay system for lab atmosphere */}
       <MembraneOverlays />
       
-      {/* Enhanced atmospheric depth with multiple layers */}
+      {/* Enhanced atmospheric depth with multiple layers for lab ambiance */}
       <div 
-        className="absolute inset-0 opacity-6"
+        className="absolute inset-0 opacity-8"
         style={{
           background: `
-            radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 55%),
-            radial-gradient(circle at 75% 70%, rgba(248, 250, 252, 0.015) 0%, transparent 65%),
-            radial-gradient(circle at 50% 20%, rgba(139, 92, 246, 0.008) 0%, transparent 40%),
-            radial-gradient(circle at 80% 40%, rgba(251, 146, 60, 0.006) 0%, transparent 45%)
+            radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.025) 0%, transparent 50%),
+            radial-gradient(circle at 80% 75%, rgba(248, 250, 252, 0.02) 0%, transparent 60%),
+            radial-gradient(circle at 45% 15%, rgba(139, 92, 246, 0.01) 0%, transparent 35%),
+            radial-gradient(circle at 75% 35%, rgba(251, 146, 60, 0.008) 0%, transparent 40%),
+            radial-gradient(circle at 25% 65%, rgba(255, 255, 255, 0.015) 0%, transparent 45%),
+            radial-gradient(circle at 65% 85%, rgba(229, 231, 235, 0.012) 0%, transparent 50%)
           `,
-          filter: 'blur(100px)',
+          filter: 'blur(80px)',
           zIndex: 0
         }}
       />
 
-      {/* Additional subtle texture layer for enhanced depth */}
+      {/* Additional lab-like texture layer for enhanced scientific depth */}
       <div 
-        className="absolute inset-0 opacity-4"
+        className="absolute inset-0 opacity-6"
         style={{
           background: `
-            repeating-radial-gradient(circle at 30% 60%, 
+            repeating-radial-gradient(circle at 25% 50%, 
               transparent 0%, 
-              rgba(255, 255, 255, 0.003) 20%, 
-              transparent 40%
+              rgba(255, 255, 255, 0.004) 18%, 
+              transparent 35%
             ),
-            repeating-radial-gradient(circle at 70% 30%, 
+            repeating-radial-gradient(circle at 75% 25%, 
               transparent 0%, 
-              rgba(229, 231, 235, 0.005) 25%, 
-              transparent 50%
+              rgba(229, 231, 235, 0.006) 22%, 
+              transparent 45%
+            ),
+            repeating-radial-gradient(circle at 50% 75%, 
+              transparent 0%, 
+              rgba(139, 92, 246, 0.003) 15%, 
+              transparent 30%
             )
           `,
-          filter: 'blur(150px)',
+          filter: 'blur(120px)',
+          zIndex: 0
+        }}
+      />
+
+      {/* Subtle cellular grid pattern for scientific lab aesthetic */}
+      <div 
+        className="absolute inset-0 opacity-3"
+        style={{
+          background: `
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 120px,
+              rgba(255, 255, 255, 0.008) 120px,
+              rgba(255, 255, 255, 0.008) 122px
+            ),
+            repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 120px,
+              rgba(255, 255, 255, 0.008) 120px,
+              rgba(255, 255, 255, 0.008) 122px
+            )
+          `,
+          filter: 'blur(1px)',
           zIndex: 0
         }}
       />

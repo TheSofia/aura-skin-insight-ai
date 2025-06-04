@@ -17,22 +17,22 @@
   }
   20% { 
     border-radius: 65% 35% 38% 62% / 45% 55% 40% 60%; 
-    transform: scale(1.15) rotate(72deg); 
-    opacity: 0.6;
+    transform: scale(1.18) rotate(72deg); 
+    opacity: 0.65;
   }
   40% { 
     border-radius: 38% 62% 55% 45% / 62% 38% 45% 55%; 
-    transform: scale(0.85) rotate(144deg); 
+    transform: scale(0.82) rotate(144deg); 
     opacity: 0.45;
   }
   60% { 
     border-radius: 55% 45% 48% 52% / 35% 65% 58% 42%; 
-    transform: scale(1.08) rotate(216deg); 
-    opacity: 0.55;
+    transform: scale(1.12) rotate(216deg); 
+    opacity: 0.58;
   }
   80% { 
     border-radius: 48% 52% 62% 38% / 58% 42% 52% 48%; 
-    transform: scale(0.92) rotate(288deg); 
+    transform: scale(0.88) rotate(288deg); 
     opacity: 0.4;
   }
   100% { 
@@ -50,18 +50,18 @@
     border-radius: 44% 56% 52% 48% / 48% 52% 56% 44%;
   }
   25% { 
-    transform: scale(1.12); 
-    opacity: 0.65;
+    transform: scale(1.15); 
+    opacity: 0.7;
     border-radius: 56% 44% 48% 52% / 52% 48% 44% 56%;
   }
   50% { 
-    transform: scale(1.25); 
-    opacity: 0.8;
+    transform: scale(1.32); 
+    opacity: 0.85;
     border-radius: 48% 52% 56% 44% / 44% 56% 52% 48%;
   }
   75% { 
     transform: scale(1.08); 
-    opacity: 0.55;
+    opacity: 0.58;
     border-radius: 52% 48% 44% 56% / 56% 44% 48% 52%;
   }
   100% { 
@@ -74,27 +74,27 @@
 /* Enhanced drift with more organic paths */
 @keyframes cellular-drift-enhanced {
   0% { 
-    transform: rotate(0deg) translateX(12px) rotate(0deg) scale(1); 
+    transform: rotate(0deg) translateX(15px) rotate(0deg) scale(1); 
     opacity: 0.35;
   }
   20% { 
-    transform: rotate(72deg) translateX(18px) rotate(-72deg) scale(1.08); 
-    opacity: 0.55;
+    transform: rotate(72deg) translateX(22px) rotate(-72deg) scale(1.1); 
+    opacity: 0.6;
   }
   40% { 
-    transform: rotate(144deg) translateX(8px) rotate(-144deg) scale(0.92); 
-    opacity: 0.4;
-  }
-  60% { 
-    transform: rotate(216deg) translateX(15px) rotate(-216deg) scale(1.05); 
-    opacity: 0.5;
-  }
-  80% { 
-    transform: rotate(288deg) translateX(10px) rotate(-288deg) scale(0.95); 
+    transform: rotate(144deg) translateX(10px) rotate(-144deg) scale(0.9); 
     opacity: 0.42;
   }
+  60% { 
+    transform: rotate(216deg) translateX(18px) rotate(-216deg) scale(1.06); 
+    opacity: 0.52;
+  }
+  80% { 
+    transform: rotate(288deg) translateX(12px) rotate(-288deg) scale(0.94); 
+    opacity: 0.44;
+  }
   100% { 
-    transform: rotate(360deg) translateX(12px) rotate(-360deg) scale(1); 
+    transform: rotate(360deg) translateX(15px) rotate(-360deg) scale(1); 
     opacity: 0.35;
   }
 }
@@ -108,13 +108,13 @@
   }
   33% { 
     border-radius: 42% 58% 65% 35% / 35% 65% 58% 42%; 
-    transform: scale(1.18); 
-    opacity: 0.5;
+    transform: scale(1.22); 
+    opacity: 0.55;
   }
   66% { 
     border-radius: 65% 35% 42% 58% / 58% 42% 35% 65%; 
-    transform: scale(0.88); 
-    opacity: 0.35;
+    transform: scale(0.84); 
+    opacity: 0.38;
   }
   100% { 
     border-radius: 50%; 
@@ -123,7 +123,7 @@
   }
 }
 
-/* New cellular division animation */
+/* Enhanced cellular division animation */
 @keyframes cellular-division {
   0% { 
     border-radius: 50%;
@@ -132,18 +132,18 @@
   }
   25% { 
     border-radius: 45% 55% 50% 50% / 50% 50% 55% 45%;
-    transform: scale(1.1) scaleX(0.95);
-    opacity: 0.6;
+    transform: scale(1.15) scaleX(0.92);
+    opacity: 0.65;
   }
   50% { 
     border-radius: 40% 60% 48% 52% / 52% 48% 60% 40%;
-    transform: scale(1.05) scaleX(0.8);
-    opacity: 0.5;
+    transform: scale(1.08) scaleX(0.78);
+    opacity: 0.52;
   }
   75% { 
     border-radius: 45% 55% 50% 50% / 50% 50% 55% 45%;
-    transform: scale(1.08) scaleX(0.9);
-    opacity: 0.55;
+    transform: scale(1.12) scaleX(0.88);
+    opacity: 0.58;
   }
   100% { 
     border-radius: 50%;
@@ -152,7 +152,7 @@
   }
 }
 
-/* New cluster interaction animation */
+/* Enhanced cluster interaction animation */
 @keyframes cellular-cluster-interaction {
   0% { 
     transform: translateX(0) translateY(0) scale(1);
@@ -160,18 +160,18 @@
     border-radius: 48% 52% 52% 48% / 52% 48% 48% 52%;
   }
   25% { 
-    transform: translateX(3px) translateY(-2px) scale(1.06);
-    opacity: 0.5;
+    transform: translateX(4px) translateY(-3px) scale(1.08);
+    opacity: 0.52;
     border-radius: 52% 48% 55% 45% / 45% 55% 48% 52%;
   }
   50% { 
-    transform: translateX(-1px) translateY(4px) scale(0.94);
-    opacity: 0.4;
+    transform: translateX(-2px) translateY(5px) scale(0.92);
+    opacity: 0.42;
     border-radius: 55% 45% 48% 52% / 52% 48% 45% 55%;
   }
   75% { 
-    transform: translateX(-2px) translateY(-1px) scale(1.03);
-    opacity: 0.45;
+    transform: translateX(-3px) translateY(-2px) scale(1.05);
+    opacity: 0.48;
     border-radius: 48% 52% 45% 55% / 55% 45% 52% 48%;
   }
   100% { 
@@ -181,67 +181,67 @@
   }
 }
 
-/* New lifecycle animation for organic growth and contraction */
+/* Enhanced lifecycle animation for organic growth and contraction */
 @keyframes cellular-lifecycle {
   0% { 
-    transform: scale(0.8) rotate(0deg);
-    opacity: 0.2;
+    transform: scale(0.75) rotate(0deg);
+    opacity: 0.18;
     border-radius: 60% 40% 45% 55% / 55% 45% 40% 60%;
   }
   15% { 
-    transform: scale(1.0) rotate(25deg);
-    opacity: 0.4;
+    transform: scale(0.95) rotate(28deg);
+    opacity: 0.42;
     border-radius: 45% 55% 60% 40% / 40% 60% 55% 45%;
   }
   35% { 
-    transform: scale(1.2) rotate(70deg);
-    opacity: 0.7;
+    transform: scale(1.25) rotate(75deg);
+    opacity: 0.75;
     border-radius: 55% 45% 40% 60% / 60% 40% 45% 55%;
   }
   55% { 
-    transform: scale(1.35) rotate(120deg);
-    opacity: 0.8;
+    transform: scale(1.42) rotate(125deg);
+    opacity: 0.88;
     border-radius: 40% 60% 55% 45% / 45% 55% 60% 40%;
   }
   75% { 
-    transform: scale(1.1) rotate(180deg);
-    opacity: 0.5;
+    transform: scale(1.15) rotate(185deg);
+    opacity: 0.55;
     border-radius: 50% 50% 48% 52% / 52% 48% 50% 50%;
   }
   100% { 
-    transform: scale(0.8) rotate(220deg);
-    opacity: 0.2;
+    transform: scale(0.75) rotate(230deg);
+    opacity: 0.18;
     border-radius: 60% 40% 45% 55% / 55% 45% 40% 60%;
   }
 }
 
-/* Enhanced animation utility classes */
+/* Animation utility classes */
 .animate-cellular-morph-enhanced {
-  animation: cellular-morph-enhanced 45s infinite ease-in-out;
+  animation: cellular-morph-enhanced 42s infinite ease-in-out;
 }
 
 .animate-cellular-respiration-enhanced {
-  animation: cellular-respiration-enhanced 32s infinite ease-in-out;
+  animation: cellular-respiration-enhanced 35s infinite ease-in-out;
 }
 
 .animate-cellular-drift-enhanced {
-  animation: cellular-drift-enhanced 55s infinite linear;
+  animation: cellular-drift-enhanced 52s infinite linear;
 }
 
 .animate-membrane-fluctuation-enhanced {
-  animation: membrane-fluctuation-enhanced 40s infinite ease-in-out;
+  animation: membrane-fluctuation-enhanced 38s infinite ease-in-out;
 }
 
 .animate-cellular-division {
-  animation: cellular-division 38s infinite ease-in-out;
+  animation: cellular-division 36s infinite ease-in-out;
 }
 
 .animate-cellular-cluster-interaction {
-  animation: cellular-cluster-interaction 50s infinite ease-in-out;
+  animation: cellular-cluster-interaction 48s infinite ease-in-out;
 }
 
 .animate-cellular-lifecycle {
-  animation: cellular-lifecycle 60s infinite ease-in-out;
+  animation: cellular-lifecycle 58s infinite ease-in-out;
 }
 
 /* Performance optimizations */
