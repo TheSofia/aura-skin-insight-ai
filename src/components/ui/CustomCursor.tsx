@@ -6,26 +6,31 @@ const CustomCursor: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isText, setIsText] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   
   // Use refs for performance - no state updates on every mouse move
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const cursorPositionRef = useRef({ x: 0, y: 0 });
   const animationIdRef = useRef<number>();
-  const lastUpdateTime = useRef(0);
 
-  // Optimized mouse move handler with throttling
+  // Optimized mouse move handler
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    const now = performance.now();
-    if (now - lastUpdateTime.current < 16) return; // Throttle to 60fps max
-    
     mousePositionRef.current = { x: e.clientX, y: e.clientY };
-    lastUpdateTime.current = now;
+    setIsVisible(true);
+  }, []);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsVisible(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsVisible(false);
   }, []);
 
   const handleMouseOver = useCallback((e: MouseEvent) => {
     const target = e.target as HTMLElement;
     
-    // Simplified detection for better performance
+    // Check if hovering over interactive elements
     const isInteractive = Boolean(
       target.matches('button, a, input, textarea, select, [role="button"], [data-interactive]') ||
       target.closest('button, a, input, textarea, select, [role="button"], [data-interactive]')
@@ -45,37 +50,39 @@ const CustomCursor: React.FC = () => {
   }, []);
 
   const handleMouseDown = useCallback(() => {
-    console.log('CustomCursor: Mouse down detected');
     setIsActive(true);
   }, []);
   
-  const handleMouseUp = useCallback(() => setIsActive(false), []);
+  const handleMouseUp = useCallback(() => {
+    setIsActive(false);
+  }, []);
 
   useEffect(() => {
-    console.log('CustomCursor: Component mounted');
     const cursor = cursorRef.current;
     if (!cursor) return;
 
-    // Optimized cursor following with smooth interpolation
+    // Smooth cursor following animation
     const updateCursor = () => {
-      const lag = 0.15; // Smooth following
+      const lag = 0.15;
       const mouse = mousePositionRef.current;
       const cursorPos = cursorPositionRef.current;
       
-      // Simple lerp for smooth movement
+      // Smooth interpolation
       cursorPos.x += (mouse.x - cursorPos.x) * lag;
       cursorPos.y += (mouse.y - cursorPos.y) * lag;
       
-      // Use transform3d for hardware acceleration
+      // Apply transform with hardware acceleration
       cursor.style.transform = `translate3d(${cursorPos.x - 8}px, ${cursorPos.y - 8}px, 0)`;
       animationIdRef.current = requestAnimationFrame(updateCursor);
     };
 
     updateCursor();
 
-    // Event listeners with passive option for better performance
+    // Add event listeners
     const options: AddEventListenerOptions = { passive: true };
     document.addEventListener('mousemove', handleMouseMove, options);
+    document.addEventListener('mouseenter', handleMouseEnter, options);
+    document.addEventListener('mouseleave', handleMouseLeave, options);
     document.addEventListener('mouseover', handleMouseOver, options);
     document.addEventListener('mouseout', handleMouseOut, options);
     document.addEventListener('mousedown', handleMouseDown, options);
@@ -87,28 +94,40 @@ const CustomCursor: React.FC = () => {
       }
       
       document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseenter', handleMouseEnter);
+      document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [handleMouseMove, handleMouseOver, handleMouseOut, handleMouseDown, handleMouseUp]);
+  }, [handleMouseMove, handleMouseEnter, handleMouseLeave, handleMouseOver, handleMouseOut, handleMouseDown, handleMouseUp]);
 
   return (
     <div
       ref={cursorRef}
-      className={`cellular-cursor ${isHovering ? 'hover' : ''} ${isActive ? 'active' : ''} ${isText ? 'text' : ''}`}
-      style={{ pointerEvents: 'none' }}
+      className={`cellular-cursor ${isVisible ? 'visible' : ''} ${isHovering ? 'hover' : ''} ${isActive ? 'active' : ''} ${isText ? 'text' : ''}`}
+      style={{ 
+        pointerEvents: 'none',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        zIndex: 99999,
+        width: '16px',
+        height: '16px',
+        opacity: isVisible ? 1 : 0,
+        transition: 'opacity 0.2s ease-out'
+      }}
     >
-      {/* Cellular cursor core with organic design */}
+      {/* Cellular cursor core */}
       <div className="cellular-cursor-core" />
       
       {/* Cellular particles - show when hovering */}
       {isHovering && (
         <div className="cellular-particle-system">
-          <div className="cellular-particle cellular-particle-pulse bg-white/10" />
-          <div className="cellular-particle cellular-particle-drift bg-white/15" />
-          <div className="cellular-particle cellular-particle-orbit bg-white/8" />
+          <div className="cellular-particle cellular-particle-pulse" />
+          <div className="cellular-particle cellular-particle-drift" />
+          <div className="cellular-particle cellular-particle-orbit" />
         </div>
       )}
     </div>
