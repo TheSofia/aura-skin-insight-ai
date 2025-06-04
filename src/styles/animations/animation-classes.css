@@ -22,6 +22,14 @@
   animation: cellular-morph-minimal 35s infinite ease-in-out;
 }
 
+.animate-cellular-particle-float {
+  animation: cellular-particle-float 25s infinite ease-in-out;
+}
+
+.animate-orbital-motion {
+  animation: orbital-motion 35s infinite linear;
+}
+
 /* Float animations */
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -102,5 +110,58 @@
     opacity: 1; 
     transform: translateY(0) scale(1); 
     filter: blur(0); 
+  }
+}
+
+/* Enhanced cellular particle float animation */
+@keyframes cellular-particle-float {
+  0% { 
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg); 
+    opacity: 0.6; 
+    border-radius: 50%;
+  }
+  25% { 
+    transform: translateY(-4px) translateX(3px) scale(1.05) rotate(90deg); 
+    opacity: 0.8; 
+    border-radius: 48% 52% 51% 49% / 49% 51% 49% 51%;
+  }
+  50% { 
+    transform: translateY(-2px) translateX(5px) scale(1.02) rotate(180deg); 
+    opacity: 0.75; 
+    border-radius: 52% 48% 49% 51% / 51% 49% 51% 49%;
+  }
+  75% { 
+    transform: translateY(2px) translateX(2px) scale(0.98) rotate(270deg); 
+    opacity: 0.65; 
+    border-radius: 49% 51% 52% 48% / 48% 52% 50% 50%;
+  }
+  100% { 
+    transform: translateY(0) translateX(0) scale(1) rotate(360deg); 
+    opacity: 0.6; 
+    border-radius: 50%;
+  }
+}
+
+/* Enhanced orbital motion animation */
+@keyframes orbital-motion {
+  0% { 
+    transform: rotate(0deg) translateX(2px) rotate(0deg) scale(1); 
+    opacity: 0.7;
+  }
+  25% { 
+    transform: rotate(90deg) translateX(3px) rotate(-90deg) scale(1.02); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: rotate(180deg) translateX(2px) rotate(-180deg) scale(0.99); 
+    opacity: 0.75;
+  }
+  75% { 
+    transform: rotate(270deg) translateX(3px) rotate(-270deg) scale(1.01); 
+    opacity: 0.7;
+  }
+  100% { 
+    transform: rotate(360deg) translateX(2px) rotate(-360deg) scale(1); 
+    opacity: 0.7;
   }
 }

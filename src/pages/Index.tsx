@@ -57,7 +57,7 @@ const Index = () => {
       {/* Cellular Cursor Component */}
       <CustomCursor />
       
-      {/* Subtle Cellular Background Animation */}
+      {/* Enhanced Cellular Background Animation */}
       <SubtleCellularBackground isVisible={isLoaded} />
       
       {/* Landing Page Header with Navigation - positioned top left */}
@@ -65,13 +65,13 @@ const Index = () => {
       
       <div 
         ref={pageRef}
-        className="min-h-screen flex flex-col overflow-hidden relative notebook-red-margin"
+        className="min-h-screen flex flex-col overflow-hidden relative"
         style={{
           background: 'var(--dermaagent-notebook-base)',
           fontFamily: "'IBM Plex Mono', monospace",
         }}
       >
-        {/* Static School Notebook Background - Clean horizontal stripes with margin line */}
+        {/* Static School Notebook Background - Clean horizontal stripes without margin line */}
         <div 
           className="fixed inset-0 pointer-events-none z-0"
           style={{
@@ -82,13 +82,6 @@ const Index = () => {
                 transparent 27px,
                 #E3E3E3 27px,
                 #E3E3E3 28px
-              ),
-              linear-gradient(
-                90deg,
-                #E3E3E3 88px,
-                #E3E3E3 90px,
-                transparent 90px,
-                transparent 100%
               )
             `,
             opacity: 0.3,
