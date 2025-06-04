@@ -44,10 +44,15 @@ const CustomCursor: React.FC = () => {
     setIsText(false);
   }, []);
 
-  const handleMouseDown = useCallback(() => setIsActive(true), []);
+  const handleMouseDown = useCallback(() => {
+    console.log('CustomCursor: Mouse down detected');
+    setIsActive(true);
+  }, []);
+  
   const handleMouseUp = useCallback(() => setIsActive(false), []);
 
   useEffect(() => {
+    console.log('CustomCursor: Component mounted');
     const cursor = cursorRef.current;
     if (!cursor) return;
 
