@@ -1,109 +1,83 @@
 
 /* UI Element Animation Keyframes */
 
-/* Fade-in animations with different directions */
-@keyframes fade-in {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fade-in-down {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fade-in-left {
-  0% { opacity: 0; transform: translateX(20px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fade-in-right {
-  0% { opacity: 0; transform: translateX(-20px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-
-/* Fade in sequence for landing page text - enhanced */
-@keyframes fade-in-sequence {
-  0% { opacity: 0; transform: translateY(10px); filter: blur(5px); }
-  20% { opacity: 0.2; transform: translateY(8px); filter: blur(3px); }
-  60% { opacity: 0.6; transform: translateY(4px); filter: blur(1px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-/* Letter reveal animation */
-@keyframes letter-reveal {
-  0% { opacity: 0; transform: translateY(10px); filter: blur(2px); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-/* Kerning adjustment animation */
-@keyframes kerning-adjust {
-  0% { letter-spacing: -0.02em; }
-  100% { letter-spacing: normal; }
-}
-
-/* Chat bubble animation */
-@keyframes chat-bubble-in {
-  0% { opacity: 0; transform: translateY(10px) scale(0.95); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* Badge notification pulse */
-@keyframes badge-pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-/* Typing indicator animation */
-@keyframes typing-indicator {
-  0%, 80%, 100% { 
-    transform: scale(0);
-    opacity: 0.6;
-    background-color: var(--beautyagent-medium-grey, #9F9EA1);
+/* Float animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
   }
-  40% { 
-    transform: scale(1);
-    opacity: 1;
-    background-color: var(--beautyagent-violet-titanium-light, var(--beautyagent-violet-titanium));
+  50% { 
+    transform: translateY(-10px) rotate(2deg); 
   }
 }
 
-/* Liquid button animation */
-@keyframes liquid-button {
-  0% { border-radius: 50px; }
-  25% { border-radius: 56px 44px 54px 46px / 50px; }
-  50% { border-radius: 44px 56px 46px 54px / 50px; }
-  75% { border-radius: 50px 50px 46px 54px / 56px 44px 52px 48px; }
-  100% { border-radius: 50px; }
+@keyframes float-enhanced {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); 
+    opacity: 0.7;
+  }
+  25% { 
+    transform: translateY(-5px) translateX(2px) rotate(1deg) scale(1.02); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-8px) translateX(0px) rotate(2deg) scale(1.05); 
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateY(-3px) translateX(-2px) rotate(1deg) scale(1.02); 
+    opacity: 0.8;
+  }
 }
 
-/* Ripple animation for buttons */
-@keyframes ripple {
-  0% { transform: scale(0); opacity: 0.5; }
-  100% { transform: scale(2); opacity: 0; }
+@keyframes elegant-fade-in {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95); 
+    filter: blur(3px); 
+  }
+  60% { 
+    opacity: 0.8; 
+    transform: translateY(5px) scale(0.98); 
+    filter: blur(1px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+    filter: blur(0); 
+  }
 }
 
-/* Variable font weight animation */
-@keyframes font-weight-shift {
-  0% { font-variation-settings: 'wght' 300; }
-  50% { font-variation-settings: 'wght' 400; }
-  100% { font-variation-settings: 'wght' 300; }
+/* Animation utility classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-/* Glass card hover glow */
-@keyframes card-glow {
-  0% { box-shadow: 0 8px 20px rgba(31, 38, 135, 0.07); }
-  100% { box-shadow: 0 8px 25px rgba(126, 105, 171, 0.15); }
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
 }
 
-/* Text blur transition */
-@keyframes text-blur-transition {
-  0% { filter: blur(3px); opacity: 0.7; }
-  100% { filter: blur(0); opacity: 1; }
+.animate-float-subtle {
+  animation: float 12s ease-in-out infinite;
+}
+
+.animate-float-enhanced {
+  animation: float-enhanced 10s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-very-slow {
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-elegant-fade-in {
+  animation: elegant-fade-in 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.animate-elegant-fade-in-delayed {
+  animation: elegant-fade-in 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.6s forwards;
+  opacity: 0;
 }

@@ -8,22 +8,6 @@
 
 /* Keep only essential shared animations here */
 
-/* Base fade and scale animations - most commonly used */
-@keyframes fade-in {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fade-out {
-  0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(10px); }
-}
-
-@keyframes scale-in {
-  0% { transform: scale(0.95); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
 /* Accordion animations for UI components */
 @keyframes accordion-down {
   from { height: 0; }
@@ -33,18 +17,6 @@
 @keyframes accordion-up {
   from { height: var(--radix-accordion-content-height); }
   to { height: 0; }
-}
-
-/* Basic glow animation */
-@keyframes glow {
-  0%, 100% { opacity: 1; box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
-  50% { opacity: 0.8; box-shadow: 0 0 35px rgba(249, 115, 22, 0.4); }
-}
-
-/* Basic rotation for loading states */
-@keyframes rotate-slow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /* DermaAgent Logo Animation - Refined gentle breathing effect */
@@ -85,25 +57,6 @@
   0%, 40% { opacity: 0.7; }
   41%, 80% { opacity: 0; }
   81%, 100% { opacity: 0.7; }
-}
-
-/* Elegant fade-in sequence for page elements */
-@keyframes elegant-fade-in {
-  0% { 
-    opacity: 0; 
-    transform: translateY(15px); 
-    filter: blur(2px); 
-  }
-  60% { 
-    opacity: 0.7; 
-    transform: translateY(5px); 
-    filter: blur(0.5px); 
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateY(0); 
-    filter: blur(0); 
-  }
 }
 
 /* Subtle cellular background motion - ultra refined */
