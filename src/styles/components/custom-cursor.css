@@ -1,277 +1,47 @@
 
-/* Cellular Custom Cursor System - Performance Optimized */
+/* Classic Cursor System - Default Browser Functionality */
 
-/* Hide default cursor when custom cursor is active */
-.custom-cursor-active * {
-  cursor: none !important;
+/* Ensure all elements use default browser cursor */
+* {
+  cursor: auto !important;
 }
 
-/* Fallback for mobile devices */
+/* Standard interactive element cursors */
+button, a, input, textarea, select, [role="button"], [data-interactive] {
+  cursor: pointer !important;
+}
+
+/* Text input cursors */
+input[type="text"], input[type="email"], input[type="password"], textarea, [contenteditable="true"] {
+  cursor: text !important;
+}
+
+/* Disabled elements */
+button:disabled, input:disabled, textarea:disabled, select:disabled {
+  cursor: not-allowed !important;
+}
+
+/* Resize cursors for resizable elements */
+textarea[resize] {
+  cursor: auto !important;
+}
+
+/* Hide any custom cursor elements that might still exist */
+.cellular-cursor {
+  display: none !important;
+}
+
+.custom-cursor-active * {
+  cursor: auto !important;
+}
+
+/* Ensure mobile devices keep their default touch behavior */
 @media (hover: none) and (pointer: coarse) {
-  .cellular-cursor {
-    display: none !important;
-  }
-  
   * {
     cursor: auto !important;
   }
   
   button, a, input, textarea, select, [role="button"], [data-interactive] {
-    cursor: pointer !important;
-  }
-}
-
-/* Cellular cursor container - optimized for performance */
-.cellular-cursor {
-  position: fixed;
-  pointer-events: none;
-  z-index: 99999;
-  top: 0;
-  left: 0;
-  width: 16px;
-  height: 16px;
-  will-change: transform, opacity;
-  mix-blend-mode: normal;
-  backface-visibility: hidden; /* Optimize for hardware acceleration */
-  transform-style: preserve-3d; /* Enable 3D acceleration */
-}
-
-/* Ensure cursor is visible */
-.cellular-cursor.visible {
-  opacity: 1;
-}
-
-/* Cellular particle system container */
-.cellular-particle-system {
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  width: 40px;
-  height: 40px;
-  pointer-events: none;
-  will-change: transform;
-}
-
-/* Cellular particles - hardware accelerated */
-.cellular-particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  pointer-events: none;
-  will-change: transform, opacity;
-  background: rgba(255, 255, 255, 0.6);
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-/* Main cellular cursor core - organic design with optimized animations */
-.cellular-cursor-core {
-  width: 12px;
-  height: 12px;
-  border-radius: 45% 55% 52% 48% / 48% 52% 55% 45%;
-  background: radial-gradient(ellipse at 35% 25%, 
-    rgba(255, 255, 255, 0.9) 0%, 
-    rgba(248, 250, 252, 0.7) 35%, 
-    rgba(226, 232, 240, 0.5) 70%, 
-    rgba(255, 255, 255, 0.3) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
-    0 0 8px rgba(255, 255, 255, 0.4),
-    inset 0 0 4px rgba(255, 255, 255, 0.3);
-  z-index: 10;
-  animation: cellular-core-breathe 3s infinite ease-in-out;
-  will-change: transform, border-radius;
-  backface-visibility: hidden;
-}
-
-/* Cellular core inner elements */
-.cellular-cursor-core::before {
-  content: '';
-  position: absolute;
-  top: 25%;
-  left: 30%;
-  width: 3px;
-  height: 2.5px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 60%;
-  transform: translate(-50%, -50%);
-  opacity: 0.7;
-  will-change: transform;
-}
-
-.cellular-cursor-core::after {
-  content: '';
-  position: absolute;
-  top: 60%;
-  left: 65%;
-  width: 2px;
-  height: 1.5px;
-  background: rgba(248, 250, 252, 0.6);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.5;
-  will-change: transform;
-}
-
-/* Hover state - red accent with optimized transforms */
-.cellular-cursor.hover .cellular-cursor-core {
-  transform: translate(-50%, -50%) scale3d(1.4, 1.4, 1);
-  background: radial-gradient(ellipse at 35% 25%, 
-    rgba(239, 68, 68, 0.9) 0%, 
-    rgba(239, 68, 68, 0.7) 35%, 
-    rgba(248, 113, 113, 0.5) 70%, 
-    rgba(255, 255, 255, 0.3) 100%);
-  border-color: rgba(239, 68, 68, 0.8);
-  box-shadow: 
-    0 0 12px rgba(239, 68, 68, 0.6),
-    inset 0 0 6px rgba(255, 255, 255, 0.4);
-  animation: cellular-core-excited 1.5s infinite ease-in-out;
-}
-
-/* Active state - red click effect with hardware acceleration */
-.cellular-cursor.active .cellular-cursor-core {
-  transform: translate(-50%, -50%) scale3d(0.8, 0.8, 1);
-  background: radial-gradient(ellipse at 35% 25%, 
-    rgba(220, 38, 38, 1) 0%, 
-    rgba(239, 68, 68, 0.9) 50%, 
-    rgba(248, 113, 113, 0.7) 100%);
-  border-color: rgba(220, 38, 38, 1);
-  transition: all 0.1s ease-out;
-  animation: cellular-core-division 0.3s ease-out;
-}
-
-/* Text cursor state - optimized */
-.cellular-cursor.text .cellular-cursor-core {
-  width: 2px;
-  height: 16px;
-  border-radius: 1px;
-  background: rgba(55, 65, 81, 0.9);
-  border: 1px solid rgba(55, 65, 81, 0.7);
-  box-shadow: 0 0 4px rgba(55, 65, 81, 0.3);
-  animation: text-cursor-pulse 1.2s infinite;
-}
-
-.cellular-cursor.text .cellular-cursor-core::before,
-.cellular-cursor.text .cellular-cursor-core::after {
-  display: none;
-}
-
-.cellular-cursor.text .cellular-particle {
-  display: none;
-}
-
-/* Particle animations - hardware accelerated */
-.cellular-particle-pulse {
-  animation: cellular-pulse 2.5s infinite ease-in-out;
-  top: 8px;
-  left: 12px;
-}
-
-.cellular-particle-drift {
-  animation: cellular-drift 4s infinite linear;
-  top: 12px;
-  left: 8px;
-}
-
-.cellular-particle-orbit {
-  animation: cellular-orbit 3.5s infinite linear;
-  top: 6px;
-  left: 16px;
-}
-
-/* Optimized keyframe animations using transform3d for hardware acceleration */
-@keyframes cellular-core-breathe {
-  0%, 100% { 
-    border-radius: 45% 55% 52% 48% / 48% 52% 55% 45%;
-    transform: translate(-50%, -50%) scale3d(1, 1, 1);
-  }
-  50% { 
-    border-radius: 52% 48% 45% 55% / 55% 45% 48% 52%;
-    transform: translate(-50%, -50%) scale3d(1.05, 1.05, 1);
-  }
-}
-
-@keyframes cellular-core-excited {
-  0%, 100% { 
-    border-radius: 45% 55% 52% 48% / 48% 52% 55% 45%;
-    transform: translate(-50%, -50%) scale3d(1.4, 1.4, 1);
-  }
-  33% { 
-    border-radius: 55% 45% 48% 52% / 52% 48% 45% 55%;
-    transform: translate(-50%, -50%) scale3d(1.5, 1.5, 1);
-  }
-  66% { 
-    border-radius: 48% 52% 55% 45% / 45% 55% 52% 48%;
-    transform: translate(-50%, -50%) scale3d(1.35, 1.35, 1);
-  }
-}
-
-@keyframes cellular-core-division {
-  0% { 
-    border-radius: 45% 55% 52% 48% / 48% 52% 55% 45%;
-    transform: translate(-50%, -50%) scale3d(1.4, 1.4, 1);
-  }
-  50% { 
-    border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
-    transform: translate(-50%, -50%) scale3d(0.6, 0.6, 1);
-  }
-  100% { 
-    border-radius: 45% 55% 52% 48% / 48% 52% 55% 45%;
-    transform: translate(-50%, -50%) scale3d(0.8, 0.8, 1);
-  }
-}
-
-@keyframes text-cursor-pulse {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0.4; }
-}
-
-@keyframes cellular-pulse {
-  0%, 100% { 
-    transform: scale3d(1, 1, 1); 
-    opacity: 0.3;
-  }
-  50% { 
-    transform: scale3d(1.8, 1.8, 1); 
-    opacity: 0.7;
-  }
-}
-
-@keyframes cellular-drift {
-  0% { 
-    transform: rotate3d(0, 0, 1, 0deg) translateX(8px) rotate3d(0, 0, 1, 0deg); 
-  }
-  100% { 
-    transform: rotate3d(0, 0, 1, 360deg) translateX(8px) rotate3d(0, 0, 1, -360deg); 
-  }
-}
-
-@keyframes cellular-orbit {
-  0% { 
-    transform: rotate3d(0, 0, 1, 0deg) translateX(6px) rotate3d(0, 0, 1, 0deg) scale3d(0.8, 0.8, 1); 
-    opacity: 0.2;
-  }
-  50% { 
-    transform: rotate3d(0, 0, 1, 180deg) translateX(6px) rotate3d(0, 0, 1, -180deg) scale3d(1.2, 1.2, 1); 
-    opacity: 0.5;
-  }
-  100% { 
-    transform: rotate3d(0, 0, 1, 360deg) translateX(6px) rotate3d(0, 0, 1, -360deg) scale3d(0.8, 0.8, 1); 
-    opacity: 0.2;
-  }
-}
-
-/* Performance optimizations */
-@media (prefers-reduced-motion: reduce) {
-  .cellular-cursor * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    cursor: auto !important;
   }
 }
