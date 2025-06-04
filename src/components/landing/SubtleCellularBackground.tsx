@@ -110,10 +110,14 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
               transition: 'transform 2s cubic-bezier(0.34, 1.56, 0.64, 1)',
             }}
             onAnimationStart={(e) => {
-              // Gentle entrance animation
-              setTimeout(() => {
-                e.currentTarget.style.transform = 'scale(1)';
-              }, 100);
+              // Safe entrance animation with null check
+              if (e.currentTarget) {
+                setTimeout(() => {
+                  if (e.currentTarget && e.currentTarget.style) {
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }
+                }, 100);
+              }
             }}
           />
         );

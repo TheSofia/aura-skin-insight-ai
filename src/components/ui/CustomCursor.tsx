@@ -27,11 +27,12 @@ const CustomCursor: React.FC = () => {
       [data-interactive], .hover-target, .interactive,
       .enhanced-cta-button, .glass-button, 
       .dermaagent-elegant-button, .dermaagent-button,
-      .cursor-pointer, [onclick]
+      .cursor-pointer, [onclick], .hover-enhance
     `)) || Boolean(target.closest(`
       button, a, input, textarea, select,
       [role="button"], [role="link"], [role="tab"], [role="menuitem"],
-      [data-interactive], .hover-target, .interactive
+      [data-interactive], .hover-target, .interactive,
+      .glass-button, .enhanced-cta-button, .hover-enhance
     `));
     
     const isTextInput = Boolean(target.matches(`

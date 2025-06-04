@@ -1,4 +1,3 @@
-
 /* DERMO.AGENT Custom Cellular Cursor System - Enhanced for Accurate Interactions */
 
 /* Hide default cursor globally */
@@ -9,7 +8,7 @@
 /* Ensure all interactive elements are properly marked */
 button, a, input, textarea, select, [role="button"], [data-interactive], 
 .hover-target, .interactive, .enhanced-cta-button, .glass-button, 
-.dermaagent-elegant-button, .dermaagent-button {
+.dermaagent-elegant-button, .dermaagent-button, .hover-enhance {
   cursor: none !important;
   pointer-events: auto !important;
   position: relative;
