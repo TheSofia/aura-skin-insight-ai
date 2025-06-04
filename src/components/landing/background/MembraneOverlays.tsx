@@ -4,46 +4,98 @@ import React from 'react';
 const MembraneOverlays: React.FC = () => {
   return (
     <>
-      {/* Enhanced multi-layered membrane overlay for sophisticated lab atmosphere */}
+      {/* Primary cellular membrane layer with organic gradients */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-transparent via-white/[0.06] to-transparent animate-pulse-cellular-minimal"
+        className="absolute inset-0 animate-cellular-respiration"
         style={{
-          backgroundSize: '250% 250%',
-          backgroundPosition: '50% 50%',
-          animationDuration: '45s',
+          background: `
+            radial-gradient(ellipse 800px 600px at 25% 35%, 
+              rgba(255, 255, 255, 0.08) 0%, 
+              rgba(248, 250, 252, 0.04) 30%, 
+              transparent 60%
+            ),
+            radial-gradient(ellipse 600px 800px at 75% 65%, 
+              rgba(124, 58, 237, 0.02) 0%, 
+              rgba(139, 92, 246, 0.015) 25%, 
+              transparent 50%
+            )
+          `,
+          animationDuration: '50s',
           zIndex: 1
         }}
       />
       
-      {/* Secondary depth layer with enhanced organic patterns */}
+      {/* Secondary organic flow layer with enhanced cellular movement */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-gray-50/[0.04] via-transparent to-gray-100/[0.03] animate-cellular-drift"
+        className="absolute inset-0 animate-cellular-morph-advanced"
         style={{
-          backgroundSize: '400% 400%',
-          backgroundPosition: '30% 70%',
-          animationDuration: '65s',
+          background: `
+            conic-gradient(from 45deg at 40% 30%, 
+              transparent 0deg, 
+              rgba(255, 119, 69, 0.015) 90deg, 
+              rgba(255, 255, 255, 0.03) 180deg, 
+              rgba(139, 92, 246, 0.01) 270deg, 
+              transparent 360deg
+            )
+          `,
+          animationDuration: '70s',
           zIndex: 1
         }}
       />
       
-      {/* Tertiary atmospheric layer for enhanced depth with subtle accent hints */}
+      {/* Tertiary cellular cluster layer for depth */}
       <div 
-        className="absolute inset-0 bg-gradient-conic from-transparent via-violet-50/[0.02] to-transparent animate-cellular-morph"
+        className="absolute inset-0 animate-membrane-fluctuation"
         style={{
-          backgroundSize: '350% 350%',
-          backgroundPosition: '60% 40%',
-          animationDuration: '80s',
+          background: `
+            radial-gradient(ellipse 1000px 400px at 60% 20%, 
+              rgba(241, 245, 249, 0.06) 0%, 
+              rgba(226, 232, 240, 0.03) 40%, 
+              transparent 70%
+            ),
+            radial-gradient(ellipse 400px 900px at 20% 80%, 
+              rgba(255, 119, 69, 0.008) 0%, 
+              rgba(251, 146, 60, 0.005) 35%, 
+              transparent 65%
+            )
+          `,
+          animationDuration: '85s',
           zIndex: 1
         }}
       />
       
-      {/* Additional subtle orange accent layer for depth */}
+      {/* Advanced cellular network overlay */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-orange-50/[0.015] via-transparent to-transparent animate-cellular-cluster"
+        className="absolute inset-0 animate-cellular-cluster-interaction"
         style={{
-          backgroundSize: '300% 300%',
-          backgroundPosition: '70% 30%',
+          background: `
+            linear-gradient(135deg, 
+              transparent 0%, 
+              rgba(255, 255, 255, 0.02) 25%, 
+              rgba(124, 58, 237, 0.008) 50%, 
+              rgba(255, 255, 255, 0.015) 75%, 
+              transparent 100%
+            )
+          `,
           animationDuration: '95s',
+          zIndex: 1
+        }}
+      />
+      
+      {/* Subtle cellular membrane texture */}
+      <div 
+        className="absolute inset-0 animate-cellular-division"
+        style={{
+          background: `
+            repeating-conic-gradient(from 0deg at 50% 50%, 
+              transparent 0deg, 
+              rgba(255, 255, 255, 0.005) 30deg, 
+              transparent 60deg, 
+              rgba(139, 92, 246, 0.003) 90deg, 
+              transparent 120deg
+            )
+          `,
+          animationDuration: '120s',
           zIndex: 1
         }}
       />
