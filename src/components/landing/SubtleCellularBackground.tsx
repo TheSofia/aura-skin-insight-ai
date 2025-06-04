@@ -23,31 +23,31 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
   useEffect(() => {
     // Generate sophisticated cellular particles with lab-like distribution
     const generateCells = () => {
-      const cells = Array.from({ length: 45 }, (_, i) => {
+      const cells = Array.from({ length: 60 }, (_, i) => {
         // Create natural distribution across the viewport with clusters
         const x = Math.random() * 100;
         const y = Math.random() * 100;
         
-        // Varied size for depth and organic feel
-        const size = 1.2 + Math.random() * 4.5; // 1.2-5.7px
+        // Increased size for better visibility
+        const size = 2 + Math.random() * 8; // 2-10px
         
-        // Sophisticated opacity variation for depth layers
-        const opacity = 0.08 + Math.random() * 0.25; // 0.08-0.33
+        // Increased opacity for better visibility
+        const opacity = 0.15 + Math.random() * 0.4; // 0.15-0.55
         
         // Slow, ambient animation timing for lab atmosphere
-        const duration = 45 + Math.random() * 35; // 45-80 seconds
-        const delay = Math.random() * 25; // 0-25 second delay
+        const duration = 30 + Math.random() * 25; // 30-55 seconds
+        const delay = Math.random() * 15; // 0-15 second delay
         
         // Enhanced color assignment - predominantly neutral with rare subtle accents
         let color: 'white' | 'light-grey' | 'accent' | 'ultra-subtle';
         const colorRandom = Math.random();
-        if (colorRandom > 0.95) { // 5% chance for extremely subtle accent
+        if (colorRandom > 0.92) { // 8% chance for extremely subtle accent
           color = 'accent';
-        } else if (colorRandom > 0.85) { // 10% ultra-subtle
+        } else if (colorRandom > 0.75) { // 17% ultra-subtle
           color = 'ultra-subtle';
-        } else if (colorRandom > 0.55) { // 30% light grey
+        } else if (colorRandom > 0.45) { // 30% light grey
           color = 'light-grey';
-        } else { // 55% white/transparent
+        } else { // 45% white/transparent
           color = 'white';
         }
         
@@ -91,16 +91,16 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
             backgroundStyle = `rgba(255, 255, 255, ${cell.opacity})`;
             break;
           case 'light-grey':
-            colorClass = 'bg-gray-50';
-            backgroundStyle = `rgba(249, 250, 251, ${cell.opacity})`;
+            colorClass = 'bg-gray-100';
+            backgroundStyle = `rgba(243, 244, 246, ${cell.opacity})`;
             break;
           case 'ultra-subtle':
-            colorClass = 'bg-gray-100';
-            backgroundStyle = `rgba(243, 244, 246, ${cell.opacity * 0.7})`;
+            colorClass = 'bg-gray-200';
+            backgroundStyle = `rgba(229, 231, 235, ${cell.opacity})`;
             break;
           case 'accent':
-            colorClass = 'bg-gray-200';
-            backgroundStyle = `rgba(229, 231, 235, ${cell.opacity * 0.6})`;
+            colorClass = 'bg-gray-300';
+            backgroundStyle = `rgba(209, 213, 219, ${cell.opacity})`;
             break;
         }
 
@@ -134,20 +134,9 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
               opacity: cell.opacity,
               animationDuration: `${cell.duration}s`,
               animationDelay: `${cell.delay}s`,
-              filter: 'blur(0.3px)',
-              transform: 'scale(0)',
-              transition: 'transform 3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              filter: 'blur(0.5px)',
+              transform: 'scale(1)', // Always visible
               borderRadius: cell.motionType === 'morph' ? '40% 60% 50% 50% / 30% 70% 60% 40%' : '50%',
-            }}
-            onAnimationStart={(e) => {
-              // Gentle entrance animation
-              if (e.currentTarget) {
-                setTimeout(() => {
-                  if (e.currentTarget && e.currentTarget.style) {
-                    e.currentTarget.style.transform = 'scale(1)';
-                  }
-                }, 200);
-              }
             }}
           />
         );
@@ -155,21 +144,21 @@ const SubtleCellularBackground: React.FC<SubtleCellularBackgroundProps> = ({
       
       {/* Enhanced membrane-like overlay for sophisticated lab atmosphere */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-transparent via-white/[0.015] to-transparent animate-pulse-cellular-minimal"
+        className="absolute inset-0 bg-gradient-radial from-transparent via-white/[0.03] to-transparent animate-pulse-cellular-minimal"
         style={{
-          backgroundSize: '600% 600%',
+          backgroundSize: '400% 400%',
           backgroundPosition: '50% 50%',
-          animationDuration: '60s'
+          animationDuration: '45s'
         }}
       />
       
       {/* Additional depth layer with ultra-subtle particle clusters */}
       <div 
-        className="absolute inset-0 bg-gradient-radial from-gray-50/[0.008] via-transparent to-gray-100/[0.005] animate-cellular-drift"
+        className="absolute inset-0 bg-gradient-radial from-gray-50/[0.02] via-transparent to-gray-100/[0.015] animate-cellular-drift"
         style={{
-          backgroundSize: '800% 800%',
+          backgroundSize: '600% 600%',
           backgroundPosition: '30% 70%',
-          animationDuration: '80s'
+          animationDuration: '60s'
         }}
       />
     </div>
