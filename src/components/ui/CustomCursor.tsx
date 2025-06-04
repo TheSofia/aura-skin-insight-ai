@@ -8,16 +8,24 @@ const CustomCursor: React.FC = () => {
   const [isText, setIsText] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   
-  // Use refs for performance - no state updates on every mouse move
+  // Performance optimized refs - no state updates on mouse move
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const cursorPositionRef = useRef({ x: 0, y: 0 });
-  const animationIdRef = useRef<number>();
+  const animationIdRef = useRef<number | null>(null);
+  const lastUpdateTimeRef = useRef(0);
+  
+  // Cached DOM queries for performance
+  const cachedTargetChecksRef = useRef(new WeakMap<Element, boolean>());
 
-  // Optimized mouse move handler
+  // Highly optimized mouse move handler with minimal overhead
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    mousePositionRef.current = { x: e.clientX, y: e.clientY };
-    setIsVisible(true);
-  }, []);
+    mousePositionRef.current.x = e.clientX;
+    mousePositionRef.current.y = e.clientY;
+    
+    if (!isVisible) {
+      setIsVisible(true);
+    }
+  }, [isVisible]);
 
   const handleMouseEnter = useCallback(() => {
     setIsVisible(true);
@@ -27,22 +35,47 @@ const CustomCursor: React.FC = () => {
     setIsVisible(false);
   }, []);
 
-  const handleMouseOver = useCallback((e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    
-    // Check if hovering over interactive elements
-    const isInteractive = Boolean(
+  // Optimized target detection with caching
+  const isInteractiveElement = useCallback((target: HTMLElement): boolean => {
+    // Check cache first
+    if (cachedTargetChecksRef.current.has(target)) {
+      return cachedTargetChecksRef.current.get(target)!;
+    }
+
+    const result = Boolean(
       target.matches('button, a, input, textarea, select, [role="button"], [data-interactive]') ||
       target.closest('button, a, input, textarea, select, [role="button"], [data-interactive]')
     );
     
-    const isTextInput = Boolean(
+    // Cache the result
+    cachedTargetChecksRef.current.set(target, result);
+    return result;
+  }, []);
+
+  const isTextElement = useCallback((target: HTMLElement): boolean => {
+    return Boolean(
       target.matches('input[type="text"], input[type="email"], input[type="password"], textarea, [contenteditable="true"]')
     );
-    
-    setIsHovering(isInteractive);
-    setIsText(isTextInput);
   }, []);
+
+  // Throttled mouseover handler to prevent excessive state updates
+  const handleMouseOver = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (!target) return;
+    
+    const now = performance.now();
+    if (now - lastUpdateTimeRef.current < 50) return; // Throttle to 20fps max
+    lastUpdateTimeRef.current = now;
+    
+    const isInteractive = isInteractiveElement(target);
+    const isTextInput = isTextElement(target);
+    
+    // Batch state updates to minimize re-renders
+    if (isInteractive !== isHovering || isTextInput !== isText) {
+      setIsHovering(isInteractive);
+      setIsText(isTextInput);
+    }
+  }, [isHovering, isText, isInteractiveElement, isTextElement]);
 
   const handleMouseOut = useCallback(() => {
     setIsHovering(false);
@@ -61,7 +94,7 @@ const CustomCursor: React.FC = () => {
     const cursor = cursorRef.current;
     if (!cursor) return;
 
-    // Smooth cursor following animation
+    // High-performance cursor animation using requestAnimationFrame
     const updateCursor = () => {
       const lag = 0.15;
       const mouse = mousePositionRef.current;
@@ -71,26 +104,33 @@ const CustomCursor: React.FC = () => {
       cursorPos.x += (mouse.x - cursorPos.x) * lag;
       cursorPos.y += (mouse.y - cursorPos.y) * lag;
       
-      // Apply transform with hardware acceleration
-      cursor.style.transform = `translate3d(${cursorPos.x - 8}px, ${cursorPos.y - 8}px, 0)`;
+      // Use hardware-accelerated transform with translate3d for optimal performance
+      const translateX = cursorPos.x - 8;
+      const translateY = cursorPos.y - 8;
+      cursor.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+      
       animationIdRef.current = requestAnimationFrame(updateCursor);
     };
 
-    updateCursor();
+    // Start the animation loop
+    animationIdRef.current = requestAnimationFrame(updateCursor);
 
-    // Add event listeners
-    const options: AddEventListenerOptions = { passive: true };
-    document.addEventListener('mousemove', handleMouseMove, options);
-    document.addEventListener('mouseenter', handleMouseEnter, options);
-    document.addEventListener('mouseleave', handleMouseLeave, options);
-    document.addEventListener('mouseover', handleMouseOver, options);
-    document.addEventListener('mouseout', handleMouseOut, options);
-    document.addEventListener('mousedown', handleMouseDown, options);
-    document.addEventListener('mouseup', handleMouseUp, options);
+    // Optimized event listeners with passive flag for better performance
+    const passiveOptions: AddEventListenerOptions = { passive: true };
+    
+    document.addEventListener('mousemove', handleMouseMove, passiveOptions);
+    document.addEventListener('mouseenter', handleMouseEnter, passiveOptions);
+    document.addEventListener('mouseleave', handleMouseLeave, passiveOptions);
+    document.addEventListener('mouseover', handleMouseOver, passiveOptions);
+    document.addEventListener('mouseout', handleMouseOut, passiveOptions);
+    document.addEventListener('mousedown', handleMouseDown, passiveOptions);
+    document.addEventListener('mouseup', handleMouseUp, passiveOptions);
 
     return () => {
-      if (animationIdRef.current) {
+      // Critical cleanup to prevent memory leaks and performance degradation
+      if (animationIdRef.current !== null) {
         cancelAnimationFrame(animationIdRef.current);
+        animationIdRef.current = null;
       }
       
       document.removeEventListener('mousemove', handleMouseMove);
@@ -100,29 +140,36 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener('mouseout', handleMouseOut);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
+      
+      // Clear cache to prevent memory leaks
+      cachedTargetChecksRef.current = new WeakMap();
     };
   }, [handleMouseMove, handleMouseEnter, handleMouseLeave, handleMouseOver, handleMouseOut, handleMouseDown, handleMouseUp]);
+
+  // Optimized inline styles to minimize style recalculations
+  const cursorStyle = React.useMemo(() => ({
+    pointerEvents: 'none' as const,
+    position: 'fixed' as const,
+    top: 0,
+    left: 0,
+    zIndex: 99999,
+    width: '16px',
+    height: '16px',
+    opacity: isVisible ? 1 : 0,
+    transition: 'opacity 0.2s ease-out',
+    willChange: 'transform, opacity'
+  }), [isVisible]);
 
   return (
     <div
       ref={cursorRef}
       className={`cellular-cursor ${isVisible ? 'visible' : ''} ${isHovering ? 'hover' : ''} ${isActive ? 'active' : ''} ${isText ? 'text' : ''}`}
-      style={{ 
-        pointerEvents: 'none',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        zIndex: 99999,
-        width: '16px',
-        height: '16px',
-        opacity: isVisible ? 1 : 0,
-        transition: 'opacity 0.2s ease-out'
-      }}
+      style={cursorStyle}
     >
       {/* Cellular cursor core */}
       <div className="cellular-cursor-core" />
       
-      {/* Cellular particles - show when hovering */}
+      {/* Cellular particles - only render when hovering for performance */}
       {isHovering && (
         <div className="cellular-particle-system">
           <div className="cellular-particle cellular-particle-pulse" />
