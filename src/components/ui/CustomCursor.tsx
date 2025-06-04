@@ -95,14 +95,15 @@ const CustomCursor: React.FC = () => {
       className={`cellular-cursor ${isHovering ? 'hover' : ''} ${isActive ? 'active' : ''} ${isText ? 'text' : ''}`}
       style={{ pointerEvents: 'none' }}
     >
-      {/* Simplified cellular cursor core for better performance */}
+      {/* Cellular cursor core with organic design */}
       <div className="cellular-cursor-core" />
       
-      {/* Minimal cellular particles - only show when hovering for performance */}
+      {/* Cellular particles - show when hovering */}
       {isHovering && (
         <div className="cellular-particle-system">
           <div className="cellular-particle cellular-particle-pulse bg-white/10" />
           <div className="cellular-particle cellular-particle-drift bg-white/15" />
+          <div className="cellular-particle cellular-particle-orbit bg-white/8" />
         </div>
       )}
     </div>
