@@ -1,134 +1,106 @@
 
-/* Extended animation classes for the elegant landing page */
+/* Animation Utility Classes */
 
-/* Enhanced logo animations - sophisticated and refined */
-.animate-logo-breathe {
-  animation: logo-breathe 6s infinite ease-in-out;
+/* Cellular animations */
+.animate-cellular-motion {
+  animation: cellular-motion-minimal 25s infinite ease-in-out;
 }
 
-.animate-logo-shimmer-sophisticated {
-  animation: logo-shimmer-sophisticated 8s infinite ease-in-out;
-  animation-delay: 1.5s;
+.animate-cellular-drift {
+  animation: cellular-drift-minimal 30s infinite linear;
 }
 
-.animate-cursor-blink-elegant {
-  animation: cursor-blink-elegant 1.2s ease-in-out;
+.animate-cellular-drift-minimal {
+  animation: cellular-drift-minimal 45s infinite linear;
 }
 
-/* Elegant page element animations */
+.animate-pulse-cellular-minimal {
+  animation: pulse-cellular-minimal 40s infinite ease-in-out;
+}
+
+.animate-cellular-morph {
+  animation: cellular-morph-minimal 35s infinite ease-in-out;
+}
+
+/* Float animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-subtle {
+  animation: float 12s ease-in-out infinite;
+}
+
+.animate-float-enhanced {
+  animation: float-enhanced 10s ease-in-out infinite;
+}
+
+/* Pulse animations */
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-very-slow {
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade animations */
 .animate-elegant-fade-in {
-  animation: elegant-fade-in 1.5s ease-out forwards;
+  animation: elegant-fade-in 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 .animate-elegant-fade-in-delayed {
-  animation: elegant-fade-in 1.5s ease-out forwards;
-  animation-delay: 0.3s;
+  animation: elegant-fade-in 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.6s forwards;
   opacity: 0;
 }
 
-/* Subtle background cellular motion */
-.animate-cellular-background-drift {
-  animation: cellular-background-drift 40s infinite ease-in-out;
+/* Basic keyframes for float animation */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-10px) rotate(2deg); 
+  }
 }
 
-/* Interactive element animations */
-.animate-underline-reveal {
-  animation: underline-reveal 0.3s ease-out forwards;
+@keyframes float-enhanced {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); 
+    opacity: 0.7;
+  }
+  25% { 
+    transform: translateY(-5px) translateX(2px) rotate(1deg) scale(1.02); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-8px) translateX(0px) rotate(2deg) scale(1.05); 
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateY(-3px) translateX(-2px) rotate(1deg) scale(1.02); 
+    opacity: 0.8;
+  }
 }
 
-.animate-gentle-glow {
-  animation: gentle-glow 0.2s ease-out forwards;
-}
-
-/* Enhanced hover effects for buttons and interactive elements */
-.hover-elegant-underline {
-  position: relative;
-  transition: all 0.3s ease-out;
-}
-
-.hover-elegant-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--dermaagent-charcoal-gray);
-  transition: width 0.3s ease-out;
-}
-
-.hover-elegant-underline:hover::after {
-  width: 100%;
-}
-
-/* Elegant button hover effects - monochrome focus */
-.elegant-button-hover {
-  transition: all 0.25s ease-out;
-  border: 1px solid transparent;
-}
-
-.elegant-button-hover:hover {
-  border-color: var(--dermaagent-light-gray);
-  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.08);
-  transform: translateY(-1px);
-}
-
-/* Page section transitions - notebook page turning feel */
-.page-section-enter {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.page-section-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Subtle focus states for form elements */
-.elegant-input-focus {
-  transition: all 0.3s ease-out;
-  border-bottom: 1px solid var(--dermaagent-light-gray);
-}
-
-.elegant-input-focus:focus {
-  border-bottom-color: var(--dermaagent-charcoal-gray);
-  box-shadow: 0 1px 0 0 var(--dermaagent-charcoal-gray);
-}
-
-/* Enhanced letterform hover for logo */
-.logo-letterform-enhance {
-  transition: all 0.2s ease-out;
-  display: inline-block;
-}
-
-.logo-letterform-enhance:hover {
-  transform: translateY(-0.5px);
-  text-shadow: 0 1px 2px rgba(26, 26, 26, 0.1);
-}
-
-/* Refined cellular motion variations */
-.animate-cellular-drift-ultra-slow {
-  animation: cellular-background-drift 60s infinite linear;
-}
-
-.animate-cellular-drift-gentle {
-  animation: cellular-background-drift 35s infinite ease-in-out;
-}
-
-/* Sophisticated pulse for key elements */
-.animate-sophisticated-pulse {
-  animation: logo-breathe 8s infinite ease-in-out;
-}
-
-/* Scroll-triggered animations */
-.scroll-fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.scroll-fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes elegant-fade-in {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95); 
+    filter: blur(3px); 
+  }
+  60% { 
+    opacity: 0.8; 
+    transform: translateY(5px) scale(0.98); 
+    filter: blur(1px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+    filter: blur(0); 
+  }
 }

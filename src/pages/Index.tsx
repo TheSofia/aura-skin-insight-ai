@@ -5,6 +5,7 @@ import Hero from "@/components/landing/Hero";
 import Footer from "@/components/landing/Footer";
 import LandingHeader from "@/components/landing/LandingHeader";
 import CustomCursor from "@/components/ui/CustomCursor";
+import SubtleCellularBackground from "@/components/landing/SubtleCellularBackground";
 
 const Index = () => {
   const location = useLocation();
@@ -55,6 +56,9 @@ const Index = () => {
     <>
       {/* Cellular Cursor Component */}
       <CustomCursor />
+      
+      {/* Subtle Cellular Background Animation */}
+      <SubtleCellularBackground isVisible={isLoaded} />
       
       {/* Landing Page Header with Navigation - positioned top left */}
       <LandingHeader />
