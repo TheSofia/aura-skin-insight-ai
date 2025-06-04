@@ -30,6 +30,15 @@
   animation: orbital-motion 35s infinite linear;
 }
 
+/* New enhanced cellular animations */
+.animate-cellular-cluster {
+  animation: cellular-cluster 40s infinite ease-in-out;
+}
+
+.animate-cellular-disperse {
+  animation: cellular-disperse 45s infinite ease-in-out;
+}
+
 /* Float animations */
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -163,5 +172,63 @@
   100% { 
     transform: rotate(360deg) translateX(2px) rotate(-360deg) scale(1); 
     opacity: 0.7;
+  }
+}
+
+/* New cellular cluster animation */
+@keyframes cellular-cluster {
+  0% { 
+    transform: translateX(0) translateY(0) scale(1) rotate(0deg); 
+    opacity: 0.4;
+    border-radius: 50%;
+  }
+  25% { 
+    transform: translateX(8px) translateY(-5px) scale(1.15) rotate(45deg); 
+    opacity: 0.7;
+    border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%;
+  }
+  50% { 
+    transform: translateX(5px) translateY(8px) scale(0.9) rotate(90deg); 
+    opacity: 0.6;
+    border-radius: 60% 40% 50% 50% / 40% 60% 45% 55%;
+  }
+  75% { 
+    transform: translateX(-3px) translateY(-2px) scale(1.05) rotate(135deg); 
+    opacity: 0.5;
+    border-radius: 40% 60% 55% 45% / 55% 45% 50% 50%;
+  }
+  100% { 
+    transform: translateX(0) translateY(0) scale(1) rotate(180deg); 
+    opacity: 0.4;
+    border-radius: 50%;
+  }
+}
+
+/* New cellular disperse animation */
+@keyframes cellular-disperse {
+  0% { 
+    transform: translateX(0) translateY(0) scale(1.2) rotate(0deg); 
+    opacity: 0.8;
+    border-radius: 30% 70% 60% 40% / 40% 60% 50% 50%;
+  }
+  25% { 
+    transform: translateX(-6px) translateY(4px) scale(0.8) rotate(-30deg); 
+    opacity: 0.5;
+    border-radius: 50% 50% 40% 60% / 60% 40% 55% 45%;
+  }
+  50% { 
+    transform: translateX(4px) translateY(-6px) scale(1.1) rotate(-60deg); 
+    opacity: 0.3;
+    border-radius: 55% 45% 50% 50% / 45% 55% 40% 60%;
+  }
+  75% { 
+    transform: translateX(2px) translateY(3px) scale(0.9) rotate(-90deg); 
+    opacity: 0.6;
+    border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
+  }
+  100% { 
+    transform: translateX(0) translateY(0) scale(1.2) rotate(-120deg); 
+    opacity: 0.8;
+    border-radius: 30% 70% 60% 40% / 40% 60% 50% 50%;
   }
 }
