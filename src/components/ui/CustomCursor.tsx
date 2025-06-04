@@ -6,14 +6,51 @@ const CustomCursor: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isText, setIsText] = useState(false);
+  const [cellularParticles, setCellularParticles] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    opacity: number;
+    delay: number;
+    duration: number;
+    motionType: 'drift' | 'orbit' | 'pulse' | 'flow';
+  }>>([]);
   
   // Use refs for better performance
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const cursorPositionRef = useRef({ x: 0, y: 0 });
   const animationIdRef = useRef<number>();
+  const mouseVelocityRef = useRef({ x: 0, y: 0 });
+  const lastMousePositionRef = useRef({ x: 0, y: 0 });
+
+  // Generate cellular particles around cursor
+  useEffect(() => {
+    const generateCellularParticles = () => {
+      const particles = Array.from({ length: 8 }, (_, i) => ({
+        id: i,
+        x: (Math.random() - 0.5) * 40, // Position relative to cursor
+        y: (Math.random() - 0.5) * 40,
+        size: 2 + Math.random() * 4, // 2-6px particles
+        opacity: 0.2 + Math.random() * 0.3, // 0.2-0.5 opacity
+        delay: Math.random() * 3, // 0-3s delay
+        duration: 8 + Math.random() * 12, // 8-20s duration
+        motionType: (['drift', 'orbit', 'pulse', 'flow'] as const)[Math.floor(Math.random() * 4)]
+      }));
+      setCellularParticles(particles);
+    };
+
+    generateCellularParticles();
+  }, []);
 
   // Move all useCallback hooks to top level
   const handleMouseMove = useCallback((e: MouseEvent) => {
+    const lastPos = lastMousePositionRef.current;
+    mouseVelocityRef.current = {
+      x: e.clientX - lastPos.x,
+      y: e.clientY - lastPos.y
+    };
+    lastMousePositionRef.current = { x: e.clientX, y: e.clientY };
     mousePositionRef.current = { x: e.clientX, y: e.clientY };
   }, []);
 
@@ -135,6 +172,52 @@ const CustomCursor: React.FC = () => {
       style={{ pointerEvents: 'none' }}
     >
       <div className="cellular-cursor-core" />
+      
+      {/* Animated cellular particles around the cursor */}
+      <div className="cellular-particle-system">
+        {cellularParticles.map((particle) => {
+          let motionClass = '';
+          let particleColor = '';
+          
+          // Assign motion class based on particle type
+          switch (particle.motionType) {
+            case 'drift':
+              motionClass = 'cellular-particle-drift';
+              particleColor = 'bg-white/20';
+              break;
+            case 'orbit':
+              motionClass = 'cellular-particle-orbit';
+              particleColor = 'bg-gray-100/30';
+              break;
+            case 'pulse':
+              motionClass = 'cellular-particle-pulse';
+              particleColor = 'bg-gray-200/25';
+              break;
+            case 'flow':
+              motionClass = 'cellular-particle-flow';
+              // Rare subtle accent for flow particles
+              particleColor = Math.random() > 0.9 ? 'bg-red-100/10' : 'bg-gray-50/25';
+              break;
+          }
+          
+          return (
+            <div
+              key={particle.id}
+              className={`cellular-particle ${motionClass} ${particleColor}`}
+              style={{
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                left: `${50 + (particle.x / 40) * 50}%`,
+                top: `${50 + (particle.y / 40) * 50}%`,
+                opacity: particle.opacity,
+                animationDuration: `${particle.duration}s`,
+                animationDelay: `${particle.delay}s`,
+                borderRadius: particle.motionType === 'flow' ? '40% 60% 50% 50% / 30% 70% 60% 40%' : '50%',
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+
 /* DERMO.AGENT Custom Cellular Cursor System - Enhanced for Accurate Interactions */
 
 /* Hide default cursor globally */
@@ -39,6 +40,28 @@ button:before, a:before, [data-interactive]:before, .hover-target:before {
   will-change: transform;
   top: 0;
   left: 0;
+  width: 80px;
+  height: 80px;
+}
+
+/* Cellular particle system container */
+.cellular-particle-system {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Individual cellular particles */
+.cellular-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform-origin: center;
+  filter: blur(0.5px);
+  will-change: transform, opacity;
 }
 
 /* Main cellular cursor element - optimized for precision */
@@ -51,13 +74,17 @@ button:before, a:before, [data-interactive]:before, .hover-target:before {
     rgba(26, 26, 26, 0.08) 60%, 
     rgba(26, 26, 26, 0.03) 100%);
   border: 0.5px solid rgba(26, 26, 26, 0.12);
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.15s ease-out,
               background 0.2s ease-out,
               border-color 0.2s ease-out;
   transform-origin: center;
   box-shadow: 0 1px 4px rgba(26, 26, 26, 0.06);
+  z-index: 10;
 }
 
 /* Subtle internal dot for precision */
@@ -97,7 +124,7 @@ button:before, a:before, [data-interactive]:before, .hover-target:before {
 
 /* Enhanced hover state for interactive elements */
 .cellular-cursor.hover .cellular-cursor-core {
-  transform: scale(1.8);
+  transform: translate(-50%, -50%) scale(1.8);
   background: radial-gradient(circle at 35% 35%, 
     rgba(169, 50, 38, 0.3) 0%, 
     rgba(169, 50, 38, 0.18) 60%, 
@@ -122,14 +149,26 @@ button:before, a:before, [data-interactive]:before, .hover-target:before {
   filter: blur(0.3px);
 }
 
+/* Enhanced cellular particle animations in hover state */
+.cellular-cursor.hover .cellular-particle {
+  animation-duration: 3s;
+  opacity: 0.8 !important;
+}
+
 /* Click/active state with precise feedback */
 .cellular-cursor.active .cellular-cursor-core {
-  transform: scale(0.6);
+  transform: translate(-50%, -50%) scale(0.6);
   background: radial-gradient(circle at 35% 35%, 
     rgba(169, 50, 38, 0.5) 0%, 
     rgba(169, 50, 38, 0.3) 60%, 
     rgba(169, 50, 38, 0.15) 100%);
   transition: transform 0.1s ease-out;
+}
+
+/* Active state particle burst effect */
+.cellular-cursor.active .cellular-particle {
+  animation-duration: 1s;
+  transform: scale(1.5);
 }
 
 /* Enhanced click ripple animation */
@@ -145,6 +184,7 @@ button:before, a:before, [data-interactive]:before, .hover-target:before {
   animation: cursor-ripple-precise 0.4s ease-out forwards;
   pointer-events: none;
   border: 1px solid rgba(169, 50, 38, 0.15);
+  z-index: 5;
 }
 
 /* Text cursor state for text inputs */
@@ -163,7 +203,104 @@ button:before, a:before, [data-interactive]:before, .hover-target:before {
   display: none;
 }
 
-/* Optimized cursor animations */
+.cellular-cursor.text .cellular-particle {
+  display: none;
+}
+
+/* Cellular Particle Motion Animations */
+
+/* Drift motion - slow wandering movement */
+.cellular-particle-drift {
+  animation: cellular-drift-motion 12s infinite ease-in-out;
+}
+
+@keyframes cellular-drift-motion {
+  0% { 
+    transform: translate(0, 0) scale(1) rotate(0deg); 
+    opacity: 0.3;
+  }
+  25% { 
+    transform: translate(8px, -5px) scale(1.1) rotate(90deg); 
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translate(-3px, 10px) scale(0.9) rotate(180deg); 
+    opacity: 0.4;
+  }
+  75% { 
+    transform: translate(-8px, -2px) scale(1.05) rotate(270deg); 
+    opacity: 0.6;
+  }
+  100% { 
+    transform: translate(0, 0) scale(1) rotate(360deg); 
+    opacity: 0.3;
+  }
+}
+
+/* Orbital motion - circular movement around cursor */
+.cellular-particle-orbit {
+  animation: cellular-orbital-motion 15s infinite linear;
+}
+
+@keyframes cellular-orbital-motion {
+  0% { 
+    transform: rotate(0deg) translateX(15px) rotate(0deg) scale(1); 
+  }
+  100% { 
+    transform: rotate(360deg) translateX(15px) rotate(-360deg) scale(1); 
+  }
+}
+
+/* Pulse motion - rhythmic scaling */
+.cellular-particle-pulse {
+  animation: cellular-pulse-motion 8s infinite ease-in-out;
+}
+
+@keyframes cellular-pulse-motion {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 0.2; 
+  }
+  50% { 
+    transform: scale(1.3) rotate(180deg); 
+    opacity: 0.6; 
+  }
+}
+
+/* Flow motion - organic morphing movement */
+.cellular-particle-flow {
+  animation: cellular-flow-motion 18s infinite ease-in-out;
+}
+
+@keyframes cellular-flow-motion {
+  0% { 
+    transform: translate(0, 0) scale(1) rotate(0deg); 
+    border-radius: 50%;
+    opacity: 0.2;
+  }
+  25% { 
+    transform: translate(6px, -8px) scale(1.2) rotate(45deg); 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    opacity: 0.4;
+  }
+  50% { 
+    transform: translate(-4px, 6px) scale(0.8) rotate(90deg); 
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    opacity: 0.3;
+  }
+  75% { 
+    transform: translate(-7px, -3px) scale(1.1) rotate(135deg); 
+    border-radius: 40% 60% 50% 50% / 30% 70% 60% 40%;
+    opacity: 0.5;
+  }
+  100% { 
+    transform: translate(0, 0) scale(1) rotate(180deg); 
+    border-radius: 50%;
+    opacity: 0.2;
+  }
+}
+
+/* Core cursor animations */
 @keyframes cellular-gentle-pulse {
   0%, 100% { 
     opacity: 0.8; 
@@ -230,10 +367,3 @@ button:before, a:before, [data-interactive]:before, .hover-target:before {
 .cellular-cursor {
   z-index: 999999;
 }
-
-/* Debug mode - uncomment to visualize hit areas */
-/*
-button, a, [data-interactive], .hover-target {
-  outline: 1px solid rgba(255, 0, 0, 0.3) !important;
-}
-*/
