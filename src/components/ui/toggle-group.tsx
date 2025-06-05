@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
 import { type VariantProps } from "class-variance-authority"
@@ -45,6 +46,9 @@ const ToggleGroupItem = React.forwardRef<
           variant: context.variant || variant,
           size: context.size || size,
         }),
+        "dermaagent-box-element hover-target transition-all duration-200",
+        "active:scale-[0.96] active:shadow-inner active:bg-accent/20",
+        "data-[state=on]:active:bg-accent/30 data-[state=on]:active:scale-[0.96]",
         className
       )}
       {...props}
