@@ -33,6 +33,7 @@
 @import './styles/animations/particles.css';
 @import './styles/animations/ui.css';
 @import './styles/animations/effects.css';
+@import './styles/animations/logo-3d.css';
 
 /* Apply 3D enhancements to the landing page */
 .landing-page-3d {
