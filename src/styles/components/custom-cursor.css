@@ -11,6 +11,14 @@ button, a, input, textarea, select, [role="button"], [data-interactive] {
   cursor: pointer !important;
 }
 
+/* Synaptic Flow specific overrides for maximum click accuracy */
+.glass-card li, .glass-card li *, 
+.glass-card button, .glass-card button *,
+.glass-card [onClick], .glass-card [onClick] * {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
 /* Text input cursors */
 input[type="text"], input[type="email"], input[type="password"], textarea, [contenteditable="true"] {
   cursor: text !important;
@@ -33,6 +41,11 @@ textarea[resize] {
 
 .custom-cursor-active * {
   cursor: auto !important;
+}
+
+/* Enhanced targeting for chat elements */
+.beauty-exchange *, .synaptic-flow * {
+  pointer-events: auto !important;
 }
 
 /* Ensure mobile devices keep their default touch behavior */

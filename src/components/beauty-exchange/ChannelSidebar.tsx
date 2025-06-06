@@ -27,14 +27,16 @@ export const ChannelSidebar = ({
         <ul className="space-y-2">
           {channels.map(channel => (
             <li key={channel.id} 
-                className={`flex items-center justify-between p-2 rounded-lg cursor-pointer hover:bg-beautyagent-light-grey transition-colors
+                className={`flex items-center justify-between p-2 rounded-lg transition-colors
                          ${activeChannel === channel.id ? 'bg-beautyagent-light-grey' : ''}`}
+                style={{ cursor: 'pointer !important' }}
                 onClick={() => onChannelSelect(channel.id)}>
-              <span className="flex items-center">
-                <span className="text-sm"># {channel.name}</span>
+              <span className="flex items-center" style={{ cursor: 'pointer !important' }}>
+                <span className="text-sm" style={{ cursor: 'pointer !important' }}># {channel.name}</span>
               </span>
               {channel.unread > 0 && (
-                <span className="bg-beautyagent-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-badge-pulse">
+                <span className="bg-beautyagent-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-badge-pulse"
+                      style={{ cursor: 'pointer !important' }}>
                   {channel.unread}
                 </span>
               )}
@@ -51,26 +53,30 @@ export const ChannelSidebar = ({
         <ul className="space-y-2">
           {directMessages.map(dm => (
             <li key={dm.id} 
-                className="flex items-center justify-between p-2 rounded-lg cursor-pointer hover:bg-beautyagent-light-grey transition-colors">
-              <span className="flex items-center">
-                <span className="relative">
-                  <Avatar className="h-6 w-6 mr-2">
-                    <img src={dm.avatar} alt={dm.name} />
+                className="flex items-center justify-between p-2 rounded-lg transition-colors"
+                style={{ cursor: 'pointer !important' }}>
+              <span className="flex items-center" style={{ cursor: 'pointer !important' }}>
+                <span className="relative" style={{ cursor: 'pointer !important' }}>
+                  <Avatar className="h-6 w-6 mr-2" style={{ cursor: 'pointer !important' }}>
+                    <img src={dm.avatar} alt={dm.name} style={{ cursor: 'pointer !important' }} />
                   </Avatar>
-                  <span className={`absolute bottom-0 right-1 h-2 w-2 rounded-full ${dm.status === 'online' ? 'bg-green-500' : 'bg-gray-400'}`}></span>
+                  <span className={`absolute bottom-0 right-1 h-2 w-2 rounded-full ${dm.status === 'online' ? 'bg-green-500' : 'bg-gray-400'}`}
+                        style={{ cursor: 'pointer !important' }}></span>
                 </span>
-                <span className="text-sm">{dm.name}</span>
+                <span className="text-sm" style={{ cursor: 'pointer !important' }}>{dm.name}</span>
               </span>
               {dm.unread > 0 && (
-                <span className="bg-beautyagent-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-badge-pulse">
+                <span className="bg-beautyagent-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-badge-pulse"
+                      style={{ cursor: 'pointer !important' }}>
                   {dm.unread}
                 </span>
               )}
             </li>
           ))}
-          <li className="flex items-center p-2 text-beautyagent-medium-grey cursor-pointer hover:text-beautyagent-dark-grey transition-colors">
-            <Plus className="h-4 w-4 mr-1" />
-            <span className="text-sm">New Message</span>
+          <li className="flex items-center p-2 text-beautyagent-medium-grey transition-colors"
+              style={{ cursor: 'pointer !important' }}>
+            <Plus className="h-4 w-4 mr-1" style={{ cursor: 'pointer !important' }} />
+            <span className="text-sm" style={{ cursor: 'pointer !important' }}>New Message</span>
           </li>
         </ul>
       </div>

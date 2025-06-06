@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -91,13 +92,14 @@ const BeautyExchange = () => {
   return (
     <>
       <CustomCursor />
-      <div className="min-h-screen bg-beautyagent-off-white">
-        <div className="container max-w-7xl mx-auto px-4 py-6">
+      <div className="min-h-screen bg-beautyagent-off-white synaptic-flow" style={{ cursor: 'auto !important' }}>
+        <div className="container max-w-7xl mx-auto px-4 py-6" style={{ cursor: 'auto !important' }}>
           <div className="flex items-center mb-6">
             <Button 
               variant="outline" 
               onClick={() => navigate('/')}
               className="mr-4"
+              style={{ cursor: 'pointer !important' }}
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back
@@ -109,7 +111,7 @@ const BeautyExchange = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {/* Sidebar for channels and DMs */}
-            <div className="md:col-span-1">
+            <div className="md:col-span-1" style={{ cursor: 'auto !important' }}>
               <ChannelSidebar
                 channels={channels}
                 directMessages={directMessages}
@@ -119,7 +121,7 @@ const BeautyExchange = () => {
             </div>
             
             {/* Main chat area */}
-            <div className="md:col-span-3 flex flex-col">
+            <div className="md:col-span-3 flex flex-col" style={{ cursor: 'auto !important' }}>
               <ChatArea
                 activeChannel={activeChannel}
                 channels={channels}
