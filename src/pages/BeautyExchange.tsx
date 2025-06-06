@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -104,7 +103,7 @@ const BeautyExchange = () => {
               Back
             </Button>
             <h1 className="text-3xl font-light tracking-wider text-beautyagent-deeper-grey">
-              BeautyExchange
+              Synaptic Flow
             </h1>
           </div>
           
