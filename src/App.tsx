@@ -19,7 +19,7 @@ function App() {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/skin-diary" element={<SkinDiary />} />
           <Route path="/skin-mirror" element={<SkinMirror />} />
-          <Route path="/beauty-exchange" element={<BeautyExchange />} />
+          <Route path="/synaptic-flow" element={<BeautyExchange />} />
           <Route path="/custom-product" element={<CustomProduct />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
