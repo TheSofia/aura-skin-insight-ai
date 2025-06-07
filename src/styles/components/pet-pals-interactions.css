@@ -1,0 +1,278 @@
+/* Pet.Pals.Agent Interactive Effects - Cute & Playful Purple 3D Theme */
+/* Adapted from dermo.agent with pet-friendly aesthetics */
+
+/* CSS Custom Properties for Pet.Pals.Agent Theme */
+:root {
+  --petpals-primary: #8B5CF6;
+  --petpals-accent: #A855F7;
+  --petpals-deep: #7C3AED;
+  --petpals-light: #E9D5FF;
+  --petpals-glow: #C084FC;
+  --petpals-transition-speed: 0.2s;
+  --petpals-bounce-transition: 0.3s;
+}
+
+/* Base Interactive Pet Box Class - 3D Purple Theme */
+.interactive-pet-box {
+  position: relative;
+  cursor: pointer;
+  transition: all var(--petpals-transition-speed) cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 16px;
+  background: linear-gradient(145deg, 
+    rgba(139, 92, 246, 0.08) 0%, 
+    rgba(168, 85, 247, 0.05) 50%, 
+    rgba(124, 58, 237, 0.03) 100%);
+  border: 2px solid rgba(139, 92, 246, 0.2);
+  
+  /* Enhanced 3D appearance */
+  box-shadow: 
+    0 8px 25px rgba(139, 92, 246, 0.15),
+    0 4px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(139, 92, 246, 0.1);
+  
+  /* Hardware acceleration for smooth animations */
+  will-change: transform, box-shadow, background;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transform: translateZ(0) rotateX(2deg) rotateY(-1deg);
+}
+
+/* Hover state - Cute bouncy preview */
+.interactive-pet-box:hover {
+  background: linear-gradient(145deg, 
+    rgba(139, 92, 246, 0.12) 0%, 
+    rgba(168, 85, 247, 0.08) 50%, 
+    rgba(124, 58, 237, 0.06) 100%);
+  border-color: rgba(139, 92, 246, 0.4);
+  
+  /* Enhanced 3D hover effect */
+  box-shadow: 
+    0 12px 35px rgba(139, 92, 246, 0.25),
+    0 6px 15px rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 rgba(139, 92, 246, 0.15);
+  
+  transform: translateZ(0) translateY(-4px) rotateX(5deg) rotateY(-2deg) scale(1.02);
+}
+
+/* Active state - Playful 3D click effect */
+.interactive-pet-box:active {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 92, 246, 0.25) 0%,
+    rgba(168, 85, 247, 0.18) 40%,
+    rgba(124, 58, 237, 0.12) 100%
+  );
+  
+  border-color: var(--petpals-primary);
+  
+  /* Dramatic 3D click effect */
+  box-shadow: 
+    0 2px 8px rgba(139, 92, 246, 0.4),
+    0 8px 25px rgba(139, 92, 246, 0.3),
+    0 15px 35px rgba(139, 92, 246, 0.2),
+    inset 0 3px 8px rgba(233, 213, 255, 0.3),
+    inset 0 -1px 2px rgba(124, 58, 237, 0.2);
+  
+  /* Satisfying click animation */
+  transform: translateZ(0) translateY(-1px) rotateX(8deg) rotateY(-3deg) scale(0.97);
+  transition: all 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Sleek 3D Purple Option Boxes */
+.pet-option-box {
+  position: relative;
+  cursor: pointer;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, 
+    rgba(139, 92, 246, 0.1) 0%, 
+    rgba(168, 85, 247, 0.08) 30%,
+    rgba(124, 58, 237, 0.06) 70%,
+    rgba(139, 92, 246, 0.04) 100%);
+  border: 2px solid rgba(139, 92, 246, 0.25);
+  
+  /* Pronounced 3D effect */
+  box-shadow: 
+    0 10px 30px rgba(139, 92, 246, 0.2),
+    0 5px 15px rgba(0, 0, 0, 0.1),
+    inset 0 2px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -2px 0 rgba(124, 58, 237, 0.15),
+    inset 2px 0 0 rgba(139, 92, 246, 0.1),
+    inset -2px 0 0 rgba(124, 58, 237, 0.1);
+  
+  transition: all var(--petpals-bounce-transition) cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, box-shadow;
+  transform: translateZ(0) perspective(1000px) rotateX(3deg) rotateY(-2deg);
+}
+
+.pet-option-box:hover {
+  background: linear-gradient(135deg, 
+    rgba(139, 92, 246, 0.15) 0%, 
+    rgba(168, 85, 247, 0.12) 30%,
+    rgba(124, 58, 237, 0.1) 70%,
+    rgba(139, 92, 246, 0.08) 100%);
+  border-color: rgba(139, 92, 246, 0.5);
+  
+  /* Enhanced 3D hover */
+  box-shadow: 
+    0 15px 40px rgba(139, 92, 246, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.15),
+    inset 0 3px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -3px 0 rgba(124, 58, 237, 0.2),
+    inset 3px 0 0 rgba(139, 92, 246, 0.15),
+    inset -3px 0 0 rgba(124, 58, 237, 0.15);
+  
+  transform: translateZ(0) translateY(-6px) perspective(1000px) rotateX(6deg) rotateY(-3deg) scale(1.03);
+}
+
+.pet-option-box:active {
+  background: linear-gradient(135deg, 
+    rgba(139, 92, 246, 0.25) 0%, 
+    rgba(168, 85, 247, 0.2) 30%,
+    rgba(124, 58, 237, 0.18) 70%,
+    rgba(139, 92, 246, 0.15) 100%);
+  
+  /* Deep 3D press effect */
+  box-shadow: 
+    0 3px 10px rgba(139, 92, 246, 0.4),
+    0 10px 25px rgba(139, 92, 246, 0.25),
+    inset 0 4px 12px rgba(233, 213, 255, 0.4),
+    inset 0 -2px 4px rgba(124, 58, 237, 0.25),
+    inset 4px 0 8px rgba(139, 92, 246, 0.2),
+    inset -4px 0 8px rgba(124, 58, 237, 0.2);
+  
+  transform: translateZ(0) translateY(-2px) perspective(1000px) rotateX(10deg) rotateY(-4deg) scale(0.98);
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Horizontal Lines Only Layout */
+.pet-horizontal-layout {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 28px,
+    rgba(139, 92, 246, 0.1) 28px,
+    rgba(139, 92, 246, 0.1) 30px
+  );
+}
+
+/* Cute Pet.Pals.Agent Logo Styling */
+.pet-pals-logo {
+  font-family: 'Comic Neue', 'Fredoka One', 'Nunito', cursive, sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem; /* Smaller as requested */
+  color: var(--petpals-primary);
+  text-shadow: 
+    0 2px 4px rgba(139, 92, 246, 0.3),
+    0 0 8px rgba(139, 92, 246, 0.2);
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pet-pals-logo:hover {
+  transform: translateY(-2px) scale(1.05);
+  text-shadow: 
+    0 4px 8px rgba(139, 92, 246, 0.4),
+    0 0 12px rgba(139, 92, 246, 0.3);
+  color: var(--petpals-accent);
+}
+
+/* Pet-themed variants */
+.pet-card {
+  background: linear-gradient(145deg, 
+    rgba(233, 213, 255, 0.3) 0%, 
+    rgba(139, 92, 246, 0.1) 100%);
+  border-radius: 24px;
+  padding: 2rem;
+}
+
+.pet-button {
+  background: linear-gradient(145deg, 
+    var(--petpals-primary) 0%, 
+    var(--petpals-accent) 100%);
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+}
+
+.pet-button:hover {
+  background: linear-gradient(145deg, 
+    var(--petpals-accent) 0%, 
+    var(--petpals-deep) 100%);
+  transform: translateY(-3px) scale(1.03);
+}
+
+.pet-button:active {
+  background: linear-gradient(145deg, 
+    var(--petpals-deep) 0%, 
+    var(--petpals-primary) 100%);
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Remove unwanted elements (Sign In, Get Started, Watch Demo) */
+.hide-auth-elements .sign-in,
+.hide-auth-elements .get-started,
+.hide-auth-elements .watch-demo {
+  display: none !important;
+}
+
+/* Cute animations for pet theme */
+@keyframes pet-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  40%, 43% {
+    transform: translateY(-8px) scale(1.02);
+  }
+  70% {
+    transform: translateY(-4px) scale(1.01);
+  }
+  90% {
+    transform: translateY(-2px) scale(1.005);
+  }
+}
+
+@keyframes pet-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+.pet-bounce-animation {
+  animation: pet-bounce 2s infinite;
+}
+
+.pet-wiggle-animation {
+  animation: pet-wiggle 1s ease-in-out infinite;
+}
+
+/* Accessibility and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .interactive-pet-box,
+  .pet-option-box,
+  .pet-pals-logo {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  
+  .interactive-pet-box:hover,
+  .interactive-pet-box:active,
+  .pet-option-box:hover,
+  .pet-option-box:active {
+    transform: none !important;
+  }
+}
+
+/* Focus states for keyboard navigation */
+.interactive-pet-box:focus-visible,
+.pet-option-box:focus-visible {
+  outline: 3px solid var(--petpals-accent);
+  outline-offset: 3px;
+  box-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.4),
+    0 8px 25px rgba(139, 92, 246, 0.2);
+}

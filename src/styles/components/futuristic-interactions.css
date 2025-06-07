@@ -1,0 +1,198 @@
+/* Futuristic Interactive Effects for dermo.agent */
+/* Designed to complement the existing CustomCursor system */
+
+/* CSS Custom Properties for consistent theming */
+:root {
+  --futuristic-primary: #00E5FF;
+  --futuristic-secondary: #1DE9B6;
+  --futuristic-glow: #00B8D4;
+  --futuristic-highlight: #E0F7FA;
+  --futuristic-shadow: #006064;
+  --futuristic-transition-speed: 0.15s;
+  --futuristic-glow-transition: 0.2s;
+}
+
+/* Base Interactive Futuristic Box Class */
+.interactive-futuristic-box {
+  position: relative;
+  cursor: pointer;
+  transition: all var(--futuristic-transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Hardware acceleration for smooth animations */
+  will-change: transform, box-shadow, background-color;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  
+  /* Subtle base glow for futuristic feel */
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Hover state - subtle preview of interaction */
+.interactive-futuristic-box:hover {
+  background: rgba(0, 229, 255, 0.03);
+  border-color: rgba(0, 229, 255, 0.2);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 0 8px rgba(0, 229, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  
+  transform: translateY(-1px);
+}
+
+/* Active state - the main futuristic click effect */
+.interactive-futuristic-box:active {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 229, 255, 0.15) 0%,
+    rgba(29, 233, 182, 0.08) 40%,
+    rgba(0, 184, 212, 0.05) 100%
+  );
+  
+  border-color: var(--futuristic-primary);
+  
+  /* Multi-layered glow effect for futuristic impact */
+  box-shadow: 
+    0 0 20px rgba(0, 229, 255, 0.4),
+    0 0 40px rgba(0, 229, 255, 0.2),
+    0 0 60px rgba(0, 184, 212, 0.1),
+    inset 0 0 20px rgba(224, 247, 250, 0.1),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  
+  /* Subtle scale for tactile feedback */
+  transform: translateY(0px) scale(0.98);
+  
+  /* Faster transition for immediate feedback */
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced version with animated border effect */
+.interactive-futuristic-box.enhanced {
+  overflow: hidden;
+}
+
+.interactive-futuristic-box.enhanced::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(0, 229, 255, 0.4),
+    transparent
+  );
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--futuristic-glow-transition) ease;
+  z-index: -1;
+  will-change: opacity;
+}
+
+.interactive-futuristic-box.enhanced:active::before {
+  opacity: 1;
+}
+
+/* Specialized variants for different use cases */
+
+/* Card variant - for product cards and larger elements */
+.interactive-futuristic-box.card {
+  padding: 1rem;
+  background: rgba(248, 250, 252, 0.02);
+  border-radius: 12px;
+}
+
+.interactive-futuristic-box.card:active {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 229, 255, 0.08) 0%,
+    rgba(29, 233, 182, 0.04) 50%,
+    rgba(248, 250, 252, 0.02) 100%
+  );
+}
+
+/* Button variant - for primary action buttons */
+.interactive-futuristic-box.button {
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 229, 255, 0.05);
+  border-color: rgba(0, 229, 255, 0.3);
+  font-weight: 500;
+  text-align: center;
+}
+
+.interactive-futuristic-box.button:hover {
+  background: rgba(0, 229, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.interactive-futuristic-box.button:active {
+  background: rgba(0, 229, 255, 0.2);
+  transform: translateY(0px) scale(0.96);
+}
+
+/* Subtle variant - for minimal interactions */
+.interactive-futuristic-box.subtle {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.interactive-futuristic-box.subtle:hover {
+  background: rgba(0, 229, 255, 0.02);
+}
+
+.interactive-futuristic-box.subtle:active {
+  background: rgba(0, 229, 255, 0.05);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+}
+
+/* Integration with custom cursor system */
+.interactive-futuristic-box[data-interactive] {
+  /* This attribute is recognized by CustomCursor.tsx */
+}
+
+/* Accessibility and reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .interactive-futuristic-box,
+  .interactive-futuristic-box::before {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  
+  .interactive-futuristic-box:hover,
+  .interactive-futuristic-box:active {
+    transform: none !important;
+  }
+}
+
+/* Focus states for keyboard navigation */
+.interactive-futuristic-box:focus-visible {
+  outline: 2px solid var(--futuristic-primary);
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 16px rgba(0, 229, 255, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode support (if implemented later) */
+@media (prefers-color-scheme: dark) {
+  .interactive-futuristic-box {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .interactive-futuristic-box:active {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 229, 255, 0.2) 0%,
+      rgba(29, 233, 182, 0.1) 40%,
+      rgba(0, 184, 212, 0.05) 100%
+    );
+  }
+}
