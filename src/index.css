@@ -20,6 +20,7 @@
 @import './styles/components/interaction-enhancement.css';
 @import './styles/components/custom-cursor.css';
 @import './styles/components/3d-effects.css';
+@import './styles/components/amazement-interactions.css';
 
 /* Import button styles */
 @import './styles/components/buttons/index.css';
@@ -30,6 +31,7 @@
 /* Import animation styles */
 @import './styles/animations/keyframes.css';
 @import './styles/animations/cellular.css';
+@import './styles/animations/cellular-enhanced.css';
 @import './styles/animations/particles.css';
 @import './styles/animations/ui.css';
 @import './styles/animations/effects.css';
@@ -49,4 +51,34 @@
   text-shadow: 
     0 1px 2px rgba(0, 0, 0, 0.1),
     0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Amazement Factor Global Enhancements */
+.amazement-page {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 1) 0%, 
+    rgba(248, 249, 250, 0.98) 50%, 
+    rgba(255, 255, 255, 1) 100%);
+  min-height: 100vh;
+}
+
+/* Global Interactive Enhancement Classes */
+.interactive-amazement {
+  @apply amazement-interactive-box;
+}
+
+.button-amazement {
+  @apply amazement-button;
+}
+
+.input-amazement {
+  @apply amazement-input;
+}
+
+.product-card-amazement {
+  @apply amazement-product-card;
+}
+
+.nav-link-amazement {
+  @apply amazement-nav-link;
 }

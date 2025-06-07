@@ -1,0 +1,296 @@
+
+/* DERMO.AGENT - Amazement Factor Interactive System - Deep Purple Focus */
+
+/* Enhanced Interactive Box System with Color Change on Click */
+.amazement-interactive-box {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--dermoagent-pure-white);
+  border: 1px solid var(--dermoagent-light-gray);
+  color: var(--dermoagent-pale-black);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Hover State - Sophisticated Elevation */
+.amazement-interactive-box:hover {
+  background: linear-gradient(135deg, rgba(107, 70, 193, 0.06) 0%, rgba(255, 255, 255, 0.98) 100%);
+  border-color: rgba(107, 70, 193, 0.3);
+  box-shadow: 0 8px 30px rgba(107, 70, 193, 0.15);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Click State - Amazing Color Response */
+.amazement-interactive-box:active {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.18) 0%, rgba(139, 92, 246, 0.12) 100%);
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.3);
+  transform: translateY(0) scale(1.02);
+  animation: click-amazement-burst 0.8s ease-out;
+}
+
+/* Focus State - Accessibility with Style */
+.amazement-interactive-box:focus-visible {
+  outline: none;
+  background: rgba(107, 70, 193, 0.08);
+  border-color: rgba(107, 70, 193, 0.6);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+}
+
+/* Enhanced Button System */
+.amazement-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--dermoagent-pure-white);
+  border: 1px solid var(--dermoagent-light-gray);
+  color: var(--dermoagent-pale-black);
+  cursor: pointer;
+}
+
+/* Button Hover - Elegant Purple Transition */
+.amazement-button:hover {
+  background: linear-gradient(135deg, rgba(107, 70, 193, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border-color: rgba(107, 70, 193, 0.4);
+  color: rgba(91, 33, 182, 0.9);
+  box-shadow: 0 6px 20px rgba(107, 70, 193, 0.2);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Button Click - Satisfying Response */
+.amazement-button:active {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(91, 33, 182, 0.15) 100%);
+  border-color: rgba(124, 58, 237, 0.7);
+  color: white;
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.4);
+  transform: translateY(0) scale(1);
+}
+
+/* Particle Burst Effect on Click */
+.amazement-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease-out;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.amazement-button:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  animation: particle-burst 0.8s ease-out;
+}
+
+/* Enhanced Input Fields */
+.amazement-input {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--dermoagent-pure-white);
+  border: 1px solid var(--dermoagent-light-gray);
+  color: var(--dermoagent-pale-black);
+}
+
+.amazement-input::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(107, 70, 193, 0.8), rgba(139, 92, 246, 0.9));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.amazement-input:hover {
+  border-color: rgba(107, 70, 193, 0.4);
+  background: rgba(107, 70, 193, 0.03);
+  box-shadow: 0 4px 15px rgba(107, 70, 193, 0.1);
+}
+
+.amazement-input:hover::before {
+  width: 80%;
+}
+
+.amazement-input:focus {
+  border-color: rgba(107, 70, 193, 0.6);
+  background: rgba(107, 70, 193, 0.06);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+  outline: none;
+}
+
+.amazement-input:focus::before {
+  width: 100%;
+  height: 3px;
+}
+
+/* Product Card Enhancement */
+.amazement-product-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--dermoagent-pure-white);
+  border: 1px solid var(--dermoagent-light-gray);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.amazement-product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 30%, rgba(107, 70, 193, 0.1) 50%, transparent 70%);
+  transition: left 0.6s ease-in-out;
+  pointer-events: none;
+}
+
+.amazement-product-card:hover::before {
+  left: 100%;
+}
+
+.amazement-product-card:hover {
+  background: rgba(107, 70, 193, 0.04);
+  border-color: rgba(107, 70, 193, 0.3);
+  box-shadow: 0 10px 40px rgba(107, 70, 193, 0.15);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.amazement-product-card:active {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(107, 70, 193, 0.08) 100%);
+  border-color: rgba(124, 58, 237, 0.5);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Navigation Link Enhancement */
+.amazement-nav-link {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--dermoagent-pale-black);
+  text-decoration: none;
+}
+
+.amazement-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(107, 70, 193, 0.8), rgba(139, 92, 246, 0.9));
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.amazement-nav-link:hover {
+  color: rgba(107, 70, 193, 0.9);
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
+}
+
+.amazement-nav-link:hover::after {
+  width: 100%;
+}
+
+/* Cellular Background Integration */
+.cellular-background-amazement {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Futuristic Glow Lines */
+.futuristic-glow-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.futuristic-glow-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(107, 70, 193, 0.2);
+  animation: scanning-line 4s linear infinite;
+}
+
+/* Micro-Interactions for Delightful Experience */
+.micro-interaction-sparkle {
+  position: relative;
+}
+
+.micro-interaction-sparkle::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 12px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease-out;
+  pointer-events: none;
+}
+
+.micro-interaction-sparkle:hover::after {
+  opacity: 1;
+  transform: scale(1);
+  animation: particle-burst 1s ease-out;
+}
+
+/* Data Stream Visualization */
+.data-stream-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-stream-line {
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(107, 70, 193, 0.8), transparent);
+  animation: data-flow 3s linear infinite;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 767px) {
+  .amazement-interactive-box:active,
+  .amazement-button:active,
+  .amazement-product-card:active {
+    transform: scale(0.98);
+    transition: transform 0.15s ease;
+  }
+  
+  .amazement-interactive-box:hover,
+  .amazement-button:hover,
+  .amazement-product-card:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(107, 70, 193, 0.1);
+  }
+}
+
+/* High-Performance Mode */
+.reduce-motion .amazement-interactive-box,
+.reduce-motion .amazement-button,
+.reduce-motion .amazement-product-card {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.reduce-motion .amazement-interactive-box:hover,
+.reduce-motion .amazement-button:hover,
+.reduce-motion .amazement-product-card:hover {
+  transform: none;
+  box-shadow: none;
+}

@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import CustomCursor from '@/components/ui/CustomCursor';
+import EnhancedCellularBackground from '@/components/landing/EnhancedCellularBackground';
 
 type CustomProductStep = 'intro' | 'scan-choice' | 'scanning' | 'scan-results' | 'chatbox' | 'formulation' | 'proposal';
 
@@ -87,7 +88,7 @@ const CustomProduct = () => {
   const renderIntroStep = () => (
     <div className="text-center max-w-2xl mx-auto">
       <div className="mb-8">
-        <BeakerIcon className="w-16 h-16 mx-auto mb-4 text-beautyagent-charcoal-gray" />
+        <BeakerIcon className="w-16 h-16 mx-auto mb-4 text-dermoagent-deep-purple animate-neural-pulse" />
         <h1 className="text-4xl font-light tracking-wider text-beautyagent-graphite-black mb-4">
           Create Your Custom Product
         </h1>
@@ -97,16 +98,16 @@ const CustomProduct = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
-        <Card className="p-6 glass-card hover:shadow-lg transition-all cursor-pointer" onClick={() => setCurrentStep('scan-choice')}>
-          <Camera className="w-12 h-12 mx-auto mb-4 text-beautyagent-violet-titanium" />
+        <Card className="p-6 amazement-interactive-box hover-elevation-enhanced cursor-pointer micro-interaction-sparkle" onClick={() => setCurrentStep('scan-choice')}>
+          <Camera className="w-12 h-12 mx-auto mb-4 text-dermoagent-deep-purple" />
           <h3 className="text-xl font-light mb-2">Face Scan Analysis</h3>
           <p className="text-sm text-beautyagent-charcoal-gray">
             Advanced AI analysis of your skin for precise formulation
           </p>
         </Card>
 
-        <Card className="p-6 glass-card hover:shadow-lg transition-all cursor-pointer" onClick={handleSkipToChat}>
-          <MessageSquare className="w-12 h-12 mx-auto mb-4 text-beautyagent-violet-titanium" />
+        <Card className="p-6 amazement-interactive-box hover-elevation-enhanced cursor-pointer micro-interaction-sparkle" onClick={handleSkipToChat}>
+          <MessageSquare className="w-12 h-12 mx-auto mb-4 text-dermoagent-deep-purple" />
           <h3 className="text-xl font-light mb-2">Describe Your Needs</h3>
           <p className="text-sm text-beautyagent-charcoal-gray">
             Tell us about your skin concerns and goals
@@ -124,12 +125,12 @@ const CustomProduct = () => {
       </p>
       
       <div className="space-y-4">
-        <Button onClick={handleStartScan} className="w-full glass-button" size="lg">
+        <Button onClick={handleStartScan} className="w-full amazement-button" size="lg">
           <Camera className="mr-2 h-5 w-5" />
           Start Face Scan
         </Button>
         
-        <Button onClick={handleSkipToChat} variant="outline" className="w-full glass-button">
+        <Button onClick={handleSkipToChat} variant="outline" className="w-full amazement-button">
           Skip to Manual Input
         </Button>
       </div>
@@ -138,14 +139,31 @@ const CustomProduct = () => {
 
   const renderScanning = () => (
     <div className="text-center max-w-xl mx-auto">
-      <div className="relative w-80 h-80 mx-auto mb-6 bg-beautyagent-light-grey rounded-lg overflow-hidden">
+      <div className="relative w-80 h-80 mx-auto mb-6 bg-dermoagent-ethereal-purple rounded-lg overflow-hidden amazement-interactive-box">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="animate-pulse">
-            <Camera className="w-16 h-16 text-beautyagent-charcoal-gray" />
+          <div className="animate-neural-pulse">
+            <Camera className="w-16 h-16 text-dermoagent-deep-purple" />
           </div>
         </div>
         <div className="absolute inset-0 pointer-events-none">
           <div className="scan-line-cyan w-full animate-scanning"></div>
+        </div>
+        {/* Enhanced scanning visualization */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 8 }, (_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full bg-dermoagent-muted-violet cellular-drift-purple-enhanced"
+              style={{
+                width: `${Math.random() * 20 + 10}px`,
+                height: `${Math.random() * 20 + 10}px`,
+                left: `${Math.random() * 80 + 10}%`,
+                top: `${Math.random() * 80 + 10}%`,
+                animationDelay: `${i * 0.5}s`,
+                opacity: 0.6
+              }}
+            />
+          ))}
         </div>
       </div>
       
@@ -160,21 +178,21 @@ const CustomProduct = () => {
     <div className="max-w-2xl mx-auto">
       <h2 className="text-2xl font-light text-center mb-8">Skin Analysis Complete</h2>
       
-      <Card className="p-6 glass-card mb-6">
+      <Card className="p-6 amazement-interactive-box mb-6">
         <h3 className="text-lg font-light mb-4 flex items-center">
-          <Sparkles className="w-5 h-5 mr-2 text-beautyagent-violet-titanium" />
+          <Sparkles className="w-5 h-5 mr-2 text-dermoagent-deep-purple animate-neural-pulse" />
           Detected Skin Needs
         </h3>
         
         <div className="grid grid-cols-2 gap-3 mb-6">
           {skinAnalysis?.needs.map((need, index) => (
-            <div key={index} className="p-3 bg-beautyagent-light-grey/30 rounded-lg">
+            <div key={index} className="p-3 bg-dermoagent-light-purple rounded-lg amazement-interactive-box hover-elevation-enhanced">
               <span className="text-sm font-light">{need}</span>
             </div>
           ))}
         </div>
         
-        <div className="border-t border-beautyagent-light-grey pt-4">
+        <div className="border-t border-dermoagent-light-purple pt-4 futuristic-data-line">
           <h4 className="font-light mb-2">Recommended Active Ingredients:</h4>
           <p className="text-sm text-beautyagent-charcoal-gray">
             {skinAnalysis?.recommendations.join(', ')}
@@ -183,7 +201,7 @@ const CustomProduct = () => {
       </Card>
       
       <div className="text-center">
-        <Button onClick={handleContinueToChat} className="glass-button" size="lg">
+        <Button onClick={handleContinueToChat} className="amazement-button" size="lg">
           Continue to Personalization
         </Button>
       </div>
@@ -197,14 +215,14 @@ const CustomProduct = () => {
       </h2>
       
       {!skipScan && skinAnalysis && (
-        <Card className="p-4 glass-card mb-6">
+        <Card className="p-4 amazement-interactive-box mb-6">
           <p className="text-sm text-beautyagent-charcoal-gray">
             Based on your scan: {skinAnalysis.needs.join(', ')}
           </p>
         </Card>
       )}
       
-      <Card className="p-6 glass-card">
+      <Card className="p-6 amazement-interactive-box">
         <Textarea
           value={userNotes}
           onChange={(e) => setUserNotes(e.target.value)}
@@ -214,18 +232,18 @@ const CustomProduct = () => {
           }
           variant="notebook"
           enableAutocorrect={true}
-          className="min-h-[120px] mb-4"
+          className="min-h-[120px] mb-4 amazement-input"
         />
         
         <div className="flex justify-between">
           <Button 
             onClick={() => setCurrentStep(skipScan ? 'intro' : 'scan-results')} 
             variant="outline" 
-            className="glass-button"
+            className="amazement-button"
           >
             Back
           </Button>
-          <Button onClick={handleSubmitNotes} className="glass-button">
+          <Button onClick={handleSubmitNotes} className="amazement-button">
             Create My Formulation
           </Button>
         </div>
@@ -236,8 +254,8 @@ const CustomProduct = () => {
   const renderFormulation = () => (
     <div className="text-center max-w-xl mx-auto">
       <div className="mb-6">
-        <div className="animate-pulse mb-4">
-          <BeakerIcon className="w-16 h-16 mx-auto text-beautyagent-violet-titanium" />
+        <div className="animate-neural-pulse mb-4">
+          <BeakerIcon className="w-16 h-16 mx-auto text-dermoagent-deep-purple" />
         </div>
         <h3 className="text-xl font-light mb-2">Creating Your Custom Formulation...</h3>
         <p className="text-beautyagent-charcoal-gray">
@@ -249,7 +267,24 @@ const CustomProduct = () => {
         <p>✓ Analyzing skin requirements</p>
         <p>✓ Selecting optimal ingredients</p>
         <p>✓ Calculating precise concentrations</p>
-        <p className="animate-pulse">→ Finalizing formulation...</p>
+        <p className="animate-neural-pulse">→ Finalizing formulation...</p>
+      </div>
+      
+      {/* Enhanced formulation visualization */}
+      <div className="mt-8 relative">
+        {Array.from({ length: 12 }, (_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-dermoagent-ethereal-purple cellular-cluster-formation-enhanced"
+            style={{
+              width: `${Math.random() * 15 + 5}px`,
+              height: `${Math.random() * 15 + 5}px`,
+              left: `${Math.random() * 90 + 5}%`,
+              top: `${Math.random() * 60 + 20}%`,
+              animationDelay: `${i * 0.3}s`
+            }}
+          />
+        ))}
       </div>
     </div>
   );
@@ -260,10 +295,10 @@ const CustomProduct = () => {
       
       <div className="grid md:grid-cols-2 gap-8">
         <div>
-          <Card className="p-6 glass-card mb-6">
+          <Card className="p-6 amazement-product-card mb-6">
             <div className="text-center mb-6">
-              <div className="w-32 h-40 mx-auto bg-gradient-to-b from-beautyagent-light-grey to-beautyagent-charcoal-gray/20 rounded-lg flex items-center justify-center mb-4">
-                <BeakerIcon className="w-12 h-12 text-beautyagent-charcoal-gray" />
+              <div className="w-32 h-40 mx-auto bg-gradient-to-b from-dermoagent-light-purple to-dermoagent-ethereal-purple rounded-lg flex items-center justify-center mb-4 amazement-interactive-box">
+                <BeakerIcon className="w-12 h-12 text-dermoagent-deep-purple animate-neural-pulse" />
               </div>
               <h3 className="text-xl font-light">{customFormulation?.name}</h3>
               <p className="text-sm text-beautyagent-charcoal-gray">{customFormulation?.type}</p>
@@ -281,12 +316,12 @@ const CustomProduct = () => {
         </div>
         
         <div>
-          <Card className="p-6 glass-card mb-6">
+          <Card className="p-6 amazement-interactive-box mb-6">
             <h4 className="font-light mb-4">Targeted Needs:</h4>
             <div className="space-y-2 mb-6">
               {customFormulation?.targetedNeeds.map((need: string, index: number) => (
                 <div key={index} className="flex items-center text-sm">
-                  <span className="w-2 h-2 bg-beautyagent-violet-titanium rounded-full mr-3"></span>
+                  <span className="w-2 h-2 bg-dermoagent-deep-purple rounded-full mr-3 animate-neural-pulse"></span>
                   {need}
                 </div>
               ))}
@@ -295,7 +330,7 @@ const CustomProduct = () => {
             <h4 className="font-light mb-4">Key Ingredients:</h4>
             <div className="space-y-2">
               {customFormulation?.keyIngredients.map((ingredient: string, index: number) => (
-                <div key={index} className="text-sm p-2 bg-beautyagent-light-grey/20 rounded">
+                <div key={index} className="text-sm p-2 bg-dermoagent-light-purple rounded amazement-interactive-box">
                   {ingredient}
                 </div>
               ))}
@@ -305,7 +340,7 @@ const CustomProduct = () => {
       </div>
       
       <div className="flex justify-center space-x-4">
-        <Button onClick={() => setCurrentStep('chatbox')} variant="outline" className="glass-button">
+        <Button onClick={() => setCurrentStep('chatbox')} variant="outline" className="amazement-button">
           Refine Needs
         </Button>
         <Button 
@@ -316,7 +351,7 @@ const CustomProduct = () => {
             });
             navigate('/shop');
           }} 
-          className="glass-button"
+          className="amazement-button micro-interaction-sparkle"
           size="lg"
         >
           <ShoppingBag className="mr-2 h-4 w-4" />
@@ -328,17 +363,20 @@ const CustomProduct = () => {
 
   return (
     <>
+      {/* Enhanced Cellular Background */}
+      <EnhancedCellularBackground isVisible={true} intensity="moderate" showDataStreams={true} />
+      
       {/* Cellular Cursor Component */}
       <CustomCursor />
       
-      <div className="min-h-screen bg-beautyagent-off-white">
-        <div className="container max-w-6xl mx-auto px-4 py-8">
+      <div className="min-h-screen bg-dermoagent-pure-white amazement-page">
+        <div className="container max-w-6xl mx-auto px-4 py-8 relative z-10">
           <div className="mb-8 flex items-center">
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={() => navigate('/')}
-              className="mr-3 hover-enhance"
+              className="mr-3 amazement-button"
             >
               <ArrowLeft className="h-5 w-5" />
             </Button>
@@ -346,19 +384,19 @@ const CustomProduct = () => {
               <div className="flex items-center space-x-8">
                 {(['intro', 'scan-choice', 'scanning', 'scan-results'] as CustomProductStep[]).includes(currentStep) && (
                   <div className="flex items-center space-x-2">
-                    <div className={`w-2 h-2 rounded-full ${currentStep !== 'intro' ? 'bg-beautyagent-violet-titanium' : 'bg-beautyagent-light-grey'}`}></div>
+                    <div className={`w-2 h-2 rounded-full ${currentStep !== 'intro' ? 'bg-dermoagent-deep-purple animate-neural-pulse' : 'bg-beautyagent-light-grey'}`}></div>
                     <span className="text-sm">Scan</span>
                   </div>
                 )}
                 {(['chatbox'] as CustomProductStep[]).includes(currentStep) && (
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-beautyagent-violet-titanium"></div>
+                    <div className="w-2 h-2 rounded-full bg-dermoagent-deep-purple animate-neural-pulse"></div>
                     <span className="text-sm">Personalize</span>
                   </div>
                 )}
                 {(['formulation', 'proposal'] as CustomProductStep[]).includes(currentStep) && (
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 rounded-full bg-beautyagent-violet-titanium"></div>
+                    <div className="w-2 h-2 rounded-full bg-dermoagent-deep-purple animate-neural-pulse"></div>
                     <span className="text-sm">Formulation</span>
                   </div>
                 )}
