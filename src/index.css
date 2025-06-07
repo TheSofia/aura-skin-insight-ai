@@ -20,7 +20,6 @@
 @import './styles/components/interaction-enhancement.css';
 @import './styles/components/custom-cursor.css';
 @import './styles/components/3d-effects.css';
-@import './styles/components/amazement-interactions.css';
 
 /* Import button styles */
 @import './styles/components/buttons/index.css';
@@ -31,133 +30,23 @@
 /* Import animation styles */
 @import './styles/animations/keyframes.css';
 @import './styles/animations/cellular.css';
-@import './styles/animations/cellular-enhanced.css';
 @import './styles/animations/particles.css';
 @import './styles/animations/ui.css';
 @import './styles/animations/effects.css';
 
-/* Dermo.Agent Universal Typography & Layout */
-* {
-  font-family: var(--dermoagent-primary-font) !important;
+/* Apply 3D enhancements to the landing page */
+.landing-page-3d {
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
-/* Enhanced cursor interactions for the amazement page */
-.amazement-page {
-  background: linear-gradient(135deg, 
-    var(--dermoagent-pure-white) 0%, 
-    var(--dermoagent-pale-cool-grey) 50%, 
-    var(--dermoagent-pure-white) 100%);
-  min-height: 100vh;
+.hero-section-3d {
+  transform-style: preserve-3d;
 }
 
-/* Global Interactive Enhancement Classes with Deep Purple Focus */
-.interactive-amazement {
-  @apply amazement-interactive-box;
-}
-
-.button-amazement {
-  @apply amazement-button;
-}
-
-.input-amazement {
-  @apply amazement-input;
-}
-
-.product-card-amazement {
-  @apply amazement-product-card;
-}
-
-.nav-link-amazement {
-  @apply amazement-nav-link;
-}
-
-/* Enhanced fade animations for smooth page transitions */
-.animate-elegant-fade-in {
-  animation: elegant-fade-in 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-
-.animate-elegant-fade-in-delayed {
-  animation: elegant-fade-in 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.8s forwards;
-  opacity: 0;
-}
-
-@keyframes elegant-fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.98);
-    filter: blur(4px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-/* Notebook-style layout consistency */
-.notebook-style {
-  background: var(--dermoagent-notebook-base);
-  position: relative;
-}
-
-.notebook-style::before {
-  content: '';
-  position: absolute;
-  left: 60px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--dermoagent-notebook-margin);
-  z-index: 1;
-}
-
-/* Refined interactive states */
-.hover-target {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  min-height: 44px;
-  min-width: 44px;
-}
-
-.hover-target:hover {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 4px 15px var(--dermoagent-interaction-purple);
-}
-
-/* Smooth page transitions */
-.page-transition {
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* Enhanced focus states for accessibility */
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--dermoagent-deep-purple);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--dermoagent-interaction-purple);
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  :root {
-    --dermoagent-deep-purple: #4C1D95;
-    --dermoagent-interaction-purple: rgba(76, 29, 149, 0.3);
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .animate-elegant-fade-in,
-  .animate-elegant-fade-in-delayed {
-    animation: none;
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-  
-  .hover-target:hover {
-    transform: none;
-    box-shadow: none;
-  }
+/* Enhanced depth for text elements */
+.text-depth-elegant {
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05);
 }

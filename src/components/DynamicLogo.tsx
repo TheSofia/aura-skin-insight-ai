@@ -95,12 +95,7 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
       />
       
       {/* Add a subtle outer glow effect - adjusted based on context */}
-      <div className={`absolute inset-[-10%] rounded-full ${getIntensityStyles(intensity, { isLandingPage, isLoadingPage }).glow} animate-pulse-slow`}
-           style={{
-             background: 'radial-gradient(circle, var(--dermoagent-cellular-glow) 0%, transparent 70%)',
-             opacity: 0.6
-           }}
-      />
+      <div className={`absolute inset-[-10%] rounded-full ${getIntensityStyles(intensity, { isLandingPage, isLoadingPage }).glow} animate-pulse-slow bg-gradient-radial from-beautyagent-accent/10 to-transparent`}></div>
     </LogoWrapper>
   );
 });

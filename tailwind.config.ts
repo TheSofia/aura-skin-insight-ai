@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -55,7 +56,7 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 
-				// DermoAgent Knowledge Dataset Aligned Color System - ENHANCED
+				// DermoAgent Knowledge Dataset Aligned Color System
 				dermoagent: {
 					// Base Colors - Knowledge Dataset Palette
 					'pure-white': '#FFFFFF',
@@ -74,21 +75,8 @@ export default {
 					'muted-blue': '#4A5D8A',
 					'light-blue': 'rgba(44, 62, 115, 0.1)',
 					
-					// NEW: Deep Purple Spectrum - Cellular Animation Focus
-					'deep-purple': '#6B46C1',
-					'muted-violet': '#8B5CF6',
-					'indigo': '#5B21B6',
-					'amethyst': '#7C3AED',
-					'light-purple': 'rgba(107, 70, 193, 0.1)',
-					'ethereal-purple': 'rgba(139, 92, 246, 0.05)',
-					'cellular-purple': 'rgba(91, 33, 182, 0.08)',
-					'interaction-purple': 'rgba(107, 70, 193, 0.15)',
-					'interaction-glow': 'rgba(139, 92, 246, 0.2)',
-					'click-response': 'rgba(124, 58, 237, 0.25)',
-					'hover-purple': 'rgba(91, 33, 182, 0.1)',
-					
-					// Alternative Secondary - Muted Violet (Enhanced)
-					'muted-violet-legacy': '#6B5B95',
+					// Alternative Secondary - Muted Violet
+					'muted-violet': '#6B5B95',
 					'light-violet': 'rgba(107, 91, 149, 0.1)',
 					
 					// Subtle Dynamic Elements - Cellular Textures
@@ -99,13 +87,12 @@ export default {
 					'semi-transparent-white-strong': 'rgba(255, 255, 255, 0.6)',
 				},
 
-				// Glass effects - Enhanced with Purple
+				// Glass effects - Updated to use new color system
 				glass: {
 					light: 'rgba(255, 255, 255, 0.7)',
 					white: 'rgba(255, 255, 255, 0.9)',
 					dark: 'rgba(33, 37, 41, 0.05)',
-					accent: 'rgba(44, 62, 115, 0.08)',
-					purple: 'rgba(107, 70, 193, 0.08)',
+					accent: 'rgba(44, 62, 115, 0.08)', // Deep blue instead of green
 				}
 			},
 			borderRadius: {
@@ -253,84 +240,6 @@ export default {
 				'cellular-drift': 'cellular-drift 30s infinite ease-in-out',
 				'cellular-drift-minimal': 'cellular-drift-minimal 40s infinite ease-in-out',
 				'cellular-morph': 'cellular-morph 50s infinite ease-in-out',
-				
-				// Enhanced Cellular Animations - Deep Purple Focus
-				'cellular-drift-purple': {
-					'0%': { transform: 'translateX(0) translateY(0) scale(1)', opacity: '0.6' },
-					'25%': { transform: 'translateX(3px) translateY(-2px) scale(1.05)', opacity: '0.8' },
-					'50%': { transform: 'translateX(4px) translateY(2px) scale(1.02)', opacity: '0.7' },
-					'75%': { transform: 'translateX(-1px) translateY(3px) scale(0.98)', opacity: '0.75' },
-					'100%': { transform: 'translateX(0) translateY(0) scale(1)', opacity: '0.6' }
-				},
-				'cellular-pulse-purple': {
-					'0%, 100%': { transform: 'scale(1)', opacity: '0.4', background: 'rgba(107, 70, 193, 0.1)' },
-					'50%': { transform: 'scale(1.15)', opacity: '0.7', background: 'rgba(139, 92, 246, 0.15)' }
-				},
-				'cellular-cluster-formation': {
-					'0%': { transform: 'translateX(0) translateY(0) scale(1)', borderRadius: '50%' },
-					'33%': { transform: 'translateX(2px) translateY(-3px) scale(1.1)', borderRadius: '60% 40% 50% 50%' },
-					'66%': { transform: 'translateX(-2px) translateY(2px) scale(0.9)', borderRadius: '40% 60% 45% 55%' },
-					'100%': { transform: 'translateX(0) translateY(0) scale(1)', borderRadius: '50%' }
-				},
-				'micro-cellular-orbit': {
-					'0%': { transform: 'rotate(0deg) translateX(8px) rotate(0deg) scale(1)' },
-					'50%': { transform: 'rotate(180deg) translateX(12px) rotate(-180deg) scale(1.1)' },
-					'100%': { transform: 'rotate(360deg) translateX(8px) rotate(-360deg) scale(1)' }
-				},
-				
-				// Interactive Amazement Animations
-				'click-response-glow': {
-					'0%': { boxShadow: '0 0 0 rgba(124, 58, 237, 0)', transform: 'scale(1)' },
-					'50%': { boxShadow: '0 0 20px rgba(124, 58, 237, 0.4)', transform: 'scale(1.02)' },
-					'100%': { boxShadow: '0 0 0 rgba(124, 58, 237, 0)', transform: 'scale(1)' }
-				},
-				'hover-elevate': {
-					'0%': { transform: 'translateY(0) scale(1)', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' },
-					'100%': { transform: 'translateY(-2px) scale(1.01)', boxShadow: '0 8px 25px rgba(107, 70, 193, 0.15)' }
-				},
-				'particle-burst': {
-					'0%': { transform: 'scale(0) rotate(0deg)', opacity: '1' },
-					'50%': { transform: 'scale(1.5) rotate(180deg)', opacity: '0.7' },
-					'100%': { transform: 'scale(2) rotate(360deg)', opacity: '0' }
-				},
-				'data-flow': {
-					'0%': { transform: 'translateX(-100%) skewX(-45deg)', opacity: '0' },
-					'50%': { opacity: '1' },
-					'100%': { transform: 'translateX(200%) skewX(-45deg)', opacity: '0' }
-				},
-				
-				// Futuristic UI Elements
-				'neural-pulse': {
-					'0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
-					'50%': { opacity: '0.8', transform: 'scale(1.05)' }
-				},
-				'scanning-line': {
-					'0%': { transform: 'translateX(-100%)', opacity: '0' },
-					'20%': { opacity: '1' },
-					'80%': { opacity: '1' },
-					'100%': { transform: 'translateX(100%)', opacity: '0' }
-				},
-				
-				// ... keep existing code (pulse-dot, circular-motion, fluid-motion, morph, pulse-subtle, float-subtle, cellular-drift, cellular-core-pulse, cellular-ring-drift, cellular-particle-float, orbital-motion, orbital-motion-reverse, orbital-float, pulse-cellular, typewriter-blink)
-			},
-			animation: {
-				// ... keep existing code
-				
-				// Enhanced Cellular Animations
-				'cellular-drift-purple': 'cellular-drift-purple 25s infinite ease-in-out',
-				'cellular-pulse-purple': 'cellular-pulse-purple 18s infinite ease-in-out',
-				'cellular-cluster-formation': 'cellular-cluster-formation 32s infinite ease-in-out',
-				'micro-cellular-orbit': 'micro-cellular-orbit 15s infinite linear',
-				
-				// Interactive Amazement Animations
-				'click-response-glow': 'click-response-glow 0.6s ease-out',
-				'hover-elevate': 'hover-elevate 0.3s ease-out forwards',
-				'particle-burst': 'particle-burst 0.8s ease-out',
-				'data-flow': 'data-flow 2s linear infinite',
-				
-				// Futuristic UI Elements
-				'neural-pulse': 'neural-pulse 3s ease-in-out infinite',
-				'scanning-line': 'scanning-line 3s linear infinite',
 			},
 			fontFamily: {
 				'sans': ['"Inter"', 'sans-serif'],
@@ -343,28 +252,22 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				
-				// DermoAgent Enhanced Gradients - Deep Purple Focus
+				// DermoAgent Refined Gradients - Knowledge Dataset Aligned
 				'dermoagent-notebook': 'linear-gradient(to bottom, #FFFFFF, #F8F9FA)',
 				'dermoagent-primary-cta': 'linear-gradient(135deg, #A93226, #CC5500)',
 				'dermoagent-secondary-accent': 'linear-gradient(135deg, #2C3E73, #4A5D8A)',
-				'dermoagent-cellular-purple': 'radial-gradient(circle, rgba(107, 70, 193, 0.1) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 100%)',
-				'dermoagent-interactive-glow': 'linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(107, 70, 193, 0.1))',
 			},
 			boxShadow: {
 				'subtle': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
 				
-				// DermoAgent Enhanced Shadows - Deep Purple Focus
-				'dermoagent-minimal': '0 2px 8px rgba(33, 37, 41, 0.03)',
-				'dermoagent-soft': '0 1px 4px rgba(33, 37, 41, 0.04)',
-				'dermoagent-interactive': '0 0 12px rgba(44, 62, 115, 0.15)',
-				'dermoagent-purple-glow': '0 4px 20px rgba(107, 70, 193, 0.15)',
-				'dermoagent-cellular-depth': '0 2px 15px rgba(139, 92, 246, 0.1)',
-				'dermoagent-click-response': '0 0 25px rgba(124, 58, 237, 0.3)',
+				// DermoAgent Refined Shadows - Knowledge Dataset Aligned
+				'dermaagent-minimal': '0 2px 8px rgba(33, 37, 41, 0.03)',
+				'dermaagent-soft': '0 1px 4px rgba(33, 37, 41, 0.04)',
+				'dermaagent-interactive': '0 0 12px rgba(44, 62, 115, 0.15)',
 			},
 			backdropFilter: {
 				'none': 'none',
 				'blur': 'blur(8px)',
-				'cellular': 'blur(12px)',
 			},
 		}
 	},

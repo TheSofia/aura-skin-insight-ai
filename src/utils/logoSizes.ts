@@ -6,7 +6,7 @@ export type LogoSize = 'sm' | 'md' | 'lg' | 'xl';
  */
 export const getLogoSizeClasses = (size: LogoSize): string => {
   const sizeClasses = {
-    sm: 'w-6 h-6',
+    sm: 'w-8 h-8',
     md: 'w-12 h-12',
     lg: 'w-16 h-16',
     xl: 'w-24 h-24'
@@ -19,7 +19,7 @@ export const getLogoSizeClasses = (size: LogoSize): string => {
  */
 export const getCoreSizeClasses = (size: LogoSize): string => {
   const coreSizes = {
-    sm: 'w-1.5 h-1.5',
+    sm: 'w-2 h-2',
     md: 'w-3 h-3',
     lg: 'w-4 h-4',
     xl: 'w-6 h-6'
@@ -32,7 +32,7 @@ export const getCoreSizeClasses = (size: LogoSize): string => {
  */
 export const getInnerRingSizeClasses = (size: LogoSize): string => {
   const innerRingSizes = {
-    sm: 'w-3 h-3',
+    sm: 'w-4 h-4',
     md: 'w-6 h-6',
     lg: 'w-8 h-8',
     xl: 'w-12 h-12'
@@ -45,7 +45,7 @@ export const getInnerRingSizeClasses = (size: LogoSize): string => {
  */
 export const getOuterRingSizeClasses = (size: LogoSize): string => {
   const outerRingSizes = {
-    sm: 'w-6 h-6',
+    sm: 'w-8 h-8',
     md: 'w-12 h-12',
     lg: 'w-16 h-16',
     xl: 'w-24 h-24'

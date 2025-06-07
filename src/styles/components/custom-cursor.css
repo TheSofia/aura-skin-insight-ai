@@ -1,50 +1,22 @@
 
-/* Enhanced Cursor System - Dermo.Agent Lab Aesthetic */
+/* Classic Cursor System - Default Browser Functionality */
 
-/* Default cursor behavior */
+/* Ensure all elements use default browser cursor */
 * {
   cursor: auto !important;
 }
 
-/* Enhanced cursor states for interactive elements */
-button, a, input, textarea, select, [role="button"], [data-interactive], .hover-target, .amazement-button, .amazement-interactive-box {
-  cursor: pointer !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Enhanced cursor interactions for desktop */
-.enhanced-cursor-active button:hover,
-.enhanced-cursor-active a:hover,
-.enhanced-cursor-active .amazement-button:hover,
-.enhanced-cursor-active .amazement-interactive-box:hover {
+/* Standard interactive element cursors */
+button, a, input, textarea, select, [role="button"], [data-interactive] {
   cursor: pointer !important;
 }
 
-/* Subtle cursor enhancement on interactive elements */
-.cursor-enhanced {
-  position: relative;
-}
-
-.cursor-enhanced::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, 
-    rgba(107, 70, 193, 0.1) 0%, 
-    rgba(139, 92, 246, 0.08) 50%, 
-    rgba(107, 70, 193, 0.1) 100%);
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.cursor-enhanced:hover::before {
-  opacity: 1;
+/* Synaptic Flow specific overrides for maximum click accuracy */
+.glass-card li, .glass-card li *, 
+.glass-card button, .glass-card button *,
+.glass-card [onClick], .glass-card [onClick] * {
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }
 
 /* Text input cursors */
@@ -57,17 +29,26 @@ button:disabled, input:disabled, textarea:disabled, select:disabled {
   cursor: not-allowed !important;
 }
 
-/* Enhanced targeting for interactive cards */
-.glass-card, .product-card, .interactive-card {
-  cursor: pointer !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Resize cursors for resizable elements */
+textarea[resize] {
+  cursor: auto !important;
 }
 
-.glass-card:hover, .product-card:hover, .interactive-card:hover {
-  cursor: pointer !important;
+/* Hide any custom cursor elements that might still exist */
+.cellular-cursor {
+  display: none !important;
 }
 
-/* Mobile devices keep their default touch behavior */
+.custom-cursor-active * {
+  cursor: auto !important;
+}
+
+/* Enhanced targeting for chat elements */
+.beauty-exchange *, .synaptic-flow * {
+  pointer-events: auto !important;
+}
+
+/* Ensure mobile devices keep their default touch behavior */
 @media (hover: none) and (pointer: coarse) {
   * {
     cursor: auto !important;
@@ -75,30 +56,5 @@ button:disabled, input:disabled, textarea:disabled, select:disabled {
   
   button, a, input, textarea, select, [role="button"], [data-interactive] {
     cursor: auto !important;
-  }
-  
-  .cursor-enhanced::before {
-    display: none;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .cursor-enhanced::before {
-    background: linear-gradient(45deg, 
-      rgba(107, 70, 193, 0.2) 0%, 
-      rgba(139, 92, 246, 0.15) 50%, 
-      rgba(107, 70, 193, 0.2) 100%);
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .cursor-enhanced::before {
-    transition: none;
-  }
-  
-  button, a, .amazement-button, .amazement-interactive-box {
-    transition: background-color 0.2s ease, border-color 0.2s ease;
   }
 }

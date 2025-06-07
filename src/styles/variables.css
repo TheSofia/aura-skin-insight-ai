@@ -21,17 +21,8 @@
   --dermoagent-muted-blue: #4A5D8A;
   --dermoagent-light-blue: rgba(44, 62, 115, 0.1);
   
-  /* NEW: Deep Purple Spectrum - Cellular Animation Focus */
-  --dermoagent-deep-purple: #6B46C1;
-  --dermoagent-muted-violet: #8B5CF6;
-  --dermoagent-indigo: #5B21B6;
-  --dermoagent-amethyst: #7C3AED;
-  --dermoagent-light-purple: rgba(107, 70, 193, 0.1);
-  --dermoagent-ethereal-purple: rgba(139, 92, 246, 0.05);
-  --dermoagent-cellular-purple: rgba(91, 33, 182, 0.08);
-  
-  /* Alternative Secondary - Muted Violet (Enhanced) */
-  --dermoagent-muted-violet-legacy: #6B5B95;
+  /* Alternative Secondary - Muted Violet */
+  --dermoagent-muted-violet: #6B5B95;
   --dermoagent-light-violet: rgba(107, 91, 149, 0.1);
   
   /* Subtle Dynamic Elements - Cellular Textures */
@@ -46,23 +37,15 @@
   --dermoagent-notebook-line: rgba(227, 227, 227, 0.4);
   --dermoagent-notebook-margin: rgba(227, 227, 227, 0.3);
   
-  /* Enhanced Cellular Background - Deep Purple Focus */
-  --dermoagent-cellular-ambient: rgba(107, 70, 193, 0.003);
-  --dermoagent-cellular-soft: rgba(139, 92, 246, 0.008);
-  --dermoagent-cellular-subtle: rgba(91, 33, 182, 0.005);
-  --dermoagent-cellular-glow: rgba(124, 58, 237, 0.12);
+  /* Ultra Subtle Cellular Background - Barely There */
+  --dermoagent-cellular-ambient: rgba(227, 227, 227, 0.005);
+  --dermoagent-cellular-soft: rgba(227, 227, 227, 0.01);
+  --dermoagent-cellular-subtle: rgba(227, 227, 227, 0.003);
   
-  /* Glass & Depth Effects - Enhanced with Purple */
+  /* Glass & Depth Effects */
   --dermoagent-glass-overlay: rgba(255, 255, 255, 0.95);
   --dermoagent-glass-shadow: rgba(33, 37, 41, 0.02);
   --dermoagent-glass-border: rgba(227, 227, 227, 0.3);
-  --dermoagent-glass-purple: rgba(107, 70, 193, 0.08);
-  
-  /* Interactive States - Amazement Factor */
-  --dermoagent-interaction-purple: rgba(107, 70, 193, 0.15);
-  --dermoagent-interaction-glow: rgba(139, 92, 246, 0.2);
-  --dermoagent-click-response: rgba(124, 58, 237, 0.25);
-  --dermoagent-hover-purple: rgba(91, 33, 182, 0.1);
   
   /* Premium Typography Variables - IBM Plex Mono System */
   --dermoagent-primary-font: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;

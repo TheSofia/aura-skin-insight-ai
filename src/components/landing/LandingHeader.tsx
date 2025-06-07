@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X, ShoppingBag, BookOpen, Camera, Users, BeakerIcon } from 'lucide-react';
@@ -22,10 +21,7 @@ const LandingHeader = () => {
         <div className="relative ml-1">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="amazement-button p-3 bg-white/90 backdrop-blur-sm border border-dermoagent-light-gray rounded-lg shadow-sm hover:bg-white transition-all duration-200 text-dermoagent-pale-black hover:text-dermoagent-deep-purple min-h-[48px] min-w-[48px]"
-            style={{
-              fontFamily: 'var(--dermoagent-primary-font)'
-            }}
+            className="p-3 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg shadow-sm hover:bg-white transition-all duration-200 text-gray-700 hover:text-gray-900"
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -40,31 +36,21 @@ const LandingHeader = () => {
               />
               
               {/* Dropdown Menu */}
-              <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-sm border border-dermoagent-light-gray rounded-lg shadow-lg z-50">
+              <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg shadow-lg z-50">
                 <div className="p-2">
-                  <div 
-                    className="px-3 py-2 text-sm font-light text-dermoagent-dark-cool-grey border-b border-dermoagent-light-gray/50 mb-2"
-                    style={{
-                      fontFamily: 'var(--dermoagent-primary-font)',
-                      letterSpacing: 'var(--dermoagent-letter-spacing-logo)'
-                    }}
-                  >
+                  <div className="px-3 py-2 text-sm font-medium text-gray-500 border-b border-gray-100 mb-2">
                     dermo.agent
                   </div>
                   {navigationItems.map((item) => (
                     <button
                       key={item.name}
-                      className="amazement-nav-link w-full flex items-center px-3 py-3 text-sm text-dermoagent-pale-black hover:bg-dermoagent-ethereal-purple hover:text-dermoagent-deep-purple rounded-md transition-all duration-200 min-h-[44px]"
+                      className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md transition-colors duration-150"
                       onClick={() => {
                         navigate(item.path);
                         setIsMenuOpen(false);
                       }}
-                      style={{
-                        fontFamily: 'var(--dermoagent-primary-font)',
-                        letterSpacing: 'var(--dermoagent-letter-spacing-body)'
-                      }}
                     >
-                      <item.icon className="mr-3 h-4 w-4 text-dermoagent-dark-cool-grey" />
+                      <item.icon className="mr-3 h-4 w-4 text-gray-500" />
                       {item.name}
                     </button>
                   ))}
