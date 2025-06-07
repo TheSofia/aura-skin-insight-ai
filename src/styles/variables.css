@@ -4,41 +4,55 @@
   /* Core Brand Identity */
   --dermoagent-app-name: "dermo.agent";
   
-  /* Premium Digital Notebook Color Palette - Strict Monochrome */
+  /* Premium Digital Notebook Color Palette - Knowledge Dataset Aligned */
   --dermoagent-pure-white: #FFFFFF;
-  --dermoagent-warm-bone: #F4F1ED;
+  --dermoagent-pale-cool-grey: #F8F9FA;
   --dermoagent-light-gray: #E3E3E3;
-  --dermoagent-charcoal-gray: #333333;
-  --dermoagent-graphite-black: #1A1A1A;
+  --dermoagent-pale-black: #212529;
+  --dermoagent-dark-cool-grey: #495057;
   
-  /* Elegant Red Margin Line - Sophisticated Notebook Detail */
-  --dermoagent-margin-red: #A93226;
-  --dermoagent-margin-red-light: rgba(169, 50, 38, 0.6);
-  --dermoagent-margin-red-subtle: rgba(169, 50, 38, 0.3);
+  /* Primary CTA & Warm Accent - Orange-Red Spectrum */
+  --dermoagent-primary-orange-red: #A93226;
+  --dermoagent-burnt-orange: #D2691E;
+  --dermoagent-warm-accent: #CC5500;
+  
+  /* Secondary Cool Accent - Deep Blue (replacing all green) */
+  --dermoagent-deep-blue: #2C3E73;
+  --dermoagent-muted-blue: #4A5D8A;
+  --dermoagent-light-blue: rgba(44, 62, 115, 0.1);
+  
+  /* Alternative Secondary - Muted Violet */
+  --dermoagent-muted-violet: #6B5B95;
+  --dermoagent-light-violet: rgba(107, 91, 149, 0.1);
+  
+  /* Subtle Dynamic Elements - Cellular Textures */
+  --dermoagent-dark-white: #ECECEC;
+  --dermoagent-off-white: #F5F5F5;
+  --dermoagent-semi-transparent-white-light: rgba(255, 255, 255, 0.1);
+  --dermoagent-semi-transparent-white-medium: rgba(255, 255, 255, 0.3);
+  --dermoagent-semi-transparent-white-strong: rgba(255, 255, 255, 0.6);
   
   /* Digital Notebook Background System */
   --dermoagent-notebook-base: #FFFFFF;
   --dermoagent-notebook-line: rgba(227, 227, 227, 0.4);
   --dermoagent-notebook-margin: rgba(227, 227, 227, 0.3);
   
-  /* Monochrome Cellular Background - Ultra Subtle Behind Notebook */
-  --dermoagent-cellular-ambient: rgba(227, 227, 227, 0.01);
-  --dermoagent-cellular-soft: rgba(227, 227, 227, 0.015);
-  --dermoagent-cellular-subtle: rgba(227, 227, 227, 0.005);
+  /* Ultra Subtle Cellular Background - Barely There */
+  --dermoagent-cellular-ambient: rgba(227, 227, 227, 0.005);
+  --dermoagent-cellular-soft: rgba(227, 227, 227, 0.01);
+  --dermoagent-cellular-subtle: rgba(227, 227, 227, 0.003);
   
-  /* Legacy Variables Removed - dermo.agent is the permanent brand */
-  
-  /* Monochrome Glass & Depth Effects */
+  /* Glass & Depth Effects */
   --dermoagent-glass-overlay: rgba(255, 255, 255, 0.95);
-  --dermoagent-glass-shadow: rgba(26, 26, 26, 0.02);
+  --dermoagent-glass-shadow: rgba(33, 37, 41, 0.02);
   --dermoagent-glass-border: rgba(227, 227, 227, 0.3);
   
-  /* Premium Notebook Typography Variables - Refined for d e r m o . a g e n t Logo */
+  /* Premium Typography Variables - IBM Plex Mono System */
   --dermoagent-primary-font: 'IBM Plex Mono', 'Monaco', 'Courier New', monospace;
   --dermoagent-logo-weight: 200; /* Ultra-light weight for refined elegance */
-  --dermoagent-heading-weight: 400;
-  --dermoagent-body-weight: 300;
-  --dermoagent-letter-spacing-logo: 0.25em; /* Wide spacing for breathable, elegant appearance */
+  --dermoagent-light-weight: 300;
+  --dermoagent-regular-weight: 400;
+  --dermoagent-letter-spacing-logo: 0.25em; /* Wide spacing for breathable appearance */
   --dermoagent-letter-spacing-heading: 0.06em;
   --dermoagent-letter-spacing-body: 0.02em;
 }

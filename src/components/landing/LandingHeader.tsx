@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X, ShoppingBag, BookOpen, Camera, Users, BeakerIcon } from 'lucide-react';
@@ -10,7 +9,7 @@ const LandingHeader = () => {
   const navigationItems = [
     { name: 'Skin Mirror', path: '/skin-mirror', icon: Camera },
     { name: 'Skin Diary', path: '/skin-diary', icon: BookOpen },
-    { name: 'Beauty Exchange', path: '/beauty-exchange', icon: Users },
+    { name: 'Synaptic Flow', path: '/synaptic-flow', icon: Users },
     { name: 'Shop', path: '/shop', icon: ShoppingBag },
     { name: 'Custom Products', path: '/custom-product', icon: BeakerIcon }
   ];

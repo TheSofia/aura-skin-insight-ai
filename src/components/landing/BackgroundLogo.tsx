@@ -7,6 +7,7 @@ import AtmosphericParticles from './logo/AtmosphericParticles';
 import LightTendrils from './logo/LightTendrils';
 import LightRefractionPatterns from './logo/LightRefractionPatterns';
 import CursorEffects from './logo/CursorEffects';
+import Enhanced3DLogo from './logo/Enhanced3DLogo';
 
 interface BackgroundLogoProps {
   className?: string;
@@ -30,6 +31,9 @@ const BackgroundLogo: React.FC<BackgroundLogoProps> = ({ className = '' }) => {
     <div 
       className={`fixed inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-0 ${className}`}
     >
+      {/* Enhanced 3D Logo Layer - positioned behind existing logo */}
+      <Enhanced3DLogo isVisible={isVisible} />
+      
       {/* Main central logo - significantly larger and more dominant with proximity effects */}
       <CentralLogo
         isVisible={isVisible}

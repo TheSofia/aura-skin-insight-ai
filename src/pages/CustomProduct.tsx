@@ -76,7 +76,7 @@ const CustomProduct = () => {
         ],
         concentration: "Moderate-High Potency",
         texture: "Lightweight, fast-absorbing serum",
-        price: 89,
+        price: 79, // Changed from 89 to 79 euros
         labTime: "7-10 business days"
       };
       setCustomFormulation(mockFormulation);
@@ -271,7 +271,7 @@ const CustomProduct = () => {
             
             <div className="text-center">
               <p className="text-2xl font-light text-beautyagent-graphite-black mb-2">
-                ${customFormulation?.price}
+                €{customFormulation?.price}
               </p>
               <p className="text-xs text-beautyagent-charcoal-gray">
                 Lab creation: {customFormulation?.labTime}

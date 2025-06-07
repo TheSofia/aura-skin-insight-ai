@@ -1,342 +1,59 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
 
-/* Base Styles */
-@import './styles/base.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Import all style modules */
 @import './styles/variables.css';
 @import './styles/fonts.css';
+@import './styles/base.css';
 @import './styles/utilities.css';
 
-/* Component Styles */
-@import './styles/components/buttons/index.css';
-@import './styles/components/glass-card.css';
+/* Import component styles */
 @import './styles/components/glass-morphism.css';
-@import './styles/components/custom-cursor.css';
-@import './styles/components/interaction-enhancement.css';
+@import './styles/components/glass-card.css';
+@import './styles/components/animated-gradients.css';
 @import './styles/components/typing-indicator.css';
 @import './styles/components/scan-line.css';
 @import './styles/components/shapes.css';
-@import './styles/components/animated-gradients.css';
 @import './styles/components/dermaagent-interactions.css';
 @import './styles/components/futuristic-interactions.css';
 @import './styles/components/pet-pals-interactions.css';
+@import './styles/components/interaction-enhancement.css';
+@import './styles/components/custom-cursor.css';
+@import './styles/components/3d-effects.css';
 
-/* Animation Styles */
+/* Import button styles */
+@import './styles/components/buttons/index.css';
+@import './styles/components/buttons/hover-effects.css';
+@import './styles/components/buttons/pulse-effects.css';
+@import './styles/components/buttons/premium-buttons.css';
+
+/* Import animation styles */
 @import './styles/animations/keyframes.css';
 @import './styles/animations/cellular.css';
 @import './styles/animations/particles.css';
-@import './styles/animations/effects.css';
 @import './styles/animations/ui.css';
+@import './styles/animations/effects.css';
 
-/* Tailwind CSS */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Enhanced Red Margin Line Implementation */
-.content-red-margin {
-  position: relative;
+/* Apply 3D enhancements to the landing page */
+.landing-page-3d {
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
-.content-red-margin::before {
-  content: '';
-  position: absolute;
-  left: 80px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: var(--dermoagent-margin-red);
-  opacity: 0.6;
-  z-index: 1;
+.hero-section-3d {
+  transform-style: preserve-3d;
 }
 
-/* Notebook Red Margin for Landing Page */
-.notebook-red-margin::after {
-  content: '';
-  position: fixed;
-  left: 88px;
-  top: 0;
-  bottom: 0;
-  width: 0.5px;
-  background-color: var(--dermoagent-margin-red);
-  opacity: 0.4;
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* DERMO.AGENT Brand Typography Enhancement */
-.dermoagent-logo-text {
-  font-family: var(--dermoagent-primary-font);
-  font-weight: var(--dermoagent-logo-weight);
-  letter-spacing: var(--dermoagent-letter-spacing-logo);
-  color: var(--dermoagent-charcoal-gray);
-  text-transform: lowercase;
-}
-
-.dermoagent-headline {
-  font-family: var(--dermoagent-primary-font);
-  font-weight: var(--dermoagent-heading-weight);
-  letter-spacing: var(--dermoagent-letter-spacing-heading);
-  color: var(--dermoagent-graphite-black);
-}
-
-.dermoagent-ui-text-subtle {
-  font-family: var(--dermoagent-primary-font);
-  font-weight: var(--dermoagent-body-weight);
-  letter-spacing: var(--dermoagent-letter-spacing-body);
-  color: var(--dermoagent-charcoal-gray);
-}
-
-/* DermoAgent Premium Digital Notebook Design System */
-@layer base {
-  :root {
-    --radius: 0.5rem;
-  }
-  
-  * {
-    @apply border-border;
-  }
-  
-  body {
-    background: var(--dermoagent-notebook-base);
-    font-family: var(--dermoagent-primary-font);
-    font-weight: var(--dermoagent-body-weight);
-    color: var(--dermoagent-graphite-black);
-    letter-spacing: var(--dermoagent-letter-spacing-body);
-    line-height: 1.6;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-  
-  /* DermoAgent Premium Notebook Typography - Refined Logo Styling */
-  .dermoagent-logo {
-    font-family: var(--dermoagent-primary-font);
-    font-weight: var(--dermoagent-logo-weight);
-    letter-spacing: var(--dermoagent-letter-spacing-logo);
-    color: var(--dermoagent-graphite-black);
-    line-height: 1.1;
-    text-transform: none; /* Preserve dermoAgent casing */
-    font-feature-settings: "kern" 1, "liga" 1;
-    text-rendering: optimizeLegibility;
-  }
-  
-  /* Enhanced logo letterform styling for dermoAgent */
-  .dermoagent-logo-enhanced {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dermoagent-logo-enhanced::before {
-    content: '';
-    position: absolute;
-    left: -2px;
-    top: 50%;
-    width: 1px;
-    height: 25%;
-    background: currentColor;
-    opacity: 0.15;
-    transform: translateY(-50%);
-  }
-  
-  .dermoagent-headline {
-    font-family: var(--dermoagent-primary-font);
-    font-weight: var(--dermoagent-heading-weight);
-    letter-spacing: var(--dermoagent-letter-spacing-heading);
-    color: var(--dermoagent-graphite-black);
-    line-height: 1.2;
-  }
-  
-  .dermoagent-ui-text {
-    font-family: var(--dermoagent-primary-font);
-    font-weight: var(--dermoagent-body-weight);
-    color: var(--dermoagent-graphite-black);
-    letter-spacing: var(--dermoagent-letter-spacing-body);
-  }
-  
-  .dermoagent-ui-text-medium {
-    font-family: var(--dermoagent-primary-font);
-    font-weight: var(--dermoagent-heading-weight);
-    color: var(--dermoagent-graphite-black);
-    letter-spacing: var(--dermoagent-letter-spacing-body);
-  }
-  
-  .dermoagent-ui-text-subtle {
-    font-family: var(--dermoagent-primary-font);
-    font-weight: var(--dermoagent-body-weight);
-    color: var(--dermoagent-charcoal-gray);
-    letter-spacing: var(--dermoagent-letter-spacing-body);
-  }
-  
-  /* Premium Monochrome Interactive Elements */
-  .dermoagent-button {
-    @apply transition-all duration-300 ease-out;
-    font-family: var(--dermoagent-primary-font);
-    font-weight: var(--dermoagent-body-weight);
-    letter-spacing: var(--dermoagent-letter-spacing-body);
-    background: transparent;
-    color: var(--dermoagent-graphite-black);
-    border: 1px solid var(--dermoagent-light-gray);
-  }
-  
-  .dermoagent-button:hover {
-    background: var(--dermoagent-light-gray);
-    border-color: var(--dermoagent-charcoal-gray);
-  }
-  
-  /* Premium Notebook Page Elements */
-  .dermoagent-notebook-page {
-    background: var(--dermoagent-notebook-base);
-    border: 1px solid var(--dermoagent-glass-border);
-    box-shadow: 0 1px 3px rgba(26, 26, 26, 0.02);
-  }
-  
-  /* Premium Monochrome Input Fields */
-  .dermoagent-input {
-    font-family: var(--dermoagent-primary-font);
-    font-weight: var(--dermoagent-body-weight);
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--dermoagent-graphite-black);
-    letter-spacing: var(--dermoagent-letter-spacing-body);
-    border-bottom: 1px solid var(--dermoagent-light-gray);
-  }
-  
-  .dermoagent-input:focus {
-    border-bottom-color: var(--dermoagent-charcoal-gray);
-  }
-  
-  .dermoagent-input::placeholder {
-    color: var(--dermoagent-charcoal-gray);
-    opacity: 0.7;
-  }
-  
-  /* Legacy BeautyAgent classes for compatibility during transition */
-  .beautyagent-logo { @extend .dermoagent-logo; }
-  .beautyagent-headline { @extend .dermoagent-headline; }
-  .beautyagent-ui-text { @extend .dermoagent-ui-text; }
-  .beautyagent-ui-text-medium { @extend .dermoagent-ui-text-medium; }
-  .beautyagent-ui-text-subtle { @extend .dermoagent-ui-text-subtle; }
-  .beautyagent-button { @extend .dermoagent-button; }
-  .beautyagent-notebook-page { @extend .dermoagent-notebook-page; }
-  .beautyagent-input { @extend .dermoagent-input; }
-}
-
-/* Premium Monochrome Animation Utilities */
-@layer utilities {
-  /* Premium notebook stripe background - integrated in component */
-  .notebook-stripes-bg {
-    background: 
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 24px,
-        var(--dermoagent-notebook-line) 24px,
-        var(--dermoagent-notebook-line) 25px
-      ),
-      linear-gradient(
-        90deg,
-        var(--dermoagent-notebook-margin) 0px,
-        var(--dermoagent-notebook-margin) 1px,
-        transparent 1px,
-        transparent 80px
-      );
-  }
-  
-  /* Elegant Red Margin Line - Sophisticated Notebook Enhancement */
-  .notebook-red-margin {
-    position: relative;
-  }
-  
-  .notebook-red-margin::before {
-    content: '';
-    position: absolute;
-    left: 88px; /* Aligned with existing notebook margin */
-    top: 0;
-    bottom: 0;
-    width: 0.5px;
-    background: var(--dermoagent-margin-red);
-    opacity: 0.8;
-    z-index: 1;
-  }
-  
-  /* Variant for content areas with different positioning */
-  .content-red-margin {
-    position: relative;
-  }
-  
-  .content-red-margin::before {
-    content: '';
-    position: absolute;
-    left: 2rem; /* 32px from content edge */
-    top: 0;
-    bottom: 0;
-    width: 0.5px;
-    background: var(--dermoagent-margin-red);
-    opacity: 0.7;
-    z-index: 1;
-  }
-  
-  /* Ensure cellular motion is ultra-subtle behind notebook stripes */
-  .notebook-cellular-subtle {
-    background-attachment: local;
-    opacity: 0.3;
-  }
-  
-  .monochrome-depth {
-    background: linear-gradient(135deg, var(--dermoagent-notebook-base) 0%, rgba(227, 227, 227, 0.02) 100%);
-  }
-  
-  /* Enhanced logo animation for d e r m o . a g e n t - clean and refined */
-  .logo-letterform-enhance {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: inline-block;
-  }
-  
-  .logo-letterform-enhance:hover {
-    transform: translateY(-1px);
-    opacity: 0.8;
-  }
-  
-  /* Typing cursor animation */
-  .typing-cursor {
-    animation: typing-cursor-blink 1s infinite;
-  }
-  
-  @keyframes typing-cursor-blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-  }
-  
-  /* Enhanced spellcheck and autocorrection styling */
-  .spellcheck-enabled {
-    /* Custom styling for spellcheck underlines */
-    text-decoration-skip-ink: none;
-  }
-  
-  /* Subtle spellcheck indicators for notebook style */
-  .spellcheck-enabled::-webkit-spelling-error-highlight {
-    background: transparent;
-    border-bottom: 1px dotted var(--dermoagent-charcoal-gray);
-  }
-  
-  .spellcheck-enabled::-webkit-grammar-error-highlight {
-    background: transparent;
-    border-bottom: 1px dotted var(--dermoagent-light-gray);
-  }
-  
-  /* Enhanced notebook input styling */
-  .notebook-container input,
-  .notebook-container textarea {
-    caret-color: var(--dermoagent-graphite-black);
-  }
-  
-  .notebook-container input::selection,
-  .notebook-container textarea::selection {
-    background-color: var(--dermoagent-light-gray);
-    color: var(--dermoagent-graphite-black);
-  }
+/* Enhanced depth for text elements */
+.text-depth-elegant {
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05);
 }
