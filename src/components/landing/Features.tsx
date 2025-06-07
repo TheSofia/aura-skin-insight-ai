@@ -7,7 +7,7 @@ const Features = () => {
       <div className="container max-w-5xl mx-auto px-4">
         <div className="text-center space-y-6">
           <h2 className="text-3xl font-light tracking-wider text-gray-800 dermaagent-headline">
-            AI-Powered Personalized Skincare
+            Personalized Skincare Intelligence
           </h2>
           <p className="text-lg text-gray-600 dermaagent-ui-text max-w-2xl mx-auto">
             Experience the future of skincare with intelligent analysis, 

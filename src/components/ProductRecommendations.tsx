@@ -26,7 +26,7 @@ const ProductRecommendations = ({
     if (isInitialLoad) {
       setTimeout(() => {
         toast({
-          title: "Welcome to DermoAgent",
+          title: "Welcome to Dermo.Agent",
           description: "Discover your personalized skincare recommendations"
         });
         setIsInitialLoad(false);

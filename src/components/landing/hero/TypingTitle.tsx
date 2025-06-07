@@ -57,7 +57,7 @@ const TypingTitle: React.FC<TypingTitleProps> = ({ isVisible }) => {
             letterSpacing: 'var(--dermoagent-letter-spacing-heading)'
           }}
         >
-          AI-Powered Skincare Intelligence
+          Personalized Skincare Intelligence
         </p>
       </div>
     </div>

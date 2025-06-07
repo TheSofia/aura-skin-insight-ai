@@ -9,11 +9,11 @@ interface AIInsightsProps {
 const AIInsights = ({ entries }: AIInsightsProps) => {
   return (
     <Card className="p-6 glass-card">
-      <h2 className="text-xl mb-4 font-light tracking-wider">AI Insights</h2>
+      <h2 className="text-xl mb-4 font-light tracking-wider">Smart Insights</h2>
       
       {entries.length > 0 ? (
         <div className="space-y-3">
-          <p className="text-sm">Based on your diary entries, DERMA.AGENT has detected:</p>
+          <p className="text-sm">Based on your diary entries, DERMO.AGENT has detected:</p>
           
           <div className="p-3 border border-beautyagent-light-grey rounded-lg">
             <p className="text-sm font-medium mb-1">Hydration Patterns</p>
@@ -32,7 +32,7 @@ const AIInsights = ({ entries }: AIInsightsProps) => {
         </div>
       ) : (
         <p className="text-beautyagent-medium-grey text-sm">
-          Add at least 3 diary entries to receive AI insights about your skin patterns and product effectiveness.
+          Add at least 3 diary entries to receive smart insights about your skin patterns and product effectiveness.
         </p>
       )}
     </Card>

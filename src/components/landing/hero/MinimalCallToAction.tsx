@@ -28,7 +28,7 @@ const MinimalCallToAction = ({ isVisible }: MinimalCallToActionProps) => {
           opacity: isVisible ? 0.8 : 0,
         }}
       >
-        AI-powered skincare intelligence
+        Personalized skincare intelligence
       </p>
       
       {/* Enhanced interaction button with refined color accent and hover target class */}

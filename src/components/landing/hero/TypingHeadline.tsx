@@ -40,7 +40,7 @@ const TypingHeadline = ({ animationStates, cursorProximity, headlineRef }: Typin
 
   // Subtitle typing animation
   const subtitle = useTypingAnimation({
-    text: "AI-powered skincare intelligence",
+    text: "Personalized skincare intelligence",
     speed: 55,
     delay: showSubtitle ? 0 : 9999,
     showCursor: true,

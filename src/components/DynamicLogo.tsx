@@ -62,7 +62,6 @@ const DynamicLogo = forwardRef<HTMLDivElement, DynamicLogoProps>(({
       isLoadingPage={isLoadingPage}
       sizeClass={sizeClass}
       ref={ref}
-      appName="dermo.agent"
     >
       {/* Structural concentric rings - refined for cellular aesthetic */}
       <LogoRings 
