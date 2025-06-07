@@ -1,102 +1,65 @@
 
-import React, { useState } from "react";
-import { useTypingAnimation } from "@/hooks/useTypingAnimation";
+import React, { useState, useEffect } from 'react';
 
 interface TypingTitleProps {
   isVisible: boolean;
 }
 
-const TypingTitle = ({ isVisible }: TypingTitleProps) => {
-  const [showSubtitle, setShowSubtitle] = useState(false);
-  const [logoComplete, setLogoComplete] = useState(false);
-  const [subtitleComplete, setSubtitleComplete] = useState(false);
-
-  // Logo typing animation - ONE TIME ONLY
-  const logoText = useTypingAnimation({
-    text: "DERMO.AGENT",
-    speed: 100,
-    delay: isVisible ? 500 : 9999,
-    showCursor: true,
-    cursorBlinkCount: 2,
-    onComplete: () => {
-      setLogoComplete(true);
-      // Start subtitle animation after logo completes
-      const timer = setTimeout(() => {
-        setShowSubtitle(true);
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  });
-
-  // Subtitle typing animation - ONE TIME ONLY
-  const subtitle = useTypingAnimation({
-    text: "AI-powered skincare intelligence",
-    speed: 75,
-    delay: showSubtitle ? 0 : 9999,
-    showCursor: true,
-    cursorBlinkCount: 3,
-    onComplete: () => {
-      setSubtitleComplete(true);
-    }
-  });
-
+const TypingTitle: React.FC<TypingTitleProps> = ({ isVisible }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  
+  const targetText = 'dermo.agent';
+  
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= targetText.length) {
+        setDisplayText(targetText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setIsTypingComplete(true);
+      }
+    }, 100);
+    
+    return () => clearInterval(typingInterval);
+  }, [isVisible]);
+  
   return (
-    <div className="text-center mb-12">
-      {/* Main Title - With ONE-TIME typing animation - Made smaller */}
+    <div className="text-center mb-8">
       <h1 
-        className="text-2xl md:text-3xl lg:text-4xl mb-6"
+        className={`text-5xl md:text-7xl font-light tracking-widest transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
         style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontWeight: '300',
-          letterSpacing: '0.15em',
-          color: 'var(--dermaagent-graphite-black)',
-          minHeight: '1.2em'
+          fontFamily: 'var(--dermoagent-primary-font)',
+          fontWeight: 'var(--dermoagent-logo-weight)',
+          letterSpacing: 'var(--dermoagent-letter-spacing-logo)',
+          color: 'var(--dermoagent-pale-black)'
         }}
       >
-        {/* Show either the typing animation OR the final static text */}
-        {logoComplete ? "DERMO.AGENT" : logoText.displayedText}
-        {/* Show cursor only during typing, fade out when complete */}
-        {logoText.showTypingCursor && !logoComplete && (
-          <span 
-            className="animate-pulse"
-            style={{
-              color: 'var(--dermaagent-muted-mid-gray)',
-              marginLeft: '2px'
-            }}
-          >
-            |
-          </span>
+        {displayText}
+        {!isTypingComplete && (
+          <span className="animate-pulse text-dermoagent-deep-purple">|</span>
         )}
       </h1>
       
-      {/* Subtitle - With ONE-TIME typing animation and SMALLER font size */}
-      <p 
-        className="text-sm md:text-base lg:text-lg"
-        style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontWeight: '300',
-          letterSpacing: '0.02em',
-          color: 'var(--dermaagent-charcoal-gray)',
-          opacity: (subtitle.displayedText || subtitleComplete) ? 0.8 : 0,
-          transition: 'opacity 0.3s ease-out',
-          minHeight: '1.5em'
-        }}
-      >
-        {/* Show either the typing animation OR the final static text */}
-        {subtitleComplete ? "AI-powered skincare intelligence" : subtitle.displayedText}
-        {/* Show cursor only during typing, fade out when complete */}
-        {subtitle.showTypingCursor && !subtitleComplete && (
-          <span 
-            className="animate-pulse"
-            style={{
-              color: 'var(--dermaagent-muted-mid-gray)',
-              marginLeft: '2px'
-            }}
-          >
-            |
-          </span>
-        )}
-      </p>
+      <div className={`mt-4 transition-all duration-1000 delay-500 ${
+        isTypingComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+      }`}>
+        <p 
+          className="text-lg md:text-xl text-dermoagent-dark-cool-grey tracking-wide"
+          style={{
+            fontFamily: 'var(--dermoagent-primary-font)',
+            letterSpacing: 'var(--dermoagent-letter-spacing-heading)'
+          }}
+        >
+          AI-Powered Skincare Intelligence
+        </p>
+      </div>
     </div>
   );
 };

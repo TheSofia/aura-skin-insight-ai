@@ -21,12 +21,12 @@ const Index = () => {
       if (location.pathname === '/') {
         const backgroundTimer = setTimeout(() => {
           setIsLoaded(true);
-        }, 400);
+        }, 300);
         
         return () => clearTimeout(backgroundTimer);
       }
     } catch (error) {
-      console.error("Error loading home page:", error);
+      console.error("Error loading Dermo.Agent home page:", error);
       setHasError(true);
       setIsLoaded(true);
     }
@@ -37,15 +37,30 @@ const Index = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center p-8">
-          <h1 className="text-2xl font-light tracking-wider text-gray-800 mb-4">
-            Welcome to derma.agent
+          <h1 
+            className="text-2xl font-light tracking-wider text-dermoagent-pale-black mb-4"
+            style={{
+              fontFamily: 'var(--dermoagent-primary-font)',
+              letterSpacing: 'var(--dermoagent-letter-spacing-logo)'
+            }}
+          >
+            Welcome to dermo.agent
           </h1>
-          <p className="text-gray-600 mb-6">
-            Your AI-powered skincare companion is loading...
+          <p 
+            className="text-dermoagent-dark-cool-grey mb-6"
+            style={{
+              fontFamily: 'var(--dermoagent-primary-font)',
+              letterSpacing: 'var(--dermoagent-letter-spacing-body)'
+            }}
+          >
+            Your AI-powered skincare intelligence is loading...
           </p>
           <button 
             onClick={() => window.location.reload()} 
-            className="px-6 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition-colors"
+            className="amazement-button px-6 py-2 bg-dermoagent-primary-orange-red text-white rounded hover:bg-dermoagent-burnt-orange transition-colors min-h-[44px]"
+            style={{
+              fontFamily: 'var(--dermoagent-primary-font)'
+            }}
           >
             Refresh Page
           </button>
@@ -56,24 +71,21 @@ const Index = () => {
 
   return (
     <>
-      {/* Conditional Custom Cursor - only on supported devices */}
-      {isCustomCursorEnabled && <CustomCursor />}
-      
-      {/* Optimized Cellular Background Animation */}
-      <SubtleCellularBackground isVisible={isLoaded} />
+      {/* Enhanced Cellular Background Animation */}
+      <SubtleCellularBackground isVisible={isLoaded} intensity="subtle" />
       
       {/* Landing Page Header with Navigation */}
       <LandingHeader />
       
       <div 
         ref={pageRef}
-        className="min-h-screen flex flex-col overflow-hidden relative"
+        className="min-h-screen flex flex-col overflow-hidden relative amazement-page"
         style={{
-          background: 'var(--dermaagent-notebook-base)',
-          fontFamily: "'IBM Plex Mono', monospace",
+          background: 'var(--dermoagent-notebook-base)',
+          fontFamily: 'var(--dermoagent-primary-font)',
         }}
       >
-        {/* Static School Notebook Background */}
+        {/* Refined School Notebook Background */}
         <div 
           className="fixed inset-0 pointer-events-none z-0"
           style={{
@@ -81,12 +93,12 @@ const Index = () => {
               repeating-linear-gradient(
                 0deg,
                 transparent,
-                transparent 27px,
-                #E3E3E3 27px,
-                #E3E3E3 28px
+                transparent 28px,
+                var(--dermoagent-light-gray) 28px,
+                var(--dermoagent-light-gray) 29px
               )
             `,
-            opacity: 0.3,
+            opacity: 0.25,
           }}
         />
         

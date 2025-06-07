@@ -1,110 +1,86 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { useTypingAnimation } from "@/hooks/useTypingAnimation";
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Camera, BookOpen, Sparkles } from 'lucide-react';
 
 interface EnhancedCallToActionProps {
   isVisible: boolean;
 }
 
-const EnhancedCallToAction = ({ isVisible }: EnhancedCallToActionProps) => {
-  const [showButton, setShowButton] = useState(false);
+const EnhancedCallToAction: React.FC<EnhancedCallToActionProps> = ({ isVisible }) => {
   const navigate = useNavigate();
+  const [isAnimated, setIsAnimated] = useState(false);
 
-  // Start button animation after title completes
   useEffect(() => {
     if (isVisible) {
-      const timer = setTimeout(() => {
-        setShowButton(true);
-      }, 4500); // Show after title animations complete
-      
+      const timer = setTimeout(() => setIsAnimated(true), 800);
       return () => clearTimeout(timer);
     }
   }, [isVisible]);
 
-  // Button text typing animation
-  const buttonText = useTypingAnimation({
-    text: "Begin Skin Analysis",
-    speed: 70,
-    delay: showButton ? 500 : 9999,
-    showCursor: false
-  });
-
-  // Handle button click - navigate to skin analysis
-  const handleBeginAnalysis = () => {
-    navigate('/skin-mirror');
-  };
-
   return (
-    <div 
-      className={`transition-all duration-1000 ${
-        showButton ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-      }`}
-    >
+    <div className={`flex flex-col items-center gap-6 transition-all duration-1000 delay-700 ${
+      isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+    }`}>
+      {/* Primary CTA */}
       <Button
-        onClick={handleBeginAnalysis}
-        className="enhanced-cta-button px-8 py-3 text-base relative overflow-hidden interactive"
+        onClick={() => navigate('/skin-mirror')}
+        size="pill-lg"
+        className="group relative overflow-hidden amazement-button bg-gradient-to-r from-dermoagent-primary-orange-red to-dermoagent-burnt-orange text-white hover:from-dermoagent-burnt-orange hover:to-dermoagent-primary-orange-red shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 text-lg font-normal tracking-wide min-h-[56px]"
         style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontWeight: '300',
-          letterSpacing: '0.05em',
-          borderRadius: '2px',
-          minWidth: '200px',
-          minHeight: '48px',
-          background: 'var(--dermaagent-pale-paper-white, #FFFFFF)',
-          border: '1px solid var(--dermaagent-charcoal-gray, #333333)',
-          color: 'var(--dermaagent-graphite-black, #1A1A1A)',
-          transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-          boxShadow: '0 0 0 0 rgba(26, 26, 26, 0)',
+          fontFamily: 'var(--dermoagent-primary-font)',
+          letterSpacing: 'var(--dermoagent-letter-spacing-heading)'
         }}
       >
-        {buttonText.displayedText || "\u00A0"}
-        
-        <style jsx>{`
-          .enhanced-cta-button {
-            position: relative;
-            isolation: isolate;
-          }
-          
-          /* Soft blurred frame effect on hover - subtle outer glow */
-          .enhanced-cta-button:hover {
-            box-shadow: 0 0 12px 2px rgba(26, 26, 26, 0.15);
-            border-color: var(--dermaagent-graphite-black, #1A1A1A);
-          }
-          
-          /* Focus state for accessibility - similar soft glow */
-          .enhanced-cta-button:focus {
-            outline: none;
-            box-shadow: 0 0 12px 2px rgba(26, 26, 26, 0.18);
-            border-color: var(--dermaagent-graphite-black, #1A1A1A);
-          }
-          
-          /* Click/Active state - slightly intensified glow */
-          .enhanced-cta-button:active {
-            box-shadow: 0 0 8px 1px rgba(26, 26, 26, 0.12);
-            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-          
-          /* Maintain clean appearance and contrast */
-          .enhanced-cta-button:hover,
-          .enhanced-cta-button:focus,
-          .enhanced-cta-button:active {
-            background: var(--dermaagent-pale-paper-white, #FFFFFF) !important;
-            color: var(--dermaagent-graphite-black, #1A1A1A) !important;
-          }
-          
-          /* Smooth transitions for all states */
-          .enhanced-cta-button {
-            transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                        border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-          
-          /* Ensure proper cursor interaction */
-          .enhanced-cta-button {
-            cursor: none; /* Let custom cursor handle this */
-          }
-        `}</style>
+        <Camera className="mr-3 h-5 w-5" />
+        Begin Skin Analysis
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></div>
       </Button>
+
+      {/* Secondary CTAs */}
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Button
+          onClick={() => navigate('/skin-diary')}
+          variant="outline"
+          size="pill"
+          className="amazement-button group relative border-dermoagent-light-gray hover:border-dermoagent-deep-purple/40 text-dermoagent-pale-black hover:text-dermoagent-deep-purple bg-white/90 backdrop-blur-sm hover:bg-dermoagent-ethereal-purple transition-all duration-300 min-h-[48px]"
+          style={{
+            fontFamily: 'var(--dermoagent-primary-font)',
+            letterSpacing: 'var(--dermoagent-letter-spacing-body)'
+          }}
+        >
+          <BookOpen className="mr-2 h-4 w-4" />
+          Skin Diary
+        </Button>
+
+        <Button
+          onClick={() => navigate('/custom-product')}
+          variant="outline"
+          size="pill"
+          className="amazement-button group relative border-dermoagent-light-gray hover:border-dermoagent-deep-purple/40 text-dermoagent-pale-black hover:text-dermoagent-deep-purple bg-white/90 backdrop-blur-sm hover:bg-dermoagent-ethereal-purple transition-all duration-300 min-h-[48px]"
+          style={{
+            fontFamily: 'var(--dermoagent-primary-font)',
+            letterSpacing: 'var(--dermoagent-letter-spacing-body)'
+          }}
+        >
+          <Sparkles className="mr-2 h-4 w-4" />
+          Custom Lab
+        </Button>
+      </div>
+
+      {/* Subtle description */}
+      <p 
+        className={`text-center text-dermoagent-dark-cool-grey max-w-md mx-auto transition-all duration-1000 delay-1000 ${
+          isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+        style={{
+          fontFamily: 'var(--dermoagent-primary-font)',
+          letterSpacing: 'var(--dermoagent-letter-spacing-body)'
+        }}
+      >
+        Experience personalized skincare intelligence powered by advanced cellular analysis
+      </p>
     </div>
   );
 };
