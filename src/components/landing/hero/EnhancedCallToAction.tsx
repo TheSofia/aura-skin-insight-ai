@@ -68,19 +68,6 @@ const EnhancedCallToAction: React.FC<EnhancedCallToActionProps> = ({ isVisible }
           Custom Lab
         </Button>
       </div>
-
-      {/* Subtle description */}
-      <p 
-        className={`text-center text-dermoagent-dark-cool-grey max-w-md mx-auto transition-all duration-1000 delay-1000 ${
-          isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
-        style={{
-          fontFamily: 'var(--dermoagent-primary-font)',
-          letterSpacing: 'var(--dermoagent-letter-spacing-body)'
-        }}
-      >
-        Experience personalized skincare intelligence powered by advanced cellular analysis
-      </p>
     </div>
   );
 };
