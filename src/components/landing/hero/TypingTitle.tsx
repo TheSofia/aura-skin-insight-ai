@@ -31,7 +31,7 @@ const TypingTitle: React.FC<TypingTitleProps> = ({ isVisible }) => {
   return (
     <div className="text-center mb-8">
       <h1 
-        className={`text-5xl md:text-7xl font-light tracking-widest transition-all duration-1000 ${
+        className={`text-4xl md:text-5xl font-light tracking-widest transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
         style={{
@@ -46,20 +46,6 @@ const TypingTitle: React.FC<TypingTitleProps> = ({ isVisible }) => {
           <span className="animate-pulse text-dermoagent-deep-purple">|</span>
         )}
       </h1>
-      
-      <div className={`mt-4 transition-all duration-1000 delay-500 ${
-        isTypingComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-      }`}>
-        <p 
-          className="text-lg md:text-xl text-dermoagent-dark-cool-grey tracking-wide"
-          style={{
-            fontFamily: 'var(--dermoagent-primary-font)',
-            letterSpacing: 'var(--dermoagent-letter-spacing-heading)'
-          }}
-        >
-          Personalized Skincare Intelligence
-        </p>
-      </div>
     </div>
   );
 };
